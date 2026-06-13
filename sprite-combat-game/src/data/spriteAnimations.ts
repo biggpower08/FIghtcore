@@ -1,6 +1,6 @@
 import { spriteRegistry, spriteSourceSheetById } from './spriteRegistry';
 
-export type SpriteFrameSource = 'frame-png' | 'sheet-crop' | 'fallback' | 'missing';
+export type SpriteFrameSource = 'frame-png' | 'atlas-crop' | 'sheet-crop' | 'fallback' | 'missing';
 
 export interface SpriteFrameRef {
   sheetId?: string;
@@ -12,6 +12,7 @@ export interface SpriteFrameRef {
   durationMs: number;
   anchorX?: number;
   anchorY?: number;
+  feetY?: number;
   notes?: string;
 }
 

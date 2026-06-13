@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-13T16:47:05.790Z",
+  "generatedAt": "2026-06-13T22:45:57.274Z",
   "summary": [
     {
       "entityId": "cyber-monk-orange",
@@ -49,12 +49,12 @@
     {
       "entityId": "cyber-monk-orange",
       "animation": "recovery",
-      "frameCount": 4
+      "frameCount": 2
     },
     {
       "entityId": "cyber-monk-orange",
       "animation": "spinning_kick",
-      "frameCount": 6
+      "frameCount": 5
     },
     {
       "entityId": "cyber-monk-orange",
@@ -284,7 +284,7 @@
     {
       "entityId": "neo-operative-green",
       "animation": "idle",
-      "frameCount": 6
+      "frameCount": 5
     },
     {
       "entityId": "neo-operative-green",
@@ -369,12 +369,12 @@
     {
       "entityId": "shadow-striker-purple",
       "animation": "short_elbow",
-      "frameCount": 5
+      "frameCount": 4
     },
     {
       "entityId": "shadow-striker-purple",
       "animation": "walk",
-      "frameCount": 8
+      "frameCount": 7
     }
   ]
 }

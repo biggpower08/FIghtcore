@@ -17,7 +17,7 @@ export interface DustPuff {
   lifeMs: number;
 }
 
-const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main.png';
+const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main-clean.png';
 
 export class RenderSystem {
   constructor(
@@ -214,12 +214,13 @@ export class RenderSystem {
 
   private drawObstacle(ctx: CanvasRenderingContext2D, obstacle: Obstacle): void {
     if (obstacle.kind === 'rock') {
-      ctx.fillStyle = '#554535';
+      ctx.save();
+      ctx.globalAlpha = 0.08;
+      ctx.fillStyle = '#2b2018';
       ctx.beginPath();
-      ctx.ellipse(obstacle.x, obstacle.y, obstacle.radius * 1.2, obstacle.radius * 0.82, -0.25, 0, Math.PI * 2);
+      ctx.ellipse(obstacle.x, obstacle.y, obstacle.radius * 0.9, obstacle.radius * 0.42, 0, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = '#74604d';
-      ctx.fillRect(obstacle.x - obstacle.radius * 0.45, obstacle.y - obstacle.radius * 0.45, obstacle.radius, 8);
+      ctx.restore();
       return;
     }
 
@@ -239,12 +240,13 @@ export class RenderSystem {
     const assetId = this.getAssetId(entity);
     const animationKey = this.animation.getCurrentAnimationKey(entity);
     const resolvedAnimation = this.assets.getResolvedAnimation(assetId, animationKey) ?? this.assets.getResolvedAnimation(assetId, 'idle');
+    const profile = spriteRegistryById.get(assetId)?.render;
     ctx.fillStyle = 'rgba(42, 23, 13, 0.34)';
     ctx.beginPath();
-    ctx.ellipse(entity.x, entity.y + entity.radius * 0.82, entity.radius * 1.05, entity.radius * 0.34, 0, 0, Math.PI * 2);
+    ctx.ellipse(entity.x, entity.y + (profile?.shadowOffsetY ?? 8), entity.radius * 1.05, entity.radius * 0.34, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    if (resolvedAnimation && ['frame-png', 'sheet-crop'].includes(resolvedAnimation.status)) {
+    if (resolvedAnimation && ['frame-png', 'atlas-crop', 'sheet-crop'].includes(resolvedAnimation.status)) {
       this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation);
       this.drawHealthBar(ctx, entity);
       return;
@@ -295,10 +297,10 @@ export class RenderSystem {
     const width = Math.max(entity.radius * 3.2, sourceWidth * scale);
     const height = width * (sourceHeight / sourceWidth);
     const dx = -width * frame.anchorX;
-    const dy = -height * frame.anchorY + entity.radius * 0.82;
+    const dy = -height * frame.anchorY;
 
     ctx.save();
-    ctx.translate(entity.x, entity.y - entity.radius * 0.45);
+    ctx.translate(entity.x, entity.y);
     ctx.scale(entity.facing, 1);
     this.drawFrameImage(ctx, frame, dx, dy, width, height);
     ctx.restore();

@@ -30,10 +30,10 @@ export class InputManager {
     let x = 0;
     let y = 0;
 
-    if (this.isHeld('a') || this.isHeld('arrowleft')) x -= 1;
-    if (this.isHeld('d') || this.isHeld('arrowright')) x += 1;
-    if (this.isHeld('w') || this.isHeld('arrowup')) y -= 1;
-    if (this.isHeld('s') || this.isHeld('arrowdown')) y += 1;
+    if (this.isHeld('a')) x -= 1;
+    if (this.isHeld('d')) x += 1;
+    if (this.isHeld('w')) y -= 1;
+    if (this.isHeld('s')) y += 1;
 
     if (x !== 0 && y !== 0) {
       const scale = Math.SQRT1_2;
@@ -51,7 +51,7 @@ export class InputManager {
     }
     this.held.add(key);
 
-    if ([' ', 'arrowup', 'arrowdown', 'arrowleft', 'arrowright'].includes(key)) {
+    if (key === ' ') {
       event.preventDefault();
     }
   };

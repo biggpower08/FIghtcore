@@ -16,7 +16,7 @@ import { Enemy } from '../entities/Enemy';
 import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
-import { moveById } from '../data/moves';
+import { moveById, type MoveDefinition } from '../data/moves';
 import { enemyAttackAnimationByMove, getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { spriteRegistry } from '../data/spriteRegistry';
 import { AnimationSystem } from '../systems/AnimationSystem';
@@ -33,7 +33,7 @@ import { RewardScreen } from '../ui/RewardScreen';
 import { SpriteLab } from '../ui/SpriteLab';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
-const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main.png';
+const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main-clean.png';
 
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
@@ -225,12 +225,17 @@ export class Game {
   private handleAttackInput(): void {
     const light = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('jab') : this.player.equippedMoves[0];
     const heavy = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('cross') ?? moveById.get('roundhouse_kick') : this.player.equippedMoves[1];
-    const grapple = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('low_kick') : this.player.equippedMoves[2];
+    const style = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('roundhouse_kick') : this.player.equippedMoves[2];
+
+    if (this.input.wasPressed('l')) {
+      this.tryPlayerGrapple();
+      return;
+    }
 
     const selected =
-      (this.input.wasPressed('j') && light) ||
-      (this.input.wasPressed('k') && heavy) ||
-      (this.input.wasPressed('l') && grapple) ||
+      (this.input.wasPressed('h') && light) ||
+      (this.input.wasPressed('j') && heavy) ||
+      (this.input.wasPressed('k') && style) ||
       this.slotMovePressed();
 
     if (!selected) return;
@@ -245,12 +250,73 @@ export class Game {
   }
 
   private slotMovePressed() {
+    const slotKeys = ['n', 'o', 'p', 'm'];
     for (let index = 0; index < 4; index += 1) {
-      if (this.input.wasPressed(String(index + 1))) {
+      if (this.input.wasPressed(slotKeys[index])) {
         return this.player.equippedMoves[index];
       }
     }
     return undefined;
+  }
+
+  private tryPlayerGrapple(): void {
+    const move = this.getGrappleMove();
+    if (!move || !this.player.canUseMove(move)) return;
+
+    const animationKey = this.getGrappleAnimationKey();
+    const grappleMove: MoveDefinition = { ...move, animationKey };
+    const durationMs = Math.max(360, move.windupMs + move.activeMs + move.recoveryMs);
+    this.player.stamina -= Math.min(this.player.stamina, move.staminaCost);
+    this.player.moveCooldowns.set(move.id, Math.max(move.cooldownMs, 680));
+    this.player.attackLockMs = durationMs;
+    this.player.activeMove = grappleMove;
+    this.player.activeMoveMs = Math.min(durationMs, 520);
+
+    const target = this.findGrappleTarget();
+    if (target) {
+      this.player.facing = target.x < this.player.x ? -1 : 1;
+      const controlX = this.player.x + this.player.facing * (this.player.radius + target.radius * 0.55);
+      target.x = controlX;
+      target.y = this.player.y + Math.sign(target.y - this.player.y) * 8;
+      target.takeDamage(Math.max(8, Math.round(move.damage * 0.45)));
+      target.stunMs = Math.max(target.stunMs, 620);
+      target.vx = this.player.facing * 170 * target.knockbackResistance;
+      target.vy = Math.sign(target.y - this.player.y || 1) * 28;
+      this.animation.play(target, 'knockdown', { lockForMs: 420, fallback: 'hit_react' });
+      this.dust.push({ x: target.x, y: target.y + 12, lifeMs: 300 });
+    }
+
+    this.animation.play(this.player, animationKey, { lockForMs: durationMs, fallback: 'idle' });
+  }
+
+  private findGrappleTarget(): Enemy | Boss | undefined {
+    const maxRange = this.player.radius + 62;
+    return this.livingEnemies()
+      .filter((target) => {
+        const dx = target.x - this.player.x;
+        return Math.hypot(dx, target.y - this.player.y) <= maxRange && Math.sign(dx || this.player.facing) === this.player.facing;
+      })
+      .sort((a, b) => this.player.distanceTo(a) - this.player.distanceTo(b))[0];
+  }
+
+  private getGrappleMove(): MoveDefinition | undefined {
+    const preferredByCharacter: Record<string, string> = {
+      'cyber-ninja-blue': 'low_kick',
+      'shadow-striker-purple': 'short_elbow',
+      'cyber-monk-orange': 'hip_throw',
+      'neo-operative-green': 'double_leg_takedown',
+    };
+    return moveById.get(preferredByCharacter[this.player.character.id]) ?? this.player.equippedMoves[2] ?? this.player.equippedMoves[0];
+  }
+
+  private getGrappleAnimationKey(): string {
+    const animationByCharacter: Record<string, string> = {
+      'cyber-ninja-blue': 'low_kick',
+      'shadow-striker-purple': 'short_elbow',
+      'cyber-monk-orange': 'hip_throw',
+      'neo-operative-green': 'double_leg_takedown',
+    };
+    return animationByCharacter[this.player.character.id] ?? 'hit_react';
   }
 
   private tryEnemyAttack(enemy: Enemy | Boss): void {

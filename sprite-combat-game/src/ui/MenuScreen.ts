@@ -1,4 +1,3 @@
-import { spriteSourceSheets } from '../data/spriteRegistry';
 import { characters } from '../data/characters';
 import { publicAssetUrl } from '../game/publicAssetUrl';
 
@@ -38,11 +37,11 @@ export class MenuScreen {
         <div class="sheet-preview-list">
           ${characters
             .map((character) => {
-              const sheet = spriteSourceSheets.find((sourceSheet) => sourceSheet.linkedSpriteIds.includes(character.id));
               const selectedClass = character.id === selectedCharacterId ? ' selected' : '';
+              const previewPath = `/sprites/frames/${character.id}/idle/0001.png`;
               return `
                 <button class="character-card${selectedClass}" data-action="select-character" data-character-id="${character.id}" type="button">
-                  <img src="${sheet ? publicAssetUrl(sheet.path) : ''}" alt="${character.name}" />
+                  <img src="${publicAssetUrl(previewPath)}" alt="${character.name}" />
                   <strong>${character.name}</strong>
                   <span>${character.identity}</span>
                 </button>
@@ -56,7 +55,7 @@ export class MenuScreen {
           <button data-action="settings">Settings</button>
           <button data-action="controls">Controls</button>
         </div>
-        <div class="controls-preview">Move WASD / arrows. Strike J, K, L. Dash Space. Moves 1-4.</div>
+        <div class="controls-preview">Move WASD. Strike H/J/K. Grapple L. Dash Space. Moves N/O/P/M.</div>
       </section>
     `);
   }
@@ -80,7 +79,7 @@ export class MenuScreen {
     this.show(`
       <section class="menu-panel settings-panel">
         <h2>Controls</h2>
-        <p class="menu-copy">WASD or arrow keys move. J is light strike, K is heavy strike, L is grapple, Space is dash, and 1-4 fire learned move slots.</p>
+        <p class="menu-copy">WASD moves. H is light strike, J is heavy strike, K is style attack, L is grapple, Space is dash, and N/O/P/M fire learned move slots.</p>
         <button data-action="back">Back</button>
       </section>
     `);

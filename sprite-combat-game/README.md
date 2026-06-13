@@ -47,29 +47,30 @@ npm run sprite:clean
 npm run sprite:qa
 ```
 
-`sprite:clean` removes only edge-connected dark sheet backgrounds, trims excess padding, normalizes runtime canvases, and keeps frame order. Raw generated frames are backed up at `public/sprites/frames-raw-generated-backup/`.
+`sprite:clean` rebuilds live frames from `public/sprites/frames-raw-generated-backup/`, removes only edge-connected dark sheet backgrounds, drops disconnected sheet-label components, normalizes runtime canvases, and keeps frame order. The current processed-frame backup is preserved at `public/sprites/frames-broken-render-backup-20260613/`.
 
 `sprite:qa` writes contact sheets to `public/sprites/qa/index.html`. The sheets show checkerboards, frame order, dimensions, alpha status, ground lines, and anchor markers.
 
 ## Controls
 
-- Move: `WASD` or arrow keys
-- Light strike: `J`
-- Heavy strike: `K`
-- Grapple / throw: `L`
+- Move: `WASD`
+- Light strike: `H`
+- Heavy strike: `J`
+- Style attack: `K`
+- Grapple / takedown control: `L`
 - Dash: `Space`
-- Learned move slots: `1`, `2`, `3`, `4`
+- Learned move slots: `N`, `O`, `P`, `M`
 - Pause / resume: `Esc`
 - Reward screen: click a move card after a wave
 
 ## Current MVP Features
 
-- Generated desert arena background with procedural fallback, rocks, dead bushes, shadows, and dash dust puffs
+- Generated desert arena background with a cleaned gameplay version, procedural fallback, subtle invisible collision props, shadows, and dash dust puffs
 - Player movement, facing direction, health, stamina, dash, and cooldown-aware attacks
 - Cyber Monkey Grunts and Scrappers as beginning-stage mobs
 - Cyber Monkey Alpha boss on wave 4 with higher health and telegraphed strikes
 - Rock collision for player and enemies
-- Temporary attack hitboxes, hurtboxes, knockback, stun, and once-per-attack damage
+- Temporary attack hitboxes, hurtboxes, knockback, stun, once-per-attack damage, and close-range grapple control
 - Wave spawning and rewards between waves
 - Four selectable hero identities: Cyber Ninja, Shadow Striker, Cyber Monk, and Neo Operative
 - Home screen, pause menu, game-over menu, controls panel, and placeholder settings panel

@@ -174,6 +174,7 @@ export class SpriteLab {
     if (this.options.ground) this.drawGroundLine(ctx, canvas.width, floorY);
     if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY);
     if (this.options.anchor) this.drawAnchor(ctx, canvas.width / 2, floorY);
+    const alpha = frame ? this.getAlphaInfo(frame) : undefined;
 
     info.textContent = JSON.stringify(
       {
@@ -183,12 +184,24 @@ export class SpriteLab {
         frame: `${(this.frameIndex % this.animation.frames.length) + 1}/${this.animation.frames.length}`,
         frameIndex: this.frameIndex % this.animation.frames.length,
         sheetId: frame?.sheetId,
+        sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
+        sourceKind: frame?.source,
+        rawCropAvailable: frame?.rawCropAvailable,
+        cleanedFrameAvailable: Boolean(frame?.framePath),
         frameDimensions: {
           width: frame?.width ?? frame?.image?.width,
           height: frame?.height ?? frame?.image?.height,
         },
-        alpha: frame ? this.getAlphaInfo(frame) : undefined,
+        anchors: frame
+          ? {
+              anchorX: frame.anchorX,
+              anchorY: frame.anchorY,
+              feetY: frame.feetY,
+            }
+          : undefined,
+        alpha,
+        qa: frame ? this.getFrameQa(frame, alpha) : undefined,
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,
@@ -257,7 +270,17 @@ export class SpriteLab {
     ctx.stroke();
   }
 
-  private getAlphaInfo(frame: ResolvedSpriteFrame): { hasTransparency: boolean; transparentPixels: number; totalPixels: number } | undefined {
+  private getAlphaInfo(
+    frame: ResolvedSpriteFrame,
+  ):
+    | {
+        hasTransparency: boolean;
+        transparentPixels: number;
+        totalPixels: number;
+        foregroundPixels: number;
+        bounds?: { minX: number; minY: number; maxX: number; maxY: number; width: number; height: number };
+      }
+    | undefined {
     const image = frame.image ?? frame.sheetImage;
     if (!image) return undefined;
     const width = frame.width ?? image.width;
@@ -274,10 +297,48 @@ export class SpriteLab {
     }
     const data = ctx.getImageData(0, 0, width, height).data;
     let transparentPixels = 0;
+    let foregroundPixels = 0;
+    let minX = width;
+    let minY = height;
+    let maxX = -1;
+    let maxY = -1;
     for (let index = 3; index < data.length; index += 4) {
-      if (data[index] < 255) transparentPixels += 1;
+      const alpha = data[index];
+      const pixel = (index - 3) / 4;
+      const x = pixel % width;
+      const y = Math.floor(pixel / width);
+      if (alpha < 255) transparentPixels += 1;
+      if (alpha > 8) {
+        foregroundPixels += 1;
+        minX = Math.min(minX, x);
+        minY = Math.min(minY, y);
+        maxX = Math.max(maxX, x);
+        maxY = Math.max(maxY, y);
+      }
     }
-    return { hasTransparency: transparentPixels > 0, transparentPixels, totalPixels: width * height };
+    const bounds = maxX >= minX ? { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 } : undefined;
+    return { hasTransparency: transparentPixels > 0, transparentPixels, totalPixels: width * height, foregroundPixels, bounds };
+  }
+
+  private getFrameQa(
+    frame: ResolvedSpriteFrame,
+    alpha?: ReturnType<SpriteLab['getAlphaInfo']>,
+  ): Record<string, string | boolean | number | undefined> {
+    const width = frame.width ?? frame.image?.width ?? frame.sheetImage?.width;
+    const height = frame.height ?? frame.image?.height ?? frame.sheetImage?.height;
+    const bounds = alpha?.bounds;
+    const anchorPixelY = height ? Math.round(height * frame.anchorY) : undefined;
+    const groundGapPx = bounds && anchorPixelY !== undefined ? anchorPixelY - bounds.maxY : undefined;
+    const fillRatio = alpha && width && height ? alpha.foregroundPixels / (width * height) : undefined;
+    return {
+      'is sprite hollow?': fillRatio !== undefined ? fillRatio < 0.06 : 'unknown',
+      'does frame have transparency?': Boolean(alpha?.hasTransparency),
+      'does frame have dark box?': alpha ? !alpha.hasTransparency || (fillRatio ?? 0) > 0.82 : 'unknown',
+      'does sprite touch ground line?': groundGapPx !== undefined ? groundGapPx >= -2 && groundGapPx <= 10 : 'unknown',
+      'feet position delta px': groundGapPx,
+      'does current animation use fallback?': this.animation?.status === 'fallback' || this.animation?.status === 'missing',
+      'frame bounds': bounds ? `${bounds.width}x${bounds.height}` : 'none',
+    };
   }
 
   private drawBackgroundPreview(): void {
@@ -302,10 +363,6 @@ export class SpriteLab {
       ctx.fill();
     }
 
-    ctx.strokeStyle = '#6d3d1d';
-    ctx.lineWidth = 12;
-    ctx.strokeRect(24, 72, canvas.width - 48, canvas.height - 96);
-
     for (let i = 0; i < 28; i += 1) {
       const x = 34 + ((i * 61) % (canvas.width - 68));
       const y = 82 + ((i * 43) % (canvas.height - 118));
@@ -315,8 +372,6 @@ export class SpriteLab {
     }
     ctx.globalAlpha = 1;
 
-    this.previewRock(ctx, 96, 178, 22);
-    this.previewRock(ctx, 314, 138, 16);
     this.previewBush(ctx, 196, 220);
     this.previewScrap(ctx, 268, 204);
     this.previewBones(ctx, 134, 116);
@@ -325,9 +380,9 @@ export class SpriteLab {
       {
         mode: 'background-preview',
         status: 'procedural-placeholder',
-        layers: ['sand base', 'distant ridge', 'arena boundary', 'sand streaks', 'rocks', 'dead bushes', 'bones', 'cyber scrap'],
+        layers: ['sand base', 'distant ridge', 'sand streaks', 'dead bushes', 'bones', 'cyber scrap'],
         reviewFocus: ['arena readability', 'prop spacing', 'movement-safe decoration', 'desert cyberpunk identity'],
-        finalArtNeeded: ['sand tile', 'distant ridge layer', 'rock sprites', 'dead bush sprite', 'bone pile sprite', 'cyber scrap sprite'],
+        finalArtNeeded: ['sand tile', 'distant ridge layer', 'dead bush sprite', 'bone pile sprite', 'cyber scrap sprite'],
       },
       null,
       2,
@@ -340,15 +395,6 @@ export class SpriteLab {
     const report = this.assets.getAssetLoadReport();
     this.assets.printAssetLoadReport();
     info.textContent = JSON.stringify(report, null, 2);
-  }
-
-  private previewRock(ctx: CanvasRenderingContext2D, x: number, y: number, radius: number): void {
-    ctx.fillStyle = '#554535';
-    ctx.beginPath();
-    ctx.ellipse(x, y, radius * 1.3, radius * 0.8, -0.24, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = '#74604d';
-    ctx.fillRect(x - radius * 0.45, y - radius * 0.45, radius, 5);
   }
 
   private previewBush(ctx: CanvasRenderingContext2D, x: number, y: number): void {

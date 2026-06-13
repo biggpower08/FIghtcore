@@ -9,9 +9,9 @@ This game is separate from FightScope. FightScope should stay an MMA analytics a
 ## What Works Right Now
 
 - Home screen, settings panel, controls panel, pause menu, reward screen, game-over screen, and Sprite Lab.
-- Generated desert arena background with rocks, bushes, boundaries, dash dust, and player/enemy shadows.
+- Generated desert arena background with a cleaned gameplay version, subtle collision props, dash dust, and player/enemy shadows.
 - Player movement with keyboard controls.
-- Light, heavy, grapple-style, dash, and move-slot inputs.
+- Light, heavy, style attack, real grapple/control, dash, and move-slot inputs.
 - Player health, stamina, cooldowns, hitboxes, knockback, stun, and basic collision.
 - Cyber Monkey Grunts and Scrappers as normal enemies.
 - Cyber Monkey Alpha as the first boss on wave 4.
@@ -22,12 +22,13 @@ This game is separate from FightScope. FightScope should stay an MMA analytics a
 
 ## How To Play
 
-- Move: `WASD` or arrow keys
-- Light strike: `J`
-- Heavy strike: `K`
-- Grapple / throw placeholder: `L`
+- Move: `WASD`
+- Light strike: `H`
+- Heavy strike: `J`
+- Style attack: `K`
+- Grapple / takedown control: `L`
 - Dash: `Space`
-- Move slots: `1`, `2`, `3`, `4`
+- Move slots: `N`, `O`, `P`, `M`
 - Pause / resume: `Esc`
 
 Start from the home screen, press `Start Game`, survive each wave, pick rewards, and keep going.
@@ -40,7 +41,7 @@ Sprite Lab is available from the home screen. It lets you preview entities, move
 
 ## What Is Still Placeholder
 
-- Manual art polish for some frame crops and foot placement.
+- Manual art polish for some source crops, especially a few fast takedown/effect-heavy frames.
 - Exact final animation passes for every move.
 - Real settings behavior for volume, music, SFX, screen shake, controls remap, and difficulty.
 - More enemy types, stages, and deeper progression.

@@ -4,6 +4,7 @@ import { PNG } from 'pngjs';
 
 const repoRoot = process.cwd();
 const framesRoot = path.join(repoRoot, 'public', 'sprites', 'frames');
+const sourceFramesRoot = path.join(repoRoot, 'public', 'sprites', 'frames-raw-generated-backup');
 
 const entityCanvas = new Map([
   ['cyber-ninja-blue', { width: 96, height: 96, anchorX: 0.5, anchorY: 0.86 }],
@@ -18,35 +19,67 @@ const entityCanvas = new Map([
 const defaultCanvas = { width: 96, height: 96, anchorX: 0.5, anchorY: 0.86 };
 const padding = 6;
 
-const entities = await listDirs(framesRoot);
+const entities = await listDirs(sourceFramesRoot);
 const summary = [];
+const rejected = [];
 
 for (const entityId of entities) {
-  const entityDir = path.join(framesRoot, entityId);
+  const entityDir = path.join(sourceFramesRoot, entityId);
+  const outputEntityDir = path.join(framesRoot, entityId);
   const target = entityCanvas.get(entityId) ?? defaultCanvas;
   const animations = await listDirs(entityDir);
 
   for (const animation of animations) {
     const animationDir = path.join(entityDir, animation);
+    const outputAnimationDir = path.join(outputEntityDir, animation);
+    await fs.mkdir(outputAnimationDir, { recursive: true });
     const frameFiles = (await fs.readdir(animationDir)).filter((file) => file.endsWith('.png')).sort();
 
     for (const frameFile of frameFiles) {
       const framePath = path.join(animationDir, frameFile);
+      const outputPath = path.join(outputAnimationDir, frameFile);
       const input = PNG.sync.read(await fs.readFile(framePath));
-      const before = countOpaque(input);
-      const cleaned = removeEdgeConnectedBackground(input);
-      const bbox = getOpaqueBounds(cleaned);
-      const output = bbox ? normalizeToCanvas(cleaned, bbox, target) : new PNG({ width: target.width, height: target.height });
-      await fs.writeFile(framePath, PNG.sync.write(output));
+      const before = countNonTransparent(input);
+      const cleaned = keepMainForeground(removeEdgeConnectedBackground(input));
+      const cleanedBounds = getOpaqueBounds(cleaned);
+      const accepted = cleanedBounds ? acceptsCleanup(input, cleaned, cleanedBounds) : false;
+      const sourceForOutput = cleanedBounds ? cleaned : input;
+      const bbox = getOpaqueBounds(sourceForOutput);
+      const output = bbox ? normalizeToCanvas(sourceForOutput, bbox, target) : new PNG({ width: target.width, height: target.height });
+      const outputForeground = countNonTransparent(output);
+      if (outputForeground < 80) {
+        await fs.rm(outputPath, { force: true });
+        rejected.push({
+          entityId,
+          animation,
+          frame: frameFile,
+          reason: 'skipped_tiny_or_blank_frame',
+          before,
+          after: outputForeground,
+        });
+        continue;
+      }
+      await fs.writeFile(outputPath, PNG.sync.write(output));
+      if (!accepted) {
+        rejected.push({
+          entityId,
+          animation,
+          frame: frameFile,
+          reason: cleanedBounds ? 'cleanup_safety_flagged_component_cleanup_used' : 'no_foreground_after_cleanup_raw_used',
+          before,
+          after: countNonTransparent(cleaned),
+        });
+      }
       summary.push({
         entityId,
         animation,
         frame: frameFile,
         before,
-        after: countOpaque(output),
+        after: outputForeground,
         width: output.width,
         height: output.height,
         trimmed: Boolean(bbox),
+        cleanupAccepted: accepted,
       });
     }
   }
@@ -54,7 +87,7 @@ for (const entityId of entities) {
 
 const reportPath = path.join(repoRoot, 'public', 'sprites', 'qa', 'cleanup-report.json');
 await fs.mkdir(path.dirname(reportPath), { recursive: true });
-await fs.writeFile(reportPath, JSON.stringify({ generatedAt: new Date().toISOString(), frames: summary }, null, 2));
+await fs.writeFile(reportPath, JSON.stringify({ generatedAt: new Date().toISOString(), source: path.relative(repoRoot, sourceFramesRoot), rejected, frames: summary }, null, 2));
 
 const byEntity = new Map();
 for (const row of summary) {
@@ -66,6 +99,9 @@ for (const [entityId, count] of byEntity.entries()) {
   console.log(`- ${entityId}: ${count}`);
 }
 console.log(`Report: ${path.relative(repoRoot, reportPath)}`);
+if (rejected.length > 0) {
+  console.log(`Safety flagged ${rejected.length} frame(s); actor cleanup was used where foreground remained.`);
+}
 
 async function listDirs(dir) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
@@ -100,7 +136,6 @@ function removeEdgeConnectedBackground(source) {
     queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
   }
 
-  softenTransparentEdges(png);
   return png;
 }
 
@@ -138,29 +173,7 @@ function isConnectedBackgroundPixel(png, x, y, bg) {
 
   const brightness = (r + g + b) / 3;
   const colorDistance = Math.hypot(r - bg[0], g - bg[1], b - bg[2]);
-  const blueDarkSheet = b > r && b > g && brightness < 42;
-  return (brightness < 34 && colorDistance < 44) || blueDarkSheet;
-}
-
-function softenTransparentEdges(png) {
-  for (let y = 1; y < png.height - 1; y += 1) {
-    for (let x = 1; x < png.width - 1; x += 1) {
-      const offset = (y * png.width + x) * 4;
-      if (png.data[offset + 3] === 0) continue;
-      const brightness = (png.data[offset] + png.data[offset + 1] + png.data[offset + 2]) / 3;
-      if (brightness > 38) continue;
-      if (hasTransparentNeighbor(png, x, y)) png.data[offset + 3] = Math.min(png.data[offset + 3], 96);
-    }
-  }
-}
-
-function hasTransparentNeighbor(png, x, y) {
-  return (
-    png.data[((y - 1) * png.width + x) * 4 + 3] === 0 ||
-    png.data[((y + 1) * png.width + x) * 4 + 3] === 0 ||
-    png.data[(y * png.width + x - 1) * 4 + 3] === 0 ||
-    png.data[(y * png.width + x + 1) * 4 + 3] === 0
-  );
+  return brightness < 30 && colorDistance < 38;
 }
 
 function getOpaqueBounds(png) {
@@ -182,6 +195,80 @@ function getOpaqueBounds(png) {
 
   if (maxX < minX || maxY < minY) return null;
   return { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+}
+
+function keepMainForeground(source) {
+  const output = clonePng(source);
+  const visited = new Uint16Array(output.width * output.height);
+  const components = [];
+  let nextComponentId = 1;
+
+  for (let y = 0; y < output.height; y += 1) {
+    for (let x = 0; x < output.width; x += 1) {
+      const pixel = y * output.width + x;
+      if (visited[pixel] || output.data[pixel * 4 + 3] <= 8) continue;
+      const component = floodComponent(output, x, y, visited, nextComponentId);
+      if (component.area > 0) components.push(component);
+      nextComponentId += 1;
+    }
+  }
+
+  if (components.length <= 1) return output;
+
+  components.sort((a, b) => b.area - a.area);
+  const main = components.find((component) => !isSheetLabelComponent(component, output)) ?? components[0];
+  const keep = new Set([main.id]);
+  for (const component of components.slice(1)) {
+    if (isSheetLabelComponent(component, output)) continue;
+    if (component.minY > main.maxY + 18 && component.height <= 24) continue;
+
+    const nearMain =
+      component.maxX >= main.minX - 54 &&
+      component.minX <= main.maxX + 54 &&
+      component.maxY >= main.minY - 44 &&
+      component.minY <= main.maxY + 44;
+    if (component.area >= Math.max(24, main.area * 0.015) && nearMain) keep.add(component.id);
+  }
+
+  for (let y = 0; y < output.height; y += 1) {
+    for (let x = 0; x < output.width; x += 1) {
+      const pixel = y * output.width + x;
+      const componentId = visited[pixel];
+      if (componentId > 0 && !keep.has(componentId)) output.data[pixel * 4 + 3] = 0;
+    }
+  }
+
+  return output;
+}
+
+function isSheetLabelComponent(component, png) {
+  const touchesCropEdge = component.minX <= 4 || component.minY <= 4 || component.maxY >= png.height - 5;
+  return touchesCropEdge && component.height <= 24;
+}
+
+function floodComponent(png, startX, startY, visited, id) {
+  const queue = [[startX, startY]];
+  let area = 0;
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+    const pixel = y * png.width + x;
+    if (visited[pixel] || png.data[pixel * 4 + 3] <= 8) continue;
+    visited[pixel] = id;
+    area += 1;
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+
+  return { id, area, minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
 }
 
 function normalizeToCanvas(source, bbox, target) {
@@ -238,7 +325,72 @@ function clonePng(source) {
   return output;
 }
 
-function countOpaque(png) {
+function acceptsCleanup(raw, cleaned, cleanedBounds) {
+  const rawBounds = getEstimatedRawForegroundBounds(raw);
+  if (!rawBounds) return true;
+
+  const rawArea = rawBounds.width * rawBounds.height;
+  const cleanedArea = cleanedBounds.width * cleanedBounds.height;
+  const rawFilled = countForegroundInside(raw, rawBounds);
+  const cleanedFilled = countNonTransparent(cleaned);
+  const fillRatio = rawFilled > 0 ? cleanedFilled / rawFilled : 1;
+  const widthRatio = cleanedBounds.width / rawBounds.width;
+  const heightRatio = cleanedBounds.height / rawBounds.height;
+  const cleanedAreaRatio = rawArea > 0 ? cleanedArea / rawArea : 1;
+
+  if (fillRatio < 0.18) return false;
+  if (widthRatio < 0.36 || heightRatio < 0.36) return false;
+  if (cleanedAreaRatio < 0.2) return false;
+  return true;
+}
+
+function getEstimatedRawForegroundBounds(png) {
+  const bg = sampleBackgroundColor(png);
+  let minX = png.width;
+  let minY = png.height;
+  let maxX = -1;
+  let maxY = -1;
+
+  for (let y = 0; y < png.height; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const offset = (y * png.width + x) * 4;
+      const r = png.data[offset];
+      const g = png.data[offset + 1];
+      const b = png.data[offset + 2];
+      const a = png.data[offset + 3];
+      const brightness = (r + g + b) / 3;
+      const colorDistance = Math.hypot(r - bg[0], g - bg[1], b - bg[2]);
+      if (a <= 8 || (brightness < 30 && colorDistance < 38)) continue;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+    }
+  }
+
+  if (maxX < minX || maxY < minY) return null;
+  return { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+}
+
+function countForegroundInside(png, bounds) {
+  const bg = sampleBackgroundColor(png);
+  let count = 0;
+  for (let y = bounds.minY; y <= bounds.maxY; y += 1) {
+    for (let x = bounds.minX; x <= bounds.maxX; x += 1) {
+      const offset = (y * png.width + x) * 4;
+      const r = png.data[offset];
+      const g = png.data[offset + 1];
+      const b = png.data[offset + 2];
+      const a = png.data[offset + 3];
+      const brightness = (r + g + b) / 3;
+      const colorDistance = Math.hypot(r - bg[0], g - bg[1], b - bg[2]);
+      if (a > 8 && !(brightness < 30 && colorDistance < 38)) count += 1;
+    }
+  }
+  return count;
+}
+
+function countNonTransparent(png) {
   let count = 0;
   for (let index = 3; index < png.data.length; index += 4) {
     if (png.data[index] > 8) count += 1;

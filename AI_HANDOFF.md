@@ -73,12 +73,13 @@ Wave 4 uses Cyber Monkey Alpha as the boss.
 
 ## Current Controls
 
-- Move: `WASD` or arrow keys
-- Light strike: `J`
-- Heavy strike: `K`
-- Grapple / throw placeholder: `L`
+- Move: `WASD`
+- Light strike: `H`
+- Heavy strike: `J`
+- Style attack: `K`
+- Grapple / takedown control: `L`
 - Dash: `Space`
-- Move slots: `1`, `2`, `3`, `4`
+- Move slots: `N`, `O`, `P`, `M`
 - Pause / resume: `Esc`
 
 ## Current Deployment Setup
@@ -101,7 +102,7 @@ https://biggpower08.github.io/FIghtcore/
 
 - `4e32fad Wire sprite animations to combat moves`: completed animation mapping layer, Sprite Lab, Cyber Ninja sheet-crop mappings, Cyber Monkey fallback animation mappings, and sprite coverage report.
 - `bca4f75 Integrate generated sprites and desert background`: added generated hero, Cyber Monkey, and desert arena assets.
-- Current polish pass: cleans runtime frame transparency/canvases, adds contact-sheet QA, and improves Sprite Lab art-debug overlays.
+- Current polish pass: rebuilds runtime frames from the raw backup with safer transparency cleanup, anchors sprites to the feet baseline, cleans the gameplay background, changes controls to WASD plus H/J/K/L/N/O/P/M, and makes grapple a close-range control action.
 
 ## Current Build Commands
 

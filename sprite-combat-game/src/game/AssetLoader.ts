@@ -1,5 +1,6 @@
 import { getSpriteAnimation, type SpriteAnimationDefinition, type SpriteFrameRef, type SpriteFrameSource } from '../data/spriteAnimations';
-import { spriteSourceSheetById } from '../data/spriteRegistry';
+import { getSpriteAtlasAnimation, type SpriteAtlasAnimation } from '../data/spriteAtlases';
+import { spriteRegistryById, spriteSourceSheetById } from '../data/spriteRegistry';
 import { publicAssetUrl } from './publicAssetUrl';
 
 export interface ResolvedSpriteFrame {
@@ -8,6 +9,7 @@ export interface ResolvedSpriteFrame {
   image?: HTMLImageElement;
   sheetImage?: HTMLImageElement;
   sheetId?: string;
+  sheetPath?: string;
   framePath?: string;
   x?: number;
   y?: number;
@@ -15,6 +17,8 @@ export interface ResolvedSpriteFrame {
   height?: number;
   anchorX: number;
   anchorY: number;
+  feetY?: number;
+  rawCropAvailable?: boolean;
   notes?: string;
 }
 
@@ -160,11 +164,63 @@ export class AssetLoader {
     const definition = getSpriteAnimation(entityId, animationKey);
     const resolved =
       (await this.resolvePreSlicedFrames(entityId, animationKey, definition)) ??
+      (await this.resolveAtlasAnimation(entityId, animationKey)) ??
       (definition ? await this.resolveDefinition(definition) : null) ??
       fallbackAnimation(entityId, animationKey, definition);
 
     this.animationCache.set(cacheKey, resolved);
     return resolved;
+  }
+
+  private async resolveAtlasAnimation(entityId: string, animationKey: string): Promise<ResolvedSpriteAnimation | null> {
+    const atlas = getSpriteAtlasAnimation(entityId, animationKey);
+    if (!atlas) return null;
+
+    const resolved = await this.resolveAtlasDefinition(atlas);
+    if (!resolved) return null;
+    return resolved;
+  }
+
+  private async resolveAtlasDefinition(atlas: SpriteAtlasAnimation): Promise<ResolvedSpriteAnimation | null> {
+    const frames: ResolvedSpriteFrame[] = [];
+
+    for (const frame of atlas.frames) {
+      const sheetImage = await this.loadImage(frame.sheetPath, {
+        entityId: frame.entityId,
+        animationKey: frame.animationKey,
+        frameIndex: frame.frameIndex + 1,
+        kind: `atlas-crop:${frame.sheetId}`,
+      });
+      if (!sheetImage) continue;
+      frames.push({
+        source: 'atlas-crop',
+        durationMs: frame.durationMs,
+        sheetImage,
+        sheetId: frame.sheetId,
+        sheetPath: frame.sheetPath,
+        x: frame.x,
+        y: frame.y,
+        width: frame.width,
+        height: frame.height,
+        anchorX: frame.anchorX,
+        anchorY: frame.anchorY,
+        feetY: frame.feetY,
+        rawCropAvailable: true,
+        notes: frame.notes,
+      });
+    }
+
+    if (frames.length === 0) return null;
+
+    return {
+      entityId: atlas.entityId,
+      animationKey: atlas.animationKey,
+      loop: atlas.loop,
+      status: 'atlas-crop',
+      frames,
+      fallbackAnimation: atlas.fallbackAnimation,
+      notes: atlas.notes,
+    };
   }
 
   getResolvedAnimation(entityId: string, animationKey: string): ResolvedSpriteAnimation | undefined {
@@ -202,14 +258,17 @@ export class AssetLoader {
   ): Promise<ResolvedSpriteAnimation | null> {
     const images = await this.loadOptionalFrames(entityId, animationKey, 8);
     if (images.length === 0) return null;
+    const renderProfile = spriteRegistryById.get(entityId)?.render;
 
     const frames = images.map<ResolvedSpriteFrame>((image, index) => ({
       source: 'frame-png',
       durationMs: definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
       image,
       framePath: `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-      anchorX: definition?.frames[index]?.anchorX ?? 0.5,
-      anchorY: definition?.frames[index]?.anchorY ?? 0.84,
+      anchorX: renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+      anchorY: renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+      feetY: renderProfile?.feetY,
+      rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
     }));
 
     return {
@@ -268,12 +327,15 @@ export class AssetLoader {
         durationMs: frame.durationMs,
         sheetImage,
         sheetId: frame.sheetId,
+        sheetPath: spriteSourceSheetById.get(frame.sheetId)?.path,
         x: frame.x,
         y: frame.y,
         width: frame.width,
         height: frame.height,
         anchorX: frame.anchorX ?? 0.5,
         anchorY: frame.anchorY ?? 0.84,
+        feetY: frame.feetY,
+        rawCropAvailable: true,
         notes: frame.notes,
       };
     }
