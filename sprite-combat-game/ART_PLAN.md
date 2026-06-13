@@ -32,17 +32,34 @@ Cyber Monkey enemies are now backed by generated source sheets and sliced runtim
 
 The desert arena now uses the generated desert wasteland background as the primary runtime layer. The old procedural sand, markers, debris, and backdrop remain as fallback if the image is missing.
 
+## Runtime Cleanup And QA
+
+- `npm run sprite:clean` runs `scripts/clean-sprite-frames.mjs`.
+- `npm run sprite:qa` runs `scripts/make-sprite-contact-sheets.mjs`.
+- Raw generated frame folders are preserved in `public/sprites/frames-raw-generated-backup/`.
+- Cleaned runtime frames live in `public/sprites/frames/`.
+- QA contact sheets live in `public/sprites/qa/index.html`.
+
+The cleanup pass uses edge-connected dark-background removal from frame borders so dark clothing, outlines, hair, armor, and internal shadows are preserved. It normalizes canvases by entity family:
+
+| Entity family | Runtime canvas |
+|---|---:|
+| Player characters | 96x96 |
+| Cyber Monkey Grunt | 96x96 |
+| Cyber Monkey Scrapper | 112x112 |
+| Cyber Monkey Alpha | 160x160 |
+
 ## What Is Real Art vs Placeholder
 
 | Asset family | Current state | Used in runtime? | Needs slicing? | Needs polish? | Good enough for now? |
 |---|---|---:|---:|---:|---:|
-| Cyber Ninja | partial real source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
-| Shadow Striker | partial real source sheet plus sliced runtime frames | selectable | polish pass | yes | yes |
-| Cyber Monk | partial real source sheet plus sliced runtime frames | selectable | polish pass | yes | yes |
-| Neo Operative | partial real source sheet plus sliced runtime frames | selectable | polish pass | yes | yes |
-| Cyber Monkey Grunt | generated source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
-| Cyber Monkey Scrapper | generated source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
-| Cyber Monkey Alpha | generated source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
+| Cyber Ninja | cleaned generated runtime frames | yes | manual polish | yes | yes |
+| Shadow Striker | cleaned generated runtime frames | selectable | manual polish | yes | yes |
+| Cyber Monk | cleaned generated runtime frames | selectable | manual polish | yes | yes |
+| Neo Operative | cleaned generated runtime frames | selectable | manual polish | yes | yes |
+| Cyber Monkey Grunt | cleaned generated runtime frames | yes | manual polish | yes | yes |
+| Cyber Monkey Scrapper | cleaned generated runtime frames | yes | manual polish | yes | yes |
+| Cyber Monkey Alpha | cleaned generated runtime frames | yes | manual polish | yes | yes |
 | Desert base ground | generated background image with procedural fallback | yes | no | yes | yes |
 | Rocks | procedural placeholder | yes | no | yes | yes |
 | Dead bushes | procedural placeholder | yes | no | yes | yes |
@@ -153,7 +170,7 @@ Cyber Monkey Alpha:
 
 ## What Should Be Done First
 
-1. Polish hero and Cyber Monkey frame crops with tighter transparent bounds.
+1. Review `public/sprites/qa/index.html` and manually polish any frames with bad foot contact or awkward crop placement.
 2. Replace procedural desert props with reusable prop images.
 3. Add move icons for the HUD and reward cards.
 

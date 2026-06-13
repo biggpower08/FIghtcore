@@ -9,6 +9,7 @@ import type { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 import type { Camera } from '../game/Camera';
+import { spriteRegistryById } from '../data/spriteRegistry';
 
 export interface DustPuff {
   x: number;
@@ -289,7 +290,8 @@ export class RenderSystem {
 
     const sourceWidth = frame.width ?? frame.image?.width ?? 64;
     const sourceHeight = frame.height ?? frame.image?.height ?? 64;
-    const scale = entity instanceof Boss ? 1.45 : entity instanceof Enemy ? 0.82 : 1;
+    const profileScale = spriteRegistryById.get(this.getAssetId(entity))?.render?.scale ?? 1;
+    const scale = profileScale * (entity instanceof Boss ? 1.08 : 1);
     const width = Math.max(entity.radius * 3.2, sourceWidth * scale);
     const height = width * (sourceHeight / sourceWidth);
     const dx = -width * frame.anchorX;

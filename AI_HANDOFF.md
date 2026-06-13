@@ -6,7 +6,7 @@ FIghtcore contains a standalone browser game in `sprite-combat-game/`. It is a c
 
 ## Current Project Status
 
-The MVP is playable. It has a home screen, settings placeholder, controls screen, pause, game over, reward flow, desert arena, movement, dash, stamina, health, hitboxes, enemy waves, boss wave, sprite registry, sprite source sheets, animation mappings, fallback rendering, and Sprite Lab.
+The MVP is playable. It has a home screen, settings placeholder, controls screen, pause, game over, reward flow, generated desert arena, movement, dash, stamina, health, hitboxes, enemy waves, boss wave, selectable heroes, sprite registry, generated source sheets, cleaned runtime frame folders, animation mappings, fallback rendering, Sprite Lab, and sprite contact-sheet QA.
 
 ## What This Repo Is
 
@@ -50,7 +50,16 @@ Read these files first:
 - `sprite-combat-game/src/systems/AnimationSystem.ts`
 - `sprite-combat-game/src/systems/RenderSystem.ts`
 
-The sprite system supports source sheets, sheet crop rectangles, pre-sliced frame folders, and procedural fallback rendering. Do not remove fallback rendering.
+The sprite system supports source sheets, sheet crop rectangles, pre-sliced frame folders, cleaned normalized PNG frames, and procedural fallback rendering. Do not remove fallback rendering.
+
+Sprite cleanup and QA scripts:
+
+- `sprite-combat-game/scripts/clean-sprite-frames.mjs`
+- `sprite-combat-game/scripts/make-sprite-contact-sheets.mjs`
+- `npm run sprite:clean`
+- `npm run sprite:qa`
+
+Raw generated frames are backed up in `sprite-combat-game/public/sprites/frames-raw-generated-backup/`. QA contact sheets are written to `sprite-combat-game/public/sprites/qa/index.html`.
 
 ## Current Enemy System
 
@@ -91,12 +100,16 @@ https://biggpower08.github.io/FIghtcore/
 ## Current Known Commits / Milestones
 
 - `4e32fad Wire sprite animations to combat moves`: completed animation mapping layer, Sprite Lab, Cyber Ninja sheet-crop mappings, Cyber Monkey fallback animation mappings, and sprite coverage report.
+- `bca4f75 Integrate generated sprites and desert background`: added generated hero, Cyber Monkey, and desert arena assets.
+- Current polish pass: cleans runtime frame transparency/canvases, adds contact-sheet QA, and improves Sprite Lab art-debug overlays.
 
 ## Current Build Commands
 
 ```powershell
 cd sprite-combat-game
 npm install
+npm run sprite:clean
+npm run sprite:qa
 npm run build
 ```
 
@@ -121,7 +134,7 @@ git push origin main
 
 ## Important Guardrails For Future Agents
 
-- Do not redo the completed sprite animation wiring.
+- Do not redo the completed sprite animation wiring or generated asset integration.
 - Do not remove fallback rendering.
 - Do not break GitHub Pages.
 - Do not add backend dependencies.
@@ -133,13 +146,12 @@ git push origin main
 
 ## Do Not Redo
 
-Do not recreate `spriteAnimations.ts`, Sprite Lab, `printSpriteCoverageReport()`, or the Cyber Ninja/Cyber Monkey animation wiring unless the task is specifically to improve or tune it.
+Do not recreate `spriteAnimations.ts`, Sprite Lab, `printSpriteCoverageReport()`, the Cyber Ninja/Cyber Monkey animation wiring, or the generated frame folders unless the task is specifically to improve or tune them.
 
 ## Next Good Tasks
 
-- Add real Cyber Monkey source sheets.
-- Tune crop rectangles in `src/data/spriteAnimations.ts` using Sprite Lab.
-- Add character select.
+- Manually polish cleaned sprite crops and foot anchors using Sprite Lab and QA contact sheets.
+- Add impact effects, move icons, and richer animation timing.
 - Add local rule-based AI coach after docs are stable.
 - Add more stages, enemy types, and audio.
 

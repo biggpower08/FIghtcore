@@ -144,8 +144,9 @@ export class AssetLoader {
 
     const frames = images.map<ResolvedSpriteFrame>((image, index) => ({
       source: 'frame-png',
-      durationMs: definition?.frames[index]?.durationMs ?? 100,
+      durationMs: definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
       image,
+      framePath: `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
       anchorX: definition?.frames[index]?.anchorX ?? 0.5,
       anchorY: definition?.frames[index]?.anchorY ?? 0.84,
     }));
@@ -237,6 +238,7 @@ function fallbackAnimation(
   animationKey: string,
   definition?: SpriteAnimationDefinition,
 ): ResolvedSpriteAnimation {
+  console.warn(`Sprite fallback used: ${entityId} / ${animationKey} because runtime frames or sheet crops are missing.`);
   return {
     entityId,
     animationKey,
@@ -254,4 +256,35 @@ function fallbackAnimation(
     fallbackAnimation: definition?.fallbackAnimation,
     notes: definition?.notes,
   };
+}
+
+function timingForAnimation(animationKey: string, index: number, frameCount: number): number {
+  const attackTiming: Record<string, number[]> = {
+    jab: [55, 70, 85, 95],
+    cross: [65, 80, 95, 110],
+    low_kick: [70, 75, 95, 95, 110],
+    roundhouse_kick: [70, 80, 95, 100, 95, 115],
+    short_elbow: [65, 75, 90, 95, 110],
+    shadow_counter: [70, 80, 90, 90, 100, 120],
+    palm_strike: [65, 75, 90, 95, 105],
+    spinning_kick: [65, 75, 85, 95, 105, 115],
+    clinch_knee: [80, 95, 105, 110, 125],
+    hip_throw: [85, 95, 105, 115, 125],
+    double_leg_takedown: [70, 80, 90, 100, 110, 125],
+    sprawl_counter: [75, 90, 100, 110, 125],
+    claw_swipe: [60, 70, 80, 90, 110],
+    claw_combo: [58, 68, 78, 88, 98, 118],
+    ground_slam: [90, 95, 100, 120, 150, 130, 120],
+  };
+
+  if (animationKey === 'idle' || animationKey === 'ready') return 150;
+  if (animationKey === 'walk' || animationKey === 'run') return 95;
+  if (animationKey === 'dash') return 68;
+  if (animationKey === 'hit_react') return 95;
+  if (animationKey === 'recovery') return 120;
+  if (animationKey === 'death') return 135;
+  if (animationKey === 'knockdown') return 125;
+
+  const sequence = attackTiming[animationKey];
+  return sequence?.[index] ?? sequence?.[sequence.length - 1] ?? Math.max(80, Math.round(720 / Math.max(1, frameCount)));
 }

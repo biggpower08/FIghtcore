@@ -1,0 +1,3475 @@
+{
+  "generatedAt": "2026-06-13T16:47:03.196Z",
+  "frames": [
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "clinch_knee",
+      "frame": "0001.png",
+      "before": 1746,
+      "after": 1746,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "clinch_knee",
+      "frame": "0002.png",
+      "before": 1361,
+      "after": 1361,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "clinch_knee",
+      "frame": "0003.png",
+      "before": 1648,
+      "after": 1648,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "clinch_knee",
+      "frame": "0004.png",
+      "before": 1433,
+      "after": 1433,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "dash",
+      "frame": "0001.png",
+      "before": 1497,
+      "after": 1497,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "dash",
+      "frame": "0002.png",
+      "before": 1003,
+      "after": 1003,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "dash",
+      "frame": "0003.png",
+      "before": 742,
+      "after": 742,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hip_throw",
+      "frame": "0001.png",
+      "before": 1746,
+      "after": 1746,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hip_throw",
+      "frame": "0002.png",
+      "before": 1361,
+      "after": 1361,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hip_throw",
+      "frame": "0003.png",
+      "before": 1648,
+      "after": 1648,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hip_throw",
+      "frame": "0004.png",
+      "before": 1433,
+      "after": 1433,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 2298,
+      "after": 2298,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 1126,
+      "after": 1126,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 1020,
+      "after": 1020,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 1416,
+      "after": 1416,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 1316,
+      "after": 1316,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 1281,
+      "after": 1281,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 1248,
+      "after": 1248,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "idle",
+      "frame": "0005.png",
+      "before": 1263,
+      "after": 1263,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 2298,
+      "after": 2298,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "low_kick",
+      "frame": "0001.png",
+      "before": 1339,
+      "after": 1339,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "low_kick",
+      "frame": "0002.png",
+      "before": 877,
+      "after": 877,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "low_kick",
+      "frame": "0003.png",
+      "before": 1139,
+      "after": 1139,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "low_kick",
+      "frame": "0004.png",
+      "before": 1030,
+      "after": 1030,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "low_kick",
+      "frame": "0005.png",
+      "before": 1403,
+      "after": 1403,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "palm_strike",
+      "frame": "0001.png",
+      "before": 1287,
+      "after": 1287,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "palm_strike",
+      "frame": "0002.png",
+      "before": 1311,
+      "after": 1311,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "palm_strike",
+      "frame": "0003.png",
+      "before": 1306,
+      "after": 1306,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "palm_strike",
+      "frame": "0004.png",
+      "before": 1353,
+      "after": 1353,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "palm_strike",
+      "frame": "0005.png",
+      "before": 409,
+      "after": 409,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frame": "0001.png",
+      "before": 1461,
+      "after": 1461,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frame": "0002.png",
+      "before": 1583,
+      "after": 1583,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frame": "0003.png",
+      "before": 1825,
+      "after": 1824,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frame": "0004.png",
+      "before": 1481,
+      "after": 1481,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frame": "0005.png",
+      "before": 1423,
+      "after": 1423,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frame": "0006.png",
+      "before": 259,
+      "after": 259,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "recovery",
+      "frame": "0001.png",
+      "before": 489,
+      "after": 489,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "recovery",
+      "frame": "0002.png",
+      "before": 506,
+      "after": 506,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "recovery",
+      "frame": "0003.png",
+      "before": 263,
+      "after": 263,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "recovery",
+      "frame": "0004.png",
+      "before": 201,
+      "after": 201,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frame": "0001.png",
+      "before": 2379,
+      "after": 2379,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frame": "0002.png",
+      "before": 2009,
+      "after": 2009,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frame": "0003.png",
+      "before": 2086,
+      "after": 2086,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frame": "0004.png",
+      "before": 1951,
+      "after": 1951,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frame": "0005.png",
+      "before": 1324,
+      "after": 1324,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frame": "0006.png",
+      "before": 131,
+      "after": 131,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frame": "0001.png",
+      "before": 1243,
+      "after": 1242,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frame": "0002.png",
+      "before": 1489,
+      "after": 1489,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frame": "0003.png",
+      "before": 1507,
+      "after": 1507,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frame": "0004.png",
+      "before": 1346,
+      "after": 1346,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frame": "0005.png",
+      "before": 1255,
+      "after": 1255,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frame": "0006.png",
+      "before": 952,
+      "after": 952,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "clinch_knee",
+      "frame": "0001.png",
+      "before": 2597,
+      "after": 2592,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "clinch_knee",
+      "frame": "0002.png",
+      "before": 2103,
+      "after": 2080,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "clinch_knee",
+      "frame": "0003.png",
+      "before": 2870,
+      "after": 2854,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "clinch_knee",
+      "frame": "0004.png",
+      "before": 2094,
+      "after": 2091,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "death",
+      "frame": "0001.png",
+      "before": 888,
+      "after": 888,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "death",
+      "frame": "0002.png",
+      "before": 1022,
+      "after": 1015,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "death",
+      "frame": "0003.png",
+      "before": 994,
+      "after": 994,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "death",
+      "frame": "0004.png",
+      "before": 1668,
+      "after": 1668,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "death",
+      "frame": "0005.png",
+      "before": 1736,
+      "after": 1736,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "enrage",
+      "frame": "0001.png",
+      "before": 2634,
+      "after": 2633,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "enrage",
+      "frame": "0002.png",
+      "before": 2212,
+      "after": 2212,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "enrage",
+      "frame": "0003.png",
+      "before": 2072,
+      "after": 2070,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "enrage",
+      "frame": "0004.png",
+      "before": 2214,
+      "after": 2214,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "enrage",
+      "frame": "0005.png",
+      "before": 1906,
+      "after": 1906,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0001.png",
+      "before": 2597,
+      "after": 2592,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0002.png",
+      "before": 2103,
+      "after": 2080,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0003.png",
+      "before": 2870,
+      "after": 2854,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0004.png",
+      "before": 2094,
+      "after": 2091,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0005.png",
+      "before": 3468,
+      "after": 3468,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0006.png",
+      "before": 2471,
+      "after": 2471,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frame": "0007.png",
+      "before": 2324,
+      "after": 2324,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 2629,
+      "after": 2629,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 2510,
+      "after": 2510,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 2002,
+      "after": 2002,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 3602,
+      "after": 3602,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 3547,
+      "after": 3547,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 2678,
+      "after": 2675,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 2069,
+      "after": 2069,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 2159,
+      "after": 2159,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "knockdown",
+      "frame": "0002.png",
+      "before": 1735,
+      "after": 1732,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "knockdown",
+      "frame": "0003.png",
+      "before": 2276,
+      "after": 2276,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "knockdown",
+      "frame": "0004.png",
+      "before": 1699,
+      "after": 1697,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "knockdown",
+      "frame": "0005.png",
+      "before": 1510,
+      "after": 1510,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frame": "0001.png",
+      "before": 2043,
+      "after": 2037,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frame": "0002.png",
+      "before": 1604,
+      "after": 1604,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frame": "0003.png",
+      "before": 1769,
+      "after": 1769,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frame": "0004.png",
+      "before": 4055,
+      "after": 4055,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frame": "0005.png",
+      "before": 3910,
+      "after": 3910,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frame": "0006.png",
+      "before": 1382,
+      "after": 1380,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frame": "0001.png",
+      "before": 2904,
+      "after": 2904,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frame": "0002.png",
+      "before": 3194,
+      "after": 3192,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frame": "0003.png",
+      "before": 2367,
+      "after": 2356,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frame": "0004.png",
+      "before": 2142,
+      "after": 2142,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frame": "0005.png",
+      "before": 2177,
+      "after": 2173,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frame": "0006.png",
+      "before": 1694,
+      "after": 1694,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "taunt",
+      "frame": "0001.png",
+      "before": 2912,
+      "after": 2912,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "taunt",
+      "frame": "0002.png",
+      "before": 3367,
+      "after": 3367,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "taunt",
+      "frame": "0003.png",
+      "before": 2223,
+      "after": 2224,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "taunt",
+      "frame": "0004.png",
+      "before": 2164,
+      "after": 2160,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "taunt",
+      "frame": "0005.png",
+      "before": 2956,
+      "after": 2956,
+      "width": 160,
+      "height": 160,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "claw_swipe",
+      "frame": "0001.png",
+      "before": 830,
+      "after": 830,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "claw_swipe",
+      "frame": "0002.png",
+      "before": 917,
+      "after": 915,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "claw_swipe",
+      "frame": "0003.png",
+      "before": 845,
+      "after": 845,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "claw_swipe",
+      "frame": "0004.png",
+      "before": 793,
+      "after": 793,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "claw_swipe",
+      "frame": "0005.png",
+      "before": 802,
+      "after": 802,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "death",
+      "frame": "0001.png",
+      "before": 769,
+      "after": 769,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "death",
+      "frame": "0002.png",
+      "before": 669,
+      "after": 669,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "death",
+      "frame": "0003.png",
+      "before": 701,
+      "after": 701,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "death",
+      "frame": "0004.png",
+      "before": 165,
+      "after": 165,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 537,
+      "after": 537,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 408,
+      "after": 408,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 306,
+      "after": 306,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 1465,
+      "after": 1464,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 1373,
+      "after": 1373,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 1597,
+      "after": 1597,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 1270,
+      "after": 1270,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 795,
+      "after": 795,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "knockdown",
+      "frame": "0002.png",
+      "before": 744,
+      "after": 744,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "knockdown",
+      "frame": "0003.png",
+      "before": 808,
+      "after": 808,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "knockdown",
+      "frame": "0004.png",
+      "before": 798,
+      "after": 798,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "leap",
+      "frame": "0001.png",
+      "before": 1098,
+      "after": 1098,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "leap",
+      "frame": "0002.png",
+      "before": 1004,
+      "after": 1004,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "leap",
+      "frame": "0003.png",
+      "before": 161,
+      "after": 160,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "leap",
+      "frame": "0004.png",
+      "before": 935,
+      "after": 935,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "palm_strike",
+      "frame": "0001.png",
+      "before": 758,
+      "after": 758,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "palm_strike",
+      "frame": "0002.png",
+      "before": 981,
+      "after": 981,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "palm_strike",
+      "frame": "0003.png",
+      "before": 656,
+      "after": 656,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "palm_strike",
+      "frame": "0004.png",
+      "before": 865,
+      "after": 865,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "palm_strike",
+      "frame": "0005.png",
+      "before": 908,
+      "after": 906,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frame": "0001.png",
+      "before": 1188,
+      "after": 1188,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frame": "0002.png",
+      "before": 1171,
+      "after": 1171,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frame": "0003.png",
+      "before": 1114,
+      "after": 1113,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frame": "0004.png",
+      "before": 651,
+      "after": 651,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frame": "0005.png",
+      "before": 941,
+      "after": 935,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frame": "0006.png",
+      "before": 797,
+      "after": 797,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frame": "0001.png",
+      "before": 1460,
+      "after": 1461,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frame": "0002.png",
+      "before": 1700,
+      "after": 1697,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frame": "0003.png",
+      "before": 1703,
+      "after": 1694,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frame": "0004.png",
+      "before": 1523,
+      "after": 1522,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frame": "0005.png",
+      "before": 1519,
+      "after": 1524,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frame": "0006.png",
+      "before": 1583,
+      "after": 1583,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "death",
+      "frame": "0001.png",
+      "before": 947,
+      "after": 948,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "death",
+      "frame": "0002.png",
+      "before": 641,
+      "after": 641,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "death",
+      "frame": "0003.png",
+      "before": 608,
+      "after": 605,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "death",
+      "frame": "0004.png",
+      "before": 1311,
+      "after": 1308,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 2551,
+      "after": 2565,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 1482,
+      "after": 1480,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 623,
+      "after": 623,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 2183,
+      "after": 2177,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 2784,
+      "after": 2786,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 2221,
+      "after": 2219,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 3118,
+      "after": 3113,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 1460,
+      "after": 1459,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "knockdown",
+      "frame": "0002.png",
+      "before": 1146,
+      "after": 1147,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "knockdown",
+      "frame": "0003.png",
+      "before": 1036,
+      "after": 1036,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "knockdown",
+      "frame": "0004.png",
+      "before": 1538,
+      "after": 1538,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "leap",
+      "frame": "0001.png",
+      "before": 1841,
+      "after": 1846,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "leap",
+      "frame": "0002.png",
+      "before": 1027,
+      "after": 1024,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "leap",
+      "frame": "0003.png",
+      "before": 738,
+      "after": 730,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "leap",
+      "frame": "0004.png",
+      "before": 2235,
+      "after": 2235,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "low_kick",
+      "frame": "0001.png",
+      "before": 1284,
+      "after": 1288,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "low_kick",
+      "frame": "0002.png",
+      "before": 1447,
+      "after": 1448,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "low_kick",
+      "frame": "0003.png",
+      "before": 1225,
+      "after": 1222,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "low_kick",
+      "frame": "0004.png",
+      "before": 1292,
+      "after": 1292,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "low_kick",
+      "frame": "0005.png",
+      "before": 3004,
+      "after": 3004,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frame": "0001.png",
+      "before": 1430,
+      "after": 1425,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frame": "0002.png",
+      "before": 1551,
+      "after": 1551,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frame": "0003.png",
+      "before": 1580,
+      "after": 1581,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frame": "0004.png",
+      "before": 1722,
+      "after": 1726,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frame": "0005.png",
+      "before": 1275,
+      "after": 1276,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frame": "0006.png",
+      "before": 1403,
+      "after": 1407,
+      "width": 112,
+      "height": 112,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "cross",
+      "frame": "0001.png",
+      "before": 1111,
+      "after": 1111,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "cross",
+      "frame": "0002.png",
+      "before": 1013,
+      "after": 1013,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "cross",
+      "frame": "0003.png",
+      "before": 1118,
+      "after": 1118,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "cross",
+      "frame": "0004.png",
+      "before": 1153,
+      "after": 1153,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "dash",
+      "frame": "0001.png",
+      "before": 1014,
+      "after": 1014,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "dash",
+      "frame": "0002.png",
+      "before": 865,
+      "after": 865,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "dash",
+      "frame": "0003.png",
+      "before": 844,
+      "after": 842,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "dash",
+      "frame": "0004.png",
+      "before": 320,
+      "after": 320,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 924,
+      "after": 924,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 957,
+      "after": 954,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 1044,
+      "after": 1044,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 1311,
+      "after": 1311,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 1319,
+      "after": 1319,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 1105,
+      "after": 1105,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 845,
+      "after": 844,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frame": "0005.png",
+      "before": 952,
+      "after": 952,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frame": "0006.png",
+      "before": 229,
+      "after": 229,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "jab",
+      "frame": "0001.png",
+      "before": 1075,
+      "after": 1075,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "jab",
+      "frame": "0002.png",
+      "before": 1172,
+      "after": 1172,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "jab",
+      "frame": "0003.png",
+      "before": 1158,
+      "after": 1158,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "jab",
+      "frame": "0004.png",
+      "before": 1283,
+      "after": 1283,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 1117,
+      "after": 1117,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "knockdown",
+      "frame": "0002.png",
+      "before": 1090,
+      "after": 1090,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "knockdown",
+      "frame": "0003.png",
+      "before": 1282,
+      "after": 1279,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "low_kick",
+      "frame": "0001.png",
+      "before": 1037,
+      "after": 1037,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "low_kick",
+      "frame": "0002.png",
+      "before": 938,
+      "after": 938,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "low_kick",
+      "frame": "0003.png",
+      "before": 1256,
+      "after": 1256,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "low_kick",
+      "frame": "0004.png",
+      "before": 963,
+      "after": 963,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "low_kick",
+      "frame": "0005.png",
+      "before": 1228,
+      "after": 1228,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frame": "0001.png",
+      "before": 1318,
+      "after": 1318,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frame": "0002.png",
+      "before": 1342,
+      "after": 1342,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frame": "0003.png",
+      "before": 1274,
+      "after": 1274,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frame": "0004.png",
+      "before": 1347,
+      "after": 1346,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frame": "0005.png",
+      "before": 1255,
+      "after": 1255,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frame": "0006.png",
+      "before": 1309,
+      "after": 1309,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "recovery",
+      "frame": "0001.png",
+      "before": 1359,
+      "after": 1359,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "recovery",
+      "frame": "0002.png",
+      "before": 1405,
+      "after": 1405,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "recovery",
+      "frame": "0003.png",
+      "before": 1497,
+      "after": 1497,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "recovery",
+      "frame": "0004.png",
+      "before": 1507,
+      "after": 1507,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frame": "0001.png",
+      "before": 1383,
+      "after": 1383,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frame": "0002.png",
+      "before": 816,
+      "after": 815,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frame": "0003.png",
+      "before": 1230,
+      "after": 1228,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frame": "0004.png",
+      "before": 970,
+      "after": 970,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frame": "0005.png",
+      "before": 947,
+      "after": 947,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frame": "0006.png",
+      "before": 881,
+      "after": 881,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0001.png",
+      "before": 1240,
+      "after": 1235,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0002.png",
+      "before": 1288,
+      "after": 1288,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0003.png",
+      "before": 1246,
+      "after": 1246,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0004.png",
+      "before": 1296,
+      "after": 1290,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0005.png",
+      "before": 1130,
+      "after": 1130,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0006.png",
+      "before": 1223,
+      "after": 1220,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0007.png",
+      "before": 1256,
+      "after": 1256,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frame": "0008.png",
+      "before": 1392,
+      "after": 1392,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "crouch",
+      "frame": "0001.png",
+      "before": 1134,
+      "after": 1134,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "crouch",
+      "frame": "0002.png",
+      "before": 1274,
+      "after": 1274,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "crouch",
+      "frame": "0003.png",
+      "before": 1072,
+      "after": 1072,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "crouch",
+      "frame": "0004.png",
+      "before": 91,
+      "after": 91,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "dash",
+      "frame": "0001.png",
+      "before": 1066,
+      "after": 1066,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "dash",
+      "frame": "0002.png",
+      "before": 601,
+      "after": 601,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "dash",
+      "frame": "0003.png",
+      "before": 900,
+      "after": 893,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "dash",
+      "frame": "0004.png",
+      "before": 278,
+      "after": 278,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frame": "0001.png",
+      "before": 467,
+      "after": 475,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frame": "0002.png",
+      "before": 614,
+      "after": 614,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frame": "0003.png",
+      "before": 546,
+      "after": 546,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frame": "0004.png",
+      "before": 909,
+      "after": 909,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frame": "0005.png",
+      "before": 1615,
+      "after": 1615,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frame": "0006.png",
+      "before": 962,
+      "after": 962,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frame": "0001.png",
+      "before": 467,
+      "after": 475,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frame": "0002.png",
+      "before": 614,
+      "after": 614,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frame": "0003.png",
+      "before": 546,
+      "after": 546,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frame": "0004.png",
+      "before": 909,
+      "after": 909,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frame": "0005.png",
+      "before": 1615,
+      "after": 1615,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frame": "0006.png",
+      "before": 962,
+      "after": 962,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ground_control_stance",
+      "frame": "0001.png",
+      "before": 1096,
+      "after": 1096,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ground_control_stance",
+      "frame": "0002.png",
+      "before": 812,
+      "after": 806,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ground_control_stance",
+      "frame": "0003.png",
+      "before": 992,
+      "after": 992,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ground_control_stance",
+      "frame": "0004.png",
+      "before": 1406,
+      "after": 1406,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ground_control_stance",
+      "frame": "0005.png",
+      "before": 1359,
+      "after": 1357,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hip_throw",
+      "frame": "0001.png",
+      "before": 467,
+      "after": 475,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hip_throw",
+      "frame": "0002.png",
+      "before": 614,
+      "after": 614,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hip_throw",
+      "frame": "0003.png",
+      "before": 546,
+      "after": 546,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hip_throw",
+      "frame": "0004.png",
+      "before": 909,
+      "after": 909,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 972,
+      "after": 972,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 950,
+      "after": 947,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 933,
+      "after": 933,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 1280,
+      "after": 1279,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 1336,
+      "after": 1336,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 1306,
+      "after": 1306,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 1223,
+      "after": 1223,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frame": "0005.png",
+      "before": 792,
+      "after": 791,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frame": "0006.png",
+      "before": 466,
+      "after": 466,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 972,
+      "after": 972,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "level_change",
+      "frame": "0001.png",
+      "before": 978,
+      "after": 978,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "level_change",
+      "frame": "0002.png",
+      "before": 627,
+      "after": 627,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "level_change",
+      "frame": "0003.png",
+      "before": 616,
+      "after": 616,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "level_change",
+      "frame": "0004.png",
+      "before": 1136,
+      "after": 1136,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "low_kick",
+      "frame": "0001.png",
+      "before": 978,
+      "after": 978,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "low_kick",
+      "frame": "0002.png",
+      "before": 627,
+      "after": 627,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "low_kick",
+      "frame": "0003.png",
+      "before": 616,
+      "after": 616,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "low_kick",
+      "frame": "0004.png",
+      "before": 1136,
+      "after": 1136,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frame": "0001.png",
+      "before": 1106,
+      "after": 1104,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frame": "0002.png",
+      "before": 1357,
+      "after": 1356,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frame": "0003.png",
+      "before": 1289,
+      "after": 1289,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frame": "0004.png",
+      "before": 1263,
+      "after": 1263,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frame": "0005.png",
+      "before": 1249,
+      "after": 1249,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frame": "0006.png",
+      "before": 1335,
+      "after": 1335,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "recovery",
+      "frame": "0001.png",
+      "before": 1118,
+      "after": 1118,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "recovery",
+      "frame": "0002.png",
+      "before": 826,
+      "after": 826,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "recovery",
+      "frame": "0003.png",
+      "before": 867,
+      "after": 867,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "recovery",
+      "frame": "0004.png",
+      "before": 678,
+      "after": 678,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "sprawl_counter",
+      "frame": "0001.png",
+      "before": 1096,
+      "after": 1096,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "sprawl_counter",
+      "frame": "0002.png",
+      "before": 812,
+      "after": 806,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "sprawl_counter",
+      "frame": "0003.png",
+      "before": 992,
+      "after": 992,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "sprawl_counter",
+      "frame": "0004.png",
+      "before": 1406,
+      "after": 1406,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "sprawl_counter",
+      "frame": "0005.png",
+      "before": 1359,
+      "after": 1357,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0001.png",
+      "before": 1181,
+      "after": 1181,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0002.png",
+      "before": 1229,
+      "after": 1225,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0003.png",
+      "before": 818,
+      "after": 818,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0004.png",
+      "before": 1234,
+      "after": 1234,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0005.png",
+      "before": 1288,
+      "after": 1288,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0006.png",
+      "before": 1215,
+      "after": 1215,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0007.png",
+      "before": 1280,
+      "after": 1280,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frame": "0008.png",
+      "before": 1199,
+      "after": 1199,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "cross",
+      "frame": "0001.png",
+      "before": 1144,
+      "after": 1144,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "cross",
+      "frame": "0002.png",
+      "before": 1034,
+      "after": 1034,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "cross",
+      "frame": "0003.png",
+      "before": 676,
+      "after": 676,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "cross",
+      "frame": "0004.png",
+      "before": 831,
+      "after": 831,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "dash",
+      "frame": "0001.png",
+      "before": 1496,
+      "after": 1496,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "dash",
+      "frame": "0002.png",
+      "before": 1314,
+      "after": 1314,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "dash",
+      "frame": "0003.png",
+      "before": 287,
+      "after": 287,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "dash",
+      "frame": "0004.png",
+      "before": 1246,
+      "after": 1246,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "hit_react",
+      "frame": "0001.png",
+      "before": 1276,
+      "after": 1272,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "hit_react",
+      "frame": "0002.png",
+      "before": 1497,
+      "after": 1487,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "hit_react",
+      "frame": "0003.png",
+      "before": 1509,
+      "after": 1509,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "idle",
+      "frame": "0001.png",
+      "before": 1206,
+      "after": 1206,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "idle",
+      "frame": "0002.png",
+      "before": 1303,
+      "after": 1303,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "idle",
+      "frame": "0003.png",
+      "before": 1236,
+      "after": 1232,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "idle",
+      "frame": "0004.png",
+      "before": 1170,
+      "after": 1162,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "idle",
+      "frame": "0005.png",
+      "before": 839,
+      "after": 836,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "jab",
+      "frame": "0001.png",
+      "before": 1074,
+      "after": 1074,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "jab",
+      "frame": "0002.png",
+      "before": 963,
+      "after": 961,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "jab",
+      "frame": "0003.png",
+      "before": 972,
+      "after": 967,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "jab",
+      "frame": "0004.png",
+      "before": 576,
+      "after": 576,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "knockdown",
+      "frame": "0001.png",
+      "before": 484,
+      "after": 484,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "knockdown",
+      "frame": "0002.png",
+      "before": 1143,
+      "after": 1141,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frame": "0001.png",
+      "before": 1313,
+      "after": 1313,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frame": "0002.png",
+      "before": 902,
+      "after": 902,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frame": "0003.png",
+      "before": 863,
+      "after": 863,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frame": "0004.png",
+      "before": 571,
+      "after": 571,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frame": "0005.png",
+      "before": 180,
+      "after": 180,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frame": "0006.png",
+      "before": 479,
+      "after": 479,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "recovery",
+      "frame": "0001.png",
+      "before": 500,
+      "after": 500,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "recovery",
+      "frame": "0002.png",
+      "before": 1153,
+      "after": 1151,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "recovery",
+      "frame": "0003.png",
+      "before": 1229,
+      "after": 1229,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "recovery",
+      "frame": "0004.png",
+      "before": 1313,
+      "after": 1313,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frame": "0001.png",
+      "before": 1092,
+      "after": 1091,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frame": "0002.png",
+      "before": 880,
+      "after": 880,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frame": "0003.png",
+      "before": 1075,
+      "after": 1075,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frame": "0004.png",
+      "before": 839,
+      "after": 839,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frame": "0005.png",
+      "before": 1578,
+      "after": 1578,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frame": "0006.png",
+      "before": 1549,
+      "after": 1549,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "short_elbow",
+      "frame": "0001.png",
+      "before": 977,
+      "after": 967,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "short_elbow",
+      "frame": "0002.png",
+      "before": 1564,
+      "after": 1564,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "short_elbow",
+      "frame": "0003.png",
+      "before": 1374,
+      "after": 1374,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "short_elbow",
+      "frame": "0004.png",
+      "before": 1255,
+      "after": 1255,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "short_elbow",
+      "frame": "0005.png",
+      "before": 66,
+      "after": 66,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0001.png",
+      "before": 951,
+      "after": 951,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0002.png",
+      "before": 857,
+      "after": 857,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0003.png",
+      "before": 756,
+      "after": 756,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0004.png",
+      "before": 271,
+      "after": 271,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0005.png",
+      "before": 259,
+      "after": 259,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0006.png",
+      "before": 554,
+      "after": 552,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0007.png",
+      "before": 781,
+      "after": 781,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frame": "0008.png",
+      "before": 972,
+      "after": 972,
+      "width": 96,
+      "height": 96,
+      "trimmed": true
+    }
+  ]
+}

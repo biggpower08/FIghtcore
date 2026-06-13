@@ -2,22 +2,22 @@
 
 ## What This Is
 
-FIghtcore is now a browser-only martial arts wave fighter. The player controls Cyber Ninja in a desert arena, fights Cyber Monkey enemies, survives waves, and learns new moves over time.
+FIghtcore is now a browser-only martial arts wave fighter. The player chooses from four cyber martial artists in a desert arena, fights Cyber Monkey enemies, survives waves, and learns new moves over time.
 
 This game is separate from FightScope. FightScope should stay an MMA analytics app. This game lives in `sprite-combat-game/`.
 
 ## What Works Right Now
 
 - Home screen, settings panel, controls panel, pause menu, reward screen, game-over screen, and Sprite Lab.
-- Desert arena with rocks, bushes, boundaries, dash dust, and player/enemy shadows.
+- Generated desert arena background with rocks, bushes, boundaries, dash dust, and player/enemy shadows.
 - Player movement with keyboard controls.
 - Light, heavy, grapple-style, dash, and move-slot inputs.
 - Player health, stamina, cooldowns, hitboxes, knockback, stun, and basic collision.
 - Cyber Monkey Grunts and Scrappers as normal enemies.
 - Cyber Monkey Alpha as the first boss on wave 4.
 - Rewards after waves so the player can learn new moves.
-- Sprite registry and source-sheet registry.
-- Sprite animation wiring for hero moves, with fallback rendering when final frames are missing.
+- Sprite registry, source-sheet registry, cleaned runtime frame folders, and contact-sheet QA.
+- Sprite animation wiring for hero and Cyber Monkey moves, with fallback rendering when final frames are missing.
 - GitHub Pages deployment.
 
 ## How To Play
@@ -34,15 +34,14 @@ Start from the home screen, press `Start Game`, survive each wave, pick rewards,
 
 ## What The Sprites Do Right Now
 
-The game has uploaded source sprite sheets and a master registry. Cyber Ninja and the other hero identities have mapped sheet-crop animations. Cyber Monkey enemies use the same animation state system but still rely on procedural fallback art until real Cyber Monkey sheets are added.
+The game has generated source sprite sheets, a master registry, and cleaned runtime frame folders for all four player characters plus Cyber Monkey Grunt, Scrapper, and Alpha.
 
-Sprite Lab is available from the home screen. It lets you preview entities, moves, animation keys, frame rectangles, and whether an animation is coming from a source-sheet crop, frame PNG, or fallback.
+Sprite Lab is available from the home screen. It lets you preview entities, moves, animation keys, frame paths, dimensions, alpha transparency, checkerboard, ground line, anchor point, hurtbox, hitbox, and whether an animation is using fallback.
 
 ## What Is Still Placeholder
 
-- Cyber Monkey final sprite sheets.
-- Exact frame slicing for every animation.
-- Character select.
+- Manual art polish for some frame crops and foot placement.
+- Exact final animation passes for every move.
 - Real settings behavior for volume, music, SFX, screen shake, controls remap, and difficulty.
 - More enemy types, stages, and deeper progression.
 - Sound effects and music.
@@ -58,12 +57,28 @@ The sprite animation wiring was completed in commit:
 
 That work added `src/data/spriteAnimations.ts`, Cyber Ninja sheet-crop mappings, Cyber Monkey fallback animation mappings, Sprite Lab, and `printSpriteCoverageReport()`.
 
+Generated sprites and the desert background were integrated in commit `bca4f75`. The current art polish pass adds cleanup scripts, transparent normalized runtime frames, and contact-sheet QA pages.
+
 ## How To Run It Locally
 
 ```powershell
 cd sprite-combat-game
 npm install
 npm run dev
+```
+
+## Sprite Cleanup And QA
+
+```powershell
+cd sprite-combat-game
+npm run sprite:clean
+npm run sprite:qa
+```
+
+QA contact sheets are written to:
+
+```text
+sprite-combat-game/public/sprites/qa/index.html
 ```
 
 ## How To Push Updates
@@ -85,9 +100,9 @@ Expected live URL:
 
 ## Next Best Improvements
 
-- Add real Cyber Monkey sprite sheets and map their animations.
-- Tune Cyber Ninja crop rectangles using Sprite Lab.
-- Add character select for Shadow Striker, Cyber Monk, and Neo Operative.
+- Manually polish the cleaned sprite crops and foot anchoring using Sprite Lab and contact sheets.
+- Add richer impact effects and move icons.
+- Add better wave variety, sound, and polish.
 - Add a local rule-based AI guide or coach after the documentation handoff is stable.
 - Add better wave variety, sound, and polish.
 

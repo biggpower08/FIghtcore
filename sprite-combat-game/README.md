@@ -14,6 +14,8 @@ Future agents should read these first:
 - `../OWNER_SUMMARY.md`
 - `src/data/spriteRegistry.ts`
 - `src/data/spriteAnimations.ts`
+- `scripts/clean-sprite-frames.mjs`
+- `scripts/make-sprite-contact-sheets.mjs`
 - `src/data/moves.ts`
 - `src/data/enemies.ts`
 - `src/data/waves.ts`
@@ -37,6 +39,17 @@ npm run build
 ```
 
 The static build is written to `dist/` and can be deployed to GitHub Pages.
+
+## Sprite Cleanup And QA
+
+```bash
+npm run sprite:clean
+npm run sprite:qa
+```
+
+`sprite:clean` removes only edge-connected dark sheet backgrounds, trims excess padding, normalizes runtime canvases, and keeps frame order. Raw generated frames are backed up at `public/sprites/frames-raw-generated-backup/`.
+
+`sprite:qa` writes contact sheets to `public/sprites/qa/index.html`. The sheets show checkerboards, frame order, dimensions, alpha status, ground lines, and anchor markers.
 
 ## Controls
 
@@ -111,9 +124,9 @@ Mapped hero sheet crops:
 - `cyber-monk-orange`: `idle`, `ready`, `walk`, `dash`, `palm_strike`, `spinning_kick`, `clinch_knee`, `hip_throw`, `hit_react`, `knockdown`, `recovery`
 - `neo-operative-green`: `idle`, `ready`, `walk`, `dash`, `double_leg_takedown`, `sprawl_counter`, `hip_throw`, `low_kick`, `hit_react`, `knockdown`, `recovery`
 
-Runtime frame folders have been generated from the uploaded hero sheets for all four player characters. These are real PNG frames used by the game, but they are still provisional crops and need later art polish.
+Runtime frame folders have been generated and transparency-cleaned from the uploaded hero sheets for all four player characters. These are real PNG frames used by the game, but some frames still need manual crop and foot-anchor polish.
 
-Cyber Monkey villains are wired through the same animation state system and now have generated runtime frame folders:
+Cyber Monkey villains are wired through the same animation state system and now have generated transparency-cleaned runtime frame folders:
 
 - `cyber-monkey-grunt`: `claw_swipe` / `palm_strike`
 - `cyber-monkey-scrapper`: `claw_combo` / `low_kick`
@@ -121,7 +134,7 @@ Cyber Monkey villains are wired through the same animation state system and now 
 
 If a frame folder or background image is missing, the old procedural fallback still renders so the game remains playable.
 
-Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, animation, or move, replay the animation, step frames, and inspect the frame source, sheet ID, and crop rectangle.
+Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, animation, or move, replay/step frames, toggle checkerboard, ground line, anchor, hitbox, and hurtbox overlays, and inspect frame source, dimensions, alpha transparency, and fallback status.
 
 To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are intentionally approximate for this pass and can be replaced by exact transparent frame PNGs later.
 
@@ -133,7 +146,7 @@ To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are 
 
 ## What To Build Next
 
-- Polish sprite crops and transparency for the generated frame folders
+- Polish sprite crops, ground contact, and animation timing for the generated frame folders
 - Add more enemy types and stage hazards
 - Combo rules and defensive counters
 - Persistent progression between sessions

@@ -235,6 +235,24 @@ body {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.sprite-lab-toggles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  color: #dfc18d;
+  font-size: 12px;
+}
+
+.sprite-lab-toggles label {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.sprite-lab-toggles input {
+  accent-color: #f0c36a;
+}
+
 .sprite-lab-stage {
   grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
   align-items: stretch;

@@ -1,0 +1,380 @@
+{
+  "generatedAt": "2026-06-13T16:47:05.790Z",
+  "summary": [
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "clinch_knee",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "dash",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hip_throw",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "idle",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "knockdown",
+      "frameCount": 1
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "low_kick",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "palm_strike",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "ready",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "recovery",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "spinning_kick",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monk-orange",
+      "animation": "walk",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "clinch_knee",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "death",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "enrage",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "ground_slam",
+      "frameCount": 7
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "idle",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "knockdown",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "leap_slam",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "run",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monkey-alpha",
+      "animation": "taunt",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "claw_swipe",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "death",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "idle",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "knockdown",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "leap",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "palm_strike",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-grunt",
+      "animation": "run",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "claw_combo",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "death",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "idle",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "knockdown",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "leap",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "low_kick",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-monkey-scrapper",
+      "animation": "run",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "cross",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "dash",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "idle",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "jab",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "knockdown",
+      "frameCount": 3
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "low_kick",
+      "frameCount": 5
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "ready",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "recovery",
+      "frameCount": 4
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "roundhouse_kick",
+      "frameCount": 6
+    },
+    {
+      "entityId": "cyber-ninja-blue",
+      "animation": "walk",
+      "frameCount": 8
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "crouch",
+      "frameCount": 4
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "dash",
+      "frameCount": 4
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_entry",
+      "frameCount": 6
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "double_leg_takedown",
+      "frameCount": 6
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ground_control_stance",
+      "frameCount": 5
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hip_throw",
+      "frameCount": 4
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "idle",
+      "frameCount": 6
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "knockdown",
+      "frameCount": 1
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "level_change",
+      "frameCount": 4
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "low_kick",
+      "frameCount": 4
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "ready",
+      "frameCount": 6
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "recovery",
+      "frameCount": 4
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "sprawl_counter",
+      "frameCount": 5
+    },
+    {
+      "entityId": "neo-operative-green",
+      "animation": "walk",
+      "frameCount": 8
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "cross",
+      "frameCount": 4
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "dash",
+      "frameCount": 4
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "hit_react",
+      "frameCount": 3
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "idle",
+      "frameCount": 5
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "jab",
+      "frameCount": 4
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "knockdown",
+      "frameCount": 2
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "ready",
+      "frameCount": 6
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "recovery",
+      "frameCount": 4
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "shadow_counter",
+      "frameCount": 6
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "short_elbow",
+      "frameCount": 5
+    },
+    {
+      "entityId": "shadow-striker-purple",
+      "animation": "walk",
+      "frameCount": 8
+    }
+  ]
+}

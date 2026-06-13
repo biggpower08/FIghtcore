@@ -2,7 +2,7 @@
 
 ## Simple Owner Summary
 
-FIghtcore currently contains a browser-only cyberpunk martial arts wave fighter. The player controls Cyber Ninja in a desert arena, fights Cyber Monkey enemies, uses martial arts move hotkeys, earns rewards between waves, and can preview sprite animations in Sprite Lab.
+FIghtcore currently contains a browser-only cyberpunk martial arts wave fighter. The player can choose from four martial arts characters in a generated desert arena, fight Cyber Monkey enemies, use martial arts move hotkeys, earn rewards between waves, and preview sprite animations in Sprite Lab.
 
 This game is separate from FightScope. FightScope is an MMA analytics app. This folder is for the standalone browser game.
 
@@ -41,6 +41,16 @@ cd sprite-combat-game
 npm run build
 ```
 
+## Sprite Art QA
+
+```powershell
+cd sprite-combat-game
+npm run sprite:clean
+npm run sprite:qa
+```
+
+The cleanup script preserves a raw backup in `public/sprites/frames-raw-generated-backup/`, cleans edge-connected dark sheet backgrounds, normalizes runtime frame canvases, and writes QA reports/contact sheets to `public/sprites/qa/`.
+
 ## Deployment
 
 GitHub Actions builds `sprite-combat-game/` and deploys `sprite-combat-game/dist` to GitHub Pages when changes are pushed to `main`.
@@ -55,4 +65,4 @@ Read these first:
 
 ## Current Status
 
-The MVP has menus, settings placeholder, movement, combat, waves, Cyber Monkey enemies, rewards, sprite registry, sheet-crop animation mappings, fallback rendering, Sprite Lab, and GitHub Pages deployment.
+The MVP has menus, settings placeholder, movement, combat, waves, Cyber Monkey enemies, rewards, selectable heroes, generated runtime sprites, cleaned transparent frame folders, a generated desert arena background, fallback rendering, Sprite Lab, sprite QA scripts, and GitHub Pages deployment.

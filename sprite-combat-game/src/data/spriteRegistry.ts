@@ -6,6 +6,16 @@ export interface SpriteRegistration {
   basePath: string;
   animations: string[];
   sourceSheetIds?: string[];
+  render?: SpriteRenderProfile;
+}
+
+export interface SpriteRenderProfile {
+  anchorX: number;
+  anchorY: number;
+  feetY: number;
+  scale: number;
+  shadowOffsetY: number;
+  hitboxOffsetY: number;
 }
 
 export interface SpriteSourceSheet {
@@ -35,7 +45,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ], ['cyber-ninja-blue-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
+  ], ['cyber-ninja-blue-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet'], heroRenderProfile()),
   registerCharacter('shadow-striker-purple', 'hero', [
     'idle',
     'ready',
@@ -48,7 +58,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ], ['shadow-striker-purple-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
+  ], ['shadow-striker-purple-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet'], heroRenderProfile()),
   registerCharacter('cyber-monk-orange', 'hero', [
     'idle',
     'ready',
@@ -61,7 +71,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ], ['cyber-monk-orange-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
+  ], ['cyber-monk-orange-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet'], heroRenderProfile()),
   registerCharacter('neo-operative-green', 'hero', [
     'idle',
     'ready',
@@ -74,7 +84,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ], ['neo-operative-green-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
+  ], ['neo-operative-green-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet'], heroRenderProfile()),
   registerCharacter('cyber-monkey-grunt', 'villain', [
     'idle',
     'run',
@@ -84,7 +94,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'death',
-  ], ['cyber-monkey-grunt-sheet']),
+  ], ['cyber-monkey-grunt-sheet'], { anchorX: 0.5, anchorY: 0.88, feetY: 84, scale: 0.92, shadowOffsetY: 8, hitboxOffsetY: -8 }),
   registerCharacter('cyber-monkey-scrapper', 'villain', [
     'idle',
     'run',
@@ -94,7 +104,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'death',
-  ], ['cyber-monkey-scrapper-sheet']),
+  ], ['cyber-monkey-scrapper-sheet'], { anchorX: 0.5, anchorY: 0.88, feetY: 98, scale: 0.96, shadowOffsetY: 8, hitboxOffsetY: -10 }),
   registerCharacter('cyber-monkey-alpha', 'villain', [
     'idle',
     'run',
@@ -106,7 +116,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'enrage',
     'knockdown',
     'death',
-  ], ['cyber-monkey-alpha-sheet']),
+  ], ['cyber-monkey-alpha-sheet'], { anchorX: 0.5, anchorY: 0.9, feetY: 144, scale: 1.18, shadowOffsetY: 12, hitboxOffsetY: -18 }),
   {
     id: 'beginning-effects',
     kind: 'effect',
@@ -284,6 +294,7 @@ function registerCharacter(
   kind: 'hero' | 'villain',
   animations: string[],
   sourceSheetIds: string[] = [],
+  render?: SpriteRenderProfile,
 ): SpriteRegistration {
   return {
     id,
@@ -291,5 +302,10 @@ function registerCharacter(
     basePath: `/sprites/frames/${id}`,
     animations,
     sourceSheetIds,
+    render,
   };
+}
+
+function heroRenderProfile(): SpriteRenderProfile {
+  return { anchorX: 0.5, anchorY: 0.86, feetY: 82, scale: 1, shadowOffsetY: 8, hitboxOffsetY: -12 };
 }

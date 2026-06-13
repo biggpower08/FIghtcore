@@ -3,11 +3,27 @@ import { moves } from '../data/moves';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 
-const labEntityIds = ['cyber-ninja-blue', 'cyber-monkey-grunt', 'cyber-monkey-scrapper', 'cyber-monkey-alpha'];
+const labEntityIds = [
+  'cyber-ninja-blue',
+  'shadow-striker-purple',
+  'cyber-monk-orange',
+  'neo-operative-green',
+  'cyber-monkey-grunt',
+  'cyber-monkey-scrapper',
+  'cyber-monkey-alpha',
+];
 
 export class SpriteLab {
   private frameIndex = 0;
   private animation: ResolvedSpriteAnimation | null = null;
+  private playbackId = 0;
+  private readonly options = {
+    checkerboard: true,
+    ground: true,
+    anchor: true,
+    hitbox: true,
+    hurtbox: true,
+  };
 
   constructor(
     private readonly root: HTMLDivElement,
@@ -30,12 +46,20 @@ export class SpriteLab {
           <label><span>Animation</span><select data-field="animation"></select></label>
           <label><span>Move</span><select data-field="move"></select></label>
         </div>
+        <div class="sprite-lab-toggles">
+          <label><input type="checkbox" data-toggle="checkerboard" checked /> Checkerboard</label>
+          <label><input type="checkbox" data-toggle="ground" checked /> Ground</label>
+          <label><input type="checkbox" data-toggle="anchor" checked /> Anchor</label>
+          <label><input type="checkbox" data-toggle="hitbox" checked /> Hitbox</label>
+          <label><input type="checkbox" data-toggle="hurtbox" checked /> Hurtbox</label>
+        </div>
         <div class="sprite-lab-stage">
           <canvas width="420" height="280"></canvas>
           <pre data-field="info"></pre>
         </div>
         <div class="menu-actions">
-          <button data-action="play">Play / Replay</button>
+          <button data-action="play">Play</button>
+          <button data-action="pause">Pause</button>
           <button data-action="next">Next Frame</button>
           <button data-action="background">Background Preview</button>
           <button data-action="report">Coverage Report</button>
@@ -78,11 +102,10 @@ export class SpriteLab {
       button.addEventListener('click', () => {
         const action = button.dataset.action;
         if (action === 'back') onBack();
-        if (action === 'play') {
-          this.frameIndex = 0;
-          refresh();
-        }
+        if (action === 'play') this.play();
+        if (action === 'pause') this.pause();
         if (action === 'next') {
+          this.pause();
           this.frameIndex += 1;
           this.draw();
         }
@@ -90,18 +113,43 @@ export class SpriteLab {
         if (action === 'report') printSpriteCoverageReport();
       });
     });
+
+    this.root.querySelectorAll<HTMLInputElement>('[data-toggle]').forEach((toggle) => {
+      toggle.addEventListener('change', () => {
+        const key = toggle.dataset.toggle as keyof typeof this.options;
+        this.options[key] = toggle.checked;
+        this.draw();
+      });
+    });
   }
 
   hide(): void {
+    this.pause();
     this.root.classList.add('hidden');
     this.root.innerHTML = '';
     this.animation = null;
   }
 
   private async loadAndDraw(entityId: string, animationKey: string): Promise<void> {
+    this.pause();
     this.animation = await this.assets.resolveAnimation(entityId, animationKey);
     this.frameIndex = 0;
     this.draw();
+  }
+
+  private play(): void {
+    this.pause();
+    if (!this.animation) return;
+    this.playbackId = window.setInterval(() => {
+      this.frameIndex += 1;
+      this.draw();
+    }, Math.max(70, this.animation.frames[this.frameIndex % this.animation.frames.length]?.durationMs ?? 120));
+  }
+
+  private pause(): void {
+    if (!this.playbackId) return;
+    window.clearInterval(this.playbackId);
+    this.playbackId = 0;
   }
 
   private draw(): void {
@@ -113,11 +161,17 @@ export class SpriteLab {
     if (!ctx) return;
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = '#17120c';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    if (this.options.checkerboard) this.drawCheckerboard(ctx, canvas.width, canvas.height);
+    else {
+      ctx.fillStyle = '#17120c';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
 
     const frame = this.animation.frames[this.frameIndex % this.animation.frames.length];
-    if (frame) this.drawFrame(ctx, frame, canvas.width / 2, canvas.height / 2 + 70);
+    const floorY = canvas.height / 2 + 74;
+    if (this.options.ground) this.drawGroundLine(ctx, canvas.width, floorY);
+    if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY);
+    if (this.options.anchor) this.drawAnchor(ctx, canvas.width / 2, floorY);
 
     info.textContent = JSON.stringify(
       {
@@ -125,8 +179,15 @@ export class SpriteLab {
         animationKey: this.animation.animationKey,
         status: this.animation.status,
         frame: `${(this.frameIndex % this.animation.frames.length) + 1}/${this.animation.frames.length}`,
+        frameIndex: this.frameIndex % this.animation.frames.length,
         sheetId: frame?.sheetId,
         framePath: frame?.framePath,
+        frameDimensions: {
+          width: frame?.width ?? frame?.image?.width,
+          height: frame?.height ?? frame?.image?.height,
+        },
+        alpha: frame ? this.getAlphaInfo(frame) : undefined,
+        fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,
       },
@@ -144,6 +205,17 @@ export class SpriteLab {
     const dx = centerX - width * frame.anchorX;
     const dy = floorY - height * frame.anchorY;
 
+    if (this.options.hurtbox) {
+      ctx.strokeStyle = 'rgba(56, 163, 255, 0.82)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(dx, dy, width, height);
+    }
+    if (this.options.hitbox) {
+      ctx.strokeStyle = 'rgba(255, 237, 135, 0.82)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(centerX - 46, floorY - 82, 92, 76);
+    }
+
     if (frame.image) {
       ctx.drawImage(frame.image, dx, dy, width, height);
     } else if (frame.sheetImage && frame.x !== undefined && frame.y !== undefined && frame.width && frame.height) {
@@ -152,6 +224,58 @@ export class SpriteLab {
       ctx.fillStyle = '#38a3ff';
       ctx.fillRect(dx, dy, width, height);
     }
+  }
+
+  private drawCheckerboard(ctx: CanvasRenderingContext2D, width: number, height: number): void {
+    const size = 16;
+    for (let y = 0; y < height; y += size) {
+      for (let x = 0; x < width; x += size) {
+        ctx.fillStyle = (x / size + y / size) % 2 === 0 ? '#171f2a' : '#223041';
+        ctx.fillRect(x, y, size, size);
+      }
+    }
+  }
+
+  private drawGroundLine(ctx: CanvasRenderingContext2D, width: number, floorY: number): void {
+    ctx.strokeStyle = 'rgba(255, 238, 120, 0.9)';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(32, floorY);
+    ctx.lineTo(width - 32, floorY);
+    ctx.stroke();
+  }
+
+  private drawAnchor(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.fillStyle = '#ff4fd8';
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#17120c';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+  private getAlphaInfo(frame: ResolvedSpriteFrame): { hasTransparency: boolean; transparentPixels: number; totalPixels: number } | undefined {
+    const image = frame.image ?? frame.sheetImage;
+    if (!image) return undefined;
+    const width = frame.width ?? image.width;
+    const height = frame.height ?? image.height;
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return undefined;
+    if (frame.image) {
+      ctx.drawImage(frame.image, 0, 0);
+    } else if (frame.sheetImage && frame.x !== undefined && frame.y !== undefined && frame.width && frame.height) {
+      ctx.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, 0, 0, width, height);
+    }
+    const data = ctx.getImageData(0, 0, width, height).data;
+    let transparentPixels = 0;
+    for (let index = 3; index < data.length; index += 4) {
+      if (data[index] < 255) transparentPixels += 1;
+    }
+    return { hasTransparency: transparentPixels > 0, transparentPixels, totalPixels: width * height };
   }
 
   private drawBackgroundPreview(): void {
