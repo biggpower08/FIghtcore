@@ -2,6 +2,25 @@
 
 A browser-only pixel-art MMA / martial arts wave combat MVP. This is intentionally separate from FightScope and runs as a static Vite + TypeScript canvas game.
 
+## Simple Owner Summary
+
+This is the actual browser game folder. Run `npm install` and `npm run dev` here. The game has menus, movement, combat, waves, Cyber Monkey enemies, sprite registry, Sprite Lab, and GitHub Pages deployment.
+
+## AI Handoff Notes
+
+Future agents should read these first:
+
+- `../AI_HANDOFF.md`
+- `../OWNER_SUMMARY.md`
+- `src/data/spriteRegistry.ts`
+- `src/data/spriteAnimations.ts`
+- `src/data/moves.ts`
+- `src/data/enemies.ts`
+- `src/data/waves.ts`
+- `src/game/AssetLoader.ts`
+- `src/systems/AnimationSystem.ts`
+- `src/systems/RenderSystem.ts`
+
 ## Run Locally
 
 ```bash
