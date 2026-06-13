@@ -1,0 +1,13 @@
+export const ARENA_WIDTH = 2200;
+export const ARENA_HEIGHT = 1400;
+export const PLAYER_RADIUS = 24;
+export const ENEMY_RADIUS = 22;
+export const BOSS_RADIUS = 42;
+export const OBSTACLE_COUNT = 18;
+export const DASH_DURATION_MS = 150;
+export const DASH_COOLDOWN_MS = 520;
+export const DASH_STAMINA_COST = 22;
+export const STAMINA_REGEN_PER_SECOND = 18;
+export const PLAYER_BASE_SPEED = 260;
+export const ENEMY_BASE_SPEED = 132;
+export const BOSS_WAVE_INTERVAL = 4;
