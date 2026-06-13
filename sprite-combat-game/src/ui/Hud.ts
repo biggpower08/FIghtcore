@@ -15,10 +15,10 @@ export class Hud {
     ctx.fillText(`Wave ${wave}`, 22, 78);
     ctx.fillText(`Fighter: ${player.character.name}`, 22, 102);
 
-    const slotKeys = ['N', 'O', 'P', 'M'];
+    const slotKeys = ['H', 'J', 'K', 'L'];
     const moveText = player.equippedMoves.map((move, index) => `${slotKeys[index]}:${move.name}`).join('  ');
-    ctx.fillText(`Moves ${moveText}`, 22, ctx.canvas.height - 36);
-    ctx.fillText('H light  J heavy  K style  L grapple  Space dash', 22, ctx.canvas.height - 62);
+    ctx.fillText(`Equipped ${moveText}`, 22, ctx.canvas.height - 36);
+    ctx.fillText('WASD move  Space dash  H/J/K/L equipped moves  Esc pause', 22, ctx.canvas.height - 62);
 
     if (boss?.alive) {
       this.bar(ctx, ctx.canvas.width / 2 - 180, 22, 360, 18, boss.health / boss.maxHealth, '#a84dff', boss.definition.name);

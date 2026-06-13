@@ -22,6 +22,8 @@ export class MenuScreen {
   }
 
   showHome(selectedCharacterId = 'cyber-ninja-blue'): void {
+    const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
+    const selectedPreview = `/sprites/frames/${selectedCharacter.id}/idle/0001.png`;
     this.show(`
       <section class="menu-panel home-panel">
         <div>
@@ -29,10 +31,10 @@ export class MenuScreen {
           <h1>Sprite Combat</h1>
           <p class="menu-copy">Dash through a desert arena, learn martial arts moves, and survive mob waves into boss fights.</p>
         </div>
-        <div class="character-preview" aria-label="Placeholder character preview">
+        <div class="character-preview" aria-label="${selectedCharacter.name} preview">
           <div class="preview-shadow"></div>
-          <div class="preview-fighter"></div>
-          <span>Cyber Ninja preview</span>
+          <img src="${publicAssetUrl(selectedPreview)}" alt="${selectedCharacter.name}" />
+          <span>${selectedCharacter.name}</span>
         </div>
         <div class="sheet-preview-list">
           ${characters
@@ -41,7 +43,7 @@ export class MenuScreen {
               const previewPath = `/sprites/frames/${character.id}/idle/0001.png`;
               return `
                 <button class="character-card${selectedClass}" data-action="select-character" data-character-id="${character.id}" type="button">
-                  <img src="${publicAssetUrl(previewPath)}" alt="${character.name}" />
+                  <div class="character-card-preview"><img src="${publicAssetUrl(previewPath)}" alt="${character.name}" /></div>
                   <strong>${character.name}</strong>
                   <span>${character.identity}</span>
                 </button>
@@ -55,9 +57,10 @@ export class MenuScreen {
           <button data-action="settings">Settings</button>
           <button data-action="controls">Controls</button>
         </div>
-        <div class="controls-preview">Move WASD. Strike H/J/K. Grapple L. Dash Space. Moves N/O/P/M.</div>
+        <div class="controls-preview">WASD move. Space dash. H/J/K/L use equipped moves. Esc pauses.</div>
       </section>
     `);
+    this.installPreviewFallbacks();
   }
 
   showSettings(): void {
@@ -79,7 +82,7 @@ export class MenuScreen {
     this.show(`
       <section class="menu-panel settings-panel">
         <h2>Controls</h2>
-        <p class="menu-copy">WASD moves. H is light strike, J is heavy strike, K is style attack, L is grapple, Space is dash, and N/O/P/M fire learned move slots.</p>
+        <p class="menu-copy">WASD moves. Space dashes. H, J, K, and L use the four equipped character moves. Esc pauses.</p>
         <button data-action="back">Back</button>
       </section>
     `);
@@ -119,6 +122,16 @@ export class MenuScreen {
     this.root.innerHTML = markup;
     this.root.querySelectorAll<HTMLButtonElement>('[data-action]').forEach((button) => {
       button.addEventListener('click', () => this.handleAction(button));
+    });
+  }
+
+  private installPreviewFallbacks(): void {
+    this.root.querySelectorAll<HTMLImageElement>('img').forEach((image) => {
+      image.addEventListener('error', () => {
+        image.classList.add('failed-preview');
+        image.removeAttribute('src');
+        image.alt = 'Preview unavailable';
+      });
     });
   }
 

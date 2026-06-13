@@ -64,6 +64,7 @@ export class AssetLoader {
   private readonly sheetCache = new Map<string, HTMLImageElement | null>();
   private readonly animationCache = new Map<string, ResolvedSpriteAnimation>();
   private readonly warnedMissing = new Set<string>();
+  private readonly warnedBroken = new Set<string>();
 
   async loadImage(path: string, context: AssetLoadContext = {}): Promise<HTMLImageElement | null> {
     const cached = this.images.get(path);
@@ -86,6 +87,12 @@ export class AssetLoader {
     });
 
     if (!loaded) return null;
+    if (shouldHealthCheckImage(context) && !isSpriteFrameHealthy(image)) {
+      this.missing.add(path);
+      this.warnBrokenFrame(path, 'Loaded image failed runtime sprite health checks and was blocked from normal gameplay.');
+      return null;
+    }
+
     this.images.set(path, image);
     return image;
   }
@@ -114,6 +121,10 @@ export class AssetLoader {
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
       const path = `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
+      if (isKnownBrokenFrame(path)) {
+        this.warnBrokenFrame(path, 'Known hollow or low-coverage frame is blocked from normal gameplay.');
+        continue;
+      }
       const image = await this.loadImage(path, {
         entityId: assetId,
         animationKey: animation,
@@ -258,6 +269,14 @@ export class AssetLoader {
   ): Promise<ResolvedSpriteAnimation | null> {
     const images = await this.loadOptionalFrames(entityId, animationKey, 8);
     if (images.length === 0) return null;
+    const expectedFrameCount = Math.min(8, definition?.frames.length ?? minimumFrameCount(animationKey));
+    if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
+      this.warnOnce(
+        `atlas-better:${entityId}:${animationKey}`,
+        `Sprite frame folder is incomplete or failed health checks for ${entityId}/${animationKey}; using atlas crop as the safer gameplay source.`,
+      );
+      return null;
+    }
     const renderProfile = spriteRegistryById.get(entityId)?.render;
 
     const frames = images.map<ResolvedSpriteFrame>((image, index) => ({
@@ -369,6 +388,12 @@ export class AssetLoader {
       ].join('\n'),
     );
   }
+
+  private warnBrokenFrame(path: string, reason: string): void {
+    if (this.warnedBroken.has(path)) return;
+    this.warnedBroken.add(path);
+    console.warn(`Blocked sprite frame: ${path}\n${reason}`);
+  }
 }
 
 function fallbackAnimation(
@@ -425,4 +450,104 @@ function timingForAnimation(animationKey: string, index: number, frameCount: num
 
   const sequence = attackTiming[animationKey];
   return sequence?.[index] ?? sequence?.[sequence.length - 1] ?? Math.max(80, Math.round(720 / Math.max(1, frameCount)));
+}
+
+function isKnownBrokenFrame(path: string): boolean {
+  return knownBrokenFrames.has(path);
+}
+
+function minimumFrameCount(animationKey: string): number {
+  if (['idle', 'ready', 'walk', 'run', 'dash'].includes(animationKey)) return 4;
+  return 1;
+}
+
+const knownBrokenFrames = new Set([
+  '/sprites/frames/shadow-striker-purple/walk/0005.png',
+  '/sprites/frames/shadow-striker-purple/short_elbow/0005.png',
+  '/sprites/frames/neo-operative-green/idle/0006.png',
+]);
+
+function shouldHealthCheckImage(context: AssetLoadContext): boolean {
+  return context.kind === 'sprite-frame' || context.kind === 'explicit-frame';
+}
+
+function isSpriteFrameHealthy(image: HTMLImageElement): boolean {
+  if (image.width < 48 || image.height < 48) return false;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = image.width;
+  canvas.height = image.height;
+  const context = canvas.getContext('2d', { willReadFrequently: true });
+  if (!context) return true;
+
+  context.drawImage(image, 0, 0);
+  const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+  const width = canvas.width;
+  const height = canvas.height;
+  let foreground = 0;
+  let edgeOpaque = 0;
+  let edgeDark = 0;
+  let minX = width;
+  let minY = height;
+  let maxX = -1;
+  let maxY = -1;
+
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const offset = (y * width + x) * 4;
+      const alpha = pixels[offset + 3];
+      if (alpha <= 20) continue;
+
+      foreground += 1;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+
+      const onEdge = x === 0 || y === 0 || x === width - 1 || y === height - 1;
+      if (onEdge) {
+        edgeOpaque += 1;
+        const brightness = pixels[offset] + pixels[offset + 1] + pixels[offset + 2];
+        if (brightness < 90) edgeDark += 1;
+      }
+    }
+  }
+
+  if (foreground < 120) return false;
+  const fillRatio = foreground / (width * height);
+  if (fillRatio < 0.012) return false;
+
+  const edgePixelCount = width * 2 + height * 2 - 4;
+  if (edgeOpaque / edgePixelCount > 0.34 && edgeDark / Math.max(1, edgeOpaque) > 0.7) return false;
+  if (maxX < minX || maxY < minY) return false;
+
+  const body = estimateCentralBodyOpacity(pixels, width, minX, minY, maxX, maxY);
+  if (body.sampledPixels >= 64 && body.opaqueRatio < 0.14) return false;
+
+  return true;
+}
+
+function estimateCentralBodyOpacity(
+  pixels: Uint8ClampedArray,
+  width: number,
+  minX: number,
+  minY: number,
+  maxX: number,
+  maxY: number,
+): { sampledPixels: number; opaqueRatio: number } {
+  const bodyMinX = Math.floor(minX + (maxX - minX) * 0.28);
+  const bodyMaxX = Math.ceil(minX + (maxX - minX) * 0.72);
+  const bodyMinY = Math.floor(minY + (maxY - minY) * 0.2);
+  const bodyMaxY = Math.ceil(minY + (maxY - minY) * 0.82);
+  let sampledPixels = 0;
+  let opaquePixels = 0;
+
+  for (let y = bodyMinY; y <= bodyMaxY; y += 1) {
+    for (let x = bodyMinX; x <= bodyMaxX; x += 1) {
+      sampledPixels += 1;
+      if (pixels[(y * width + x) * 4 + 3] > 20) opaquePixels += 1;
+    }
+  }
+
+  return { sampledPixels, opaqueRatio: opaquePixels / Math.max(1, sampledPixels) };
 }

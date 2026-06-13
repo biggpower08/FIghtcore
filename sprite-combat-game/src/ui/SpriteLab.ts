@@ -1,4 +1,6 @@
-import { getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
+import { printSpriteCoverageReport } from '../data/spriteAnimations';
+import { getAnimationEligibility, getGameplayReadyAnimationKeys } from '../data/animationEligibility';
+import { isMoveEligibleForCharacter } from '../data/characterLoadouts';
 import { moves } from '../data/moves';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
@@ -74,11 +76,13 @@ export class SpriteLab {
     if (!entitySelect || !animationSelect || !moveSelect) return;
 
     entitySelect.innerHTML = labEntityIds.map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
-    moveSelect.innerHTML = `<option value="">Move shortcuts</option>${moves.map((move) => option(move.animationKey, move.name)).join('')}`;
-
     const refreshAnimations = (): void => {
-      const keys = getKnownAnimationKeys(entitySelect.value);
+      const keys = getGameplayReadyAnimationKeys(entitySelect.value);
       animationSelect.innerHTML = keys.map((key) => option(key, key)).join('');
+      moveSelect.innerHTML = `<option value="">Gameplay-ready moves</option>${moves
+        .filter((move) => isMoveEligibleForCharacter(entitySelect.value, move))
+        .map((move) => option(move.animationKey, move.name))
+        .join('')}`;
     };
 
     const refresh = (): void => {
@@ -202,6 +206,7 @@ export class SpriteLab {
           : undefined,
         alpha,
         qa: frame ? this.getFrameQa(frame, alpha) : undefined,
+        eligibility: getAnimationEligibility(this.animation.entityId, this.animation.animationKey),
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,

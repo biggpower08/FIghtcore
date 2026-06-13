@@ -17,6 +17,7 @@ sprite-combat-game/
 Main project docs:
 
 - [Sprite Combat Game README](sprite-combat-game/README.md)
+- [Playable MVP Lock](sprite-combat-game/docs/PLAYABLE_MVP_LOCK.md)
 - [Owner Summary](OWNER_SUMMARY.md)
 - [AI Handoff](AI_HANDOFF.md)
 
@@ -65,4 +66,4 @@ Read these first:
 
 ## Current Status
 
-The MVP has menus, settings placeholder, movement, combat, waves, Cyber Monkey enemies, rewards, selectable heroes, generated runtime sprites, cleaned transparent frame folders, a generated desert arena background, fallback rendering, Sprite Lab, sprite QA scripts, and GitHub Pages deployment.
+The MVP has menus, settings placeholder, WASD movement, H/J/K/L equipped moves, waves, Cyber Monkey enemies, reward replacement, selectable heroes, generated runtime sprites, cleaned transparent frame folders, a generated desert arena background, sprite health fallback rules, Sprite Lab, sprite QA scripts, and GitHub Pages deployment.

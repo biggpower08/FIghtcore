@@ -6,7 +6,7 @@ FIghtcore contains a standalone browser game in `sprite-combat-game/`. It is a c
 
 ## Current Project Status
 
-The MVP is playable. It has a home screen, settings placeholder, controls screen, pause, game over, reward flow, generated desert arena, movement, dash, stamina, health, hitboxes, enemy waves, boss wave, selectable heroes, sprite registry, generated source sheets, cleaned runtime frame folders, animation mappings, fallback rendering, Sprite Lab, and sprite contact-sheet QA.
+The MVP is playable and currently locked to a smaller scope. It has a home screen, settings placeholder, controls screen, pause, game over, reward replacement flow, generated desert arena, WASD movement, Space dash, H/J/K/L equipped moves, stamina, health, hitboxes, enemy waves, boss wave, selectable heroes, sprite registry, generated source sheets, cleaned runtime frame folders, animation mappings, fallback rendering, Sprite Lab, and sprite contact-sheet QA.
 
 ## What This Repo Is
 
@@ -46,6 +46,8 @@ Read these files first:
 
 - `sprite-combat-game/src/data/spriteRegistry.ts`
 - `sprite-combat-game/src/data/spriteAnimations.ts`
+- `sprite-combat-game/src/data/characterLoadouts.ts`
+- `sprite-combat-game/src/data/animationEligibility.ts`
 - `sprite-combat-game/src/game/AssetLoader.ts`
 - `sprite-combat-game/src/systems/AnimationSystem.ts`
 - `sprite-combat-game/src/systems/RenderSystem.ts`
@@ -74,12 +76,11 @@ Wave 4 uses Cyber Monkey Alpha as the boss.
 ## Current Controls
 
 - Move: `WASD`
-- Light strike: `H`
-- Heavy strike: `J`
-- Style attack: `K`
-- Grapple / takedown control: `L`
+- Equipped move 1: `H`
+- Equipped move 2: `J`
+- Equipped move 3: `K`
+- Equipped move 4 / close control: `L`
 - Dash: `Space`
-- Move slots: `N`, `O`, `P`, `M`
 - Pause / resume: `Esc`
 
 ## Current Deployment Setup
@@ -102,7 +103,7 @@ https://biggpower08.github.io/FIghtcore/
 
 - `4e32fad Wire sprite animations to combat moves`: completed animation mapping layer, Sprite Lab, Cyber Ninja sheet-crop mappings, Cyber Monkey fallback animation mappings, and sprite coverage report.
 - `bca4f75 Integrate generated sprites and desert background`: added generated hero, Cyber Monkey, and desert arena assets.
-- Current polish pass: rebuilds runtime frames from the raw backup with safer transparency cleanup, anchors sprites to the feet baseline, cleans the gameplay background, changes controls to WASD plus H/J/K/L/N/O/P/M, and makes grapple a close-range control action.
+- Current polish pass: rebuilds runtime frames from the raw backup with safer transparency cleanup, anchors sprites to the feet baseline, cleans the gameplay background, locks controls to WASD plus Space plus H/J/K/L, makes rewards replace one equipped slot, and keeps L as a close-range control action.
 
 ## Current Build Commands
 
@@ -143,6 +144,8 @@ git push origin main
 - Do not make this part of FightScope.
 - Do not treat FightScope as a game.
 - Keep this game browser-only.
+- Keep combat locked to H/J/K/L until `sprite-combat-game/docs/PLAYABLE_MVP_LOCK.md` is intentionally changed.
+- Do not add new characters, enemies, stages, or move-slot keys during the MVP lock.
 - Keep owner-facing summaries plain-English.
 
 ## Do Not Redo
@@ -152,9 +155,9 @@ Do not recreate `spriteAnimations.ts`, Sprite Lab, `printSpriteCoverageReport()`
 ## Next Good Tasks
 
 - Manually polish cleaned sprite crops and foot anchors using Sprite Lab and QA contact sheets.
-- Add impact effects, move icons, and richer animation timing.
-- Add local rule-based AI coach after docs are stable.
-- Add more stages, enemy types, and audio.
+- Polish the current four moves per character.
+- Replace temporary gray-dummy grapple frames with in-game enemy interaction frames.
+- Add impact effects, move icons, and richer animation timing after the loop feels stable.
 
 ## Open Questions
 
@@ -172,11 +175,12 @@ Do not recreate `spriteAnimations.ts`, Sprite Lab, `printSpriteCoverageReport()`
 5. `sprite-combat-game/src/data/spriteRegistry.ts`
 6. `sprite-combat-game/src/data/spriteAnimations.ts`
 7. `sprite-combat-game/src/data/moves.ts`
-8. `sprite-combat-game/src/data/enemies.ts`
-9. `sprite-combat-game/src/data/waves.ts`
-10. `sprite-combat-game/src/game/AssetLoader.ts`
-11. `sprite-combat-game/src/systems/AnimationSystem.ts`
-12. `sprite-combat-game/src/systems/RenderSystem.ts`
+8. `sprite-combat-game/src/data/characterLoadouts.ts`
+9. `sprite-combat-game/src/data/enemies.ts`
+10. `sprite-combat-game/src/data/waves.ts`
+11. `sprite-combat-game/src/game/AssetLoader.ts`
+12. `sprite-combat-game/src/systems/AnimationSystem.ts`
+13. `sprite-combat-game/src/systems/RenderSystem.ts`
 
 ## Required Final Response Format
 

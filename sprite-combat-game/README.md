@@ -14,6 +14,8 @@ Future agents should read these first:
 - `../OWNER_SUMMARY.md`
 - `src/data/spriteRegistry.ts`
 - `src/data/spriteAnimations.ts`
+- `src/data/characterLoadouts.ts`
+- `docs/PLAYABLE_MVP_LOCK.md`
 - `scripts/clean-sprite-frames.mjs`
 - `scripts/make-sprite-contact-sheets.mjs`
 - `src/data/moves.ts`
@@ -54,24 +56,23 @@ npm run sprite:qa
 ## Controls
 
 - Move: `WASD`
-- Light strike: `H`
-- Heavy strike: `J`
-- Style attack: `K`
-- Grapple / takedown control: `L`
+- Equipped move 1: `H`
+- Equipped move 2: `J`
+- Equipped move 3: `K`
+- Equipped move 4 / close control: `L`
 - Dash: `Space`
-- Learned move slots: `N`, `O`, `P`, `M`
 - Pause / resume: `Esc`
-- Reward screen: click a move card after a wave
+- Reward screen: choose a compatible move, then choose which H/J/K/L slot it replaces
 
 ## Current MVP Features
 
 - Generated desert arena background with a cleaned gameplay version, procedural fallback, subtle invisible collision props, shadows, and dash dust puffs
-- Player movement, facing direction, health, stamina, dash, and cooldown-aware attacks
+- Player movement, facing direction, health, stamina, dash, and cooldown-aware H/J/K/L moves
 - Cyber Monkey Grunts and Scrappers as beginning-stage mobs
 - Cyber Monkey Alpha boss on wave 4 with higher health and telegraphed strikes
 - Rock collision for player and enemies
 - Temporary attack hitboxes, hurtboxes, knockback, stun, once-per-attack damage, and close-range grapple control
-- Wave spawning and rewards between waves
+- Wave spawning and rewards between waves that replace one of the four equipped slots
 - Four selectable hero identities: Cyber Ninja, Shadow Striker, Cyber Monk, and Neo Operative
 - Home screen, pause menu, game-over menu, controls panel, and placeholder settings panel
 
@@ -102,7 +103,7 @@ Registered beginning-stage villain IDs:
 - `cyber-monkey-scrapper`
 - `cyber-monkey-alpha`
 
-`AssetLoader` caches image paths and returns loaded frame arrays. The renderer tries real frames first and falls back to readable procedural silhouettes when animation folders are missing.
+`AssetLoader` caches image paths and returns loaded frame arrays. The renderer tries real frames first, blocks known hollow/low-coverage frames, falls back to atlas crops when they are safer, and uses readable procedural silhouettes only as a last resort.
 
 Generated source sheets are archived in `public/sprites/source-generated/`. The live gameplay path is the sliced frame folders, so new art can be improved one animation folder at a time.
 
@@ -135,7 +136,7 @@ Cyber Monkey villains are wired through the same animation state system and now 
 
 If a frame folder or background image is missing, the old procedural fallback still renders so the game remains playable.
 
-Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, animation, or move, replay/step frames, toggle checkerboard, ground line, anchor, hitbox, and hurtbox overlays, and inspect frame source, dimensions, alpha transparency, and fallback status.
+Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, gameplay-ready animation, or gameplay-ready move, replay/step frames, toggle checkerboard, ground line, anchor, hitbox, and hurtbox overlays, and inspect frame source, dimensions, alpha transparency, eligibility, and fallback status.
 
 To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are intentionally approximate for this pass and can be replaced by exact transparent frame PNGs later.
 
@@ -147,7 +148,7 @@ To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are 
 
 ## What To Build Next
 
-- Polish sprite crops, ground contact, and animation timing for the generated frame folders
-- Add more enemy types and stage hazards
-- Combo rules and defensive counters
-- Persistent progression between sessions
+- Polish the current four moves per character before adding more moves
+- Replace temporary gray-dummy grapple frames with in-game enemy interaction sprites
+- Add impact effects and move icons after the MVP loop feels stable
+- Keep new enemies, stages, and persistent progression out until the MVP lock is satisfied

@@ -16,7 +16,8 @@ import { Enemy } from '../entities/Enemy';
 import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
-import { moveById, type MoveDefinition } from '../data/moves';
+import { getCharacterLoadout, type MoveSlotKey } from '../data/characterLoadouts';
+import type { MoveDefinition } from '../data/moves';
 import { enemyAttackAnimationByMove, getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { spriteRegistry } from '../data/spriteRegistry';
 import { AnimationSystem } from '../systems/AnimationSystem';
@@ -223,48 +224,40 @@ export class Game {
   }
 
   private handleAttackInput(): void {
-    const light = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('jab') : this.player.equippedMoves[0];
-    const heavy = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('cross') ?? moveById.get('roundhouse_kick') : this.player.equippedMoves[1];
-    const style = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('roundhouse_kick') : this.player.equippedMoves[2];
+    const selected = this.slotMovePressed();
 
-    if (this.input.wasPressed('l')) {
-      this.tryPlayerGrapple();
+    if (!selected) return;
+    if (selected.slot === 'L') {
+      this.tryPlayerGrapple(selected.move);
       return;
     }
 
-    const selected =
-      (this.input.wasPressed('h') && light) ||
-      (this.input.wasPressed('j') && heavy) ||
-      (this.input.wasPressed('k') && style) ||
-      this.slotMovePressed();
-
-    if (!selected) return;
-    const hitbox = this.combat.startAttack(this.player, selected);
+    const hitbox = this.combat.startAttack(this.player, selected.move);
     if (hitbox) {
       this.hitboxes.push(hitbox);
-      this.animation.play(this.player, selected.animationKey, {
-        lockForMs: selected.windupMs + selected.activeMs + selected.recoveryMs,
+      this.animation.play(this.player, selected.move.animationKey, {
+        lockForMs: selected.move.windupMs + selected.move.activeMs + selected.move.recoveryMs,
         fallback: 'idle',
       });
     }
   }
 
-  private slotMovePressed() {
-    const slotKeys = ['n', 'o', 'p', 'm'];
-    for (let index = 0; index < 4; index += 1) {
-      if (this.input.wasPressed(slotKeys[index])) {
-        return this.player.equippedMoves[index];
+  private slotMovePressed(): { slot: MoveSlotKey; move: MoveDefinition } | undefined {
+    const slotKeys: MoveSlotKey[] = ['H', 'J', 'K', 'L'];
+    for (let index = 0; index < slotKeys.length; index += 1) {
+      const slot = slotKeys[index];
+      if (this.input.wasPressed(slot.toLowerCase())) {
+        const move = this.player.equippedMoves[index];
+        if (move) return { slot, move };
       }
     }
     return undefined;
   }
 
-  private tryPlayerGrapple(): void {
-    const move = this.getGrappleMove();
+  private tryPlayerGrapple(move: MoveDefinition): void {
     if (!move || !this.player.canUseMove(move)) return;
 
-    const animationKey = this.getGrappleAnimationKey();
-    const grappleMove: MoveDefinition = { ...move, animationKey };
+    const grappleMove: MoveDefinition = { ...move };
     const durationMs = Math.max(360, move.windupMs + move.activeMs + move.recoveryMs);
     this.player.stamina -= Math.min(this.player.stamina, move.staminaCost);
     this.player.moveCooldowns.set(move.id, Math.max(move.cooldownMs, 680));
@@ -286,7 +279,7 @@ export class Game {
       this.dust.push({ x: target.x, y: target.y + 12, lifeMs: 300 });
     }
 
-    this.animation.play(this.player, animationKey, { lockForMs: durationMs, fallback: 'idle' });
+    this.animation.play(this.player, grappleMove.animationKey, { lockForMs: durationMs, fallback: 'idle' });
   }
 
   private findGrappleTarget(): Enemy | Boss | undefined {
@@ -297,26 +290,6 @@ export class Game {
         return Math.hypot(dx, target.y - this.player.y) <= maxRange && Math.sign(dx || this.player.facing) === this.player.facing;
       })
       .sort((a, b) => this.player.distanceTo(a) - this.player.distanceTo(b))[0];
-  }
-
-  private getGrappleMove(): MoveDefinition | undefined {
-    const preferredByCharacter: Record<string, string> = {
-      'cyber-ninja-blue': 'low_kick',
-      'shadow-striker-purple': 'short_elbow',
-      'cyber-monk-orange': 'hip_throw',
-      'neo-operative-green': 'double_leg_takedown',
-    };
-    return moveById.get(preferredByCharacter[this.player.character.id]) ?? this.player.equippedMoves[2] ?? this.player.equippedMoves[0];
-  }
-
-  private getGrappleAnimationKey(): string {
-    const animationByCharacter: Record<string, string> = {
-      'cyber-ninja-blue': 'low_kick',
-      'shadow-striker-purple': 'short_elbow',
-      'cyber-monk-orange': 'hip_throw',
-      'neo-operative-green': 'double_leg_takedown',
-    };
-    return animationByCharacter[this.player.character.id] ?? 'hit_react';
   }
 
   private tryEnemyAttack(enemy: Enemy | Boss): void {
@@ -340,8 +313,8 @@ export class Game {
       return;
     }
 
-    this.rewardScreen.show(options, (move) => {
-      this.progression.learnMove(this.player, move);
+    this.rewardScreen.show(options, this.player, (move, slotIndex) => {
+      this.progression.replaceMove(this.player, move, slotIndex);
       this.loot.restoreAfterWave(this.player);
       this.spawnWave();
     });
@@ -477,7 +450,7 @@ export class Game {
 
   private createPlayer(): Player {
     const character = characters.find((entry) => entry.id === this.selectedCharacterId) ?? characters[0];
-    return new Player(character, getCharacterMoves(character));
+    return new Player(character, getCharacterLoadout(character.id), getCharacterMoves(character));
   }
 
   private async preloadBeginningSprites(): Promise<void> {
