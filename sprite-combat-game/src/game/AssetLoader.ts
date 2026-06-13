@@ -56,6 +56,10 @@ export class AssetLoader {
     return image;
   }
 
+  getImage(path: string): HTMLImageElement | undefined {
+    return this.images.get(path);
+  }
+
   async loadFrames(character: string, move: string, frameCount = 4): Promise<HTMLImageElement[]> {
     const padded = (frame: number) => String(frame).padStart(4, '0');
     const paths = Array.from(

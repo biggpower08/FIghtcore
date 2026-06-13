@@ -168,8 +168,8 @@ function fallbackOnly(entityId: string, animationKeys: string[]): SpriteAnimatio
     animationKey,
     loop: ['idle', 'run'].includes(animationKey),
     fallbackAnimation: animationKey === 'idle' ? undefined : 'idle',
-    frames: [{ durationMs: 120, notes: 'Procedural fallback until a Cyber Monkey source sheet exists.' }],
-    notes: 'Procedural Cyber Monkey fallback animation.',
+    frames: [{ durationMs: 120, notes: 'Pre-sliced frame folders are preferred; procedural drawing remains as a safety fallback.' }],
+    notes: 'Cyber Monkey runtime animation key with frame-folder priority and procedural fallback.',
   }));
 }
 

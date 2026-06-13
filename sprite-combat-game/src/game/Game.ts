@@ -33,6 +33,7 @@ import { RewardScreen } from '../ui/RewardScreen';
 import { SpriteLab } from '../ui/SpriteLab';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
+const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main.png';
 
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
@@ -414,7 +415,12 @@ export class Game {
   }
 
   private async preloadBeginningSprites(): Promise<void> {
-    await Promise.all(spriteRegistry.flatMap((sprite) => getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation))));
+    await Promise.all([
+      this.assets.loadImage(DESERT_ARENA_BACKGROUND_PATH),
+      ...spriteRegistry.flatMap((sprite) =>
+        getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation)),
+      ),
+    ]);
     if (new URLSearchParams(window.location.search).has('debugSprites')) {
       printSpriteCoverageReport();
     }

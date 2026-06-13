@@ -51,7 +51,7 @@ The static build is written to `dist/` and can be deployed to GitHub Pages.
 
 ## Current MVP Features
 
-- Desert arena with sandy ground, boundary edges, rocks, dead bushes, shadows, and dash dust puffs
+- Generated desert arena background with procedural fallback, rocks, dead bushes, shadows, and dash dust puffs
 - Player movement, facing direction, health, stamina, dash, and cooldown-aware attacks
 - Cyber Monkey Grunts and Scrappers as beginning-stage mobs
 - Cyber Monkey Alpha boss on wave 4 with higher health and telegraphed strikes
@@ -90,7 +90,9 @@ Registered beginning-stage villain IDs:
 
 `AssetLoader` caches image paths and returns loaded frame arrays. The renderer tries real frames first and falls back to readable procedural silhouettes when animation folders are missing.
 
-Effect sprites can be dropped into `public/sprites/effects/`. Desert prop sprites can be dropped into `public/backgrounds/desert/`. The current MVP renders both procedurally when images are missing.
+Generated source sheets are archived in `public/sprites/source-generated/`. The live gameplay path is the sliced frame folders, so new art can be improved one animation folder at a time.
+
+Effect sprites can be dropped into `public/sprites/effects/`. Desert prop sprites can be dropped into `public/backgrounds/desert/`. The current MVP renders effects and props procedurally when images are missing.
 
 ## Sprite Animation Status
 
@@ -109,13 +111,15 @@ Mapped hero sheet crops:
 - `cyber-monk-orange`: `idle`, `ready`, `walk`, `dash`, `palm_strike`, `spinning_kick`, `clinch_knee`, `hip_throw`, `hit_react`, `knockdown`, `recovery`
 - `neo-operative-green`: `idle`, `ready`, `walk`, `dash`, `double_leg_takedown`, `sprawl_counter`, `hip_throw`, `low_kick`, `hit_react`, `knockdown`, `recovery`
 
-Runtime frame folders have been generated from the uploaded hero sheets for all four player characters. These are real PNG frames used by the game, but they are still provisional crops and need a later transparent cleanup pass.
+Runtime frame folders have been generated from the uploaded hero sheets for all four player characters. These are real PNG frames used by the game, but they are still provisional crops and need later art polish.
 
-Cyber Monkey villains are wired through the same animation state system, but still use procedural fallback art until monkey source sheets exist:
+Cyber Monkey villains are wired through the same animation state system and now have generated runtime frame folders:
 
 - `cyber-monkey-grunt`: `claw_swipe` / `palm_strike`
 - `cyber-monkey-scrapper`: `claw_combo` / `low_kick`
 - `cyber-monkey-alpha`: `ground_slam` / `clinch_knee`
+
+If a frame folder or background image is missing, the old procedural fallback still renders so the game remains playable.
 
 Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, animation, or move, replay the animation, step frames, and inspect the frame source, sheet ID, and crop rectangle.
 
@@ -129,8 +133,7 @@ To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are 
 
 ## What To Build Next
 
-- Character select
-- Real transparent sprite frame loading per move
-- More enemy types and stage hazards
+- Polish sprite crops and transparency for the generated frame folders
+- Add more enemy types and stage hazards
 - Combo rules and defensive counters
 - Persistent progression between sessions

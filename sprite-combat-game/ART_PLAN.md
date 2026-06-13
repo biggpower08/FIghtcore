@@ -6,31 +6,31 @@ The game should read as a pixel-art cyberpunk martial arts wave fighter: MMA-ins
 
 ## Current Art Sources
 
-- Real hero source sheets exist in `public/sprites/sheets/`.
+- Generated hero source sheets exist in `public/sprites/source-generated/`.
 - Cross-character reference sheets exist for strikes, grappling, and sparring.
-- Cyber Monkey final source sheets do not exist yet.
-- Desert stage art is currently procedural.
+- Generated Cyber Monkey source sheets exist in `public/sprites/source-generated/`.
+- Generated desert arena art exists in `public/backgrounds/desert/desert-arena-main.png`.
 
 ## Current Hero Sprite Sources
 
-- Cyber Ninja: real source sheet exists and is used by approximate crop rectangles.
-- Shadow Striker: real source sheet exists and is registered.
-- Cyber Monk: real source sheet exists and is registered.
-- Neo Operative: real source sheet exists and is registered.
+- Cyber Ninja: generated source sheet exists and sliced frames are used in gameplay.
+- Shadow Striker: generated source sheet exists and sliced frames are used in gameplay.
+- Cyber Monk: generated source sheet exists and sliced frames are used in gameplay.
+- Neo Operative: generated source sheet exists and sliced frames are used in gameplay.
 
 Current runtime frame folders now exist for all four heroes under `public/sprites/frames/{character}/{animation}/`. These are cut from the uploaded sheets and are good enough for runtime testing, but the crops still need polish and transparent cleanup.
 
 ## Current Enemy Sprite Sources
 
-Cyber Monkey enemies are designed in code and data, but not backed by final image sheets yet.
+Cyber Monkey enemies are now backed by generated source sheets and sliced runtime frame folders.
 
-- `cyber-monkey-grunt`: procedural fallback, intended to become small, fast, lean, claw-focused.
-- `cyber-monkey-scrapper`: procedural fallback, intended to become bulkier with heavier limbs.
-- `cyber-monkey-alpha`: procedural fallback, intended to become boss-scale with armor, cyber limbs, and slam poses.
+- `cyber-monkey-grunt`: generated lean claw-focused enemy art.
+- `cyber-monkey-scrapper`: generated bulkier melee enemy art.
+- `cyber-monkey-alpha`: generated boss-scale cyber monkey art with slam, taunt, and enrage poses.
 
 ## Current Background Art Status
 
-The desert arena is procedural. It now has sand texture, arena boundaries, debris, edge markers, dead bushes, rocks, dust, bones, and cyber scrap shapes. Bitmap layers and prop images are still planned.
+The desert arena now uses the generated desert wasteland background as the primary runtime layer. The old procedural sand, markers, debris, and backdrop remain as fallback if the image is missing.
 
 ## What Is Real Art vs Placeholder
 
@@ -40,10 +40,10 @@ The desert arena is procedural. It now has sand texture, arena boundaries, debri
 | Shadow Striker | partial real source sheet plus sliced runtime frames | selectable | polish pass | yes | yes |
 | Cyber Monk | partial real source sheet plus sliced runtime frames | selectable | polish pass | yes | yes |
 | Neo Operative | partial real source sheet plus sliced runtime frames | selectable | polish pass | yes | yes |
-| Cyber Monkey Grunt | procedural placeholder | yes | yes | yes | temporary |
-| Cyber Monkey Scrapper | procedural placeholder | yes | yes | yes | temporary |
-| Cyber Monkey Alpha | procedural placeholder | yes | yes | yes | temporary |
-| Desert base ground | procedural placeholder | yes | no | yes | temporary |
+| Cyber Monkey Grunt | generated source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
+| Cyber Monkey Scrapper | generated source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
+| Cyber Monkey Alpha | generated source sheet plus sliced runtime frames | yes | polish pass | yes | yes |
+| Desert base ground | generated background image with procedural fallback | yes | no | yes | yes |
 | Rocks | procedural placeholder | yes | no | yes | yes |
 | Dead bushes | procedural placeholder | yes | no | yes | yes |
 | Dust effects | procedural placeholder | yes | no | yes | yes |
@@ -153,10 +153,9 @@ Cyber Monkey Alpha:
 
 ## What Should Be Done First
 
-1. Draw or generate Cyber Monkey source sheets.
-2. Clean up the newly sliced hero frame folders with transparent backgrounds and tighter crops.
-3. Replace procedural desert props with reusable prop images.
-4. Add move icons for the HUD and reward cards.
+1. Polish hero and Cyber Monkey frame crops with tighter transparent bounds.
+2. Replace procedural desert props with reusable prop images.
+3. Add move icons for the HUD and reward cards.
 
 ## What Can Be Done Later
 

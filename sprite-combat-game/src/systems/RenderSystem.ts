@@ -16,6 +16,8 @@ export interface DustPuff {
   lifeMs: number;
 }
 
+const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main.png';
+
 export class RenderSystem {
   constructor(
     private readonly animation: AnimationSystem,
@@ -50,6 +52,12 @@ export class RenderSystem {
   }
 
   private drawArena(ctx: CanvasRenderingContext2D): void {
+    const desertArena = this.assets.getImage(DESERT_ARENA_BACKGROUND_PATH);
+    if (desertArena) {
+      this.drawDesertArenaImage(ctx, desertArena);
+      return;
+    }
+
     ctx.fillStyle = '#b87935';
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
     this.drawDistantDesertBackdrop(ctx);
@@ -73,6 +81,30 @@ export class RenderSystem {
     gradient.addColorStop(0, 'rgba(255, 221, 151, 0)');
     gradient.addColorStop(1, 'rgba(48, 25, 12, 0.28)');
     ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+  }
+
+  private drawDesertArenaImage(ctx: CanvasRenderingContext2D, image: HTMLImageElement): void {
+    const imageAspect = image.width / image.height;
+    const arenaAspect = ARENA_WIDTH / ARENA_HEIGHT;
+    const sourceWidth = imageAspect > arenaAspect ? image.height * arenaAspect : image.width;
+    const sourceHeight = imageAspect > arenaAspect ? image.height : image.width / arenaAspect;
+    const sourceX = (image.width - sourceWidth) / 2;
+    const sourceY = (image.height - sourceHeight) / 2;
+
+    ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+
+    const vignette = ctx.createRadialGradient(
+      ARENA_WIDTH / 2,
+      ARENA_HEIGHT / 2,
+      420,
+      ARENA_WIDTH / 2,
+      ARENA_HEIGHT / 2,
+      1250,
+    );
+    vignette.addColorStop(0, 'rgba(255, 221, 151, 0)');
+    vignette.addColorStop(1, 'rgba(18, 11, 8, 0.34)');
+    ctx.fillStyle = vignette;
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
   }
 
