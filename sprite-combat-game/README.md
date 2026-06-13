@@ -73,6 +73,33 @@ Registered beginning-stage villain IDs:
 
 Effect sprites can be dropped into `public/sprites/effects/`. Desert prop sprites can be dropped into `public/backgrounds/desert/`. The current MVP renders both procedurally when images are missing.
 
+## Sprite Animation Status
+
+The runtime now resolves animations in this order:
+
+1. explicit frame PNGs
+2. pre-sliced `/sprites/frames/{entityId}/{animationKey}/0001.png` folders
+3. registered source-sheet crop rectangles
+4. idle animation
+5. procedural fallback
+
+Mapped hero sheet crops:
+
+- `cyber-ninja-blue`: `idle`, `ready`, `walk`, `dash`, `jab`, `cross`, `low_kick`, `roundhouse_kick`, `hit_react`, `knockdown`, `recovery`
+- `shadow-striker-purple`: `idle`, `ready`, `walk`, `dash`, `jab`, `cross`, `short_elbow`, `shadow_counter`, `hit_react`, `knockdown`, `recovery`
+- `cyber-monk-orange`: `idle`, `ready`, `walk`, `dash`, `palm_strike`, `spinning_kick`, `clinch_knee`, `hip_throw`, `hit_react`, `knockdown`, `recovery`
+- `neo-operative-green`: `idle`, `ready`, `walk`, `dash`, `double_leg_takedown`, `sprawl_counter`, `hip_throw`, `low_kick`, `hit_react`, `knockdown`, `recovery`
+
+Cyber Monkey villains are wired through the same animation state system, but still use procedural fallback art until monkey source sheets exist:
+
+- `cyber-monkey-grunt`: `claw_swipe` / `palm_strike`
+- `cyber-monkey-scrapper`: `claw_combo` / `low_kick`
+- `cyber-monkey-alpha`: `ground_slam` / `clinch_knee`
+
+Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, animation, or move, replay the animation, step frames, and inspect the frame source, sheet ID, and crop rectangle.
+
+To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are intentionally approximate for this pass and can be replaced by exact transparent frame PNGs later.
+
 ## GitHub Pages
 
 1. Run `npm run build`.

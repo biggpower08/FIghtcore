@@ -7,7 +7,7 @@ import type { Entity } from '../entities/Entity';
 import { Fighter } from '../entities/Fighter';
 import type { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
-import type { AssetLoader } from '../game/AssetLoader';
+import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 import type { Camera } from '../game/Camera';
 
 export interface DustPuff {
@@ -32,6 +32,7 @@ export class RenderSystem {
     hitboxes: AttackHitbox[],
     dust: DustPuff[],
   ): void {
+    ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
     ctx.translate(-camera.x, -camera.y);
@@ -104,15 +105,15 @@ export class RenderSystem {
   private drawFighter(ctx: CanvasRenderingContext2D, entity: Entity, color: string): void {
     const pose = entity instanceof Fighter ? this.animation.getPose(entity) : 'idle';
     const assetId = this.getAssetId(entity);
-    const animationKey = this.getAnimationKey(entity, pose);
-    const frames = this.assets.getFrames(assetId, animationKey);
+    const animationKey = this.animation.getCurrentAnimationKey(entity);
+    const resolvedAnimation = this.assets.getResolvedAnimation(assetId, animationKey) ?? this.assets.getResolvedAnimation(assetId, 'idle');
     ctx.fillStyle = 'rgba(42, 23, 13, 0.34)';
     ctx.beginPath();
     ctx.ellipse(entity.x, entity.y + entity.radius * 0.82, entity.radius * 1.05, entity.radius * 0.34, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    if (frames.length > 0) {
-      this.drawSpriteFrame(ctx, entity, frames);
+    if (resolvedAnimation && ['frame-png', 'sheet-crop'].includes(resolvedAnimation.status)) {
+      this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation);
       this.drawHealthBar(ctx, entity);
       return;
     }
@@ -147,16 +148,51 @@ export class RenderSystem {
     ctx.fillRect(entity.x - entity.radius, entity.y - entity.radius * 1.55, entity.radius * 2 * (entity.health / entity.maxHealth), 5);
   }
 
-  private drawSpriteFrame(ctx: CanvasRenderingContext2D, entity: Entity, frames: HTMLImageElement[]): void {
-    const frame = frames[Math.floor(performance.now() / 120) % frames.length];
-    const width = entity.radius * 3.2;
-    const height = entity.radius * 3.2;
+  private drawResolvedSpriteFrame(ctx: CanvasRenderingContext2D, entity: Entity, animation: ResolvedSpriteAnimation): void {
+    const index = this.animation.getFrameIndex(
+      entity,
+      animation.frames.map((frame) => frame.durationMs),
+    );
+    const frame = animation.frames[index] ?? animation.frames[0];
+    if (!frame) return;
+
+    const sourceWidth = frame.width ?? frame.image?.width ?? 64;
+    const sourceHeight = frame.height ?? frame.image?.height ?? 64;
+    const scale = entity instanceof Boss ? 1.45 : entity instanceof Enemy ? 0.82 : 1;
+    const width = Math.max(entity.radius * 3.2, sourceWidth * scale);
+    const height = width * (sourceHeight / sourceWidth);
+    const dx = -width * frame.anchorX;
+    const dy = -height * frame.anchorY + entity.radius * 0.82;
 
     ctx.save();
     ctx.translate(entity.x, entity.y - entity.radius * 0.45);
     ctx.scale(entity.facing, 1);
-    ctx.drawImage(frame, -width / 2, -height / 2, width, height);
+    this.drawFrameImage(ctx, frame, dx, dy, width, height);
     ctx.restore();
+  }
+
+  private drawFrameImage(
+    ctx: CanvasRenderingContext2D,
+    frame: ResolvedSpriteFrame,
+    dx: number,
+    dy: number,
+    width: number,
+    height: number,
+  ): void {
+    if (frame.image) {
+      ctx.drawImage(frame.image, dx, dy, width, height);
+      return;
+    }
+
+    if (
+      frame.sheetImage &&
+      frame.x !== undefined &&
+      frame.y !== undefined &&
+      frame.width !== undefined &&
+      frame.height !== undefined
+    ) {
+      ctx.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, dx, dy, width, height);
+    }
   }
 
   private drawCyberMonkeyPlaceholder(ctx: CanvasRenderingContext2D, entity: Entity, color: string, pose: string): void {
@@ -190,25 +226,6 @@ export class RenderSystem {
     if (entity instanceof Player) return entity.character.id;
     if (entity instanceof Enemy || entity instanceof Boss) return entity.definition.id;
     return entity.id;
-  }
-
-  private getAnimationKey(entity: Entity, pose: string): string {
-    if (entity instanceof Player) {
-      if (entity.stunMs > 0) return 'hit_react';
-      if (entity.dashMs > 0) return 'dash';
-      if (entity.activeMove) return entity.activeMove.animationKey;
-      if (pose === 'move') return 'walk';
-      return 'idle';
-    }
-
-    if (entity instanceof Enemy || entity instanceof Boss) {
-      if (entity.stunMs > 0) return 'hit_react';
-      if (entity.activeMove) return entity.definition.attackAnimation;
-      if (pose === 'move') return 'run';
-      return 'idle';
-    }
-
-    return 'idle';
   }
 
   private drawHitbox(ctx: CanvasRenderingContext2D, hitbox: AttackHitbox): void {

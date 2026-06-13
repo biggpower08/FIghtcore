@@ -185,6 +185,49 @@ body {
   gap: 14px;
 }
 
+.sprite-lab-panel {
+  display: grid;
+  gap: 16px;
+  width: min(960px, calc(100vw - 32px));
+}
+
+.sprite-lab-header,
+.sprite-lab-controls,
+.sprite-lab-stage {
+  display: grid;
+  gap: 12px;
+}
+
+.sprite-lab-header {
+  grid-template-columns: 1fr auto;
+  align-items: start;
+}
+
+.sprite-lab-controls {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sprite-lab-stage {
+  grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.sprite-lab-stage canvas,
+.sprite-lab-stage pre {
+  min-height: 280px;
+  margin: 0;
+  border: 2px solid #7b5228;
+  border-radius: 8px;
+  background: #17120c;
+}
+
+.sprite-lab-stage pre {
+  overflow: auto;
+  padding: 12px;
+  color: #dfc18d;
+  white-space: pre-wrap;
+}
+
 .settings-panel label {
   display: grid;
   grid-template-columns: 170px minmax(0, 1fr);

@@ -4,6 +4,7 @@ type MenuHandlers = {
   onStart: () => void;
   onSettings: () => void;
   onControls: () => void;
+  onSpriteLab: () => void;
   onBack: () => void;
   onResume: () => void;
   onHome: () => void;
@@ -39,6 +40,7 @@ export class MenuScreen {
         </div>
         <div class="menu-actions">
           <button data-action="start">Start Game</button>
+          <button data-action="sprite-lab">Sprite Lab</button>
           <button data-action="settings">Settings</button>
           <button data-action="controls">Controls</button>
         </div>
@@ -114,6 +116,7 @@ export class MenuScreen {
     if (action === 'start') this.handlers.onStart();
     if (action === 'settings') this.handlers.onSettings();
     if (action === 'controls') this.handlers.onControls();
+    if (action === 'sprite-lab') this.handlers.onSpriteLab();
     if (action === 'back') this.handlers.onBack();
     if (action === 'resume') this.handlers.onResume();
     if (action === 'home') this.handlers.onHome();

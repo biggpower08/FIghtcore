@@ -17,6 +17,7 @@ import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
 import { moveById } from '../data/moves';
+import { enemyAttackAnimationByMove, getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { spriteRegistry } from '../data/spriteRegistry';
 import { AnimationSystem } from '../systems/AnimationSystem';
 import { type AttackHitbox, CombatSystem } from '../systems/CombatSystem';
@@ -29,8 +30,9 @@ import { WaveSystem } from '../systems/WaveSystem';
 import { Hud } from '../ui/Hud';
 import { MenuScreen } from '../ui/MenuScreen';
 import { RewardScreen } from '../ui/RewardScreen';
+import { SpriteLab } from '../ui/SpriteLab';
 
-type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver';
+type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
 
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
@@ -48,6 +50,7 @@ export class Game {
   private readonly hud = new Hud();
   private readonly menuScreen: MenuScreen;
   private readonly rewardScreen: RewardScreen;
+  private readonly spriteLab: SpriteLab;
   private readonly obstacles = this.createObstacles();
   private player = this.createPlayer();
   private enemies: Enemy[] = [];
@@ -68,10 +71,12 @@ export class Game {
     this.ctx = context;
     this.menuScreen = new MenuScreen(menuRoot);
     this.rewardScreen = new RewardScreen(rewardRoot);
+    this.spriteLab = new SpriteLab(menuRoot, this.assets);
     this.menuScreen.bind({
       onStart: () => this.startNewRun(),
       onSettings: () => this.openSettings(),
       onControls: () => this.openControls(),
+      onSpriteLab: () => this.openSpriteLab(),
       onBack: () => this.closeMenuPanel(),
       onResume: () => this.resumeGame(),
       onHome: () => this.returnHome(),
@@ -91,6 +96,7 @@ export class Game {
     const deltaMs = Math.min(34, timestamp - this.lastTime || 16.67);
     this.lastTime = timestamp;
     this.handleStateInput();
+    this.animation.update(deltaMs);
 
     if (this.state === 'playing') {
       this.update(deltaMs);
@@ -138,6 +144,7 @@ export class Game {
       this.player.stamina -= DASH_STAMINA_COST;
       this.player.dashMs = DASH_DURATION_MS;
       this.player.dashCooldownMs = DASH_COOLDOWN_MS;
+      this.animation.play(this.player, 'dash', { lockForMs: DASH_DURATION_MS, fallback: 'walk' });
       this.dust.push({ x: this.player.x, y: this.player.y + 14, lifeMs: 300 });
     }
 
@@ -225,7 +232,13 @@ export class Game {
 
     if (!selected) return;
     const hitbox = this.combat.startAttack(this.player, selected);
-    if (hitbox) this.hitboxes.push(hitbox);
+    if (hitbox) {
+      this.hitboxes.push(hitbox);
+      this.animation.play(this.player, selected.animationKey, {
+        lockForMs: selected.windupMs + selected.activeMs + selected.recoveryMs,
+        fallback: 'idle',
+      });
+    }
   }
 
   private slotMovePressed() {
@@ -240,7 +253,13 @@ export class Game {
   private tryEnemyAttack(enemy: Enemy | Boss): void {
     const move = enemy.equippedMoves[0];
     const hitbox = this.combat.startAttack(enemy, move);
-    if (hitbox) this.hitboxes.push(hitbox);
+    if (hitbox) {
+      this.hitboxes.push(hitbox);
+      this.animation.play(enemy, enemyAttackAnimationByMove[move.id] ?? enemy.definition.attackAnimation ?? move.animationKey, {
+        lockForMs: move.windupMs + move.activeMs + move.recoveryMs,
+        fallback: 'idle',
+      });
+    }
   }
 
   private openReward(): void {
@@ -315,6 +334,7 @@ export class Game {
       if (this.state === 'playing') this.pauseGame();
       else if (this.state === 'paused') this.resumeGame();
       else if (this.state === 'settings') this.closeMenuPanel();
+      else if (this.state === 'spriteLab') this.returnHome();
     }
   }
 
@@ -326,6 +346,7 @@ export class Game {
     this.dust = [];
     this.waves.wave = 0;
     this.rewardScreen.hide();
+    this.spriteLab.hide();
     this.menuScreen.hide();
     this.spawnWave();
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
@@ -370,6 +391,7 @@ export class Game {
   private openGameOver(): void {
     this.state = 'gameOver';
     this.rewardScreen.hide();
+    this.spriteLab.hide();
     this.menuScreen.showGameOver();
   }
 
@@ -380,6 +402,7 @@ export class Game {
     this.hitboxes = [];
     this.dust = [];
     this.rewardScreen.hide();
+    this.spriteLab.hide();
     this.menuScreen.showHome();
   }
 
@@ -388,10 +411,17 @@ export class Game {
   }
 
   private async preloadBeginningSprites(): Promise<void> {
-    await Promise.all(
-      spriteRegistry.flatMap((sprite) =>
-        sprite.animations.map((animation) => this.assets.loadOptionalFrames(sprite.id, animation)),
-      ),
-    );
+    await Promise.all(spriteRegistry.flatMap((sprite) => getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation))));
+    if (new URLSearchParams(window.location.search).has('debugSprites')) {
+      printSpriteCoverageReport();
+    }
+  }
+
+  private openSpriteLab(): void {
+    this.state = 'spriteLab';
+    this.rewardScreen.hide();
+    this.menuScreen.hide();
+    this.spriteLab.show(() => this.returnHome());
+    printSpriteCoverageReport();
   }
 }
