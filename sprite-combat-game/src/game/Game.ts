@@ -52,6 +52,7 @@ export class Game {
   private readonly rewardScreen: RewardScreen;
   private readonly spriteLab: SpriteLab;
   private readonly obstacles = this.createObstacles();
+  private selectedCharacterId = 'cyber-ninja-blue';
   private player = this.createPlayer();
   private enemies: Enemy[] = [];
   private boss: Boss | null = null;
@@ -77,6 +78,7 @@ export class Game {
       onSettings: () => this.openSettings(),
       onControls: () => this.openControls(),
       onSpriteLab: () => this.openSpriteLab(),
+      onCharacterSelect: (characterId) => this.selectCharacter(characterId),
       onBack: () => this.closeMenuPanel(),
       onResume: () => this.resumeGame(),
       onHome: () => this.returnHome(),
@@ -84,7 +86,7 @@ export class Game {
     this.resize();
     window.addEventListener('resize', this.resize);
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
-    this.menuScreen.showHome();
+    this.menuScreen.showHome(this.selectedCharacterId);
     void this.preloadBeginningSprites();
   }
 
@@ -220,9 +222,9 @@ export class Game {
   }
 
   private handleAttackInput(): void {
-    const light = moveById.get('jab');
-    const heavy = moveById.get('cross') ?? moveById.get('roundhouse_kick');
-    const grapple = moveById.get('low_kick');
+    const light = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('jab') : this.player.equippedMoves[0];
+    const heavy = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('cross') ?? moveById.get('roundhouse_kick') : this.player.equippedMoves[1];
+    const grapple = this.player.character.id === 'cyber-ninja-blue' ? moveById.get('low_kick') : this.player.equippedMoves[2];
 
     const selected =
       (this.input.wasPressed('j') && light) ||
@@ -403,11 +405,12 @@ export class Game {
     this.dust = [];
     this.rewardScreen.hide();
     this.spriteLab.hide();
-    this.menuScreen.showHome();
+    this.menuScreen.showHome(this.selectedCharacterId);
   }
 
   private createPlayer(): Player {
-    return new Player(characters[0], getCharacterMoves(characters[0]));
+    const character = characters.find((entry) => entry.id === this.selectedCharacterId) ?? characters[0];
+    return new Player(character, getCharacterMoves(character));
   }
 
   private async preloadBeginningSprites(): Promise<void> {
@@ -423,5 +426,12 @@ export class Game {
     this.menuScreen.hide();
     this.spriteLab.show(() => this.returnHome());
     printSpriteCoverageReport();
+  }
+
+  private selectCharacter(characterId: string): void {
+    this.selectedCharacterId = characterId;
+    this.player = this.createPlayer();
+    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
+    this.menuScreen.showHome(this.selectedCharacterId);
   }
 }

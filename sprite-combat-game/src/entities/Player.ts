@@ -11,8 +11,5 @@ export class Player extends Fighter {
   constructor(character: CharacterDefinition, moves: MoveDefinition[]) {
     super(character.id, 520, 720, PLAYER_RADIUS, character.maxHealth, 100, character.speed, moves);
     this.character = character;
-    if (character.id === 'cyber-ninja-blue') {
-      this.equippedMoves = moves.filter((move) => ['low_kick', 'roundhouse_kick'].includes(move.id));
-    }
   }
 }

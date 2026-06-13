@@ -52,19 +52,15 @@ export class RenderSystem {
   private drawArena(ctx: CanvasRenderingContext2D): void {
     ctx.fillStyle = '#b87935';
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+    this.drawDistantDesertBackdrop(ctx);
 
     ctx.strokeStyle = '#6d3d1d';
     ctx.lineWidth = 36;
     ctx.strokeRect(18, 18, ARENA_WIDTH - 36, ARENA_HEIGHT - 36);
 
-    ctx.globalAlpha = 0.16;
-    ctx.fillStyle = '#5f3419';
-    for (let x = 120; x < ARENA_WIDTH; x += 170) {
-      for (let y = 90; y < ARENA_HEIGHT; y += 130) {
-        ctx.fillRect(x + ((x * y) % 41), y, 42, 3);
-      }
-    }
-    ctx.globalAlpha = 1;
+    this.drawArenaMarkers(ctx);
+    this.drawSandTexture(ctx);
+    this.drawStageDebris(ctx);
 
     const gradient = ctx.createRadialGradient(
       ARENA_WIDTH / 2,
@@ -78,6 +74,109 @@ export class RenderSystem {
     gradient.addColorStop(1, 'rgba(48, 25, 12, 0.28)');
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+  }
+
+  private drawDistantDesertBackdrop(ctx: CanvasRenderingContext2D): void {
+    ctx.save();
+    ctx.globalAlpha = 0.24;
+    ctx.fillStyle = '#8a5228';
+    for (let x = -120; x < ARENA_WIDTH + 120; x += 260) {
+      ctx.beginPath();
+      ctx.moveTo(x, 150);
+      ctx.lineTo(x + 80, 88 + (x % 3) * 18);
+      ctx.lineTo(x + 170, 150);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.fillStyle = '#523622';
+    for (let x = 150; x < ARENA_WIDTH; x += 520) {
+      ctx.fillRect(x, 112, 86, 12);
+      ctx.fillRect(x + 22, 86, 10, 28);
+      ctx.fillRect(x + 54, 96, 8, 20);
+    }
+    ctx.restore();
+  }
+
+  private drawArenaMarkers(ctx: CanvasRenderingContext2D): void {
+    ctx.save();
+    for (let x = 92; x < ARENA_WIDTH; x += 230) {
+      this.drawMarkerPost(ctx, x, 42, '#23d5dd');
+      this.drawMarkerPost(ctx, x + 80, ARENA_HEIGHT - 42, '#f0c36a');
+    }
+    for (let y = 132; y < ARENA_HEIGHT; y += 220) {
+      this.drawMarkerPost(ctx, 42, y, '#ad56ff');
+      this.drawMarkerPost(ctx, ARENA_WIDTH - 42, y + 68, '#23d5dd');
+    }
+    ctx.restore();
+  }
+
+  private drawMarkerPost(ctx: CanvasRenderingContext2D, x: number, y: number, glow: string): void {
+    ctx.fillStyle = '#362516';
+    ctx.fillRect(x - 6, y - 18, 12, 36);
+    ctx.fillStyle = glow;
+    ctx.globalAlpha = 0.85;
+    ctx.fillRect(x - 9, y - 4, 18, 8);
+    ctx.globalAlpha = 1;
+  }
+
+  private drawSandTexture(ctx: CanvasRenderingContext2D): void {
+    ctx.save();
+    ctx.globalAlpha = 0.18;
+    for (let x = 90; x < ARENA_WIDTH; x += 130) {
+      for (let y = 92; y < ARENA_HEIGHT; y += 96) {
+        const offset = (x * 17 + y * 11) % 47;
+        ctx.fillStyle = (x + y) % 3 === 0 ? '#f0bd70' : '#5f3419';
+        ctx.fillRect(x + offset, y, 38 + (offset % 36), 3);
+        ctx.fillRect(x - offset * 0.35, y + 34, 18, 2);
+      }
+    }
+    ctx.restore();
+  }
+
+  private drawStageDebris(ctx: CanvasRenderingContext2D): void {
+    ctx.save();
+    for (let index = 0; index < 22; index += 1) {
+      const x = 160 + ((index * 389) % (ARENA_WIDTH - 320));
+      const y = 180 + ((index * 251) % (ARENA_HEIGHT - 360));
+      if (index % 3 === 0) this.drawBonePile(ctx, x, y);
+      else if (index % 3 === 1) this.drawCyberScrap(ctx, x, y);
+      else this.drawDustPatch(ctx, x, y);
+    }
+    ctx.restore();
+  }
+
+  private drawBonePile(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.strokeStyle = '#d4c0a1';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(x - 18, y + 6);
+    ctx.lineTo(x + 18, y - 6);
+    ctx.moveTo(x - 12, y - 8);
+    ctx.lineTo(x + 24, y + 8);
+    ctx.stroke();
+    ctx.fillStyle = '#e3d3b9';
+    ctx.fillRect(x - 25, y + 2, 8, 8);
+    ctx.fillRect(x + 18, y - 11, 8, 8);
+  }
+
+  private drawCyberScrap(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.fillStyle = '#3a3e42';
+    ctx.fillRect(x - 20, y - 10, 38, 14);
+    ctx.fillStyle = '#22262a';
+    ctx.fillRect(x + 4, y - 20, 12, 26);
+    ctx.fillStyle = '#23d5dd';
+    ctx.globalAlpha = 0.75;
+    ctx.fillRect(x - 14, y - 6, 20, 3);
+    ctx.globalAlpha = 1;
+  }
+
+  private drawDustPatch(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.globalAlpha = 0.2;
+    ctx.fillStyle = '#f0c36a';
+    ctx.beginPath();
+    ctx.ellipse(x, y, 42, 10, -0.16, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
   }
 
   private drawObstacle(ctx: CanvasRenderingContext2D, obstacle: Obstacle): void {
@@ -196,29 +295,48 @@ export class RenderSystem {
   }
 
   private drawCyberMonkeyPlaceholder(ctx: CanvasRenderingContext2D, entity: Entity, color: string, pose: string): void {
-    const bodyWidth = entity.radius * (entity instanceof Boss ? 2.2 : 1.8);
-    const bodyHeight = entity.radius * (entity instanceof Boss ? 1.35 : 1.05);
-    const lean = pose === 'move' ? entity.facing * 7 : 0;
+    const isBoss = entity instanceof Boss;
+    const isScrapper = entity instanceof Enemy && entity.definition.id.includes('scrapper');
+    const bodyWidth = entity.radius * (isBoss ? 2.55 : isScrapper ? 2.05 : 1.72);
+    const bodyHeight = entity.radius * (isBoss ? 1.68 : isScrapper ? 1.26 : 1.02);
+    const lean = pose === 'move' ? entity.facing * (isBoss ? 4 : 9) : 0;
+    const armor = isBoss ? '#5a4a65' : isScrapper ? '#5b3b31' : '#273035';
 
+    ctx.fillStyle = armor;
+    ctx.fillRect(entity.x - bodyWidth / 2 + lean, entity.y - bodyHeight * 0.74, bodyWidth, bodyHeight);
     ctx.fillStyle = color;
-    ctx.fillRect(entity.x - bodyWidth / 2 + lean, entity.y - bodyHeight * 0.75, bodyWidth, bodyHeight);
+    ctx.fillRect(entity.x - bodyWidth * 0.32 + lean, entity.y - bodyHeight * 0.96, bodyWidth * 0.64, bodyHeight * 0.46);
     ctx.fillStyle = '#17120c';
-    ctx.fillRect(entity.x - entity.facing * entity.radius * 0.15, entity.y - bodyHeight * 0.58, entity.facing * entity.radius * 0.72, 5);
+    ctx.fillRect(entity.x - entity.facing * entity.radius * 0.15, entity.y - bodyHeight * 0.95, entity.facing * entity.radius * 0.72, 5);
     ctx.strokeStyle = '#2debd3';
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.arc(entity.x + entity.facing * entity.radius * 0.42, entity.y - bodyHeight * 0.42, 3, 0, Math.PI * 2);
+    ctx.arc(entity.x + entity.facing * entity.radius * 0.42, entity.y - bodyHeight * 0.81, 3, 0, Math.PI * 2);
     ctx.stroke();
-    ctx.strokeStyle = '#28231f';
+    ctx.strokeStyle = '#24282b';
     ctx.lineWidth = 5;
     ctx.beginPath();
-    ctx.moveTo(entity.x - entity.facing * bodyWidth * 0.45, entity.y - bodyHeight * 0.2);
-    ctx.quadraticCurveTo(entity.x - entity.facing * bodyWidth, entity.y - bodyHeight * 0.9, entity.x - entity.facing * bodyWidth * 1.15, entity.y);
+    ctx.moveTo(entity.x - entity.facing * bodyWidth * 0.44, entity.y - bodyHeight * 0.18);
+    ctx.quadraticCurveTo(entity.x - entity.facing * bodyWidth * 0.95, entity.y - bodyHeight * 0.88, entity.x - entity.facing * bodyWidth * 1.18, entity.y);
     ctx.stroke();
 
-    ctx.fillStyle = '#f0c36a';
+    ctx.strokeStyle = '#14171a';
+    ctx.lineWidth = isBoss ? 8 : 5;
+    for (const side of [-1, 1]) {
+      ctx.beginPath();
+      ctx.moveTo(entity.x + side * bodyWidth * 0.24, entity.y - bodyHeight * 0.1);
+      ctx.lineTo(entity.x + side * bodyWidth * 0.52, entity.y + bodyHeight * 0.42);
+      ctx.stroke();
+    }
+
+    ctx.fillStyle = isBoss ? '#ff8a2a' : '#f0c36a';
     if (pose === 'attack') {
-      ctx.fillRect(entity.x + entity.facing * entity.radius * 0.25, entity.y - bodyHeight * 0.35, entity.facing * entity.radius * 1.05, 8);
+      ctx.fillRect(entity.x + entity.facing * entity.radius * 0.2, entity.y - bodyHeight * 0.55, entity.facing * entity.radius * (isBoss ? 1.55 : 1.12), 8);
+      ctx.strokeStyle = '#ffef78';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.arc(entity.x + entity.facing * entity.radius * 0.7, entity.y - bodyHeight * 0.42, entity.radius * 0.9, -0.7, 0.7);
+      ctx.stroke();
     }
   }
 

@@ -37,6 +37,7 @@ export class SpriteLab {
         <div class="menu-actions">
           <button data-action="play">Play / Replay</button>
           <button data-action="next">Next Frame</button>
+          <button data-action="background">Background Preview</button>
           <button data-action="report">Coverage Report</button>
         </div>
       </section>
@@ -85,6 +86,7 @@ export class SpriteLab {
           this.frameIndex += 1;
           this.draw();
         }
+        if (action === 'background') this.drawBackgroundPreview();
         if (action === 'report') printSpriteCoverageReport();
       });
     });
@@ -150,6 +152,98 @@ export class SpriteLab {
       ctx.fillStyle = '#38a3ff';
       ctx.fillRect(dx, dy, width, height);
     }
+  }
+
+  private drawBackgroundPreview(): void {
+    const canvas = this.root.querySelector<HTMLCanvasElement>('canvas');
+    const info = this.root.querySelector<HTMLPreElement>('[data-field="info"]');
+    if (!canvas || !info) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    ctx.imageSmoothingEnabled = false;
+    ctx.fillStyle = '#b87935';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#7b4926';
+    for (let x = -20; x < canvas.width; x += 70) {
+      ctx.beginPath();
+      ctx.moveTo(x, 60);
+      ctx.lineTo(x + 38, 28);
+      ctx.lineTo(x + 90, 60);
+      ctx.closePath();
+      ctx.fill();
+    }
+
+    ctx.strokeStyle = '#6d3d1d';
+    ctx.lineWidth = 12;
+    ctx.strokeRect(24, 72, canvas.width - 48, canvas.height - 96);
+
+    for (let i = 0; i < 28; i += 1) {
+      const x = 34 + ((i * 61) % (canvas.width - 68));
+      const y = 82 + ((i * 43) % (canvas.height - 118));
+      ctx.fillStyle = i % 2 === 0 ? '#f0bd70' : '#5f3419';
+      ctx.globalAlpha = 0.24;
+      ctx.fillRect(x, y, 26, 2);
+    }
+    ctx.globalAlpha = 1;
+
+    this.previewRock(ctx, 96, 178, 22);
+    this.previewRock(ctx, 314, 138, 16);
+    this.previewBush(ctx, 196, 220);
+    this.previewScrap(ctx, 268, 204);
+    this.previewBones(ctx, 134, 116);
+
+    info.textContent = JSON.stringify(
+      {
+        mode: 'background-preview',
+        status: 'procedural-placeholder',
+        layers: ['sand base', 'distant ridge', 'arena boundary', 'sand streaks', 'rocks', 'dead bushes', 'bones', 'cyber scrap'],
+        reviewFocus: ['arena readability', 'prop spacing', 'movement-safe decoration', 'desert cyberpunk identity'],
+        finalArtNeeded: ['sand tile', 'distant ridge layer', 'rock sprites', 'dead bush sprite', 'bone pile sprite', 'cyber scrap sprite'],
+      },
+      null,
+      2,
+    );
+  }
+
+  private previewRock(ctx: CanvasRenderingContext2D, x: number, y: number, radius: number): void {
+    ctx.fillStyle = '#554535';
+    ctx.beginPath();
+    ctx.ellipse(x, y, radius * 1.3, radius * 0.8, -0.24, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.fillStyle = '#74604d';
+    ctx.fillRect(x - radius * 0.45, y - radius * 0.45, radius, 5);
+  }
+
+  private previewBush(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.strokeStyle = '#5b3219';
+    ctx.lineWidth = 3;
+    for (let i = 0; i < 6; i += 1) {
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + (i - 3) * 8, y - 22 + (i % 2) * 7);
+      ctx.stroke();
+    }
+  }
+
+  private previewScrap(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.fillStyle = '#3a3e42';
+    ctx.fillRect(x - 24, y - 9, 44, 14);
+    ctx.fillStyle = '#23d5dd';
+    ctx.fillRect(x - 16, y - 4, 22, 3);
+  }
+
+  private previewBones(ctx: CanvasRenderingContext2D, x: number, y: number): void {
+    ctx.strokeStyle = '#e3d3b9';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(x - 20, y + 5);
+    ctx.lineTo(x + 18, y - 5);
+    ctx.moveTo(x - 10, y - 9);
+    ctx.lineTo(x + 22, y + 9);
+    ctx.stroke();
   }
 }
 

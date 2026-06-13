@@ -58,7 +58,7 @@ The static build is written to `dist/` and can be deployed to GitHub Pages.
 - Rock collision for player and enemies
 - Temporary attack hitboxes, hurtboxes, knockback, stun, and once-per-attack damage
 - Wave spawning and rewards between waves
-- Four character identities in data, with Cyber Ninja playable first
+- Four selectable hero identities: Cyber Ninja, Shadow Striker, Cyber Monk, and Neo Operative
 - Home screen, pause menu, game-over menu, controls panel, and placeholder settings panel
 
 ## Sprite Frame Pipeline
@@ -108,6 +108,8 @@ Mapped hero sheet crops:
 - `shadow-striker-purple`: `idle`, `ready`, `walk`, `dash`, `jab`, `cross`, `short_elbow`, `shadow_counter`, `hit_react`, `knockdown`, `recovery`
 - `cyber-monk-orange`: `idle`, `ready`, `walk`, `dash`, `palm_strike`, `spinning_kick`, `clinch_knee`, `hip_throw`, `hit_react`, `knockdown`, `recovery`
 - `neo-operative-green`: `idle`, `ready`, `walk`, `dash`, `double_leg_takedown`, `sprawl_counter`, `hip_throw`, `low_kick`, `hit_react`, `knockdown`, `recovery`
+
+Runtime frame folders have been generated from the uploaded hero sheets for all four player characters. These are real PNG frames used by the game, but they are still provisional crops and need a later transparent cleanup pass.
 
 Cyber Monkey villains are wired through the same animation state system, but still use procedural fallback art until monkey source sheets exist:
 

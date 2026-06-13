@@ -1,10 +1,12 @@
 import { spriteSourceSheets } from '../data/spriteRegistry';
+import { characters } from '../data/characters';
 
 type MenuHandlers = {
   onStart: () => void;
   onSettings: () => void;
   onControls: () => void;
   onSpriteLab: () => void;
+  onCharacterSelect: (characterId: string) => void;
   onBack: () => void;
   onResume: () => void;
   onHome: () => void;
@@ -19,7 +21,7 @@ export class MenuScreen {
     this.handlers = handlers;
   }
 
-  showHome(): void {
+  showHome(selectedCharacterId = 'cyber-ninja-blue'): void {
     this.show(`
       <section class="menu-panel home-panel">
         <div>
@@ -33,9 +35,18 @@ export class MenuScreen {
           <span>Cyber Ninja preview</span>
         </div>
         <div class="sheet-preview-list">
-          ${spriteSourceSheets
-            .slice(0, 4)
-            .map((sheet) => `<img src="${sheet.path}" alt="${sheet.id}" title="${sheet.notes}" />`)
+          ${characters
+            .map((character) => {
+              const sheet = spriteSourceSheets.find((sourceSheet) => sourceSheet.linkedSpriteIds.includes(character.id));
+              const selectedClass = character.id === selectedCharacterId ? ' selected' : '';
+              return `
+                <button class="character-card${selectedClass}" data-action="select-character" data-character-id="${character.id}" type="button">
+                  <img src="${sheet?.path ?? ''}" alt="${character.name}" />
+                  <strong>${character.name}</strong>
+                  <span>${character.identity}</span>
+                </button>
+              `;
+            })
             .join('')}
         </div>
         <div class="menu-actions">
@@ -107,16 +118,21 @@ export class MenuScreen {
     this.root.classList.remove('hidden');
     this.root.innerHTML = markup;
     this.root.querySelectorAll<HTMLButtonElement>('[data-action]').forEach((button) => {
-      button.addEventListener('click', () => this.handleAction(button.dataset.action ?? ''));
+      button.addEventListener('click', () => this.handleAction(button));
     });
   }
 
-  private handleAction(action: string): void {
+  private handleAction(button: HTMLButtonElement): void {
     if (!this.handlers) return;
+    const action = button.dataset.action ?? '';
     if (action === 'start') this.handlers.onStart();
     if (action === 'settings') this.handlers.onSettings();
     if (action === 'controls') this.handlers.onControls();
     if (action === 'sprite-lab') this.handlers.onSpriteLab();
+    if (action === 'select-character') {
+      const characterId = button.dataset.characterId;
+      if (characterId) this.handlers.onCharacterSelect(characterId);
+    }
     if (action === 'back') this.handlers.onBack();
     if (action === 'resume') this.handlers.onResume();
     if (action === 'home') this.handlers.onHome();
