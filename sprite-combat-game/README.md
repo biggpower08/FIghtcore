@@ -34,8 +34,8 @@ The static build is written to `dist/` and can be deployed to GitHub Pages.
 
 - Desert arena with sandy ground, boundary edges, rocks, dead bushes, shadows, and dash dust puffs
 - Player movement, facing direction, health, stamina, dash, and cooldown-aware attacks
-- One chasing enemy mob type with basic attacks
-- Boss wave after several normal waves with higher health and telegraphed strikes
+- Cyber Monkey Grunts and Scrappers as beginning-stage mobs
+- Cyber Monkey Alpha boss on wave 4 with higher health and telegraphed strikes
 - Rock collision for player and enemies
 - Temporary attack hitboxes, hurtboxes, knockback, stun, and once-per-attack damage
 - Wave spawning and rewards between waves
@@ -56,7 +56,22 @@ Example:
 public/sprites/frames/cyber-ninja-blue/jab/0001.png
 ```
 
-`AssetLoader` caches image paths and returns loaded frame arrays. Current rendering uses placeholder pixel shapes until real frame files exist.
+Registered beginning-stage hero IDs:
+
+- `cyber-ninja-blue`
+- `shadow-striker-purple`
+- `cyber-monk-orange`
+- `neo-operative-green`
+
+Registered beginning-stage villain IDs:
+
+- `cyber-monkey-grunt`
+- `cyber-monkey-scrapper`
+- `cyber-monkey-alpha`
+
+`AssetLoader` caches image paths and returns loaded frame arrays. The renderer tries real frames first and falls back to readable procedural silhouettes when animation folders are missing.
+
+Effect sprites can be dropped into `public/sprites/effects/`. Desert prop sprites can be dropped into `public/backgrounds/desert/`. The current MVP renders both procedurally when images are missing.
 
 ## GitHub Pages
 

@@ -1,12 +1,30 @@
 export interface WaveDefinition {
   wave: number;
-  enemyCount: number;
+  enemies: Array<{
+    enemyId: string;
+    count: number;
+  }>;
   isBoss: boolean;
+  bossId?: string;
 }
 
 export const waveDefinitions: WaveDefinition[] = [
-  { wave: 1, enemyCount: 3, isBoss: false },
-  { wave: 2, enemyCount: 5, isBoss: false },
-  { wave: 3, enemyCount: 7, isBoss: false },
-  { wave: 4, enemyCount: 1, isBoss: true },
+  { wave: 1, enemies: [{ enemyId: 'cyber-monkey-grunt', count: 3 }], isBoss: false },
+  {
+    wave: 2,
+    enemies: [
+      { enemyId: 'cyber-monkey-grunt', count: 4 },
+      { enemyId: 'cyber-monkey-scrapper', count: 1 },
+    ],
+    isBoss: false,
+  },
+  {
+    wave: 3,
+    enemies: [
+      { enemyId: 'cyber-monkey-grunt', count: 5 },
+      { enemyId: 'cyber-monkey-scrapper', count: 2 },
+    ],
+    isBoss: false,
+  },
+  { wave: 4, enemies: [], isBoss: true, bossId: 'cyber-monkey-alpha' },
 ];

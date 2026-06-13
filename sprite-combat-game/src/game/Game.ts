@@ -16,6 +16,8 @@ import { Enemy } from '../entities/Enemy';
 import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
+import { moveById } from '../data/moves';
+import { spriteRegistry } from '../data/spriteRegistry';
 import { AnimationSystem } from '../systems/AnimationSystem';
 import { type AttackHitbox, CombatSystem } from '../systems/CombatSystem';
 import { CollisionSystem } from '../systems/CollisionSystem';
@@ -39,7 +41,7 @@ export class Game {
   private readonly collision = new CollisionSystem();
   private readonly combat = new CombatSystem();
   private readonly animation = new AnimationSystem();
-  private readonly render = new RenderSystem(this.animation);
+  private readonly render = new RenderSystem(this.animation, this.assets);
   private readonly waves = new WaveSystem();
   private readonly progression = new ProgressionSystem();
   private readonly loot = new LootSystem();
@@ -78,7 +80,7 @@ export class Game {
     window.addEventListener('resize', this.resize);
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome();
-    void this.assets;
+    void this.preloadBeginningSprites();
   }
 
   start(): void {
@@ -211,9 +213,9 @@ export class Game {
   }
 
   private handleAttackInput(): void {
-    const light = this.player.equippedMoves[0];
-    const heavy = this.player.equippedMoves[1];
-    const grapple = this.player.equippedMoves[2];
+    const light = moveById.get('jab');
+    const heavy = moveById.get('cross') ?? moveById.get('roundhouse_kick');
+    const grapple = moveById.get('low_kick');
 
     const selected =
       (this.input.wasPressed('j') && light) ||
@@ -383,5 +385,13 @@ export class Game {
 
   private createPlayer(): Player {
     return new Player(characters[0], getCharacterMoves(characters[0]));
+  }
+
+  private async preloadBeginningSprites(): Promise<void> {
+    await Promise.all(
+      spriteRegistry.flatMap((sprite) =>
+        sprite.animations.map((animation) => this.assets.loadOptionalFrames(sprite.id, animation)),
+      ),
+    );
   }
 }
