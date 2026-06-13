@@ -1,5 +1,6 @@
 import { spriteSourceSheets } from '../data/spriteRegistry';
 import { characters } from '../data/characters';
+import { publicAssetUrl } from '../game/publicAssetUrl';
 
 type MenuHandlers = {
   onStart: () => void;
@@ -41,7 +42,7 @@ export class MenuScreen {
               const selectedClass = character.id === selectedCharacterId ? ' selected' : '';
               return `
                 <button class="character-card${selectedClass}" data-action="select-character" data-character-id="${character.id}" type="button">
-                  <img src="${sheet?.path ?? ''}" alt="${character.name}" />
+                  <img src="${sheet ? publicAssetUrl(sheet.path) : ''}" alt="${character.name}" />
                   <strong>${character.name}</strong>
                   <span>${character.identity}</span>
                 </button>

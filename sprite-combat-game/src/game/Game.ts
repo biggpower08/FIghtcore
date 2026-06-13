@@ -416,7 +416,7 @@ export class Game {
 
   private async preloadBeginningSprites(): Promise<void> {
     await Promise.all([
-      this.assets.loadImage(DESERT_ARENA_BACKGROUND_PATH),
+      this.assets.loadImage(DESERT_ARENA_BACKGROUND_PATH, { kind: 'background' }),
       ...spriteRegistry.flatMap((sprite) =>
         getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation)),
       ),

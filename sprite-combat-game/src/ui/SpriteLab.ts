@@ -62,6 +62,7 @@ export class SpriteLab {
           <button data-action="pause">Pause</button>
           <button data-action="next">Next Frame</button>
           <button data-action="background">Background Preview</button>
+          <button data-action="asset-report">Asset Report</button>
           <button data-action="report">Coverage Report</button>
         </div>
       </section>
@@ -110,6 +111,7 @@ export class SpriteLab {
           this.draw();
         }
         if (action === 'background') this.drawBackgroundPreview();
+        if (action === 'asset-report') this.drawAssetReport();
         if (action === 'report') printSpriteCoverageReport();
       });
     });
@@ -330,6 +332,14 @@ export class SpriteLab {
       null,
       2,
     );
+  }
+
+  private drawAssetReport(): void {
+    const info = this.root.querySelector<HTMLPreElement>('[data-field="info"]');
+    if (!info) return;
+    const report = this.assets.getAssetLoadReport();
+    this.assets.printAssetLoadReport();
+    info.textContent = JSON.stringify(report, null, 2);
   }
 
   private previewRock(ctx: CanvasRenderingContext2D, x: number, y: number, radius: number): void {

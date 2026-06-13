@@ -1,5 +1,6 @@
 import { getSpriteAnimation, type SpriteAnimationDefinition, type SpriteFrameRef, type SpriteFrameSource } from '../data/spriteAnimations';
 import { spriteSourceSheetById } from '../data/spriteRegistry';
+import { publicAssetUrl } from './publicAssetUrl';
 
 export interface ResolvedSpriteFrame {
   source: SpriteFrameSource;
@@ -27,26 +28,55 @@ export interface ResolvedSpriteAnimation {
   notes?: string;
 }
 
+export interface AssetLoadContext {
+  entityId?: string;
+  animationKey?: string;
+  frameIndex?: number;
+  kind?: string;
+}
+
+export interface AssetLoadReport {
+  totalSpriteFramesExpected: number;
+  totalSpriteFramesLoaded: number;
+  failedUrls: Array<{
+    originalPath: string;
+    resolvedUrl: string;
+    entityId?: string;
+    animationKey?: string;
+    frameIndex?: number;
+    kind?: string;
+  }>;
+  backgrounds: Array<{ path: string; loaded: boolean }>;
+  usingFallback: boolean;
+  fallbackAnimations: Array<{ entityId: string; animationKey: string; status: SpriteFrameSource }>;
+}
+
 export class AssetLoader {
   private readonly images = new Map<string, HTMLImageElement>();
   private readonly missing = new Set<string>();
+  private readonly resolvedByPath = new Map<string, string>();
+  private readonly failedLoads = new Map<string, AssetLoadContext & { originalPath: string; resolvedUrl: string }>();
   private readonly frameCache = new Map<string, HTMLImageElement[]>();
   private readonly sheetCache = new Map<string, HTMLImageElement | null>();
   private readonly animationCache = new Map<string, ResolvedSpriteAnimation>();
   private readonly warnedMissing = new Set<string>();
 
-  async loadImage(path: string): Promise<HTMLImageElement | null> {
+  async loadImage(path: string, context: AssetLoadContext = {}): Promise<HTMLImageElement | null> {
     const cached = this.images.get(path);
     if (cached) return cached;
     if (this.missing.has(path)) return null;
 
+    const resolvedUrl = publicAssetUrl(path);
+    this.resolvedByPath.set(path, resolvedUrl);
     const image = new Image();
-    image.src = path;
+    image.src = resolvedUrl;
 
     const loaded = await new Promise<boolean>((resolve) => {
       image.onload = () => resolve(true);
       image.onerror = () => {
         this.missing.add(path);
+        this.failedLoads.set(path, { ...context, originalPath: path, resolvedUrl });
+        this.warnFailedImage(path, resolvedUrl, context);
         resolve(false);
       };
     });
@@ -66,7 +96,9 @@ export class AssetLoader {
       { length: frameCount },
       (_, index) => `/sprites/frames/${character}/${move}/${padded(index + 1)}.png`,
     );
-    const frames = await Promise.all(paths.map((path) => this.loadImage(path)));
+    const frames = await Promise.all(
+      paths.map((path, index) => this.loadImage(path, { entityId: character, animationKey: move, frameIndex: index + 1, kind: 'sprite-frame' })),
+    );
     return frames.filter((frame): frame is HTMLImageElement => Boolean(frame));
   }
 
@@ -78,7 +110,12 @@ export class AssetLoader {
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
       const path = `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
-      const image = await this.loadImage(path);
+      const image = await this.loadImage(path, {
+        entityId: assetId,
+        animationKey: animation,
+        frameIndex: frame,
+        kind: 'sprite-frame',
+      });
       if (!image) {
         if (frame === 1) break;
       } else {
@@ -103,14 +140,14 @@ export class AssetLoader {
       return null;
     }
 
-    const image = await this.loadImage(sheet.path);
+    const image = await this.loadImage(sheet.path, { entityId: sheet.linkedSpriteIds.join(','), kind: `source-sheet:${sheetId}` });
     if (!image) this.warnOnce(`sheet-image:${sheetId}`, `Missing sprite sheet image: ${sheet.path}`);
     this.sheetCache.set(sheetId, image);
     return image;
   }
 
   async loadFrame(path: string): Promise<HTMLImageElement | null> {
-    const image = await this.loadImage(path);
+    const image = await this.loadImage(path, { kind: 'explicit-frame' });
     if (!image) this.warnOnce(`frame:${path}`, `Missing sprite frame: ${path}`);
     return image;
   }
@@ -132,6 +169,30 @@ export class AssetLoader {
 
   getResolvedAnimation(entityId: string, animationKey: string): ResolvedSpriteAnimation | undefined {
     return this.animationCache.get(`${entityId}:${animationKey}`);
+  }
+
+  printAssetLoadReport(): void {
+    console.table(this.getAssetLoadReport().failedUrls);
+    console.info('Asset load report', this.getAssetLoadReport());
+  }
+
+  getAssetLoadReport(): AssetLoadReport {
+    const animations = [...this.animationCache.values()];
+    return {
+      totalSpriteFramesExpected: animations.reduce((total, animation) => total + animation.frames.length, 0),
+      totalSpriteFramesLoaded: animations.reduce(
+        (total, animation) => total + animation.frames.filter((frame) => frame.image || frame.sheetImage).length,
+        0,
+      ),
+      failedUrls: [...this.failedLoads.values()].map((entry) => ({ ...entry })),
+      backgrounds: [...new Set([...this.images.keys(), ...this.failedLoads.keys()])]
+        .filter((path) => path.startsWith('/backgrounds/'))
+        .map((path) => ({ path, loaded: this.images.has(path) })),
+      usingFallback: animations.some((animation) => animation.status === 'fallback' || animation.status === 'missing'),
+      fallbackAnimations: animations
+        .filter((animation) => animation.status === 'fallback' || animation.status === 'missing')
+        .map((animation) => ({ entityId: animation.entityId, animationKey: animation.animationKey, status: animation.status })),
+    };
   }
 
   private async resolvePreSlicedFrames(
@@ -230,6 +291,21 @@ export class AssetLoader {
     if (this.warnedMissing.has(key)) return;
     this.warnedMissing.add(key);
     console.warn(message);
+  }
+
+  private warnFailedImage(originalPath: string, resolvedUrl: string, context: AssetLoadContext): void {
+    this.warnOnce(
+      `image:${resolvedUrl}`,
+      [
+        'Failed to load image:',
+        `kind=${context.kind ?? 'image'}`,
+        `entity=${context.entityId ?? 'unknown'}`,
+        `animation=${context.animationKey ?? 'unknown'}`,
+        `frame=${context.frameIndex ?? 'unknown'}`,
+        `original=${originalPath}`,
+        `resolved=${resolvedUrl}`,
+      ].join('\n'),
+    );
   }
 }
 
