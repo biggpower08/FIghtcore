@@ -163,6 +163,23 @@ body {
   font-size: 13px;
 }
 
+.sheet-preview-list {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sheet-preview-list img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top left;
+  border: 1px solid #7b5228;
+  border-radius: 6px;
+  background: #15100b;
+}
+
 .settings-panel {
   display: grid;
   gap: 14px;

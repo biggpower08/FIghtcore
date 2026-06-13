@@ -5,6 +5,21 @@ export interface SpriteRegistration {
   kind: SpriteKind;
   basePath: string;
   animations: string[];
+  sourceSheetIds?: string[];
+}
+
+export interface SpriteSourceSheet {
+  id: string;
+  path: string;
+  width: number;
+  height: number;
+  frameSize?: {
+    width: number;
+    height: number;
+  };
+  linkedSpriteIds: string[];
+  animationHints: string[];
+  notes: string;
 }
 
 export const spriteRegistry: SpriteRegistration[] = [
@@ -20,7 +35,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ]),
+  ], ['cyber-ninja-blue-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
   registerCharacter('shadow-striker-purple', 'hero', [
     'idle',
     'ready',
@@ -33,7 +48,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ]),
+  ], ['shadow-striker-purple-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
   registerCharacter('cyber-monk-orange', 'hero', [
     'idle',
     'ready',
@@ -46,7 +61,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ]),
+  ], ['cyber-monk-orange-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
   registerCharacter('neo-operative-green', 'hero', [
     'idle',
     'ready',
@@ -59,7 +74,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     'hit_react',
     'knockdown',
     'recovery',
-  ]),
+  ], ['neo-operative-green-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet']),
   registerCharacter('cyber-monkey-grunt', 'villain', [
     'idle',
     'run',
@@ -120,11 +135,130 @@ export const spriteRegistry: SpriteRegistration[] = [
 
 export const spriteRegistryById = new Map(spriteRegistry.map((sprite) => [sprite.id, sprite]));
 
-function registerCharacter(id: string, kind: 'hero' | 'villain', animations: string[]): SpriteRegistration {
+export const spriteSourceSheets: SpriteSourceSheet[] = [
+  {
+    id: 'cyber-ninja-blue-sheet',
+    path: '/sprites/sheets/cyber-ninja-blue-sheet.png',
+    width: 1448,
+    height: 1086,
+    frameSize: { width: 64, height: 64 },
+    linkedSpriteIds: ['cyber-ninja-blue'],
+    animationHints: ['idle', 'ready', 'walk', 'jab', 'cross', 'roundhouse_kick', 'low_kick', 'recovery'],
+    notes: 'Character 1 source sheet for Cyber Ninja. Use as the first candidate for exact per-frame slicing.',
+  },
+  {
+    id: 'shadow-striker-purple-sheet',
+    path: '/sprites/sheets/shadow-striker-purple-sheet.png',
+    width: 1448,
+    height: 1086,
+    frameSize: { width: 48, height: 48 },
+    linkedSpriteIds: ['shadow-striker-purple'],
+    animationHints: ['idle', 'ready', 'walk', 'short_elbow', 'hip_throw', 'recovery'],
+    notes: 'Character 2 source sheet for Shadow Striker. Includes 48x48 frame guidance and grappling placeholders.',
+  },
+  {
+    id: 'cyber-monk-orange-sheet',
+    path: '/sprites/sheets/cyber-monk-orange-sheet.png',
+    width: 1448,
+    height: 1086,
+    linkedSpriteIds: ['cyber-monk-orange'],
+    animationHints: ['idle', 'ready', 'walk', 'front_kick', 'spinning_kick', 'defensive_slip', 'punch_combo', 'recovery'],
+    notes: 'Character 3 Cyber Monk source sheet with kick, punch, defensive slip, and recovery poses.',
+  },
+  {
+    id: 'neo-operative-green-sheet',
+    path: '/sprites/sheets/neo-operative-green-sheet.png',
+    width: 1448,
+    height: 1086,
+    frameSize: { width: 48, height: 48 },
+    linkedSpriteIds: ['neo-operative-green'],
+    animationHints: ['idle', 'ready', 'walk', 'crouch', 'level_change', 'double_leg_takedown', 'ground_control', 'recovery'],
+    notes: 'Character 4 Neo Operative source sheet. Includes wrestling and ground-control source poses.',
+  },
+  {
+    id: 'hero-sparring-reference-sheet',
+    path: '/sprites/sheets/hero-sparring-reference-sheet.png',
+    width: 1448,
+    height: 1086,
+    linkedSpriteIds: ['cyber-ninja-blue', 'shadow-striker-purple', 'cyber-monk-orange', 'neo-operative-green'],
+    animationHints: ['strike_exchange', 'throw_exchange', 'kick_takedown', 'sparring'],
+    notes: 'Cross-character reference sheet for relative scale, contact poses, strikes, throws, and sparring.',
+  },
+  {
+    id: 'martial-arts-move-matrix-sheet',
+    path: '/sprites/sheets/martial-arts-move-matrix-sheet.png',
+    width: 1448,
+    height: 1086,
+    linkedSpriteIds: ['cyber-ninja-blue', 'shadow-striker-purple', 'cyber-monk-orange', 'neo-operative-green'],
+    animationHints: [
+      'collar_tie',
+      'single_leg',
+      'body_lock_trip',
+      'firemans_carry',
+      'hip_throw',
+      'sprawl',
+      'snap_down',
+      'clinch_break',
+      'jab_cross_low_kick',
+      'teep',
+      'round_kick',
+      'clinch_knee',
+      'short_elbow',
+      'counter',
+      'switch_kick',
+      'defensive_shell',
+      'ready',
+      'chain_punches',
+      'palm_strike',
+      'sweeping_kick',
+      'parry_counter',
+      'spinning_kick',
+      'slip_recovery',
+      'stance_reset',
+    ],
+    notes: 'Large move taxonomy reference sheet. Use for future crop maps and animation naming alignment.',
+  },
+  {
+    id: 'grappling-sequences-reference-sheet',
+    path: '/sprites/sheets/grappling-sequences-reference-sheet.png',
+    width: 1448,
+    height: 1086,
+    linkedSpriteIds: ['cyber-ninja-blue', 'shadow-striker-purple', 'cyber-monk-orange', 'neo-operative-green'],
+    animationHints: [
+      'over_under_pummeling',
+      'collar_tie_snap_down',
+      'single_leg_run_the_pipe',
+      'double_leg_lift',
+      'firemans_carry',
+      'hip_throw',
+      'outside_trip',
+      'arm_drag',
+      'sprawl_go_behind',
+      'guillotine_attempt',
+      'rear_naked_choke',
+      'triangle_armbar',
+      'clinch_knee',
+      'short_elbow',
+      'palm_strike_sweep',
+      'recovery',
+    ],
+    notes: 'Grappling and transition reference sheet. Good source for later throw and ground-transition animations.',
+  },
+];
+
+export const spriteSourceSheetById = new Map(spriteSourceSheets.map((sheet) => [sheet.id, sheet]));
+
+function registerCharacter(
+  id: string,
+  kind: 'hero' | 'villain',
+  animations: string[],
+  sourceSheetIds: string[] = [],
+): SpriteRegistration {
   return {
     id,
     kind,
     basePath: `/sprites/frames/${id}`,
     animations,
+    sourceSheetIds,
   };
 }

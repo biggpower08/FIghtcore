@@ -1,3 +1,5 @@
+import { spriteSourceSheets } from '../data/spriteRegistry';
+
 type MenuHandlers = {
   onStart: () => void;
   onSettings: () => void;
@@ -28,6 +30,12 @@ export class MenuScreen {
           <div class="preview-shadow"></div>
           <div class="preview-fighter"></div>
           <span>Cyber Ninja preview</span>
+        </div>
+        <div class="sheet-preview-list">
+          ${spriteSourceSheets
+            .slice(0, 4)
+            .map((sheet) => `<img src="${sheet.path}" alt="${sheet.id}" title="${sheet.notes}" />`)
+            .join('')}
         </div>
         <div class="menu-actions">
           <button data-action="start">Start Game</button>
