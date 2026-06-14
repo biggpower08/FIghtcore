@@ -157,16 +157,7 @@ export const spriteRegistry: SpriteRegistration[] = [
 export const spriteRegistryById = new Map(spriteRegistry.map((sprite) => [sprite.id, sprite]));
 
 export const spriteSourceSheets: SpriteSourceSheet[] = [
-  ...fightcoreSpriteManifest.map((entry) => ({
-    id: entry.sheetId,
-    path: entry.sheetPath,
-    width: entry.atlasWidth,
-    height: entry.atlasHeight,
-    frameSize: { width: entry.frameWidth, height: entry.frameHeight },
-    linkedSpriteIds: [entry.entityId],
-    animationHints: entry.animations.map((animation) => animation.key),
-    notes: 'Provided FIghtcore atlas prepared from raw source art with checkerboard transparency removed.',
-  })),
+  ...fightcoreSpriteSheets(),
   {
     id: 'cyber-ninja-blue-sheet',
     path: '/sprites/source-generated/cyber-ninja-sheet.png',
@@ -333,4 +324,37 @@ function heroRenderProfile(): SpriteRenderProfile {
 
 function manifestAnimations(entityId: string): string[] {
   return fightcoreSpriteManifest.find((entry) => entry.entityId === entityId)?.animations.map((animation) => animation.key) ?? [];
+}
+
+function fightcoreSpriteSheets(): SpriteSourceSheet[] {
+  return fightcoreSpriteManifest.flatMap((entry) => [
+    {
+      id: entry.sheetId,
+      path: entry.sheetPath,
+      width: entry.atlasWidth,
+      height: entry.atlasHeight,
+      frameSize: { width: entry.frameWidth, height: entry.frameHeight },
+      linkedSpriteIds: [entry.entityId],
+      animationHints: entry.animations.map((animation) => animation.key),
+      notes: 'Prepared FIghtcore atlas assembled from normalized detected frames. Runtime uses strip sheets for easier debugging.',
+    },
+    ...entry.animations.map((animation) => ({
+      id: fightcoreStripSheetId(entry.sheetId, animation.key),
+      path: fightcoreStripPath(entry.entityId, animation.stripPath),
+      width: animation.frameCount * entry.frameWidth,
+      height: entry.frameHeight,
+      frameSize: { width: entry.frameWidth, height: entry.frameHeight },
+      linkedSpriteIds: [entry.entityId],
+      animationHints: [animation.key],
+      notes: 'Prepared FIghtcore horizontal animation strip assembled from detected normalized frames.',
+    })),
+  ]);
+}
+
+export function fightcoreStripSheetId(sheetId: string, animationKey: string): string {
+  return `${sheetId}-${animationKey}-strip`;
+}
+
+function fightcoreStripPath(entityId: string, stripPath: string): string {
+  return `/assets/fightcore/sprites/${entityId}/${stripPath}`;
 }

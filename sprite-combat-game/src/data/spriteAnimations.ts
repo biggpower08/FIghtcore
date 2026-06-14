@@ -1,5 +1,5 @@
 import { fightcoreSpriteManifest, type FightcoreSpriteManifestEntry } from './fightcoreSpriteManifest';
-import { spriteRegistry, spriteSourceSheetById } from './spriteRegistry';
+import { fightcoreStripSheetId, spriteRegistry, spriteSourceSheetById } from './spriteRegistry';
 
 export type SpriteFrameSource = 'frame-png' | 'atlas-crop' | 'sheet-crop' | 'fallback' | 'missing';
 
@@ -187,7 +187,7 @@ function fightcoreManifestAnimations(): SpriteAnimationDefinition[] {
       loop: animation.loop,
       fallbackAnimation: animation.key === 'idle' ? undefined : 'idle',
       frames: manifestRow(entry, animation.row, animation.frameCount, Math.round(1000 / animation.fps)),
-      notes: `Prepared FIghtcore atlas row ${animation.row} from ${entry.sheetId}.`,
+      notes: `Prepared FIghtcore strip ${animation.stripPath} from detected normalized frames.`,
     }));
   });
 }
@@ -199,15 +199,15 @@ function manifestRow(
   durationMs: number,
 ): SpriteFrameRef[] {
   return Array.from({ length: frameCount }, (_, index) => ({
-    sheetId: entry.sheetId,
+    sheetId: fightcoreStripSheetId(entry.sheetId, entry.animations.find((animation) => animation.row === rowIndex)?.key ?? String(rowIndex)),
     x: index * entry.frameWidth,
-    y: rowIndex * entry.frameHeight,
+    y: 0,
     width: entry.frameWidth,
     height: entry.frameHeight,
     durationMs,
     anchorX: 0.5,
-    anchorY: entry.entityId === 'monkey-grunt' ? 0.88 : 0.86,
-    feetY: entry.entityId === 'monkey-grunt' ? 84 : 82,
+    anchorY: 1,
+    feetY: entry.frameHeight,
   }));
 }
 

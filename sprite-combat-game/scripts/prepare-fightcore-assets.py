@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 from collections import deque
+from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
@@ -17,6 +18,47 @@ OUTPUT_ROOT = GAME_ROOT / "public" / "assets" / "fightcore"
 QA_REPORT_PATH = OUTPUT_ROOT / "asset-prep-report.json"
 
 FRAME_SIZE = 96
+BASELINE_Y = 88
+ALPHA_THRESHOLD = 24
+ROW_GAP_MERGE_PX = 8
+FRAME_GAP_MERGE_PX = 12
+FRAME_PADDING_PX = 6
+MAX_FRAME_CONTENT_WIDTH = 92
+MAX_FRAME_CONTENT_HEIGHT = 88
+
+
+@dataclass
+class Bounds:
+    left: int
+    top: int
+    right: int
+    bottom: int
+
+    @property
+    def width(self) -> int:
+        return self.right - self.left + 1
+
+    @property
+    def height(self) -> int:
+        return self.bottom - self.top + 1
+
+    @property
+    def area(self) -> int:
+        return self.width * self.height
+
+    def expanded(self, padding: int, max_width: int, max_height: int) -> "Bounds":
+        return Bounds(
+            max(0, self.left - padding),
+            max(0, self.top - padding),
+            min(max_width - 1, self.right + padding),
+            min(max_height - 1, self.bottom + padding),
+        )
+
+
+@dataclass
+class Component:
+    bounds: Bounds
+    pixels: int
 
 SPRITE_SPECS = [
     {
@@ -31,10 +73,9 @@ SPRITE_SPECS = [
             ("jab", 3, 5, False, 16),
             ("slice", 4, 6, False, 14),
             ("high-kick", 5, 7, False, 13),
-            ("side-kick", 6, 6, False, 14),
-            ("hit-react", 7, 3, False, 12),
-            ("recovery", 8, 5, False, 8),
-            ("standup", 9, 6, False, 8),
+            ("hit-react", 6, 3, False, 12),
+            ("recovery", 7, 5, False, 8),
+            ("standup", 8, 6, False, 8),
         ],
     },
     {
@@ -90,41 +131,66 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> dict[str, Any]:
 
     source = Image.open(source_path).convert("RGBA")
     cleaned, transparent_pixels = remove_checkerboard_background(source)
-    atlas = cleaned.resize(spec["atlas_size"], Image.Resampling.LANCZOS)
+    detected_row_bounds = detect_row_bounds(cleaned, len(spec["rows"]))
+    row_bounds, row_alignment_warnings = align_row_bounds(detected_row_bounds, len(spec["rows"]), spec.get("row_fallbacks", {}))
 
     output_dir: Path = spec["output_dir"]
     output_dir.mkdir(parents=True, exist_ok=True)
+    for old_strip in output_dir.glob("*-strip.png"):
+        old_strip.unlink()
+    atlas = Image.new("RGBA", spec["atlas_size"], (0, 0, 0, 0))
     atlas_path = output_dir / "atlas.png"
-    atlas.save(atlas_path)
 
     atlas_report: dict[str, Any] = {
         "name": spec["name"],
         "source": repo_path(source_path),
         "sourceSize": list(source.size),
         "atlas": repo_path(atlas_path),
-        "atlasSize": list(atlas.size),
+        "atlasSize": list(spec["atlas_size"]),
         "transparentPixelsBeforeResize": transparent_pixels,
-        "transparentPixelsAfterResize": count_transparent_pixels(atlas),
-        "remainingBorderConnectedCheckerboardPixels": count_border_connected_checkerboard_pixels(atlas),
+        "detectedRows": [bounds_report(bounds) for bounds in row_bounds],
         "strips": [],
+        "warnings": row_alignment_warnings,
     }
 
     for animation, row_index, frame_count, loop, fps in spec["rows"]:
-        y = row_index * FRAME_SIZE
-        strip = atlas.crop((0, y, frame_count * FRAME_SIZE, y + FRAME_SIZE))
+        row_bound = row_bounds[row_index]
+        detected_frames, row_warnings = detect_frame_bounds(cleaned, row_bound, frame_count)
+        cells = []
+        frame_reports = []
+        for frame_index, frame_bound in enumerate(detected_frames):
+            cell, normalize_report = normalize_frame(cleaned, frame_bound)
+            cells.append(cell)
+            frame_reports.append({"index": frame_index, "sourceBounds": bounds_report(frame_bound), **normalize_report})
+            atlas.paste(cell, (frame_index * FRAME_SIZE, row_index * FRAME_SIZE), cell)
+
+        strip = Image.new("RGBA", (frame_count * FRAME_SIZE, FRAME_SIZE), (0, 0, 0, 0))
+        for frame_index, cell in enumerate(cells):
+            strip.paste(cell, (frame_index * FRAME_SIZE, 0), cell)
+
         strip_path = output_dir / f"{animation}-strip.png"
         strip.save(strip_path)
+        if row_warnings:
+            atlas_report["warnings"].extend(f"{animation}: {warning}" for warning in row_warnings)
         atlas_report["strips"].append(
             {
                 "animation": animation,
                 "path": repo_path(strip_path),
                 "size": list(strip.size),
                 "frameCount": frame_count,
+                "detectedFrameCount": len(detected_frames),
                 "fps": fps,
                 "loop": loop,
                 "passedDimensions": strip.size == (frame_count * FRAME_SIZE, FRAME_SIZE),
+                "rowBounds": bounds_report(row_bound),
+                "frames": frame_reports,
+                "warnings": row_warnings,
             }
         )
+
+    atlas.save(atlas_path)
+    atlas_report["transparentPixelsAfterResize"] = count_transparent_pixels(atlas)
+    atlas_report["remainingBorderConnectedCheckerboardPixels"] = count_border_connected_checkerboard_pixels(atlas)
 
     expected_size = tuple(spec["atlas_size"])
     if atlas.size != expected_size:
@@ -133,6 +199,281 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> dict[str, Any]:
         raise ValueError(f"{spec['name']} atlas has no transparent pixels after cleanup")
 
     return atlas_report
+
+
+def detect_row_bounds(image: Image.Image, expected_rows: int) -> list[Bounds]:
+    width, height = image.size
+    alpha = image.getchannel("A")
+    row_counts = []
+    for y in range(height):
+        count = 0
+        for x in range(width):
+            if alpha.getpixel((x, y)) > ALPHA_THRESHOLD:
+                count += 1
+        row_counts.append(count)
+
+    bands = bands_from_counts(row_counts, min_count=8, merge_gap=ROW_GAP_MERGE_PX)
+    bounds = [tight_bounds_for_band(image, Bounds(0, top, width - 1, bottom)) for top, bottom in bands]
+    bounds = [bound for bound in bounds if bound and bound.height >= 24 and alpha_pixels_in_bounds(image, bound) >= 180]
+
+    if len(bounds) > expected_rows:
+        bounds = sorted(bounds, key=lambda bound: (-alpha_pixels_in_bounds(image, bound), bound.top))[:expected_rows]
+
+    return sorted(bounds, key=lambda bound: bound.top)
+
+
+def align_row_bounds(detected: list[Bounds], expected_rows: int, row_fallbacks: dict[int, int]) -> tuple[list[Bounds], list[str]]:
+    warnings: list[str] = []
+    aligned = list(detected)
+
+    if len(aligned) < expected_rows:
+        warnings.append(f"detected {len(aligned)} animation rows, expected {expected_rows}; duplicating configured nearest row fallback(s)")
+        for target_index, source_index in sorted(row_fallbacks.items()):
+            if len(aligned) >= expected_rows:
+                break
+            if source_index >= len(aligned):
+                continue
+            aligned.insert(target_index, aligned[source_index])
+            warnings.append(f"row {target_index} uses detected row {source_index} as a temporary fallback")
+
+    while aligned and len(aligned) < expected_rows:
+        aligned.append(aligned[-1])
+        warnings.append(f"row {len(aligned) - 1} duplicates the previous detected row as a temporary fallback")
+
+    if len(aligned) < expected_rows:
+        raise ValueError(f"Detected {len(detected)} sprite rows; expected {expected_rows}.")
+
+    if len(aligned) > expected_rows:
+        warnings.append(f"detected {len(aligned)} animation rows after alignment, keeping first {expected_rows}")
+        aligned = aligned[:expected_rows]
+
+    return aligned, warnings
+
+
+def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: int) -> tuple[list[Bounds], list[str]]:
+    warnings: list[str] = []
+    search_bounds = row_bound.expanded(FRAME_PADDING_PX, image.width, image.height)
+    components = [
+        component
+        for component in connected_components(image, search_bounds)
+        if component.pixels >= 80 and component.bounds.width >= 6 and component.bounds.height >= 6
+    ]
+    frame_bounds = merge_frame_components(components, expected_frames)
+    frame_bounds = merge_until_expected(frame_bounds, expected_frames)
+    frame_bounds = sorted(frame_bounds, key=lambda bound: bound.left)
+
+    if len(frame_bounds) > expected_frames:
+        extras = len(frame_bounds) - expected_frames
+        warnings.append(f"detected {len(frame_bounds)} frame groups, keeping the leftmost {expected_frames} and dropping {extras} extra group(s)")
+        frame_bounds = frame_bounds[:expected_frames]
+
+    if len(frame_bounds) < expected_frames:
+        warnings.append(f"detected only {len(frame_bounds)} frame group(s), duplicating nearest valid pose to reach {expected_frames}")
+        while frame_bounds and len(frame_bounds) < expected_frames:
+            frame_bounds.append(frame_bounds[-1])
+
+    if not frame_bounds:
+        raise ValueError(f"No frames detected for row {bounds_report(row_bound)}")
+
+    return frame_bounds, warnings
+
+
+def connected_components(image: Image.Image, search_bounds: Bounds) -> list[Component]:
+    pixels = image.load()
+    width = search_bounds.width
+    height = search_bounds.height
+    visited = bytearray(width * height)
+    components: list[Component] = []
+
+    def local_index(x: int, y: int) -> int:
+        return (y - search_bounds.top) * width + (x - search_bounds.left)
+
+    for y in range(search_bounds.top, search_bounds.bottom + 1):
+        for x in range(search_bounds.left, search_bounds.right + 1):
+            index = local_index(x, y)
+            if visited[index] or pixels[x, y][3] <= ALPHA_THRESHOLD:
+                continue
+
+            queue: deque[tuple[int, int]] = deque([(x, y)])
+            visited[index] = 1
+            min_x = max_x = x
+            min_y = max_y = y
+            pixel_count = 0
+
+            while queue:
+                cx, cy = queue.popleft()
+                pixel_count += 1
+                min_x = min(min_x, cx)
+                min_y = min(min_y, cy)
+                max_x = max(max_x, cx)
+                max_y = max(max_y, cy)
+
+                for nx, ny in ((cx - 1, cy), (cx + 1, cy), (cx, cy - 1), (cx, cy + 1)):
+                    if nx < search_bounds.left or nx > search_bounds.right or ny < search_bounds.top or ny > search_bounds.bottom:
+                        continue
+                    next_index = local_index(nx, ny)
+                    if visited[next_index] or pixels[nx, ny][3] <= ALPHA_THRESHOLD:
+                        continue
+                    visited[next_index] = 1
+                    queue.append((nx, ny))
+
+            components.append(Component(Bounds(min_x, min_y, max_x, max_y), pixel_count))
+
+    return components
+
+
+def merge_frame_components(components: list[Component], expected_frames: int) -> list[Bounds]:
+    if not components:
+        return []
+
+    candidates = [component for component in components if component.pixels >= 220 or component.bounds.height >= 24]
+    if len(candidates) < expected_frames:
+        candidates = sorted(components, key=lambda component: component.pixels, reverse=True)[:expected_frames]
+
+    bounds = sorted([component.bounds for component in candidates], key=lambda bound: bound.left)
+    bounds = merge_close_bounds(bounds, max_gap=FRAME_GAP_MERGE_PX)
+
+    while len(bounds) > expected_frames:
+        gaps = [
+            (bounds[index + 1].left - bounds[index].right, index)
+            for index in range(len(bounds) - 1)
+        ]
+        _gap, index = min(gaps, key=lambda item: item[0])
+        bounds[index : index + 2] = [union_bounds(bounds[index], bounds[index + 1])]
+
+    return bounds
+
+
+def merge_close_bounds(bounds: list[Bounds], max_gap: int) -> list[Bounds]:
+    if not bounds:
+        return []
+    merged = [bounds[0]]
+    for bound in bounds[1:]:
+        previous = merged[-1]
+        gap = bound.left - previous.right
+        vertical_overlap = min(previous.bottom, bound.bottom) - max(previous.top, bound.top)
+        if gap <= max_gap and vertical_overlap >= -8:
+            merged[-1] = union_bounds(previous, bound)
+        else:
+            merged.append(bound)
+    return merged
+
+
+def union_bounds(left: Bounds, right: Bounds) -> Bounds:
+    return Bounds(
+        min(left.left, right.left),
+        min(left.top, right.top),
+        max(left.right, right.right),
+        max(left.bottom, right.bottom),
+    )
+
+
+def normalize_frame(image: Image.Image, frame_bound: Bounds) -> tuple[Image.Image, dict[str, Any]]:
+    padded = frame_bound.expanded(FRAME_PADDING_PX, image.width, image.height)
+    crop = image.crop((padded.left, padded.top, padded.right + 1, padded.bottom + 1))
+    content = tight_bounds_for_band(crop, Bounds(0, 0, crop.width - 1, crop.height - 1))
+    if content:
+        crop = crop.crop((content.left, content.top, content.right + 1, content.bottom + 1))
+
+    scale = min(1.0, MAX_FRAME_CONTENT_WIDTH / crop.width, MAX_FRAME_CONTENT_HEIGHT / crop.height)
+    if scale < 1.0:
+        crop = crop.resize((max(1, round(crop.width * scale)), max(1, round(crop.height * scale))), Image.Resampling.LANCZOS)
+
+    cell = Image.new("RGBA", (FRAME_SIZE, FRAME_SIZE), (0, 0, 0, 0))
+    x = round((FRAME_SIZE - crop.width) / 2)
+    y = BASELINE_Y - crop.height
+    if y < 0:
+        y = 0
+    cell.paste(crop, (x, y), crop)
+
+    return cell, {
+        "normalizedSize": [crop.width, crop.height],
+        "cellOffset": [x, y],
+        "baselineY": BASELINE_Y,
+        "scaledDown": scale < 1.0,
+    }
+
+
+def bands_from_counts(counts: list[int], min_count: int, merge_gap: int) -> list[tuple[int, int]]:
+    bands: list[tuple[int, int]] = []
+    start: int | None = None
+    last_active: int | None = None
+    for index, count in enumerate(counts):
+        if count >= min_count:
+            if start is None:
+                start = index
+            last_active = index
+            continue
+        if start is not None and last_active is not None and index - last_active > merge_gap:
+            bands.append((start, last_active))
+            start = None
+            last_active = None
+    if start is not None and last_active is not None:
+        bands.append((start, last_active))
+    return bands
+
+
+def tight_bounds_for_band(image: Image.Image, bounds: Bounds) -> Bounds | None:
+    pixels = image.load()
+    min_x = image.width
+    min_y = image.height
+    max_x = -1
+    max_y = -1
+    for y in range(bounds.top, bounds.bottom + 1):
+        for x in range(bounds.left, bounds.right + 1):
+            if pixels[x, y][3] <= ALPHA_THRESHOLD:
+                continue
+            min_x = min(min_x, x)
+            min_y = min(min_y, y)
+            max_x = max(max_x, x)
+            max_y = max(max_y, y)
+    if max_x < min_x or max_y < min_y:
+        return None
+    return Bounds(min_x, min_y, max_x, max_y)
+
+
+def merge_until_expected(bounds: list[Bounds], expected: int) -> list[Bounds]:
+    merged = sorted(bounds, key=lambda bound: bound.left)
+    while len(merged) > expected:
+        gaps = [
+            (merged[index + 1].left - merged[index].right, index)
+            for index in range(len(merged) - 1)
+        ]
+        gap, index = min(gaps, key=lambda item: item[0])
+        if gap > 70:
+            break
+        left = merged[index]
+        right = merged[index + 1]
+        merged[index : index + 2] = [
+            Bounds(
+                min(left.left, right.left),
+                min(left.top, right.top),
+                max(left.right, right.right),
+                max(left.bottom, right.bottom),
+            )
+        ]
+    return merged
+
+
+def alpha_pixels_in_bounds(image: Image.Image, bounds: Bounds) -> int:
+    pixels = image.load()
+    total = 0
+    for y in range(bounds.top, bounds.bottom + 1):
+        for x in range(bounds.left, bounds.right + 1):
+            if pixels[x, y][3] > ALPHA_THRESHOLD:
+                total += 1
+    return total
+
+
+def bounds_report(bounds: Bounds) -> dict[str, int]:
+    return {
+        "left": bounds.left,
+        "top": bounds.top,
+        "right": bounds.right,
+        "bottom": bounds.bottom,
+        "width": bounds.width,
+        "height": bounds.height,
+    }
 
 
 def remove_checkerboard_background(image: Image.Image) -> tuple[Image.Image, int]:

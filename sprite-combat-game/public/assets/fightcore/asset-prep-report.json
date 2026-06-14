@@ -13,8 +13,80 @@
         960
       ],
       "transparentPixelsBeforeResize": 1335073,
-      "transparentPixelsAfterResize": 677893,
-      "remainingBorderConnectedCheckerboardPixels": 0,
+      "detectedRows": [
+        {
+          "left": 52,
+          "top": 15,
+          "right": 525,
+          "bottom": 149,
+          "width": 474,
+          "height": 135
+        },
+        {
+          "left": 51,
+          "top": 181,
+          "right": 760,
+          "bottom": 310,
+          "width": 710,
+          "height": 130
+        },
+        {
+          "left": 37,
+          "top": 347,
+          "right": 678,
+          "bottom": 451,
+          "width": 642,
+          "height": 105
+        },
+        {
+          "left": 50,
+          "top": 480,
+          "right": 649,
+          "bottom": 597,
+          "width": 600,
+          "height": 118
+        },
+        {
+          "left": 43,
+          "top": 625,
+          "right": 926,
+          "bottom": 744,
+          "width": 884,
+          "height": 120
+        },
+        {
+          "left": 44,
+          "top": 768,
+          "right": 819,
+          "bottom": 891,
+          "width": 776,
+          "height": 124
+        },
+        {
+          "left": 43,
+          "top": 918,
+          "right": 386,
+          "bottom": 1030,
+          "width": 344,
+          "height": 113
+        },
+        {
+          "left": 43,
+          "top": 1054,
+          "right": 642,
+          "bottom": 1171,
+          "width": 600,
+          "height": 118
+        },
+        {
+          "left": 25,
+          "top": 1188,
+          "right": 804,
+          "bottom": 1311,
+          "width": 780,
+          "height": 124
+        }
+      ],
       "strips": [
         {
           "animation": "idle",
@@ -24,9 +96,105 @@
             96
           ],
           "frameCount": 4,
+          "detectedFrameCount": 4,
           "fps": 8,
           "loop": true,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 52,
+            "top": 15,
+            "right": 525,
+            "bottom": 149,
+            "width": 474,
+            "height": 135
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 52,
+                "top": 16,
+                "right": 124,
+                "bottom": 149,
+                "width": 73,
+                "height": 134
+              },
+              "normalizedSize": [
+                48,
+                88
+              ],
+              "cellOffset": [
+                24,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 186,
+                "top": 16,
+                "right": 257,
+                "bottom": 149,
+                "width": 72,
+                "height": 134
+              },
+              "normalizedSize": [
+                47,
+                88
+              ],
+              "cellOffset": [
+                24,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 320,
+                "top": 15,
+                "right": 390,
+                "bottom": 149,
+                "width": 71,
+                "height": 135
+              },
+              "normalizedSize": [
+                46,
+                88
+              ],
+              "cellOffset": [
+                25,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 452,
+                "top": 16,
+                "right": 525,
+                "bottom": 149,
+                "width": 74,
+                "height": 134
+              },
+              "normalizedSize": [
+                49,
+                88
+              ],
+              "cellOffset": [
+                24,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "walk",
@@ -36,9 +204,147 @@
             96
           ],
           "frameCount": 6,
+          "detectedFrameCount": 6,
           "fps": 10,
           "loop": true,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 51,
+            "top": 181,
+            "right": 760,
+            "bottom": 310,
+            "width": 710,
+            "height": 130
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 51,
+                "top": 181,
+                "right": 127,
+                "bottom": 309,
+                "width": 77,
+                "height": 129
+              },
+              "normalizedSize": [
+                53,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 174,
+                "top": 181,
+                "right": 257,
+                "bottom": 309,
+                "width": 84,
+                "height": 129
+              },
+              "normalizedSize": [
+                57,
+                88
+              ],
+              "cellOffset": [
+                20,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 316,
+                "top": 181,
+                "right": 399,
+                "bottom": 310,
+                "width": 84,
+                "height": 130
+              },
+              "normalizedSize": [
+                57,
+                88
+              ],
+              "cellOffset": [
+                20,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 455,
+                "top": 181,
+                "right": 522,
+                "bottom": 310,
+                "width": 68,
+                "height": 130
+              },
+              "normalizedSize": [
+                46,
+                88
+              ],
+              "cellOffset": [
+                25,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 572,
+                "top": 181,
+                "right": 638,
+                "bottom": 310,
+                "width": 67,
+                "height": 130
+              },
+              "normalizedSize": [
+                45,
+                88
+              ],
+              "cellOffset": [
+                26,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 690,
+                "top": 181,
+                "right": 760,
+                "bottom": 310,
+                "width": 71,
+                "height": 130
+              },
+              "normalizedSize": [
+                48,
+                88
+              ],
+              "cellOffset": [
+                24,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "dash",
@@ -48,9 +354,126 @@
             96
           ],
           "frameCount": 5,
+          "detectedFrameCount": 5,
           "fps": 14,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 37,
+            "top": 347,
+            "right": 678,
+            "bottom": 451,
+            "width": 642,
+            "height": 105
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 37,
+                "top": 348,
+                "right": 139,
+                "bottom": 451,
+                "width": 103,
+                "height": 104
+              },
+              "normalizedSize": [
+                87,
+                88
+              ],
+              "cellOffset": [
+                4,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 171,
+                "top": 347,
+                "right": 270,
+                "bottom": 451,
+                "width": 100,
+                "height": 105
+              },
+              "normalizedSize": [
+                84,
+                88
+              ],
+              "cellOffset": [
+                6,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 317,
+                "top": 349,
+                "right": 419,
+                "bottom": 451,
+                "width": 103,
+                "height": 103
+              },
+              "normalizedSize": [
+                88,
+                88
+              ],
+              "cellOffset": [
+                4,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 444,
+                "top": 358,
+                "right": 550,
+                "bottom": 451,
+                "width": 107,
+                "height": 94
+              },
+              "normalizedSize": [
+                92,
+                81
+              ],
+              "cellOffset": [
+                2,
+                7
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 592,
+                "top": 348,
+                "right": 678,
+                "bottom": 451,
+                "width": 87,
+                "height": 104
+              },
+              "normalizedSize": [
+                74,
+                88
+              ],
+              "cellOffset": [
+                11,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "jab",
@@ -60,9 +483,126 @@
             96
           ],
           "frameCount": 5,
+          "detectedFrameCount": 5,
           "fps": 16,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 50,
+            "top": 480,
+            "right": 649,
+            "bottom": 597,
+            "width": 600,
+            "height": 118
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 50,
+                "top": 480,
+                "right": 120,
+                "bottom": 597,
+                "width": 71,
+                "height": 118
+              },
+              "normalizedSize": [
+                53,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 162,
+                "top": 480,
+                "right": 259,
+                "bottom": 597,
+                "width": 98,
+                "height": 118
+              },
+              "normalizedSize": [
+                73,
+                88
+              ],
+              "cellOffset": [
+                12,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 299,
+                "top": 480,
+                "right": 407,
+                "bottom": 597,
+                "width": 109,
+                "height": 118
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 437,
+                "top": 480,
+                "right": 530,
+                "bottom": 597,
+                "width": 94,
+                "height": 118
+              },
+              "normalizedSize": [
+                75,
+                88
+              ],
+              "cellOffset": [
+                10,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 577,
+                "top": 480,
+                "right": 649,
+                "bottom": 597,
+                "width": 73,
+                "height": 118
+              },
+              "normalizedSize": [
+                54,
+                88
+              ],
+              "cellOffset": [
+                21,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "slice",
@@ -72,9 +612,147 @@
             96
           ],
           "frameCount": 6,
+          "detectedFrameCount": 6,
           "fps": 14,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 43,
+            "top": 625,
+            "right": 926,
+            "bottom": 744,
+            "width": 884,
+            "height": 120
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 43,
+                "top": 625,
+                "right": 117,
+                "bottom": 744,
+                "width": 75,
+                "height": 120
+              },
+              "normalizedSize": [
+                55,
+                88
+              ],
+              "cellOffset": [
+                20,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 163,
+                "top": 632,
+                "right": 294,
+                "bottom": 744,
+                "width": 132,
+                "height": 113
+              },
+              "normalizedSize": [
+                92,
+                78
+              ],
+              "cellOffset": [
+                2,
+                10
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 319,
+                "top": 630,
+                "right": 443,
+                "bottom": 744,
+                "width": 125,
+                "height": 115
+              },
+              "normalizedSize": [
+                92,
+                85
+              ],
+              "cellOffset": [
+                2,
+                3
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 467,
+                "top": 632,
+                "right": 577,
+                "bottom": 744,
+                "width": 111,
+                "height": 113
+              },
+              "normalizedSize": [
+                86,
+                88
+              ],
+              "cellOffset": [
+                5,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 598,
+                "top": 630,
+                "right": 810,
+                "bottom": 744,
+                "width": 213,
+                "height": 115
+              },
+              "normalizedSize": [
+                92,
+                50
+              ],
+              "cellOffset": [
+                2,
+                38
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 843,
+                "top": 632,
+                "right": 926,
+                "bottom": 744,
+                "width": 84,
+                "height": 113
+              },
+              "normalizedSize": [
+                65,
+                88
+              ],
+              "cellOffset": [
+                16,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "high-kick",
@@ -84,21 +762,170 @@
             96
           ],
           "frameCount": 7,
+          "detectedFrameCount": 7,
           "fps": 13,
           "loop": false,
-          "passedDimensions": true
-        },
-        {
-          "animation": "side-kick",
-          "path": "public/assets/fightcore/sprites/cyber-ninja/side-kick-strip.png",
-          "size": [
-            576,
-            96
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 44,
+            "top": 768,
+            "right": 819,
+            "bottom": 891,
+            "width": 776,
+            "height": 124
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 44,
+                "top": 769,
+                "right": 142,
+                "bottom": 891,
+                "width": 99,
+                "height": 123
+              },
+              "normalizedSize": [
+                71,
+                88
+              ],
+              "cellOffset": [
+                12,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 176,
+                "top": 769,
+                "right": 277,
+                "bottom": 890,
+                "width": 102,
+                "height": 122
+              },
+              "normalizedSize": [
+                74,
+                88
+              ],
+              "cellOffset": [
+                11,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 319,
+                "top": 770,
+                "right": 425,
+                "bottom": 891,
+                "width": 107,
+                "height": 122
+              },
+              "normalizedSize": [
+                77,
+                88
+              ],
+              "cellOffset": [
+                10,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 461,
+                "top": 767,
+                "right": 569,
+                "bottom": 890,
+                "width": 109,
+                "height": 124
+              },
+              "normalizedSize": [
+                82,
+                88
+              ],
+              "cellOffset": [
+                7,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 628,
+                "top": 769,
+                "right": 734,
+                "bottom": 890,
+                "width": 107,
+                "height": 122
+              },
+              "normalizedSize": [
+                77,
+                88
+              ],
+              "cellOffset": [
+                10,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 749,
+                "top": 771,
+                "right": 819,
+                "bottom": 890,
+                "width": 71,
+                "height": 120
+              },
+              "normalizedSize": [
+                52,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 6,
+              "sourceBounds": {
+                "left": 749,
+                "top": 771,
+                "right": 819,
+                "bottom": 890,
+                "width": 71,
+                "height": 120
+              },
+              "normalizedSize": [
+                52,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
           ],
-          "frameCount": 6,
-          "fps": 14,
-          "loop": false,
-          "passedDimensions": true
+          "warnings": [
+            "detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+          ]
         },
         {
           "animation": "hit-react",
@@ -108,9 +935,84 @@
             96
           ],
           "frameCount": 3,
+          "detectedFrameCount": 3,
           "fps": 12,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 43,
+            "top": 918,
+            "right": 386,
+            "bottom": 1030,
+            "width": 344,
+            "height": 113
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 49,
+                "top": 918,
+                "right": 137,
+                "bottom": 1030,
+                "width": 89,
+                "height": 113
+              },
+              "normalizedSize": [
+                74,
+                88
+              ],
+              "cellOffset": [
+                11,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 178,
+                "top": 921,
+                "right": 259,
+                "bottom": 1030,
+                "width": 82,
+                "height": 110
+              },
+              "normalizedSize": [
+                70,
+                88
+              ],
+              "cellOffset": [
+                13,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 316,
+                "top": 924,
+                "right": 386,
+                "bottom": 1030,
+                "width": 71,
+                "height": 107
+              },
+              "normalizedSize": [
+                58,
+                88
+              ],
+              "cellOffset": [
+                19,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "recovery",
@@ -120,9 +1022,126 @@
             96
           ],
           "frameCount": 5,
+          "detectedFrameCount": 5,
           "fps": 8,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 43,
+            "top": 1054,
+            "right": 642,
+            "bottom": 1171,
+            "width": 600,
+            "height": 118
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 43,
+                "top": 1067,
+                "right": 114,
+                "bottom": 1171,
+                "width": 72,
+                "height": 105
+              },
+              "normalizedSize": [
+                60,
+                88
+              ],
+              "cellOffset": [
+                18,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 184,
+                "top": 1054,
+                "right": 252,
+                "bottom": 1171,
+                "width": 69,
+                "height": 118
+              },
+              "normalizedSize": [
+                51,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 322,
+                "top": 1057,
+                "right": 393,
+                "bottom": 1171,
+                "width": 72,
+                "height": 115
+              },
+              "normalizedSize": [
+                55,
+                88
+              ],
+              "cellOffset": [
+                20,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 461,
+                "top": 1056,
+                "right": 528,
+                "bottom": 1171,
+                "width": 68,
+                "height": 116
+              },
+              "normalizedSize": [
+                52,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 570,
+                "top": 1054,
+                "right": 642,
+                "bottom": 1171,
+                "width": 73,
+                "height": 118
+              },
+              "normalizedSize": [
+                54,
+                88
+              ],
+              "cellOffset": [
+                21,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "standup",
@@ -132,11 +1151,154 @@
             96
           ],
           "frameCount": 6,
+          "detectedFrameCount": 6,
           "fps": 8,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 25,
+            "top": 1188,
+            "right": 804,
+            "bottom": 1311,
+            "width": 780,
+            "height": 124
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 25,
+                "top": 1271,
+                "right": 167,
+                "bottom": 1311,
+                "width": 143,
+                "height": 41
+              },
+              "normalizedSize": [
+                92,
+                26
+              ],
+              "cellOffset": [
+                2,
+                62
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 205,
+                "top": 1245,
+                "right": 288,
+                "bottom": 1311,
+                "width": 84,
+                "height": 67
+              },
+              "normalizedSize": [
+                84,
+                67
+              ],
+              "cellOffset": [
+                6,
+                21
+              ],
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 336,
+                "top": 1216,
+                "right": 429,
+                "bottom": 1311,
+                "width": 94,
+                "height": 96
+              },
+              "normalizedSize": [
+                86,
+                88
+              ],
+              "cellOffset": [
+                5,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 482,
+                "top": 1205,
+                "right": 559,
+                "bottom": 1311,
+                "width": 78,
+                "height": 107
+              },
+              "normalizedSize": [
+                64,
+                88
+              ],
+              "cellOffset": [
+                16,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 625,
+                "top": 1193,
+                "right": 694,
+                "bottom": 1311,
+                "width": 70,
+                "height": 119
+              },
+              "normalizedSize": [
+                52,
+                88
+              ],
+              "cellOffset": [
+                22,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 736,
+                "top": 1188,
+                "right": 804,
+                "bottom": 1311,
+                "width": 69,
+                "height": 124
+              },
+              "normalizedSize": [
+                49,
+                88
+              ],
+              "cellOffset": [
+                24,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         }
-      ]
+      ],
+      "warnings": [
+        "high-kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+      ],
+      "transparentPixelsAfterResize": 691530,
+      "remainingBorderConnectedCheckerboardPixels": 0
     },
     {
       "name": "Monkey Grunt",
@@ -151,8 +1313,72 @@
         768
       ],
       "transparentPixelsBeforeResize": 1295058,
-      "transparentPixelsAfterResize": 524385,
-      "remainingBorderConnectedCheckerboardPixels": 0,
+      "detectedRows": [
+        {
+          "left": 52,
+          "top": 48,
+          "right": 613,
+          "bottom": 170,
+          "width": 562,
+          "height": 123
+        },
+        {
+          "left": 47,
+          "top": 204,
+          "right": 935,
+          "bottom": 323,
+          "width": 889,
+          "height": 120
+        },
+        {
+          "left": 39,
+          "top": 353,
+          "right": 763,
+          "bottom": 471,
+          "width": 725,
+          "height": 119
+        },
+        {
+          "left": 39,
+          "top": 502,
+          "right": 751,
+          "bottom": 619,
+          "width": 713,
+          "height": 118
+        },
+        {
+          "left": 43,
+          "top": 646,
+          "right": 958,
+          "bottom": 763,
+          "width": 916,
+          "height": 118
+        },
+        {
+          "left": 52,
+          "top": 790,
+          "right": 445,
+          "bottom": 906,
+          "width": 394,
+          "height": 117
+        },
+        {
+          "left": 58,
+          "top": 933,
+          "right": 745,
+          "bottom": 1025,
+          "width": 688,
+          "height": 93
+        },
+        {
+          "left": 46,
+          "top": 1087,
+          "right": 1248,
+          "bottom": 1145,
+          "width": 1203,
+          "height": 59
+        }
+      ],
       "strips": [
         {
           "animation": "idle",
@@ -162,9 +1388,105 @@
             96
           ],
           "frameCount": 4,
+          "detectedFrameCount": 4,
           "fps": 8,
           "loop": true,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 52,
+            "top": 48,
+            "right": 613,
+            "bottom": 170,
+            "width": 562,
+            "height": 123
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 52,
+                "top": 47,
+                "right": 165,
+                "bottom": 170,
+                "width": 114,
+                "height": 124
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 205,
+                "top": 48,
+                "right": 309,
+                "bottom": 170,
+                "width": 105,
+                "height": 123
+              },
+              "normalizedSize": [
+                75,
+                88
+              ],
+              "cellOffset": [
+                10,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 358,
+                "top": 48,
+                "right": 468,
+                "bottom": 170,
+                "width": 111,
+                "height": 123
+              },
+              "normalizedSize": [
+                79,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 506,
+                "top": 48,
+                "right": 613,
+                "bottom": 170,
+                "width": 108,
+                "height": 123
+              },
+              "normalizedSize": [
+                77,
+                88
+              ],
+              "cellOffset": [
+                10,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "run",
@@ -174,9 +1496,147 @@
             96
           ],
           "frameCount": 6,
+          "detectedFrameCount": 6,
           "fps": 12,
           "loop": true,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 47,
+            "top": 204,
+            "right": 935,
+            "bottom": 323,
+            "width": 889,
+            "height": 120
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 47,
+                "top": 204,
+                "right": 171,
+                "bottom": 320,
+                "width": 125,
+                "height": 117
+              },
+              "normalizedSize": [
+                92,
+                86
+              ],
+              "cellOffset": [
+                2,
+                2
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 212,
+                "top": 205,
+                "right": 335,
+                "bottom": 319,
+                "width": 124,
+                "height": 115
+              },
+              "normalizedSize": [
+                92,
+                85
+              ],
+              "cellOffset": [
+                2,
+                3
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 362,
+                "top": 205,
+                "right": 501,
+                "bottom": 324,
+                "width": 140,
+                "height": 120
+              },
+              "normalizedSize": [
+                92,
+                79
+              ],
+              "cellOffset": [
+                2,
+                9
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 530,
+                "top": 205,
+                "right": 657,
+                "bottom": 319,
+                "width": 128,
+                "height": 115
+              },
+              "normalizedSize": [
+                92,
+                83
+              ],
+              "cellOffset": [
+                2,
+                5
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 679,
+                "top": 203,
+                "right": 801,
+                "bottom": 324,
+                "width": 123,
+                "height": 122
+              },
+              "normalizedSize": [
+                89,
+                88
+              ],
+              "cellOffset": [
+                4,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 822,
+                "top": 202,
+                "right": 935,
+                "bottom": 319,
+                "width": 114,
+                "height": 118
+              },
+              "normalizedSize": [
+                85,
+                88
+              ],
+              "cellOffset": [
+                6,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "jab",
@@ -186,9 +1646,128 @@
             96
           ],
           "frameCount": 5,
+          "detectedFrameCount": 5,
           "fps": 14,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 39,
+            "top": 353,
+            "right": 763,
+            "bottom": 471,
+            "width": 725,
+            "height": 119
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 39,
+                "top": 351,
+                "right": 151,
+                "bottom": 472,
+                "width": 113,
+                "height": 122
+              },
+              "normalizedSize": [
+                82,
+                88
+              ],
+              "cellOffset": [
+                7,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 178,
+                "top": 356,
+                "right": 326,
+                "bottom": 471,
+                "width": 149,
+                "height": 116
+              },
+              "normalizedSize": [
+                92,
+                72
+              ],
+              "cellOffset": [
+                2,
+                16
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 357,
+                "top": 352,
+                "right": 625,
+                "bottom": 471,
+                "width": 269,
+                "height": 120
+              },
+              "normalizedSize": [
+                92,
+                41
+              ],
+              "cellOffset": [
+                2,
+                47
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 655,
+                "top": 353,
+                "right": 763,
+                "bottom": 471,
+                "width": 109,
+                "height": 119
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 655,
+                "top": 353,
+                "right": 763,
+                "bottom": 471,
+                "width": 109,
+                "height": 119
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": [
+            "detected only 4 frame group(s), duplicating nearest valid pose to reach 5"
+          ]
         },
         {
           "animation": "cross",
@@ -198,9 +1777,126 @@
             96
           ],
           "frameCount": 5,
+          "detectedFrameCount": 5,
           "fps": 14,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 39,
+            "top": 502,
+            "right": 751,
+            "bottom": 619,
+            "width": 713,
+            "height": 118
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 39,
+                "top": 501,
+                "right": 145,
+                "bottom": 619,
+                "width": 107,
+                "height": 119
+              },
+              "normalizedSize": [
+                79,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 185,
+                "top": 502,
+                "right": 292,
+                "bottom": 618,
+                "width": 108,
+                "height": 117
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 346,
+                "top": 502,
+                "right": 493,
+                "bottom": 618,
+                "width": 148,
+                "height": 117
+              },
+              "normalizedSize": [
+                92,
+                71
+              ],
+              "cellOffset": [
+                2,
+                17
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 514,
+                "top": 502,
+                "right": 607,
+                "bottom": 619,
+                "width": 94,
+                "height": 118
+              },
+              "normalizedSize": [
+                70,
+                88
+              ],
+              "cellOffset": [
+                13,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 642,
+                "top": 501,
+                "right": 751,
+                "bottom": 619,
+                "width": 110,
+                "height": 119
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "grab",
@@ -210,9 +1906,147 @@
             96
           ],
           "frameCount": 6,
+          "detectedFrameCount": 6,
           "fps": 12,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 43,
+            "top": 646,
+            "right": 958,
+            "bottom": 763,
+            "width": 916,
+            "height": 118
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 43,
+                "top": 645,
+                "right": 167,
+                "bottom": 763,
+                "width": 125,
+                "height": 119
+              },
+              "normalizedSize": [
+                92,
+                88
+              ],
+              "cellOffset": [
+                2,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 202,
+                "top": 646,
+                "right": 350,
+                "bottom": 763,
+                "width": 149,
+                "height": 118
+              },
+              "normalizedSize": [
+                92,
+                73
+              ],
+              "cellOffset": [
+                2,
+                15
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 367,
+                "top": 647,
+                "right": 519,
+                "bottom": 763,
+                "width": 153,
+                "height": 117
+              },
+              "normalizedSize": [
+                92,
+                70
+              ],
+              "cellOffset": [
+                2,
+                18
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 534,
+                "top": 645,
+                "right": 672,
+                "bottom": 763,
+                "width": 139,
+                "height": 119
+              },
+              "normalizedSize": [
+                92,
+                79
+              ],
+              "cellOffset": [
+                2,
+                9
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 695,
+                "top": 646,
+                "right": 829,
+                "bottom": 763,
+                "width": 135,
+                "height": 118
+              },
+              "normalizedSize": [
+                92,
+                80
+              ],
+              "cellOffset": [
+                2,
+                8
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 851,
+                "top": 646,
+                "right": 958,
+                "bottom": 763,
+                "width": 108,
+                "height": 118
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "hit-react",
@@ -222,9 +2056,84 @@
             96
           ],
           "frameCount": 3,
+          "detectedFrameCount": 3,
           "fps": 12,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 52,
+            "top": 790,
+            "right": 445,
+            "bottom": 906,
+            "width": 394,
+            "height": 117
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 52,
+                "top": 789,
+                "right": 159,
+                "bottom": 906,
+                "width": 108,
+                "height": 118
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "cellOffset": [
+                8,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 209,
+                "top": 797,
+                "right": 323,
+                "bottom": 906,
+                "width": 115,
+                "height": 110
+              },
+              "normalizedSize": [
+                92,
+                88
+              ],
+              "cellOffset": [
+                2,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 357,
+                "top": 798,
+                "right": 445,
+                "bottom": 906,
+                "width": 89,
+                "height": 109
+              },
+              "normalizedSize": [
+                72,
+                88
+              ],
+              "cellOffset": [
+                12,
+                0
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": []
         },
         {
           "animation": "knockdown",
@@ -234,9 +2143,128 @@
             96
           ],
           "frameCount": 5,
+          "detectedFrameCount": 5,
           "fps": 8,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 58,
+            "top": 933,
+            "right": 745,
+            "bottom": 1025,
+            "width": 688,
+            "height": 93
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 58,
+                "top": 931,
+                "right": 168,
+                "bottom": 1025,
+                "width": 111,
+                "height": 95
+              },
+              "normalizedSize": [
+                92,
+                79
+              ],
+              "cellOffset": [
+                2,
+                9
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 204,
+                "top": 952,
+                "right": 367,
+                "bottom": 1019,
+                "width": 164,
+                "height": 68
+              },
+              "normalizedSize": [
+                92,
+                38
+              ],
+              "cellOffset": [
+                2,
+                50
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 406,
+                "top": 952,
+                "right": 543,
+                "bottom": 1021,
+                "width": 138,
+                "height": 70
+              },
+              "normalizedSize": [
+                92,
+                47
+              ],
+              "cellOffset": [
+                2,
+                41
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 588,
+                "top": 971,
+                "right": 736,
+                "bottom": 1024,
+                "width": 149,
+                "height": 54
+              },
+              "normalizedSize": [
+                92,
+                36
+              ],
+              "cellOffset": [
+                2,
+                52
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 588,
+                "top": 971,
+                "right": 736,
+                "bottom": 1024,
+                "width": 149,
+                "height": 54
+              },
+              "normalizedSize": [
+                92,
+                36
+              ],
+              "cellOffset": [
+                2,
+                52
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": [
+            "detected only 4 frame group(s), duplicating nearest valid pose to reach 5"
+          ]
         },
         {
           "animation": "death",
@@ -246,11 +2274,179 @@
             96
           ],
           "frameCount": 7,
+          "detectedFrameCount": 7,
           "fps": 8,
           "loop": false,
-          "passedDimensions": true
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 46,
+            "top": 1087,
+            "right": 1248,
+            "bottom": 1145,
+            "width": 1203,
+            "height": 59
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 46,
+                "top": 1087,
+                "right": 195,
+                "bottom": 1142,
+                "width": 150,
+                "height": 56
+              },
+              "normalizedSize": [
+                92,
+                38
+              ],
+              "cellOffset": [
+                2,
+                50
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 247,
+                "top": 1093,
+                "right": 392,
+                "bottom": 1144,
+                "width": 146,
+                "height": 52
+              },
+              "normalizedSize": [
+                92,
+                37
+              ],
+              "cellOffset": [
+                2,
+                51
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 447,
+                "top": 1093,
+                "right": 596,
+                "bottom": 1144,
+                "width": 150,
+                "height": 52
+              },
+              "normalizedSize": [
+                92,
+                34
+              ],
+              "cellOffset": [
+                2,
+                54
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 647,
+                "top": 1094,
+                "right": 799,
+                "bottom": 1144,
+                "width": 153,
+                "height": 51
+              },
+              "normalizedSize": [
+                92,
+                31
+              ],
+              "cellOffset": [
+                2,
+                57
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 843,
+                "top": 1097,
+                "right": 1003,
+                "bottom": 1145,
+                "width": 161,
+                "height": 49
+              },
+              "normalizedSize": [
+                92,
+                28
+              ],
+              "cellOffset": [
+                2,
+                60
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 1067,
+                "top": 1102,
+                "right": 1248,
+                "bottom": 1144,
+                "width": 182,
+                "height": 43
+              },
+              "normalizedSize": [
+                92,
+                22
+              ],
+              "cellOffset": [
+                2,
+                66
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 6,
+              "sourceBounds": {
+                "left": 1067,
+                "top": 1102,
+                "right": 1248,
+                "bottom": 1144,
+                "width": 182,
+                "height": 43
+              },
+              "normalizedSize": [
+                92,
+                22
+              ],
+              "cellOffset": [
+                2,
+                66
+              ],
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "warnings": [
+            "detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+          ]
         }
-      ]
+      ],
+      "warnings": [
+        "jab: detected only 4 frame group(s), duplicating nearest valid pose to reach 5",
+        "knockdown: detected only 4 frame group(s), duplicating nearest valid pose to reach 5",
+        "death: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+      ],
+      "transparentPixelsAfterResize": 523319,
+      "remainingBorderConnectedCheckerboardPixels": 0
     }
   ],
   "background": {

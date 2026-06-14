@@ -18,6 +18,7 @@ export interface DustPuff {
 }
 
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
+const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 
 export class RenderSystem {
   constructor(
@@ -304,6 +305,40 @@ export class RenderSystem {
     ctx.scale(entity.facing, 1);
     this.drawFrameImage(ctx, frame, dx, dy, width, height);
     ctx.restore();
+
+    if (shouldDrawSpriteDebug()) {
+      this.drawSpriteDebug(ctx, entity, animation, frame, index, dx, dy, width, height);
+    }
+  }
+
+  private drawSpriteDebug(
+    ctx: CanvasRenderingContext2D,
+    entity: Entity,
+    animation: ResolvedSpriteAnimation,
+    frame: ResolvedSpriteFrame,
+    frameIndex: number,
+    dx: number,
+    dy: number,
+    width: number,
+    height: number,
+  ): void {
+    const drawX = entity.x + dx;
+    const drawY = entity.y + dy;
+    ctx.save();
+    ctx.strokeStyle = '#23d5dd';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(drawX, drawY, width, height);
+    ctx.fillStyle = '#ffef78';
+    ctx.fillRect(entity.x - 2, entity.y - 2, 4, 4);
+    ctx.fillStyle = '#101820';
+    ctx.globalAlpha = 0.78;
+    ctx.fillRect(drawX, drawY - 38, 260, 34);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = '#f7f2d5';
+    ctx.font = '12px monospace';
+    ctx.fillText(`${animation.entityId}:${animation.animationKey} frame ${frameIndex + 1}/${animation.frames.length}`, drawX + 4, drawY - 22);
+    ctx.fillText(`src ${frame.x ?? 0},${frame.y ?? 0},${frame.width ?? frame.image?.width ?? 0}x${frame.height ?? frame.image?.height ?? 0}`, drawX + 4, drawY - 8);
+    ctx.restore();
   }
 
   private drawFrameImage(
@@ -399,4 +434,8 @@ export class RenderSystem {
     ctx.fill();
     ctx.globalAlpha = 1;
   }
+}
+
+function shouldDrawSpriteDebug(): boolean {
+  return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_SPRITE_BOXES_PARAM);
 }

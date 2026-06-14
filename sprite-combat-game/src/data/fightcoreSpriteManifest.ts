@@ -1,5 +1,6 @@
 export interface FightcoreAnimationManifestEntry {
   key: string;
+  stripPath: string;
   row: number;
   frameCount: number;
   fps: number;
@@ -37,10 +38,9 @@ export const fightcoreSpriteManifest: FightcoreSpriteManifestEntry[] = [
       animation('jab', 3, 5, false, 16),
       animation('slice', 4, 6, false, 14),
       animation('high_kick', 5, 7, false, 13),
-      animation('side_kick', 6, 6, false, 14),
-      animation('hit_react', 7, 3, false, 12),
-      animation('recovery', 8, 5, false, 8),
-      animation('standup', 9, 6, false, 8),
+      animation('hit_react', 6, 3, false, 12),
+      animation('recovery', 7, 5, false, 8),
+      animation('standup', 8, 6, false, 8),
     ],
   },
   {
@@ -73,5 +73,5 @@ function animation(
   loop: boolean,
   fps: number,
 ): FightcoreAnimationManifestEntry {
-  return { key, row, frameCount, loop, fps };
+  return { key, stripPath: `${key.replace(/_/g, '-')}-strip.png`, row, frameCount, loop, fps };
 }
