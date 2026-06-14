@@ -32,7 +32,7 @@ const loadouts: CharacterLoadout[] = [
       slot('H', 'jab'),
       slot('J', 'jab'),
       slot('K', 'slice'),
-      slot('L', 'slice'),
+      slot('L', 'side_kick'),
     ],
     stats: { maxHealth: 86, speed: 304, stamina: 104, damageMultiplier: 1 },
   },

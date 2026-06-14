@@ -1,4 +1,5 @@
-import { fightcoreSpriteManifest, type FightcoreSpriteManifestEntry } from './fightcoreSpriteManifest';
+import { fightcoreSpriteManifest } from './fightcoreSpriteManifest';
+import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetadata';
 import { fightcoreStripSheetId, spriteRegistry, spriteSourceSheetById } from './spriteRegistry';
 
 export type SpriteFrameSource = 'frame-png' | 'atlas-crop' | 'sheet-crop' | 'fallback' | 'missing';
@@ -181,34 +182,32 @@ function fallbackOnly(entityId: string, animationKeys: string[]): SpriteAnimatio
 
 function fightcoreManifestAnimations(): SpriteAnimationDefinition[] {
   return fightcoreSpriteManifest.flatMap((entry) => {
-    return entry.animations.map((animation) => ({
-      entityId: entry.entityId,
-      animationKey: animation.key,
-      loop: animation.loop,
-      fallbackAnimation: animation.key === 'idle' ? undefined : 'idle',
-      frames: manifestRow(entry, animation.row, animation.frameCount, Math.round(1000 / animation.fps)),
-      notes: `Prepared FIghtcore strip ${animation.stripPath} from detected normalized frames.`,
-    }));
+    return entry.animations.map((animation) => {
+      const metadata = fightcoreGeneratedFrameMetadata.find(
+        (generated) => generated.entityId === entry.entityId && generated.animationKey === animation.key,
+      );
+      const durationMs = Math.round(1000 / animation.fps);
+      return {
+        entityId: entry.entityId,
+        animationKey: animation.key,
+        loop: metadata?.loop ?? animation.loop,
+        fallbackAnimation: animation.key === 'idle' ? undefined : 'idle',
+        frames:
+          metadata?.frames.map((frame) => ({
+            sheetId: fightcoreStripSheetId(entry.sheetId, animation.key),
+            x: frame.x,
+            y: 0,
+            width: frame.w,
+            height: frame.h,
+            durationMs,
+            anchorX: frame.anchorX / Math.max(1, frame.w),
+            anchorY: frame.anchorY / Math.max(1, frame.h),
+            feetY: frame.anchorY,
+          })) ?? [],
+        notes: `Prepared FIghtcore strip ${metadata?.stripPath ?? animation.stripPath} from detected variable-width frames.`,
+      };
+    });
   });
-}
-
-function manifestRow(
-  entry: FightcoreSpriteManifestEntry,
-  rowIndex: number,
-  frameCount: number,
-  durationMs: number,
-): SpriteFrameRef[] {
-  return Array.from({ length: frameCount }, (_, index) => ({
-    sheetId: fightcoreStripSheetId(entry.sheetId, entry.animations.find((animation) => animation.row === rowIndex)?.key ?? String(rowIndex)),
-    x: index * entry.frameWidth,
-    y: 0,
-    width: entry.frameWidth,
-    height: entry.frameHeight,
-    durationMs,
-    anchorX: 0.5,
-    anchorY: 1,
-    feetY: entry.frameHeight,
-  }));
 }
 
 function row(

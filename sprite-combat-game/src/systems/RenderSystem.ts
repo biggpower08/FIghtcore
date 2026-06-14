@@ -295,8 +295,9 @@ export class RenderSystem {
     const sourceHeight = frame.height ?? frame.image?.height ?? 64;
     const profileScale = spriteRegistryById.get(this.getAssetId(entity))?.render?.scale ?? 1;
     const scale = profileScale * (entity instanceof Boss ? 1.08 : 1);
-    const width = Math.max(entity.radius * 3.2, sourceWidth * scale);
-    const height = width * (sourceHeight / sourceWidth);
+    const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
+    const height = usesPreparedFightcoreStrip ? sourceHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
+    const width = usesPreparedFightcoreStrip ? sourceWidth * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
     const dx = -width * frame.anchorX;
     const dy = -height * frame.anchorY;
 

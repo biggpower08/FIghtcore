@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Prepare provided Fightcore source art for the browser game."""
+"""Prepare provided Fightcore source art for the browser game.
+
+The source images are AI-produced sprite sheets, not guaranteed grid atlases.
+This script detects rows and frame groups from foreground occupancy, then emits
+variable-width animation strips plus exact per-frame metadata for the renderer.
+"""
 
 from __future__ import annotations
 
@@ -16,14 +21,14 @@ GAME_ROOT = Path(__file__).resolve().parents[1]
 RAW_ROOT = GAME_ROOT / "tools" / "raw-fightcore-assets"
 OUTPUT_ROOT = GAME_ROOT / "public" / "assets" / "fightcore"
 QA_REPORT_PATH = OUTPUT_ROOT / "asset-prep-report.json"
+GENERATED_METADATA_TS = GAME_ROOT / "src" / "data" / "fightcoreGeneratedFrameMetadata.ts"
 
-FRAME_SIZE = 96
+NORMALIZED_FRAME_HEIGHT = 96
 BASELINE_Y = 88
 ALPHA_THRESHOLD = 24
 ROW_GAP_MERGE_PX = 8
 FRAME_GAP_MERGE_PX = 12
 FRAME_PADDING_PX = 6
-MAX_FRAME_CONTENT_WIDTH = 92
 MAX_FRAME_CONTENT_HEIGHT = 88
 
 
@@ -65,7 +70,9 @@ SPRITE_SPECS = [
         "name": "Cyber Ninja",
         "source": "Cyber.ninja.png.png",
         "output_dir": OUTPUT_ROOT / "sprites" / "cyber-ninja",
-        "atlas_size": (864, 960),
+        "entity_id": "cyber-ninja",
+        "sheet_id": "fightcore-cyber-ninja-atlas",
+        "row_fallbacks": {6: 5},
         "rows": [
             ("idle", 0, 4, True, 8),
             ("walk", 1, 6, True, 10),
@@ -73,16 +80,18 @@ SPRITE_SPECS = [
             ("jab", 3, 5, False, 16),
             ("slice", 4, 6, False, 14),
             ("high-kick", 5, 7, False, 13),
-            ("hit-react", 6, 3, False, 12),
-            ("recovery", 7, 5, False, 8),
-            ("standup", 8, 6, False, 8),
+            ("side-kick", 6, 7, False, 13),
+            ("hit-react", 7, 3, False, 12),
+            ("recovery", 8, 5, False, 8),
+            ("standup", 9, 6, False, 8),
         ],
     },
     {
         "name": "Monkey Grunt",
         "source": "monkey.grunt.png.png",
         "output_dir": OUTPUT_ROOT / "sprites" / "monkey-grunt",
-        "atlas_size": (864, 768),
+        "entity_id": "monkey-grunt",
+        "sheet_id": "fightcore-monkey-grunt-atlas",
         "rows": [
             ("idle", 0, 4, True, 8),
             ("run", 1, 6, True, 12),
@@ -99,10 +108,13 @@ SPRITE_SPECS = [
 
 def main() -> int:
     report: dict[str, Any] = {"sprites": [], "background": {}, "errors": []}
+    generated_metadata: list[dict[str, Any]] = []
 
     for spec in SPRITE_SPECS:
         try:
-            report["sprites"].append(prepare_sprite_sheet(spec))
+            sprite_report, sprite_metadata = prepare_sprite_sheet(spec)
+            report["sprites"].append(sprite_report)
+            generated_metadata.extend(sprite_metadata)
         except Exception as exc:  # noqa: BLE001 - command-line asset prep should report all failures.
             report["errors"].append(f"{spec['name']}: {exc}")
 
@@ -113,6 +125,8 @@ def main() -> int:
 
     QA_REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
     QA_REPORT_PATH.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+    if not report["errors"]:
+        write_generated_metadata(generated_metadata)
     print(f"QA report: {QA_REPORT_PATH}")
 
     if report["errors"]:
@@ -124,7 +138,7 @@ def main() -> int:
     return 0
 
 
-def prepare_sprite_sheet(spec: dict[str, Any]) -> dict[str, Any]:
+def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dict[str, Any]]]:
     source_path = RAW_ROOT / spec["source"]
     if not source_path.exists():
         raise FileNotFoundError(f"Missing source image: {source_path}")
@@ -138,67 +152,109 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> dict[str, Any]:
     output_dir.mkdir(parents=True, exist_ok=True)
     for old_strip in output_dir.glob("*-strip.png"):
         old_strip.unlink()
-    atlas = Image.new("RGBA", spec["atlas_size"], (0, 0, 0, 0))
     atlas_path = output_dir / "atlas.png"
+    metadata_path = output_dir / "metadata.json"
 
     atlas_report: dict[str, Any] = {
         "name": spec["name"],
+        "entityId": spec["entity_id"],
         "source": repo_path(source_path),
         "sourceSize": list(source.size),
         "atlas": repo_path(atlas_path),
-        "atlasSize": list(spec["atlas_size"]),
         "transparentPixelsBeforeResize": transparent_pixels,
         "detectedRows": [bounds_report(bounds) for bounds in row_bounds],
         "strips": [],
         "warnings": row_alignment_warnings,
     }
+    animation_outputs: list[tuple[int, Image.Image]] = []
+    sprite_metadata: list[dict[str, Any]] = []
+    json_metadata: dict[str, Any] = {
+        "entityId": spec["entity_id"],
+        "sheetId": spec["sheet_id"],
+        "frameHeight": NORMALIZED_FRAME_HEIGHT,
+        "baselineY": BASELINE_Y,
+        "animations": {},
+    }
 
     for animation, row_index, frame_count, loop, fps in spec["rows"]:
         row_bound = row_bounds[row_index]
         detected_frames, row_warnings = detect_frame_bounds(cleaned, row_bound, frame_count)
-        cells = []
+        normalized_frames = []
         frame_reports = []
+        metadata_frames = []
+        cursor_x = 0
         for frame_index, frame_bound in enumerate(detected_frames):
-            cell, normalize_report = normalize_frame(cleaned, frame_bound)
-            cells.append(cell)
+            frame_image, normalize_report = normalize_frame(cleaned, frame_bound)
+            normalized_frames.append(frame_image)
+            metadata_frame = {
+                "x": cursor_x,
+                "w": frame_image.width,
+                "h": frame_image.height,
+                "anchorX": round(frame_image.width / 2),
+                "anchorY": BASELINE_Y,
+            }
+            metadata_frames.append(metadata_frame)
             frame_reports.append({"index": frame_index, "sourceBounds": bounds_report(frame_bound), **normalize_report})
-            atlas.paste(cell, (frame_index * FRAME_SIZE, row_index * FRAME_SIZE), cell)
+            cursor_x += frame_image.width
 
-        strip = Image.new("RGBA", (frame_count * FRAME_SIZE, FRAME_SIZE), (0, 0, 0, 0))
-        for frame_index, cell in enumerate(cells):
-            strip.paste(cell, (frame_index * FRAME_SIZE, 0), cell)
+        strip_width = max(1, cursor_x)
+        strip = Image.new("RGBA", (strip_width, NORMALIZED_FRAME_HEIGHT), (0, 0, 0, 0))
+        cursor_x = 0
+        for frame_image in normalized_frames:
+            strip.paste(frame_image, (cursor_x, 0), frame_image)
+            cursor_x += frame_image.width
 
         strip_path = output_dir / f"{animation}-strip.png"
         strip.save(strip_path)
+        animation_outputs.append((row_index, strip))
+        animation_metadata = {
+            "entityId": spec["entity_id"],
+            "sheetId": spec["sheet_id"],
+            "animationKey": animation.replace("-", "_"),
+            "stripPath": f"{animation}-strip.png",
+            "frameHeight": NORMALIZED_FRAME_HEIGHT,
+            "frameCount": len(metadata_frames),
+            "fps": fps,
+            "loop": loop,
+            "frames": metadata_frames,
+        }
+        sprite_metadata.append(animation_metadata)
+        json_metadata["animations"][animation_metadata["animationKey"]] = animation_metadata
         if row_warnings:
             atlas_report["warnings"].extend(f"{animation}: {warning}" for warning in row_warnings)
         atlas_report["strips"].append(
             {
-                "animation": animation,
+                "animation": animation_metadata["animationKey"],
                 "path": repo_path(strip_path),
                 "size": list(strip.size),
-                "frameCount": frame_count,
+                "frameCount": len(metadata_frames),
                 "detectedFrameCount": len(detected_frames),
                 "fps": fps,
                 "loop": loop,
-                "passedDimensions": strip.size == (frame_count * FRAME_SIZE, FRAME_SIZE),
+                "passedDimensions": strip.height == NORMALIZED_FRAME_HEIGHT and strip.width == sum(frame["w"] for frame in metadata_frames),
                 "rowBounds": bounds_report(row_bound),
                 "frames": frame_reports,
+                "metadata": metadata_frames,
                 "warnings": row_warnings,
             }
         )
 
+    atlas_width = max((strip.width for _row_index, strip in animation_outputs), default=NORMALIZED_FRAME_HEIGHT)
+    atlas_height = max(1, len(spec["rows"])) * NORMALIZED_FRAME_HEIGHT
+    atlas = Image.new("RGBA", (atlas_width, atlas_height), (0, 0, 0, 0))
+    for row_index, strip in animation_outputs:
+        atlas.paste(strip, (0, row_index * NORMALIZED_FRAME_HEIGHT), strip)
     atlas.save(atlas_path)
+    metadata_path.write_text(json.dumps(json_metadata, indent=2) + "\n", encoding="utf-8")
+    atlas_report["atlasSize"] = list(atlas.size)
+    atlas_report["metadata"] = repo_path(metadata_path)
     atlas_report["transparentPixelsAfterResize"] = count_transparent_pixels(atlas)
     atlas_report["remainingBorderConnectedCheckerboardPixels"] = count_border_connected_checkerboard_pixels(atlas)
 
-    expected_size = tuple(spec["atlas_size"])
-    if atlas.size != expected_size:
-        raise ValueError(f"{spec['name']} atlas is {atlas.size}; expected {expected_size}")
     if atlas_report["transparentPixelsAfterResize"] <= 0:
         raise ValueError(f"{spec['name']} atlas has no transparent pixels after cleanup")
 
-    return atlas_report
+    return atlas_report, sprite_metadata
 
 
 def detect_row_bounds(image: Image.Image, expected_rows: int) -> list[Bounds]:
@@ -375,20 +431,22 @@ def normalize_frame(image: Image.Image, frame_bound: Bounds) -> tuple[Image.Imag
     if content:
         crop = crop.crop((content.left, content.top, content.right + 1, content.bottom + 1))
 
-    scale = min(1.0, MAX_FRAME_CONTENT_WIDTH / crop.width, MAX_FRAME_CONTENT_HEIGHT / crop.height)
+    scale = min(1.0, MAX_FRAME_CONTENT_HEIGHT / crop.height)
     if scale < 1.0:
         crop = crop.resize((max(1, round(crop.width * scale)), max(1, round(crop.height * scale))), Image.Resampling.LANCZOS)
 
-    cell = Image.new("RGBA", (FRAME_SIZE, FRAME_SIZE), (0, 0, 0, 0))
-    x = round((FRAME_SIZE - crop.width) / 2)
+    frame = Image.new("RGBA", (crop.width, NORMALIZED_FRAME_HEIGHT), (0, 0, 0, 0))
     y = BASELINE_Y - crop.height
     if y < 0:
         y = 0
-    cell.paste(crop, (x, y), crop)
+    frame.paste(crop, (0, y), crop)
 
-    return cell, {
+    return frame, {
         "normalizedSize": [crop.width, crop.height],
-        "cellOffset": [x, y],
+        "frameSize": [frame.width, frame.height],
+        "cellOffset": [0, y],
+        "anchorX": round(frame.width / 2),
+        "anchorY": BASELINE_Y,
         "baselineY": BASELINE_Y,
         "scaledDown": scale < 1.0,
     }
@@ -596,6 +654,40 @@ def cover_resize(image: Image.Image, target_size: tuple[int, int]) -> Image.Imag
 
 def repo_path(path: Path) -> str:
     return path.relative_to(GAME_ROOT).as_posix()
+
+
+def write_generated_metadata(metadata: list[dict[str, Any]]) -> None:
+    GENERATED_METADATA_TS.write_text(
+        "\n".join(
+            [
+                "export interface FightcoreGeneratedFrame {",
+                "  x: number;",
+                "  w: number;",
+                "  h: number;",
+                "  anchorX: number;",
+                "  anchorY: number;",
+                "}",
+                "",
+                "export interface FightcoreGeneratedAnimationMetadata {",
+                "  entityId: string;",
+                "  sheetId: string;",
+                "  animationKey: string;",
+                "  stripPath: string;",
+                "  frameHeight: number;",
+                "  frameCount: number;",
+                "  fps: number;",
+                "  loop: boolean;",
+                "  frames: FightcoreGeneratedFrame[];",
+                "}",
+                "",
+                "export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadata[] = "
+                + json.dumps(metadata, indent=2)
+                + ";",
+                "",
+            ]
+        ),
+        encoding="utf-8",
+    )
 
 
 if __name__ == "__main__":

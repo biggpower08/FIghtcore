@@ -1,4 +1,5 @@
 import { fightcoreSpriteManifest } from './fightcoreSpriteManifest';
+import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetadata';
 
 export type SpriteKind = 'hero' | 'villain' | 'effect' | 'desert-prop';
 
@@ -40,7 +41,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     anchorX: 0.5,
     anchorY: 0.88,
     feetY: 84,
-    scale: 0.96,
+    scale: 1,
     shadowOffsetY: 8,
     hitboxOffsetY: -8,
   }),
@@ -341,12 +342,11 @@ function fightcoreSpriteSheets(): SpriteSourceSheet[] {
     ...entry.animations.map((animation) => ({
       id: fightcoreStripSheetId(entry.sheetId, animation.key),
       path: fightcoreStripPath(entry.entityId, animation.stripPath),
-      width: animation.frameCount * entry.frameWidth,
-      height: entry.frameHeight,
-      frameSize: { width: entry.frameWidth, height: entry.frameHeight },
+      width: fightcoreStripWidth(entry.entityId, animation.key) ?? animation.frameCount * entry.frameWidth,
+      height: fightcoreStripHeight(entry.entityId, animation.key) ?? entry.frameHeight,
       linkedSpriteIds: [entry.entityId],
       animationHints: [animation.key],
-      notes: 'Prepared FIghtcore horizontal animation strip assembled from detected normalized frames.',
+      notes: 'Prepared FIghtcore horizontal animation strip assembled from detected variable-width frames.',
     })),
   ]);
 }
@@ -357,4 +357,14 @@ export function fightcoreStripSheetId(sheetId: string, animationKey: string): st
 
 function fightcoreStripPath(entityId: string, stripPath: string): string {
   return `/assets/fightcore/sprites/${entityId}/${stripPath}`;
+}
+
+function fightcoreStripWidth(entityId: string, animationKey: string): number | undefined {
+  const metadata = fightcoreGeneratedFrameMetadata.find((entry) => entry.entityId === entityId && entry.animationKey === animationKey);
+  const lastFrame = metadata?.frames.at(-1);
+  return lastFrame ? lastFrame.x + lastFrame.w : undefined;
+}
+
+function fightcoreStripHeight(entityId: string, animationKey: string): number | undefined {
+  return fightcoreGeneratedFrameMetadata.find((entry) => entry.entityId === entityId && entry.animationKey === animationKey)?.frameHeight;
 }

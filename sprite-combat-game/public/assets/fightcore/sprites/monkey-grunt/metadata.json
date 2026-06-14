@@ -1,0 +1,391 @@
+{
+  "entityId": "monkey-grunt",
+  "sheetId": "fightcore-monkey-grunt-atlas",
+  "frameHeight": 96,
+  "baselineY": 88,
+  "animations": {
+    "idle": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "idle",
+      "stripPath": "idle-strip.png",
+      "frameHeight": 96,
+      "frameCount": 4,
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 81,
+          "w": 75,
+          "h": 96,
+          "anchorX": 38,
+          "anchorY": 88
+        },
+        {
+          "x": 156,
+          "w": 79,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 235,
+          "w": 77,
+          "h": 96,
+          "anchorX": 38,
+          "anchorY": 88
+        }
+      ]
+    },
+    "run": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "run",
+      "stripPath": "run-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "fps": 12,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 94,
+          "h": 96,
+          "anchorX": 47,
+          "anchorY": 88
+        },
+        {
+          "x": 94,
+          "w": 95,
+          "h": 96,
+          "anchorX": 48,
+          "anchorY": 88
+        },
+        {
+          "x": 189,
+          "w": 103,
+          "h": 96,
+          "anchorX": 52,
+          "anchorY": 88
+        },
+        {
+          "x": 292,
+          "w": 98,
+          "h": 96,
+          "anchorX": 49,
+          "anchorY": 88
+        },
+        {
+          "x": 390,
+          "w": 89,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 479,
+          "w": 85,
+          "h": 96,
+          "anchorX": 42,
+          "anchorY": 88
+        }
+      ]
+    },
+    "jab": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "jab",
+      "stripPath": "jab-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "fps": 14,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 82,
+          "h": 96,
+          "anchorX": 41,
+          "anchorY": 88
+        },
+        {
+          "x": 82,
+          "w": 113,
+          "h": 96,
+          "anchorX": 56,
+          "anchorY": 88
+        },
+        {
+          "x": 195,
+          "w": 197,
+          "h": 96,
+          "anchorX": 98,
+          "anchorY": 88
+        },
+        {
+          "x": 392,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 473,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        }
+      ]
+    },
+    "cross": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "cross",
+      "stripPath": "cross-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "fps": 14,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 79,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 79,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 160,
+          "w": 114,
+          "h": 96,
+          "anchorX": 57,
+          "anchorY": 88
+        },
+        {
+          "x": 274,
+          "w": 70,
+          "h": 96,
+          "anchorX": 35,
+          "anchorY": 88
+        },
+        {
+          "x": 344,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        }
+      ]
+    },
+    "grab": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "grab",
+      "stripPath": "grab-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 92,
+          "h": 96,
+          "anchorX": 46,
+          "anchorY": 88
+        },
+        {
+          "x": 92,
+          "w": 111,
+          "h": 96,
+          "anchorX": 56,
+          "anchorY": 88
+        },
+        {
+          "x": 203,
+          "w": 115,
+          "h": 96,
+          "anchorX": 58,
+          "anchorY": 88
+        },
+        {
+          "x": 318,
+          "w": 103,
+          "h": 96,
+          "anchorX": 52,
+          "anchorY": 88
+        },
+        {
+          "x": 421,
+          "w": 101,
+          "h": 96,
+          "anchorX": 50,
+          "anchorY": 88
+        },
+        {
+          "x": 522,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        }
+      ]
+    },
+    "hit_react": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "hit_react",
+      "stripPath": "hit-react-strip.png",
+      "frameHeight": 96,
+      "frameCount": 3,
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 81,
+          "w": 92,
+          "h": 96,
+          "anchorX": 46,
+          "anchorY": 88
+        },
+        {
+          "x": 173,
+          "w": 72,
+          "h": 96,
+          "anchorX": 36,
+          "anchorY": 88
+        }
+      ]
+    },
+    "knockdown": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "knockdown",
+      "stripPath": "knockdown-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 103,
+          "h": 96,
+          "anchorX": 52,
+          "anchorY": 88
+        },
+        {
+          "x": 103,
+          "w": 164,
+          "h": 96,
+          "anchorX": 82,
+          "anchorY": 88
+        },
+        {
+          "x": 267,
+          "w": 138,
+          "h": 96,
+          "anchorX": 69,
+          "anchorY": 88
+        },
+        {
+          "x": 405,
+          "w": 155,
+          "h": 96,
+          "anchorX": 78,
+          "anchorY": 88
+        },
+        {
+          "x": 560,
+          "w": 155,
+          "h": 96,
+          "anchorX": 78,
+          "anchorY": 88
+        }
+      ]
+    },
+    "death": {
+      "entityId": "monkey-grunt",
+      "sheetId": "fightcore-monkey-grunt-atlas",
+      "animationKey": "death",
+      "stripPath": "death-strip.png",
+      "frameHeight": 96,
+      "frameCount": 7,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 150,
+          "h": 96,
+          "anchorX": 75,
+          "anchorY": 88
+        },
+        {
+          "x": 150,
+          "w": 146,
+          "h": 96,
+          "anchorX": 73,
+          "anchorY": 88
+        },
+        {
+          "x": 296,
+          "w": 156,
+          "h": 96,
+          "anchorX": 78,
+          "anchorY": 88
+        },
+        {
+          "x": 452,
+          "w": 153,
+          "h": 96,
+          "anchorX": 76,
+          "anchorY": 88
+        },
+        {
+          "x": 605,
+          "w": 161,
+          "h": 96,
+          "anchorX": 80,
+          "anchorY": 88
+        },
+        {
+          "x": 766,
+          "w": 182,
+          "h": 96,
+          "anchorX": 91,
+          "anchorY": 88
+        },
+        {
+          "x": 948,
+          "w": 182,
+          "h": 96,
+          "anchorX": 91,
+          "anchorY": 88
+        }
+      ]
+    }
+  }
+}

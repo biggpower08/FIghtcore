@@ -2,16 +2,13 @@
   "sprites": [
     {
       "name": "Cyber Ninja",
+      "entityId": "cyber-ninja",
       "source": "tools/raw-fightcore-assets/Cyber.ninja.png.png",
       "sourceSize": [
         1190,
         1322
       ],
       "atlas": "public/assets/fightcore/sprites/cyber-ninja/atlas.png",
-      "atlasSize": [
-        864,
-        960
-      ],
       "transparentPixelsBeforeResize": 1335073,
       "detectedRows": [
         {
@@ -63,6 +60,14 @@
           "height": 124
         },
         {
+          "left": 44,
+          "top": 768,
+          "right": 819,
+          "bottom": 891,
+          "width": 776,
+          "height": 124
+        },
+        {
           "left": 43,
           "top": 918,
           "right": 386,
@@ -92,7 +97,7 @@
           "animation": "idle",
           "path": "public/assets/fightcore/sprites/cyber-ninja/idle-strip.png",
           "size": [
-            384,
+            190,
             96
           ],
           "frameCount": 4,
@@ -123,10 +128,16 @@
                 48,
                 88
               ],
+              "frameSize": [
+                48,
+                96
+              ],
               "cellOffset": [
-                24,
+                0,
                 0
               ],
+              "anchorX": 24,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -144,10 +155,16 @@
                 47,
                 88
               ],
+              "frameSize": [
+                47,
+                96
+              ],
               "cellOffset": [
-                24,
+                0,
                 0
               ],
+              "anchorX": 24,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -165,10 +182,16 @@
                 46,
                 88
               ],
+              "frameSize": [
+                46,
+                96
+              ],
               "cellOffset": [
-                25,
+                0,
                 0
               ],
+              "anchorX": 23,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -186,12 +209,48 @@
                 49,
                 88
               ],
+              "frameSize": [
+                49,
+                96
+              ],
               "cellOffset": [
-                24,
+                0,
                 0
               ],
+              "anchorX": 24,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 48,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
+            },
+            {
+              "x": 48,
+              "w": 47,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
+            },
+            {
+              "x": 95,
+              "w": 46,
+              "h": 96,
+              "anchorX": 23,
+              "anchorY": 88
+            },
+            {
+              "x": 141,
+              "w": 49,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -200,7 +259,7 @@
           "animation": "walk",
           "path": "public/assets/fightcore/sprites/cyber-ninja/walk-strip.png",
           "size": [
-            576,
+            306,
             96
           ],
           "frameCount": 6,
@@ -231,10 +290,16 @@
                 53,
                 88
               ],
+              "frameSize": [
+                53,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -252,10 +317,16 @@
                 57,
                 88
               ],
+              "frameSize": [
+                57,
+                96
+              ],
               "cellOffset": [
-                20,
+                0,
                 0
               ],
+              "anchorX": 28,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -273,10 +344,16 @@
                 57,
                 88
               ],
+              "frameSize": [
+                57,
+                96
+              ],
               "cellOffset": [
-                20,
+                0,
                 0
               ],
+              "anchorX": 28,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -294,10 +371,16 @@
                 46,
                 88
               ],
+              "frameSize": [
+                46,
+                96
+              ],
               "cellOffset": [
-                25,
+                0,
                 0
               ],
+              "anchorX": 23,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -315,10 +398,16 @@
                 45,
                 88
               ],
+              "frameSize": [
+                45,
+                96
+              ],
               "cellOffset": [
-                26,
+                0,
                 0
               ],
+              "anchorX": 22,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -336,12 +425,62 @@
                 48,
                 88
               ],
+              "frameSize": [
+                48,
+                96
+              ],
               "cellOffset": [
-                24,
+                0,
                 0
               ],
+              "anchorX": 24,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 53,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 53,
+              "w": 57,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 110,
+              "w": 57,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 167,
+              "w": 46,
+              "h": 96,
+              "anchorX": 23,
+              "anchorY": 88
+            },
+            {
+              "x": 213,
+              "w": 45,
+              "h": 96,
+              "anchorX": 22,
+              "anchorY": 88
+            },
+            {
+              "x": 258,
+              "w": 48,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -350,7 +489,7 @@
           "animation": "dash",
           "path": "public/assets/fightcore/sprites/cyber-ninja/dash-strip.png",
           "size": [
-            480,
+            433,
             96
           ],
           "frameCount": 5,
@@ -381,10 +520,16 @@
                 87,
                 88
               ],
+              "frameSize": [
+                87,
+                96
+              ],
               "cellOffset": [
-                4,
+                0,
                 0
               ],
+              "anchorX": 44,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -402,10 +547,16 @@
                 84,
                 88
               ],
+              "frameSize": [
+                84,
+                96
+              ],
               "cellOffset": [
-                6,
+                0,
                 0
               ],
+              "anchorX": 42,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -423,10 +574,16 @@
                 88,
                 88
               ],
+              "frameSize": [
+                88,
+                96
+              ],
               "cellOffset": [
-                4,
+                0,
                 0
               ],
+              "anchorX": 44,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -441,13 +598,19 @@
                 "height": 94
               },
               "normalizedSize": [
-                92,
-                81
+                100,
+                88
+              ],
+              "frameSize": [
+                100,
+                96
               ],
               "cellOffset": [
-                2,
-                7
+                0,
+                0
               ],
+              "anchorX": 50,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -465,12 +628,55 @@
                 74,
                 88
               ],
+              "frameSize": [
+                74,
+                96
+              ],
               "cellOffset": [
-                11,
+                0,
                 0
               ],
+              "anchorX": 37,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 87,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 87,
+              "w": 84,
+              "h": 96,
+              "anchorX": 42,
+              "anchorY": 88
+            },
+            {
+              "x": 171,
+              "w": 88,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 259,
+              "w": 100,
+              "h": 96,
+              "anchorX": 50,
+              "anchorY": 88
+            },
+            {
+              "x": 359,
+              "w": 74,
+              "h": 96,
+              "anchorX": 37,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -479,7 +685,7 @@
           "animation": "jab",
           "path": "public/assets/fightcore/sprites/cyber-ninja/jab-strip.png",
           "size": [
-            480,
+            336,
             96
           ],
           "frameCount": 5,
@@ -510,10 +716,16 @@
                 53,
                 88
               ],
+              "frameSize": [
+                53,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -531,10 +743,16 @@
                 73,
                 88
               ],
+              "frameSize": [
+                73,
+                96
+              ],
               "cellOffset": [
-                12,
+                0,
                 0
               ],
+              "anchorX": 36,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -552,10 +770,16 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -573,10 +797,16 @@
                 75,
                 88
               ],
+              "frameSize": [
+                75,
+                96
+              ],
               "cellOffset": [
-                10,
+                0,
                 0
               ],
+              "anchorX": 38,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -594,12 +824,55 @@
                 54,
                 88
               ],
+              "frameSize": [
+                54,
+                96
+              ],
               "cellOffset": [
-                21,
+                0,
                 0
               ],
+              "anchorX": 27,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 53,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 53,
+              "w": 73,
+              "h": 96,
+              "anchorX": 36,
+              "anchorY": 88
+            },
+            {
+              "x": 126,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 207,
+              "w": 75,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 282,
+              "w": 54,
+              "h": 96,
+              "anchorX": 27,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -608,7 +881,7 @@
           "animation": "slice",
           "path": "public/assets/fightcore/sprites/cyber-ninja/slice-strip.png",
           "size": [
-            576,
+            569,
             96
           ],
           "frameCount": 6,
@@ -639,10 +912,16 @@
                 55,
                 88
               ],
+              "frameSize": [
+                55,
+                96
+              ],
               "cellOffset": [
-                20,
+                0,
                 0
               ],
+              "anchorX": 28,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -657,13 +936,19 @@
                 "height": 113
               },
               "normalizedSize": [
-                92,
-                78
+                104,
+                88
+              ],
+              "frameSize": [
+                104,
+                96
               ],
               "cellOffset": [
-                2,
-                10
+                0,
+                0
               ],
+              "anchorX": 52,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -678,13 +963,19 @@
                 "height": 115
               },
               "normalizedSize": [
-                92,
-                85
+                96,
+                88
+              ],
+              "frameSize": [
+                96,
+                96
               ],
               "cellOffset": [
-                2,
-                3
+                0,
+                0
               ],
+              "anchorX": 48,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -702,10 +993,16 @@
                 86,
                 88
               ],
+              "frameSize": [
+                86,
+                96
+              ],
               "cellOffset": [
-                5,
+                0,
                 0
               ],
+              "anchorX": 43,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -720,13 +1017,19 @@
                 "height": 115
               },
               "normalizedSize": [
-                92,
-                50
+                163,
+                88
+              ],
+              "frameSize": [
+                163,
+                96
               ],
               "cellOffset": [
-                2,
-                38
+                0,
+                0
               ],
+              "anchorX": 82,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -744,21 +1047,71 @@
                 65,
                 88
               ],
+              "frameSize": [
+                65,
+                96
+              ],
               "cellOffset": [
-                16,
+                0,
                 0
               ],
+              "anchorX": 32,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 55,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 55,
+              "w": 104,
+              "h": 96,
+              "anchorX": 52,
+              "anchorY": 88
+            },
+            {
+              "x": 159,
+              "w": 96,
+              "h": 96,
+              "anchorX": 48,
+              "anchorY": 88
+            },
+            {
+              "x": 255,
+              "w": 86,
+              "h": 96,
+              "anchorX": 43,
+              "anchorY": 88
+            },
+            {
+              "x": 341,
+              "w": 163,
+              "h": 96,
+              "anchorX": 82,
+              "anchorY": 88
+            },
+            {
+              "x": 504,
+              "w": 65,
+              "h": 96,
+              "anchorX": 32,
+              "anchorY": 88
             }
           ],
           "warnings": []
         },
         {
-          "animation": "high-kick",
+          "animation": "high_kick",
           "path": "public/assets/fightcore/sprites/cyber-ninja/high-kick-strip.png",
           "size": [
-            672,
+            485,
             96
           ],
           "frameCount": 7,
@@ -789,10 +1142,16 @@
                 71,
                 88
               ],
+              "frameSize": [
+                71,
+                96
+              ],
               "cellOffset": [
-                12,
+                0,
                 0
               ],
+              "anchorX": 36,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -810,10 +1169,16 @@
                 74,
                 88
               ],
+              "frameSize": [
+                74,
+                96
+              ],
               "cellOffset": [
-                11,
+                0,
                 0
               ],
+              "anchorX": 37,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -831,10 +1196,16 @@
                 77,
                 88
               ],
+              "frameSize": [
+                77,
+                96
+              ],
               "cellOffset": [
-                10,
+                0,
                 0
               ],
+              "anchorX": 38,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -852,10 +1223,16 @@
                 82,
                 88
               ],
+              "frameSize": [
+                82,
+                96
+              ],
               "cellOffset": [
-                7,
+                0,
                 0
               ],
+              "anchorX": 41,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -873,10 +1250,16 @@
                 77,
                 88
               ],
+              "frameSize": [
+                77,
+                96
+              ],
               "cellOffset": [
-                10,
+                0,
                 0
               ],
+              "anchorX": 38,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -894,10 +1277,16 @@
                 52,
                 88
               ],
+              "frameSize": [
+                52,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -915,12 +1304,69 @@
                 52,
                 88
               ],
+              "frameSize": [
+                52,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 71,
+              "h": 96,
+              "anchorX": 36,
+              "anchorY": 88
+            },
+            {
+              "x": 71,
+              "w": 74,
+              "h": 96,
+              "anchorX": 37,
+              "anchorY": 88
+            },
+            {
+              "x": 145,
+              "w": 77,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 222,
+              "w": 82,
+              "h": 96,
+              "anchorX": 41,
+              "anchorY": 88
+            },
+            {
+              "x": 304,
+              "w": 77,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 381,
+              "w": 52,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 433,
+              "w": 52,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
             }
           ],
           "warnings": [
@@ -928,10 +1374,276 @@
           ]
         },
         {
-          "animation": "hit-react",
+          "animation": "side_kick",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/side-kick-strip.png",
+          "size": [
+            485,
+            96
+          ],
+          "frameCount": 7,
+          "detectedFrameCount": 7,
+          "fps": 13,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 44,
+            "top": 768,
+            "right": 819,
+            "bottom": 891,
+            "width": 776,
+            "height": 124
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 44,
+                "top": 769,
+                "right": 142,
+                "bottom": 891,
+                "width": 99,
+                "height": 123
+              },
+              "normalizedSize": [
+                71,
+                88
+              ],
+              "frameSize": [
+                71,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 36,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 176,
+                "top": 769,
+                "right": 277,
+                "bottom": 890,
+                "width": 102,
+                "height": 122
+              },
+              "normalizedSize": [
+                74,
+                88
+              ],
+              "frameSize": [
+                74,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 37,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 319,
+                "top": 770,
+                "right": 425,
+                "bottom": 891,
+                "width": 107,
+                "height": 122
+              },
+              "normalizedSize": [
+                77,
+                88
+              ],
+              "frameSize": [
+                77,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 38,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 461,
+                "top": 767,
+                "right": 569,
+                "bottom": 890,
+                "width": 109,
+                "height": 124
+              },
+              "normalizedSize": [
+                82,
+                88
+              ],
+              "frameSize": [
+                82,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 41,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 628,
+                "top": 769,
+                "right": 734,
+                "bottom": 890,
+                "width": 107,
+                "height": 122
+              },
+              "normalizedSize": [
+                77,
+                88
+              ],
+              "frameSize": [
+                77,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 38,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 749,
+                "top": 771,
+                "right": 819,
+                "bottom": 890,
+                "width": 71,
+                "height": 120
+              },
+              "normalizedSize": [
+                52,
+                88
+              ],
+              "frameSize": [
+                52,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 26,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 6,
+              "sourceBounds": {
+                "left": 749,
+                "top": 771,
+                "right": 819,
+                "bottom": 890,
+                "width": 71,
+                "height": 120
+              },
+              "normalizedSize": [
+                52,
+                88
+              ],
+              "frameSize": [
+                52,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 26,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 71,
+              "h": 96,
+              "anchorX": 36,
+              "anchorY": 88
+            },
+            {
+              "x": 71,
+              "w": 74,
+              "h": 96,
+              "anchorX": 37,
+              "anchorY": 88
+            },
+            {
+              "x": 145,
+              "w": 77,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 222,
+              "w": 82,
+              "h": 96,
+              "anchorX": 41,
+              "anchorY": 88
+            },
+            {
+              "x": 304,
+              "w": 77,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 381,
+              "w": 52,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 433,
+              "w": 52,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            }
+          ],
+          "warnings": [
+            "detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+          ]
+        },
+        {
+          "animation": "hit_react",
           "path": "public/assets/fightcore/sprites/cyber-ninja/hit-react-strip.png",
           "size": [
-            288,
+            202,
             96
           ],
           "frameCount": 3,
@@ -962,10 +1674,16 @@
                 74,
                 88
               ],
+              "frameSize": [
+                74,
+                96
+              ],
               "cellOffset": [
-                11,
+                0,
                 0
               ],
+              "anchorX": 37,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -983,10 +1701,16 @@
                 70,
                 88
               ],
+              "frameSize": [
+                70,
+                96
+              ],
               "cellOffset": [
-                13,
+                0,
                 0
               ],
+              "anchorX": 35,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1004,12 +1728,41 @@
                 58,
                 88
               ],
+              "frameSize": [
+                58,
+                96
+              ],
               "cellOffset": [
-                19,
+                0,
                 0
               ],
+              "anchorX": 29,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 74,
+              "h": 96,
+              "anchorX": 37,
+              "anchorY": 88
+            },
+            {
+              "x": 74,
+              "w": 70,
+              "h": 96,
+              "anchorX": 35,
+              "anchorY": 88
+            },
+            {
+              "x": 144,
+              "w": 58,
+              "h": 96,
+              "anchorX": 29,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -1018,7 +1771,7 @@
           "animation": "recovery",
           "path": "public/assets/fightcore/sprites/cyber-ninja/recovery-strip.png",
           "size": [
-            480,
+            272,
             96
           ],
           "frameCount": 5,
@@ -1049,10 +1802,16 @@
                 60,
                 88
               ],
+              "frameSize": [
+                60,
+                96
+              ],
               "cellOffset": [
-                18,
+                0,
                 0
               ],
+              "anchorX": 30,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1070,10 +1829,16 @@
                 51,
                 88
               ],
+              "frameSize": [
+                51,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1091,10 +1856,16 @@
                 55,
                 88
               ],
+              "frameSize": [
+                55,
+                96
+              ],
               "cellOffset": [
-                20,
+                0,
                 0
               ],
+              "anchorX": 28,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1112,10 +1883,16 @@
                 52,
                 88
               ],
+              "frameSize": [
+                52,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1133,12 +1910,55 @@
                 54,
                 88
               ],
+              "frameSize": [
+                54,
+                96
+              ],
               "cellOffset": [
-                21,
+                0,
                 0
               ],
+              "anchorX": 27,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 60,
+              "h": 96,
+              "anchorX": 30,
+              "anchorY": 88
+            },
+            {
+              "x": 60,
+              "w": 51,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 111,
+              "w": 55,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 166,
+              "w": 52,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 218,
+              "w": 54,
+              "h": 96,
+              "anchorX": 27,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -1147,7 +1967,7 @@
           "animation": "standup",
           "path": "public/assets/fightcore/sprites/cyber-ninja/standup-strip.png",
           "size": [
-            576,
+            478,
             96
           ],
           "frameCount": 6,
@@ -1175,15 +1995,21 @@
                 "height": 41
               },
               "normalizedSize": [
-                92,
-                26
+                143,
+                41
+              ],
+              "frameSize": [
+                143,
+                96
               ],
               "cellOffset": [
-                2,
-                62
+                0,
+                47
               ],
+              "anchorX": 72,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 1,
@@ -1199,10 +2025,16 @@
                 84,
                 67
               ],
+              "frameSize": [
+                84,
+                96
+              ],
               "cellOffset": [
-                6,
+                0,
                 21
               ],
+              "anchorX": 42,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": false
             },
@@ -1220,10 +2052,16 @@
                 86,
                 88
               ],
+              "frameSize": [
+                86,
+                96
+              ],
               "cellOffset": [
-                5,
+                0,
                 0
               ],
+              "anchorX": 43,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1241,10 +2079,16 @@
                 64,
                 88
               ],
+              "frameSize": [
+                64,
+                96
+              ],
               "cellOffset": [
-                16,
+                0,
                 0
               ],
+              "anchorX": 32,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1262,10 +2106,16 @@
                 52,
                 88
               ],
+              "frameSize": [
+                52,
+                96
+              ],
               "cellOffset": [
-                22,
+                0,
                 0
               ],
+              "anchorX": 26,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1283,35 +2133,90 @@
                 49,
                 88
               ],
+              "frameSize": [
+                49,
+                96
+              ],
               "cellOffset": [
-                24,
+                0,
                 0
               ],
+              "anchorX": 24,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 143,
+              "h": 96,
+              "anchorX": 72,
+              "anchorY": 88
+            },
+            {
+              "x": 143,
+              "w": 84,
+              "h": 96,
+              "anchorX": 42,
+              "anchorY": 88
+            },
+            {
+              "x": 227,
+              "w": 86,
+              "h": 96,
+              "anchorX": 43,
+              "anchorY": 88
+            },
+            {
+              "x": 313,
+              "w": 64,
+              "h": 96,
+              "anchorX": 32,
+              "anchorY": 88
+            },
+            {
+              "x": 377,
+              "w": 52,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 429,
+              "w": 49,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
             }
           ],
           "warnings": []
         }
       ],
       "warnings": [
-        "high-kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+        "detected 9 animation rows, expected 10; duplicating configured nearest row fallback(s)",
+        "row 6 uses detected row 5 as a temporary fallback",
+        "high-kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7",
+        "side-kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
       ],
-      "transparentPixelsAfterResize": 691530,
+      "atlasSize": [
+        569,
+        960
+      ],
+      "metadata": "public/assets/fightcore/sprites/cyber-ninja/metadata.json",
+      "transparentPixelsAfterResize": 387471,
       "remainingBorderConnectedCheckerboardPixels": 0
     },
     {
       "name": "Monkey Grunt",
+      "entityId": "monkey-grunt",
       "source": "tools/raw-fightcore-assets/monkey.grunt.png.png",
       "sourceSize": [
         1330,
         1182
       ],
       "atlas": "public/assets/fightcore/sprites/monkey-grunt/atlas.png",
-      "atlasSize": [
-        864,
-        768
-      ],
       "transparentPixelsBeforeResize": 1295058,
       "detectedRows": [
         {
@@ -1384,7 +2289,7 @@
           "animation": "idle",
           "path": "public/assets/fightcore/sprites/monkey-grunt/idle-strip.png",
           "size": [
-            384,
+            312,
             96
           ],
           "frameCount": 4,
@@ -1415,10 +2320,16 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1436,10 +2347,16 @@
                 75,
                 88
               ],
+              "frameSize": [
+                75,
+                96
+              ],
               "cellOffset": [
-                10,
+                0,
                 0
               ],
+              "anchorX": 38,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1457,10 +2374,16 @@
                 79,
                 88
               ],
+              "frameSize": [
+                79,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1478,12 +2401,48 @@
                 77,
                 88
               ],
+              "frameSize": [
+                77,
+                96
+              ],
               "cellOffset": [
-                10,
+                0,
                 0
               ],
+              "anchorX": 38,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 81,
+              "w": 75,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 156,
+              "w": 79,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 235,
+              "w": 77,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -1492,7 +2451,7 @@
           "animation": "run",
           "path": "public/assets/fightcore/sprites/monkey-grunt/run-strip.png",
           "size": [
-            576,
+            564,
             96
           ],
           "frameCount": 6,
@@ -1520,13 +2479,19 @@
                 "height": 117
               },
               "normalizedSize": [
-                92,
-                86
+                94,
+                88
+              ],
+              "frameSize": [
+                94,
+                96
               ],
               "cellOffset": [
-                2,
-                2
+                0,
+                0
               ],
+              "anchorX": 47,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1541,13 +2506,19 @@
                 "height": 115
               },
               "normalizedSize": [
-                92,
-                85
+                95,
+                88
+              ],
+              "frameSize": [
+                95,
+                96
               ],
               "cellOffset": [
-                2,
-                3
+                0,
+                0
               ],
+              "anchorX": 48,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1562,13 +2533,19 @@
                 "height": 120
               },
               "normalizedSize": [
-                92,
-                79
+                103,
+                88
+              ],
+              "frameSize": [
+                103,
+                96
               ],
               "cellOffset": [
-                2,
-                9
+                0,
+                0
               ],
+              "anchorX": 52,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1583,13 +2560,19 @@
                 "height": 115
               },
               "normalizedSize": [
-                92,
-                83
+                98,
+                88
+              ],
+              "frameSize": [
+                98,
+                96
               ],
               "cellOffset": [
-                2,
-                5
+                0,
+                0
               ],
+              "anchorX": 49,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1607,10 +2590,16 @@
                 89,
                 88
               ],
+              "frameSize": [
+                89,
+                96
+              ],
               "cellOffset": [
-                4,
+                0,
                 0
               ],
+              "anchorX": 44,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1628,12 +2617,62 @@
                 85,
                 88
               ],
+              "frameSize": [
+                85,
+                96
+              ],
               "cellOffset": [
-                6,
+                0,
                 0
               ],
+              "anchorX": 42,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 94,
+              "h": 96,
+              "anchorX": 47,
+              "anchorY": 88
+            },
+            {
+              "x": 94,
+              "w": 95,
+              "h": 96,
+              "anchorX": 48,
+              "anchorY": 88
+            },
+            {
+              "x": 189,
+              "w": 103,
+              "h": 96,
+              "anchorX": 52,
+              "anchorY": 88
+            },
+            {
+              "x": 292,
+              "w": 98,
+              "h": 96,
+              "anchorX": 49,
+              "anchorY": 88
+            },
+            {
+              "x": 390,
+              "w": 89,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 479,
+              "w": 85,
+              "h": 96,
+              "anchorX": 42,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -1642,7 +2681,7 @@
           "animation": "jab",
           "path": "public/assets/fightcore/sprites/monkey-grunt/jab-strip.png",
           "size": [
-            480,
+            554,
             96
           ],
           "frameCount": 5,
@@ -1673,10 +2712,16 @@
                 82,
                 88
               ],
+              "frameSize": [
+                82,
+                96
+              ],
               "cellOffset": [
-                7,
+                0,
                 0
               ],
+              "anchorX": 41,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1691,13 +2736,19 @@
                 "height": 116
               },
               "normalizedSize": [
-                92,
-                72
+                113,
+                88
+              ],
+              "frameSize": [
+                113,
+                96
               ],
               "cellOffset": [
-                2,
-                16
+                0,
+                0
               ],
+              "anchorX": 56,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1712,13 +2763,19 @@
                 "height": 120
               },
               "normalizedSize": [
-                92,
-                41
+                197,
+                88
+              ],
+              "frameSize": [
+                197,
+                96
               ],
               "cellOffset": [
-                2,
-                47
+                0,
+                0
               ],
+              "anchorX": 98,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1736,10 +2793,16 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1757,12 +2820,55 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 82,
+              "h": 96,
+              "anchorX": 41,
+              "anchorY": 88
+            },
+            {
+              "x": 82,
+              "w": 113,
+              "h": 96,
+              "anchorX": 56,
+              "anchorY": 88
+            },
+            {
+              "x": 195,
+              "w": 197,
+              "h": 96,
+              "anchorX": 98,
+              "anchorY": 88
+            },
+            {
+              "x": 392,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 473,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
             }
           ],
           "warnings": [
@@ -1773,7 +2879,7 @@
           "animation": "cross",
           "path": "public/assets/fightcore/sprites/monkey-grunt/cross-strip.png",
           "size": [
-            480,
+            425,
             96
           ],
           "frameCount": 5,
@@ -1804,10 +2910,16 @@
                 79,
                 88
               ],
+              "frameSize": [
+                79,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1825,10 +2937,16 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1843,13 +2961,19 @@
                 "height": 117
               },
               "normalizedSize": [
-                92,
-                71
+                114,
+                88
+              ],
+              "frameSize": [
+                114,
+                96
               ],
               "cellOffset": [
-                2,
-                17
+                0,
+                0
               ],
+              "anchorX": 57,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1867,10 +2991,16 @@
                 70,
                 88
               ],
+              "frameSize": [
+                70,
+                96
+              ],
               "cellOffset": [
-                13,
+                0,
                 0
               ],
+              "anchorX": 35,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1888,12 +3018,55 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 79,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 79,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 160,
+              "w": 114,
+              "h": 96,
+              "anchorX": 57,
+              "anchorY": 88
+            },
+            {
+              "x": 274,
+              "w": 70,
+              "h": 96,
+              "anchorX": 35,
+              "anchorY": 88
+            },
+            {
+              "x": 344,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -1902,7 +3075,7 @@
           "animation": "grab",
           "path": "public/assets/fightcore/sprites/monkey-grunt/grab-strip.png",
           "size": [
-            576,
+            603,
             96
           ],
           "frameCount": 6,
@@ -1933,10 +3106,16 @@
                 92,
                 88
               ],
+              "frameSize": [
+                92,
+                96
+              ],
               "cellOffset": [
-                2,
+                0,
                 0
               ],
+              "anchorX": 46,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1951,13 +3130,19 @@
                 "height": 118
               },
               "normalizedSize": [
-                92,
-                73
+                111,
+                88
+              ],
+              "frameSize": [
+                111,
+                96
               ],
               "cellOffset": [
-                2,
-                15
+                0,
+                0
               ],
+              "anchorX": 56,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1972,13 +3157,19 @@
                 "height": 117
               },
               "normalizedSize": [
-                92,
-                70
+                115,
+                88
+              ],
+              "frameSize": [
+                115,
+                96
               ],
               "cellOffset": [
-                2,
-                18
+                0,
+                0
               ],
+              "anchorX": 58,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -1993,13 +3184,19 @@
                 "height": 119
               },
               "normalizedSize": [
-                92,
-                79
+                103,
+                88
+              ],
+              "frameSize": [
+                103,
+                96
               ],
               "cellOffset": [
-                2,
-                9
+                0,
+                0
               ],
+              "anchorX": 52,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -2014,13 +3211,19 @@
                 "height": 118
               },
               "normalizedSize": [
-                92,
-                80
+                101,
+                88
+              ],
+              "frameSize": [
+                101,
+                96
               ],
               "cellOffset": [
-                2,
-                8
+                0,
+                0
               ],
+              "anchorX": 50,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -2038,21 +3241,71 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 92,
+              "h": 96,
+              "anchorX": 46,
+              "anchorY": 88
+            },
+            {
+              "x": 92,
+              "w": 111,
+              "h": 96,
+              "anchorX": 56,
+              "anchorY": 88
+            },
+            {
+              "x": 203,
+              "w": 115,
+              "h": 96,
+              "anchorX": 58,
+              "anchorY": 88
+            },
+            {
+              "x": 318,
+              "w": 103,
+              "h": 96,
+              "anchorX": 52,
+              "anchorY": 88
+            },
+            {
+              "x": 421,
+              "w": 101,
+              "h": 96,
+              "anchorX": 50,
+              "anchorY": 88
+            },
+            {
+              "x": 522,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
             }
           ],
           "warnings": []
         },
         {
-          "animation": "hit-react",
+          "animation": "hit_react",
           "path": "public/assets/fightcore/sprites/monkey-grunt/hit-react-strip.png",
           "size": [
-            288,
+            245,
             96
           ],
           "frameCount": 3,
@@ -2083,10 +3336,16 @@
                 81,
                 88
               ],
+              "frameSize": [
+                81,
+                96
+              ],
               "cellOffset": [
-                8,
+                0,
                 0
               ],
+              "anchorX": 40,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -2104,10 +3363,16 @@
                 92,
                 88
               ],
+              "frameSize": [
+                92,
+                96
+              ],
               "cellOffset": [
-                2,
+                0,
                 0
               ],
+              "anchorX": 46,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -2125,12 +3390,41 @@
                 72,
                 88
               ],
+              "frameSize": [
+                72,
+                96
+              ],
               "cellOffset": [
-                12,
+                0,
                 0
               ],
+              "anchorX": 36,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 81,
+              "w": 92,
+              "h": 96,
+              "anchorX": 46,
+              "anchorY": 88
+            },
+            {
+              "x": 173,
+              "w": 72,
+              "h": 96,
+              "anchorX": 36,
+              "anchorY": 88
             }
           ],
           "warnings": []
@@ -2139,7 +3433,7 @@
           "animation": "knockdown",
           "path": "public/assets/fightcore/sprites/monkey-grunt/knockdown-strip.png",
           "size": [
-            480,
+            715,
             96
           ],
           "frameCount": 5,
@@ -2167,13 +3461,19 @@
                 "height": 95
               },
               "normalizedSize": [
-                92,
-                79
+                103,
+                88
+              ],
+              "frameSize": [
+                103,
+                96
               ],
               "cellOffset": [
-                2,
-                9
+                0,
+                0
               ],
+              "anchorX": 52,
+              "anchorY": 88,
               "baselineY": 88,
               "scaledDown": true
             },
@@ -2188,15 +3488,21 @@
                 "height": 68
               },
               "normalizedSize": [
-                92,
-                38
+                164,
+                68
+              ],
+              "frameSize": [
+                164,
+                96
               ],
               "cellOffset": [
-                2,
-                50
+                0,
+                20
               ],
+              "anchorX": 82,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 2,
@@ -2209,15 +3515,21 @@
                 "height": 70
               },
               "normalizedSize": [
-                92,
-                47
+                138,
+                70
+              ],
+              "frameSize": [
+                138,
+                96
               ],
               "cellOffset": [
-                2,
-                41
+                0,
+                18
               ],
+              "anchorX": 69,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 3,
@@ -2230,15 +3542,21 @@
                 "height": 54
               },
               "normalizedSize": [
-                92,
-                36
+                155,
+                60
+              ],
+              "frameSize": [
+                155,
+                96
               ],
               "cellOffset": [
-                2,
-                52
+                0,
+                28
               ],
+              "anchorX": 78,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 4,
@@ -2251,15 +3569,58 @@
                 "height": 54
               },
               "normalizedSize": [
-                92,
-                36
+                155,
+                60
+              ],
+              "frameSize": [
+                155,
+                96
               ],
               "cellOffset": [
-                2,
-                52
+                0,
+                28
               ],
+              "anchorX": 78,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 103,
+              "h": 96,
+              "anchorX": 52,
+              "anchorY": 88
+            },
+            {
+              "x": 103,
+              "w": 164,
+              "h": 96,
+              "anchorX": 82,
+              "anchorY": 88
+            },
+            {
+              "x": 267,
+              "w": 138,
+              "h": 96,
+              "anchorX": 69,
+              "anchorY": 88
+            },
+            {
+              "x": 405,
+              "w": 155,
+              "h": 96,
+              "anchorX": 78,
+              "anchorY": 88
+            },
+            {
+              "x": 560,
+              "w": 155,
+              "h": 96,
+              "anchorX": 78,
+              "anchorY": 88
             }
           ],
           "warnings": [
@@ -2270,7 +3631,7 @@
           "animation": "death",
           "path": "public/assets/fightcore/sprites/monkey-grunt/death-strip.png",
           "size": [
-            672,
+            1130,
             96
           ],
           "frameCount": 7,
@@ -2298,15 +3659,21 @@
                 "height": 56
               },
               "normalizedSize": [
-                92,
-                38
+                150,
+                62
+              ],
+              "frameSize": [
+                150,
+                96
               ],
               "cellOffset": [
-                2,
-                50
+                0,
+                26
               ],
+              "anchorX": 75,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 1,
@@ -2319,15 +3686,21 @@
                 "height": 52
               },
               "normalizedSize": [
-                92,
-                37
+                146,
+                58
+              ],
+              "frameSize": [
+                146,
+                96
               ],
               "cellOffset": [
-                2,
-                51
+                0,
+                30
               ],
+              "anchorX": 73,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 2,
@@ -2340,15 +3713,21 @@
                 "height": 52
               },
               "normalizedSize": [
-                92,
-                34
+                156,
+                58
+              ],
+              "frameSize": [
+                156,
+                96
               ],
               "cellOffset": [
-                2,
-                54
+                0,
+                30
               ],
+              "anchorX": 78,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 3,
@@ -2361,15 +3740,21 @@
                 "height": 51
               },
               "normalizedSize": [
-                92,
-                31
+                153,
+                51
+              ],
+              "frameSize": [
+                153,
+                96
               ],
               "cellOffset": [
-                2,
-                57
+                0,
+                37
               ],
+              "anchorX": 76,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 4,
@@ -2382,15 +3767,21 @@
                 "height": 49
               },
               "normalizedSize": [
-                92,
-                28
+                161,
+                49
+              ],
+              "frameSize": [
+                161,
+                96
               ],
               "cellOffset": [
-                2,
-                60
+                0,
+                39
               ],
+              "anchorX": 80,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 5,
@@ -2403,15 +3794,21 @@
                 "height": 43
               },
               "normalizedSize": [
-                92,
-                22
+                182,
+                43
+              ],
+              "frameSize": [
+                182,
+                96
               ],
               "cellOffset": [
-                2,
-                66
+                0,
+                45
               ],
+              "anchorX": 91,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
             },
             {
               "index": 6,
@@ -2424,15 +3821,72 @@
                 "height": 43
               },
               "normalizedSize": [
-                92,
-                22
+                182,
+                43
+              ],
+              "frameSize": [
+                182,
+                96
               ],
               "cellOffset": [
-                2,
-                66
+                0,
+                45
               ],
+              "anchorX": 91,
+              "anchorY": 88,
               "baselineY": 88,
-              "scaledDown": true
+              "scaledDown": false
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 150,
+              "h": 96,
+              "anchorX": 75,
+              "anchorY": 88
+            },
+            {
+              "x": 150,
+              "w": 146,
+              "h": 96,
+              "anchorX": 73,
+              "anchorY": 88
+            },
+            {
+              "x": 296,
+              "w": 156,
+              "h": 96,
+              "anchorX": 78,
+              "anchorY": 88
+            },
+            {
+              "x": 452,
+              "w": 153,
+              "h": 96,
+              "anchorX": 76,
+              "anchorY": 88
+            },
+            {
+              "x": 605,
+              "w": 161,
+              "h": 96,
+              "anchorX": 80,
+              "anchorY": 88
+            },
+            {
+              "x": 766,
+              "w": 182,
+              "h": 96,
+              "anchorX": 91,
+              "anchorY": 88
+            },
+            {
+              "x": 948,
+              "w": 182,
+              "h": 96,
+              "anchorX": 91,
+              "anchorY": 88
             }
           ],
           "warnings": [
@@ -2445,7 +3899,12 @@
         "knockdown: detected only 4 frame group(s), duplicating nearest valid pose to reach 5",
         "death: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
       ],
-      "transparentPixelsAfterResize": 523319,
+      "atlasSize": [
+        1130,
+        768
+      ],
+      "metadata": "public/assets/fightcore/sprites/monkey-grunt/metadata.json",
+      "transparentPixelsAfterResize": 673322,
       "remainingBorderConnectedCheckerboardPixels": 0
     }
   ],
