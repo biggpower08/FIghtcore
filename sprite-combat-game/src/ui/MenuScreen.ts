@@ -23,7 +23,7 @@ export class MenuScreen {
 
   showHome(selectedCharacterId = 'cyber-ninja-blue'): void {
     const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
-    const selectedPreview = `/sprites/frames/${selectedCharacter.id}/idle/0001.png`;
+    const selectedPreview = characterIconPath(selectedCharacter);
     this.show(`
       <section class="menu-panel home-panel">
         <div>
@@ -40,7 +40,7 @@ export class MenuScreen {
           ${characters
             .map((character) => {
               const selectedClass = character.id === selectedCharacterId ? ' selected' : '';
-              const previewPath = `/sprites/frames/${character.id}/idle/0001.png`;
+              const previewPath = characterIconPath(character);
               return `
                 <button class="character-card${selectedClass}" data-action="select-character" data-character-id="${character.id}" type="button">
                   <div class="character-card-preview"><img src="${publicAssetUrl(previewPath)}" alt="${character.name}" /></div>
@@ -150,4 +150,8 @@ export class MenuScreen {
     if (action === 'resume') this.handlers.onResume();
     if (action === 'home') this.handlers.onHome();
   }
+}
+
+function characterIconPath(character: { id: string; iconPath?: string }): string {
+  return character.iconPath ?? `/sprites/frames/${character.id}/idle/0001.png`;
 }

@@ -6,6 +6,7 @@ export interface CharacterDefinition {
   identity: string;
   maxHealth: number;
   speed: number;
+  iconPath?: string;
 }
 
 export const characters: CharacterDefinition[] = [
@@ -15,6 +16,7 @@ export const characters: CharacterDefinition[] = [
     identity: 'Fast blade / side-kick fighter',
     maxHealth: 86,
     speed: 304,
+    iconPath: '/assets/fightcore/sprites/cyber-ninja/icon-full-body.png',
   },
   {
     id: 'cyber-ninja-blue',

@@ -60,14 +60,6 @@
           "height": 124
         },
         {
-          "left": 44,
-          "top": 768,
-          "right": 819,
-          "bottom": 891,
-          "width": 776,
-          "height": 124
-        },
-        {
           "left": 43,
           "top": 918,
           "right": 386,
@@ -1374,272 +1366,6 @@
           ]
         },
         {
-          "animation": "side_kick",
-          "path": "public/assets/fightcore/sprites/cyber-ninja/side-kick-strip.png",
-          "size": [
-            485,
-            96
-          ],
-          "frameCount": 7,
-          "detectedFrameCount": 7,
-          "fps": 13,
-          "loop": false,
-          "passedDimensions": true,
-          "rowBounds": {
-            "left": 44,
-            "top": 768,
-            "right": 819,
-            "bottom": 891,
-            "width": 776,
-            "height": 124
-          },
-          "frames": [
-            {
-              "index": 0,
-              "sourceBounds": {
-                "left": 44,
-                "top": 769,
-                "right": 142,
-                "bottom": 891,
-                "width": 99,
-                "height": 123
-              },
-              "normalizedSize": [
-                71,
-                88
-              ],
-              "frameSize": [
-                71,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 36,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            },
-            {
-              "index": 1,
-              "sourceBounds": {
-                "left": 176,
-                "top": 769,
-                "right": 277,
-                "bottom": 890,
-                "width": 102,
-                "height": 122
-              },
-              "normalizedSize": [
-                74,
-                88
-              ],
-              "frameSize": [
-                74,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 37,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            },
-            {
-              "index": 2,
-              "sourceBounds": {
-                "left": 319,
-                "top": 770,
-                "right": 425,
-                "bottom": 891,
-                "width": 107,
-                "height": 122
-              },
-              "normalizedSize": [
-                77,
-                88
-              ],
-              "frameSize": [
-                77,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 38,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            },
-            {
-              "index": 3,
-              "sourceBounds": {
-                "left": 461,
-                "top": 767,
-                "right": 569,
-                "bottom": 890,
-                "width": 109,
-                "height": 124
-              },
-              "normalizedSize": [
-                82,
-                88
-              ],
-              "frameSize": [
-                82,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 41,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            },
-            {
-              "index": 4,
-              "sourceBounds": {
-                "left": 628,
-                "top": 769,
-                "right": 734,
-                "bottom": 890,
-                "width": 107,
-                "height": 122
-              },
-              "normalizedSize": [
-                77,
-                88
-              ],
-              "frameSize": [
-                77,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 38,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            },
-            {
-              "index": 5,
-              "sourceBounds": {
-                "left": 749,
-                "top": 771,
-                "right": 819,
-                "bottom": 890,
-                "width": 71,
-                "height": 120
-              },
-              "normalizedSize": [
-                52,
-                88
-              ],
-              "frameSize": [
-                52,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 26,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            },
-            {
-              "index": 6,
-              "sourceBounds": {
-                "left": 749,
-                "top": 771,
-                "right": 819,
-                "bottom": 890,
-                "width": 71,
-                "height": 120
-              },
-              "normalizedSize": [
-                52,
-                88
-              ],
-              "frameSize": [
-                52,
-                96
-              ],
-              "cellOffset": [
-                0,
-                0
-              ],
-              "anchorX": 26,
-              "anchorY": 88,
-              "baselineY": 88,
-              "scaledDown": true
-            }
-          ],
-          "metadata": [
-            {
-              "x": 0,
-              "w": 71,
-              "h": 96,
-              "anchorX": 36,
-              "anchorY": 88
-            },
-            {
-              "x": 71,
-              "w": 74,
-              "h": 96,
-              "anchorX": 37,
-              "anchorY": 88
-            },
-            {
-              "x": 145,
-              "w": 77,
-              "h": 96,
-              "anchorX": 38,
-              "anchorY": 88
-            },
-            {
-              "x": 222,
-              "w": 82,
-              "h": 96,
-              "anchorX": 41,
-              "anchorY": 88
-            },
-            {
-              "x": 304,
-              "w": 77,
-              "h": 96,
-              "anchorX": 38,
-              "anchorY": 88
-            },
-            {
-              "x": 381,
-              "w": 52,
-              "h": 96,
-              "anchorX": 26,
-              "anchorY": 88
-            },
-            {
-              "x": 433,
-              "w": 52,
-              "h": 96,
-              "anchorX": 26,
-              "anchorY": 88
-            }
-          ],
-          "warnings": [
-            "detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
-          ]
-        },
-        {
           "animation": "hit_react",
           "path": "public/assets/fightcore/sprites/cyber-ninja/hit-react-strip.png",
           "size": [
@@ -2192,20 +1918,254 @@
             }
           ],
           "warnings": []
+        },
+        {
+          "animation": "side_kick",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/side-kick-strip.png",
+          "size": [
+            468,
+            96
+          ],
+          "frameCount": 6,
+          "detectedFrameCount": 6,
+          "fps": 13,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 168,
+            "top": 72,
+            "right": 2897,
+            "bottom": 449,
+            "width": 2730,
+            "height": 378
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 168,
+                "top": 72,
+                "right": 415,
+                "bottom": 449,
+                "width": 248,
+                "height": 378
+              },
+              "normalizedSize": [
+                58,
+                88
+              ],
+              "frameSize": [
+                58,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 29,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 621,
+                "top": 73,
+                "right": 893,
+                "bottom": 448,
+                "width": 273,
+                "height": 376
+              },
+              "normalizedSize": [
+                64,
+                88
+              ],
+              "frameSize": [
+                64,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 32,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 1065,
+                "top": 79,
+                "right": 1525,
+                "bottom": 448,
+                "width": 461,
+                "height": 370
+              },
+              "normalizedSize": [
+                110,
+                88
+              ],
+              "frameSize": [
+                110,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 55,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 1604,
+                "top": 81,
+                "right": 2122,
+                "bottom": 448,
+                "width": 519,
+                "height": 368
+              },
+              "normalizedSize": [
+                124,
+                88
+              ],
+              "frameSize": [
+                124,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 62,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 2198,
+                "top": 74,
+                "right": 2432,
+                "bottom": 448,
+                "width": 235,
+                "height": 375
+              },
+              "normalizedSize": [
+                55,
+                88
+              ],
+              "frameSize": [
+                55,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 28,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 2655,
+                "top": 72,
+                "right": 2897,
+                "bottom": 449,
+                "width": 243,
+                "height": 378
+              },
+              "normalizedSize": [
+                57,
+                88
+              ],
+              "frameSize": [
+                57,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 28,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 58,
+              "h": 96,
+              "anchorX": 29,
+              "anchorY": 88
+            },
+            {
+              "x": 58,
+              "w": 64,
+              "h": 96,
+              "anchorX": 32,
+              "anchorY": 88
+            },
+            {
+              "x": 122,
+              "w": 110,
+              "h": 96,
+              "anchorX": 55,
+              "anchorY": 88
+            },
+            {
+              "x": 232,
+              "w": 124,
+              "h": 96,
+              "anchorX": 62,
+              "anchorY": 88
+            },
+            {
+              "x": 356,
+              "w": 55,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 411,
+              "w": 57,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            }
+          ],
+          "warnings": [],
+          "source": "tools/raw-fightcore-assets/cyber.ninja.sidekick.png",
+          "sourceSize": [
+            3072,
+            512
+          ],
+          "transparentPixelsBeforeResize": 1256051
         }
       ],
       "warnings": [
-        "detected 9 animation rows, expected 10; duplicating configured nearest row fallback(s)",
-        "row 6 uses detected row 5 as a temporary fallback",
-        "high-kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7",
-        "side-kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
+        "high_kick: detected only 6 frame group(s), duplicating nearest valid pose to reach 7"
       ],
+      "icon": "public/assets/fightcore/sprites/cyber-ninja/icon-full-body.png",
       "atlasSize": [
         569,
-        960
+        864
       ],
       "metadata": "public/assets/fightcore/sprites/cyber-ninja/metadata.json",
-      "transparentPixelsAfterResize": 387471,
+      "transparentPixelsAfterResize": 349852,
       "remainingBorderConnectedCheckerboardPixels": 0
     },
     {

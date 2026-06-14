@@ -72,7 +72,7 @@ SPRITE_SPECS = [
         "output_dir": OUTPUT_ROOT / "sprites" / "cyber-ninja",
         "entity_id": "cyber-ninja",
         "sheet_id": "fightcore-cyber-ninja-atlas",
-        "row_fallbacks": {6: 5},
+        "icon_from_animation": "idle",
         "rows": [
             ("idle", 0, 4, True, 8),
             ("walk", 1, 6, True, 10),
@@ -80,10 +80,12 @@ SPRITE_SPECS = [
             ("jab", 3, 5, False, 16),
             ("slice", 4, 6, False, 14),
             ("high-kick", 5, 7, False, 13),
-            ("side-kick", 6, 7, False, 13),
-            ("hit-react", 7, 3, False, 12),
-            ("recovery", 8, 5, False, 8),
-            ("standup", 9, 6, False, 8),
+            ("hit-react", 6, 3, False, 12),
+            ("recovery", 7, 5, False, 8),
+            ("standup", 8, 6, False, 8),
+        ],
+        "explicit_animations": [
+            ("side-kick", "cyber.ninja.sidekick.png", 6, False, 13),
         ],
     },
     {
@@ -178,65 +180,34 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
 
     for animation, row_index, frame_count, loop, fps in spec["rows"]:
         row_bound = row_bounds[row_index]
-        detected_frames, row_warnings = detect_frame_bounds(cleaned, row_bound, frame_count)
-        normalized_frames = []
-        frame_reports = []
-        metadata_frames = []
-        cursor_x = 0
-        for frame_index, frame_bound in enumerate(detected_frames):
-            frame_image, normalize_report = normalize_frame(cleaned, frame_bound)
-            normalized_frames.append(frame_image)
-            metadata_frame = {
-                "x": cursor_x,
-                "w": frame_image.width,
-                "h": frame_image.height,
-                "anchorX": round(frame_image.width / 2),
-                "anchorY": BASELINE_Y,
-            }
-            metadata_frames.append(metadata_frame)
-            frame_reports.append({"index": frame_index, "sourceBounds": bounds_report(frame_bound), **normalize_report})
-            cursor_x += frame_image.width
+        animation_result = prepare_animation_strip(cleaned, row_bound, output_dir, animation, frame_count, loop, fps)
+        record_animation_result(spec, animation_result, row_index, sprite_metadata, json_metadata, atlas_report, animation_outputs)
+        if animation == spec.get("icon_from_animation") and animation_result["frameImages"]:
+            icon_path = output_dir / "icon-full-body.png"
+            animation_result["frameImages"][0].save(icon_path)
+            atlas_report["icon"] = repo_path(icon_path)
 
-        strip_width = max(1, cursor_x)
-        strip = Image.new("RGBA", (strip_width, NORMALIZED_FRAME_HEIGHT), (0, 0, 0, 0))
-        cursor_x = 0
-        for frame_image in normalized_frames:
-            strip.paste(frame_image, (cursor_x, 0), frame_image)
-            cursor_x += frame_image.width
-
-        strip_path = output_dir / f"{animation}-strip.png"
-        strip.save(strip_path)
-        animation_outputs.append((row_index, strip))
-        animation_metadata = {
-            "entityId": spec["entity_id"],
-            "sheetId": spec["sheet_id"],
-            "animationKey": animation.replace("-", "_"),
-            "stripPath": f"{animation}-strip.png",
-            "frameHeight": NORMALIZED_FRAME_HEIGHT,
-            "frameCount": len(metadata_frames),
-            "fps": fps,
-            "loop": loop,
-            "frames": metadata_frames,
-        }
-        sprite_metadata.append(animation_metadata)
-        json_metadata["animations"][animation_metadata["animationKey"]] = animation_metadata
-        if row_warnings:
-            atlas_report["warnings"].extend(f"{animation}: {warning}" for warning in row_warnings)
-        atlas_report["strips"].append(
-            {
-                "animation": animation_metadata["animationKey"],
-                "path": repo_path(strip_path),
-                "size": list(strip.size),
-                "frameCount": len(metadata_frames),
-                "detectedFrameCount": len(detected_frames),
-                "fps": fps,
-                "loop": loop,
-                "passedDimensions": strip.height == NORMALIZED_FRAME_HEIGHT and strip.width == sum(frame["w"] for frame in metadata_frames),
-                "rowBounds": bounds_report(row_bound),
-                "frames": frame_reports,
-                "metadata": metadata_frames,
-                "warnings": row_warnings,
-            }
+    for explicit_index, (animation, explicit_source, frame_count, loop, fps) in enumerate(spec.get("explicit_animations", [])):
+        explicit_path = RAW_ROOT / explicit_source
+        if not explicit_path.exists():
+            raise FileNotFoundError(f"Missing explicit animation source image: {explicit_path}")
+        explicit_image = Image.open(explicit_path).convert("RGBA")
+        cleaned_explicit, explicit_transparent_pixels = remove_checkerboard_background(explicit_image)
+        row_bound = tight_bounds_for_band(cleaned_explicit, Bounds(0, 0, cleaned_explicit.width - 1, cleaned_explicit.height - 1))
+        if not row_bound:
+            raise ValueError(f"No foreground detected in explicit animation source: {explicit_path}")
+        animation_result = prepare_animation_strip(cleaned_explicit, row_bound, output_dir, animation, frame_count, loop, fps)
+        animation_result["report"]["source"] = repo_path(explicit_path)
+        animation_result["report"]["sourceSize"] = list(explicit_image.size)
+        animation_result["report"]["transparentPixelsBeforeResize"] = explicit_transparent_pixels
+        record_animation_result(
+            spec,
+            animation_result,
+            len(spec["rows"]) + explicit_index,
+            sprite_metadata,
+            json_metadata,
+            atlas_report,
+            animation_outputs,
         )
 
     atlas_width = max((strip.width for _row_index, strip in animation_outputs), default=NORMALIZED_FRAME_HEIGHT)
@@ -255,6 +226,98 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
         raise ValueError(f"{spec['name']} atlas has no transparent pixels after cleanup")
 
     return atlas_report, sprite_metadata
+
+
+def prepare_animation_strip(
+    image: Image.Image,
+    row_bound: Bounds,
+    output_dir: Path,
+    animation: str,
+    frame_count: int,
+    loop: bool,
+    fps: int,
+) -> dict[str, Any]:
+    detected_frames, row_warnings = detect_frame_bounds(image, row_bound, frame_count)
+    normalized_frames = []
+    frame_reports = []
+    metadata_frames = []
+    cursor_x = 0
+    for frame_index, frame_bound in enumerate(detected_frames):
+        frame_image, normalize_report = normalize_frame(image, frame_bound)
+        normalized_frames.append(frame_image)
+        metadata_frame = {
+            "x": cursor_x,
+            "w": frame_image.width,
+            "h": frame_image.height,
+            "anchorX": round(frame_image.width / 2),
+            "anchorY": BASELINE_Y,
+        }
+        metadata_frames.append(metadata_frame)
+        frame_reports.append({"index": frame_index, "sourceBounds": bounds_report(frame_bound), **normalize_report})
+        cursor_x += frame_image.width
+
+    strip_width = max(1, cursor_x)
+    strip = Image.new("RGBA", (strip_width, NORMALIZED_FRAME_HEIGHT), (0, 0, 0, 0))
+    cursor_x = 0
+    for frame_image in normalized_frames:
+        strip.paste(frame_image, (cursor_x, 0), frame_image)
+        cursor_x += frame_image.width
+
+    strip_path = output_dir / f"{animation}-strip.png"
+    strip.save(strip_path)
+    animation_key = animation.replace("-", "_")
+    metadata = {
+        "animationKey": animation_key,
+        "stripPath": f"{animation}-strip.png",
+        "frameHeight": NORMALIZED_FRAME_HEIGHT,
+        "frameCount": len(metadata_frames),
+        "fps": fps,
+        "loop": loop,
+        "frames": metadata_frames,
+    }
+    report = {
+        "animation": animation_key,
+        "path": repo_path(strip_path),
+        "size": list(strip.size),
+        "frameCount": len(metadata_frames),
+        "detectedFrameCount": len(detected_frames),
+        "fps": fps,
+        "loop": loop,
+        "passedDimensions": strip.height == NORMALIZED_FRAME_HEIGHT and strip.width == sum(frame["w"] for frame in metadata_frames),
+        "rowBounds": bounds_report(row_bound),
+        "frames": frame_reports,
+        "metadata": metadata_frames,
+        "warnings": row_warnings,
+    }
+    return {
+        "strip": strip,
+        "metadata": metadata,
+        "report": report,
+        "warnings": row_warnings,
+        "frameImages": normalized_frames,
+    }
+
+
+def record_animation_result(
+    spec: dict[str, Any],
+    animation_result: dict[str, Any],
+    atlas_row_index: int,
+    sprite_metadata: list[dict[str, Any]],
+    json_metadata: dict[str, Any],
+    atlas_report: dict[str, Any],
+    animation_outputs: list[tuple[int, Image.Image]],
+) -> None:
+    metadata = {
+        "entityId": spec["entity_id"],
+        "sheetId": spec["sheet_id"],
+        **animation_result["metadata"],
+    }
+    sprite_metadata.append(metadata)
+    json_metadata["animations"][metadata["animationKey"]] = metadata
+    if animation_result["warnings"]:
+        atlas_report["warnings"].extend(f"{metadata['animationKey']}: {warning}" for warning in animation_result["warnings"])
+    atlas_report["strips"].append(animation_result["report"])
+    animation_outputs.append((atlas_row_index, animation_result["strip"]))
 
 
 def detect_row_bounds(image: Image.Image, expected_rows: int) -> list[Bounds]:
