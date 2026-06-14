@@ -34,7 +34,7 @@ import { RewardScreen } from '../ui/RewardScreen';
 import { SpriteLab } from '../ui/SpriteLab';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
-const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main-clean.png';
+const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
 
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
@@ -54,7 +54,7 @@ export class Game {
   private readonly rewardScreen: RewardScreen;
   private readonly spriteLab: SpriteLab;
   private readonly obstacles = this.createObstacles();
-  private selectedCharacterId = 'cyber-ninja-blue';
+  private selectedCharacterId = 'cyber-ninja';
   private player = this.createPlayer();
   private enemies: Enemy[] = [];
   private boss: Boss | null = null;

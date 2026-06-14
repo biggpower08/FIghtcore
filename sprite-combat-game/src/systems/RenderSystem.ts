@@ -17,7 +17,7 @@ export interface DustPuff {
   lifeMs: number;
 }
 
-const DESERT_ARENA_BACKGROUND_PATH = '/backgrounds/desert/desert-arena-main-clean.png';
+const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
 
 export class RenderSystem {
   constructor(

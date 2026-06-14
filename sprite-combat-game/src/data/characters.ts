@@ -10,8 +10,15 @@ export interface CharacterDefinition {
 
 export const characters: CharacterDefinition[] = [
   {
-    id: 'cyber-ninja-blue',
+    id: 'cyber-ninja',
     name: 'Cyber Ninja',
+    identity: 'Fast blade / side-kick fighter',
+    maxHealth: 86,
+    speed: 304,
+  },
+  {
+    id: 'cyber-ninja-blue',
+    name: 'Cyber Ninja Blue',
     identity: 'Fast kickboxing / kung fu fighter',
     maxHealth: 82,
     speed: 300,

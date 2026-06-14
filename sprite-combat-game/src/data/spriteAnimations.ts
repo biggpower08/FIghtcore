@@ -1,3 +1,4 @@
+import { fightcoreSpriteManifest, type FightcoreSpriteManifestEntry } from './fightcoreSpriteManifest';
 import { spriteRegistry, spriteSourceSheetById } from './spriteRegistry';
 
 export type SpriteFrameSource = 'frame-png' | 'atlas-crop' | 'sheet-crop' | 'fallback' | 'missing';
@@ -40,12 +41,16 @@ const monkSheet = 'cyber-monk-orange-sheet';
 const neoSheet = 'neo-operative-green-sheet';
 
 export const enemyAttackAnimationByMove: Record<string, string> = {
+  jab: 'jab',
+  cross: 'cross',
+  grab: 'grab',
   palm_strike: 'claw_swipe',
   low_kick: 'claw_combo',
   clinch_knee: 'ground_slam',
 };
 
 export const spriteAnimations: SpriteAnimationDefinition[] = [
+  ...fightcoreManifestAnimations(),
   ...characterSheetAnimations('cyber-ninja-blue', cyberNinjaSheet, {
     idle: row(cyberNinjaSheet, 70, 122, 220, 178, 4, 218, 150),
     ready: row(cyberNinjaSheet, 70, 354, 220, 152, 4, 218, 120),
@@ -171,6 +176,38 @@ function fallbackOnly(entityId: string, animationKeys: string[]): SpriteAnimatio
     fallbackAnimation: animationKey === 'idle' ? undefined : 'idle',
     frames: [{ durationMs: 120, notes: 'Pre-sliced frame folders are preferred; procedural drawing remains as a safety fallback.' }],
     notes: 'Cyber Monkey runtime animation key with frame-folder priority and procedural fallback.',
+  }));
+}
+
+function fightcoreManifestAnimations(): SpriteAnimationDefinition[] {
+  return fightcoreSpriteManifest.flatMap((entry) => {
+    return entry.animations.map((animation) => ({
+      entityId: entry.entityId,
+      animationKey: animation.key,
+      loop: animation.loop,
+      fallbackAnimation: animation.key === 'idle' ? undefined : 'idle',
+      frames: manifestRow(entry, animation.row, animation.frameCount, Math.round(1000 / animation.fps)),
+      notes: `Prepared FIghtcore atlas row ${animation.row} from ${entry.sheetId}.`,
+    }));
+  });
+}
+
+function manifestRow(
+  entry: FightcoreSpriteManifestEntry,
+  rowIndex: number,
+  frameCount: number,
+  durationMs: number,
+): SpriteFrameRef[] {
+  return Array.from({ length: frameCount }, (_, index) => ({
+    sheetId: entry.sheetId,
+    x: index * entry.frameWidth,
+    y: rowIndex * entry.frameHeight,
+    width: entry.frameWidth,
+    height: entry.frameHeight,
+    durationMs,
+    anchorX: 0.5,
+    anchorY: entry.entityId === 'monkey-grunt' ? 0.88 : 0.86,
+    feetY: entry.entityId === 'monkey-grunt' ? 84 : 82,
   }));
 }
 

@@ -1,0 +1,270 @@
+{
+  "sprites": [
+    {
+      "name": "Cyber Ninja",
+      "source": "tools/raw-fightcore-assets/Cyber.ninja.png.png",
+      "sourceSize": [
+        1190,
+        1322
+      ],
+      "atlas": "public/assets/fightcore/sprites/cyber-ninja/atlas.png",
+      "atlasSize": [
+        864,
+        960
+      ],
+      "transparentPixelsBeforeResize": 1335073,
+      "transparentPixelsAfterResize": 677893,
+      "remainingBorderConnectedCheckerboardPixels": 0,
+      "strips": [
+        {
+          "animation": "idle",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/idle-strip.png",
+          "size": [
+            384,
+            96
+          ],
+          "frameCount": 4,
+          "fps": 8,
+          "loop": true,
+          "passedDimensions": true
+        },
+        {
+          "animation": "walk",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/walk-strip.png",
+          "size": [
+            576,
+            96
+          ],
+          "frameCount": 6,
+          "fps": 10,
+          "loop": true,
+          "passedDimensions": true
+        },
+        {
+          "animation": "dash",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/dash-strip.png",
+          "size": [
+            480,
+            96
+          ],
+          "frameCount": 5,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "jab",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/jab-strip.png",
+          "size": [
+            480,
+            96
+          ],
+          "frameCount": 5,
+          "fps": 16,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "slice",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/slice-strip.png",
+          "size": [
+            576,
+            96
+          ],
+          "frameCount": 6,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "high-kick",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/high-kick-strip.png",
+          "size": [
+            672,
+            96
+          ],
+          "frameCount": 7,
+          "fps": 13,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "side-kick",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/side-kick-strip.png",
+          "size": [
+            576,
+            96
+          ],
+          "frameCount": 6,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "hit-react",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/hit-react-strip.png",
+          "size": [
+            288,
+            96
+          ],
+          "frameCount": 3,
+          "fps": 12,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "recovery",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/recovery-strip.png",
+          "size": [
+            480,
+            96
+          ],
+          "frameCount": 5,
+          "fps": 8,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "standup",
+          "path": "public/assets/fightcore/sprites/cyber-ninja/standup-strip.png",
+          "size": [
+            576,
+            96
+          ],
+          "frameCount": 6,
+          "fps": 8,
+          "loop": false,
+          "passedDimensions": true
+        }
+      ]
+    },
+    {
+      "name": "Monkey Grunt",
+      "source": "tools/raw-fightcore-assets/monkey.grunt.png.png",
+      "sourceSize": [
+        1330,
+        1182
+      ],
+      "atlas": "public/assets/fightcore/sprites/monkey-grunt/atlas.png",
+      "atlasSize": [
+        864,
+        768
+      ],
+      "transparentPixelsBeforeResize": 1295058,
+      "transparentPixelsAfterResize": 524385,
+      "remainingBorderConnectedCheckerboardPixels": 0,
+      "strips": [
+        {
+          "animation": "idle",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/idle-strip.png",
+          "size": [
+            384,
+            96
+          ],
+          "frameCount": 4,
+          "fps": 8,
+          "loop": true,
+          "passedDimensions": true
+        },
+        {
+          "animation": "run",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/run-strip.png",
+          "size": [
+            576,
+            96
+          ],
+          "frameCount": 6,
+          "fps": 12,
+          "loop": true,
+          "passedDimensions": true
+        },
+        {
+          "animation": "jab",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/jab-strip.png",
+          "size": [
+            480,
+            96
+          ],
+          "frameCount": 5,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "cross",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/cross-strip.png",
+          "size": [
+            480,
+            96
+          ],
+          "frameCount": 5,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "grab",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/grab-strip.png",
+          "size": [
+            576,
+            96
+          ],
+          "frameCount": 6,
+          "fps": 12,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "hit-react",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/hit-react-strip.png",
+          "size": [
+            288,
+            96
+          ],
+          "frameCount": 3,
+          "fps": 12,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "knockdown",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/knockdown-strip.png",
+          "size": [
+            480,
+            96
+          ],
+          "frameCount": 5,
+          "fps": 8,
+          "loop": false,
+          "passedDimensions": true
+        },
+        {
+          "animation": "death",
+          "path": "public/assets/fightcore/sprites/monkey-grunt/death-strip.png",
+          "size": [
+            672,
+            96
+          ],
+          "frameCount": 7,
+          "fps": 8,
+          "loop": false,
+          "passedDimensions": true
+        }
+      ]
+    }
+  ],
+  "background": {
+    "source": "tools/raw-fightcore-assets/desert.png.png",
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "path": "public/assets/fightcore/backgrounds/desert-arena/day.png",
+    "size": [
+      1920,
+      1080
+    ],
+    "normalizedTo16x9": true
+  },
+  "errors": []
+}

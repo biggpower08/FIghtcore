@@ -27,6 +27,16 @@ export interface CharacterLoadout {
 
 const loadouts: CharacterLoadout[] = [
   {
+    characterId: 'cyber-ninja',
+    slots: [
+      slot('H', 'jab'),
+      slot('J', 'jab'),
+      slot('K', 'slice'),
+      slot('L', 'side_kick'),
+    ],
+    stats: { maxHealth: 86, speed: 304, stamina: 104, damageMultiplier: 1 },
+  },
+  {
     characterId: 'cyber-ninja-blue',
     slots: [
       slot('H', 'jab'),

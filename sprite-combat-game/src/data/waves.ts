@@ -9,11 +9,11 @@ export interface WaveDefinition {
 }
 
 export const waveDefinitions: WaveDefinition[] = [
-  { wave: 1, enemies: [{ enemyId: 'cyber-monkey-grunt', count: 3 }], isBoss: false },
+  { wave: 1, enemies: [{ enemyId: 'monkey-grunt', count: 3 }], isBoss: false },
   {
     wave: 2,
     enemies: [
-      { enemyId: 'cyber-monkey-grunt', count: 4 },
+      { enemyId: 'monkey-grunt', count: 4 },
       { enemyId: 'cyber-monkey-scrapper', count: 1 },
     ],
     isBoss: false,
@@ -21,7 +21,7 @@ export const waveDefinitions: WaveDefinition[] = [
   {
     wave: 3,
     enemies: [
-      { enemyId: 'cyber-monkey-grunt', count: 5 },
+      { enemyId: 'monkey-grunt', count: 5 },
       { enemyId: 'cyber-monkey-scrapper', count: 2 },
     ],
     isBoss: false,

@@ -1,3 +1,5 @@
+import { fightcoreSpriteManifest } from './fightcoreSpriteManifest';
+
 export type SpriteKind = 'hero' | 'villain' | 'effect' | 'desert-prop';
 
 export interface SpriteRegistration {
@@ -33,6 +35,15 @@ export interface SpriteSourceSheet {
 }
 
 export const spriteRegistry: SpriteRegistration[] = [
+  registerCharacter('cyber-ninja', 'hero', manifestAnimations('cyber-ninja'), ['fightcore-cyber-ninja-atlas'], heroRenderProfile()),
+  registerCharacter('monkey-grunt', 'villain', manifestAnimations('monkey-grunt'), ['fightcore-monkey-grunt-atlas'], {
+    anchorX: 0.5,
+    anchorY: 0.88,
+    feetY: 84,
+    scale: 0.96,
+    shadowOffsetY: 8,
+    hitboxOffsetY: -8,
+  }),
   registerCharacter('cyber-ninja-blue', 'hero', [
     'idle',
     'ready',
@@ -138,14 +149,24 @@ export const spriteRegistry: SpriteRegistration[] = [
   {
     id: 'desert-stage',
     kind: 'desert-prop',
-    basePath: '/backgrounds/desert',
-    animations: ['sand_tile', 'rock_small', 'rock_large', 'dead_bush', 'bone_pile', 'arena_boundary_marker', 'dust_overlay'],
+    basePath: '/assets/fightcore/backgrounds/desert-arena',
+    animations: ['day', 'sand_tile', 'rock_small', 'rock_large', 'dead_bush', 'bone_pile', 'arena_boundary_marker', 'dust_overlay'],
   },
 ];
 
 export const spriteRegistryById = new Map(spriteRegistry.map((sprite) => [sprite.id, sprite]));
 
 export const spriteSourceSheets: SpriteSourceSheet[] = [
+  ...fightcoreSpriteManifest.map((entry) => ({
+    id: entry.sheetId,
+    path: entry.sheetPath,
+    width: entry.atlasWidth,
+    height: entry.atlasHeight,
+    frameSize: { width: entry.frameWidth, height: entry.frameHeight },
+    linkedSpriteIds: [entry.entityId],
+    animationHints: entry.animations.map((animation) => animation.key),
+    notes: 'Provided FIghtcore atlas prepared from raw source art with checkerboard transparency removed.',
+  })),
   {
     id: 'cyber-ninja-blue-sheet',
     path: '/sprites/source-generated/cyber-ninja-sheet.png',
@@ -308,4 +329,8 @@ function registerCharacter(
 
 function heroRenderProfile(): SpriteRenderProfile {
   return { anchorX: 0.5, anchorY: 0.86, feetY: 82, scale: 1, shadowOffsetY: 8, hitboxOffsetY: -12 };
+}
+
+function manifestAnimations(entityId: string): string[] {
+  return fightcoreSpriteManifest.find((entry) => entry.entityId === entityId)?.animations.map((animation) => animation.key) ?? [];
 }

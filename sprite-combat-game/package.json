@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
+    "assets:prepare": "python scripts/prepare-fightcore-assets.py",
     "sprite:clean": "node scripts/clean-sprite-frames.mjs",
     "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",
     "sprite-factory:generate": "python tools/sprite-factory/scripts/generate-sprites.py",
