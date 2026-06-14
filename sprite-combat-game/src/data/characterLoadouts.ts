@@ -30,9 +30,9 @@ const loadouts: CharacterLoadout[] = [
     characterId: 'cyber-ninja',
     slots: [
       slot('H', 'jab'),
-      slot('J', 'jab'),
-      slot('K', 'slice'),
-      slot('L', 'side_kick'),
+      slot('J', 'slice'),
+      slot('K', 'side_kick'),
+      slot('L', 'high_kick'),
     ],
     stats: { maxHealth: 86, speed: 304, stamina: 104, damageMultiplier: 1 },
   },
