@@ -105,6 +105,26 @@ SPRITE_SPECS = [
             ("death", 7, 7, False, 8),
         ],
     },
+    {
+        "name": "Shadow Striker",
+        "source": "shadow-striker.png.png",
+        "output_dir": OUTPUT_ROOT / "sprites" / "shadow-striker",
+        "entity_id": "shadow-striker",
+        "sheet_id": "fightcore-shadow-striker-atlas",
+        "icon_source": "shadow-striker-idle.png.png",
+        "logo_source": "Shadow-Striker-logo.png.png",
+        "rows": [
+            ("idle", 0, None, True, 8),
+            ("walk", 1, None, True, 10),
+            ("dash", 2, None, False, 14),
+            ("roundhouse-kick", 3, None, False, 13),
+            ("teep-kick", 4, None, False, 13),
+            ("cross", 5, None, False, 14),
+            ("jab", 6, None, False, 16),
+            ("hit-react", 7, None, False, 12),
+            ("recovery", 8, None, False, 8),
+        ],
+    },
 ]
 
 
@@ -168,6 +188,7 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
         "strips": [],
         "warnings": row_alignment_warnings,
     }
+    prepare_still_assets(spec, output_dir, atlas_report)
     animation_outputs: list[tuple[int, Image.Image]] = []
     sprite_metadata: list[dict[str, Any]] = []
     json_metadata: dict[str, Any] = {
@@ -211,7 +232,7 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
         )
 
     atlas_width = max((strip.width for _row_index, strip in animation_outputs), default=NORMALIZED_FRAME_HEIGHT)
-    atlas_height = max(1, len(spec["rows"])) * NORMALIZED_FRAME_HEIGHT
+    atlas_height = (max((row_index for row_index, _strip in animation_outputs), default=0) + 1) * NORMALIZED_FRAME_HEIGHT
     atlas = Image.new("RGBA", (atlas_width, atlas_height), (0, 0, 0, 0))
     for row_index, strip in animation_outputs:
         atlas.paste(strip, (0, row_index * NORMALIZED_FRAME_HEIGHT), strip)
@@ -228,12 +249,40 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
     return atlas_report, sprite_metadata
 
 
+def prepare_still_assets(spec: dict[str, Any], output_dir: Path, atlas_report: dict[str, Any]) -> None:
+    still_assets = [
+        ("icon_source", "icon-full-body.png", "icon"),
+        ("logo_source", "logo-emblem.png", "logo"),
+    ]
+    for source_key, output_name, report_key in still_assets:
+        source_name = spec.get(source_key)
+        if not source_name:
+            continue
+        source_path = RAW_ROOT / source_name
+        if not source_path.exists():
+            raise FileNotFoundError(f"Missing still asset source image: {source_path}")
+        image = Image.open(source_path).convert("RGBA")
+        cleaned, transparent_pixels = remove_checkerboard_background(image)
+        content = tight_bounds_for_band(cleaned, Bounds(0, 0, cleaned.width - 1, cleaned.height - 1))
+        if content:
+            cleaned = cleaned.crop((content.left, content.top, content.right + 1, content.bottom + 1))
+        output_path = output_dir / output_name
+        cleaned.save(output_path)
+        atlas_report[report_key] = {
+            "path": repo_path(output_path),
+            "source": repo_path(source_path),
+            "sourceSize": list(image.size),
+            "size": list(cleaned.size),
+            "transparentPixelsBeforeCrop": transparent_pixels,
+        }
+
+
 def prepare_animation_strip(
     image: Image.Image,
     row_bound: Bounds,
     output_dir: Path,
     animation: str,
-    frame_count: int,
+    frame_count: int | None,
     loop: bool,
     fps: int,
 ) -> dict[str, Any]:
@@ -271,6 +320,7 @@ def prepare_animation_strip(
         "stripPath": f"{animation}-strip.png",
         "frameHeight": NORMALIZED_FRAME_HEIGHT,
         "frameCount": len(metadata_frames),
+        "expectedFrameCount": frame_count,
         "fps": fps,
         "loop": loop,
         "frames": metadata_frames,
@@ -369,7 +419,7 @@ def align_row_bounds(detected: list[Bounds], expected_rows: int, row_fallbacks: 
     return aligned, warnings
 
 
-def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: int) -> tuple[list[Bounds], list[str]]:
+def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: int | None) -> tuple[list[Bounds], list[str]]:
     warnings: list[str] = []
     search_bounds = row_bound.expanded(FRAME_PADDING_PX, image.width, image.height)
     components = [
@@ -378,15 +428,16 @@ def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: 
         if component.pixels >= 80 and component.bounds.width >= 6 and component.bounds.height >= 6
     ]
     frame_bounds = merge_frame_components(components, expected_frames)
-    frame_bounds = merge_until_expected(frame_bounds, expected_frames)
+    if expected_frames is not None:
+        frame_bounds = merge_until_expected(frame_bounds, expected_frames)
     frame_bounds = sorted(frame_bounds, key=lambda bound: bound.left)
 
-    if len(frame_bounds) > expected_frames:
+    if expected_frames is not None and len(frame_bounds) > expected_frames:
         extras = len(frame_bounds) - expected_frames
         warnings.append(f"detected {len(frame_bounds)} frame groups, keeping the leftmost {expected_frames} and dropping {extras} extra group(s)")
         frame_bounds = frame_bounds[:expected_frames]
 
-    if len(frame_bounds) < expected_frames:
+    if expected_frames is not None and len(frame_bounds) < expected_frames:
         warnings.append(f"detected only {len(frame_bounds)} frame group(s), duplicating nearest valid pose to reach {expected_frames}")
         while frame_bounds and len(frame_bounds) < expected_frames:
             frame_bounds.append(frame_bounds[-1])
@@ -441,16 +492,19 @@ def connected_components(image: Image.Image, search_bounds: Bounds) -> list[Comp
     return components
 
 
-def merge_frame_components(components: list[Component], expected_frames: int) -> list[Bounds]:
+def merge_frame_components(components: list[Component], expected_frames: int | None) -> list[Bounds]:
     if not components:
         return []
 
     candidates = [component for component in components if component.pixels >= 220 or component.bounds.height >= 24]
-    if len(candidates) < expected_frames:
+    if expected_frames is not None and len(candidates) < expected_frames:
         candidates = sorted(components, key=lambda component: component.pixels, reverse=True)[:expected_frames]
 
     bounds = sorted([component.bounds for component in candidates], key=lambda bound: bound.left)
     bounds = merge_close_bounds(bounds, max_gap=FRAME_GAP_MERGE_PX)
+
+    if expected_frames is None:
+        return bounds
 
     while len(bounds) > expected_frames:
         gaps = [
@@ -738,6 +792,7 @@ def write_generated_metadata(metadata: list[dict[str, Any]]) -> None:
                 "  stripPath: string;",
                 "  frameHeight: number;",
                 "  frameCount: number;",
+                "  expectedFrameCount: number | null;",
                 "  fps: number;",
                 "  loop: boolean;",
                 "  frames: FightcoreGeneratedFrame[];",

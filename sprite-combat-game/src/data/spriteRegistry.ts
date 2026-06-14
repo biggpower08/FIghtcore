@@ -37,6 +37,7 @@ export interface SpriteSourceSheet {
 
 export const spriteRegistry: SpriteRegistration[] = [
   registerCharacter('cyber-ninja', 'hero', manifestAnimations('cyber-ninja'), ['fightcore-cyber-ninja-atlas'], heroRenderProfile()),
+  registerCharacter('shadow-striker', 'hero', manifestAnimations('shadow-striker'), ['fightcore-shadow-striker-atlas'], heroRenderProfile()),
   registerCharacter('monkey-grunt', 'villain', manifestAnimations('monkey-grunt'), ['fightcore-monkey-grunt-atlas'], {
     anchorX: 0.5,
     anchorY: 0.88,

@@ -37,44 +37,19 @@ const loadouts: CharacterLoadout[] = [
     stats: { maxHealth: 86, speed: 304, stamina: 104, damageMultiplier: 1 },
   },
   {
-    characterId: 'cyber-ninja-blue',
+    characterId: 'shadow-striker',
     slots: [
-      slot('H', 'jab'),
-      slot('J', 'cross'),
-      slot('K', 'roundhouse_kick'),
-      slot('L', 'low_kick'),
+      slot('H', 'roundhouse_kick'),
+      slot('J', 'teep_kick'),
+      slot('K', 'cross'),
+      slot('L', 'jab'),
     ],
-    stats: { maxHealth: 82, speed: 300, stamina: 100, damageMultiplier: 1 },
-  },
-  {
-    characterId: 'shadow-striker-purple',
-    slots: [
-      slot('H', 'jab'),
-      slot('J', 'cross'),
-      slot('K', 'short_elbow'),
-      slot('L', 'shadow_counter'),
-    ],
-    stats: { maxHealth: 94, speed: 270, stamina: 100, damageMultiplier: 1 },
-  },
-  {
-    characterId: 'cyber-monk-orange',
-    slots: [
-      slot('H', 'palm_strike'),
-      slot('J', 'spinning_kick'),
-      slot('K', 'clinch_knee'),
-      slot('L', 'hip_throw'),
-    ],
-    stats: { maxHealth: 120, speed: 228, stamina: 112, damageMultiplier: 1.05 },
-  },
-  {
-    characterId: 'neo-operative-green',
-    slots: [
-      slot('H', 'low_kick'),
-      slot('J', 'sprawl_counter'),
-      slot('K', 'double_leg_takedown'),
-      slot('L', 'hip_throw'),
-    ],
-    stats: { maxHealth: 108, speed: 248, stamina: 108, damageMultiplier: 1 },
+    stats: { maxHealth: 96, speed: 276, stamina: 116, damageMultiplier: 1.08 },
+    ability: {
+      id: 'momentum_flow',
+      name: 'Momentum Flow',
+      description: 'Consecutive hits increase damage.',
+    },
   },
 ];
 

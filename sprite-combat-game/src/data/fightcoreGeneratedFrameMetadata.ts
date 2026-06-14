@@ -13,6 +13,7 @@ export interface FightcoreGeneratedAnimationMetadata {
   stripPath: string;
   frameHeight: number;
   frameCount: number;
+  expectedFrameCount: number | null;
   fps: number;
   loop: boolean;
   frames: FightcoreGeneratedFrame[];
@@ -26,6 +27,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "idle-strip.png",
     "frameHeight": 96,
     "frameCount": 4,
+    "expectedFrameCount": 4,
     "fps": 8,
     "loop": true,
     "frames": [
@@ -66,6 +68,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "walk-strip.png",
     "frameHeight": 96,
     "frameCount": 6,
+    "expectedFrameCount": 6,
     "fps": 10,
     "loop": true,
     "frames": [
@@ -120,6 +123,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "dash-strip.png",
     "frameHeight": 96,
     "frameCount": 5,
+    "expectedFrameCount": 5,
     "fps": 14,
     "loop": false,
     "frames": [
@@ -167,6 +171,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "jab-strip.png",
     "frameHeight": 96,
     "frameCount": 5,
+    "expectedFrameCount": 5,
     "fps": 16,
     "loop": false,
     "frames": [
@@ -214,6 +219,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "slice-strip.png",
     "frameHeight": 96,
     "frameCount": 6,
+    "expectedFrameCount": 6,
     "fps": 14,
     "loop": false,
     "frames": [
@@ -268,6 +274,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "high-kick-strip.png",
     "frameHeight": 96,
     "frameCount": 7,
+    "expectedFrameCount": 7,
     "fps": 13,
     "loop": false,
     "frames": [
@@ -329,6 +336,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "hit-react-strip.png",
     "frameHeight": 96,
     "frameCount": 3,
+    "expectedFrameCount": 3,
     "fps": 12,
     "loop": false,
     "frames": [
@@ -362,6 +370,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "recovery-strip.png",
     "frameHeight": 96,
     "frameCount": 5,
+    "expectedFrameCount": 5,
     "fps": 8,
     "loop": false,
     "frames": [
@@ -409,6 +418,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "standup-strip.png",
     "frameHeight": 96,
     "frameCount": 6,
+    "expectedFrameCount": 6,
     "fps": 8,
     "loop": false,
     "frames": [
@@ -463,6 +473,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "side-kick-strip.png",
     "frameHeight": 96,
     "frameCount": 6,
+    "expectedFrameCount": 6,
     "fps": 13,
     "loop": false,
     "frames": [
@@ -517,6 +528,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "idle-strip.png",
     "frameHeight": 96,
     "frameCount": 4,
+    "expectedFrameCount": 4,
     "fps": 8,
     "loop": true,
     "frames": [
@@ -557,6 +569,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "run-strip.png",
     "frameHeight": 96,
     "frameCount": 6,
+    "expectedFrameCount": 6,
     "fps": 12,
     "loop": true,
     "frames": [
@@ -611,6 +624,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "jab-strip.png",
     "frameHeight": 96,
     "frameCount": 5,
+    "expectedFrameCount": 5,
     "fps": 14,
     "loop": false,
     "frames": [
@@ -658,6 +672,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "cross-strip.png",
     "frameHeight": 96,
     "frameCount": 5,
+    "expectedFrameCount": 5,
     "fps": 14,
     "loop": false,
     "frames": [
@@ -705,6 +720,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "grab-strip.png",
     "frameHeight": 96,
     "frameCount": 6,
+    "expectedFrameCount": 6,
     "fps": 12,
     "loop": false,
     "frames": [
@@ -759,6 +775,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "hit-react-strip.png",
     "frameHeight": 96,
     "frameCount": 3,
+    "expectedFrameCount": 3,
     "fps": 12,
     "loop": false,
     "frames": [
@@ -792,6 +809,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "knockdown-strip.png",
     "frameHeight": 96,
     "frameCount": 5,
+    "expectedFrameCount": 5,
     "fps": 8,
     "loop": false,
     "frames": [
@@ -839,6 +857,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "stripPath": "death-strip.png",
     "frameHeight": 96,
     "frameCount": 7,
+    "expectedFrameCount": 7,
     "fps": 8,
     "loop": false,
     "frames": [
@@ -889,6 +908,438 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
         "w": 182,
         "h": 96,
         "anchorX": 91,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "idle",
+    "stripPath": "idle-strip.png",
+    "frameHeight": 96,
+    "frameCount": 5,
+    "expectedFrameCount": null,
+    "fps": 8,
+    "loop": true,
+    "frames": [
+      {
+        "x": 0,
+        "w": 45,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88
+      },
+      {
+        "x": 45,
+        "w": 45,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88
+      },
+      {
+        "x": 90,
+        "w": 47,
+        "h": 96,
+        "anchorX": 24,
+        "anchorY": 88
+      },
+      {
+        "x": 137,
+        "w": 45,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88
+      },
+      {
+        "x": 182,
+        "w": 43,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "walk",
+    "stripPath": "walk-strip.png",
+    "frameHeight": 96,
+    "frameCount": 6,
+    "expectedFrameCount": null,
+    "fps": 10,
+    "loop": true,
+    "frames": [
+      {
+        "x": 0,
+        "w": 58,
+        "h": 96,
+        "anchorX": 29,
+        "anchorY": 88
+      },
+      {
+        "x": 58,
+        "w": 58,
+        "h": 96,
+        "anchorX": 29,
+        "anchorY": 88
+      },
+      {
+        "x": 116,
+        "w": 54,
+        "h": 96,
+        "anchorX": 27,
+        "anchorY": 88
+      },
+      {
+        "x": 170,
+        "w": 62,
+        "h": 96,
+        "anchorX": 31,
+        "anchorY": 88
+      },
+      {
+        "x": 232,
+        "w": 59,
+        "h": 96,
+        "anchorX": 30,
+        "anchorY": 88
+      },
+      {
+        "x": 291,
+        "w": 63,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "dash",
+    "stripPath": "dash-strip.png",
+    "frameHeight": 96,
+    "frameCount": 5,
+    "expectedFrameCount": null,
+    "fps": 14,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 136,
+        "h": 96,
+        "anchorX": 68,
+        "anchorY": 88
+      },
+      {
+        "x": 136,
+        "w": 136,
+        "h": 96,
+        "anchorX": 68,
+        "anchorY": 88
+      },
+      {
+        "x": 272,
+        "w": 115,
+        "h": 96,
+        "anchorX": 58,
+        "anchorY": 88
+      },
+      {
+        "x": 387,
+        "w": 104,
+        "h": 96,
+        "anchorX": 52,
+        "anchorY": 88
+      },
+      {
+        "x": 491,
+        "w": 130,
+        "h": 96,
+        "anchorX": 65,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "roundhouse_kick",
+    "stripPath": "roundhouse-kick-strip.png",
+    "frameHeight": 96,
+    "frameCount": 5,
+    "expectedFrameCount": null,
+    "fps": 13,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 53,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88
+      },
+      {
+        "x": 53,
+        "w": 51,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88
+      },
+      {
+        "x": 104,
+        "w": 160,
+        "h": 96,
+        "anchorX": 80,
+        "anchorY": 88
+      },
+      {
+        "x": 264,
+        "w": 109,
+        "h": 96,
+        "anchorX": 54,
+        "anchorY": 88
+      },
+      {
+        "x": 373,
+        "w": 59,
+        "h": 96,
+        "anchorX": 30,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "teep_kick",
+    "stripPath": "teep-kick-strip.png",
+    "frameHeight": 96,
+    "frameCount": 5,
+    "expectedFrameCount": null,
+    "fps": 13,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 51,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88
+      },
+      {
+        "x": 51,
+        "w": 46,
+        "h": 96,
+        "anchorX": 23,
+        "anchorY": 88
+      },
+      {
+        "x": 97,
+        "w": 164,
+        "h": 96,
+        "anchorX": 82,
+        "anchorY": 88
+      },
+      {
+        "x": 261,
+        "w": 57,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88
+      },
+      {
+        "x": 318,
+        "w": 54,
+        "h": 96,
+        "anchorX": 27,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "cross",
+    "stripPath": "cross-strip.png",
+    "frameHeight": 96,
+    "frameCount": 3,
+    "expectedFrameCount": null,
+    "fps": 14,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 58,
+        "h": 96,
+        "anchorX": 29,
+        "anchorY": 88
+      },
+      {
+        "x": 58,
+        "w": 330,
+        "h": 96,
+        "anchorX": 165,
+        "anchorY": 88
+      },
+      {
+        "x": 388,
+        "w": 63,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "jab",
+    "stripPath": "jab-strip.png",
+    "frameHeight": 96,
+    "frameCount": 5,
+    "expectedFrameCount": null,
+    "fps": 16,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 63,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88
+      },
+      {
+        "x": 63,
+        "w": 65,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88
+      },
+      {
+        "x": 128,
+        "w": 90,
+        "h": 96,
+        "anchorX": 45,
+        "anchorY": 88
+      },
+      {
+        "x": 218,
+        "w": 99,
+        "h": 96,
+        "anchorX": 50,
+        "anchorY": 88
+      },
+      {
+        "x": 317,
+        "w": 92,
+        "h": 96,
+        "anchorX": 46,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "hit_react",
+    "stripPath": "hit-react-strip.png",
+    "frameHeight": 96,
+    "frameCount": 4,
+    "expectedFrameCount": null,
+    "fps": 12,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 91,
+        "h": 96,
+        "anchorX": 46,
+        "anchorY": 88
+      },
+      {
+        "x": 91,
+        "w": 241,
+        "h": 96,
+        "anchorX": 120,
+        "anchorY": 88
+      },
+      {
+        "x": 332,
+        "w": 141,
+        "h": 96,
+        "anchorX": 70,
+        "anchorY": 88
+      },
+      {
+        "x": 473,
+        "w": 154,
+        "h": 96,
+        "anchorX": 77,
+        "anchorY": 88
+      }
+    ]
+  },
+  {
+    "entityId": "shadow-striker",
+    "sheetId": "fightcore-shadow-striker-atlas",
+    "animationKey": "recovery",
+    "stripPath": "recovery-strip.png",
+    "frameHeight": 96,
+    "frameCount": 7,
+    "expectedFrameCount": null,
+    "fps": 8,
+    "loop": false,
+    "frames": [
+      {
+        "x": 0,
+        "w": 116,
+        "h": 96,
+        "anchorX": 58,
+        "anchorY": 88
+      },
+      {
+        "x": 116,
+        "w": 88,
+        "h": 96,
+        "anchorX": 44,
+        "anchorY": 88
+      },
+      {
+        "x": 204,
+        "w": 65,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88
+      },
+      {
+        "x": 269,
+        "w": 68,
+        "h": 96,
+        "anchorX": 34,
+        "anchorY": 88
+      },
+      {
+        "x": 337,
+        "w": 66,
+        "h": 96,
+        "anchorX": 33,
+        "anchorY": 88
+      },
+      {
+        "x": 403,
+        "w": 60,
+        "h": 96,
+        "anchorX": 30,
+        "anchorY": 88
+      },
+      {
+        "x": 463,
+        "w": 65,
+        "h": 96,
+        "anchorX": 32,
         "anchorY": 88
       }
     ]

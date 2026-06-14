@@ -11,6 +11,7 @@
       "stripPath": "idle-strip.png",
       "frameHeight": 96,
       "frameCount": 4,
+      "expectedFrameCount": 4,
       "fps": 8,
       "loop": true,
       "frames": [
@@ -51,6 +52,7 @@
       "stripPath": "run-strip.png",
       "frameHeight": 96,
       "frameCount": 6,
+      "expectedFrameCount": 6,
       "fps": 12,
       "loop": true,
       "frames": [
@@ -105,6 +107,7 @@
       "stripPath": "jab-strip.png",
       "frameHeight": 96,
       "frameCount": 5,
+      "expectedFrameCount": 5,
       "fps": 14,
       "loop": false,
       "frames": [
@@ -152,6 +155,7 @@
       "stripPath": "cross-strip.png",
       "frameHeight": 96,
       "frameCount": 5,
+      "expectedFrameCount": 5,
       "fps": 14,
       "loop": false,
       "frames": [
@@ -199,6 +203,7 @@
       "stripPath": "grab-strip.png",
       "frameHeight": 96,
       "frameCount": 6,
+      "expectedFrameCount": 6,
       "fps": 12,
       "loop": false,
       "frames": [
@@ -253,6 +258,7 @@
       "stripPath": "hit-react-strip.png",
       "frameHeight": 96,
       "frameCount": 3,
+      "expectedFrameCount": 3,
       "fps": 12,
       "loop": false,
       "frames": [
@@ -286,6 +292,7 @@
       "stripPath": "knockdown-strip.png",
       "frameHeight": 96,
       "frameCount": 5,
+      "expectedFrameCount": 5,
       "fps": 8,
       "loop": false,
       "frames": [
@@ -333,6 +340,7 @@
       "stripPath": "death-strip.png",
       "frameHeight": 96,
       "frameCount": 7,
+      "expectedFrameCount": 7,
       "fps": 8,
       "loop": false,
       "frames": [

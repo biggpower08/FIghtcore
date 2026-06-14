@@ -7,6 +7,7 @@ export interface CharacterDefinition {
   maxHealth: number;
   speed: number;
   iconPath?: string;
+  logoPath?: string;
 }
 
 export const characters: CharacterDefinition[] = [
@@ -19,32 +20,13 @@ export const characters: CharacterDefinition[] = [
     iconPath: '/assets/fightcore/sprites/cyber-ninja/icon-full-body.png',
   },
   {
-    id: 'cyber-ninja-blue',
-    name: 'Cyber Ninja Blue',
-    identity: 'Fast kickboxing / kung fu fighter',
-    maxHealth: 82,
-    speed: 300,
-  },
-  {
-    id: 'shadow-striker-purple',
+    id: 'shadow-striker',
     name: 'Shadow Striker',
-    identity: 'Boxing / jiu-jitsu / counter fighter',
-    maxHealth: 94,
-    speed: 270,
-  },
-  {
-    id: 'cyber-monk-orange',
-    name: 'Cyber Monk',
-    identity: 'Muay thai / judo / heavy striker',
-    maxHealth: 120,
-    speed: 228,
-  },
-  {
-    id: 'neo-operative-green',
-    name: 'Neo Operative',
-    identity: 'Wrestling / ground-control fighter',
-    maxHealth: 108,
-    speed: 248,
+    identity: 'Muay Thai / kickboxing / boxing striker',
+    maxHealth: 96,
+    speed: 276,
+    iconPath: '/assets/fightcore/sprites/shadow-striker/icon-full-body.png',
+    logoPath: '/assets/fightcore/sprites/shadow-striker/logo-emblem.png',
   },
 ];
 

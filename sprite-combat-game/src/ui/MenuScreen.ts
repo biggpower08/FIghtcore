@@ -21,7 +21,7 @@ export class MenuScreen {
     this.handlers = handlers;
   }
 
-  showHome(selectedCharacterId = 'cyber-ninja-blue'): void {
+  showHome(selectedCharacterId = 'cyber-ninja'): void {
     const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
     const selectedPreview = characterIconPath(selectedCharacter);
     this.show(`

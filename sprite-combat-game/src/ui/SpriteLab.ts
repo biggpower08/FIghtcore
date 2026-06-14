@@ -6,10 +6,8 @@ import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 
 const labEntityIds = [
-  'cyber-ninja-blue',
-  'shadow-striker-purple',
-  'cyber-monk-orange',
-  'neo-operative-green',
+  'cyber-ninja',
+  'shadow-striker',
   'cyber-monkey-grunt',
   'cyber-monkey-scrapper',
   'cyber-monkey-alpha',
