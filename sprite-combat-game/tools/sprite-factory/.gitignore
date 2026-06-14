@@ -1,0 +1,5 @@
+raw/**/*.png
+approved/**/*.png
+failed/**/*.png
+failed/qa-report.json
+scripts/__pycache__/

@@ -8,7 +8,10 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "sprite:clean": "node scripts/clean-sprite-frames.mjs",
-    "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs"
+    "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",
+    "sprite-factory:generate": "python tools/sprite-factory/scripts/generate-sprites.py",
+    "sprite-factory:qa": "python tools/sprite-factory/scripts/qa-sprites.py",
+    "sprite-factory:promote": "python tools/sprite-factory/scripts/promote-approved-sprites.py"
   },
   "devDependencies": {
     "pngjs": "^7.0.0",
