@@ -6,6 +6,7 @@ import type { MoveDefinition } from '../data/moves';
 export class Enemy extends Fighter {
   definition: EnemyDefinition;
   attackRange: number;
+  telegraphMs = 0;
 
   constructor(id: string, definition: EnemyDefinition, x: number, y: number, move: MoveDefinition) {
     super(id, x, y, ENEMY_RADIUS, definition.maxHealth, 100, definition.speed, [move]);

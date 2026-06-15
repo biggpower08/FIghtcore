@@ -42,6 +42,9 @@ import { TEST_BALANCE } from './testBalance';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
+const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
+const CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS = 360;
+const CYBER_MONKEY_GRAPPLER_ATTACK_RELEASE_MS = 90;
 
 interface VisualSuppression {
   hiddenEntityId: string;
@@ -77,7 +80,6 @@ export class Game {
   private hitboxes: AttackHitbox[] = [];
   private dust: DustPuff[] = [];
   private visualSuppressions = new Map<string, VisualSuppression>();
-  private enemyGrappleTelegraphs = new Map<string, string>();
   private grappleDebug?: GrappleDebugRenderInfo;
   private lastTime = 0;
   private state: GameState = 'home';
@@ -143,11 +145,6 @@ export class Game {
     }
 
     this.enemies = this.enemies.filter((enemy) => enemy.alive);
-    for (const enemyId of this.enemyGrappleTelegraphs.keys()) {
-      if (!this.enemies.some((enemy) => enemy.id === enemyId && enemy.alive) && this.boss?.id !== enemyId) {
-        this.enemyGrappleTelegraphs.delete(enemyId);
-      }
-    }
     if (this.boss && !this.boss.alive) this.boss = null;
 
     if (!this.player.alive) {
@@ -187,6 +184,7 @@ export class Game {
       const dy = this.player.y - enemy.y;
       const distance = Math.hypot(dx, dy) || 1;
       const canMove = enemy.stunMs <= 0 && enemy.attackLockMs <= 0;
+      enemy.telegraphMs = Math.max(0, enemy.telegraphMs - deltaMs);
 
       if (canMove && distance > enemy.attackRange) {
         enemy.vx = (dx / distance) * enemy.speed;
@@ -198,7 +196,11 @@ export class Game {
 
       enemy.facing = this.player.x < enemy.x ? -1 : 1;
       if (distance <= enemy.attackRange + 20 && enemy.stunMs <= 0) {
-        this.tryEnemyAttack(enemy);
+        if (this.shouldTelegraphEnemyAttack(enemy)) {
+          this.updateTelegraphedEnemyAttack(enemy);
+        } else {
+          this.tryEnemyAttack(enemy);
+        }
       }
 
       this.movement.update(enemy, deltaMs / 1000);
@@ -359,16 +361,9 @@ export class Game {
         !hasValidTarget,
       );
       if (!hasValidTarget) return;
-      if (enemy.definition.id === 'cyber-monkey-grappler' && this.enemyGrappleTelegraphs.get(enemy.id) !== move.id) {
-        this.enemyGrappleTelegraphs.set(enemy.id, move.id);
-        enemy.attackLockMs = 260;
-        this.animation.play(enemy, 'charge', { lockForMs: 260, fallback: 'idle' });
-        return;
-      }
     }
     const hitbox = this.combat.startAttack(enemy, move);
     if (hitbox) {
-      this.enemyGrappleTelegraphs.delete(enemy.id);
       this.hitboxes.push(hitbox);
       const durationMs = move.windupMs + move.activeMs + move.recoveryMs;
       this.animation.play(enemy, animationKey, {
@@ -379,6 +374,23 @@ export class Game {
       if (shouldHideGrappleTargetSprite(enemy.definition.id, animationKey)) {
         this.grappleDebug = this.createGrappleDebug(enemy.definition.id, animationKey, [this.player], this.player, [], true, false);
       }
+    }
+  }
+
+  private shouldTelegraphEnemyAttack(enemy: Enemy): boolean {
+    return enemy.definition.id === CYBER_MONKEY_GRAPPLER_ID && enemy.attackLockMs <= 0;
+  }
+
+  private updateTelegraphedEnemyAttack(enemy: Enemy): void {
+    if (enemy.telegraphMs <= 0) {
+      enemy.telegraphMs = CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS;
+      this.animation.play(enemy, 'charge', { lockForMs: CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS, fallback: 'idle' });
+      return;
+    }
+
+    if (enemy.telegraphMs <= CYBER_MONKEY_GRAPPLER_ATTACK_RELEASE_MS) {
+      enemy.telegraphMs = 0;
+      this.tryEnemyAttack(enemy);
     }
   }
 
@@ -404,7 +416,6 @@ export class Game {
     this.boss = spawned.boss;
     this.hitboxes = [];
     this.visualSuppressions.clear();
-    this.enemyGrappleTelegraphs.clear();
     this.state = 'playing';
   }
 
@@ -479,7 +490,6 @@ export class Game {
     this.hitboxes = [];
     this.dust = [];
     this.visualSuppressions.clear();
-    this.enemyGrappleTelegraphs.clear();
     this.waves.wave = 0;
     this.rewardScreen.hide();
     this.spriteLab.hide();
@@ -527,7 +537,6 @@ export class Game {
   private openGameOver(): void {
     this.state = 'gameOver';
     this.visualSuppressions.clear();
-    this.enemyGrappleTelegraphs.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showGameOver();
@@ -540,7 +549,6 @@ export class Game {
     this.hitboxes = [];
     this.dust = [];
     this.visualSuppressions.clear();
-    this.enemyGrappleTelegraphs.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showHome(this.selectedCharacterId);

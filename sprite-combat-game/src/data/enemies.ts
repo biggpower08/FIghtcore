@@ -48,9 +48,9 @@ export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'cyber-monkey-grappler',
     name: 'Cyber Monkey Grappler',
-    maxHealth: 78,
-    speed: 126,
-    attackRange: 72,
+    maxHealth: 96,
+    speed: 136,
+    attackRange: 62,
     moveId: 'seoi_nage',
     attackAnimation: 'seoi_nage',
   },
