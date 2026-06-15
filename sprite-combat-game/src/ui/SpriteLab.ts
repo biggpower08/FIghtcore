@@ -1,6 +1,7 @@
 import { printSpriteCoverageReport } from '../data/spriteAnimations';
 import { getAnimationEligibility, getGameplayReadyAnimationKeys } from '../data/animationEligibility';
 import { isMoveEligibleForCharacter } from '../data/characterLoadouts';
+import { fightcoreGeneratedFrameMetadata } from '../data/fightcoreGeneratedFrameMetadata';
 import { moves } from '../data/moves';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
@@ -176,6 +177,11 @@ export class SpriteLab {
     }
 
     const frame = this.animation.frames[this.frameIndex % this.animation.frames.length];
+    const framePosition = this.frameIndex % this.animation.frames.length;
+    const generatedMetadata = fightcoreGeneratedFrameMetadata.find(
+      (entry) => entry.entityId === this.animation?.entityId && entry.animationKey === this.animation?.animationKey,
+    );
+    const generatedFrame = generatedMetadata?.frames[framePosition];
     const floorY = canvas.height / 2 + 74;
     if (this.options.ground) this.drawGroundLine(ctx, canvas.width, floorY);
     if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY);
@@ -186,9 +192,10 @@ export class SpriteLab {
       {
         entityId: this.animation.entityId,
         animationKey: this.animation.animationKey,
+        assetPath: frame?.sheetPath ?? frame?.framePath,
         status: this.animation.status,
-        frame: `${(this.frameIndex % this.animation.frames.length) + 1}/${this.animation.frames.length}`,
-        frameIndex: this.frameIndex % this.animation.frames.length,
+        frame: `${framePosition + 1}/${this.animation.frames.length}`,
+        frameIndex: framePosition,
         sheetId: frame?.sheetId,
         sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
@@ -204,6 +211,19 @@ export class SpriteLab {
               anchorX: frame.anchorX,
               anchorY: frame.anchorY,
               feetY: frame.feetY,
+              metadataAnchorX: generatedFrame?.anchorX,
+              metadataAnchorY: generatedFrame?.anchorY,
+            }
+          : undefined,
+        generatedMetadata: generatedMetadata
+          ? {
+              embeddedTarget: generatedMetadata.embeddedTarget ?? false,
+              allowMultiSubjectFrame: generatedMetadata.allowMultiSubjectFrame ?? false,
+              componentCount: generatedFrame?.componentCount,
+              suspiciousMultiPose: generatedFrame?.suspiciousMultiPose,
+              frameX: generatedFrame?.x,
+              frameW: generatedFrame?.w,
+              frameH: generatedFrame?.h,
             }
           : undefined,
         alpha,

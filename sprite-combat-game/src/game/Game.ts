@@ -77,6 +77,7 @@ export class Game {
   private hitboxes: AttackHitbox[] = [];
   private dust: DustPuff[] = [];
   private visualSuppressions = new Map<string, VisualSuppression>();
+  private enemyGrappleTelegraphs = new Map<string, string>();
   private grappleDebug?: GrappleDebugRenderInfo;
   private lastTime = 0;
   private state: GameState = 'home';
@@ -142,6 +143,11 @@ export class Game {
     }
 
     this.enemies = this.enemies.filter((enemy) => enemy.alive);
+    for (const enemyId of this.enemyGrappleTelegraphs.keys()) {
+      if (!this.enemies.some((enemy) => enemy.id === enemyId && enemy.alive) && this.boss?.id !== enemyId) {
+        this.enemyGrappleTelegraphs.delete(enemyId);
+      }
+    }
     if (this.boss && !this.boss.alive) this.boss = null;
 
     if (!this.player.alive) {
@@ -353,9 +359,16 @@ export class Game {
         !hasValidTarget,
       );
       if (!hasValidTarget) return;
+      if (enemy.definition.id === 'cyber-monkey-grappler' && this.enemyGrappleTelegraphs.get(enemy.id) !== move.id) {
+        this.enemyGrappleTelegraphs.set(enemy.id, move.id);
+        enemy.attackLockMs = 260;
+        this.animation.play(enemy, 'charge', { lockForMs: 260, fallback: 'idle' });
+        return;
+      }
     }
     const hitbox = this.combat.startAttack(enemy, move);
     if (hitbox) {
+      this.enemyGrappleTelegraphs.delete(enemy.id);
       this.hitboxes.push(hitbox);
       const durationMs = move.windupMs + move.activeMs + move.recoveryMs;
       this.animation.play(enemy, animationKey, {
@@ -391,6 +404,7 @@ export class Game {
     this.boss = spawned.boss;
     this.hitboxes = [];
     this.visualSuppressions.clear();
+    this.enemyGrappleTelegraphs.clear();
     this.state = 'playing';
   }
 
@@ -465,6 +479,7 @@ export class Game {
     this.hitboxes = [];
     this.dust = [];
     this.visualSuppressions.clear();
+    this.enemyGrappleTelegraphs.clear();
     this.waves.wave = 0;
     this.rewardScreen.hide();
     this.spriteLab.hide();
@@ -512,6 +527,7 @@ export class Game {
   private openGameOver(): void {
     this.state = 'gameOver';
     this.visualSuppressions.clear();
+    this.enemyGrappleTelegraphs.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showGameOver();
@@ -524,6 +540,7 @@ export class Game {
     this.hitboxes = [];
     this.dust = [];
     this.visualSuppressions.clear();
+    this.enemyGrappleTelegraphs.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showHome(this.selectedCharacterId);

@@ -4,6 +4,9 @@ export interface FightcoreGeneratedFrame {
   h: number;
   anchorX: number;
   anchorY: number;
+  componentCount?: number;
+  allowMultiSubjectFrame?: boolean;
+  suspiciousMultiPose?: boolean;
 }
 
 export interface FightcoreGeneratedAnimationMetadata {
@@ -17,6 +20,7 @@ export interface FightcoreGeneratedAnimationMetadata {
   fps: number;
   loop: boolean;
   embeddedTarget?: boolean;
+  allowMultiSubjectFrame?: boolean;
   hideTargetSprite?: boolean;
   targetSuppressionStartFrame?: number;
   targetSuppressionEndFrame?: number;
@@ -34,34 +38,48 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 4,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 48,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 48,
         "w": 47,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 95,
         "w": 46,
         "h": 96,
         "anchorX": 23,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 141,
-        "w": 49,
+        "w": 48,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -75,48 +93,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 6,
     "fps": 10,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
+        "w": 51,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 51,
+        "w": 56,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 107,
         "w": 53,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 53,
-        "w": 57,
-        "h": 96,
-        "anchorX": 28,
-        "anchorY": 88
-      },
-      {
-        "x": 110,
-        "w": 57,
-        "h": 96,
-        "anchorX": 28,
-        "anchorY": 88
-      },
-      {
-        "x": 167,
-        "w": 46,
-        "h": 96,
-        "anchorX": 23,
-        "anchorY": 88
-      },
-      {
-        "x": 213,
+        "x": 160,
         "w": 45,
         "h": 96,
         "anchorX": 22,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 258,
+        "x": 205,
+        "w": 45,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 250,
         "w": 48,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -130,41 +168,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 5,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 87,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 87,
         "w": 84,
         "h": 96,
         "anchorX": 42,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 171,
         "w": 88,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 259,
         "w": 100,
         "h": 96,
         "anchorX": 50,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 359,
         "w": 74,
         "h": 96,
         "anchorX": 37,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -178,41 +233,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 5,
     "fps": 16,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 53,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 53,
-        "w": 73,
+        "w": 60,
+        "h": 96,
+        "anchorX": 30,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 113,
+        "w": 65,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 178,
+        "w": 72,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 126,
-        "w": 81,
-        "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
-      },
-      {
-        "x": 207,
-        "w": 75,
-        "h": 96,
-        "anchorX": 38,
-        "anchorY": 88
-      },
-      {
-        "x": 282,
+        "x": 250,
         "w": 54,
         "h": 96,
         "anchorX": 27,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -226,48 +298,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 6,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 55,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 55,
-        "w": 104,
+        "w": 102,
         "h": 96,
-        "anchorX": 52,
-        "anchorY": 88
+        "anchorX": 51,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 159,
-        "w": 96,
+        "x": 157,
+        "w": 95,
         "h": 96,
         "anchorX": 48,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 255,
+        "x": 252,
         "w": 86,
         "h": 96,
         "anchorX": 43,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 341,
+        "x": 338,
         "w": 163,
         "h": 96,
         "anchorX": 82,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 504,
+        "x": 501,
         "w": 65,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -281,55 +373,78 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 7,
     "fps": 13,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 71,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 71,
-        "w": 74,
+        "w": 63,
         "h": 96,
-        "anchorX": 37,
-        "anchorY": 88
+        "anchorX": 32,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 145,
-        "w": 77,
+        "x": 134,
+        "w": 61,
         "h": 96,
-        "anchorX": 38,
-        "anchorY": 88
+        "anchorX": 30,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 222,
-        "w": 82,
+        "x": 195,
+        "w": 86,
         "h": 96,
-        "anchorX": 41,
-        "anchorY": 88
+        "anchorX": 43,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 304,
-        "w": 77,
+        "x": 281,
+        "w": 62,
         "h": 96,
-        "anchorX": 38,
-        "anchorY": 88
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 381,
+        "x": 343,
         "w": 52,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 433,
+        "x": 395,
         "w": 52,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -343,27 +458,38 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 3,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 74,
+        "w": 69,
         "h": 96,
-        "anchorX": 37,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 74,
-        "w": 70,
+        "x": 69,
+        "w": 66,
         "h": 96,
-        "anchorX": 35,
-        "anchorY": 88
+        "anchorX": 33,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 144,
+        "x": 135,
         "w": 58,
         "h": 96,
         "anchorX": 29,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -377,41 +503,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 5,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 60,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 60,
         "w": 51,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 111,
         "w": 55,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 166,
         "w": 52,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 218,
-        "w": 54,
+        "w": 52,
         "h": 96,
-        "anchorX": 27,
-        "anchorY": 88
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -425,48 +568,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 6,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 143,
         "h": 96,
         "anchorX": 72,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 143,
         "w": 84,
         "h": 96,
         "anchorX": 42,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 227,
         "w": 86,
         "h": 96,
         "anchorX": 43,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 313,
         "w": 64,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 377,
-        "w": 52,
+        "w": 50,
         "h": 96,
-        "anchorX": 26,
-        "anchorY": 88
+        "anchorX": 25,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 429,
-        "w": 49,
+        "x": 427,
+        "w": 48,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -480,48 +643,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 6,
     "fps": 13,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 58,
-        "h": 96,
-        "anchorX": 29,
-        "anchorY": 88
-      },
-      {
-        "x": 58,
-        "w": 64,
-        "h": 96,
-        "anchorX": 32,
-        "anchorY": 88
-      },
-      {
-        "x": 122,
-        "w": 110,
-        "h": 96,
-        "anchorX": 55,
-        "anchorY": 88
-      },
-      {
-        "x": 232,
-        "w": 124,
-        "h": 96,
-        "anchorX": 62,
-        "anchorY": 88
-      },
-      {
-        "x": 356,
-        "w": 55,
-        "h": 96,
-        "anchorX": 28,
-        "anchorY": 88
-      },
-      {
-        "x": 411,
         "w": 57,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 57,
+        "w": 62,
+        "h": 96,
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 119,
+        "w": 84,
+        "h": 96,
+        "anchorX": 42,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 203,
+        "w": 107,
+        "h": 96,
+        "anchorX": 54,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 310,
+        "w": 55,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 365,
+        "w": 56,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -535,34 +718,48 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 4,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 81,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 81,
-        "w": 75,
+        "w": 67,
         "h": 96,
-        "anchorX": 38,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 156,
-        "w": 79,
+        "x": 148,
+        "w": 71,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 36,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 235,
-        "w": 77,
+        "x": 219,
+        "w": 68,
         "h": 96,
-        "anchorX": 38,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -576,48 +773,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 6,
     "fps": 12,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 94,
         "h": 96,
         "anchorX": 47,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 94,
         "w": 95,
         "h": 96,
         "anchorX": 48,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 189,
-        "w": 103,
-        "h": 96,
-        "anchorX": 52,
-        "anchorY": 88
-      },
-      {
-        "x": 292,
-        "w": 98,
-        "h": 96,
-        "anchorX": 49,
-        "anchorY": 88
-      },
-      {
-        "x": 390,
         "w": 89,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 479,
+        "x": 278,
+        "w": 98,
+        "h": 96,
+        "anchorX": 49,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 376,
+        "w": 87,
+        "h": 96,
+        "anchorX": 44,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 463,
         "w": 85,
         "h": 96,
         "anchorX": 42,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -631,41 +848,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 5,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 82,
+        "w": 69,
         "h": 96,
-        "anchorX": 41,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 82,
-        "w": 113,
+        "x": 69,
+        "w": 106,
         "h": 96,
-        "anchorX": 56,
-        "anchorY": 88
+        "anchorX": 53,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 195,
-        "w": 197,
+        "x": 175,
+        "w": 119,
         "h": 96,
-        "anchorX": 98,
-        "anchorY": 88
+        "anchorX": 60,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 392,
-        "w": 81,
+        "x": 294,
+        "w": 70,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 35,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 473,
-        "w": 81,
+        "x": 364,
+        "w": 69,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -679,41 +913,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 5,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 79,
+        "w": 68,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 79,
+        "x": 68,
+        "w": 75,
+        "h": 96,
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 143,
+        "w": 110,
+        "h": 96,
+        "anchorX": 55,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 253,
+        "w": 69,
+        "h": 96,
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 322,
         "w": 81,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
-      },
-      {
-        "x": 160,
-        "w": 114,
-        "h": 96,
-        "anchorX": 57,
-        "anchorY": 88
-      },
-      {
-        "x": 274,
-        "w": 70,
-        "h": 96,
-        "anchorX": 35,
-        "anchorY": 88
-      },
-      {
-        "x": 344,
-        "w": 81,
-        "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -727,48 +978,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 6,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 92,
+        "w": 90,
         "h": 96,
-        "anchorX": 46,
-        "anchorY": 88
+        "anchorX": 45,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 92,
-        "w": 111,
+        "x": 90,
+        "w": 107,
+        "h": 96,
+        "anchorX": 54,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 197,
+        "w": 112,
         "h": 96,
         "anchorX": 56,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 203,
-        "w": 115,
-        "h": 96,
-        "anchorX": 58,
-        "anchorY": 88
-      },
-      {
-        "x": 318,
-        "w": 103,
-        "h": 96,
-        "anchorX": 52,
-        "anchorY": 88
-      },
-      {
-        "x": 421,
+        "x": 309,
         "w": 101,
         "h": 96,
         "anchorX": 50,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 522,
-        "w": 81,
+        "x": 410,
+        "w": 97,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 48,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 507,
+        "w": 69,
+        "h": 96,
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -782,27 +1053,38 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 3,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 81,
+        "w": 76,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 81,
-        "w": 92,
+        "x": 76,
+        "w": 86,
         "h": 96,
-        "anchorX": 46,
-        "anchorY": 88
+        "anchorX": 43,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 173,
+        "x": 162,
         "w": 72,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -816,41 +1098,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 5,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 103,
+        "w": 99,
         "h": 96,
-        "anchorX": 52,
-        "anchorY": 88
+        "anchorX": 50,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 103,
+        "x": 99,
         "w": 164,
         "h": 96,
         "anchorX": 82,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 267,
+        "x": 263,
         "w": 138,
         "h": 96,
         "anchorX": 69,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 405,
-        "w": 155,
+        "x": 401,
+        "w": 153,
         "h": 96,
-        "anchorX": 78,
-        "anchorY": 88
+        "anchorX": 76,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 560,
-        "w": 155,
+        "x": 554,
+        "w": 153,
         "h": 96,
-        "anchorX": 78,
-        "anchorY": 88
+        "anchorX": 76,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -864,55 +1163,78 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": 7,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 150,
         "h": 96,
         "anchorX": 75,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 150,
         "w": 146,
         "h": 96,
         "anchorX": 73,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 296,
-        "w": 156,
+        "w": 159,
         "h": 96,
-        "anchorX": 78,
-        "anchorY": 88
+        "anchorX": 80,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 452,
+        "x": 455,
         "w": 153,
         "h": 96,
         "anchorX": 76,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 605,
+        "x": 608,
         "w": 161,
         "h": 96,
         "anchorX": 80,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 766,
+        "x": 769,
         "w": 182,
         "h": 96,
         "anchorX": 91,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       },
       {
-        "x": 948,
+        "x": 951,
         "w": 182,
         "h": 96,
         "anchorX": 91,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       }
     ]
   },
@@ -926,41 +1248,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
+        "w": 44,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 44,
+        "w": 44,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 88,
         "w": 45,
         "h": 96,
         "anchorX": 22,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 45,
-        "w": 45,
+        "x": 133,
+        "w": 41,
         "h": 96,
-        "anchorX": 22,
-        "anchorY": 88
+        "anchorX": 20,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 90,
-        "w": 47,
+        "x": 174,
+        "w": 42,
         "h": 96,
-        "anchorX": 24,
-        "anchorY": 88
-      },
-      {
-        "x": 137,
-        "w": 45,
-        "h": 96,
-        "anchorX": 22,
-        "anchorY": 88
-      },
-      {
-        "x": 182,
-        "w": 43,
-        "h": 96,
-        "anchorX": 22,
-        "anchorY": 88
+        "anchorX": 21,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -974,48 +1313,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
+        "w": 52,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 52,
+        "w": 51,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 103,
+        "w": 50,
+        "h": 96,
+        "anchorX": 25,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 153,
+        "w": 56,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 209,
+        "w": 53,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 262,
         "w": 58,
         "h": 96,
         "anchorX": 29,
-        "anchorY": 88
-      },
-      {
-        "x": 58,
-        "w": 58,
-        "h": 96,
-        "anchorX": 29,
-        "anchorY": 88
-      },
-      {
-        "x": 116,
-        "w": 54,
-        "h": 96,
-        "anchorX": 27,
-        "anchorY": 88
-      },
-      {
-        "x": 170,
-        "w": 62,
-        "h": 96,
-        "anchorX": 31,
-        "anchorY": 88
-      },
-      {
-        "x": 232,
-        "w": 59,
-        "h": 96,
-        "anchorX": 30,
-        "anchorY": 88
-      },
-      {
-        "x": 291,
-        "w": 63,
-        "h": 96,
-        "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1029,41 +1388,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 136,
+        "w": 113,
         "h": 96,
-        "anchorX": 68,
-        "anchorY": 88
+        "anchorX": 56,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 136,
-        "w": 136,
+        "x": 113,
+        "w": 122,
         "h": 96,
-        "anchorX": 68,
-        "anchorY": 88
+        "anchorX": 61,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 272,
-        "w": 115,
-        "h": 96,
-        "anchorX": 58,
-        "anchorY": 88
-      },
-      {
-        "x": 387,
-        "w": 104,
+        "x": 235,
+        "w": 103,
         "h": 96,
         "anchorX": 52,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 491,
-        "w": 130,
+        "x": 338,
+        "w": 101,
         "h": 96,
-        "anchorX": 65,
-        "anchorY": 88
+        "anchorX": 50,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 439,
+        "w": 120,
+        "h": 96,
+        "anchorX": 60,
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1073,45 +1449,82 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "roundhouse_kick",
     "stripPath": "roundhouse-kick-strip.png",
     "frameHeight": 96,
-    "frameCount": 5,
+    "frameCount": 7,
     "expectedFrameCount": null,
     "fps": 13,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 53,
+        "w": 52,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 53,
+        "x": 52,
         "w": 51,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 104,
-        "w": 160,
+        "x": 103,
+        "w": 62,
         "h": 96,
-        "anchorX": 80,
-        "anchorY": 88
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 264,
-        "w": 109,
+        "x": 165,
+        "w": 91,
         "h": 96,
-        "anchorX": 54,
-        "anchorY": 88
+        "anchorX": 46,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 373,
-        "w": 59,
+        "x": 256,
+        "w": 71,
         "h": 96,
-        "anchorX": 30,
-        "anchorY": 88
+        "anchorX": 36,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 327,
+        "w": 30,
+        "h": 96,
+        "anchorX": 15,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 357,
+        "w": 54,
+        "h": 96,
+        "anchorX": 27,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1121,45 +1534,72 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "teep_kick",
     "stripPath": "teep-kick-strip.png",
     "frameHeight": 96,
-    "frameCount": 5,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 13,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 51,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 51,
         "w": 46,
         "h": 96,
         "anchorX": 23,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 97,
-        "w": 164,
+        "w": 62,
         "h": 96,
-        "anchorX": 82,
-        "anchorY": 88
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 261,
-        "w": 57,
+        "x": 159,
+        "w": 68,
         "h": 96,
-        "anchorX": 28,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 318,
-        "w": 54,
+        "x": 227,
+        "w": 53,
         "h": 96,
-        "anchorX": 27,
-        "anchorY": 88
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 280,
+        "w": 50,
+        "h": 96,
+        "anchorX": 25,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1169,31 +1609,72 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "cross",
     "stripPath": "cross-strip.png",
     "frameHeight": 96,
-    "frameCount": 3,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 58,
+        "w": 55,
         "h": 96,
-        "anchorX": 29,
-        "anchorY": 88
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 58,
-        "w": 330,
-        "h": 96,
-        "anchorX": 165,
-        "anchorY": 88
-      },
-      {
-        "x": 388,
+        "x": 55,
         "w": 63,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 118,
+        "w": 67,
+        "h": 96,
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 185,
+        "w": 68,
+        "h": 96,
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 253,
+        "w": 65,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 318,
+        "w": 62,
+        "h": 96,
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1207,41 +1688,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 16,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
+        "w": 61,
+        "h": 96,
+        "anchorX": 30,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 61,
         "w": 63,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 63,
-        "w": 65,
+        "x": 124,
+        "w": 72,
         "h": 96,
-        "anchorX": 32,
-        "anchorY": 88
+        "anchorX": 36,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 128,
-        "w": 90,
+        "x": 196,
+        "w": 73,
         "h": 96,
-        "anchorX": 45,
-        "anchorY": 88
+        "anchorX": 36,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 218,
-        "w": 99,
+        "x": 269,
+        "w": 79,
         "h": 96,
-        "anchorX": 50,
-        "anchorY": 88
-      },
-      {
-        "x": 317,
-        "w": 92,
-        "h": 96,
-        "anchorX": 46,
-        "anchorY": 88
+        "anchorX": 40,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1251,38 +1749,62 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "hit_react",
     "stripPath": "hit-react-strip.png",
     "frameHeight": 96,
-    "frameCount": 4,
+    "frameCount": 5,
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 91,
+        "w": 87,
         "h": 96,
-        "anchorX": 46,
-        "anchorY": 88
+        "anchorX": 44,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 91,
-        "w": 241,
+        "x": 87,
+        "w": 102,
         "h": 96,
-        "anchorX": 120,
-        "anchorY": 88
+        "anchorX": 51,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 332,
-        "w": 141,
+        "x": 189,
+        "w": 129,
         "h": 96,
-        "anchorX": 70,
-        "anchorY": 88
+        "anchorX": 64,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 473,
-        "w": 154,
+        "x": 318,
+        "w": 129,
         "h": 96,
-        "anchorX": 77,
-        "anchorY": 88
+        "anchorX": 64,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 447,
+        "w": 121,
+        "h": 96,
+        "anchorX": 60,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1296,55 +1818,78 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 116,
+        "w": 106,
         "h": 96,
-        "anchorX": 58,
-        "anchorY": 88
+        "anchorX": 53,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 116,
-        "w": 88,
+        "x": 106,
+        "w": 79,
         "h": 96,
-        "anchorX": 44,
-        "anchorY": 88
+        "anchorX": 40,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 204,
+        "x": 185,
         "w": 65,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 269,
+        "x": 250,
         "w": 68,
         "h": 96,
         "anchorX": 34,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 337,
+        "x": 318,
         "w": 66,
         "h": 96,
         "anchorX": 33,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 403,
+        "x": 384,
         "w": 60,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 463,
+        "x": 444,
         "w": 65,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1354,38 +1899,72 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "idle",
     "stripPath": "idle-strip.png",
     "frameHeight": 96,
-    "frameCount": 4,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 226,
+        "w": 77,
         "h": 96,
-        "anchorX": 113,
-        "anchorY": 88
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 226,
+        "x": 77,
+        "w": 71,
+        "h": 96,
+        "anchorX": 36,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 148,
+        "w": 56,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 204,
         "w": 50,
         "h": 96,
         "anchorX": 25,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 276,
-        "w": 80,
+        "x": 254,
+        "w": 62,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 356,
-        "w": 82,
+        "x": 316,
+        "w": 55,
         "h": 96,
-        "anchorX": 41,
-        "anchorY": 88
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1399,41 +1978,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 12,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 112,
+        "w": 96,
         "h": 96,
-        "anchorX": 56,
-        "anchorY": 88
+        "anchorX": 48,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 112,
-        "w": 108,
-        "h": 96,
-        "anchorX": 54,
-        "anchorY": 88
-      },
-      {
-        "x": 220,
-        "w": 107,
-        "h": 96,
-        "anchorX": 54,
-        "anchorY": 88
-      },
-      {
-        "x": 327,
-        "w": 101,
-        "h": 96,
-        "anchorX": 50,
-        "anchorY": 88
-      },
-      {
-        "x": 428,
-        "w": 103,
+        "x": 96,
+        "w": 104,
         "h": 96,
         "anchorX": 52,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 200,
+        "w": 98,
+        "h": 96,
+        "anchorX": 49,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 298,
+        "w": 98,
+        "h": 96,
+        "anchorX": 49,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 396,
+        "w": 96,
+        "h": 96,
+        "anchorX": 48,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1443,31 +2039,52 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "jab",
     "stripPath": "jab-strip.png",
     "frameHeight": 96,
-    "frameCount": 3,
+    "frameCount": 4,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 80,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 80,
-        "w": 107,
+        "w": 65,
         "h": 96,
-        "anchorX": 54,
-        "anchorY": 88
+        "anchorX": 32,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 187,
-        "w": 164,
+        "x": 145,
+        "w": 64,
         "h": 96,
-        "anchorX": 82,
-        "anchorY": 88
+        "anchorX": 32,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 209,
+        "w": 62,
+        "h": 96,
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1481,34 +2098,48 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 80,
+        "w": 77,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 80,
-        "w": 106,
+        "x": 77,
+        "w": 66,
         "h": 96,
-        "anchorX": 53,
-        "anchorY": 88
+        "anchorX": 33,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 186,
-        "w": 92,
-        "h": 96,
-        "anchorX": 46,
-        "anchorY": 88
-      },
-      {
-        "x": 278,
-        "w": 64,
+        "x": 143,
+        "w": 65,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 208,
+        "w": 62,
+        "h": 96,
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1522,34 +2153,48 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 13,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 75,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 75,
+        "w": 63,
+        "h": 96,
+        "anchorX": 32,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 138,
         "w": 65,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 140,
-        "w": 67,
-        "h": 96,
-        "anchorX": 34,
-        "anchorY": 88
-      },
-      {
-        "x": 207,
-        "w": 61,
+        "x": 203,
+        "w": 59,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1563,34 +2208,48 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 77,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 77,
-        "w": 92,
+        "w": 85,
         "h": 96,
-        "anchorX": 46,
-        "anchorY": 88
+        "anchorX": 42,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 169,
-        "w": 114,
+        "x": 162,
+        "w": 76,
         "h": 96,
-        "anchorX": 57,
-        "anchorY": 88
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 283,
+        "x": 238,
         "w": 80,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1604,34 +2263,48 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 88,
+        "w": 82,
         "h": 96,
-        "anchorX": 44,
-        "anchorY": 88
+        "anchorX": 41,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 88,
-        "w": 90,
+        "x": 82,
+        "w": 85,
         "h": 96,
-        "anchorX": 45,
-        "anchorY": 88
+        "anchorX": 42,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 178,
-        "w": 81,
+        "x": 167,
+        "w": 78,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 39,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 259,
+        "x": 245,
         "w": 72,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1645,41 +2318,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 123,
         "h": 96,
         "anchorX": 62,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 123,
+        "w": 197,
+        "h": 96,
+        "anchorX": 98,
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
+      },
+      {
+        "x": 320,
         "w": 159,
         "h": 96,
         "anchorX": 80,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 282,
-        "w": 190,
+        "x": 479,
+        "w": 204,
         "h": 96,
-        "anchorX": 95,
-        "anchorY": 88
+        "anchorX": 102,
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       },
       {
-        "x": 472,
-        "w": 170,
+        "x": 683,
+        "w": 154,
         "h": 96,
-        "anchorX": 85,
-        "anchorY": 88
-      },
-      {
-        "x": 642,
-        "w": 196,
-        "h": 96,
-        "anchorX": 98,
-        "anchorY": 88
+        "anchorX": 77,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1693,41 +2383,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 193,
         "h": 96,
         "anchorX": 96,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       },
       {
         "x": 193,
-        "w": 179,
+        "w": 177,
         "h": 96,
-        "anchorX": 90,
-        "anchorY": 88
+        "anchorX": 88,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       },
       {
-        "x": 372,
+        "x": 370,
         "w": 181,
         "h": 96,
         "anchorX": 90,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       },
       {
-        "x": 553,
-        "w": 183,
+        "x": 551,
+        "w": 181,
         "h": 96,
-        "anchorX": 92,
-        "anchorY": 88
+        "anchorX": 90,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       },
       {
-        "x": 736,
-        "w": 205,
+        "x": 732,
+        "w": 199,
         "h": 96,
-        "anchorX": 102,
-        "anchorY": 88
+        "anchorX": 100,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       }
     ]
   },
@@ -1741,55 +2448,78 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 82,
         "h": 96,
         "anchorX": 41,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 82,
         "w": 78,
         "h": 96,
         "anchorX": 39,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 160,
-        "w": 79,
+        "w": 70,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 35,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 239,
+        "x": 230,
         "w": 75,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 314,
+        "x": 305,
         "w": 72,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 386,
+        "x": 377,
         "w": 74,
         "h": 96,
         "anchorX": 37,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 460,
+        "x": 451,
         "w": 76,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1799,24 +2529,52 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "run",
     "stripPath": "run-strip.png",
     "frameHeight": 96,
-    "frameCount": 2,
+    "frameCount": 4,
     "expectedFrameCount": null,
     "fps": 11,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 119,
+        "w": 116,
         "h": 96,
-        "anchorX": 60,
-        "anchorY": 88
+        "anchorX": 58,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 119,
-        "w": 627,
+        "x": 116,
+        "w": 109,
         "h": 96,
-        "anchorX": 314,
-        "anchorY": 88
+        "anchorX": 54,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 225,
+        "w": 109,
+        "h": 96,
+        "anchorX": 54,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 334,
+        "w": 413,
+        "h": 96,
+        "anchorX": 206,
+        "anchorY": 88,
+        "componentCount": 4,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       }
     ]
   },
@@ -1830,41 +2588,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 122,
         "h": 96,
         "anchorX": 61,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 122,
-        "w": 123,
+        "w": 121,
         "h": 96,
-        "anchorX": 62,
-        "anchorY": 88
+        "anchorX": 60,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 245,
-        "w": 136,
+        "x": 243,
+        "w": 119,
         "h": 96,
-        "anchorX": 68,
-        "anchorY": 88
+        "anchorX": 60,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 381,
-        "w": 155,
+        "x": 362,
+        "w": 151,
         "h": 96,
-        "anchorX": 78,
-        "anchorY": 88
+        "anchorX": 76,
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 536,
-        "w": 146,
+        "x": 513,
+        "w": 129,
         "h": 96,
-        "anchorX": 73,
-        "anchorY": 88
+        "anchorX": 64,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -1874,17 +2649,32 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "dash",
     "stripPath": "dash-strip.png",
     "frameHeight": 96,
-    "frameCount": 1,
+    "frameCount": 2,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 355,
+        "w": 163,
         "h": 96,
-        "anchorX": 178,
-        "anchorY": 88
+        "anchorX": 82,
+        "anchorY": 88,
+        "componentCount": 5,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 163,
+        "w": 191,
+        "h": 96,
+        "anchorX": 96,
+        "anchorY": 88,
+        "componentCount": 5,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       }
     ]
   },
@@ -1898,58 +2688,80 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 95,
         "h": 96,
         "anchorX": 48,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 95,
         "w": 70,
         "h": 96,
         "anchorX": 35,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 165,
         "w": 83,
         "h": 96,
         "anchorX": 42,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 248,
         "w": 69,
         "h": 96,
         "anchorX": 34,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 317,
         "w": 73,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 390,
         "w": 84,
         "h": 96,
         "anchorX": 42,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 474,
         "w": 143,
         "h": 96,
         "anchorX": 72,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 6
@@ -1964,51 +2776,70 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 143,
         "h": 96,
         "anchorX": 72,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 143,
         "w": 146,
         "h": 96,
         "anchorX": 73,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 289,
         "w": 128,
         "h": 96,
         "anchorX": 64,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 417,
         "w": 120,
         "h": 96,
         "anchorX": 60,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 537,
         "w": 108,
         "h": 96,
         "anchorX": 54,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 645,
         "w": 153,
         "h": 96,
         "anchorX": 76,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 5
@@ -2023,58 +2854,80 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 69,
         "h": 96,
         "anchorX": 34,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 69,
         "w": 63,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 132,
         "w": 58,
         "h": 96,
         "anchorX": 29,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 190,
         "w": 70,
         "h": 96,
         "anchorX": 35,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 260,
         "w": 81,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 341,
         "w": 177,
         "h": 96,
         "anchorX": 88,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 4,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 518,
         "w": 97,
         "h": 96,
         "anchorX": 48,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 6
@@ -2089,58 +2942,80 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 9,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 70,
         "h": 96,
         "anchorX": 35,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 70,
         "w": 70,
         "h": 96,
         "anchorX": 35,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 140,
         "w": 164,
         "h": 96,
         "anchorX": 82,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 304,
         "w": 78,
         "h": 96,
         "anchorX": 39,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 382,
         "w": 104,
         "h": 96,
         "anchorX": 52,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 486,
         "w": 92,
         "h": 96,
         "anchorX": 46,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 578,
         "w": 93,
         "h": 96,
         "anchorX": 46,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 6
@@ -2155,51 +3030,70 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 248,
         "h": 96,
         "anchorX": 124,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 248,
         "w": 141,
         "h": 96,
         "anchorX": 70,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 389,
         "w": 139,
         "h": 96,
         "anchorX": 70,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 528,
         "w": 159,
         "h": 96,
         "anchorX": 80,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 687,
         "w": 146,
         "h": 96,
         "anchorX": 73,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 833,
         "w": 154,
         "h": 96,
         "anchorX": 77,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 5
@@ -2210,52 +3104,82 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "death",
     "stripPath": "death-strip.png",
     "frameHeight": 96,
-    "frameCount": 6,
+    "frameCount": 7,
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 248,
+        "w": 123,
         "h": 96,
-        "anchorX": 124,
-        "anchorY": 88
+        "anchorX": 62,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 248,
-        "w": 141,
+        "x": 123,
+        "w": 118,
         "h": 96,
-        "anchorX": 70,
-        "anchorY": 88
+        "anchorX": 59,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 389,
-        "w": 139,
+        "x": 241,
+        "w": 137,
         "h": 96,
-        "anchorX": 70,
-        "anchorY": 88
+        "anchorX": 68,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 528,
-        "w": 159,
+        "x": 378,
+        "w": 133,
         "h": 96,
-        "anchorX": 80,
-        "anchorY": 88
+        "anchorX": 66,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 687,
-        "w": 146,
+        "x": 511,
+        "w": 149,
         "h": 96,
-        "anchorX": 73,
-        "anchorY": 88
+        "anchorX": 74,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 833,
-        "w": 154,
+        "x": 660,
+        "w": 134,
         "h": 96,
-        "anchorX": 77,
-        "anchorY": 88
+        "anchorX": 67,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 794,
+        "w": 145,
+        "h": 96,
+        "anchorX": 72,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2269,41 +3193,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 56,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 56,
         "w": 46,
         "h": 96,
         "anchorX": 23,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 102,
         "w": 45,
         "h": 96,
         "anchorX": 22,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 147,
         "w": 47,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 194,
         "w": 51,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2317,55 +3258,78 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 54,
         "h": 96,
         "anchorX": 27,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 54,
         "w": 57,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 111,
         "w": 60,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 171,
         "w": 45,
         "h": 96,
         "anchorX": 22,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 216,
-        "w": 60,
+        "w": 55,
         "h": 96,
-        "anchorX": 30,
-        "anchorY": 88
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 276,
+        "x": 271,
         "w": 53,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 329,
+        "x": 324,
         "w": 54,
         "h": 96,
         "anchorX": 27,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2375,31 +3339,52 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "dash",
     "stripPath": "dash-strip.png",
     "frameHeight": 96,
-    "frameCount": 3,
+    "frameCount": 4,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 98,
         "h": 96,
         "anchorX": 49,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 98,
         "w": 90,
         "h": 96,
         "anchorX": 45,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 188,
-        "w": 337,
+        "w": 117,
         "h": 96,
-        "anchorX": 168,
-        "anchorY": 88
+        "anchorX": 58,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 305,
+        "w": 216,
+        "h": 96,
+        "anchorX": 108,
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
       }
     ]
   },
@@ -2413,62 +3398,88 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 72,
+        "w": 70,
         "h": 96,
-        "anchorX": 36,
-        "anchorY": 88
+        "anchorX": 35,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 72,
-        "w": 61,
-        "h": 96,
-        "anchorX": 30,
-        "anchorY": 88
-      },
-      {
-        "x": 133,
-        "w": 63,
-        "h": 96,
-        "anchorX": 32,
-        "anchorY": 88
-      },
-      {
-        "x": 196,
-        "w": 53,
-        "h": 96,
-        "anchorX": 26,
-        "anchorY": 88
-      },
-      {
-        "x": 249,
-        "w": 66,
-        "h": 96,
-        "anchorX": 33,
-        "anchorY": 88
-      },
-      {
-        "x": 315,
-        "w": 56,
-        "h": 96,
-        "anchorX": 28,
-        "anchorY": 88
-      },
-      {
-        "x": 371,
+        "x": 70,
         "w": 57,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 428,
+        "x": 127,
+        "w": 62,
+        "h": 96,
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 189,
+        "w": 53,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 242,
+        "w": 66,
+        "h": 96,
+        "anchorX": 33,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 308,
         "w": 56,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 364,
+        "w": 57,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 421,
+        "w": 56,
+        "h": 96,
+        "anchorX": 28,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2482,41 +3493,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 126,
+        "w": 121,
         "h": 96,
-        "anchorX": 63,
-        "anchorY": 88
+        "anchorX": 60,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 126,
+        "x": 121,
         "w": 115,
         "h": 96,
         "anchorX": 58,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 241,
+        "x": 236,
         "w": 91,
         "h": 96,
         "anchorX": 46,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 332,
+        "x": 327,
         "w": 71,
         "h": 96,
         "anchorX": 36,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 403,
+        "x": 398,
         "w": 66,
         "h": 96,
         "anchorX": 33,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2530,48 +3558,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 122,
         "h": 96,
         "anchorX": 61,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 122,
         "w": 119,
         "h": 96,
         "anchorX": 60,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 241,
         "w": 115,
         "h": 96,
         "anchorX": 58,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 356,
         "w": 103,
         "h": 96,
         "anchorX": 52,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 459,
         "w": 64,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 523,
         "w": 64,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2585,58 +3633,80 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 65,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 65,
         "w": 76,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 141,
         "w": 115,
         "h": 96,
         "anchorX": 58,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 256,
         "w": 154,
         "h": 96,
         "anchorX": 77,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 410,
         "w": 127,
         "h": 96,
         "anchorX": 64,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 537,
         "w": 117,
         "h": 96,
         "anchorX": 58,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 654,
         "w": 156,
         "h": 96,
         "anchorX": 78,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 6
@@ -2651,37 +3721,50 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 9,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 90,
         "h": 96,
         "anchorX": 45,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 90,
         "w": 69,
         "h": 96,
         "anchorX": 34,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 159,
         "w": 61,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 220,
         "w": 299,
         "h": 96,
         "anchorX": 150,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 3,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 3
@@ -2696,44 +3779,60 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 186,
         "h": 96,
         "anchorX": 93,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 186,
         "w": 119,
         "h": 96,
         "anchorX": 60,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 305,
         "w": 108,
         "h": 96,
         "anchorX": 54,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 413,
         "w": 108,
         "h": 96,
         "anchorX": 54,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 521,
         "w": 133,
         "h": 96,
         "anchorX": 66,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 4
@@ -2748,44 +3847,60 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": true,
+    "allowMultiSubjectFrame": true,
     "frames": [
       {
         "x": 0,
         "w": 115,
         "h": 96,
         "anchorX": 58,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 115,
         "w": 109,
         "h": 96,
         "anchorX": 54,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 224,
         "w": 62,
         "h": 96,
         "anchorX": 31,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 286,
         "w": 173,
         "h": 96,
         "anchorX": 86,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 2,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       },
       {
         "x": 459,
         "w": 128,
         "h": 96,
         "anchorX": 64,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": true,
+        "suspiciousMultiPose": false
       }
     ],
-    "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
     "targetSuppressionEndFrame": 4
@@ -2800,41 +3915,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 49,
-        "h": 96,
-        "anchorX": 24,
-        "anchorY": 88
-      },
-      {
-        "x": 49,
-        "w": 50,
-        "h": 96,
-        "anchorX": 25,
-        "anchorY": 88
-      },
-      {
-        "x": 99,
         "w": 47,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 146,
-        "w": 51,
-        "h": 96,
-        "anchorX": 26,
-        "anchorY": 88
-      },
-      {
-        "x": 197,
-        "w": 47,
+        "x": 47,
+        "w": 48,
         "h": 96,
         "anchorX": 24,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 95,
+        "w": 46,
+        "h": 96,
+        "anchorX": 23,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 141,
+        "w": 46,
+        "h": 96,
+        "anchorX": 23,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 187,
+        "w": 46,
+        "h": 96,
+        "anchorX": 23,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2848,62 +3980,88 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 63,
+        "w": 50,
         "h": 96,
-        "anchorX": 32,
-        "anchorY": 88
+        "anchorX": 25,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 63,
-        "w": 55,
+        "x": 50,
+        "w": 51,
         "h": 96,
-        "anchorX": 28,
-        "anchorY": 88
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 118,
-        "w": 60,
-        "h": 96,
-        "anchorX": 30,
-        "anchorY": 88
-      },
-      {
-        "x": 178,
-        "w": 41,
-        "h": 96,
-        "anchorX": 20,
-        "anchorY": 88
-      },
-      {
-        "x": 219,
-        "w": 36,
-        "h": 96,
-        "anchorX": 18,
-        "anchorY": 88
-      },
-      {
-        "x": 255,
-        "w": 46,
-        "h": 96,
-        "anchorX": 23,
-        "anchorY": 88
-      },
-      {
-        "x": 301,
-        "w": 48,
-        "h": 96,
-        "anchorX": 24,
-        "anchorY": 88
-      },
-      {
-        "x": 349,
+        "x": 101,
         "w": 53,
         "h": 96,
         "anchorX": 26,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 154,
+        "w": 38,
+        "h": 96,
+        "anchorX": 19,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 192,
+        "w": 31,
+        "h": 96,
+        "anchorX": 16,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 223,
+        "w": 46,
+        "h": 96,
+        "anchorX": 23,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 269,
+        "w": 43,
+        "h": 96,
+        "anchorX": 22,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 312,
+        "w": 52,
+        "h": 96,
+        "anchorX": 26,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2913,31 +4071,72 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "dash",
     "stripPath": "dash-strip.png",
     "frameHeight": 96,
-    "frameCount": 3,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 164,
-        "h": 96,
-        "anchorX": 82,
-        "anchorY": 88
-      },
-      {
-        "x": 164,
-        "w": 145,
+        "w": 144,
         "h": 96,
         "anchorX": 72,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 309,
-        "w": 464,
+        "x": 144,
+        "w": 126,
         "h": 96,
-        "anchorX": 232,
-        "anchorY": 88
+        "anchorX": 63,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 270,
+        "w": 113,
+        "h": 96,
+        "anchorX": 56,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 383,
+        "w": 102,
+        "h": 96,
+        "anchorX": 51,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 485,
+        "w": 95,
+        "h": 96,
+        "anchorX": 48,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 580,
+        "w": 125,
+        "h": 96,
+        "anchorX": 62,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2947,45 +4146,72 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "palm_strike",
     "stripPath": "palm-strike-strip.png",
     "frameHeight": 96,
-    "frameCount": 5,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 55,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 55,
-        "w": 77,
+        "w": 62,
         "h": 96,
-        "anchorX": 38,
-        "anchorY": 88
+        "anchorX": 31,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 132,
-        "w": 81,
+        "x": 117,
+        "w": 71,
         "h": 96,
-        "anchorX": 40,
-        "anchorY": 88
+        "anchorX": 36,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 213,
-        "w": 178,
+        "x": 188,
+        "w": 91,
         "h": 96,
-        "anchorX": 89,
-        "anchorY": 88
+        "anchorX": 46,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 391,
-        "w": 44,
+        "x": 279,
+        "w": 69,
         "h": 96,
-        "anchorX": 22,
-        "anchorY": 88
+        "anchorX": 34,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 348,
+        "w": 34,
+        "h": 96,
+        "anchorX": 17,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -2995,45 +4221,82 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "high_kick",
     "stripPath": "high-kick-strip.png",
     "frameHeight": 96,
-    "frameCount": 5,
+    "frameCount": 7,
     "expectedFrameCount": null,
     "fps": 13,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
+        "w": 59,
+        "h": 96,
+        "anchorX": 30,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 59,
         "w": 60,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 60,
-        "w": 61,
+        "x": 119,
+        "w": 70,
         "h": 96,
-        "anchorX": 30,
-        "anchorY": 88
+        "anchorX": 35,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 121,
-        "w": 89,
+        "x": 189,
+        "w": 77,
         "h": 96,
-        "anchorX": 44,
-        "anchorY": 88
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 210,
-        "w": 222,
+        "x": 266,
+        "w": 77,
         "h": 96,
-        "anchorX": 111,
-        "anchorY": 88
+        "anchorX": 38,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 432,
+        "x": 343,
+        "w": 41,
+        "h": 96,
+        "anchorX": 20,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 384,
         "w": 64,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -3043,24 +4306,42 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "spinning_sweep",
     "stripPath": "spinning-sweep-strip.png",
     "frameHeight": 96,
-    "frameCount": 2,
+    "frameCount": 3,
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 478,
+        "w": 158,
         "h": 96,
-        "anchorX": 239,
-        "anchorY": 88
+        "anchorX": 79,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 478,
-        "w": 156,
+        "x": 158,
+        "w": 304,
         "h": 96,
-        "anchorX": 78,
-        "anchorY": 88
+        "anchorX": 152,
+        "anchorY": 88,
+        "componentCount": 3,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": true
+      },
+      {
+        "x": 462,
+        "w": 150,
+        "h": 96,
+        "anchorX": 75,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -3074,48 +4355,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 10,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
         "w": 58,
         "h": 96,
         "anchorX": 29,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 58,
         "w": 56,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 114,
         "w": 81,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 195,
         "w": 87,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 282,
         "w": 63,
         "h": 96,
         "anchorX": 32,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
         "x": 345,
         "w": 60,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -3129,48 +4430,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 147,
+        "w": 145,
         "h": 96,
-        "anchorX": 74,
-        "anchorY": 88
+        "anchorX": 72,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 147,
-        "w": 88,
-        "h": 96,
-        "anchorX": 44,
-        "anchorY": 88
-      },
-      {
-        "x": 235,
-        "w": 88,
+        "x": 145,
+        "w": 87,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 323,
+        "x": 232,
+        "w": 87,
+        "h": 96,
+        "anchorX": 44,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 319,
         "w": 89,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 412,
+        "x": 408,
         "w": 95,
         "h": 96,
         "anchorX": 48,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 507,
-        "w": 76,
+        "x": 503,
+        "w": 75,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -3184,48 +4505,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 147,
+        "w": 145,
         "h": 96,
-        "anchorX": 74,
-        "anchorY": 88
+        "anchorX": 72,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 147,
-        "w": 88,
-        "h": 96,
-        "anchorX": 44,
-        "anchorY": 88
-      },
-      {
-        "x": 235,
-        "w": 88,
+        "x": 145,
+        "w": 87,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 323,
+        "x": 232,
+        "w": 87,
+        "h": 96,
+        "anchorX": 44,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
+      },
+      {
+        "x": 319,
         "w": 89,
         "h": 96,
         "anchorX": 44,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 412,
+        "x": 408,
         "w": 95,
         "h": 96,
         "anchorX": 48,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 507,
-        "w": 76,
+        "x": 503,
+        "w": 75,
         "h": 96,
         "anchorX": 38,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -3239,48 +4580,68 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 6,
     "loop": true,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 100,
+        "w": 98,
         "h": 96,
-        "anchorX": 50,
-        "anchorY": 88
+        "anchorX": 49,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 100,
+        "x": 98,
         "w": 105,
         "h": 96,
         "anchorX": 52,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 205,
-        "w": 98,
+        "x": 203,
+        "w": 93,
         "h": 96,
-        "anchorX": 49,
-        "anchorY": 88
+        "anchorX": 46,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 303,
-        "w": 98,
+        "x": 296,
+        "w": 93,
         "h": 96,
-        "anchorX": 49,
-        "anchorY": 88
+        "anchorX": 46,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 401,
+        "x": 389,
         "w": 83,
         "h": 96,
         "anchorX": 42,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 484,
+        "x": 472,
         "w": 81,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   },
@@ -3294,41 +4655,58 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "expectedFrameCount": null,
     "fps": 8,
     "loop": false,
+    "embeddedTarget": false,
+    "allowMultiSubjectFrame": false,
     "frames": [
       {
         "x": 0,
-        "w": 142,
+        "w": 141,
         "h": 96,
-        "anchorX": 71,
-        "anchorY": 88
+        "anchorX": 70,
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 142,
+        "x": 141,
         "w": 94,
         "h": 96,
         "anchorX": 47,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 236,
+        "x": 235,
         "w": 79,
         "h": 96,
         "anchorX": 40,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 315,
+        "x": 314,
         "w": 61,
         "h": 96,
         "anchorX": 30,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       },
       {
-        "x": 376,
+        "x": 375,
         "w": 55,
         "h": 96,
         "anchorX": 28,
-        "anchorY": 88
+        "anchorY": 88,
+        "componentCount": 1,
+        "allowMultiSubjectFrame": false,
+        "suspiciousMultiPose": false
       }
     ]
   }

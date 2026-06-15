@@ -30,6 +30,8 @@ ROW_GAP_MERGE_PX = 8
 FRAME_GAP_MERGE_PX = 12
 FRAME_PADDING_PX = 6
 MAX_FRAME_CONTENT_HEIGHT = 88
+MIN_POSE_BAND_WIDTH_PX = 20
+NORMAL_FRAME_WIDE_WARNING_PX = 170
 
 
 @dataclass
@@ -304,7 +306,9 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
 
     for animation, row_index, frame_count, loop, fps in spec["rows"]:
         row_bound = row_bounds[row_index]
-        animation_result = prepare_animation_strip(cleaned, row_bound, output_dir, animation, frame_count, loop, fps)
+        animation_key = animation.replace("-", "_")
+        allow_multi_subject = bool(spec.get("embedded_target_animations", {}).get(animation_key))
+        animation_result = prepare_animation_strip(cleaned, row_bound, output_dir, animation, frame_count, loop, fps, allow_multi_subject)
         record_animation_result(spec, animation_result, row_index, sprite_metadata, json_metadata, atlas_report, animation_outputs)
         if animation == spec.get("icon_from_animation") and animation_result["frameImages"]:
             icon_path = output_dir / "icon-full-body.png"
@@ -320,7 +324,9 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
         row_bound = tight_bounds_for_band(cleaned_explicit, Bounds(0, 0, cleaned_explicit.width - 1, cleaned_explicit.height - 1))
         if not row_bound:
             raise ValueError(f"No foreground detected in explicit animation source: {explicit_path}")
-        animation_result = prepare_animation_strip(cleaned_explicit, row_bound, output_dir, animation, frame_count, loop, fps)
+        animation_key = animation.replace("-", "_")
+        allow_multi_subject = bool(spec.get("embedded_target_animations", {}).get(animation_key))
+        animation_result = prepare_animation_strip(cleaned_explicit, row_bound, output_dir, animation, frame_count, loop, fps, allow_multi_subject)
         animation_result["report"]["source"] = repo_path(explicit_path)
         animation_result["report"]["sourceSize"] = list(explicit_image.size)
         animation_result["report"]["transparentPixelsBeforeResize"] = explicit_transparent_pixels
@@ -388,14 +394,16 @@ def prepare_animation_strip(
     frame_count: int | None,
     loop: bool,
     fps: int,
+    allow_multi_subject: bool,
 ) -> dict[str, Any]:
-    detected_frames, row_warnings = detect_frame_bounds(image, row_bound, frame_count)
+    detected_frames, row_warnings = detect_frame_bounds(image, row_bound, frame_count, allow_multi_subject)
     normalized_frames = []
     frame_reports = []
     metadata_frames = []
     cursor_x = 0
     for frame_index, frame_bound in enumerate(detected_frames):
         frame_image, normalize_report = normalize_frame(image, frame_bound)
+        frame_analysis = analyze_normalized_frame(frame_image, allow_multi_subject)
         normalized_frames.append(frame_image)
         metadata_frame = {
             "x": cursor_x,
@@ -403,9 +411,12 @@ def prepare_animation_strip(
             "h": frame_image.height,
             "anchorX": round(frame_image.width / 2),
             "anchorY": BASELINE_Y,
+            "componentCount": frame_analysis["componentCount"],
+            "allowMultiSubjectFrame": allow_multi_subject,
+            "suspiciousMultiPose": frame_analysis["suspiciousMultiPose"],
         }
         metadata_frames.append(metadata_frame)
-        frame_reports.append({"index": frame_index, "sourceBounds": bounds_report(frame_bound), **normalize_report})
+        frame_reports.append({"index": frame_index, "sourceBounds": bounds_report(frame_bound), **normalize_report, **frame_analysis})
         cursor_x += frame_image.width
 
     strip_width = max(1, cursor_x)
@@ -426,6 +437,8 @@ def prepare_animation_strip(
         "expectedFrameCount": frame_count,
         "fps": fps,
         "loop": loop,
+        "embeddedTarget": allow_multi_subject,
+        "allowMultiSubjectFrame": allow_multi_subject,
         "frames": metadata_frames,
     }
     report = {
@@ -436,6 +449,7 @@ def prepare_animation_strip(
         "detectedFrameCount": len(detected_frames),
         "fps": fps,
         "loop": loop,
+        "allowMultiSubjectFrame": allow_multi_subject,
         "passedDimensions": strip.height == NORMALIZED_FRAME_HEIGHT and strip.width == sum(frame["w"] for frame in metadata_frames),
         "rowBounds": bounds_report(row_bound),
         "frames": frame_reports,
@@ -468,6 +482,7 @@ def record_animation_result(
     if spec.get("embedded_target_animations", {}).get(metadata["animationKey"]):
         metadata["embeddedTarget"] = True
         metadata["hideTargetSprite"] = True
+        metadata["allowMultiSubjectFrame"] = True
         metadata["targetSuppressionStartFrame"] = 0
         metadata["targetSuppressionEndFrame"] = max(0, metadata["frameCount"] - 1)
     sprite_metadata.append(metadata)
@@ -527,7 +542,12 @@ def align_row_bounds(detected: list[Bounds], expected_rows: int, row_fallbacks: 
     return aligned, warnings
 
 
-def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: int | None) -> tuple[list[Bounds], list[str]]:
+def detect_frame_bounds(
+    image: Image.Image,
+    row_bound: Bounds,
+    expected_frames: int | None,
+    allow_multi_subject: bool,
+) -> tuple[list[Bounds], list[str]]:
     warnings: list[str] = []
     search_bounds = row_bound.expanded(FRAME_PADDING_PX, image.width, image.height)
     components = [
@@ -535,7 +555,13 @@ def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: 
         for component in connected_components(image, search_bounds)
         if component.pixels >= 80 and component.bounds.width >= 6 and component.bounds.height >= 6
     ]
-    frame_bounds = merge_frame_components(components, expected_frames)
+    frame_bounds = merge_frame_components(components, expected_frames) if allow_multi_subject else detect_pose_bands(image, row_bound)
+    if not allow_multi_subject and len(frame_bounds) > 0:
+        component_frame_count = len(merge_frame_components(components, expected_frames))
+        if len(frame_bounds) > component_frame_count:
+            warnings.append(
+                f"column-band splitter separated {len(frame_bounds)} pose group(s) from {component_frame_count} connected component group(s)"
+            )
     if expected_frames is not None:
         frame_bounds = merge_until_expected(frame_bounds, expected_frames)
     frame_bounds = sorted(frame_bounds, key=lambda bound: bound.left)
@@ -554,6 +580,68 @@ def detect_frame_bounds(image: Image.Image, row_bound: Bounds, expected_frames: 
         raise ValueError(f"No frames detected for row {bounds_report(row_bound)}")
 
     return frame_bounds, warnings
+
+
+def detect_pose_bands(image: Image.Image, row_bound: Bounds) -> list[Bounds]:
+    search_bounds = row_bound.expanded(FRAME_PADDING_PX, image.width, image.height)
+    alpha = image.getchannel("A")
+    min_count = max(8, round(search_bounds.height * 0.12))
+    column_counts = []
+    for x in range(search_bounds.left, search_bounds.right + 1):
+        count = 0
+        for y in range(search_bounds.top, search_bounds.bottom + 1):
+            if alpha.getpixel((x, y)) > ALPHA_THRESHOLD:
+                count += 1
+        column_counts.append(count)
+
+    bands = bands_from_counts(column_counts, min_count=min_count, merge_gap=FRAME_GAP_MERGE_PX)
+    bounds = []
+    for left, right in bands:
+        if right - left + 1 < 4:
+            continue
+        bound = tight_bounds_for_band(image, Bounds(search_bounds.left + left, search_bounds.top, search_bounds.left + right, search_bounds.bottom))
+        if bound and alpha_pixels_in_bounds(image, bound) >= 120:
+            bounds.append(bound)
+
+    bounds = merge_tiny_pose_bands(bounds)
+    if not bounds:
+        bounds = merge_frame_components(
+            [
+                component
+                for component in connected_components(image, search_bounds)
+                if component.pixels >= 80 and component.bounds.width >= 6 and component.bounds.height >= 6
+            ],
+            None,
+        )
+
+    return sorted(bounds, key=lambda bound: bound.left)
+
+
+def merge_tiny_pose_bands(bounds: list[Bounds]) -> list[Bounds]:
+    merged: list[Bounds] = []
+    for bound in sorted(bounds, key=lambda item: item.left):
+        if bound.width >= MIN_POSE_BAND_WIDTH_PX or not merged:
+            merged.append(bound)
+            continue
+        previous = merged[-1]
+        gap_to_previous = bound.left - previous.right
+        if gap_to_previous <= FRAME_GAP_MERGE_PX * 2:
+            merged[-1] = union_bounds(previous, bound)
+        else:
+            merged.append(bound)
+
+    index = 0
+    while index < len(merged):
+        bound = merged[index]
+        if bound.width >= MIN_POSE_BAND_WIDTH_PX or len(merged) == 1:
+            index += 1
+            continue
+        if index == 0:
+            merged[0:2] = [union_bounds(merged[0], merged[1])]
+        else:
+            merged[index - 1 : index + 1] = [union_bounds(merged[index - 1], merged[index])]
+            index -= 1
+    return merged
 
 
 def connected_components(image: Image.Image, search_bounds: Bounds) -> list[Component]:
@@ -675,6 +763,62 @@ def normalize_frame(image: Image.Image, frame_bound: Bounds) -> tuple[Image.Imag
         "baselineY": BASELINE_Y,
         "scaledDown": scale < 1.0,
     }
+
+
+def analyze_normalized_frame(frame: Image.Image, allow_multi_subject: bool) -> dict[str, Any]:
+    bounds = tight_bounds_for_band(frame, Bounds(0, 0, frame.width - 1, frame.height - 1))
+    components = [
+        component
+        for component in connected_components(frame, Bounds(0, 0, frame.width - 1, frame.height - 1))
+        if component.pixels >= 140 and component.bounds.width >= 10 and component.bounds.height >= 16
+    ]
+    component_reports = [
+        {"bounds": bounds_report(component.bounds), "pixels": component.pixels}
+        for component in sorted(components, key=lambda component: component.bounds.left)
+    ]
+    separated_major_components = count_separated_major_components(components)
+    suspicious_width = bool(bounds and bounds.width > NORMAL_FRAME_WIDE_WARNING_PX and not allow_multi_subject)
+    suspicious_multi_pose = bool(not allow_multi_subject and (separated_major_components >= 2 or suspicious_width))
+    warnings = []
+    if suspicious_width:
+        warnings.append(f"frame alpha bounds width {bounds.width} exceeds normal single-body warning width {NORMAL_FRAME_WIDE_WARNING_PX}")
+    if not allow_multi_subject and separated_major_components >= 2:
+        warnings.append(f"frame has {separated_major_components} separated major component(s)")
+
+    return {
+        "alphaBounds": bounds_report(bounds) if bounds else None,
+        "componentCount": len(components),
+        "separatedMajorComponentCount": separated_major_components,
+        "components": component_reports,
+        "allowMultiSubjectFrame": allow_multi_subject,
+        "wasAllowedMultiSubject": allow_multi_subject,
+        "suspiciousWidth": suspicious_width,
+        "suspiciousMultiPose": suspicious_multi_pose,
+        "warnings": warnings,
+    }
+
+
+def count_separated_major_components(components: list[Component]) -> int:
+    major = sorted(
+        [
+            component
+            for component in components
+            if component.bounds.height >= 40 and component.bounds.width >= 24 and component.pixels >= 400
+        ],
+        key=lambda component: component.bounds.left,
+    )
+    if not major:
+        return 0
+
+    separated = 1
+    previous = major[0]
+    for component in major[1:]:
+        gap = component.bounds.left - previous.bounds.right
+        vertical_overlap = min(previous.bounds.bottom, component.bounds.bottom) - max(previous.bounds.top, component.bounds.top)
+        if gap >= 12 and vertical_overlap >= 12:
+            separated += 1
+        previous = component
+    return separated
 
 
 def bands_from_counts(counts: list[int], min_count: int, merge_gap: int) -> list[tuple[int, int]]:
@@ -891,6 +1035,9 @@ def write_generated_metadata(metadata: list[dict[str, Any]]) -> None:
                 "  h: number;",
                 "  anchorX: number;",
                 "  anchorY: number;",
+                "  componentCount?: number;",
+                "  allowMultiSubjectFrame?: boolean;",
+                "  suspiciousMultiPose?: boolean;",
                 "}",
                 "",
                 "export interface FightcoreGeneratedAnimationMetadata {",
@@ -904,6 +1051,7 @@ def write_generated_metadata(metadata: list[dict[str, Any]]) -> None:
                 "  fps: number;",
                 "  loop: boolean;",
                 "  embeddedTarget?: boolean;",
+                "  allowMultiSubjectFrame?: boolean;",
                 "  hideTargetSprite?: boolean;",
                 "  targetSuppressionStartFrame?: number;",
                 "  targetSuppressionEndFrame?: number;",

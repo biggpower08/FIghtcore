@@ -20,41 +20,58 @@
       "expectedFrameCount": null,
       "fps": 8,
       "loop": true,
+      "embeddedTarget": false,
+      "allowMultiSubjectFrame": false,
       "frames": [
         {
           "x": 0,
           "w": 56,
           "h": 96,
           "anchorX": 28,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 56,
           "w": 46,
           "h": 96,
           "anchorX": 23,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 102,
           "w": 45,
           "h": 96,
           "anchorX": 22,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 147,
           "w": 47,
           "h": 96,
           "anchorX": 24,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 194,
           "w": 51,
           "h": 96,
           "anchorX": 26,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         }
       ]
     },
@@ -68,55 +85,78 @@
       "expectedFrameCount": null,
       "fps": 10,
       "loop": true,
+      "embeddedTarget": false,
+      "allowMultiSubjectFrame": false,
       "frames": [
         {
           "x": 0,
           "w": 54,
           "h": 96,
           "anchorX": 27,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 54,
           "w": 57,
           "h": 96,
           "anchorX": 28,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 111,
           "w": 60,
           "h": 96,
           "anchorX": 30,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 171,
           "w": 45,
           "h": 96,
           "anchorX": 22,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 216,
-          "w": 60,
+          "w": 55,
           "h": 96,
-          "anchorX": 30,
-          "anchorY": 88
+          "anchorX": 28,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 276,
+          "x": 271,
           "w": 53,
           "h": 96,
           "anchorX": 26,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 329,
+          "x": 324,
           "w": 54,
           "h": 96,
           "anchorX": 27,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         }
       ]
     },
@@ -126,31 +166,52 @@
       "animationKey": "dash",
       "stripPath": "dash-strip.png",
       "frameHeight": 96,
-      "frameCount": 3,
+      "frameCount": 4,
       "expectedFrameCount": null,
       "fps": 14,
       "loop": false,
+      "embeddedTarget": false,
+      "allowMultiSubjectFrame": false,
       "frames": [
         {
           "x": 0,
           "w": 98,
           "h": 96,
           "anchorX": 49,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 98,
           "w": 90,
           "h": 96,
           "anchorX": 45,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 188,
-          "w": 337,
+          "w": 117,
           "h": 96,
-          "anchorX": 168,
-          "anchorY": 88
+          "anchorX": 58,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
+        },
+        {
+          "x": 305,
+          "w": 216,
+          "h": 96,
+          "anchorX": 108,
+          "anchorY": 88,
+          "componentCount": 2,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": true
         }
       ]
     },
@@ -164,62 +225,88 @@
       "expectedFrameCount": null,
       "fps": 12,
       "loop": false,
+      "embeddedTarget": false,
+      "allowMultiSubjectFrame": false,
       "frames": [
         {
           "x": 0,
-          "w": 72,
+          "w": 70,
           "h": 96,
-          "anchorX": 36,
-          "anchorY": 88
+          "anchorX": 35,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 72,
-          "w": 61,
-          "h": 96,
-          "anchorX": 30,
-          "anchorY": 88
-        },
-        {
-          "x": 133,
-          "w": 63,
-          "h": 96,
-          "anchorX": 32,
-          "anchorY": 88
-        },
-        {
-          "x": 196,
-          "w": 53,
-          "h": 96,
-          "anchorX": 26,
-          "anchorY": 88
-        },
-        {
-          "x": 249,
-          "w": 66,
-          "h": 96,
-          "anchorX": 33,
-          "anchorY": 88
-        },
-        {
-          "x": 315,
-          "w": 56,
-          "h": 96,
-          "anchorX": 28,
-          "anchorY": 88
-        },
-        {
-          "x": 371,
+          "x": 70,
           "w": 57,
           "h": 96,
           "anchorX": 28,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 428,
+          "x": 127,
+          "w": 62,
+          "h": 96,
+          "anchorX": 31,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
+        },
+        {
+          "x": 189,
+          "w": 53,
+          "h": 96,
+          "anchorX": 26,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
+        },
+        {
+          "x": 242,
+          "w": 66,
+          "h": 96,
+          "anchorX": 33,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
+        },
+        {
+          "x": 308,
           "w": 56,
           "h": 96,
           "anchorX": 28,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
+        },
+        {
+          "x": 364,
+          "w": 57,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
+        },
+        {
+          "x": 421,
+          "w": 56,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         }
       ]
     },
@@ -233,41 +320,58 @@
       "expectedFrameCount": null,
       "fps": 8,
       "loop": false,
+      "embeddedTarget": false,
+      "allowMultiSubjectFrame": false,
       "frames": [
         {
           "x": 0,
-          "w": 126,
+          "w": 121,
           "h": 96,
-          "anchorX": 63,
-          "anchorY": 88
+          "anchorX": 60,
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 126,
+          "x": 121,
           "w": 115,
           "h": 96,
           "anchorX": 58,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 241,
+          "x": 236,
           "w": 91,
           "h": 96,
           "anchorX": 46,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 332,
+          "x": 327,
           "w": 71,
           "h": 96,
           "anchorX": 36,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
-          "x": 403,
+          "x": 398,
           "w": 66,
           "h": 96,
           "anchorX": 33,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         }
       ]
     },
@@ -281,48 +385,68 @@
       "expectedFrameCount": null,
       "fps": 8,
       "loop": false,
+      "embeddedTarget": false,
+      "allowMultiSubjectFrame": false,
       "frames": [
         {
           "x": 0,
           "w": 122,
           "h": 96,
           "anchorX": 61,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 122,
           "w": 119,
           "h": 96,
           "anchorX": 60,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 241,
           "w": 115,
           "h": 96,
           "anchorX": 58,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 356,
           "w": 103,
           "h": 96,
           "anchorX": 52,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 459,
           "w": 64,
           "h": 96,
           "anchorX": 32,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         },
         {
           "x": 523,
           "w": 64,
           "h": 96,
           "anchorX": 32,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": false,
+          "suspiciousMultiPose": false
         }
       ]
     },
@@ -336,58 +460,80 @@
       "expectedFrameCount": null,
       "fps": 10,
       "loop": false,
+      "embeddedTarget": true,
+      "allowMultiSubjectFrame": true,
       "frames": [
         {
           "x": 0,
           "w": 65,
           "h": 96,
           "anchorX": 32,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 65,
           "w": 76,
           "h": 96,
           "anchorX": 38,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 141,
           "w": 115,
           "h": 96,
           "anchorX": 58,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 256,
           "w": 154,
           "h": 96,
           "anchorX": 77,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 410,
           "w": 127,
           "h": 96,
           "anchorX": 64,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 537,
           "w": 117,
           "h": 96,
           "anchorX": 58,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 654,
           "w": 156,
           "h": 96,
           "anchorX": 78,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         }
       ],
-      "embeddedTarget": true,
       "hideTargetSprite": true,
       "targetSuppressionStartFrame": 0,
       "targetSuppressionEndFrame": 6
@@ -402,37 +548,50 @@
       "expectedFrameCount": null,
       "fps": 9,
       "loop": false,
+      "embeddedTarget": true,
+      "allowMultiSubjectFrame": true,
       "frames": [
         {
           "x": 0,
           "w": 90,
           "h": 96,
           "anchorX": 45,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 90,
           "w": 69,
           "h": 96,
           "anchorX": 34,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 159,
           "w": 61,
           "h": 96,
           "anchorX": 30,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 220,
           "w": 299,
           "h": 96,
           "anchorX": 150,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 3,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         }
       ],
-      "embeddedTarget": true,
       "hideTargetSprite": true,
       "targetSuppressionStartFrame": 0,
       "targetSuppressionEndFrame": 3
@@ -447,44 +606,60 @@
       "expectedFrameCount": null,
       "fps": 8,
       "loop": false,
+      "embeddedTarget": true,
+      "allowMultiSubjectFrame": true,
       "frames": [
         {
           "x": 0,
           "w": 186,
           "h": 96,
           "anchorX": 93,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 2,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 186,
           "w": 119,
           "h": 96,
           "anchorX": 60,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 305,
           "w": 108,
           "h": 96,
           "anchorX": 54,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 413,
           "w": 108,
           "h": 96,
           "anchorX": 54,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 521,
           "w": 133,
           "h": 96,
           "anchorX": 66,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         }
       ],
-      "embeddedTarget": true,
       "hideTargetSprite": true,
       "targetSuppressionStartFrame": 0,
       "targetSuppressionEndFrame": 4
@@ -499,44 +674,60 @@
       "expectedFrameCount": null,
       "fps": 8,
       "loop": false,
+      "embeddedTarget": true,
+      "allowMultiSubjectFrame": true,
       "frames": [
         {
           "x": 0,
           "w": 115,
           "h": 96,
           "anchorX": 58,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 115,
           "w": 109,
           "h": 96,
           "anchorX": 54,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 224,
           "w": 62,
           "h": 96,
           "anchorX": 31,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 286,
           "w": 173,
           "h": 96,
           "anchorX": 86,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 2,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         },
         {
           "x": 459,
           "w": 128,
           "h": 96,
           "anchorX": 64,
-          "anchorY": 88
+          "anchorY": 88,
+          "componentCount": 1,
+          "allowMultiSubjectFrame": true,
+          "suspiciousMultiPose": false
         }
       ],
-      "embeddedTarget": true,
       "hideTargetSprite": true,
       "targetSuppressionStartFrame": 0,
       "targetSuppressionEndFrame": 4
