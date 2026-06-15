@@ -11857,6 +11857,2359 @@
       "metadata": "public/assets/fightcore/sprites/puppetmaster/metadata.json",
       "transparentPixelsAfterResize": 575764,
       "remainingBorderConnectedCheckerboardPixels": 1
+    },
+    {
+      "name": "Combat Monk",
+      "entityId": "combat-monk",
+      "source": "tools/raw-fightcore-assets/Combat-monk.png",
+      "sourceSize": [
+        1122,
+        1402
+      ],
+      "atlas": "public/assets/fightcore/sprites/combat-monk/atlas.png",
+      "transparentPixelsBeforeResize": 1266949,
+      "detectedRows": [
+        {
+          "left": 100,
+          "top": 22,
+          "right": 631,
+          "bottom": 157,
+          "width": 532,
+          "height": 136
+        },
+        {
+          "left": 83,
+          "top": 182,
+          "right": 995,
+          "bottom": 315,
+          "width": 913,
+          "height": 134
+        },
+        {
+          "left": 79,
+          "top": 342,
+          "right": 1028,
+          "bottom": 445,
+          "width": 950,
+          "height": 104
+        },
+        {
+          "left": 95,
+          "top": 468,
+          "right": 822,
+          "bottom": 592,
+          "width": 728,
+          "height": 125
+        },
+        {
+          "left": 90,
+          "top": 616,
+          "right": 909,
+          "bottom": 740,
+          "width": 820,
+          "height": 125
+        },
+        {
+          "left": 82,
+          "top": 761,
+          "right": 861,
+          "bottom": 867,
+          "width": 780,
+          "height": 107
+        },
+        {
+          "left": 96,
+          "top": 891,
+          "right": 860,
+          "bottom": 1011,
+          "width": 765,
+          "height": 121
+        },
+        {
+          "left": 82,
+          "top": 1038,
+          "right": 933,
+          "bottom": 1125,
+          "width": 852,
+          "height": 88
+        },
+        {
+          "left": 92,
+          "top": 1155,
+          "right": 906,
+          "bottom": 1251,
+          "width": 815,
+          "height": 97
+        },
+        {
+          "left": 67,
+          "top": 1277,
+          "right": 763,
+          "bottom": 1383,
+          "width": 697,
+          "height": 107
+        }
+      ],
+      "strips": [
+        {
+          "animation": "idle",
+          "path": "public/assets/fightcore/sprites/combat-monk/idle-strip.png",
+          "size": [
+            244,
+            96
+          ],
+          "frameCount": 5,
+          "detectedFrameCount": 5,
+          "fps": 8,
+          "loop": true,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 100,
+            "top": 22,
+            "right": 631,
+            "bottom": 157,
+            "width": 532,
+            "height": 136
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 100,
+                "top": 24,
+                "right": 173,
+                "bottom": 157,
+                "width": 74,
+                "height": 134
+              },
+              "normalizedSize": [
+                49,
+                88
+              ],
+              "frameSize": [
+                49,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 24,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 217,
+                "top": 22,
+                "right": 293,
+                "bottom": 157,
+                "width": 77,
+                "height": 136
+              },
+              "normalizedSize": [
+                50,
+                88
+              ],
+              "frameSize": [
+                50,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 25,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 339,
+                "top": 21,
+                "right": 411,
+                "bottom": 157,
+                "width": 73,
+                "height": 137
+              },
+              "normalizedSize": [
+                47,
+                88
+              ],
+              "frameSize": [
+                47,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 24,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 453,
+                "top": 21,
+                "right": 531,
+                "bottom": 157,
+                "width": 79,
+                "height": 137
+              },
+              "normalizedSize": [
+                51,
+                88
+              ],
+              "frameSize": [
+                51,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 26,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 561,
+                "top": 24,
+                "right": 631,
+                "bottom": 157,
+                "width": 71,
+                "height": 134
+              },
+              "normalizedSize": [
+                47,
+                88
+              ],
+              "frameSize": [
+                47,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 24,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 49,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
+            },
+            {
+              "x": 49,
+              "w": 50,
+              "h": 96,
+              "anchorX": 25,
+              "anchorY": 88
+            },
+            {
+              "x": 99,
+              "w": 47,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
+            },
+            {
+              "x": 146,
+              "w": 51,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            },
+            {
+              "x": 197,
+              "w": 47,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "walk",
+          "path": "public/assets/fightcore/sprites/combat-monk/walk-strip.png",
+          "size": [
+            402,
+            96
+          ],
+          "frameCount": 8,
+          "detectedFrameCount": 8,
+          "fps": 10,
+          "loop": true,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 83,
+            "top": 182,
+            "right": 995,
+            "bottom": 315,
+            "width": 913,
+            "height": 134
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 83,
+                "top": 182,
+                "right": 177,
+                "bottom": 313,
+                "width": 95,
+                "height": 132
+              },
+              "normalizedSize": [
+                63,
+                88
+              ],
+              "frameSize": [
+                63,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 32,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 209,
+                "top": 182,
+                "right": 290,
+                "bottom": 313,
+                "width": 82,
+                "height": 132
+              },
+              "normalizedSize": [
+                55,
+                88
+              ],
+              "frameSize": [
+                55,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 28,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 333,
+                "top": 183,
+                "right": 422,
+                "bottom": 314,
+                "width": 90,
+                "height": 132
+              },
+              "normalizedSize": [
+                60,
+                88
+              ],
+              "frameSize": [
+                60,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 30,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 465,
+                "top": 183,
+                "right": 526,
+                "bottom": 315,
+                "width": 62,
+                "height": 133
+              },
+              "normalizedSize": [
+                41,
+                88
+              ],
+              "frameSize": [
+                41,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 20,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 569,
+                "top": 183,
+                "right": 623,
+                "bottom": 315,
+                "width": 55,
+                "height": 133
+              },
+              "normalizedSize": [
+                36,
+                88
+              ],
+              "frameSize": [
+                36,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 18,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 651,
+                "top": 184,
+                "right": 720,
+                "bottom": 316,
+                "width": 70,
+                "height": 133
+              },
+              "normalizedSize": [
+                46,
+                88
+              ],
+              "frameSize": [
+                46,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 23,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 6,
+              "sourceBounds": {
+                "left": 787,
+                "top": 187,
+                "right": 856,
+                "bottom": 315,
+                "width": 70,
+                "height": 129
+              },
+              "normalizedSize": [
+                48,
+                88
+              ],
+              "frameSize": [
+                48,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 24,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 7,
+              "sourceBounds": {
+                "left": 919,
+                "top": 187,
+                "right": 995,
+                "bottom": 314,
+                "width": 77,
+                "height": 128
+              },
+              "normalizedSize": [
+                53,
+                88
+              ],
+              "frameSize": [
+                53,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 26,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 63,
+              "h": 96,
+              "anchorX": 32,
+              "anchorY": 88
+            },
+            {
+              "x": 63,
+              "w": 55,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 118,
+              "w": 60,
+              "h": 96,
+              "anchorX": 30,
+              "anchorY": 88
+            },
+            {
+              "x": 178,
+              "w": 41,
+              "h": 96,
+              "anchorX": 20,
+              "anchorY": 88
+            },
+            {
+              "x": 219,
+              "w": 36,
+              "h": 96,
+              "anchorX": 18,
+              "anchorY": 88
+            },
+            {
+              "x": 255,
+              "w": 46,
+              "h": 96,
+              "anchorX": 23,
+              "anchorY": 88
+            },
+            {
+              "x": 301,
+              "w": 48,
+              "h": 96,
+              "anchorX": 24,
+              "anchorY": 88
+            },
+            {
+              "x": 349,
+              "w": 53,
+              "h": 96,
+              "anchorX": 26,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "dash",
+          "path": "public/assets/fightcore/sprites/combat-monk/dash-strip.png",
+          "size": [
+            773,
+            96
+          ],
+          "frameCount": 3,
+          "detectedFrameCount": 3,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 79,
+            "top": 342,
+            "right": 1028,
+            "bottom": 445,
+            "width": 950,
+            "height": 104
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 90,
+                "top": 342,
+                "right": 271,
+                "bottom": 442,
+                "width": 182,
+                "height": 101
+              },
+              "normalizedSize": [
+                164,
+                88
+              ],
+              "frameSize": [
+                164,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 82,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 291,
+                "top": 347,
+                "right": 449,
+                "bottom": 443,
+                "width": 159,
+                "height": 97
+              },
+              "normalizedSize": [
+                145,
+                88
+              ],
+              "frameSize": [
+                145,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 72,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 478,
+                "top": 342,
+                "right": 1019,
+                "bottom": 445,
+                "width": 542,
+                "height": 104
+              },
+              "normalizedSize": [
+                464,
+                88
+              ],
+              "frameSize": [
+                464,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 232,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 164,
+              "h": 96,
+              "anchorX": 82,
+              "anchorY": 88
+            },
+            {
+              "x": 164,
+              "w": 145,
+              "h": 96,
+              "anchorX": 72,
+              "anchorY": 88
+            },
+            {
+              "x": 309,
+              "w": 464,
+              "h": 96,
+              "anchorX": 232,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "palm_strike",
+          "path": "public/assets/fightcore/sprites/combat-monk/palm-strike-strip.png",
+          "size": [
+            435,
+            96
+          ],
+          "frameCount": 5,
+          "detectedFrameCount": 5,
+          "fps": 14,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 95,
+            "top": 468,
+            "right": 822,
+            "bottom": 592,
+            "width": 728,
+            "height": 125
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 95,
+                "top": 468,
+                "right": 172,
+                "bottom": 592,
+                "width": 78,
+                "height": 125
+              },
+              "normalizedSize": [
+                55,
+                88
+              ],
+              "frameSize": [
+                55,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 28,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 225,
+                "top": 467,
+                "right": 334,
+                "bottom": 592,
+                "width": 110,
+                "height": 126
+              },
+              "normalizedSize": [
+                77,
+                88
+              ],
+              "frameSize": [
+                77,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 38,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 371,
+                "top": 472,
+                "right": 481,
+                "bottom": 592,
+                "width": 111,
+                "height": 121
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "frameSize": [
+                81,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 40,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 519,
+                "top": 472,
+                "right": 763,
+                "bottom": 592,
+                "width": 245,
+                "height": 121
+              },
+              "normalizedSize": [
+                178,
+                88
+              ],
+              "frameSize": [
+                178,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 89,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 782,
+                "top": 468,
+                "right": 822,
+                "bottom": 543,
+                "width": 41,
+                "height": 76
+              },
+              "normalizedSize": [
+                44,
+                76
+              ],
+              "frameSize": [
+                44,
+                96
+              ],
+              "cellOffset": [
+                0,
+                12
+              ],
+              "anchorX": 22,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 55,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 55,
+              "w": 77,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            },
+            {
+              "x": 132,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 213,
+              "w": 178,
+              "h": 96,
+              "anchorX": 89,
+              "anchorY": 88
+            },
+            {
+              "x": 391,
+              "w": 44,
+              "h": 96,
+              "anchorX": 22,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "high_kick",
+          "path": "public/assets/fightcore/sprites/combat-monk/high-kick-strip.png",
+          "size": [
+            496,
+            96
+          ],
+          "frameCount": 5,
+          "detectedFrameCount": 5,
+          "fps": 13,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 90,
+            "top": 616,
+            "right": 909,
+            "bottom": 740,
+            "width": 820,
+            "height": 125
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 90,
+                "top": 617,
+                "right": 173,
+                "bottom": 739,
+                "width": 84,
+                "height": 123
+              },
+              "normalizedSize": [
+                60,
+                88
+              ],
+              "frameSize": [
+                60,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 30,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 218,
+                "top": 619,
+                "right": 301,
+                "bottom": 739,
+                "width": 84,
+                "height": 121
+              },
+              "normalizedSize": [
+                61,
+                88
+              ],
+              "frameSize": [
+                61,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 30,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 351,
+                "top": 620,
+                "right": 472,
+                "bottom": 739,
+                "width": 122,
+                "height": 120
+              },
+              "normalizedSize": [
+                89,
+                88
+              ],
+              "frameSize": [
+                89,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 494,
+                "top": 615,
+                "right": 808,
+                "bottom": 739,
+                "width": 315,
+                "height": 125
+              },
+              "normalizedSize": [
+                222,
+                88
+              ],
+              "frameSize": [
+                222,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 111,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 826,
+                "top": 625,
+                "right": 909,
+                "bottom": 740,
+                "width": 84,
+                "height": 116
+              },
+              "normalizedSize": [
+                64,
+                88
+              ],
+              "frameSize": [
+                64,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 32,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 60,
+              "h": 96,
+              "anchorX": 30,
+              "anchorY": 88
+            },
+            {
+              "x": 60,
+              "w": 61,
+              "h": 96,
+              "anchorX": 30,
+              "anchorY": 88
+            },
+            {
+              "x": 121,
+              "w": 89,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 210,
+              "w": 222,
+              "h": 96,
+              "anchorX": 111,
+              "anchorY": 88
+            },
+            {
+              "x": 432,
+              "w": 64,
+              "h": 96,
+              "anchorX": 32,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "spinning_sweep",
+          "path": "public/assets/fightcore/sprites/combat-monk/spinning-sweep-strip.png",
+          "size": [
+            634,
+            96
+          ],
+          "frameCount": 2,
+          "detectedFrameCount": 2,
+          "fps": 12,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 82,
+            "top": 761,
+            "right": 861,
+            "bottom": 867,
+            "width": 780,
+            "height": 107
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 82,
+                "top": 760,
+                "right": 662,
+                "bottom": 866,
+                "width": 581,
+                "height": 107
+              },
+              "normalizedSize": [
+                478,
+                88
+              ],
+              "frameSize": [
+                478,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 239,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 679,
+                "top": 765,
+                "right": 861,
+                "bottom": 867,
+                "width": 183,
+                "height": 103
+              },
+              "normalizedSize": [
+                156,
+                88
+              ],
+              "frameSize": [
+                156,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 78,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 478,
+              "h": 96,
+              "anchorX": 239,
+              "anchorY": 88
+            },
+            {
+              "x": 478,
+              "w": 156,
+              "h": 96,
+              "anchorX": 78,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "standing_shoulder_lock",
+          "path": "public/assets/fightcore/sprites/combat-monk/standing-shoulder-lock-strip.png",
+          "size": [
+            405,
+            96
+          ],
+          "frameCount": 6,
+          "detectedFrameCount": 6,
+          "fps": 10,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 96,
+            "top": 891,
+            "right": 860,
+            "bottom": 1011,
+            "width": 765,
+            "height": 121
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 96,
+                "top": 891,
+                "right": 175,
+                "bottom": 1011,
+                "width": 80,
+                "height": 121
+              },
+              "normalizedSize": [
+                58,
+                88
+              ],
+              "frameSize": [
+                58,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 29,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 214,
+                "top": 890,
+                "right": 291,
+                "bottom": 1011,
+                "width": 78,
+                "height": 122
+              },
+              "normalizedSize": [
+                56,
+                88
+              ],
+              "frameSize": [
+                56,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 28,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 333,
+                "top": 892,
+                "right": 443,
+                "bottom": 1011,
+                "width": 111,
+                "height": 120
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "frameSize": [
+                81,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 40,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 458,
+                "top": 892,
+                "right": 575,
+                "bottom": 1010,
+                "width": 118,
+                "height": 119
+              },
+              "normalizedSize": [
+                87,
+                88
+              ],
+              "frameSize": [
+                87,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 626,
+                "top": 892,
+                "right": 711,
+                "bottom": 1011,
+                "width": 86,
+                "height": 120
+              },
+              "normalizedSize": [
+                63,
+                88
+              ],
+              "frameSize": [
+                63,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 32,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 779,
+                "top": 892,
+                "right": 860,
+                "bottom": 1011,
+                "width": 82,
+                "height": 120
+              },
+              "normalizedSize": [
+                60,
+                88
+              ],
+              "frameSize": [
+                60,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 30,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 58,
+              "h": 96,
+              "anchorX": 29,
+              "anchorY": 88
+            },
+            {
+              "x": 58,
+              "w": 56,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            },
+            {
+              "x": 114,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 195,
+              "w": 87,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 282,
+              "w": 63,
+              "h": 96,
+              "anchorX": 32,
+              "anchorY": 88
+            },
+            {
+              "x": 345,
+              "w": 60,
+              "h": 96,
+              "anchorX": 30,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "hit_react",
+          "path": "public/assets/fightcore/sprites/combat-monk/hit-react-strip.png",
+          "size": [
+            583,
+            96
+          ],
+          "frameCount": 6,
+          "detectedFrameCount": 6,
+          "fps": 12,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 82,
+            "top": 1038,
+            "right": 933,
+            "bottom": 1125,
+            "width": 852,
+            "height": 88
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 82,
+                "top": 1061,
+                "right": 228,
+                "bottom": 1125,
+                "width": 147,
+                "height": 65
+              },
+              "normalizedSize": [
+                147,
+                65
+              ],
+              "frameSize": [
+                147,
+                96
+              ],
+              "cellOffset": [
+                0,
+                23
+              ],
+              "anchorX": 74,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 281,
+                "top": 1055,
+                "right": 368,
+                "bottom": 1124,
+                "width": 88,
+                "height": 70
+              },
+              "normalizedSize": [
+                88,
+                75
+              ],
+              "frameSize": [
+                88,
+                96
+              ],
+              "cellOffset": [
+                0,
+                13
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 432,
+                "top": 1042,
+                "right": 519,
+                "bottom": 1125,
+                "width": 88,
+                "height": 84
+              },
+              "normalizedSize": [
+                88,
+                84
+              ],
+              "frameSize": [
+                88,
+                96
+              ],
+              "cellOffset": [
+                0,
+                4
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 580,
+                "top": 1051,
+                "right": 668,
+                "bottom": 1124,
+                "width": 89,
+                "height": 74
+              },
+              "normalizedSize": [
+                89,
+                74
+              ],
+              "frameSize": [
+                89,
+                96
+              ],
+              "cellOffset": [
+                0,
+                14
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 724,
+                "top": 1041,
+                "right": 818,
+                "bottom": 1124,
+                "width": 95,
+                "height": 84
+              },
+              "normalizedSize": [
+                95,
+                84
+              ],
+              "frameSize": [
+                95,
+                96
+              ],
+              "cellOffset": [
+                0,
+                4
+              ],
+              "anchorX": 48,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 858,
+                "top": 1037,
+                "right": 933,
+                "bottom": 1124,
+                "width": 76,
+                "height": 88
+              },
+              "normalizedSize": [
+                76,
+                88
+              ],
+              "frameSize": [
+                76,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 38,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 147,
+              "h": 96,
+              "anchorX": 74,
+              "anchorY": 88
+            },
+            {
+              "x": 147,
+              "w": 88,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 235,
+              "w": 88,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 323,
+              "w": 89,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 412,
+              "w": 95,
+              "h": 96,
+              "anchorX": 48,
+              "anchorY": 88
+            },
+            {
+              "x": 507,
+              "w": 76,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "recovery",
+          "path": "public/assets/fightcore/sprites/combat-monk/recovery-strip.png",
+          "size": [
+            583,
+            96
+          ],
+          "frameCount": 6,
+          "detectedFrameCount": 6,
+          "fps": 8,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 82,
+            "top": 1038,
+            "right": 933,
+            "bottom": 1125,
+            "width": 852,
+            "height": 88
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 82,
+                "top": 1061,
+                "right": 228,
+                "bottom": 1125,
+                "width": 147,
+                "height": 65
+              },
+              "normalizedSize": [
+                147,
+                65
+              ],
+              "frameSize": [
+                147,
+                96
+              ],
+              "cellOffset": [
+                0,
+                23
+              ],
+              "anchorX": 74,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 281,
+                "top": 1055,
+                "right": 368,
+                "bottom": 1124,
+                "width": 88,
+                "height": 70
+              },
+              "normalizedSize": [
+                88,
+                75
+              ],
+              "frameSize": [
+                88,
+                96
+              ],
+              "cellOffset": [
+                0,
+                13
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 432,
+                "top": 1042,
+                "right": 519,
+                "bottom": 1125,
+                "width": 88,
+                "height": 84
+              },
+              "normalizedSize": [
+                88,
+                84
+              ],
+              "frameSize": [
+                88,
+                96
+              ],
+              "cellOffset": [
+                0,
+                4
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 580,
+                "top": 1051,
+                "right": 668,
+                "bottom": 1124,
+                "width": 89,
+                "height": 74
+              },
+              "normalizedSize": [
+                89,
+                74
+              ],
+              "frameSize": [
+                89,
+                96
+              ],
+              "cellOffset": [
+                0,
+                14
+              ],
+              "anchorX": 44,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 724,
+                "top": 1041,
+                "right": 818,
+                "bottom": 1124,
+                "width": 95,
+                "height": 84
+              },
+              "normalizedSize": [
+                95,
+                84
+              ],
+              "frameSize": [
+                95,
+                96
+              ],
+              "cellOffset": [
+                0,
+                4
+              ],
+              "anchorX": 48,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 858,
+                "top": 1037,
+                "right": 933,
+                "bottom": 1124,
+                "width": 76,
+                "height": 88
+              },
+              "normalizedSize": [
+                76,
+                88
+              ],
+              "frameSize": [
+                76,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 38,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 147,
+              "h": 96,
+              "anchorX": 74,
+              "anchorY": 88
+            },
+            {
+              "x": 147,
+              "w": 88,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 235,
+              "w": 88,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 323,
+              "w": 89,
+              "h": 96,
+              "anchorX": 44,
+              "anchorY": 88
+            },
+            {
+              "x": 412,
+              "w": 95,
+              "h": 96,
+              "anchorX": 48,
+              "anchorY": 88
+            },
+            {
+              "x": 507,
+              "w": 76,
+              "h": 96,
+              "anchorX": 38,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "meditation",
+          "path": "public/assets/fightcore/sprites/combat-monk/meditation-strip.png",
+          "size": [
+            565,
+            96
+          ],
+          "frameCount": 6,
+          "detectedFrameCount": 6,
+          "fps": 6,
+          "loop": true,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 92,
+            "top": 1155,
+            "right": 906,
+            "bottom": 1251,
+            "width": 815,
+            "height": 97
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 92,
+                "top": 1155,
+                "right": 201,
+                "bottom": 1251,
+                "width": 110,
+                "height": 97
+              },
+              "normalizedSize": [
+                100,
+                88
+              ],
+              "frameSize": [
+                100,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 50,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 234,
+                "top": 1158,
+                "right": 345,
+                "bottom": 1251,
+                "width": 112,
+                "height": 94
+              },
+              "normalizedSize": [
+                105,
+                88
+              ],
+              "frameSize": [
+                105,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 52,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 378,
+                "top": 1158,
+                "right": 488,
+                "bottom": 1251,
+                "width": 111,
+                "height": 94
+              },
+              "normalizedSize": [
+                98,
+                88
+              ],
+              "frameSize": [
+                98,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 49,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 542,
+                "top": 1158,
+                "right": 651,
+                "bottom": 1252,
+                "width": 110,
+                "height": 95
+              },
+              "normalizedSize": [
+                98,
+                88
+              ],
+              "frameSize": [
+                98,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 49,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 693,
+                "top": 1158,
+                "right": 781,
+                "bottom": 1251,
+                "width": 89,
+                "height": 94
+              },
+              "normalizedSize": [
+                83,
+                88
+              ],
+              "frameSize": [
+                83,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 42,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 5,
+              "sourceBounds": {
+                "left": 820,
+                "top": 1157,
+                "right": 906,
+                "bottom": 1251,
+                "width": 87,
+                "height": 95
+              },
+              "normalizedSize": [
+                81,
+                88
+              ],
+              "frameSize": [
+                81,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 40,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 100,
+              "h": 96,
+              "anchorX": 50,
+              "anchorY": 88
+            },
+            {
+              "x": 100,
+              "w": 105,
+              "h": 96,
+              "anchorX": 52,
+              "anchorY": 88
+            },
+            {
+              "x": 205,
+              "w": 98,
+              "h": 96,
+              "anchorX": 49,
+              "anchorY": 88
+            },
+            {
+              "x": 303,
+              "w": 98,
+              "h": 96,
+              "anchorX": 49,
+              "anchorY": 88
+            },
+            {
+              "x": 401,
+              "w": 83,
+              "h": 96,
+              "anchorX": 42,
+              "anchorY": 88
+            },
+            {
+              "x": 484,
+              "w": 81,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        },
+        {
+          "animation": "standup",
+          "path": "public/assets/fightcore/sprites/combat-monk/standup-strip.png",
+          "size": [
+            431,
+            96
+          ],
+          "frameCount": 5,
+          "detectedFrameCount": 5,
+          "fps": 8,
+          "loop": false,
+          "passedDimensions": true,
+          "rowBounds": {
+            "left": 67,
+            "top": 1277,
+            "right": 763,
+            "bottom": 1383,
+            "width": 697,
+            "height": 107
+          },
+          "frames": [
+            {
+              "index": 0,
+              "sourceBounds": {
+                "left": 67,
+                "top": 1340,
+                "right": 208,
+                "bottom": 1380,
+                "width": 142,
+                "height": 41
+              },
+              "normalizedSize": [
+                142,
+                41
+              ],
+              "frameSize": [
+                142,
+                96
+              ],
+              "cellOffset": [
+                0,
+                47
+              ],
+              "anchorX": 71,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 1,
+              "sourceBounds": {
+                "left": 255,
+                "top": 1314,
+                "right": 348,
+                "bottom": 1380,
+                "width": 94,
+                "height": 67
+              },
+              "normalizedSize": [
+                94,
+                67
+              ],
+              "frameSize": [
+                94,
+                96
+              ],
+              "cellOffset": [
+                0,
+                21
+              ],
+              "anchorX": 47,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": false
+            },
+            {
+              "index": 2,
+              "sourceBounds": {
+                "left": 401,
+                "top": 1292,
+                "right": 482,
+                "bottom": 1382,
+                "width": 82,
+                "height": 91
+              },
+              "normalizedSize": [
+                79,
+                88
+              ],
+              "frameSize": [
+                79,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 40,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 3,
+              "sourceBounds": {
+                "left": 545,
+                "top": 1282,
+                "right": 615,
+                "bottom": 1383,
+                "width": 71,
+                "height": 102
+              },
+              "normalizedSize": [
+                61,
+                88
+              ],
+              "frameSize": [
+                61,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 30,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            },
+            {
+              "index": 4,
+              "sourceBounds": {
+                "left": 697,
+                "top": 1276,
+                "right": 763,
+                "bottom": 1383,
+                "width": 67,
+                "height": 108
+              },
+              "normalizedSize": [
+                55,
+                88
+              ],
+              "frameSize": [
+                55,
+                96
+              ],
+              "cellOffset": [
+                0,
+                0
+              ],
+              "anchorX": 28,
+              "anchorY": 88,
+              "baselineY": 88,
+              "scaledDown": true
+            }
+          ],
+          "metadata": [
+            {
+              "x": 0,
+              "w": 142,
+              "h": 96,
+              "anchorX": 71,
+              "anchorY": 88
+            },
+            {
+              "x": 142,
+              "w": 94,
+              "h": 96,
+              "anchorX": 47,
+              "anchorY": 88
+            },
+            {
+              "x": 236,
+              "w": 79,
+              "h": 96,
+              "anchorX": 40,
+              "anchorY": 88
+            },
+            {
+              "x": 315,
+              "w": 61,
+              "h": 96,
+              "anchorX": 30,
+              "anchorY": 88
+            },
+            {
+              "x": 376,
+              "w": 55,
+              "h": 96,
+              "anchorX": 28,
+              "anchorY": 88
+            }
+          ],
+          "warnings": []
+        }
+      ],
+      "warnings": [],
+      "icon": {
+        "path": "public/assets/fightcore/sprites/combat-monk/icon-full-body.png",
+        "source": "tools/raw-fightcore-assets/Combat-monk-idle.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "size": [
+          574,
+          884
+        ],
+        "transparentPixelsBeforeCrop": 1309568
+      },
+      "logo": {
+        "path": "public/assets/fightcore/sprites/combat-monk/logo-emblem.png",
+        "source": "tools/raw-fightcore-assets/COmbat-monk-logo.png",
+        "sourceSize": [
+          1254,
+          1254
+        ],
+        "size": [
+          1021,
+          1076
+        ],
+        "transparentPixelsBeforeCrop": 1011341
+      },
+      "atlasSize": [
+        773,
+        960
+      ],
+      "metadata": "public/assets/fightcore/sprites/combat-monk/metadata.json",
+      "transparentPixelsAfterResize": 542566,
+      "remainingBorderConnectedCheckerboardPixels": 6
     }
   ],
   "background": {

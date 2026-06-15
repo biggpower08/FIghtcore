@@ -1,0 +1,551 @@
+{
+  "entityId": "combat-monk",
+  "sheetId": "fightcore-combat-monk-atlas",
+  "frameHeight": 96,
+  "baselineY": 88,
+  "embeddedTargetAnimations": {},
+  "animations": {
+    "idle": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "idle",
+      "stripPath": "idle-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 49,
+          "h": 96,
+          "anchorX": 24,
+          "anchorY": 88
+        },
+        {
+          "x": 49,
+          "w": 50,
+          "h": 96,
+          "anchorX": 25,
+          "anchorY": 88
+        },
+        {
+          "x": 99,
+          "w": 47,
+          "h": 96,
+          "anchorX": 24,
+          "anchorY": 88
+        },
+        {
+          "x": 146,
+          "w": 51,
+          "h": 96,
+          "anchorX": 26,
+          "anchorY": 88
+        },
+        {
+          "x": 197,
+          "w": 47,
+          "h": 96,
+          "anchorX": 24,
+          "anchorY": 88
+        }
+      ]
+    },
+    "walk": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "walk",
+      "stripPath": "walk-strip.png",
+      "frameHeight": 96,
+      "frameCount": 8,
+      "expectedFrameCount": null,
+      "fps": 10,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 63,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        },
+        {
+          "x": 63,
+          "w": 55,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 118,
+          "w": 60,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 178,
+          "w": 41,
+          "h": 96,
+          "anchorX": 20,
+          "anchorY": 88
+        },
+        {
+          "x": 219,
+          "w": 36,
+          "h": 96,
+          "anchorX": 18,
+          "anchorY": 88
+        },
+        {
+          "x": 255,
+          "w": 46,
+          "h": 96,
+          "anchorX": 23,
+          "anchorY": 88
+        },
+        {
+          "x": 301,
+          "w": 48,
+          "h": 96,
+          "anchorX": 24,
+          "anchorY": 88
+        },
+        {
+          "x": 349,
+          "w": 53,
+          "h": 96,
+          "anchorX": 26,
+          "anchorY": 88
+        }
+      ]
+    },
+    "dash": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "dash",
+      "stripPath": "dash-strip.png",
+      "frameHeight": 96,
+      "frameCount": 3,
+      "expectedFrameCount": null,
+      "fps": 14,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 164,
+          "h": 96,
+          "anchorX": 82,
+          "anchorY": 88
+        },
+        {
+          "x": 164,
+          "w": 145,
+          "h": 96,
+          "anchorX": 72,
+          "anchorY": 88
+        },
+        {
+          "x": 309,
+          "w": 464,
+          "h": 96,
+          "anchorX": 232,
+          "anchorY": 88
+        }
+      ]
+    },
+    "palm_strike": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "palm_strike",
+      "stripPath": "palm-strike-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 14,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 55,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 55,
+          "w": 77,
+          "h": 96,
+          "anchorX": 38,
+          "anchorY": 88
+        },
+        {
+          "x": 132,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 213,
+          "w": 178,
+          "h": 96,
+          "anchorX": 89,
+          "anchorY": 88
+        },
+        {
+          "x": 391,
+          "w": 44,
+          "h": 96,
+          "anchorX": 22,
+          "anchorY": 88
+        }
+      ]
+    },
+    "high_kick": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "high_kick",
+      "stripPath": "high-kick-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 13,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 60,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 60,
+          "w": 61,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 121,
+          "w": 89,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 210,
+          "w": 222,
+          "h": 96,
+          "anchorX": 111,
+          "anchorY": 88
+        },
+        {
+          "x": 432,
+          "w": 64,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        }
+      ]
+    },
+    "spinning_sweep": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "spinning_sweep",
+      "stripPath": "spinning-sweep-strip.png",
+      "frameHeight": 96,
+      "frameCount": 2,
+      "expectedFrameCount": null,
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 478,
+          "h": 96,
+          "anchorX": 239,
+          "anchorY": 88
+        },
+        {
+          "x": 478,
+          "w": 156,
+          "h": 96,
+          "anchorX": 78,
+          "anchorY": 88
+        }
+      ]
+    },
+    "standing_shoulder_lock": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "standing_shoulder_lock",
+      "stripPath": "standing-shoulder-lock-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "expectedFrameCount": null,
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 58,
+          "h": 96,
+          "anchorX": 29,
+          "anchorY": 88
+        },
+        {
+          "x": 58,
+          "w": 56,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 114,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 195,
+          "w": 87,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 282,
+          "w": 63,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        },
+        {
+          "x": 345,
+          "w": 60,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        }
+      ]
+    },
+    "hit_react": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "hit_react",
+      "stripPath": "hit-react-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "expectedFrameCount": null,
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 147,
+          "h": 96,
+          "anchorX": 74,
+          "anchorY": 88
+        },
+        {
+          "x": 147,
+          "w": 88,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 235,
+          "w": 88,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 323,
+          "w": 89,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 412,
+          "w": 95,
+          "h": 96,
+          "anchorX": 48,
+          "anchorY": 88
+        },
+        {
+          "x": 507,
+          "w": 76,
+          "h": 96,
+          "anchorX": 38,
+          "anchorY": 88
+        }
+      ]
+    },
+    "recovery": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "recovery",
+      "stripPath": "recovery-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 147,
+          "h": 96,
+          "anchorX": 74,
+          "anchorY": 88
+        },
+        {
+          "x": 147,
+          "w": 88,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 235,
+          "w": 88,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 323,
+          "w": 89,
+          "h": 96,
+          "anchorX": 44,
+          "anchorY": 88
+        },
+        {
+          "x": 412,
+          "w": 95,
+          "h": 96,
+          "anchorX": 48,
+          "anchorY": 88
+        },
+        {
+          "x": 507,
+          "w": 76,
+          "h": 96,
+          "anchorX": 38,
+          "anchorY": 88
+        }
+      ]
+    },
+    "meditation": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "meditation",
+      "stripPath": "meditation-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "expectedFrameCount": null,
+      "fps": 6,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 100,
+          "h": 96,
+          "anchorX": 50,
+          "anchorY": 88
+        },
+        {
+          "x": 100,
+          "w": 105,
+          "h": 96,
+          "anchorX": 52,
+          "anchorY": 88
+        },
+        {
+          "x": 205,
+          "w": 98,
+          "h": 96,
+          "anchorX": 49,
+          "anchorY": 88
+        },
+        {
+          "x": 303,
+          "w": 98,
+          "h": 96,
+          "anchorX": 49,
+          "anchorY": 88
+        },
+        {
+          "x": 401,
+          "w": 83,
+          "h": 96,
+          "anchorX": 42,
+          "anchorY": 88
+        },
+        {
+          "x": 484,
+          "w": 81,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        }
+      ]
+    },
+    "standup": {
+      "entityId": "combat-monk",
+      "sheetId": "fightcore-combat-monk-atlas",
+      "animationKey": "standup",
+      "stripPath": "standup-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 142,
+          "h": 96,
+          "anchorX": 71,
+          "anchorY": 88
+        },
+        {
+          "x": 142,
+          "w": 94,
+          "h": 96,
+          "anchorX": 47,
+          "anchorY": 88
+        },
+        {
+          "x": 236,
+          "w": 79,
+          "h": 96,
+          "anchorX": 40,
+          "anchorY": 88
+        },
+        {
+          "x": 315,
+          "w": 61,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 376,
+          "w": 55,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        }
+      ]
+    }
+  }
+}

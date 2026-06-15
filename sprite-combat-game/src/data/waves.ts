@@ -13,7 +13,7 @@ export const waveDefinitions: WaveDefinition[] = [
   {
     wave: 2,
     enemies: [
-      { enemyId: 'monkey-grunt', count: 4 },
+      { enemyId: 'monkey-grunt', count: 3 },
       { enemyId: 'striker-monkey', count: 1 },
     ],
     isBoss: false,
@@ -21,9 +21,8 @@ export const waveDefinitions: WaveDefinition[] = [
   {
     wave: 3,
     enemies: [
-      { enemyId: 'monkey-grunt', count: 5 },
-      { enemyId: 'striker-monkey', count: 2 },
-      { enemyId: 'cyber-monkey-grappler', count: 1 },
+      { enemyId: 'monkey-grunt', count: 4 },
+      { enemyId: 'striker-monkey', count: 1 },
     ],
     isBoss: false,
   },
@@ -32,8 +31,8 @@ export const waveDefinitions: WaveDefinition[] = [
     wave: 5,
     enemies: [
       { enemyId: 'monkey-grunt', count: 4 },
-      { enemyId: 'striker-monkey', count: 3 },
-      { enemyId: 'cyber-monkey-grappler', count: 2 },
+      { enemyId: 'striker-monkey', count: 2 },
+      { enemyId: 'cyber-monkey-grappler', count: 1 },
     ],
     isBoss: false,
   },

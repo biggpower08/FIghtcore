@@ -4,6 +4,7 @@ import { Enemy } from '../entities/Enemy';
 import { enemyDefinitions } from '../data/enemies';
 import { moveById } from '../data/moves';
 import { waveDefinitions } from '../data/waves';
+import { TEST_BALANCE } from '../game/testBalance';
 
 export class WaveSystem {
   wave = 0;
@@ -21,10 +22,14 @@ export class WaveSystem {
     }
 
     const enemies: Enemy[] = [];
-    const totalCount = template.enemies.reduce((total, group) => total + group.count, 0);
+    const tunedGroups = template.enemies.map((group) => ({
+      ...group,
+      count: Math.max(1, Math.ceil(group.count * TEST_BALANCE.waveEnemyCountMultiplier)),
+    }));
+    const totalCount = tunedGroups.reduce((total, group) => total + group.count, 0);
     let spawnedCount = 0;
 
-    for (const group of template.enemies) {
+    for (const group of tunedGroups) {
       const definition = enemyDefinitions.find((enemy) => enemy.id === group.enemyId);
       if (!definition) throw new Error(`Missing enemy definition ${group.enemyId}`);
       const move = moveById.get(definition.moveId);
@@ -43,7 +48,7 @@ export class WaveSystem {
       const definition = enemyDefinitions[spawnedCount % 2];
       const move = moveById.get(definition.moveId);
       if (!move) throw new Error(`Missing enemy move ${definition.moveId}`);
-      const bonusCount = Math.floor(this.wave / 2);
+      const bonusCount = Math.floor((this.wave / 2) * TEST_BALANCE.bonusEnemyCountMultiplier);
       for (let index = 0; index < bonusCount; index += 1) {
         const angle = (Math.PI * 2 * index) / bonusCount;
         const x = ARENA_WIDTH / 2 + Math.cos(angle) * 590;

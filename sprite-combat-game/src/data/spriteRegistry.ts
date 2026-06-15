@@ -42,6 +42,10 @@ export const spriteRegistry: SpriteRegistration[] = [
     ...heroRenderProfile(),
     scale: 0.98,
   }),
+  registerCharacter('combat-monk', 'hero', manifestAnimations('combat-monk'), ['fightcore-combat-monk-atlas'], {
+    ...heroRenderProfile(),
+    scale: 0.98,
+  }),
   registerCharacter('monkey-grunt', 'villain', manifestAnimations('monkey-grunt'), ['fightcore-monkey-grunt-atlas'], {
     anchorX: 0.5,
     anchorY: 0.88,

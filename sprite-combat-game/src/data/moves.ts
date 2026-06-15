@@ -45,6 +45,7 @@ export const moves: MoveDefinition[] = [
   createMove('roundhouse_kick', 'Roundhouse Kick', 'kickboxing', 'uncommon', 20, 20, 720, 86, 74, 44, 150, 110, 220, 170, 240, 2),
   createMove('round_kick', 'Round Kick', 'kickboxing', 'common', 16, 16, 560, 76, 66, 40, 120, 105, 190, 135, 190, 2),
   createMove('teep_kick', 'Teep Kick', 'muay-thai', 'common', 15, 14, 440, 76, 56, 42, 110, 95, 175, 150, 190, 2),
+  createMove('spinning_sweep', 'Spinning Sweep', 'kung-fu', 'uncommon', 18, 18, 680, 74, 76, 34, 145, 115, 230, 180, 260, 2, true),
   createMove('spinning_back_kick', 'Spinning Back Kick', 'kickboxing', 'rare', 30, 28, 1040, 92, 78, 46, 230, 125, 310, 260, 360, 3),
   createMove('slice', 'Slice', 'special', 'common', 16, 14, 420, 64, 58, 42, 90, 100, 170, 120, 180, 1),
   createMove('double_leg_shot', 'Double Leg Shot', 'wrestling', 'rare', 24, 24, 900, 78, 60, 46, 180, 130, 250, 230, 300, 3),

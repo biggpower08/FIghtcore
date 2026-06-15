@@ -1,6 +1,8 @@
 import type { Entity } from '../entities/Entity';
 import type { Fighter } from '../entities/Fighter';
 import type { MoveDefinition } from '../data/moves';
+import { Player } from '../entities/Player';
+import { TEST_BALANCE } from '../game/testBalance';
 
 export interface AttackHitbox {
   id: string;
@@ -57,7 +59,8 @@ export class CombatSystem {
       if (!target.alive || target.id === hitbox.owner.id || hitbox.hitIds.has(target.id)) continue;
       if (!this.intersects(hitbox, target)) continue;
 
-      target.takeDamage(hitbox.move.damage);
+      const damageMultiplier = hitbox.owner instanceof Player ? 1 : TEST_BALANCE.enemyDamageMultiplier;
+      target.takeDamage(hitbox.move.damage * damageMultiplier);
       target.stunMs = Math.max(target.stunMs, hitbox.move.stunMs);
       const direction = Math.sign(target.x - hitbox.owner.x) || hitbox.owner.facing;
       const force = hitbox.move.knockback * target.knockbackResistance;

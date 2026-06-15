@@ -27,12 +27,18 @@ import { CollisionSystem } from '../systems/CollisionSystem';
 import { LootSystem } from '../systems/LootSystem';
 import { MovementSystem } from '../systems/MovementSystem';
 import { ProgressionSystem } from '../systems/ProgressionSystem';
-import { RenderSystem, type DustPuff, type GrappleSuppressionRenderInfo } from '../systems/RenderSystem';
+import {
+  RenderSystem,
+  type DustPuff,
+  type GrappleDebugRenderInfo,
+  type GrappleSuppressionRenderInfo,
+} from '../systems/RenderSystem';
 import { WaveSystem } from '../systems/WaveSystem';
 import { Hud } from '../ui/Hud';
 import { MenuScreen } from '../ui/MenuScreen';
 import { RewardScreen } from '../ui/RewardScreen';
 import { SpriteLab } from '../ui/SpriteLab';
+import { TEST_BALANCE } from './testBalance';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
@@ -71,6 +77,7 @@ export class Game {
   private hitboxes: AttackHitbox[] = [];
   private dust: DustPuff[] = [];
   private visualSuppressions = new Map<string, VisualSuppression>();
+  private grappleDebug?: GrappleDebugRenderInfo;
   private lastTime = 0;
   private state: GameState = 'home';
   private settingsReturnState: GameState = 'home';
@@ -269,6 +276,15 @@ export class Game {
   private tryPlayerGrapple(move: MoveDefinition): void {
     if (!move || !this.player.canUseMove(move)) return;
 
+    const targets = this.findGrappleTargets();
+    const target = targets[0];
+    if (TEST_BALANCE.grappleRequireTarget && !target) {
+      this.grappleDebug = this.createGrappleDebug(this.player.character.id, move.animationKey, targets, undefined, [], false, true);
+      this.animation.play(this.player, 'recovery', { lockForMs: 180, fallback: 'idle' });
+      this.player.attackLockMs = Math.max(this.player.attackLockMs, 180);
+      return;
+    }
+
     const grappleMove: MoveDefinition = { ...move };
     const durationMs = Math.max(360, move.windupMs + move.activeMs + move.recoveryMs);
     this.player.stamina -= Math.min(this.player.stamina, move.staminaCost);
@@ -277,46 +293,79 @@ export class Game {
     this.player.activeMove = grappleMove;
     this.player.activeMoveMs = Math.min(durationMs, 520);
 
-    const target = this.findGrappleTarget();
     if (target) {
+      const secondaryTargets = TEST_BALANCE.grappleMultiTargetEnabled
+        ? targets.slice(1, 1 + TEST_BALANCE.grappleMaxSecondaryTargets)
+        : [];
       this.player.facing = target.x < this.player.x ? -1 : 1;
       const controlX = this.player.x + this.player.facing * (this.player.radius + target.radius * 0.55);
       target.x = controlX;
       target.y = this.player.y + Math.sign(target.y - this.player.y) * 8;
-      target.takeDamage(Math.max(8, Math.round(move.damage * 0.45)));
+      target.takeDamage(Math.max(8, Math.round(move.damage)));
       target.stunMs = Math.max(target.stunMs, 620);
       target.vx = this.player.facing * 170 * target.knockbackResistance;
       target.vy = Math.sign(target.y - this.player.y || 1) * 28;
       this.animation.play(target, 'knockdown', { lockForMs: 420, fallback: 'hit_react' });
       this.suppressTargetSprite(target.id, this.player.character.id, grappleMove.animationKey, durationMs);
+      this.applySecondaryGrappleEffects(move, secondaryTargets);
+      this.grappleDebug = this.createGrappleDebug(
+        this.player.character.id,
+        move.animationKey,
+        targets,
+        target,
+        secondaryTargets,
+        shouldHideGrappleTargetSprite(this.player.character.id, grappleMove.animationKey),
+        false,
+      );
       this.dust.push({ x: target.x, y: target.y + 12, lifeMs: 300 });
     }
 
     this.animation.play(this.player, grappleMove.animationKey, { lockForMs: durationMs, fallback: 'idle' });
   }
 
-  private findGrappleTarget(): Enemy | Boss | undefined {
-    const maxRange = this.player.radius + 62;
+  private findGrappleTargets(): Array<Enemy | Boss> {
+    const maxRange = TEST_BALANCE.grappleTargetRadius;
     return this.livingEnemies()
       .filter((target) => {
         const dx = target.x - this.player.x;
-        return Math.hypot(dx, target.y - this.player.y) <= maxRange && Math.sign(dx || this.player.facing) === this.player.facing;
+        return (
+          !this.visualSuppressions.has(target.id) &&
+          Math.hypot(dx, target.y - this.player.y) <= maxRange &&
+          Math.sign(dx || this.player.facing) === this.player.facing
+        );
       })
-      .sort((a, b) => this.player.distanceTo(a) - this.player.distanceTo(b))[0];
+      .sort((a, b) => this.player.distanceTo(a) - this.player.distanceTo(b));
   }
 
   private tryEnemyAttack(enemy: Enemy | Boss): void {
     const move = enemy.equippedMoves[0];
+    const animationKey = enemyAttackAnimationByMove[move.id] ?? enemy.definition.attackAnimation ?? move.animationKey;
+    if (shouldHideGrappleTargetSprite(enemy.definition.id, animationKey)) {
+      const distance = enemy.distanceTo(this.player);
+      const hasValidTarget = this.player.alive && distance <= TEST_BALANCE.grappleTargetRadius && !this.visualSuppressions.has(this.player.id);
+      this.grappleDebug = this.createGrappleDebug(
+        enemy.definition.id,
+        animationKey,
+        hasValidTarget ? [this.player] : [],
+        hasValidTarget ? this.player : undefined,
+        [],
+        false,
+        !hasValidTarget,
+      );
+      if (!hasValidTarget) return;
+    }
     const hitbox = this.combat.startAttack(enemy, move);
     if (hitbox) {
       this.hitboxes.push(hitbox);
-      const animationKey = enemyAttackAnimationByMove[move.id] ?? enemy.definition.attackAnimation ?? move.animationKey;
       const durationMs = move.windupMs + move.activeMs + move.recoveryMs;
       this.animation.play(enemy, animationKey, {
         lockForMs: durationMs,
         fallback: 'idle',
       });
       this.suppressTargetSprite(this.player.id, enemy.definition.id, animationKey, durationMs);
+      if (shouldHideGrappleTargetSprite(enemy.definition.id, animationKey)) {
+        this.grappleDebug = this.createGrappleDebug(enemy.definition.id, animationKey, [this.player], this.player, [], true, false);
+      }
     }
   }
 
@@ -363,6 +412,7 @@ export class Game {
       this.dust,
       this.suppressedEntityIds(),
       this.grappleSuppressionRenderInfo(),
+      this.grappleDebug,
     );
     this.drawBossTelegraph();
     if (['playing', 'paused', 'reward', 'gameOver'].includes(this.state)) {
@@ -523,6 +573,41 @@ export class Game {
       startFrame: metadata.startFrame,
       endFrame: metadata.endFrame,
     });
+  }
+
+  private applySecondaryGrappleEffects(move: MoveDefinition, targets: Array<Enemy | Boss>): void {
+    for (const target of targets) {
+      const damage = Math.max(4, Math.round(move.damage * TEST_BALANCE.grappleSecondaryDamageMultiplier));
+      const stun = Math.round(move.stunMs * TEST_BALANCE.grappleSecondaryControlMultiplier);
+      const knockback = move.knockback * TEST_BALANCE.grappleSecondaryControlMultiplier * target.knockbackResistance;
+      const direction = Math.sign(target.x - this.player.x) || this.player.facing;
+      target.takeDamage(damage);
+      target.stunMs = Math.max(target.stunMs, stun);
+      target.vx += direction * knockback;
+      target.vy += Math.sign(target.y - this.player.y || 1) * knockback * 0.18;
+      this.animation.play(target, 'hit_react', { lockForMs: Math.max(180, stun), fallback: 'idle' });
+    }
+  }
+
+  private createGrappleDebug(
+    activeCharacter: string,
+    activeMove: string,
+    nearbyTargets: Array<{ id: string }>,
+    primaryTarget: { id: string } | undefined,
+    secondaryTargets: Array<{ id: string }>,
+    suppressionActive: boolean,
+    failedNoTarget: boolean,
+  ): GrappleDebugRenderInfo {
+    return {
+      activeCharacter,
+      activeMove,
+      targetSearchRadius: TEST_BALANCE.grappleTargetRadius,
+      nearbyTargetCount: nearbyTargets.length,
+      primaryTargetId: primaryTarget?.id,
+      secondaryTargetIds: secondaryTargets.map((target) => target.id),
+      suppressionActive,
+      failedNoTarget,
+    };
   }
 
   private updateVisualSuppressions(deltaMs: number): void {

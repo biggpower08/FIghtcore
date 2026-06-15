@@ -9,6 +9,7 @@ const labEntityIds = [
   'cyber-ninja',
   'shadow-striker',
   'puppetmaster',
+  'combat-monk',
   'cyber-monkey-grunt',
   'cyber-monkey-scrapper',
   'striker-monkey',

@@ -155,6 +155,30 @@ export const fightcoreSpriteManifest: FightcoreSpriteManifestEntry[] = [
       animation('duck_under_mat_return_slam', 9, 5, false, 8),
     ],
   },
+  {
+    entityId: 'combat-monk',
+    sheetId: 'fightcore-combat-monk-atlas',
+    sheetPath: '/assets/fightcore/sprites/combat-monk/atlas.png',
+    frameWidth: 96,
+    frameHeight: 96,
+    columns: 9,
+    rows: 10,
+    atlasWidth: 773,
+    atlasHeight: 960,
+    animations: [
+      animation('idle', 0, 5, true, 8),
+      animation('walk', 1, 8, true, 10),
+      animation('dash', 2, 3, false, 14),
+      animation('palm_strike', 3, 5, false, 14),
+      animation('high_kick', 4, 5, false, 13),
+      animation('spinning_sweep', 5, 2, false, 12),
+      animation('standing_shoulder_lock', 6, 6, false, 10),
+      animation('hit_react', 7, 6, false, 12),
+      animation('recovery', 7, 6, false, 8),
+      animation('meditation', 8, 6, true, 6),
+      animation('standup', 9, 5, false, 8),
+    ],
+  },
 ];
 
 function animation(

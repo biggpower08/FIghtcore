@@ -199,6 +199,29 @@ SPRITE_SPECS = [
             "duck_under_mat_return_slam": True,
         },
     },
+    {
+        "name": "Combat Monk",
+        "source": "Combat-monk.png",
+        "output_dir": OUTPUT_ROOT / "sprites" / "combat-monk",
+        "entity_id": "combat-monk",
+        "sheet_id": "fightcore-combat-monk-atlas",
+        "icon_source": "Combat-monk-idle.png",
+        "logo_source": "COmbat-monk-logo.png",
+        "detect_all_rows": True,
+        "rows": [
+            ("idle", 0, None, True, 8),
+            ("walk", 1, None, True, 10),
+            ("dash", 2, None, False, 14),
+            ("palm-strike", 3, None, False, 14),
+            ("high-kick", 4, None, False, 13),
+            ("spinning-sweep", 5, None, False, 12),
+            ("standing-shoulder-lock", 6, None, False, 10),
+            ("hit-react", 7, None, False, 12),
+            ("recovery", 7, None, False, 8),
+            ("meditation", 8, None, True, 6),
+            ("standup", 9, None, False, 8),
+        ],
+    },
 ]
 
 

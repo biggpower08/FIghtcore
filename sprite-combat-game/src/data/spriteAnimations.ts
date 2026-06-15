@@ -49,6 +49,7 @@ export const enemyAttackAnimationByMove: Record<string, string> = {
   palm_strike: 'claw_swipe',
   low_kick: 'claw_combo',
   round_kick: 'round_kick',
+  spinning_sweep: 'spinning_sweep',
   clinch_knee: 'ground_slam',
   double_leg_shot: 'double_leg_shot',
   duck_under_mat_return_slam: 'duck_under_mat_return_slam',

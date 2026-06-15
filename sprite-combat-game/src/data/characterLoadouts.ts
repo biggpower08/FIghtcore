@@ -66,6 +66,21 @@ const loadouts: CharacterLoadout[] = [
       description: 'Built to keep pressure after heavy grappling exchanges.',
     },
   },
+  {
+    characterId: 'combat-monk',
+    slots: [
+      slot('H', 'palm_strike'),
+      slot('J', 'high_kick'),
+      slot('K', 'spinning_sweep'),
+      slot('L', 'standing_shoulder_lock'),
+    ],
+    stats: { maxHealth: 108, speed: 292, stamina: 108, damageMultiplier: 1 },
+    ability: {
+      id: 'meditation',
+      name: 'Meditation',
+      description: 'Recharge health and stamina through meditation.',
+    },
+  },
 ];
 
 export const characterLoadouts = loadouts.map(validateLoadout);

@@ -26,6 +26,17 @@ export interface GrappleSuppressionRenderInfo {
   endFrame: number;
 }
 
+export interface GrappleDebugRenderInfo {
+  activeCharacter: string;
+  activeMove: string;
+  targetSearchRadius: number;
+  nearbyTargetCount: number;
+  primaryTargetId?: string;
+  secondaryTargetIds: string[];
+  suppressionActive: boolean;
+  failedNoTarget: boolean;
+}
+
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
@@ -47,6 +58,7 @@ export class RenderSystem {
     dust: DustPuff[],
     suppressedEntityIds: Set<string> = new Set(),
     grappleSuppressions: GrappleSuppressionRenderInfo[] = [],
+    grappleDebug?: GrappleDebugRenderInfo,
   ): void {
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -64,7 +76,7 @@ export class RenderSystem {
     for (const actor of actors) this.drawFighter(ctx, actor, actor === player ? '#38a3ff' : actor === boss ? '#ad56ff' : '#c54c36');
 
     for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
-    if (shouldDrawGrappleSuppressionDebug()) this.drawGrappleSuppressionDebug(ctx, grappleSuppressions);
+    if (shouldDrawGrappleSuppressionDebug()) this.drawGrappleSuppressionDebug(ctx, grappleSuppressions, grappleDebug);
     ctx.restore();
   }
 
@@ -451,22 +463,36 @@ export class RenderSystem {
     ctx.globalAlpha = 1;
   }
 
-  private drawGrappleSuppressionDebug(ctx: CanvasRenderingContext2D, suppressions: GrappleSuppressionRenderInfo[]): void {
-    if (suppressions.length === 0) return;
+  private drawGrappleSuppressionDebug(
+    ctx: CanvasRenderingContext2D,
+    suppressions: GrappleSuppressionRenderInfo[],
+    grappleDebug?: GrappleDebugRenderInfo,
+  ): void {
+    if (suppressions.length === 0 && !grappleDebug) return;
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
+    const lines = [
+      ...(grappleDebug
+        ? [
+            `actor ${grappleDebug.activeCharacter} move ${grappleDebug.activeMove}`,
+            `radius ${grappleDebug.targetSearchRadius} targets ${grappleDebug.nearbyTargetCount} primary ${grappleDebug.primaryTargetId ?? 'none'}`,
+            `secondary ${grappleDebug.secondaryTargetIds.join(',') || 'none'} failedNoTarget ${grappleDebug.failedNoTarget}`,
+            `suppressionActive ${grappleDebug.suppressionActive}`,
+          ]
+        : []),
+      ...suppressions.map(
+        (suppression) =>
+          `${suppression.sourceEntityId}:${suppression.sourceAnimationKey} hides ${suppression.hiddenEntityId} (${Math.ceil(
+            suppression.remainingMs,
+          )}ms)`,
+      ),
+    ];
     ctx.fillStyle = 'rgba(16, 24, 32, 0.78)';
-    ctx.fillRect(16, 70, 430, 22 + suppressions.length * 18);
+    ctx.fillRect(16, 70, 520, 28 + lines.length * 18);
     ctx.fillStyle = '#f7f2d5';
     ctx.font = '12px monospace';
-    ctx.fillText('Grapple target sprite hidden by embedded-target strip:', 24, 88);
-    suppressions.forEach((suppression, index) => {
-      ctx.fillText(
-        `${suppression.sourceEntityId}:${suppression.sourceAnimationKey} hides ${suppression.hiddenEntityId} (${Math.ceil(suppression.remainingMs)}ms)`,
-        24,
-        106 + index * 18,
-      );
-    });
+    ctx.fillText('Grapple debug:', 24, 88);
+    lines.forEach((line, index) => ctx.fillText(line, 24, 106 + index * 18));
     ctx.restore();
   }
 }

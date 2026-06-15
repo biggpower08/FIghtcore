@@ -37,6 +37,15 @@ export const characters: CharacterDefinition[] = [
     iconPath: '/assets/fightcore/sprites/puppetmaster/icon-full-body.png',
     logoPath: '/assets/fightcore/sprites/puppetmaster/logo-emblem.png',
   },
+  {
+    id: 'combat-monk',
+    name: 'Combat Monk',
+    identity: 'Kung fu / Ba Gua Zhang / mantis style',
+    maxHealth: 108,
+    speed: 292,
+    iconPath: '/assets/fightcore/sprites/combat-monk/icon-full-body.png',
+    logoPath: '/assets/fightcore/sprites/combat-monk/logo-emblem.png',
+  },
 ];
 
 export function getCharacterMoves(character: CharacterDefinition) {
