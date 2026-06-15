@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>shadow-striker-purple</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+      background: #090d13;
+      color: #edf4ff;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #090d13;
+    }
+    h1, h2, p {
+      margin: 0;
+    }
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: end;
+      border-bottom: 1px solid #263244;
+      padding-bottom: 16px;
+      margin-bottom: 22px;
+    }
+    .page-header h1 {
+      color: #35d8ff;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+    .page-header p,
+    .animation-row p,
+    figcaption {
+      color: #9fb1c7;
+      font-size: 12px;
+    }
+    .animation-row {
+      margin-bottom: 28px;
+    }
+    .animation-row header {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+    .animation-row h2 {
+      color: #9eee32;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .frames {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .frame-card {
+      margin: 0;
+      width: 132px;
+      border: 1px solid #293748;
+      background: #111923;
+    }
+    .stage {
+      position: relative;
+      height: 132px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background-color: #151b25;
+      background-image:
+        linear-gradient(45deg, #202a36 25%, transparent 25%),
+        linear-gradient(-45deg, #202a36 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #202a36 75%),
+        linear-gradient(-45deg, transparent 75%, #202a36 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+    }
+    .stage img {
+      image-rendering: pixelated;
+      max-width: 124px;
+      max-height: 124px;
+    }
+    .ground {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 18px;
+      border-top: 1px solid rgba(255, 238, 120, 0.78);
+    }
+    .anchor {
+      position: absolute;
+      left: 50%;
+      bottom: 18px;
+      width: 7px;
+      height: 7px;
+      margin-left: -4px;
+      margin-bottom: -4px;
+      border-radius: 999px;
+      background: #ff4fd8;
+      box-shadow: 0 0 0 1px #090d13;
+    }
+    figcaption {
+      display: grid;
+      gap: 3px;
+      padding: 8px;
+    }
+    .opaque {
+      border-color: #ff795f;
+    }
+    .index-list {
+      display: grid;
+      gap: 10px;
+      padding: 0;
+      list-style: none;
+      max-width: 620px;
+    }
+    .index-list li {
+      display: flex;
+      justify-content: space-between;
+      border: 1px solid #263244;
+      padding: 12px;
+      background: #111923;
+    }
+    a {
+      color: #35d8ff;
+    }
+  </style>
+</head>
+<body>
+  <header class="page-header">
+    <div>
+      <h1>shadow-striker-purple</h1>
+      <p>49 runtime frames</p>
+    </div>
+    <p>checkerboard · ground line · anchor marker · frame order</p>
+  </header>
+  
+      <section class="animation-row">
+        <header>
+          <h2>cross</h2>
+          <p>4 frames · source: public/sprites/frames/shadow-striker-purple/cross/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/cross/0001.png" alt="shadow-striker-purple cross 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/cross/0002.png" alt="shadow-striker-purple cross 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/cross/0003.png" alt="shadow-striker-purple cross 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/cross/0004.png" alt="shadow-striker-purple cross 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>dash</h2>
+          <p>4 frames · source: public/sprites/frames/shadow-striker-purple/dash/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/dash/0001.png" alt="shadow-striker-purple dash 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/dash/0002.png" alt="shadow-striker-purple dash 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/dash/0003.png" alt="shadow-striker-purple dash 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/dash/0004.png" alt="shadow-striker-purple dash 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>hit_react</h2>
+          <p>3 frames · source: public/sprites/frames/shadow-striker-purple/hit_react/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/hit_react/0001.png" alt="shadow-striker-purple hit_react 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/hit_react/0002.png" alt="shadow-striker-purple hit_react 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/hit_react/0003.png" alt="shadow-striker-purple hit_react 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>idle</h2>
+          <p>5 frames · source: public/sprites/frames/shadow-striker-purple/idle/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/idle/0001.png" alt="shadow-striker-purple idle 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/idle/0002.png" alt="shadow-striker-purple idle 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/idle/0003.png" alt="shadow-striker-purple idle 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/idle/0004.png" alt="shadow-striker-purple idle 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/idle/0005.png" alt="shadow-striker-purple idle 0005.png" />
+          </div>
+          <figcaption>
+            <strong>#05</strong>
+            <span>0005.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>jab</h2>
+          <p>4 frames · source: public/sprites/frames/shadow-striker-purple/jab/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/jab/0001.png" alt="shadow-striker-purple jab 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/jab/0002.png" alt="shadow-striker-purple jab 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/jab/0003.png" alt="shadow-striker-purple jab 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/jab/0004.png" alt="shadow-striker-purple jab 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>knockdown</h2>
+          <p>2 frames · source: public/sprites/frames/shadow-striker-purple/knockdown/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/knockdown/0001.png" alt="shadow-striker-purple knockdown 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/knockdown/0002.png" alt="shadow-striker-purple knockdown 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>ready</h2>
+          <p>6 frames · source: public/sprites/frames/shadow-striker-purple/ready/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/ready/0001.png" alt="shadow-striker-purple ready 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/ready/0002.png" alt="shadow-striker-purple ready 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/ready/0003.png" alt="shadow-striker-purple ready 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/ready/0004.png" alt="shadow-striker-purple ready 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/ready/0005.png" alt="shadow-striker-purple ready 0005.png" />
+          </div>
+          <figcaption>
+            <strong>#05</strong>
+            <span>0005.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/ready/0006.png" alt="shadow-striker-purple ready 0006.png" />
+          </div>
+          <figcaption>
+            <strong>#06</strong>
+            <span>0006.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>recovery</h2>
+          <p>4 frames · source: public/sprites/frames/shadow-striker-purple/recovery/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/recovery/0001.png" alt="shadow-striker-purple recovery 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/recovery/0002.png" alt="shadow-striker-purple recovery 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/recovery/0003.png" alt="shadow-striker-purple recovery 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/recovery/0004.png" alt="shadow-striker-purple recovery 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>shadow_counter</h2>
+          <p>6 frames · source: public/sprites/frames/shadow-striker-purple/shadow_counter/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/shadow_counter/0001.png" alt="shadow-striker-purple shadow_counter 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/shadow_counter/0002.png" alt="shadow-striker-purple shadow_counter 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/shadow_counter/0003.png" alt="shadow-striker-purple shadow_counter 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/shadow_counter/0004.png" alt="shadow-striker-purple shadow_counter 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/shadow_counter/0005.png" alt="shadow-striker-purple shadow_counter 0005.png" />
+          </div>
+          <figcaption>
+            <strong>#05</strong>
+            <span>0005.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/shadow_counter/0006.png" alt="shadow-striker-purple shadow_counter 0006.png" />
+          </div>
+          <figcaption>
+            <strong>#06</strong>
+            <span>0006.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>short_elbow</h2>
+          <p>4 frames · source: public/sprites/frames/shadow-striker-purple/short_elbow/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/short_elbow/0001.png" alt="shadow-striker-purple short_elbow 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/short_elbow/0002.png" alt="shadow-striker-purple short_elbow 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/short_elbow/0003.png" alt="shadow-striker-purple short_elbow 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/short_elbow/0004.png" alt="shadow-striker-purple short_elbow 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+
+      <section class="animation-row">
+        <header>
+          <h2>walk</h2>
+          <p>7 frames · source: public/sprites/frames/shadow-striker-purple/walk/</p>
+        </header>
+        <div class="frames">
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0001.png" alt="shadow-striker-purple walk 0001.png" />
+          </div>
+          <figcaption>
+            <strong>#01</strong>
+            <span>0001.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0002.png" alt="shadow-striker-purple walk 0002.png" />
+          </div>
+          <figcaption>
+            <strong>#02</strong>
+            <span>0002.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0003.png" alt="shadow-striker-purple walk 0003.png" />
+          </div>
+          <figcaption>
+            <strong>#03</strong>
+            <span>0003.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0004.png" alt="shadow-striker-purple walk 0004.png" />
+          </div>
+          <figcaption>
+            <strong>#04</strong>
+            <span>0004.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0006.png" alt="shadow-striker-purple walk 0006.png" />
+          </div>
+          <figcaption>
+            <strong>#05</strong>
+            <span>0006.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0007.png" alt="shadow-striker-purple walk 0007.png" />
+          </div>
+          <figcaption>
+            <strong>#06</strong>
+            <span>0007.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      
+
+        <figure class="frame-card transparent">
+          <div class="stage">
+            <span class="ground"></span>
+            <span class="anchor"></span>
+            <img src="../frames/shadow-striker-purple/walk/0008.png" alt="shadow-striker-purple walk 0008.png" />
+          </div>
+          <figcaption>
+            <strong>#07</strong>
+            <span>0008.png</span>
+            <span>96x96</span>
+            <span>alpha</span>
+          </figcaption>
+        </figure>
+      </div>
+      </section>
+    
+</body>
+</html>
