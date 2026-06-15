@@ -1,0 +1,545 @@
+{
+  "entityId": "puppetmaster",
+  "sheetId": "fightcore-puppetmaster-atlas",
+  "frameHeight": 96,
+  "baselineY": 88,
+  "embeddedTargetAnimations": {
+    "double_leg_shot": true,
+    "o_goshi": true,
+    "armbar": true,
+    "duck_under_mat_return_slam": true
+  },
+  "animations": {
+    "idle": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "idle",
+      "stripPath": "idle-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 56,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 56,
+          "w": 46,
+          "h": 96,
+          "anchorX": 23,
+          "anchorY": 88
+        },
+        {
+          "x": 102,
+          "w": 45,
+          "h": 96,
+          "anchorX": 22,
+          "anchorY": 88
+        },
+        {
+          "x": 147,
+          "w": 47,
+          "h": 96,
+          "anchorX": 24,
+          "anchorY": 88
+        },
+        {
+          "x": 194,
+          "w": 51,
+          "h": 96,
+          "anchorX": 26,
+          "anchorY": 88
+        }
+      ]
+    },
+    "walk": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "walk",
+      "stripPath": "walk-strip.png",
+      "frameHeight": 96,
+      "frameCount": 7,
+      "expectedFrameCount": null,
+      "fps": 10,
+      "loop": true,
+      "frames": [
+        {
+          "x": 0,
+          "w": 54,
+          "h": 96,
+          "anchorX": 27,
+          "anchorY": 88
+        },
+        {
+          "x": 54,
+          "w": 57,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 111,
+          "w": 60,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 171,
+          "w": 45,
+          "h": 96,
+          "anchorX": 22,
+          "anchorY": 88
+        },
+        {
+          "x": 216,
+          "w": 60,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 276,
+          "w": 53,
+          "h": 96,
+          "anchorX": 26,
+          "anchorY": 88
+        },
+        {
+          "x": 329,
+          "w": 54,
+          "h": 96,
+          "anchorX": 27,
+          "anchorY": 88
+        }
+      ]
+    },
+    "dash": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "dash",
+      "stripPath": "dash-strip.png",
+      "frameHeight": 96,
+      "frameCount": 3,
+      "expectedFrameCount": null,
+      "fps": 14,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 98,
+          "h": 96,
+          "anchorX": 49,
+          "anchorY": 88
+        },
+        {
+          "x": 98,
+          "w": 90,
+          "h": 96,
+          "anchorX": 45,
+          "anchorY": 88
+        },
+        {
+          "x": 188,
+          "w": 337,
+          "h": 96,
+          "anchorX": 168,
+          "anchorY": 88
+        }
+      ]
+    },
+    "hit_react": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "hit_react",
+      "stripPath": "hit-react-strip.png",
+      "frameHeight": 96,
+      "frameCount": 8,
+      "expectedFrameCount": null,
+      "fps": 12,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 72,
+          "h": 96,
+          "anchorX": 36,
+          "anchorY": 88
+        },
+        {
+          "x": 72,
+          "w": 61,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 133,
+          "w": 63,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        },
+        {
+          "x": 196,
+          "w": 53,
+          "h": 96,
+          "anchorX": 26,
+          "anchorY": 88
+        },
+        {
+          "x": 249,
+          "w": 66,
+          "h": 96,
+          "anchorX": 33,
+          "anchorY": 88
+        },
+        {
+          "x": 315,
+          "w": 56,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 371,
+          "w": 57,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        },
+        {
+          "x": 428,
+          "w": 56,
+          "h": 96,
+          "anchorX": 28,
+          "anchorY": 88
+        }
+      ]
+    },
+    "recovery": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "recovery",
+      "stripPath": "recovery-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 126,
+          "h": 96,
+          "anchorX": 63,
+          "anchorY": 88
+        },
+        {
+          "x": 126,
+          "w": 115,
+          "h": 96,
+          "anchorX": 58,
+          "anchorY": 88
+        },
+        {
+          "x": 241,
+          "w": 91,
+          "h": 96,
+          "anchorX": 46,
+          "anchorY": 88
+        },
+        {
+          "x": 332,
+          "w": 71,
+          "h": 96,
+          "anchorX": 36,
+          "anchorY": 88
+        },
+        {
+          "x": 403,
+          "w": 66,
+          "h": 96,
+          "anchorX": 33,
+          "anchorY": 88
+        }
+      ]
+    },
+    "standup": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "standup",
+      "stripPath": "standup-strip.png",
+      "frameHeight": 96,
+      "frameCount": 6,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 122,
+          "h": 96,
+          "anchorX": 61,
+          "anchorY": 88
+        },
+        {
+          "x": 122,
+          "w": 119,
+          "h": 96,
+          "anchorX": 60,
+          "anchorY": 88
+        },
+        {
+          "x": 241,
+          "w": 115,
+          "h": 96,
+          "anchorX": 58,
+          "anchorY": 88
+        },
+        {
+          "x": 356,
+          "w": 103,
+          "h": 96,
+          "anchorX": 52,
+          "anchorY": 88
+        },
+        {
+          "x": 459,
+          "w": 64,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        },
+        {
+          "x": 523,
+          "w": 64,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        }
+      ]
+    },
+    "double_leg_shot": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "double_leg_shot",
+      "stripPath": "double-leg-shot-strip.png",
+      "frameHeight": 96,
+      "frameCount": 7,
+      "expectedFrameCount": null,
+      "fps": 10,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 65,
+          "h": 96,
+          "anchorX": 32,
+          "anchorY": 88
+        },
+        {
+          "x": 65,
+          "w": 76,
+          "h": 96,
+          "anchorX": 38,
+          "anchorY": 88
+        },
+        {
+          "x": 141,
+          "w": 115,
+          "h": 96,
+          "anchorX": 58,
+          "anchorY": 88
+        },
+        {
+          "x": 256,
+          "w": 154,
+          "h": 96,
+          "anchorX": 77,
+          "anchorY": 88
+        },
+        {
+          "x": 410,
+          "w": 127,
+          "h": 96,
+          "anchorX": 64,
+          "anchorY": 88
+        },
+        {
+          "x": 537,
+          "w": 117,
+          "h": 96,
+          "anchorX": 58,
+          "anchorY": 88
+        },
+        {
+          "x": 654,
+          "w": 156,
+          "h": 96,
+          "anchorX": 78,
+          "anchorY": 88
+        }
+      ],
+      "embeddedTarget": true,
+      "hideTargetSprite": true,
+      "targetSuppressionStartFrame": 0,
+      "targetSuppressionEndFrame": 6
+    },
+    "o_goshi": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "o_goshi",
+      "stripPath": "o-goshi-strip.png",
+      "frameHeight": 96,
+      "frameCount": 4,
+      "expectedFrameCount": null,
+      "fps": 9,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 90,
+          "h": 96,
+          "anchorX": 45,
+          "anchorY": 88
+        },
+        {
+          "x": 90,
+          "w": 69,
+          "h": 96,
+          "anchorX": 34,
+          "anchorY": 88
+        },
+        {
+          "x": 159,
+          "w": 61,
+          "h": 96,
+          "anchorX": 30,
+          "anchorY": 88
+        },
+        {
+          "x": 220,
+          "w": 299,
+          "h": 96,
+          "anchorX": 150,
+          "anchorY": 88
+        }
+      ],
+      "embeddedTarget": true,
+      "hideTargetSprite": true,
+      "targetSuppressionStartFrame": 0,
+      "targetSuppressionEndFrame": 3
+    },
+    "armbar": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "armbar",
+      "stripPath": "armbar-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 186,
+          "h": 96,
+          "anchorX": 93,
+          "anchorY": 88
+        },
+        {
+          "x": 186,
+          "w": 119,
+          "h": 96,
+          "anchorX": 60,
+          "anchorY": 88
+        },
+        {
+          "x": 305,
+          "w": 108,
+          "h": 96,
+          "anchorX": 54,
+          "anchorY": 88
+        },
+        {
+          "x": 413,
+          "w": 108,
+          "h": 96,
+          "anchorX": 54,
+          "anchorY": 88
+        },
+        {
+          "x": 521,
+          "w": 133,
+          "h": 96,
+          "anchorX": 66,
+          "anchorY": 88
+        }
+      ],
+      "embeddedTarget": true,
+      "hideTargetSprite": true,
+      "targetSuppressionStartFrame": 0,
+      "targetSuppressionEndFrame": 4
+    },
+    "duck_under_mat_return_slam": {
+      "entityId": "puppetmaster",
+      "sheetId": "fightcore-puppetmaster-atlas",
+      "animationKey": "duck_under_mat_return_slam",
+      "stripPath": "duck-under-mat-return-slam-strip.png",
+      "frameHeight": 96,
+      "frameCount": 5,
+      "expectedFrameCount": null,
+      "fps": 8,
+      "loop": false,
+      "frames": [
+        {
+          "x": 0,
+          "w": 115,
+          "h": 96,
+          "anchorX": 58,
+          "anchorY": 88
+        },
+        {
+          "x": 115,
+          "w": 109,
+          "h": 96,
+          "anchorX": 54,
+          "anchorY": 88
+        },
+        {
+          "x": 224,
+          "w": 62,
+          "h": 96,
+          "anchorX": 31,
+          "anchorY": 88
+        },
+        {
+          "x": 286,
+          "w": 173,
+          "h": 96,
+          "anchorX": 86,
+          "anchorY": 88
+        },
+        {
+          "x": 459,
+          "w": 128,
+          "h": 96,
+          "anchorX": 64,
+          "anchorY": 88
+        }
+      ],
+      "embeddedTarget": true,
+      "hideTargetSprite": true,
+      "targetSuppressionStartFrame": 0,
+      "targetSuppressionEndFrame": 4
+    }
+  }
+}

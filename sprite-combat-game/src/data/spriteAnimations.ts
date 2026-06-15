@@ -44,10 +44,19 @@ const neoSheet = 'neo-operative-green-sheet';
 export const enemyAttackAnimationByMove: Record<string, string> = {
   jab: 'jab',
   cross: 'cross',
+  hook: 'hook',
   grab: 'grab',
   palm_strike: 'claw_swipe',
   low_kick: 'claw_combo',
+  round_kick: 'round_kick',
   clinch_knee: 'ground_slam',
+  double_leg_shot: 'double_leg_shot',
+  duck_under_mat_return_slam: 'duck_under_mat_return_slam',
+  o_goshi: 'o_goshi',
+  seoi_nage: 'seoi_nage',
+  armbar: 'armbar',
+  guillotine: 'guillotine',
+  ground_slam: 'ground_slam',
 };
 
 export const spriteAnimations: SpriteAnimationDefinition[] = [

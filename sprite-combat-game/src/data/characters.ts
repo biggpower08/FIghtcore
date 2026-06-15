@@ -28,6 +28,15 @@ export const characters: CharacterDefinition[] = [
     iconPath: '/assets/fightcore/sprites/shadow-striker/icon-full-body.png',
     logoPath: '/assets/fightcore/sprites/shadow-striker/logo-emblem.png',
   },
+  {
+    id: 'puppetmaster',
+    name: 'Puppetmaster',
+    identity: 'Wrestling / judo / jiujitsu control fighter',
+    maxHealth: 118,
+    speed: 258,
+    iconPath: '/assets/fightcore/sprites/puppetmaster/icon-full-body.png',
+    logoPath: '/assets/fightcore/sprites/puppetmaster/logo-emblem.png',
+  },
 ];
 
 export function getCharacterMoves(character: CharacterDefinition) {

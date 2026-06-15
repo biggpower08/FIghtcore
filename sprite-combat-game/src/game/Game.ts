@@ -17,6 +17,7 @@ import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
 import { getCharacterLoadout, type MoveSlotKey } from '../data/characterLoadouts';
+import { getGrappleVisualSuppression, shouldHideGrappleTargetSprite } from '../data/grappleVisualSuppression';
 import type { MoveDefinition } from '../data/moves';
 import { enemyAttackAnimationByMove, getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { spriteRegistry } from '../data/spriteRegistry';
@@ -26,7 +27,7 @@ import { CollisionSystem } from '../systems/CollisionSystem';
 import { LootSystem } from '../systems/LootSystem';
 import { MovementSystem } from '../systems/MovementSystem';
 import { ProgressionSystem } from '../systems/ProgressionSystem';
-import { RenderSystem, type DustPuff } from '../systems/RenderSystem';
+import { RenderSystem, type DustPuff, type GrappleSuppressionRenderInfo } from '../systems/RenderSystem';
 import { WaveSystem } from '../systems/WaveSystem';
 import { Hud } from '../ui/Hud';
 import { MenuScreen } from '../ui/MenuScreen';
@@ -35,6 +36,15 @@ import { SpriteLab } from '../ui/SpriteLab';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
+
+interface VisualSuppression {
+  hiddenEntityId: string;
+  sourceEntityId: string;
+  sourceAnimationKey: string;
+  remainingMs: number;
+  startFrame: number;
+  endFrame: number;
+}
 
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
@@ -60,6 +70,7 @@ export class Game {
   private boss: Boss | null = null;
   private hitboxes: AttackHitbox[] = [];
   private dust: DustPuff[] = [];
+  private visualSuppressions = new Map<string, VisualSuppression>();
   private lastTime = 0;
   private state: GameState = 'home';
   private settingsReturnState: GameState = 'home';
@@ -221,13 +232,14 @@ export class Game {
 
     for (const puff of this.dust) puff.lifeMs -= deltaMs;
     this.dust = this.dust.filter((puff) => puff.lifeMs > 0);
+    this.updateVisualSuppressions(deltaMs);
   }
 
   private handleAttackInput(): void {
     const selected = this.slotMovePressed();
 
     if (!selected) return;
-    if (selected.slot === 'L') {
+    if (shouldHideGrappleTargetSprite(this.player.character.id, selected.move.animationKey)) {
       this.tryPlayerGrapple(selected.move);
       return;
     }
@@ -276,6 +288,7 @@ export class Game {
       target.vx = this.player.facing * 170 * target.knockbackResistance;
       target.vy = Math.sign(target.y - this.player.y || 1) * 28;
       this.animation.play(target, 'knockdown', { lockForMs: 420, fallback: 'hit_react' });
+      this.suppressTargetSprite(target.id, this.player.character.id, grappleMove.animationKey, durationMs);
       this.dust.push({ x: target.x, y: target.y + 12, lifeMs: 300 });
     }
 
@@ -297,10 +310,13 @@ export class Game {
     const hitbox = this.combat.startAttack(enemy, move);
     if (hitbox) {
       this.hitboxes.push(hitbox);
-      this.animation.play(enemy, enemyAttackAnimationByMove[move.id] ?? enemy.definition.attackAnimation ?? move.animationKey, {
-        lockForMs: move.windupMs + move.activeMs + move.recoveryMs,
+      const animationKey = enemyAttackAnimationByMove[move.id] ?? enemy.definition.attackAnimation ?? move.animationKey;
+      const durationMs = move.windupMs + move.activeMs + move.recoveryMs;
+      this.animation.play(enemy, animationKey, {
+        lockForMs: durationMs,
         fallback: 'idle',
       });
+      this.suppressTargetSprite(this.player.id, enemy.definition.id, animationKey, durationMs);
     }
   }
 
@@ -325,6 +341,7 @@ export class Game {
     this.enemies = spawned.enemies;
     this.boss = spawned.boss;
     this.hitboxes = [];
+    this.visualSuppressions.clear();
     this.state = 'playing';
   }
 
@@ -335,7 +352,18 @@ export class Game {
   }
 
   private draw(): void {
-    this.render.draw(this.ctx, this.camera, this.player, this.enemies, this.boss, this.obstacles, this.hitboxes, this.dust);
+    this.render.draw(
+      this.ctx,
+      this.camera,
+      this.player,
+      this.enemies,
+      this.boss,
+      this.obstacles,
+      this.hitboxes,
+      this.dust,
+      this.suppressedEntityIds(),
+      this.grappleSuppressionRenderInfo(),
+    );
     this.drawBossTelegraph();
     if (['playing', 'paused', 'reward', 'gameOver'].includes(this.state)) {
       this.hud.draw(this.ctx, this.player, this.waves.wave, this.boss);
@@ -386,6 +414,7 @@ export class Game {
     this.boss = null;
     this.hitboxes = [];
     this.dust = [];
+    this.visualSuppressions.clear();
     this.waves.wave = 0;
     this.rewardScreen.hide();
     this.spriteLab.hide();
@@ -432,6 +461,7 @@ export class Game {
 
   private openGameOver(): void {
     this.state = 'gameOver';
+    this.visualSuppressions.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showGameOver();
@@ -443,6 +473,7 @@ export class Game {
     this.boss = null;
     this.hitboxes = [];
     this.dust = [];
+    this.visualSuppressions.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showHome(this.selectedCharacterId);
@@ -476,7 +507,40 @@ export class Game {
   private selectCharacter(characterId: string): void {
     this.selectedCharacterId = characterId;
     this.player = this.createPlayer();
+    this.visualSuppressions.clear();
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
+  }
+
+  private suppressTargetSprite(hiddenEntityId: string, sourceEntityId: string, animationKey: string, durationMs: number): void {
+    const metadata = getGrappleVisualSuppression(sourceEntityId, animationKey);
+    if (!metadata) return;
+    this.visualSuppressions.set(hiddenEntityId, {
+      hiddenEntityId,
+      sourceEntityId,
+      sourceAnimationKey: animationKey,
+      remainingMs: durationMs,
+      startFrame: metadata.startFrame,
+      endFrame: metadata.endFrame,
+    });
+  }
+
+  private updateVisualSuppressions(deltaMs: number): void {
+    for (const [entityId, suppression] of this.visualSuppressions) {
+      suppression.remainingMs -= deltaMs;
+      const stillAlive =
+        entityId === this.player.id
+          ? this.player.alive
+          : this.livingEnemies().some((actor) => actor.id === entityId);
+      if (suppression.remainingMs <= 0 || !stillAlive) this.visualSuppressions.delete(entityId);
+    }
+  }
+
+  private suppressedEntityIds(): Set<string> {
+    return new Set(this.visualSuppressions.keys());
+  }
+
+  private grappleSuppressionRenderInfo(): GrappleSuppressionRenderInfo[] {
+    return Array.from(this.visualSuppressions.values());
   }
 }

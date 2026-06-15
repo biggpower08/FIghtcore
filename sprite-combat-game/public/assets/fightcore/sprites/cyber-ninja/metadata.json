@@ -3,6 +3,7 @@
   "sheetId": "fightcore-cyber-ninja-atlas",
   "frameHeight": 96,
   "baselineY": 88,
+  "embeddedTargetAnimations": {},
   "animations": {
     "idle": {
       "entityId": "cyber-ninja",

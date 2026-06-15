@@ -17,8 +17,18 @@ export interface DustPuff {
   lifeMs: number;
 }
 
+export interface GrappleSuppressionRenderInfo {
+  hiddenEntityId: string;
+  sourceEntityId: string;
+  sourceAnimationKey: string;
+  remainingMs: number;
+  startFrame: number;
+  endFrame: number;
+}
+
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
+const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 
 export class RenderSystem {
   constructor(
@@ -35,6 +45,8 @@ export class RenderSystem {
     obstacles: Obstacle[],
     hitboxes: AttackHitbox[],
     dust: DustPuff[],
+    suppressedEntityIds: Set<string> = new Set(),
+    grappleSuppressions: GrappleSuppressionRenderInfo[] = [],
   ): void {
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
@@ -44,12 +56,15 @@ export class RenderSystem {
     for (const obstacle of obstacles) this.drawObstacle(ctx, obstacle);
     for (const puff of dust) this.drawDust(ctx, puff);
 
-    const actors: Entity[] = [player, ...enemies.filter((enemy) => enemy.alive)];
-    if (boss?.alive) actors.push(boss);
+    const actors: Entity[] = [player, ...enemies.filter((enemy) => enemy.alive)].filter(
+      (actor) => !suppressedEntityIds.has(actor.id),
+    );
+    if (boss?.alive && !suppressedEntityIds.has(boss.id)) actors.push(boss);
     actors.sort((a, b) => a.y - b.y);
     for (const actor of actors) this.drawFighter(ctx, actor, actor === player ? '#38a3ff' : actor === boss ? '#ad56ff' : '#c54c36');
 
     for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
+    if (shouldDrawGrappleSuppressionDebug()) this.drawGrappleSuppressionDebug(ctx, grappleSuppressions);
     ctx.restore();
   }
 
@@ -435,8 +450,31 @@ export class RenderSystem {
     ctx.fill();
     ctx.globalAlpha = 1;
   }
+
+  private drawGrappleSuppressionDebug(ctx: CanvasRenderingContext2D, suppressions: GrappleSuppressionRenderInfo[]): void {
+    if (suppressions.length === 0) return;
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.fillStyle = 'rgba(16, 24, 32, 0.78)';
+    ctx.fillRect(16, 70, 430, 22 + suppressions.length * 18);
+    ctx.fillStyle = '#f7f2d5';
+    ctx.font = '12px monospace';
+    ctx.fillText('Grapple target sprite hidden by embedded-target strip:', 24, 88);
+    suppressions.forEach((suppression, index) => {
+      ctx.fillText(
+        `${suppression.sourceEntityId}:${suppression.sourceAnimationKey} hides ${suppression.hiddenEntityId} (${Math.ceil(suppression.remainingMs)}ms)`,
+        24,
+        106 + index * 18,
+      );
+    });
+    ctx.restore();
+  }
 }
 
 function shouldDrawSpriteDebug(): boolean {
   return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_SPRITE_BOXES_PARAM);
+}
+
+function shouldDrawGrappleSuppressionDebug(): boolean {
+  return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_GRAPPLE_SUPPRESSION_PARAM);
 }

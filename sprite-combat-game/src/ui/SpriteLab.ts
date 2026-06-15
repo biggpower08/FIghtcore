@@ -8,8 +8,11 @@ import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '
 const labEntityIds = [
   'cyber-ninja',
   'shadow-striker',
+  'puppetmaster',
   'cyber-monkey-grunt',
   'cyber-monkey-scrapper',
+  'striker-monkey',
+  'cyber-monkey-grappler',
   'cyber-monkey-alpha',
 ];
 

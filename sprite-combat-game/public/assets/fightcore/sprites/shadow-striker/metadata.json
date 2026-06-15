@@ -3,6 +3,7 @@
   "sheetId": "fightcore-shadow-striker-atlas",
   "frameHeight": 96,
   "baselineY": 88,
+  "embeddedTargetAnimations": {},
   "animations": {
     "idle": {
       "entityId": "shadow-striker",

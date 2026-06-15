@@ -38,6 +38,10 @@ export interface SpriteSourceSheet {
 export const spriteRegistry: SpriteRegistration[] = [
   registerCharacter('cyber-ninja', 'hero', manifestAnimations('cyber-ninja'), ['fightcore-cyber-ninja-atlas'], heroRenderProfile()),
   registerCharacter('shadow-striker', 'hero', manifestAnimations('shadow-striker'), ['fightcore-shadow-striker-atlas'], heroRenderProfile()),
+  registerCharacter('puppetmaster', 'hero', manifestAnimations('puppetmaster'), ['fightcore-puppetmaster-atlas'], {
+    ...heroRenderProfile(),
+    scale: 0.98,
+  }),
   registerCharacter('monkey-grunt', 'villain', manifestAnimations('monkey-grunt'), ['fightcore-monkey-grunt-atlas'], {
     anchorX: 0.5,
     anchorY: 0.88,
@@ -45,6 +49,22 @@ export const spriteRegistry: SpriteRegistration[] = [
     scale: 1,
     shadowOffsetY: 8,
     hitboxOffsetY: -8,
+  }),
+  registerCharacter('striker-monkey', 'villain', manifestAnimations('striker-monkey'), ['fightcore-striker-monkey-atlas'], {
+    anchorX: 0.5,
+    anchorY: 0.88,
+    feetY: 84,
+    scale: 1,
+    shadowOffsetY: 8,
+    hitboxOffsetY: -8,
+  }),
+  registerCharacter('cyber-monkey-grappler', 'villain', manifestAnimations('cyber-monkey-grappler'), ['fightcore-cyber-monkey-grappler-atlas'], {
+    anchorX: 0.5,
+    anchorY: 0.9,
+    feetY: 88,
+    scale: 1.04,
+    shadowOffsetY: 9,
+    hitboxOffsetY: -10,
   }),
   registerCharacter('cyber-ninja-blue', 'hero', [
     'idle',

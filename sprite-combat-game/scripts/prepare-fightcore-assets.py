@@ -125,6 +125,80 @@ SPRITE_SPECS = [
             ("recovery", 8, None, False, 8),
         ],
     },
+    {
+        "name": "Cyber Monkey Scrapper",
+        "source": "Cyber-Scrapper.png",
+        "output_dir": OUTPUT_ROOT / "sprites" / "striker-monkey",
+        "entity_id": "striker-monkey",
+        "sheet_id": "fightcore-striker-monkey-atlas",
+        "rows": [
+            ("idle", 0, None, True, 8),
+            ("run", 1, None, True, 12),
+            ("jab", 2, None, False, 14),
+            ("cross", 3, None, False, 14),
+            ("hook", 4, None, False, 13),
+            ("round-kick", 5, None, False, 12),
+            ("hit-react", 6, None, False, 12),
+            ("knockdown", 7, None, False, 8),
+            ("death", 8, None, False, 8),
+        ],
+    },
+    {
+        "name": "Cyber Monkey Grappler",
+        "source": "Cyber-Grappler.png",
+        "output_dir": OUTPUT_ROOT / "sprites" / "cyber-monkey-grappler",
+        "entity_id": "cyber-monkey-grappler",
+        "sheet_id": "fightcore-cyber-monkey-grappler-atlas",
+        "rows": [
+            ("idle", 0, None, True, 8),
+            ("run", 1, None, True, 11),
+            ("charge", 2, None, False, 10),
+            ("dash", 3, None, False, 14),
+            ("ground-slam", 4, None, False, 10),
+            ("seoi-nage", 5, None, False, 10),
+            ("armbar", 6, None, False, 8),
+            ("o-goshi", 7, None, False, 9),
+            ("guillotine", 8, None, False, 8),
+            ("death", 9, None, False, 8),
+        ],
+        "embedded_target_animations": {
+            "ground_slam": True,
+            "seoi_nage": True,
+            "armbar": True,
+            "o_goshi": True,
+            "guillotine": True,
+        },
+    },
+    {
+        "name": "Puppetmaster",
+        "source": "puppetmaster.png",
+        "output_dir": OUTPUT_ROOT / "sprites" / "puppetmaster",
+        "entity_id": "puppetmaster",
+        "sheet_id": "fightcore-puppetmaster-atlas",
+        "icon_source": "Puppetmaster-idle.png",
+        "logo_source": "puppetmaster-icon.png",
+        "detect_all_rows": True,
+        "rows": [
+            ("idle", 0, None, True, 8),
+            ("walk", 1, None, True, 10),
+            ("dash", 2, None, False, 14),
+            ("hit-react", 7, None, False, 12),
+            ("recovery", 8, None, False, 8),
+            ("standup", 9, None, False, 8),
+        ],
+        "explicit_animations": [
+            ("double-leg-shot", "puppetmaster-double-leg.png", None, False, 10),
+            ("o-goshi", "puppetmaster-hip-throw-o-goshi.png", None, False, 9),
+            ("armbar", "puppetmaster-armbar.png", None, False, 8),
+            ("duck-under-mat-return-slam", "puppetmaster-duck-under--mat-return.png", None, False, 8),
+        ],
+        "embedded_target_animations": {
+            "double_leg_shot": True,
+            "o_goshi": True,
+            "armbar": True,
+            "duck_under_mat_return_slam": True,
+        },
+    },
 ]
 
 
@@ -167,8 +241,13 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
 
     source = Image.open(source_path).convert("RGBA")
     cleaned, transparent_pixels = remove_checkerboard_background(source)
-    detected_row_bounds = detect_row_bounds(cleaned, len(spec["rows"]))
-    row_bounds, row_alignment_warnings = align_row_bounds(detected_row_bounds, len(spec["rows"]), spec.get("row_fallbacks", {}))
+    detect_all_rows = spec.get("detect_all_rows", False)
+    detected_row_bounds = detect_row_bounds(cleaned, None if detect_all_rows else len(spec["rows"]))
+    if detect_all_rows:
+        row_bounds = detected_row_bounds
+        row_alignment_warnings = []
+    else:
+        row_bounds, row_alignment_warnings = align_row_bounds(detected_row_bounds, len(spec["rows"]), spec.get("row_fallbacks", {}))
 
     output_dir: Path = spec["output_dir"]
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -196,6 +275,7 @@ def prepare_sprite_sheet(spec: dict[str, Any]) -> tuple[dict[str, Any], list[dic
         "sheetId": spec["sheet_id"],
         "frameHeight": NORMALIZED_FRAME_HEIGHT,
         "baselineY": BASELINE_Y,
+        "embeddedTargetAnimations": spec.get("embedded_target_animations", {}),
         "animations": {},
     }
 
@@ -362,6 +442,11 @@ def record_animation_result(
         "sheetId": spec["sheet_id"],
         **animation_result["metadata"],
     }
+    if spec.get("embedded_target_animations", {}).get(metadata["animationKey"]):
+        metadata["embeddedTarget"] = True
+        metadata["hideTargetSprite"] = True
+        metadata["targetSuppressionStartFrame"] = 0
+        metadata["targetSuppressionEndFrame"] = max(0, metadata["frameCount"] - 1)
     sprite_metadata.append(metadata)
     json_metadata["animations"][metadata["animationKey"]] = metadata
     if animation_result["warnings"]:
@@ -370,7 +455,7 @@ def record_animation_result(
     animation_outputs.append((atlas_row_index, animation_result["strip"]))
 
 
-def detect_row_bounds(image: Image.Image, expected_rows: int) -> list[Bounds]:
+def detect_row_bounds(image: Image.Image, expected_rows: int | None) -> list[Bounds]:
     width, height = image.size
     alpha = image.getchannel("A")
     row_counts = []
@@ -385,7 +470,7 @@ def detect_row_bounds(image: Image.Image, expected_rows: int) -> list[Bounds]:
     bounds = [tight_bounds_for_band(image, Bounds(0, top, width - 1, bottom)) for top, bottom in bands]
     bounds = [bound for bound in bounds if bound and bound.height >= 24 and alpha_pixels_in_bounds(image, bound) >= 180]
 
-    if len(bounds) > expected_rows:
+    if expected_rows is not None and len(bounds) > expected_rows:
         bounds = sorted(bounds, key=lambda bound: (-alpha_pixels_in_bounds(image, bound), bound.top))[:expected_rows]
 
     return sorted(bounds, key=lambda bound: bound.top)
@@ -795,6 +880,10 @@ def write_generated_metadata(metadata: list[dict[str, Any]]) -> None:
                 "  expectedFrameCount: number | null;",
                 "  fps: number;",
                 "  loop: boolean;",
+                "  embeddedTarget?: boolean;",
+                "  hideTargetSprite?: boolean;",
+                "  targetSuppressionStartFrame?: number;",
+                "  targetSuppressionEndFrame?: number;",
                 "  frames: FightcoreGeneratedFrame[];",
                 "}",
                 "",

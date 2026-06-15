@@ -51,6 +51,21 @@ const loadouts: CharacterLoadout[] = [
       description: 'Consecutive hits increase damage.',
     },
   },
+  {
+    characterId: 'puppetmaster',
+    slots: [
+      slot('H', 'double_leg_shot'),
+      slot('J', 'o_goshi'),
+      slot('K', 'armbar'),
+      slot('L', 'duck_under_mat_return_slam'),
+    ],
+    stats: { maxHealth: 118, speed: 258, stamina: 126, damageMultiplier: 1.04 },
+    ability: {
+      id: 'thug_it_out',
+      name: 'Thug It Out',
+      description: 'Built to keep pressure after heavy grappling exchanges.',
+    },
+  },
 ];
 
 export const characterLoadouts = loadouts.map(validateLoadout);
