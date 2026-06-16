@@ -211,7 +211,7 @@ export class SpriteLab {
         sourceDescription: this.describeFrameSource(frame),
         imageLoad: imageStatus,
         rawCropAvailable: frame?.rawCropAvailable,
-        cleanedFrameAvailable: Boolean(frame?.framePath),
+        cleanedFrameAvailable: Boolean(frame?.cleanedFrameAvailable),
         frameDimensions: {
           width: frame?.width ?? frame?.image?.width,
           height: frame?.height ?? frame?.image?.height,

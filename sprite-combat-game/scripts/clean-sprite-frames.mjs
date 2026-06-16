@@ -18,6 +18,49 @@ const entityCanvas = new Map([
 
 const defaultCanvas = { width: 96, height: 96, anchorX: 0.5, anchorY: 0.86 };
 const padding = 6;
+const fightcoreStripRoot = path.join(repoRoot, 'public', 'assets', 'fightcore', 'sprites');
+
+const targetedFightcoreRepairs = [
+  repair('shadow-striker', 'teep_kick', 'teep-kick-strip.png', [
+    segment(0, 51, 64, 96, 0.5, 0.9167, 77, 0, false),
+    segment(51, 46, 64, 96, 0.5, 0.9167, 77, 1, false),
+    segment(97, 80, 80, 96, 0.5, 0.9167, 77, 2, true),
+    segment(177, 84, 85, 96, 0.5, 0.9167, 77, 2, true),
+    segment(261, 57, 64, 96, 0.4844, 0.9167, 77, 3, false),
+    segment(318, 54, 64, 96, 0.5, 0.9167, 77, 4, false),
+  ]),
+  repair('shadow-striker', 'roundhouse_kick', 'roundhouse-kick-strip.png', [
+    segment(0, 53, 64, 96, 0.4844, 0.9167, 77, 0, false),
+    segment(53, 51, 64, 96, 0.5, 0.9167, 77, 1, false),
+    segment(104, 93, 93, 96, 0.5, 0.9167, 77, 2, true),
+    segment(197, 67, 66, 96, 0.5, 0.9167, 77, 2, true),
+    segment(264, 109, 109, 96, 0.4954, 0.9167, 77, 3, false),
+    segment(373, 59, 64, 96, 0.5, 0.9167, 77, 4, false),
+  ]),
+  repair('combat-monk', 'high_kick', 'high-kick-strip.png', [
+    segment(0, 60, 64, 96, 0.5, 0.9167, 77, 0, false),
+    segment(60, 61, 64, 96, 0.4844, 0.9167, 77, 1, false),
+    segment(121, 89, 89, 96, 0.4944, 0.9167, 77, 2, false),
+    segment(210, 117, 117, 96, 0.5, 0.9167, 77, 3, true),
+    segment(327, 105, 93, 96, 0.5, 0.9167, 77, 3, true),
+    segment(432, 64, 64, 96, 0.5, 0.9167, 77, 4, false),
+  ]),
+  repair('combat-monk', 'palm_strike', 'palm-strike-strip.png', [
+    segment(0, 55, 64, 96, 0.5, 0.9167, 71, 0, false),
+    segment(55, 77, 77, 96, 0.4935, 0.9167, 71, 1, false),
+    segment(132, 81, 81, 96, 0.4938, 0.9167, 71, 2, false),
+    segment(213, 93, 93, 96, 0.5, 0.9167, 71, 3, true),
+    segment(306, 85, 86, 96, 0.5, 0.9167, 71, 3, true),
+  ]),
+  repair('striker-monkey', 'idle', 'idle-strip.png', [
+    segment(0, 79, 79, 96, 0.5, 0.9167, 125, 0, true),
+    segment(79, 74, 74, 96, 0.5, 0.9167, 125, 0, true),
+    segment(153, 73, 72, 96, 0.5, 0.9167, 125, 0, true),
+    segment(226, 50, 64, 96, 0.5, 0.9167, 125, 1, false),
+    segment(276, 80, 80, 96, 0.5, 0.9167, 125, 2, false),
+    segment(356, 82, 82, 96, 0.5, 0.9167, 125, 3, false),
+  ]),
+];
 
 const entities = await listDirs(sourceFramesRoot);
 const summary = [];
@@ -83,6 +126,10 @@ for (const entityId of entities) {
       });
     }
   }
+}
+
+for (const repairSpec of targetedFightcoreRepairs) {
+  await repairKnownFightcoreDirtyFrames(repairSpec, summary, rejected);
 }
 
 const reportPath = path.join(repoRoot, 'public', 'sprites', 'qa', 'cleanup-report.json');
@@ -400,4 +447,93 @@ function countNonTransparent(png) {
 
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
+}
+
+function repair(entityId, animation, stripPath, frames) {
+  return { entityId, animation, stripPath, frames };
+}
+
+function segment(sourceX, sourceWidth, width, height, anchorX, anchorY, durationMs, sourceFrameIndex, splitFromDirtyCrop) {
+  return {
+    sourceX,
+    sourceWidth,
+    width,
+    height,
+    anchorX,
+    anchorY,
+    durationMs,
+    sourceFrameIndex,
+    splitFromDirtyCrop,
+  };
+}
+
+async function repairKnownFightcoreDirtyFrames(repairSpec, summary, rejected) {
+  const sourcePath = path.join(fightcoreStripRoot, repairSpec.entityId, repairSpec.stripPath);
+  const outputAnimationDir = path.join(framesRoot, repairSpec.entityId, repairSpec.animation);
+  const strip = PNG.sync.read(await fs.readFile(sourcePath));
+
+  await fs.rm(outputAnimationDir, { recursive: true, force: true });
+  await fs.mkdir(outputAnimationDir, { recursive: true });
+
+  for (const [index, frameSpec] of repairSpec.frames.entries()) {
+    const frameFile = `${String(index + 1).padStart(4, '0')}.png`;
+    const outputPath = path.join(outputAnimationDir, frameFile);
+    const sourceCrop = cropPng(strip, frameSpec.sourceX, 0, frameSpec.sourceWidth, strip.height);
+    const foreground = keepMainForeground(removeEdgeConnectedBackground(sourceCrop));
+    const bbox = getOpaqueBounds(foreground);
+
+    if (!bbox) {
+      rejected.push({
+        entityId: repairSpec.entityId,
+        animation: repairSpec.animation,
+        frame: frameFile,
+        reason: 'targeted_repair_blank_segment',
+        source: path.relative(repoRoot, sourcePath),
+        sourceX: frameSpec.sourceX,
+        sourceWidth: frameSpec.sourceWidth,
+      });
+      continue;
+    }
+
+    const output = normalizeToCanvas(foreground, bbox, {
+      width: frameSpec.width,
+      height: frameSpec.height,
+      anchorX: frameSpec.anchorX,
+      anchorY: frameSpec.anchorY,
+    });
+    await fs.writeFile(outputPath, PNG.sync.write(output));
+    summary.push({
+      entityId: repairSpec.entityId,
+      animation: repairSpec.animation,
+      frame: frameFile,
+      before: countNonTransparent(sourceCrop),
+      after: countNonTransparent(output),
+      width: output.width,
+      height: output.height,
+      trimmed: true,
+      cleanupAccepted: true,
+      targetedRepair: true,
+      source: path.relative(repoRoot, sourcePath),
+      sourceFrameIndex: frameSpec.sourceFrameIndex,
+      splitFromDirtyCrop: frameSpec.splitFromDirtyCrop,
+    });
+  }
+}
+
+function cropPng(source, x, y, width, height) {
+  const output = new PNG({ width, height });
+  for (let targetY = 0; targetY < height; targetY += 1) {
+    for (let targetX = 0; targetX < width; targetX += 1) {
+      const sourceX = x + targetX;
+      const sourceY = y + targetY;
+      if (sourceX < 0 || sourceY < 0 || sourceX >= source.width || sourceY >= source.height) continue;
+      const sourceOffset = (sourceY * source.width + sourceX) * 4;
+      const targetOffset = (targetY * output.width + targetX) * 4;
+      output.data[targetOffset] = source.data[sourceOffset];
+      output.data[targetOffset + 1] = source.data[sourceOffset + 1];
+      output.data[targetOffset + 2] = source.data[sourceOffset + 2];
+      output.data[targetOffset + 3] = source.data[sourceOffset + 3];
+    }
+  }
+  return output;
 }

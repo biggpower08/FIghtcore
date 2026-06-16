@@ -23,6 +23,7 @@ export interface ResolvedSpriteFrame {
   anchorY: number;
   feetY?: number;
   rawCropAvailable?: boolean;
+  cleanedFrameAvailable?: boolean;
   notes?: string;
 }
 
@@ -308,6 +309,7 @@ export class AssetLoader {
       anchorY: cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
       feetY: cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
       rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
+      cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
       notes: cleaned?.frames[index]?.splitFromDirtyCrop ? 'Cleaned frame split from a multi-pose raw crop.' : undefined,
     }));
 
