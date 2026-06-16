@@ -25,6 +25,7 @@ export class Player extends Fighter {
   momentumStacks = 0;
   meditationMs = 0;
   thugItOutSurvivalUsed = false;
+  moveUpgradeLevels = new Map<string, number>();
   upgrades: PlayerUpgradeState = {
     damageLevel: 0,
     staminaLevel: 0,
@@ -40,7 +41,8 @@ export class Player extends Fighter {
   }
 
   override getStaminaCost(move: MoveDefinition): number {
-    const discount = Math.min(0.42, this.upgrades.staminaLevel * 0.08);
+    const moveLevel = this.getMoveUpgradeLevel(move.id, 'efficiency');
+    const discount = Math.min(0.5, this.upgrades.staminaLevel * 0.08 + moveLevel * 0.08);
     return Math.max(1, Math.round(move.staminaCost * (1 - discount)));
   }
 
@@ -50,7 +52,8 @@ export class Player extends Fighter {
   }
 
   override getDamageMultiplier(): number {
-    let multiplier = this.loadout.stats.damageMultiplier + this.upgrades.damageLevel * 0.12;
+    const activeMoveLevel = this.activeMove ? this.getMoveUpgradeLevel(this.activeMove.id, 'damage') : 0;
+    let multiplier = this.loadout.stats.damageMultiplier + this.upgrades.damageLevel * 0.12 + activeMoveLevel * 0.1;
     if (this.criticalOverloadArmedMs > 0) multiplier *= 2.35 + this.upgrades.abilityLevel * 0.15;
     if (this.abilityActiveMs > 0 && this.ability?.id === 'momentum_flow') multiplier *= 1 + this.momentumStacks * 0.18;
     if (this.abilityActiveMs > 0 && this.ability?.id === 'thug_it_out') multiplier *= 1.28 + this.upgrades.abilityLevel * 0.08;
@@ -73,13 +76,13 @@ export class Player extends Fighter {
     if (this.ability.id === 'critical_overload') {
       this.criticalOverloadArmedMs = this.ability.durationMs + durationBonus;
       this.abilityCooldownMs = this.ability.cooldownMs;
-      this.abilityStatus = 'Overload armed';
+      this.abilityStatus = `${this.ability.name} armed`;
       return true;
     }
 
     this.abilityActiveMs = this.ability.durationMs + durationBonus;
     this.abilityCooldownMs = this.ability.cooldownMs;
-    this.abilityStatus = this.ability.name;
+    this.abilityStatus = `${this.ability.name} active`;
     if (this.ability.id === 'momentum_flow') this.momentumStacks = 0;
     if (this.ability.id === 'meditation') this.meditationMs = this.abilityActiveMs;
     if (this.ability.id === 'thug_it_out') this.thugItOutSurvivalUsed = false;
@@ -90,7 +93,7 @@ export class Player extends Fighter {
     if (this.ability?.id !== 'meditation' || this.meditationMs <= 0) return;
     this.meditationMs = 0;
     this.abilityActiveMs = 0;
-    this.abilityStatus = reason;
+    this.abilityStatus = reason.includes(this.ability.name) ? reason : `${this.ability.name} interrupted`;
   }
 
   updateAbilityTimers(deltaMs: number): { healthRestored: number; staminaRestored: number } {
@@ -108,17 +111,17 @@ export class Player extends Fighter {
       const before = this.stamina;
       this.stamina = Math.min(this.maxStamina, this.stamina + (34 + this.upgrades.abilityLevel * 5) * seconds);
       staminaRestored = this.stamina - before;
-      this.abilityStatus = 'Meditating';
+      this.abilityStatus = `${this.ability.name} active`;
     }
 
     if (this.abilityActiveMs <= 0 && this.ability?.id === 'thug_it_out') {
       this.thugItOutSurvivalUsed = false;
     }
     if (this.abilityActiveMs <= 0 && this.ability?.id !== 'meditation') {
-      this.abilityStatus = this.abilityCooldownMs > 0 ? 'Cooling down' : '';
+      this.abilityStatus = this.abilityCooldownMs > 0 && this.ability ? `${this.ability.name} on cooldown` : '';
     }
     if (this.criticalOverloadArmedMs <= 0 && this.ability?.id === 'critical_overload') {
-      this.abilityStatus = this.abilityCooldownMs > 0 ? 'Cooling down' : '';
+      this.abilityStatus = this.abilityCooldownMs > 0 && this.ability ? `${this.ability.name} on cooldown` : '';
     }
     return { healthRestored, staminaRestored };
   }
@@ -127,19 +130,19 @@ export class Player extends Fighter {
     if (this.ability?.id !== 'critical_overload' || this.criticalOverloadArmedMs <= 0) return;
     this.criticalOverloadArmedMs = 0;
     this.attackLockMs = Math.max(this.attackLockMs, 760);
-    this.abilityStatus = 'Attack systems cooling';
+    this.abilityStatus = `${this.ability.name} on cooldown`;
   }
 
   recordMomentumHit(): void {
     if (this.ability?.id !== 'momentum_flow' || this.abilityActiveMs <= 0) return;
     this.momentumStacks = Math.min(5, this.momentumStacks + 1);
-    this.abilityStatus = `Flow x${this.momentumStacks}`;
+    this.abilityStatus = `${this.ability.name} x${this.momentumStacks}`;
   }
 
   resetMomentum(reason = 'Flow reset'): void {
     if (this.ability?.id !== 'momentum_flow') return;
     this.momentumStacks = 0;
-    if (this.abilityActiveMs > 0) this.abilityStatus = reason;
+    if (this.abilityActiveMs > 0) this.abilityStatus = reason.includes(this.ability.name) ? reason : `${this.ability.name} reset`;
   }
 
   preventLethalDamage(): boolean {
@@ -147,8 +150,17 @@ export class Player extends Fighter {
     this.health = Math.max(1, Math.min(this.maxHealth, this.maxHealth * 0.12));
     this.alive = true;
     this.thugItOutSurvivalUsed = true;
-    this.abilityStatus = 'Refused to drop';
+    this.abilityStatus = `${this.ability.name} saved you`;
     return true;
+  }
+
+  getMoveUpgradeLevel(moveId: string, type: 'damage' | 'efficiency' | 'control'): number {
+    return this.moveUpgradeLevels.get(`${moveId}:${type}`) ?? 0;
+  }
+
+  addMoveUpgrade(moveId: string, type: 'damage' | 'efficiency' | 'control'): void {
+    const key = `${moveId}:${type}`;
+    this.moveUpgradeLevels.set(key, (this.moveUpgradeLevels.get(key) ?? 0) + 1);
   }
 
   override takeDamage(amount: number): void {

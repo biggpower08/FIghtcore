@@ -73,7 +73,7 @@ export const moves: MoveDefinition[] = [
   createMove('ground_slam', 'Ground Slam', 'special', 'epic', 40, 36, 1500, 74, 86, 58, 260, 150, 390, 340, 560, 5),
   createMove('critical_overload', 'Critical Overload', 'special', 'legendary', 0, 0, 9000, 0, 0, 0, 0, 0, 0, 0, 0, 6, true, 'character'),
   createMove('momentum_flow', 'Momentum Flow', 'special', 'legendary', 0, 0, 11000, 0, 0, 0, 0, 0, 0, 0, 0, 6, true, 'character'),
-  createMove('movement_flow', 'Movement Flow', 'special', 'legendary', 0, 0, 11000, 0, 0, 0, 0, 0, 0, 0, 0, 6, true, 'character'),
+  createMove('movement_flow', 'Momentum Flow', 'special', 'legendary', 0, 0, 11000, 0, 0, 0, 0, 0, 0, 0, 0, 6, true, 'character'),
   createMove('meditation', 'Meditation', 'special', 'legendary', 0, 28, 3000, 0, 0, 0, 250, 900, 300, 0, 0, 5, true, 'character', 24),
   createMove('thug_it_out', 'Thug It Out', 'special', 'mythic', 0, 40, 5000, 0, 0, 0, 300, 1200, 400, 0, 0, 6, true, 'character'),
   createMove('sprawl_counter', 'Sprawl Counter', 'defensive-counters', 'rare', 28, 22, 980, 62, 70, 50, 120, 140, 250, 210, 420, 3),

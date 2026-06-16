@@ -431,11 +431,11 @@ export class Game {
         y: this.player.y - this.player.radius * 1.8,
         lifeMs: 360,
         color: '#ffef78',
-        label: 'U cooldown',
+        label: `${this.player.ability.name} on cooldown`,
       });
       return;
     }
-    const animationKey = this.player.ability.id === 'meditation' ? 'meditation' : 'idle';
+    const animationKey = this.player.ability.id;
     this.animation.play(this.player, animationKey, {
       lockForMs: this.player.ability.id === 'meditation' ? this.player.ability.durationMs : 240,
       fallback: 'idle',

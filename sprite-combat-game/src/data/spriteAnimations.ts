@@ -62,6 +62,10 @@ export const enemyAttackAnimationByMove: Record<string, string> = {
 
 export const spriteAnimations: SpriteAnimationDefinition[] = [
   ...fightcoreManifestAnimations(),
+  abilityFrameAnimation('cyber-ninja', 'critical_overload', 5, false, 110),
+  abilityFrameAnimation('shadow-striker', 'momentum_flow', 5, false, 110),
+  abilityFrameAnimation('shadow-striker', 'movement_flow', 5, false, 110, 'momentum_flow'),
+  abilityFrameAnimation('puppetmaster', 'thug_it_out', 5, false, 110),
   ...characterSheetAnimations('cyber-ninja-blue', cyberNinjaSheet, {
     idle: row(cyberNinjaSheet, 70, 122, 220, 178, 4, 218, 150),
     ready: row(cyberNinjaSheet, 70, 354, 220, 152, 4, 218, 120),
@@ -163,6 +167,31 @@ function characterSheetAnimations(
     frames,
     notes: `Approximate source-sheet crops from ${sheetId}. Tune rectangles after exact slicing.`,
   }));
+}
+
+function abilityFrameAnimation(
+  entityId: string,
+  animationKey: string,
+  frameCount: number,
+  loop: boolean,
+  durationMs: number,
+  sourceAnimationKey = animationKey,
+): SpriteAnimationDefinition {
+  return {
+    entityId,
+    animationKey,
+    loop,
+    fallbackAnimation: 'idle',
+    frames: Array.from({ length: frameCount }, (_, index) => ({
+      framePath: `/sprites/frames/${entityId}/${sourceAnimationKey}/${String(index + 1).padStart(4, '0')}.png`,
+      durationMs,
+      anchorX: 0.5,
+      anchorY: 0.9,
+      feetY: 115,
+      notes: 'Generated U-key ability frame cleaned from source strip.',
+    })),
+    notes: 'Generated U-key ability animation using cleaned transparent frame PNGs.',
+  };
 }
 
 function fightcoreManifestAnimations(): SpriteAnimationDefinition[] {

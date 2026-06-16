@@ -36,9 +36,9 @@ export interface SpriteSourceSheet {
 }
 
 export const spriteRegistry: SpriteRegistration[] = [
-  registerCharacter('cyber-ninja', 'hero', manifestAnimations('cyber-ninja'), ['fightcore-cyber-ninja-atlas'], heroRenderProfile()),
-  registerCharacter('shadow-striker', 'hero', manifestAnimations('shadow-striker'), ['fightcore-shadow-striker-atlas'], heroRenderProfile()),
-  registerCharacter('puppetmaster', 'hero', manifestAnimations('puppetmaster'), ['fightcore-puppetmaster-atlas'], {
+  registerCharacter('cyber-ninja', 'hero', [...manifestAnimations('cyber-ninja'), 'critical_overload'], ['fightcore-cyber-ninja-atlas', 'fightcore-cyber-ninja-critical-overload-strip'], heroRenderProfile()),
+  registerCharacter('shadow-striker', 'hero', [...manifestAnimations('shadow-striker'), 'momentum_flow', 'movement_flow'], ['fightcore-shadow-striker-atlas', 'fightcore-shadow-striker-momentum-flow-strip'], heroRenderProfile()),
+  registerCharacter('puppetmaster', 'hero', [...manifestAnimations('puppetmaster'), 'thug_it_out'], ['fightcore-puppetmaster-atlas', 'fightcore-puppetmaster-thug-it-out-strip'], {
     ...heroRenderProfile(),
     scale: 0.98,
   }),
@@ -152,6 +152,33 @@ export const spriteRegistryById = new Map(spriteRegistry.map((sprite) => [sprite
 
 export const spriteSourceSheets: SpriteSourceSheet[] = [
   ...fightcoreSpriteSheets(),
+  {
+    id: 'fightcore-cyber-ninja-critical-overload-strip',
+    path: '/assets/fightcore/sprites/cyber-ninja/critical-overload-strip.png',
+    width: 640,
+    height: 128,
+    linkedSpriteIds: ['cyber-ninja'],
+    animationHints: ['critical_overload'],
+    notes: 'Generated Critical Overload source strip. Cleaned transparent frame PNGs are used by gameplay.',
+  },
+  {
+    id: 'fightcore-shadow-striker-momentum-flow-strip',
+    path: '/assets/fightcore/sprites/shadow-striker/momentum-flow-strip.png',
+    width: 640,
+    height: 128,
+    linkedSpriteIds: ['shadow-striker'],
+    animationHints: ['momentum_flow', 'movement_flow'],
+    notes: 'Generated Momentum Flow source strip. Cleaned transparent frame PNGs are used by gameplay.',
+  },
+  {
+    id: 'fightcore-puppetmaster-thug-it-out-strip',
+    path: '/assets/fightcore/sprites/puppetmaster/thug-it-out-strip.png',
+    width: 640,
+    height: 128,
+    linkedSpriteIds: ['puppetmaster'],
+    animationHints: ['thug_it_out'],
+    notes: 'Generated Thug It Out source strip. Cleaned transparent frame PNGs are used by gameplay.',
+  },
   {
     id: 'cyber-ninja-blue-sheet',
     path: '/sprites/source-generated/cyber-ninja-sheet.png',

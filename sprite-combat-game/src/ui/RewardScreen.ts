@@ -32,7 +32,7 @@ export class RewardScreen {
       if (move.kind === 'upgrade') {
         button.innerHTML = `
           <strong>${move.upgrade.name}</strong>
-          <span>Upgrade level ${move.upgrade.currentLevel(player) + 1}/${move.upgrade.maxLevel}</span>
+          <span>${move.upgrade.category} Upgrade - level ${move.upgrade.currentLevel(player) + 1}/${move.upgrade.maxLevel}</span>
           <span>${move.upgrade.valueText(player)}</span>
           <span>${move.upgrade.description}</span>
         `;

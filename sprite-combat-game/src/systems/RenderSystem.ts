@@ -528,10 +528,11 @@ export class RenderSystem {
     ctx.fillStyle = spark.color;
     ctx.lineWidth = 3;
     ctx.beginPath();
-    ctx.moveTo(spark.x - 12, spark.y);
-    ctx.lineTo(spark.x + 12, spark.y);
-    ctx.moveTo(spark.x, spark.y - 12);
-    ctx.lineTo(spark.x, spark.y + 12);
+    ctx.arc(spark.x, spark.y, 5 + (1 - alpha) * 12, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(spark.x - 12, spark.y + 8);
+    ctx.lineTo(spark.x + 12, spark.y - 8);
     ctx.stroke();
     if (spark.label) {
       ctx.font = '15px monospace';

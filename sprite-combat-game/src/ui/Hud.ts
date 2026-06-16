@@ -19,9 +19,9 @@ export class Hud {
     const abilityReady = ability ? player.abilityCooldownMs <= 0 && player.abilityActiveMs <= 0 && player.criticalOverloadArmedMs <= 0 : false;
     const abilityStatus = ability
       ? abilityReady
-        ? 'Ready'
-        : player.abilityStatus || `${Math.ceil(player.abilityCooldownMs / 1000)}s`
-      : 'Unavailable';
+        ? `${ability.name} ready`
+        : player.abilityStatus || `${ability.name} on cooldown ${Math.ceil(player.abilityCooldownMs / 1000)}s`
+      : 'Ability unavailable';
     ctx.fillText(`U: ${ability?.name ?? 'No Ability'} (${abilityStatus})`, 22, 150);
     ctx.fillText(
       `Upgrades D${player.upgrades.damageLevel} S${player.upgrades.staminaLevel} C${player.upgrades.cooldownLevel} U${player.upgrades.abilityLevel}`,

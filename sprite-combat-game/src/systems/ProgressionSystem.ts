@@ -16,7 +16,7 @@ export class ProgressionSystem {
     if (!this.shouldOfferReward(wave)) return [];
 
     const upgradeOptions = upgrades
-      .filter((upgrade) => upgrade.currentLevel(player) < upgrade.maxLevel)
+      .filter((upgrade) => upgrade.currentLevel(player) < upgrade.maxLevel && (upgrade.isAvailable?.(player) ?? true))
       .map<RewardOption>((upgrade) => ({ kind: 'upgrade', upgrade }));
 
     const current = new Set(player.equippedMoves.map((move) => move.id));
