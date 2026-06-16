@@ -115,19 +115,6 @@ export const spriteAnimations: SpriteAnimationDefinition[] = [
     recovery: row(neoSheet, 990, 825, 140, 150, 3, 160, 130),
   }),
   ...fallbackOnly('cyber-monkey-grunt', ['idle', 'run', 'leap', 'claw_swipe', 'palm_strike', 'hit_react', 'knockdown', 'death']),
-  ...fallbackOnly('cyber-monkey-scrapper', ['idle', 'run', 'leap', 'claw_combo', 'low_kick', 'hit_react', 'knockdown', 'death']),
-  ...fallbackOnly('cyber-monkey-alpha', [
-    'idle',
-    'run',
-    'taunt',
-    'ground_slam',
-    'leap_slam',
-    'clinch_knee',
-    'hit_react',
-    'enrage',
-    'knockdown',
-    'death',
-  ]),
 ];
 
 export const spriteAnimationByKey = new Map(spriteAnimations.map((animation) => [animationKey(animation.entityId, animation.animationKey), animation]));

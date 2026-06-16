@@ -1,5 +1,6 @@
 import { getSpriteAtlasAnimation } from './spriteAtlases';
 import { getSpriteAnimation, getKnownAnimationKeys } from './spriteAnimations';
+import { hasInvalidBodyFrames } from './frameQuality';
 
 export type AnimationHealth = 'ready' | 'blocked' | 'missing';
 
@@ -21,6 +22,10 @@ export function getAnimationEligibility(characterId: string, animationKey: strin
   const hasFrames = Boolean(definition?.frames.length || atlas?.frames.length || hasKnownKey);
   if (!hasFrames) {
     return { characterId, animationKey, health: 'missing', reason: 'Animation exists but has no usable frames.' };
+  }
+
+  if (hasInvalidBodyFrames(characterId, animationKey)) {
+    return { characterId, animationKey, health: 'blocked', reason: 'Animation has a multi-pose body crop and is not gameplay-ready.' };
   }
 
   return { characterId, animationKey, health: 'ready', reason: 'Animation has a registered frame folder or atlas crop.' };

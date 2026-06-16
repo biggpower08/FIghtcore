@@ -1,10 +1,14 @@
 import { getSpriteAnimation, type SpriteAnimationDefinition, type SpriteFrameRef, type SpriteFrameSource } from '../data/spriteAnimations';
 import { getSpriteAtlasAnimation, type SpriteAtlasAnimation } from '../data/spriteAtlases';
+import { getCleanedSpriteAnimation } from '../data/cleanedSpriteFrames';
 import { spriteRegistryById, spriteSourceSheetById } from '../data/spriteRegistry';
 import { publicAssetUrl } from './publicAssetUrl';
 
 export interface ResolvedSpriteFrame {
   source: SpriteFrameSource;
+  entityId?: string;
+  animationKey?: string;
+  frameIndex?: number;
   durationMs: number;
   image?: HTMLImageElement;
   sheetImage?: HTMLImageElement;
@@ -212,6 +216,9 @@ export class AssetLoader {
       }
       frames.push({
         source: 'atlas-crop',
+        entityId: frame.entityId,
+        animationKey: frame.animationKey,
+        frameIndex: frame.frameIndex,
         durationMs: frame.durationMs,
         sheetImage,
         sheetId: frame.sheetId,
@@ -274,9 +281,10 @@ export class AssetLoader {
     animationKey: string,
     definition?: SpriteAnimationDefinition,
   ): Promise<ResolvedSpriteAnimation | null> {
+    const cleaned = getCleanedSpriteAnimation(entityId, animationKey);
     const images = await this.loadOptionalFrames(entityId, animationKey, 8);
     if (images.length === 0) return null;
-    const expectedFrameCount = Math.min(8, definition?.frames.length ?? minimumFrameCount(animationKey));
+    const expectedFrameCount = Math.min(8, cleaned?.frames.length ?? definition?.frames.length ?? minimumFrameCount(animationKey));
     if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
       this.warnOnce(
         `atlas-better:${entityId}:${animationKey}`,
@@ -288,13 +296,19 @@ export class AssetLoader {
 
     const frames = images.map<ResolvedSpriteFrame>((image, index) => ({
       source: 'frame-png',
-      durationMs: definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
+      entityId,
+      animationKey,
+      frameIndex: index,
+      durationMs: cleaned?.frames[index]?.durationMs ?? definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
       image,
-      framePath: `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-      anchorX: renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
-      anchorY: renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
-      feetY: renderProfile?.feetY,
+      framePath: cleaned?.frames[index]?.path ?? `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
+      width: cleaned?.frames[index]?.width,
+      height: cleaned?.frames[index]?.height,
+      anchorX: cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+      anchorY: cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+      feetY: cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
       rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
+      notes: cleaned?.frames[index]?.splitFromDirtyCrop ? 'Cleaned frame split from a multi-pose raw crop.' : undefined,
     }));
 
     return {
@@ -304,15 +318,15 @@ export class AssetLoader {
       status: 'frame-png',
       frames,
       fallbackAnimation: definition?.fallbackAnimation,
-      notes: 'Resolved from pre-sliced PNG frame folder.',
+      notes: cleaned ? 'Resolved from cleaned single-pose PNG frame folder.' : 'Resolved from pre-sliced PNG frame folder.',
     };
   }
 
   private async resolveDefinition(definition: SpriteAnimationDefinition): Promise<ResolvedSpriteAnimation | null> {
     const frames: ResolvedSpriteFrame[] = [];
 
-    for (const frame of definition.frames) {
-      const resolved = await this.resolveFrameRef(frame);
+    for (const [index, frame] of definition.frames.entries()) {
+      const resolved = await this.resolveFrameRef(frame, definition.entityId, definition.animationKey, index);
       if (resolved) frames.push(resolved);
     }
 
@@ -330,12 +344,20 @@ export class AssetLoader {
     };
   }
 
-  private async resolveFrameRef(frame: SpriteFrameRef): Promise<ResolvedSpriteFrame | null> {
+  private async resolveFrameRef(
+    frame: SpriteFrameRef,
+    entityId: string,
+    animationKey: string,
+    frameIndex: number,
+  ): Promise<ResolvedSpriteFrame | null> {
     if (frame.framePath) {
       const image = await this.loadFrame(frame.framePath);
       if (!image) return null;
       return {
         source: 'frame-png',
+        entityId,
+        animationKey,
+        frameIndex,
         durationMs: frame.durationMs,
         image,
         framePath: frame.framePath,
@@ -350,6 +372,9 @@ export class AssetLoader {
       if (!sheetImage) return null;
       return {
         source: 'sheet-crop',
+        entityId,
+        animationKey,
+        frameIndex,
         durationMs: frame.durationMs,
         sheetImage,
         sheetId: frame.sheetId,
@@ -368,6 +393,9 @@ export class AssetLoader {
 
     return {
       source: 'fallback',
+      entityId,
+      animationKey,
+      frameIndex,
       durationMs: frame.durationMs,
       anchorX: frame.anchorX ?? 0.5,
       anchorY: frame.anchorY ?? 0.84,
@@ -417,6 +445,9 @@ function fallbackAnimation(
     frames: [
       {
         source: definition ? 'fallback' : 'missing',
+        entityId,
+        animationKey,
+        frameIndex: 0,
         durationMs: definition?.frames[0]?.durationMs ?? 120,
         anchorX: 0.5,
         anchorY: 0.84,

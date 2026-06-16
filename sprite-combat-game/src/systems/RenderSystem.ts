@@ -10,6 +10,7 @@ import { Player } from '../entities/Player';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 import type { Camera } from '../game/Camera';
 import { spriteRegistryById } from '../data/spriteRegistry';
+import { getFrameQuality } from '../data/frameQuality';
 
 export interface DustPuff {
   x: number;
@@ -48,6 +49,7 @@ export interface GrappleDebugRenderInfo {
 const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
+const blockedFrameWarnings = new Set<string>();
 
 export class RenderSystem {
   private readonly bodyDrawCounts = new Map<string, number>();
@@ -579,6 +581,22 @@ function shouldDrawGrappleSuppressionDebug(): boolean {
 }
 
 function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
+  if (frame.entityId && frame.animationKey && frame.frameIndex !== undefined) {
+    const quality = getFrameQuality(frame.entityId, frame.animationKey, frame.frameIndex);
+    if (quality.invalidMultiPoseFrame || quality.multiPoseCrop || quality.role === 'invalid') {
+      const key = `${frame.entityId}:${frame.animationKey}:${frame.frameIndex}`;
+      if (!blockedFrameWarnings.has(key)) {
+        blockedFrameWarnings.add(key);
+        console.warn('Blocked invalid multi-pose body frame from runtime rendering', {
+          entityId: frame.entityId,
+          animationKey: frame.animationKey,
+          frameIndex: frame.frameIndex,
+          quality,
+        });
+      }
+      return true;
+    }
+  }
   const width = frame.width ?? frame.image?.width ?? 0;
   const height = frame.height ?? frame.image?.height ?? 0;
   if (width <= 0 || height <= 0) return true;

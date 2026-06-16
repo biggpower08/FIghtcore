@@ -15,7 +15,8 @@ export class WaveSystem {
     const isBoss = template.isBoss && BOSS_WAVE_INTERVAL > 0 && this.wave % BOSS_WAVE_INTERVAL === 0;
 
     if (isBoss) {
-      const definition = enemyDefinitions.find((enemy) => enemy.id === (template.bossId ?? 'cyber-monkey-alpha')) ?? enemyDefinitions[2];
+      const definition = enemyDefinitions.find((enemy) => enemy.id === template.bossId) ?? enemyDefinitions[0];
+      if (!definition) throw new Error('No active enemy definitions are available for boss spawning.');
       const move = moveById.get(definition.moveId);
       if (!move) throw new Error(`Missing boss move ${definition.moveId}`);
       return { enemies: [], boss: new Boss(`boss_${this.wave}`, definition, ARENA_WIDTH - 500, ARENA_HEIGHT / 2, move) };
@@ -45,7 +46,8 @@ export class WaveSystem {
     }
 
     if (this.wave > waveDefinitions.length) {
-      const definition = enemyDefinitions[spawnedCount % 2];
+      const definition = enemyDefinitions[spawnedCount % enemyDefinitions.length];
+      if (!definition) throw new Error('No active enemy definitions are available for bonus spawning.');
       const move = moveById.get(definition.moveId);
       if (!move) throw new Error(`Missing enemy move ${definition.moveId}`);
       const bonusCount = Math.floor((this.wave / 2) * TEST_BALANCE.bonusEnemyCountMultiplier);

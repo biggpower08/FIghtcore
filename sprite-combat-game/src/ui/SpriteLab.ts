@@ -1,6 +1,7 @@
-import { printSpriteCoverageReport } from '../data/spriteAnimations';
-import { getAnimationEligibility, getGameplayReadyAnimationKeys } from '../data/animationEligibility';
+import { getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
+import { getAnimationEligibility } from '../data/animationEligibility';
 import { isMoveEligibleForCharacter } from '../data/characterLoadouts';
+import { getFrameQuality } from '../data/frameQuality';
 import { moves } from '../data/moves';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
@@ -10,11 +11,10 @@ const labEntityIds = [
   'shadow-striker',
   'puppetmaster',
   'combat-monk',
+  'monkey-grunt',
   'cyber-monkey-grunt',
-  'cyber-monkey-scrapper',
   'striker-monkey',
   'cyber-monkey-grappler',
-  'cyber-monkey-alpha',
 ];
 
 export class SpriteLab {
@@ -82,8 +82,11 @@ export class SpriteLab {
 
     entitySelect.innerHTML = labEntityIds.map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
     const refreshAnimations = (): void => {
-      const keys = getGameplayReadyAnimationKeys(entitySelect.value);
-      animationSelect.innerHTML = keys.length > 0 ? keys.map((key) => option(key, key)).join('') : option('idle', 'idle fallback');
+      const keys = getKnownAnimationKeys(entitySelect.value);
+      animationSelect.innerHTML =
+        keys.length > 0
+          ? keys.map((key) => option(key, `${key} (${getAnimationEligibility(entitySelect.value, key).health})`)).join('')
+          : option('idle', 'idle fallback');
       moveSelect.innerHTML = `<option value="">Gameplay-ready moves</option>${moves
         .filter((move) => isMoveEligibleForCharacter(entitySelect.value, move))
         .map((move) => option(move.animationKey, move.name))
@@ -185,9 +188,10 @@ export class SpriteLab {
     const frameCount = Math.max(1, this.animation.frames.length);
     const framePosition = this.frameIndex % frameCount;
     const frame = this.animation.frames[framePosition];
+    const frameQuality = frame ? getFrameQuality(this.animation.entityId, this.animation.animationKey, framePosition) : undefined;
     const floorY = canvas.height / 2 + 74;
     if (this.options.ground) this.drawGroundLine(ctx, canvas.width, floorY);
-    if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY);
+    if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY, framePosition);
     else this.drawMissingImageFallback(ctx, canvas.width / 2, floorY, 'IMAGE LOAD FAILED');
     if (this.options.anchor) this.drawAnchor(ctx, canvas.width / 2, floorY);
     const alpha = frame ? this.getAlphaInfo(frame) : undefined;
@@ -220,11 +224,17 @@ export class SpriteLab {
             }
           : undefined,
         alpha,
-        qa: frame ? this.getFrameQa(frame, alpha) : undefined,
+        frameQuality,
+        qa: frame ? this.getFrameQa(frame, alpha, framePosition) : undefined,
         eligibility: getAnimationEligibility(this.animation.entityId, this.animation.animationKey),
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
-        invalidFrame: frame ? this.isInvalidFrame(frame) : 'missing-frame',
-        warning: frame && this.isInvalidFrame(frame) ? 'This frame looks like a source strip/contact sheet and is blocked from normal gameplay rendering.' : undefined,
+        invalidFrame: frame ? this.isInvalidFrame(frame, framePosition) : 'missing-frame',
+        warning:
+          frame && this.isInvalidFrame(frame, framePosition)
+            ? frameQuality?.invalidMultiPoseFrame || frameQuality?.multiPoseCrop
+              ? 'This body frame contains multiple poses and is blocked from gameplay-ready rendering.'
+              : 'This frame looks like a source strip/contact sheet and is blocked from normal gameplay rendering.'
+            : undefined,
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,
       },
@@ -233,11 +243,25 @@ export class SpriteLab {
     );
   }
 
-  private drawFrame(ctx: CanvasRenderingContext2D, frame: ResolvedSpriteFrame, centerX: number, floorY: number): void {
+  private drawFrame(
+    ctx: CanvasRenderingContext2D,
+    frame: ResolvedSpriteFrame,
+    centerX: number,
+    floorY: number,
+    framePosition: number,
+  ): void {
     const sourceWidth = frame.width ?? frame.image?.width ?? 80;
     const sourceHeight = frame.height ?? frame.image?.height ?? 80;
-    if (this.isInvalidFrame(frame)) {
-      this.drawBadCropFallback(ctx, centerX, floorY, 'BAD FRAME CROP');
+    const frameQuality = this.animation
+      ? getFrameQuality(this.animation.entityId, this.animation.animationKey, framePosition)
+      : undefined;
+    if (this.isInvalidFrame(frame, framePosition)) {
+      this.drawBadCropFallback(
+        ctx,
+        centerX,
+        floorY,
+        frameQuality?.invalidMultiPoseFrame || frameQuality?.multiPoseCrop ? 'BAD MULTI-POSE CROP' : 'BAD FRAME CROP',
+      );
       return;
     }
     if (!this.isFrameImageReady(frame)) {
@@ -391,6 +415,7 @@ export class SpriteLab {
   private getFrameQa(
     frame: ResolvedSpriteFrame,
     alpha?: ReturnType<SpriteLab['getAlphaInfo']>,
+    framePosition = 0,
   ): Record<string, string | boolean | number | undefined> {
     const width = frame.width ?? frame.image?.width ?? frame.sheetImage?.width;
     const height = frame.height ?? frame.image?.height ?? frame.sheetImage?.height;
@@ -398,6 +423,7 @@ export class SpriteLab {
     const anchorPixelY = height ? Math.round(height * frame.anchorY) : undefined;
     const groundGapPx = bounds && anchorPixelY !== undefined ? anchorPixelY - bounds.maxY : undefined;
     const fillRatio = alpha && width && height ? alpha.foregroundPixels / (width * height) : undefined;
+    const frameQuality = this.animation ? getFrameQuality(this.animation.entityId, this.animation.animationKey, framePosition) : undefined;
     return {
       'is sprite hollow?': fillRatio !== undefined ? fillRatio < 0.06 : 'unknown',
       'does frame have transparency?': Boolean(alpha?.hasTransparency),
@@ -406,7 +432,13 @@ export class SpriteLab {
       'feet position delta px': groundGapPx,
       'does current animation use fallback?': this.animation?.status === 'fallback' || this.animation?.status === 'missing',
       'frame bounds': bounds ? `${bounds.width}x${bounds.height}` : 'none',
-      'does frame look like full strip?': this.isInvalidFrame(frame),
+      'does frame look like full strip?': this.isInvalidFrame(frame, framePosition),
+      'invalidMultiPoseFrame': Boolean(frameQuality?.invalidMultiPoseFrame),
+      'multiPoseCrop': Boolean(frameQuality?.multiPoseCrop),
+      'component count': frameQuality?.componentCount,
+      'silhouette count': frameQuality?.silhouetteCount,
+      'width outlier': Boolean(frameQuality?.widthOutlier),
+      'frame role': frameQuality?.role,
     };
   }
 
@@ -441,7 +473,11 @@ export class SpriteLab {
     return status.status === 'loaded';
   }
 
-  private isInvalidFrame(frame: ResolvedSpriteFrame): boolean {
+  private isInvalidFrame(frame: ResolvedSpriteFrame, framePosition = 0): boolean {
+    if (this.animation) {
+      const frameQuality = getFrameQuality(this.animation.entityId, this.animation.animationKey, framePosition);
+      if (frameQuality.invalidMultiPoseFrame || frameQuality.multiPoseCrop || frameQuality.role === 'invalid') return true;
+    }
     const width = frame.width ?? frame.image?.width ?? 0;
     const height = frame.height ?? frame.image?.height ?? 0;
     if (width <= 0 || height <= 0) return true;
