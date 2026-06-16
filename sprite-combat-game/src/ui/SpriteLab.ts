@@ -59,7 +59,10 @@ export class SpriteLab {
         </div>
         <div class="sprite-lab-stage">
           <canvas width="420" height="280"></canvas>
-          <pre data-field="info"></pre>
+          <details data-field="debug-panel" open>
+            <summary>Frame debug</summary>
+            <pre data-field="info"></pre>
+          </details>
         </div>
         <div class="menu-actions">
           <button data-action="play">Play</button>
@@ -185,8 +188,10 @@ export class SpriteLab {
     const floorY = canvas.height / 2 + 74;
     if (this.options.ground) this.drawGroundLine(ctx, canvas.width, floorY);
     if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY);
+    else this.drawMissingImageFallback(ctx, canvas.width / 2, floorY, 'IMAGE LOAD FAILED');
     if (this.options.anchor) this.drawAnchor(ctx, canvas.width / 2, floorY);
     const alpha = frame ? this.getAlphaInfo(frame) : undefined;
+    const imageStatus = this.getImageStatus(frame);
 
     info.textContent = JSON.stringify(
       {
@@ -200,6 +205,7 @@ export class SpriteLab {
         framePath: frame?.framePath,
         sourceKind: frame?.source,
         sourceDescription: this.describeFrameSource(frame),
+        imageLoad: imageStatus,
         rawCropAvailable: frame?.rawCropAvailable,
         cleanedFrameAvailable: Boolean(frame?.framePath),
         frameDimensions: {
@@ -231,11 +237,11 @@ export class SpriteLab {
     const sourceWidth = frame.width ?? frame.image?.width ?? 80;
     const sourceHeight = frame.height ?? frame.image?.height ?? 80;
     if (this.isInvalidFrame(frame)) {
-      ctx.fillStyle = '#ff6a4d';
-      ctx.fillRect(centerX - 70, floorY - 90, 140, 64);
-      ctx.fillStyle = '#17120c';
-      ctx.font = '12px monospace';
-      ctx.fillText('Invalid frame crop', centerX - 58, floorY - 66);
+      this.drawBadCropFallback(ctx, centerX, floorY, 'BAD FRAME CROP');
+      return;
+    }
+    if (!this.isFrameImageReady(frame)) {
+      this.drawMissingImageFallback(ctx, centerX, floorY, 'IMAGE LOAD FAILED');
       return;
     }
     const scale = Math.min(2.4, 230 / Math.max(sourceWidth, sourceHeight));
@@ -255,14 +261,52 @@ export class SpriteLab {
       ctx.strokeRect(centerX - 46, floorY - 82, 92, 76);
     }
 
-    if (frame.image) {
-      ctx.drawImage(frame.image, dx, dy, width, height);
-    } else if (frame.sheetImage && frame.x !== undefined && frame.y !== undefined && frame.width && frame.height) {
-      ctx.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, dx, dy, width, height);
-    } else {
-      ctx.fillStyle = '#38a3ff';
-      ctx.fillRect(dx, dy, width, height);
+    try {
+      if (frame.image) {
+        ctx.drawImage(frame.image, dx, dy, width, height);
+      } else if (frame.sheetImage && frame.x !== undefined && frame.y !== undefined && frame.width && frame.height) {
+        ctx.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, dx, dy, width, height);
+      } else {
+        this.drawMissingImageFallback(ctx, centerX, floorY, 'IMAGE LOAD FAILED');
+      }
+    } catch (error) {
+      console.error('Sprite Lab drawImage failed', {
+        entityId: this.animation?.entityId,
+        animationKey: this.animation?.animationKey,
+        frameIndex: this.frameIndex,
+        source: { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
+        destination: { x: dx, y: dy, width, height },
+        image: this.getImageStatus(frame),
+        error,
+      });
+      this.drawBadCropFallback(ctx, centerX, floorY, 'BAD FRAME CROP');
     }
+  }
+
+  private drawMissingImageFallback(ctx: CanvasRenderingContext2D, centerX: number, floorY: number, label: string): void {
+    ctx.save();
+    ctx.strokeStyle = '#ff4d4d';
+    ctx.fillStyle = 'rgba(255, 77, 77, 0.12)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(centerX - 100, floorY - 140, 200, 110);
+    ctx.fillRect(centerX - 100, floorY - 140, 200, 110);
+    ctx.fillStyle = '#ffb4b4';
+    ctx.font = '13px monospace';
+    ctx.fillText(label, centerX - 74, floorY - 86);
+    ctx.restore();
+  }
+
+  private drawBadCropFallback(ctx: CanvasRenderingContext2D, centerX: number, floorY: number, label: string): void {
+    ctx.save();
+    ctx.strokeStyle = '#ffef78';
+    ctx.fillStyle = 'rgba(255, 239, 120, 0.12)';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(centerX - 100, floorY - 140, 200, 110);
+    ctx.fillRect(centerX - 100, floorY - 140, 200, 110);
+    ctx.fillStyle = '#ffef78';
+    ctx.font = '13px monospace';
+    ctx.fillText(label, centerX - 66, floorY - 86);
+    ctx.restore();
   }
 
   private drawCheckerboard(ctx: CanvasRenderingContext2D, width: number, height: number): void {
@@ -376,13 +420,42 @@ export class SpriteLab {
     return frame.source;
   }
 
+  private getImageStatus(frame?: ResolvedSpriteFrame): {
+    url?: string;
+    status: 'loaded' | 'loading' | 'failed' | 'none';
+    naturalWidth?: number;
+    naturalHeight?: number;
+  } {
+    if (!frame) return { status: 'none' };
+    const image = frame.image ?? frame.sheetImage;
+    const url = frame.framePath ?? frame.sheetPath;
+    if (!image) return { url, status: url ? 'failed' : 'none' };
+    if (!image.complete) return { url, status: 'loading', naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight };
+    if (image.naturalWidth <= 0 || image.naturalHeight <= 0) return { url, status: 'failed', naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight };
+    return { url, status: 'loaded', naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight };
+  }
+
+  private isFrameImageReady(frame: ResolvedSpriteFrame): boolean {
+    const status = this.getImageStatus(frame);
+    if (frame.source === 'fallback' || frame.source === 'missing') return true;
+    return status.status === 'loaded';
+  }
+
   private isInvalidFrame(frame: ResolvedSpriteFrame): boolean {
     const width = frame.width ?? frame.image?.width ?? 0;
     const height = frame.height ?? frame.image?.height ?? 0;
     if (width <= 0 || height <= 0) return true;
     const imageWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
     const looksLikeFullStrip = Boolean(frame.sheetPath?.includes('/assets/fightcore/sprites/') && frame.sheetPath.endsWith('-strip.png') && width >= imageWidth && imageWidth > 180);
-    return looksLikeFullStrip || width > 300 || (width > 220 && width / height > 2.65);
+    const imageHeight = frame.sheetImage?.height ?? frame.image?.height ?? height;
+    const outOfBounds =
+      frame.sheetImage &&
+      frame.x !== undefined &&
+      frame.y !== undefined &&
+      frame.width !== undefined &&
+      frame.height !== undefined &&
+      (frame.x < 0 || frame.y < 0 || frame.x + frame.width > imageWidth || frame.y + frame.height > imageHeight);
+    return outOfBounds || looksLikeFullStrip || width > 300 || (width > 220 && width / height > 2.65);
   }
 
   private drawBackgroundPreview(): void {

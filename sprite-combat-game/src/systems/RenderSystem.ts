@@ -50,6 +50,8 @@ const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 
 export class RenderSystem {
+  private readonly bodyDrawCounts = new Map<string, number>();
+
   constructor(
     private readonly animation: AnimationSystem,
     private readonly assets: AssetLoader,
@@ -75,6 +77,7 @@ export class RenderSystem {
     ctx.save();
     const shake = screenShakeMs > 0 ? Math.min(7, screenShakeMs / 28) : 0;
     ctx.translate(-camera.x + (Math.random() - 0.5) * shake, -camera.y + (Math.random() - 0.5) * shake);
+    this.bodyDrawCounts.clear();
     this.drawArena(ctx);
     for (const obstacle of obstacles) this.drawObstacle(ctx, obstacle);
     for (const puff of dust) this.drawDust(ctx, puff);
@@ -276,6 +279,7 @@ export class RenderSystem {
   }
 
   private drawFighter(ctx: CanvasRenderingContext2D, entity: Entity, color: string): void {
+    this.countBodyDraw(entity);
     const pose = entity instanceof Fighter ? this.animation.getPose(entity) : 'idle';
     const assetId = this.getAssetId(entity);
     const animationKey = this.animation.getCurrentAnimationKey(entity);
@@ -344,9 +348,10 @@ export class RenderSystem {
     ctx.save();
     ctx.translate(entity.x, entity.y);
     ctx.scale(entity.facing, 1);
-    this.drawFrameImage(ctx, frame, dx, dy, width, height);
-    this.drawFlashOverlay(ctx, entity, dx, dy, width, height);
+    const drewFrame = this.drawFrameImage(ctx, frame, dx, dy, width, height);
+    if (drewFrame) this.drawFlashOverlay(ctx, entity, dx, dy, width, height);
     ctx.restore();
+    if (!drewFrame) return false;
 
     if (shouldDrawSpriteDebug()) {
       this.drawSpriteDebug(ctx, entity, animation, frame, index, dx, dy, width, height);
@@ -401,10 +406,16 @@ export class RenderSystem {
     dy: number,
     width: number,
     height: number,
-  ): void {
+  ): boolean {
+    if (!isFiniteRect(dx, dy, width, height)) return false;
     if (frame.image) {
-      ctx.drawImage(frame.image, dx, dy, width, height);
-      return;
+      try {
+        ctx.drawImage(frame.image, dx, dy, width, height);
+        return true;
+      } catch (error) {
+        logDrawImageFailure('frame-png', frame, { dx, dy, width, height }, error);
+        return false;
+      }
     }
 
     if (
@@ -414,8 +425,17 @@ export class RenderSystem {
       frame.width !== undefined &&
       frame.height !== undefined
     ) {
-      ctx.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, dx, dy, width, height);
+      if (!isValidSourceRect(frame, frame.sheetImage)) return false;
+      try {
+        ctx.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, dx, dy, width, height);
+        return true;
+      } catch (error) {
+        logDrawImageFailure('sheet-crop', frame, { dx, dy, width, height }, error);
+        return false;
+      }
     }
+
+    return false;
   }
 
   private drawCyberMonkeyPlaceholder(ctx: CanvasRenderingContext2D, entity: Entity, color: string, pose: string): void {
@@ -468,6 +488,14 @@ export class RenderSystem {
     if (entity instanceof Player) return entity.character.id;
     if (entity instanceof Enemy || entity instanceof Boss) return entity.definition.id;
     return entity.id;
+  }
+
+  private countBodyDraw(entity: Entity): void {
+    const next = (this.bodyDrawCounts.get(entity.id) ?? 0) + 1;
+    this.bodyDrawCounts.set(entity.id, next);
+    if (next > 1) {
+      console.warn(`Duplicate body sprite draw in one frame: ${entity.id} drawn ${next} times`);
+    }
   }
 
   private drawHitbox(ctx: CanvasRenderingContext2D, hitbox: AttackHitbox): void {
@@ -557,4 +585,52 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const sourceWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
   const sourceStripDraw = Boolean(frame.sheetPath?.endsWith('-strip.png') && width >= sourceWidth && sourceWidth > 180);
   return sourceStripDraw || width > 300 || (width > 220 && width / height > 2.65);
+}
+
+function isFiniteRect(x: number, y: number, width: number, height: number): boolean {
+  return [x, y, width, height].every(Number.isFinite) && width > 0 && height > 0;
+}
+
+function isValidSourceRect(frame: ResolvedSpriteFrame, image: HTMLImageElement): boolean {
+  if (
+    frame.x === undefined ||
+    frame.y === undefined ||
+    frame.width === undefined ||
+    frame.height === undefined ||
+    !isFiniteRect(frame.x, frame.y, frame.width, frame.height)
+  ) {
+    console.warn('Invalid sprite source rect', frame);
+    return false;
+  }
+
+  const naturalWidth = image.naturalWidth || image.width;
+  const naturalHeight = image.naturalHeight || image.height;
+  const valid = frame.x >= 0 && frame.y >= 0 && frame.x + frame.width <= naturalWidth && frame.y + frame.height <= naturalHeight;
+  if (!valid) {
+    console.warn('Sprite source rect exceeds image bounds', {
+      source: { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
+      image: { naturalWidth, naturalHeight },
+      sheetPath: frame.sheetPath,
+      framePath: frame.framePath,
+    });
+  }
+  return valid;
+}
+
+function logDrawImageFailure(
+  mode: string,
+  frame: ResolvedSpriteFrame,
+  destination: { dx: number; dy: number; width: number; height: number },
+  error: unknown,
+): void {
+  const image = frame.image ?? frame.sheetImage;
+  console.error('Runtime sprite drawImage failed', {
+    mode,
+    source: { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
+    destination,
+    image: image ? { complete: image.complete, naturalWidth: image.naturalWidth, naturalHeight: image.naturalHeight } : undefined,
+    sheetPath: frame.sheetPath,
+    framePath: frame.framePath,
+    error,
+  });
 }

@@ -277,7 +277,7 @@ body {
 }
 
 .sprite-lab-stage canvas,
-.sprite-lab-stage pre {
+.sprite-lab-stage details {
   min-height: 280px;
   margin: 0;
   border: 2px solid #7b5228;
@@ -285,9 +285,22 @@ body {
   background: #17120c;
 }
 
+.sprite-lab-stage details {
+  overflow: hidden;
+  color: #dfc18d;
+}
+
+.sprite-lab-stage summary {
+  padding: 8px 12px;
+  color: #ffe7a3;
+  cursor: pointer;
+}
+
 .sprite-lab-stage pre {
   overflow: auto;
-  padding: 12px;
+  max-height: 248px;
+  margin: 0;
+  padding: 0 12px 12px;
   color: #dfc18d;
   white-space: pre-wrap;
 }
