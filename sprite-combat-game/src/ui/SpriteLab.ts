@@ -80,7 +80,7 @@ export class SpriteLab {
     entitySelect.innerHTML = labEntityIds.map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
     const refreshAnimations = (): void => {
       const keys = getGameplayReadyAnimationKeys(entitySelect.value);
-      animationSelect.innerHTML = keys.map((key) => option(key, key)).join('');
+      animationSelect.innerHTML = keys.length > 0 ? keys.map((key) => option(key, key)).join('') : option('idle', 'idle fallback');
       moveSelect.innerHTML = `<option value="">Gameplay-ready moves</option>${moves
         .filter((move) => isMoveEligibleForCharacter(entitySelect.value, move))
         .map((move) => option(move.animationKey, move.name))
@@ -148,6 +148,10 @@ export class SpriteLab {
   private play(): void {
     this.pause();
     if (!this.animation) return;
+    if (this.animation.frames.length === 0) {
+      this.draw();
+      return;
+    }
     this.playbackId = window.setInterval(() => {
       this.frameIndex += 1;
       this.draw();
@@ -175,7 +179,9 @@ export class SpriteLab {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    const frame = this.animation.frames[this.frameIndex % this.animation.frames.length];
+    const frameCount = Math.max(1, this.animation.frames.length);
+    const framePosition = this.frameIndex % frameCount;
+    const frame = this.animation.frames[framePosition];
     const floorY = canvas.height / 2 + 74;
     if (this.options.ground) this.drawGroundLine(ctx, canvas.width, floorY);
     if (frame) this.drawFrame(ctx, frame, canvas.width / 2, floorY);
@@ -187,12 +193,13 @@ export class SpriteLab {
         entityId: this.animation.entityId,
         animationKey: this.animation.animationKey,
         status: this.animation.status,
-        frame: `${(this.frameIndex % this.animation.frames.length) + 1}/${this.animation.frames.length}`,
-        frameIndex: this.frameIndex % this.animation.frames.length,
+        frame: `${framePosition + 1}/${this.animation.frames.length}`,
+        frameIndex: framePosition,
         sheetId: frame?.sheetId,
         sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
         sourceKind: frame?.source,
+        sourceDescription: this.describeFrameSource(frame),
         rawCropAvailable: frame?.rawCropAvailable,
         cleanedFrameAvailable: Boolean(frame?.framePath),
         frameDimensions: {
@@ -210,6 +217,7 @@ export class SpriteLab {
         qa: frame ? this.getFrameQa(frame, alpha) : undefined,
         eligibility: getAnimationEligibility(this.animation.entityId, this.animation.animationKey),
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
+        invalidFrame: frame ? this.isInvalidFrame(frame) : 'missing-frame',
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,
       },
@@ -221,6 +229,14 @@ export class SpriteLab {
   private drawFrame(ctx: CanvasRenderingContext2D, frame: ResolvedSpriteFrame, centerX: number, floorY: number): void {
     const sourceWidth = frame.width ?? frame.image?.width ?? 80;
     const sourceHeight = frame.height ?? frame.image?.height ?? 80;
+    if (this.isInvalidFrame(frame)) {
+      ctx.fillStyle = '#ff6a4d';
+      ctx.fillRect(centerX - 70, floorY - 90, 140, 64);
+      ctx.fillStyle = '#17120c';
+      ctx.font = '12px monospace';
+      ctx.fillText('Invalid frame crop', centerX - 58, floorY - 66);
+      return;
+    }
     const scale = Math.min(2.4, 230 / Math.max(sourceWidth, sourceHeight));
     const width = sourceWidth * scale;
     const height = sourceHeight * scale;
@@ -345,7 +361,26 @@ export class SpriteLab {
       'feet position delta px': groundGapPx,
       'does current animation use fallback?': this.animation?.status === 'fallback' || this.animation?.status === 'missing',
       'frame bounds': bounds ? `${bounds.width}x${bounds.height}` : 'none',
+      'does frame look like full strip?': this.isInvalidFrame(frame),
     };
+  }
+
+  private describeFrameSource(frame?: ResolvedSpriteFrame): string {
+    if (!frame) return 'missing frame';
+    if (frame.framePath) return 'explicit PNG frame';
+    if (frame.sheetPath && frame.x !== undefined) return 'sheet crop';
+    if (frame.source === 'fallback') return 'procedural fallback';
+    if (frame.source === 'missing') return 'missing asset fallback';
+    return frame.source;
+  }
+
+  private isInvalidFrame(frame: ResolvedSpriteFrame): boolean {
+    const width = frame.width ?? frame.image?.width ?? 0;
+    const height = frame.height ?? frame.image?.height ?? 0;
+    if (width <= 0 || height <= 0) return true;
+    const imageWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
+    const looksLikeFullStrip = Boolean(frame.sheetPath?.includes('/assets/fightcore/sprites/') && frame.sheetPath.endsWith('-strip.png') && width >= imageWidth && imageWidth > 180);
+    return looksLikeFullStrip || width > 260;
   }
 
   private drawBackgroundPreview(): void {

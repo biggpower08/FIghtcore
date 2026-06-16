@@ -12,7 +12,7 @@ export class WaveSystem {
   spawnNextWave(): { enemies: Enemy[]; boss: Boss | null } {
     this.wave += 1;
     const template = waveDefinitions[(this.wave - 1) % waveDefinitions.length];
-    const isBoss = template.isBoss || this.wave % BOSS_WAVE_INTERVAL === 0;
+    const isBoss = template.isBoss && BOSS_WAVE_INTERVAL > 0 && this.wave % BOSS_WAVE_INTERVAL === 0;
 
     if (isBoss) {
       const definition = enemyDefinitions.find((enemy) => enemy.id === (template.bossId ?? 'cyber-monkey-alpha')) ?? enemyDefinitions[2];

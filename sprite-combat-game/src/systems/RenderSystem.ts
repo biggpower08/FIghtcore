@@ -17,6 +17,14 @@ export interface DustPuff {
   lifeMs: number;
 }
 
+export interface ImpactSpark {
+  x: number;
+  y: number;
+  lifeMs: number;
+  color: string;
+  label?: string;
+}
+
 export interface GrappleSuppressionRenderInfo {
   hiddenEntityId: string;
   sourceEntityId: string;
@@ -56,14 +64,17 @@ export class RenderSystem {
     obstacles: Obstacle[],
     hitboxes: AttackHitbox[],
     dust: DustPuff[],
+    impacts: ImpactSpark[] = [],
     suppressedEntityIds: Set<string> = new Set(),
     grappleSuppressions: GrappleSuppressionRenderInfo[] = [],
     grappleDebug?: GrappleDebugRenderInfo,
+    screenShakeMs = 0,
   ): void {
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
-    ctx.translate(-camera.x, -camera.y);
+    const shake = screenShakeMs > 0 ? Math.min(7, screenShakeMs / 28) : 0;
+    ctx.translate(-camera.x + (Math.random() - 0.5) * shake, -camera.y + (Math.random() - 0.5) * shake);
     this.drawArena(ctx);
     for (const obstacle of obstacles) this.drawObstacle(ctx, obstacle);
     for (const puff of dust) this.drawDust(ctx, puff);
@@ -76,6 +87,7 @@ export class RenderSystem {
     for (const actor of actors) this.drawFighter(ctx, actor, actor === player ? '#38a3ff' : actor === boss ? '#ad56ff' : '#c54c36');
 
     for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
+    for (const impact of impacts) this.drawImpactSpark(ctx, impact);
     if (shouldDrawGrappleSuppressionDebug()) this.drawGrappleSuppressionDebug(ctx, grappleSuppressions, grappleDebug);
     ctx.restore();
   }
@@ -332,11 +344,22 @@ export class RenderSystem {
     ctx.translate(entity.x, entity.y);
     ctx.scale(entity.facing, 1);
     this.drawFrameImage(ctx, frame, dx, dy, width, height);
+    this.drawFlashOverlay(ctx, entity, dx, dy, width, height);
     ctx.restore();
 
     if (shouldDrawSpriteDebug()) {
       this.drawSpriteDebug(ctx, entity, animation, frame, index, dx, dy, width, height);
     }
+  }
+
+  private drawFlashOverlay(ctx: CanvasRenderingContext2D, entity: Entity, dx: number, dy: number, width: number, height: number): void {
+    if (entity.damageFlashMs <= 0 && entity.healFlashMs <= 0) return;
+    ctx.globalCompositeOperation = 'source-atop';
+    ctx.globalAlpha = entity.healFlashMs > 0 ? Math.min(0.48, entity.healFlashMs / 540) : Math.min(0.55, entity.damageFlashMs / 260);
+    ctx.fillStyle = entity.healFlashMs > 0 ? '#63f7a6' : '#ffffff';
+    ctx.fillRect(dx, dy, width, height);
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
   }
 
   private drawSpriteDebug(
@@ -461,6 +484,26 @@ export class RenderSystem {
     ctx.ellipse(puff.x, puff.y, 18, 7, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.globalAlpha = 1;
+  }
+
+  private drawImpactSpark(ctx: CanvasRenderingContext2D, spark: ImpactSpark): void {
+    const alpha = Math.max(0, Math.min(1, spark.lifeMs / 260));
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.strokeStyle = spark.color;
+    ctx.fillStyle = spark.color;
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(spark.x - 12, spark.y);
+    ctx.lineTo(spark.x + 12, spark.y);
+    ctx.moveTo(spark.x, spark.y - 12);
+    ctx.lineTo(spark.x, spark.y + 12);
+    ctx.stroke();
+    if (spark.label) {
+      ctx.font = '15px monospace';
+      ctx.fillText(spark.label, spark.x + 14, spark.y - 20 - (1 - alpha) * 18);
+    }
+    ctx.restore();
   }
 
   private drawGrappleSuppressionDebug(

@@ -16,6 +16,15 @@ export interface AttackHitbox {
   hitIds: Set<string>;
 }
 
+export interface HitImpact {
+  attacker: Fighter;
+  target: Entity;
+  damage: number;
+  heavy: boolean;
+  x: number;
+  y: number;
+}
+
 export class CombatSystem {
   private nextAttackId = 1;
 
@@ -51,29 +60,43 @@ export class CombatSystem {
     return hitboxes.filter((hitbox) => hitbox.remainingMs > 0);
   }
 
-  applyHitbox(hitbox: AttackHitbox, targets: Entity[]): void {
+  applyHitbox(hitbox: AttackHitbox, targets: Entity[]): HitImpact[] {
+    const impacts: HitImpact[] = [];
     const activeWindowStarted = hitbox.remainingMs <= hitbox.move.activeMs;
-    if (!activeWindowStarted) return;
+    if (!activeWindowStarted) return impacts;
 
     for (const target of targets) {
       if (!target.alive || target.id === hitbox.owner.id || hitbox.hitIds.has(target.id)) continue;
       if (!this.intersects(hitbox, target)) continue;
 
       const damageMultiplier = hitbox.owner instanceof Player ? 1 : TEST_BALANCE.enemyDamageMultiplier;
-      target.takeDamage(hitbox.move.damage * damageMultiplier);
+      const damage = hitbox.move.damage * damageMultiplier;
+      target.takeDamage(damage);
       target.stunMs = Math.max(target.stunMs, hitbox.move.stunMs);
       const direction = Math.sign(target.x - hitbox.owner.x) || hitbox.owner.facing;
       const force = hitbox.move.knockback * target.knockbackResistance;
       target.vx += direction * force;
       target.vy += (target.y - hitbox.owner.y > 0 ? 1 : -1) * force * 0.18;
       hitbox.hitIds.add(target.id);
+      impacts.push({
+        attacker: hitbox.owner,
+        target,
+        damage,
+        heavy: damage >= 18 || hitbox.move.knockback >= 170,
+        x: target.x,
+        y: target.y - target.radius * 0.75,
+      });
     }
+
+    return impacts;
   }
 
   updateFighterTimers(fighter: Fighter, deltaMs: number): void {
     fighter.attackLockMs = Math.max(0, fighter.attackLockMs - deltaMs);
     fighter.activeMoveMs = Math.max(0, fighter.activeMoveMs - deltaMs);
     fighter.stunMs = Math.max(0, fighter.stunMs - deltaMs);
+    fighter.damageFlashMs = Math.max(0, fighter.damageFlashMs - deltaMs);
+    fighter.healFlashMs = Math.max(0, fighter.healFlashMs - deltaMs);
 
     if (fighter.activeMoveMs <= 0) {
       fighter.activeMove = null;

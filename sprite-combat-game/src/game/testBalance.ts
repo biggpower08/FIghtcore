@@ -1,7 +1,7 @@
 export const TEST_BALANCE = {
   enemyDamageMultiplier: 0.5,
-  waveEnemyCountMultiplier: 0.6,
-  bonusEnemyCountMultiplier: 0.5,
+  waveEnemyCountMultiplier: 0.5,
+  bonusEnemyCountMultiplier: 0.35,
   grappleRequireTarget: true,
   grappleMultiTargetEnabled: true,
   grappleMaxSecondaryTargets: 2,

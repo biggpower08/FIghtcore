@@ -28,6 +28,7 @@ export interface MoveDefinition {
   recoveryMs: number;
   knockback: number;
   stunMs: number;
+  healAmount?: number;
   animationKey: string;
   unlockLevel: number;
   lockedByDefault: boolean;
@@ -70,7 +71,7 @@ export const moves: MoveDefinition[] = [
   createMove('neon_palm', 'Neon Palm', 'special', 'epic', 36, 30, 1320, 66, 60, 46, 170, 120, 320, 260, 440, 4),
   createMove('cyber_sweep', 'Cyber Sweep', 'special', 'rare', 24, 24, 940, 82, 76, 34, 160, 130, 270, 210, 360, 3),
   createMove('ground_slam', 'Ground Slam', 'special', 'epic', 40, 36, 1500, 74, 86, 58, 260, 150, 390, 340, 560, 5),
-  createMove('meditation', 'Meditation', 'special', 'legendary', 0, 28, 3000, 0, 0, 0, 250, 900, 300, 0, 0, 5),
+  createMove('meditation', 'Meditation', 'special', 'legendary', 0, 28, 3000, 0, 0, 0, 250, 900, 300, 0, 0, 5, false, 'character', 24),
   createMove('thug_it_out', 'Thug It Out', 'special', 'mythic', 0, 40, 5000, 0, 0, 0, 300, 1200, 400, 0, 0, 6),
   createMove('sprawl_counter', 'Sprawl Counter', 'defensive-counters', 'rare', 28, 22, 980, 62, 70, 50, 120, 140, 250, 210, 420, 3),
   createMove('shadow_counter', 'Shadow Counter', 'defensive-counters', 'epic', 38, 30, 1450, 76, 70, 52, 170, 120, 330, 260, 520, 4),
@@ -100,6 +101,7 @@ function createMove(
   unlockLevel: number,
   lockedByDefault = false,
   scope: MoveDefinition['scope'] = 'character',
+  healAmount?: number,
 ): MoveDefinition {
   return {
     id,
@@ -117,6 +119,7 @@ function createMove(
     recoveryMs,
     knockback,
     stunMs,
+    healAmount,
     animationKey: id,
     unlockLevel,
     lockedByDefault,

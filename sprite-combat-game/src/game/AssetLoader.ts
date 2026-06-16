@@ -203,6 +203,13 @@ export class AssetLoader {
         kind: `atlas-crop:${frame.sheetId}`,
       });
       if (!sheetImage) continue;
+      if (isInvalidAtlasFrame(frame, sheetImage)) {
+        this.warnBrokenFrame(
+          `${frame.sheetPath}:${frame.animationKey}:${frame.frameIndex}`,
+          'Atlas frame looked like a full strip/contact sheet or invalid crop and was blocked.',
+        );
+        continue;
+      }
       frames.push({
         source: 'atlas-crop',
         durationMs: frame.durationMs,
@@ -423,21 +430,28 @@ function fallbackAnimation(
 
 function timingForAnimation(animationKey: string, index: number, frameCount: number): number {
   const attackTiming: Record<string, number[]> = {
-    jab: [55, 70, 85, 95],
-    cross: [65, 80, 95, 110],
-    low_kick: [70, 75, 95, 95, 110],
-    roundhouse_kick: [70, 80, 95, 100, 95, 115],
-    short_elbow: [65, 75, 90, 95, 110],
-    shadow_counter: [70, 80, 90, 90, 100, 120],
-    palm_strike: [65, 75, 90, 95, 105],
-    spinning_kick: [65, 75, 85, 95, 105, 115],
-    clinch_knee: [80, 95, 105, 110, 125],
-    hip_throw: [85, 95, 105, 115, 125],
-    double_leg_takedown: [70, 80, 90, 100, 110, 125],
-    sprawl_counter: [75, 90, 100, 110, 125],
-    claw_swipe: [60, 70, 80, 90, 110],
-    claw_combo: [58, 68, 78, 88, 98, 118],
-    ground_slam: [90, 95, 100, 120, 150, 130, 120],
+    jab: [85, 105, 120, 135],
+    cross: [95, 115, 130, 150],
+    low_kick: [95, 110, 130, 130, 145],
+    roundhouse_kick: [105, 120, 135, 145, 135, 155],
+    short_elbow: [95, 110, 130, 140, 150],
+    shadow_counter: [105, 120, 135, 135, 150, 165],
+    palm_strike: [95, 115, 130, 145, 155],
+    spinning_kick: [105, 120, 135, 150, 160, 170],
+    spinning_sweep: [125, 155, 170],
+    slice: [95, 115, 135, 145, 155, 170],
+    clinch_knee: [105, 125, 145, 155, 165],
+    hip_throw: [115, 135, 150, 165, 175],
+    o_goshi: [120, 145, 165, 180, 170],
+    seoi_nage: [120, 145, 165, 180, 170],
+    armbar: [125, 145, 165, 180, 185],
+    double_leg_shot: [110, 130, 150, 165, 180, 190],
+    double_leg_takedown: [110, 130, 150, 165, 180, 190],
+    duck_under_mat_return_slam: [125, 145, 165, 185, 200],
+    sprawl_counter: [110, 130, 150, 165, 180],
+    claw_swipe: [95, 110, 125, 140, 155],
+    claw_combo: [95, 110, 125, 140, 155, 170],
+    ground_slam: [120, 135, 150, 170, 190, 175, 165],
   };
 
   if (animationKey === 'idle' || animationKey === 'ready') return 150;
@@ -449,7 +463,20 @@ function timingForAnimation(animationKey: string, index: number, frameCount: num
   if (animationKey === 'knockdown') return 125;
 
   const sequence = attackTiming[animationKey];
-  return sequence?.[index] ?? sequence?.[sequence.length - 1] ?? Math.max(80, Math.round(720 / Math.max(1, frameCount)));
+  return sequence?.[index] ?? sequence?.[sequence.length - 1] ?? Math.max(120, Math.round(860 / Math.max(1, frameCount)));
+}
+
+function isInvalidAtlasFrame(
+  frame: { width: number; height: number; x: number; y: number; sheetPath: string },
+  sheetImage: HTMLImageElement,
+): boolean {
+  if (frame.width <= 0 || frame.height <= 0) return true;
+  if (frame.x < 0 || frame.y < 0 || frame.x + frame.width > sheetImage.width || frame.y + frame.height > sheetImage.height) return true;
+  const isPreparedStrip = frame.sheetPath.includes('/assets/fightcore/sprites/') && frame.sheetPath.endsWith('-strip.png');
+  if (!isPreparedStrip) return false;
+  if (frame.width >= sheetImage.width && sheetImage.width > 180) return true;
+  if (frame.width > 260) return true;
+  return false;
 }
 
 function isKnownBrokenFrame(path: string): boolean {

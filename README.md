@@ -1,33 +1,26 @@
 # FIghtcore
 
-## Simple Owner Summary
+FIghtcore is a browser-only cyberpunk martial arts arena fighter. Pick a fighter, survive enemy waves, and use four equipped moves to control space in a desert combat arena.
 
-FIghtcore currently contains a browser-only cyberpunk martial arts wave fighter. The player can choose from four martial arts characters in a generated desert arena, fight Cyber Monkey enemies, use martial arts move hotkeys, earn rewards between waves, and preview sprite animations in Sprite Lab.
+Live demo: https://biggpower08.github.io/FIghtcore/
 
-This game is separate from FightScope. FightScope is an MMA analytics app. This folder is for the standalone browser game.
+## Current Status
 
-## Project Location
+Playable MVP / vertical slice. The game has character select, arena movement, wave combat, H/J/K/L equipped moves, rewards between waves, generated sprite animation support, Sprite Lab, and GitHub Pages deployment.
 
-The game lives here:
+FIghtcore is separate from FightScope. FightScope is the MMA analytics app; this repo section is the standalone browser game.
 
-```text
-sprite-combat-game/
-```
+## Controls
 
-Main project docs:
+- Move: `WASD`
+- Dash: `Space`
+- Equipped moves: `H`, `J`, `K`, `L`
+- Pause / resume: `Esc`
+- Rewards: choose a move, then choose the H/J/K/L slot it replaces
 
-- [Sprite Combat Game README](sprite-combat-game/README.md)
-- [Playable MVP Lock](sprite-combat-game/docs/PLAYABLE_MVP_LOCK.md)
-- [Owner Summary](OWNER_SUMMARY.md)
-- [AI Handoff](AI_HANDOFF.md)
+The HUD shows the current move bound to each H/J/K/L slot for the selected fighter.
 
-## Live Site
-
-Expected GitHub Pages URL:
-
-<https://biggpower08.github.io/FIghtcore/>
-
-## Local Development
+## Run Locally
 
 ```powershell
 cd sprite-combat-game
@@ -42,28 +35,35 @@ cd sprite-combat-game
 npm run build
 ```
 
-## Sprite Art QA
+## Known Issues
 
-```powershell
-cd sprite-combat-game
-npm run sprite:clean
-npm run sprite:qa
+- Sprite art is still being polished, especially attack readability and anchor consistency.
+- Sprite Lab is a developer tool and may still show fallback information for missing animations.
+- Audio, save data, shops, long-term progression, and extra stages are intentionally out of scope for the MVP polish pass.
+- Boss encounters are disabled while wave clarity and combat feedback are being stabilized.
+
+## Current Development Focus
+
+- Public presentation and controls clarity
+- Combat feedback: hit flashes, impact sparks, readable damage/healing feedback
+- Sprite playback stability, especially attack and grapple frames
+- Sprite Lab usability
+- Slower, less chaotic enemy pacing
+- Clear current move documentation
+
+## Short Roadmap
+
+1. Stabilize the current MVP and keep all controls/readability consistent.
+2. Polish existing fighters, enemies, hit feedback, and Sprite Lab.
+3. Re-enable or redesign bosses once normal waves feel good.
+4. Add progression, more enemies, more moves, and more stages only after the MVP feels stable.
+
+## Project Location
+
+The game lives in:
+
+```text
+sprite-combat-game/
 ```
 
-The cleanup script preserves a raw backup in `public/sprites/frames-raw-generated-backup/`, cleans edge-connected dark sheet backgrounds, normalizes runtime frame canvases, and writes QA reports/contact sheets to `public/sprites/qa/`.
-
-## Deployment
-
-GitHub Actions builds `sprite-combat-game/` and deploys `sprite-combat-game/dist` to GitHub Pages when changes are pushed to `main`.
-
-## Documentation
-
-Read these first:
-
-- [OWNER_SUMMARY.md](OWNER_SUMMARY.md) for plain-English owner status.
-- [AI_HANDOFF.md](AI_HANDOFF.md) for future Codex/ChatGPT agents.
-- [sprite-combat-game/README.md](sprite-combat-game/README.md) for game-specific setup and sprite details.
-
-## Current Status
-
-The MVP has menus, settings placeholder, WASD movement, H/J/K/L equipped moves, waves, Cyber Monkey enemies, reward replacement, selectable heroes, generated runtime sprites, cleaned transparent frame folders, a generated desert arena background, sprite health fallback rules, Sprite Lab, sprite QA scripts, and GitHub Pages deployment.
+GitHub Pages deploys the `sprite-combat-game/dist` build from `main`.

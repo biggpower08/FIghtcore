@@ -34,7 +34,7 @@ const loadouts: CharacterLoadout[] = [
       slot('K', 'side_kick'),
       slot('L', 'high_kick'),
     ],
-    stats: { maxHealth: 86, speed: 304, stamina: 104, damageMultiplier: 1 },
+    stats: { maxHealth: 124, speed: 304, stamina: 104, damageMultiplier: 1 },
   },
   {
     characterId: 'shadow-striker',
@@ -44,7 +44,7 @@ const loadouts: CharacterLoadout[] = [
       slot('K', 'cross'),
       slot('L', 'jab'),
     ],
-    stats: { maxHealth: 96, speed: 276, stamina: 116, damageMultiplier: 1.08 },
+    stats: { maxHealth: 136, speed: 276, stamina: 116, damageMultiplier: 1.08 },
     ability: {
       id: 'momentum_flow',
       name: 'Momentum Flow',
@@ -59,7 +59,7 @@ const loadouts: CharacterLoadout[] = [
       slot('K', 'armbar'),
       slot('L', 'duck_under_mat_return_slam'),
     ],
-    stats: { maxHealth: 118, speed: 258, stamina: 126, damageMultiplier: 1.04 },
+    stats: { maxHealth: 158, speed: 258, stamina: 126, damageMultiplier: 1.04 },
     ability: {
       id: 'thug_it_out',
       name: 'Thug It Out',
@@ -74,7 +74,7 @@ const loadouts: CharacterLoadout[] = [
       slot('K', 'spinning_sweep'),
       slot('L', 'standing_shoulder_lock'),
     ],
-    stats: { maxHealth: 108, speed: 292, stamina: 108, damageMultiplier: 1 },
+    stats: { maxHealth: 148, speed: 292, stamina: 108, damageMultiplier: 1 },
     ability: {
       id: 'meditation',
       name: 'Meditation',

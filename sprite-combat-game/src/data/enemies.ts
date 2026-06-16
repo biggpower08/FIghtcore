@@ -12,7 +12,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'monkey-grunt',
     name: 'Monkey Grunt',
-    maxHealth: 34,
+    maxHealth: 48,
     speed: 158,
     attackRange: 48,
     moveId: 'jab',
@@ -21,7 +21,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'cyber-monkey-grunt',
     name: 'Cyber Monkey Grunt',
-    maxHealth: 30,
+    maxHealth: 44,
     speed: 155,
     attackRange: 46,
     moveId: 'palm_strike',
@@ -30,7 +30,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'cyber-monkey-scrapper',
     name: 'Cyber Monkey Scrapper',
-    maxHealth: 52,
+    maxHealth: 74,
     speed: 138,
     attackRange: 58,
     moveId: 'low_kick',
@@ -39,7 +39,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'striker-monkey',
     name: 'Cyber Monkey Scrapper',
-    maxHealth: 54,
+    maxHealth: 78,
     speed: 148,
     attackRange: 64,
     moveId: 'round_kick',
@@ -48,7 +48,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'cyber-monkey-grappler',
     name: 'Cyber Monkey Grappler',
-    maxHealth: 96,
+    maxHealth: 112,
     speed: 136,
     attackRange: 62,
     moveId: 'seoi_nage',

@@ -1,154 +1,88 @@
-# Sprite Combat Game
+# FIghtcore Browser Game
 
-A browser-only pixel-art MMA / martial arts wave combat MVP. This is intentionally separate from FightScope and runs as a static Vite + TypeScript canvas game.
+FIghtcore is a static Vite + TypeScript canvas game. It is browser-only and intentionally separate from FightScope.
 
 ## Simple Owner Summary
 
-This is the actual browser game folder. Run `npm install` and `npm run dev` here. The game has menus, movement, combat, waves, Cyber Monkey enemies, sprite registry, Sprite Lab, and GitHub Pages deployment.
-
-## AI Handoff Notes
-
-Future agents should read these first:
-
-- `../AI_HANDOFF.md`
-- `../OWNER_SUMMARY.md`
-- `src/data/spriteRegistry.ts`
-- `src/data/spriteAnimations.ts`
-- `src/data/characterLoadouts.ts`
-- `docs/PLAYABLE_MVP_LOCK.md`
-- `scripts/clean-sprite-frames.mjs`
-- `scripts/make-sprite-contact-sheets.mjs`
-- `src/data/moves.ts`
-- `src/data/enemies.ts`
-- `src/data/waves.ts`
-- `src/game/AssetLoader.ts`
-- `src/systems/AnimationSystem.ts`
-- `src/systems/RenderSystem.ts`
+This folder contains the playable FIghtcore MVP. Current work is focused on polish and stability: controls clarity, combat feedback, sprite playback, Sprite Lab usability, wave pacing, and accurate documentation.
 
 ## Run Locally
 
-```bash
+```powershell
 npm install
 npm run dev
 ```
 
-Open the local URL Vite prints in your terminal.
+Open the local URL Vite prints in the terminal.
 
 ## Build
 
-```bash
+```powershell
 npm run build
 ```
 
-The static build is written to `dist/` and can be deployed to GitHub Pages.
-
-## Sprite Cleanup And QA
-
-```bash
-npm run sprite:clean
-npm run sprite:qa
-```
-
-`sprite:clean` rebuilds live frames from `public/sprites/frames-raw-generated-backup/`, removes only edge-connected dark sheet backgrounds, drops disconnected sheet-label components, normalizes runtime canvases, and keeps frame order. The current processed-frame backup is preserved at `public/sprites/frames-broken-render-backup-20260613/`.
-
-`sprite:qa` writes contact sheets to `public/sprites/qa/index.html`. The sheets show checkerboards, frame order, dimensions, alpha status, ground lines, and anchor markers.
+The static build is written to `dist/` for GitHub Pages.
 
 ## Controls
 
 - Move: `WASD`
-- Equipped move 1: `H`
-- Equipped move 2: `J`
-- Equipped move 3: `K`
-- Equipped move 4 / close control: `L`
 - Dash: `Space`
+- Equipped move slots: `H`, `J`, `K`, `L`
 - Pause / resume: `Esc`
 - Reward screen: choose a compatible move, then choose which H/J/K/L slot it replaces
 
+The HUD always shows the current move name for each H/J/K/L slot.
+
+## Current Fighter Move Slots
+
+- Cyber Ninja: `H` Jab, `J` Slice, `K` Side Kick, `L` High Kick
+- Shadow Striker: `H` Roundhouse Kick, `J` Teep Kick, `K` Cross, `L` Jab
+- Puppetmaster: `H` Double Leg Shot, `J` O Goshi, `K` Armbar, `L` Duck Under Mat Return Slam
+- Combat Monk: `H` Palm Strike, `J` High Kick, `K` Spinning Sweep, `L` Standing Shoulder Lock
+
 ## Current MVP Features
 
-- Generated desert arena background with a cleaned gameplay version, procedural fallback, subtle invisible collision props, shadows, and dash dust puffs
-- Player movement, facing direction, health, stamina, dash, and cooldown-aware H/J/K/L moves
-- Cyber Monkey Grunts and Scrappers as beginning-stage mobs
-- Cyber Monkey Alpha boss on wave 4 with higher health and telegraphed strikes
-- Rock collision for player and enemies
-- Temporary attack hitboxes, hurtboxes, knockback, stun, once-per-attack damage, and close-range grapple control
-- Wave spawning and rewards between waves that replace one of the four equipped slots
-- Four selectable hero identities: Cyber Ninja, Shadow Striker, Cyber Monk, and Neo Operative
-- Home screen, pause menu, game-over menu, controls panel, and placeholder settings panel
+- Generated desert arena background with procedural fallback
+- Selectable fighters: Cyber Ninja, Shadow Striker, Puppetmaster, and Combat Monk
+- Cyber Monkey enemies, including Scrapper and Grappler variants
+- H/J/K/L equipped moves with cooldowns and stamina costs
+- Grapples that require nearby targets and preserve embedded-target sprite suppression
+- Rewards between waves that replace one equipped slot
+- Sprite Lab for inspecting entities, animations, moves, frame sources, and fallback status
+- GitHub Pages deployment
 
-## Sprite Frame Pipeline
+Boss waves are disabled during the MVP polish pass so normal wave readability can be stabilized first.
 
-The code is ready for drop-in transparent sprite frames at:
+## Sprite And QA Commands
 
-```text
-public/sprites/frames/{character}/{move}/{frameNumber}.png
+```powershell
+npm run sprite:clean
+npm run sprite:qa
 ```
 
-Example:
+`sprite:qa` writes contact sheets to `public/sprites/qa/index.html`. The current FIghtcore prepared assets live under `public/assets/fightcore/sprites/`.
 
-```text
-public/sprites/frames/cyber-ninja-blue/jab/0001.png
-```
+Runtime animation resolution order:
 
-Registered beginning-stage hero IDs:
-
-- `cyber-ninja-blue`
-- `shadow-striker-purple`
-- `cyber-monk-orange`
-- `neo-operative-green`
-
-Registered beginning-stage villain IDs:
-
-- `cyber-monkey-grunt`
-- `cyber-monkey-scrapper`
-- `cyber-monkey-alpha`
-
-`AssetLoader` caches image paths and returns loaded frame arrays. The renderer tries real frames first, blocks known hollow/low-coverage frames, falls back to atlas crops when they are safer, and uses readable procedural silhouettes only as a last resort.
-
-Generated source sheets are archived in `public/sprites/source-generated/`. The live gameplay path is the sliced frame folders, so new art can be improved one animation folder at a time.
-
-Effect sprites can be dropped into `public/sprites/effects/`. Desert prop sprites can be dropped into `public/backgrounds/desert/`. The current MVP renders effects and props procedurally when images are missing.
-
-## Sprite Animation Status
-
-The runtime now resolves animations in this order:
-
-1. explicit frame PNGs
-2. pre-sliced `/sprites/frames/{entityId}/{animationKey}/0001.png` folders
+1. explicit PNG frame folders
+2. prepared FIghtcore strip crops
 3. registered source-sheet crop rectangles
-4. idle animation
+4. idle fallback
 5. procedural fallback
 
-Mapped hero sheet crops:
+Sprite Lab should not treat a whole strip/contact sheet as a gameplay frame. Missing or invalid frame data should show clear fallback/debug information instead of crashing.
 
-- `cyber-ninja-blue`: `idle`, `ready`, `walk`, `dash`, `jab`, `cross`, `low_kick`, `roundhouse_kick`, `hit_react`, `knockdown`, `recovery`
-- `shadow-striker-purple`: `idle`, `ready`, `walk`, `dash`, `jab`, `cross`, `short_elbow`, `shadow_counter`, `hit_react`, `knockdown`, `recovery`
-- `cyber-monk-orange`: `idle`, `ready`, `walk`, `dash`, `palm_strike`, `spinning_kick`, `clinch_knee`, `hip_throw`, `hit_react`, `knockdown`, `recovery`
-- `neo-operative-green`: `idle`, `ready`, `walk`, `dash`, `double_leg_takedown`, `sprawl_counter`, `hip_throw`, `low_kick`, `hit_react`, `knockdown`, `recovery`
+## Known Issues
 
-Runtime frame folders have been generated and transparency-cleaned from the uploaded hero sheets for all four player characters. These are real PNG frames used by the game, but some frames still need manual crop and foot-anchor polish.
+- Some sprite anchors and attack frames still need visual polish.
+- Sprite Lab is still a developer-facing tool.
+- Audio, save data, shops, long-term progression, new stages, and new content are intentionally paused.
+- Bosses are disabled until the core wave/combat loop feels stable.
 
-Cyber Monkey villains are wired through the same animation state system and now have generated transparency-cleaned runtime frame folders:
+## Current Development Focus
 
-- `cyber-monkey-grunt`: `claw_swipe` / `palm_strike`
-- `cyber-monkey-scrapper`: `claw_combo` / `low_kick`
-- `cyber-monkey-alpha`: `ground_slam` / `clinch_knee`
-
-If a frame folder or background image is missing, the old procedural fallback still renders so the game remains playable.
-
-Open Sprite Lab from the home screen with the `Sprite Lab` button. It lets you choose an entity, gameplay-ready animation, or gameplay-ready move, replay/step frames, toggle checkerboard, ground line, anchor, hitbox, and hurtbox overlays, and inspect frame source, dimensions, alpha transparency, eligibility, and fallback status.
-
-To tune crop rectangles, edit `src/data/spriteAnimations.ts`. Crop mappings are intentionally approximate for this pass and can be replaced by exact transparent frame PNGs later.
-
-## GitHub Pages
-
-1. Run `npm run build`.
-2. Publish the generated `dist/` directory.
-3. The Vite config uses `base: './'` so the game can work from a project page subpath.
-
-## What To Build Next
-
-- Polish the current four moves per character before adding more moves
-- Replace temporary gray-dummy grapple frames with in-game enemy interaction sprites
-- Add impact effects and move icons after the MVP loop feels stable
-- Keep new enemies, stages, and persistent progression out until the MVP lock is satisfied
+- Make controls and current move labels consistent everywhere.
+- Improve hit flashes, damage/healing feedback, impact sparks, and attack readability.
+- Keep grappling display stable while preserving embedded-target suppression.
+- Slow enemy pacing so encounters breathe.
+- Keep the MVP browser-only and GitHub Pages-friendly.

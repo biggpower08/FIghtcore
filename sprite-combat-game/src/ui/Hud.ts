@@ -14,6 +14,7 @@ export class Hud {
     ctx.fillStyle = '#fff0c2';
     ctx.fillText(`Wave ${wave}`, 22, 78);
     ctx.fillText(`Fighter: ${player.character.name}`, 22, 102);
+    ctx.fillText('Objective: clear the wave, breathe between rewards.', 22, 126);
 
     const slotKeys = ['H', 'J', 'K', 'L'];
     const moveText = player.equippedMoves.map((move, index) => `${slotKeys[index]}:${move.name}`).join('  ');

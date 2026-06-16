@@ -22,7 +22,7 @@ import type { MoveDefinition } from '../data/moves';
 import { enemyAttackAnimationByMove, getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { spriteRegistry } from '../data/spriteRegistry';
 import { AnimationSystem } from '../systems/AnimationSystem';
-import { type AttackHitbox, CombatSystem } from '../systems/CombatSystem';
+import { type AttackHitbox, CombatSystem, type HitImpact } from '../systems/CombatSystem';
 import { CollisionSystem } from '../systems/CollisionSystem';
 import { LootSystem } from '../systems/LootSystem';
 import { MovementSystem } from '../systems/MovementSystem';
@@ -31,6 +31,7 @@ import {
   RenderSystem,
   type DustPuff,
   type GrappleDebugRenderInfo,
+  type ImpactSpark,
   type GrappleSuppressionRenderInfo,
 } from '../systems/RenderSystem';
 import { WaveSystem } from '../systems/WaveSystem';
@@ -79,8 +80,11 @@ export class Game {
   private boss: Boss | null = null;
   private hitboxes: AttackHitbox[] = [];
   private dust: DustPuff[] = [];
+  private impacts: ImpactSpark[] = [];
   private visualSuppressions = new Map<string, VisualSuppression>();
   private grappleDebug?: GrappleDebugRenderInfo;
+  private hitPauseMs = 0;
+  private screenShakeMs = 0;
   private lastTime = 0;
   private state: GameState = 'home';
   private settingsReturnState: GameState = 'home';
@@ -123,7 +127,10 @@ export class Game {
     this.handleStateInput();
     this.animation.update(deltaMs);
 
-    if (this.state === 'playing') {
+    if (this.state === 'playing' && this.hitPauseMs > 0) {
+      this.hitPauseMs = Math.max(0, this.hitPauseMs - deltaMs);
+      this.updateFeedbackTimers(deltaMs);
+    } else if (this.state === 'playing') {
       this.update(deltaMs);
     }
 
@@ -141,7 +148,9 @@ export class Game {
     this.hitboxes = this.combat.updateHitboxes(this.hitboxes, deltaMs);
     for (const hitbox of this.hitboxes) {
       const targets = hitbox.owner === this.player ? this.livingEnemies() : [this.player];
-      this.combat.applyHitbox(hitbox, targets);
+      for (const impact of this.combat.applyHitbox(hitbox, targets)) {
+        this.handleHitImpact(impact);
+      }
     }
 
     this.enemies = this.enemies.filter((enemy) => enemy.alive);
@@ -164,6 +173,7 @@ export class Game {
 
     this.player.vx = canMove ? axis.x * speed : this.player.vx * 0.92;
     this.player.vy = canMove ? axis.y * speed : this.player.vy * 0.92;
+    if (canMove && axis.x !== 0) this.player.facing = axis.x < 0 ? -1 : 1;
 
     if (this.input.wasPressed(' ') && this.player.dashCooldownMs <= 0 && this.player.stamina >= DASH_STAMINA_COST) {
       this.player.stamina -= DASH_STAMINA_COST;
@@ -247,6 +257,7 @@ export class Game {
 
     for (const puff of this.dust) puff.lifeMs -= deltaMs;
     this.dust = this.dust.filter((puff) => puff.lifeMs > 0);
+    this.updateFeedbackTimers(deltaMs);
     this.updateVisualSuppressions(deltaMs);
   }
 
@@ -261,7 +272,19 @@ export class Game {
 
     const hitbox = this.combat.startAttack(this.player, selected.move);
     if (hitbox) {
-      this.hitboxes.push(hitbox);
+      if (selected.move.healAmount) {
+        const restored = this.player.heal(selected.move.healAmount);
+        if (restored > 0) {
+          this.impacts.push({
+            x: this.player.x,
+            y: this.player.y - this.player.radius * 1.5,
+            lifeMs: 520,
+            color: '#63f7a6',
+            label: `+${Math.round(restored)}`,
+          });
+        }
+      }
+      if (selected.move.hitboxWidth > 0 && selected.move.hitboxHeight > 0) this.hitboxes.push(hitbox);
       this.animation.play(this.player, selected.move.animationKey, {
         lockForMs: selected.move.windupMs + selected.move.activeMs + selected.move.recoveryMs,
         fallback: 'idle',
@@ -415,6 +438,7 @@ export class Game {
     this.enemies = spawned.enemies;
     this.boss = spawned.boss;
     this.hitboxes = [];
+    this.impacts = [];
     this.visualSuppressions.clear();
     this.state = 'playing';
   }
@@ -435,9 +459,11 @@ export class Game {
       this.obstacles,
       this.hitboxes,
       this.dust,
+      this.impacts,
       this.suppressedEntityIds(),
       this.grappleSuppressionRenderInfo(),
       this.grappleDebug,
+      this.screenShakeMs,
     );
     this.drawBossTelegraph();
     if (['playing', 'paused', 'reward', 'gameOver'].includes(this.state)) {
@@ -489,6 +515,7 @@ export class Game {
     this.boss = null;
     this.hitboxes = [];
     this.dust = [];
+    this.impacts = [];
     this.visualSuppressions.clear();
     this.waves.wave = 0;
     this.rewardScreen.hide();
@@ -548,6 +575,7 @@ export class Game {
     this.boss = null;
     this.hitboxes = [];
     this.dust = [];
+    this.impacts = [];
     this.visualSuppressions.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
@@ -633,6 +661,42 @@ export class Game {
       suppressionActive,
       failedNoTarget,
     };
+  }
+
+  private updateFeedbackTimers(deltaMs: number): void {
+    this.screenShakeMs = Math.max(0, this.screenShakeMs - deltaMs);
+    for (const spark of this.impacts) spark.lifeMs -= deltaMs;
+    this.impacts = this.impacts.filter((spark) => spark.lifeMs > 0);
+    for (const actor of [this.player, ...this.livingEnemies()]) {
+      actor.damageFlashMs = Math.max(0, actor.damageFlashMs - deltaMs);
+      actor.healFlashMs = Math.max(0, actor.healFlashMs - deltaMs);
+    }
+  }
+
+  private handleHitImpact(impact: HitImpact): void {
+    this.impacts.push({
+      x: impact.x,
+      y: impact.y,
+      lifeMs: impact.heavy ? 360 : 260,
+      color: impact.attacker === this.player ? '#ffef78' : '#ff6a4d',
+      label: `${Math.round(impact.damage)}`,
+    });
+    this.hitPauseMs = Math.max(this.hitPauseMs, impact.heavy ? 70 : 42);
+    if (impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, 180);
+    this.playDamageAnimation(impact);
+  }
+
+  private playDamageAnimation(impact: HitImpact): void {
+    if (!(impact.target instanceof Enemy || impact.target instanceof Boss || impact.target instanceof Player)) return;
+    if (!impact.target.alive) return;
+    const oldHealth = impact.target.health + impact.damage;
+    const oldQuarter = Math.floor((oldHealth / impact.target.maxHealth) * 4);
+    const newQuarter = Math.floor((impact.target.health / impact.target.maxHealth) * 4);
+    const majorDamage = impact.heavy || newQuarter < oldQuarter;
+    this.animation.play(impact.target, majorDamage ? 'knockdown' : 'hit_react', {
+      lockForMs: majorDamage ? 360 : 180,
+      fallback: 'hit_react',
+    });
   }
 
   private updateVisualSuppressions(deltaMs: number): void {

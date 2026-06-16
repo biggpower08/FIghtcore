@@ -28,8 +28,8 @@ export class MenuScreen {
       <section class="menu-panel home-panel">
         <div>
           <p class="eyebrow">Browser-only pixel arena fighter</p>
-          <h1>Sprite Combat</h1>
-          <p class="menu-copy">Dash through a desert arena, learn martial arts moves, and survive mob waves into boss fights.</p>
+          <h1>FIghtcore</h1>
+          <p class="menu-copy">Pick a fighter, survive readable enemy waves, and use the H/J/K/L equipped moves to control the arena.</p>
         </div>
         <div class="character-preview" aria-label="${selectedCharacter.name} preview">
           <div class="preview-shadow"></div>
@@ -57,7 +57,7 @@ export class MenuScreen {
           <button data-action="settings">Settings</button>
           <button data-action="controls">Controls</button>
         </div>
-        <div class="controls-preview">WASD move. Space dash. H/J/K/L use equipped moves. Esc pauses.</div>
+        <div class="controls-preview">Objective: clear the current wave. WASD move. Space dash. H/J/K/L use equipped moves. Esc pauses.</div>
       </section>
     `);
     this.installPreviewFallbacks();
@@ -71,7 +71,8 @@ export class MenuScreen {
         <label><span>Music volume</span><input type="range" min="0" max="100" value="55" /></label>
         <label><span>SFX volume</span><input type="range" min="0" max="100" value="80" /></label>
         <label class="toggle-row"><span>Screen shake</span><input type="checkbox" checked /></label>
-        <label><span>Controls remap</span><button type="button" disabled>Coming soon</button></label>
+        <p class="menu-copy">Current controls: WASD move, Space dash, H/J/K/L equipped moves, Esc pause/resume.</p>
+        <label><span>Controls remap</span><button type="button" disabled>Coming later</button></label>
         <label><span>Difficulty</span><select><option>Normal</option><option>Hard later</option></select></label>
         <button data-action="back">Back</button>
       </section>
@@ -82,7 +83,8 @@ export class MenuScreen {
     this.show(`
       <section class="menu-panel settings-panel">
         <h2>Controls</h2>
-        <p class="menu-copy">WASD moves. Space dashes. H, J, K, and L use the four equipped character moves. Esc pauses.</p>
+        <p class="menu-copy">WASD moves. Space dashes. H, J, K, and L fire the four moves shown at the bottom of the HUD for your selected fighter. Esc pauses or resumes.</p>
+        <p class="menu-copy">Combat Monk uses Palm Strike, High Kick, Spinning Sweep, and Standing Shoulder Lock. Puppetmaster uses Double Leg Shot, O Goshi, Armbar, and Duck Under Mat Return Slam.</p>
         <button data-action="back">Back</button>
       </section>
     `);
