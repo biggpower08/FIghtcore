@@ -8,6 +8,7 @@ export type UpgradeId =
   | 'breath_economy'
   | 'rhythm_reset'
   | 'vital_reserve'
+  | 'cellular_patch'
   | 'critical_circuit'
   | 'assassins_rhythm'
   | 'flow_state'
@@ -53,6 +54,7 @@ export const upgrades: UpgradeDefinition[] = [
   general('breath_economy', 'Breath Economy', 'All equipped moves cost 8% less stamina per level.', 5, 'staminaLevel', 'Stamina cost'),
   general('rhythm_reset', 'Rhythm Reset', 'All equipped moves recover 6% faster per level.', 5, 'cooldownLevel', 'Cooldown'),
   general('vital_reserve', 'Vital Reserve', 'Increase maximum health and immediately heal the added amount.', 3, 'health', 'Max health'),
+  general('cellular_patch', 'Cellular Patch', 'Slowly regenerate health between exchanges.', 3, 'healthRegenLevel', 'Health regen'),
   character('critical_circuit', 'Critical Circuit', 'cyber-ninja', 'Critical Overload hits harder.', 3),
   character('assassins_rhythm', "Assassin's Rhythm", 'cyber-ninja', 'Cyber Ninja ability windows last longer.', 3),
   character('flow_state', 'Flow State', 'shadow-striker', 'Momentum Flow lasts longer and rewards clean chains.', 3),

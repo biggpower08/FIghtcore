@@ -10,6 +10,7 @@ export interface PlayerUpgradeState {
   staminaLevel: number;
   cooldownLevel: number;
   abilityLevel: number;
+  healthRegenLevel: number;
 }
 
 export class Player extends Fighter {
@@ -31,6 +32,7 @@ export class Player extends Fighter {
     staminaLevel: 0,
     cooldownLevel: 0,
     abilityLevel: 0,
+    healthRegenLevel: 0,
   };
 
   constructor(character: CharacterDefinition, loadout: CharacterLoadout, moves: MoveDefinition[]) {

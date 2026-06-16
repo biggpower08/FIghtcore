@@ -54,6 +54,16 @@ export const DESERT_ARENA_ASSET_PATHS = [
   '/assets/fightcore/backgrounds/desert-arena/night.png',
   '/assets/fightcore/backgrounds/desert-arena/rocks.png',
   '/assets/fightcore/backgrounds/desert-arena/wind.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/01.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/02.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/03.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/04.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/05.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/06.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/07.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/08.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/09.png',
+  '/assets/fightcore/backgrounds/desert-arena/rock-props/10.png',
 ] as const;
 
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
@@ -66,15 +76,8 @@ const stageVariants = [
   { name: 'night', path: '/assets/fightcore/backgrounds/desert-arena/night.png', sand: '#5b4a42', ridge: '#252a3b', tint: 'rgba(35, 213, 221, 0.1)' },
 ] as const;
 const FALLBACK_DESERT_ARENA_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
-const ROCK_PROP_SHEET_PATH = '/assets/fightcore/backgrounds/desert-arena/rocks.png';
 const WIND_PROP_SHEET_PATH = '/assets/fightcore/backgrounds/desert-arena/wind.png';
-const rockPropRects = [
-  { x: 120, y: 170, w: 410, h: 155 },
-  { x: 705, y: 70, w: 235, h: 290 },
-  { x: 255, y: 400, w: 335, h: 220 },
-  { x: 665, y: 460, w: 400, h: 165 },
-  { x: 895, y: 705, w: 170, h: 165 },
-] as const;
+const rockPropPaths = DESERT_ARENA_ASSET_PATHS.filter((path) => path.includes('/rock-props/'));
 const windPropRects = [
   { x: 70, y: 105, w: 230, h: 145 },
   { x: 335, y: 95, w: 300, h: 150 },
@@ -122,15 +125,18 @@ export class RenderSystem {
     ctx.translate(-camera.x + (Math.random() - 0.5) * shake, -camera.y + (Math.random() - 0.5) * shake);
     this.bodyDrawCounts.clear();
     this.drawArena(ctx);
-    for (const obstacle of obstacles) this.drawObstacle(ctx, obstacle);
     for (const puff of dust) this.drawDust(ctx, puff);
 
-    const actors: Entity[] = [player, ...enemies.filter((enemy) => enemy.alive)].filter(
-      (actor) => !suppressedEntityIds.has(actor.id),
-    );
-    if (boss?.alive && !suppressedEntityIds.has(boss.id)) actors.push(boss);
-    actors.sort((a, b) => a.y - b.y);
-    for (const actor of actors) this.drawFighter(ctx, actor, actor === player ? '#38a3ff' : actor === boss ? '#ad56ff' : '#c54c36');
+    const actors: Entity[] = [player, ...enemies.filter((enemy) => enemy.alive || enemy.defeatHoldMs > 0)].filter((actor) => !suppressedEntityIds.has(actor.id));
+    if (boss && (boss.alive || boss.defeatHoldMs > 0) && !suppressedEntityIds.has(boss.id)) actors.push(boss);
+    const worldItems = [
+      ...obstacles.map((obstacle) => ({ y: obstacle.y, type: 'obstacle' as const, obstacle })),
+      ...actors.map((actor) => ({ y: actor.y, type: 'actor' as const, actor })),
+    ].sort((a, b) => a.y - b.y);
+    for (const item of worldItems) {
+      if (item.type === 'obstacle') this.drawObstacle(ctx, item.obstacle);
+      else this.drawFighter(ctx, item.actor, item.actor === player ? '#38a3ff' : item.actor === boss ? '#ad56ff' : '#c54c36');
+    }
 
     if (shouldDrawSpriteDebug()) {
       for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
@@ -320,12 +326,12 @@ export class RenderSystem {
       ctx.ellipse(obstacle.x, obstacle.y + obstacle.radius * 0.38, obstacle.radius * 1.1, obstacle.radius * 0.48, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalAlpha = 1;
-      const rockSheet = this.assets.getImage(ROCK_PROP_SHEET_PATH);
-      if (rockSheet) {
-        const rect = rockPropRects[Math.abs(hashString(obstacle.id)) % rockPropRects.length];
+      const rockPath = rockPropPaths[Math.abs(hashString(obstacle.id)) % rockPropPaths.length];
+      const rockImage = rockPath ? this.assets.getImage(rockPath) : undefined;
+      if (rockImage) {
         const width = obstacle.radius * 2.55;
-        const height = width * (rect.h / rect.w);
-        ctx.drawImage(rockSheet, rect.x, rect.y, rect.w, rect.h, obstacle.x - width / 2, obstacle.y - height * 0.72, width, height);
+        const height = width * (rockImage.height / rockImage.width);
+        ctx.drawImage(rockImage, obstacle.x - width / 2, obstacle.y - height, width, height);
         ctx.restore();
         return;
       }
@@ -498,10 +504,10 @@ export class RenderSystem {
   }
 
   private drawFlashOverlay(ctx: CanvasRenderingContext2D, entity: Entity, dx: number, dy: number, width: number, height: number): void {
-    if (entity.damageFlashMs <= 0 && entity.healFlashMs <= 0) return;
+    if (entity.healFlashMs <= 0) return;
     ctx.globalCompositeOperation = 'source-atop';
-    ctx.globalAlpha = entity.healFlashMs > 0 ? Math.min(0.48, entity.healFlashMs / 540) : Math.min(0.55, entity.damageFlashMs / 260);
-    ctx.fillStyle = entity.healFlashMs > 0 ? '#63f7a6' : '#ffffff';
+    ctx.globalAlpha = Math.min(0.28, entity.healFlashMs / 720);
+    ctx.fillStyle = '#63f7a6';
     ctx.fillRect(dx, dy, width, height);
     ctx.globalAlpha = 1;
     ctx.globalCompositeOperation = 'source-over';

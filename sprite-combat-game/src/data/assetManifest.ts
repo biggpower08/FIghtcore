@@ -113,9 +113,9 @@ export const artAssetManifest: ArtAssetManifestEntry[] = [
     displayName: 'Desert Props',
     type: 'background-prop',
     status: 'real',
-    sourcePath: 'public/assets/fightcore/backgrounds/desert-arena/rocks.png',
-    runtimePath: '/assets/fightcore/backgrounds/desert-arena/rocks.png',
-    notes: 'Cleaned transparent rock prop sheet is cropped onto collision obstacles. Stick bush props are not used.',
+    sourcePath: 'public/assets/fightcore/backgrounds/desert-arena/rock-props/',
+    runtimePath: '/assets/fightcore/backgrounds/desert-arena/rock-props/',
+    notes: 'Rock sheet was split into individual transparent bottom-anchored props. Stick bush props are not used.',
   },
   {
     id: 'desert-wind-effects',
@@ -133,7 +133,7 @@ export const artAssetManifest: ArtAssetManifestEntry[] = [
     status: 'placeholder',
     sourcePath: 'public/sprites/effects/',
     runtimePath: '/sprites/effects/',
-    notes: 'Dust puffs and hit flashes are procedural for now. Final effect sprites are planned.',
+    notes: 'Cheap hit sparks/rings/slashes are intentionally disabled in normal gameplay.',
   },
   {
     id: 'ui-icons',
