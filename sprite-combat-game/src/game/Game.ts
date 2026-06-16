@@ -30,6 +30,7 @@ import { MovementSystem } from '../systems/MovementSystem';
 import { ProgressionSystem } from '../systems/ProgressionSystem';
 import {
   RenderSystem,
+  DESERT_ARENA_ASSET_PATHS,
   type DustPuff,
   type GrappleDebugRenderInfo,
   type ImpactSpark,
@@ -43,7 +44,6 @@ import { SpriteLab } from '../ui/SpriteLab';
 import { TEST_BALANCE } from './testBalance';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
-const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
 const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
 const CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS = 360;
 const CYBER_MONKEY_GRAPPLER_ATTACK_RELEASE_MS = 90;
@@ -699,7 +699,7 @@ export class Game {
 
   private async preloadBeginningSprites(): Promise<void> {
     await Promise.all([
-      this.assets.loadImage(DESERT_ARENA_BACKGROUND_PATH, { kind: 'background' }),
+      ...DESERT_ARENA_ASSET_PATHS.map((path) => this.assets.loadImage(path, { kind: 'background' })),
       ...spriteRegistry.flatMap((sprite) =>
         getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation)),
       ),

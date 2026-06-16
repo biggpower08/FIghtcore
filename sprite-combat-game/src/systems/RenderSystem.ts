@@ -46,15 +46,40 @@ export interface GrappleDebugRenderInfo {
   failedNoTarget: boolean;
 }
 
-const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
+export const DESERT_ARENA_ASSET_PATHS = [
+  '/assets/fightcore/backgrounds/desert-arena/day.png',
+  '/assets/fightcore/backgrounds/desert-arena/morning.png',
+  '/assets/fightcore/backgrounds/desert-arena/daytime.png',
+  '/assets/fightcore/backgrounds/desert-arena/evening.png',
+  '/assets/fightcore/backgrounds/desert-arena/night.png',
+  '/assets/fightcore/backgrounds/desert-arena/rocks.png',
+  '/assets/fightcore/backgrounds/desert-arena/wind.png',
+] as const;
+
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 const blockedFrameWarnings = new Set<string>();
 const stageVariants = [
-  { name: 'morning', sky: '#c98d5a', sand: '#ba7d3a', ridge: '#8b5431', tint: 'rgba(255, 204, 137, 0.14)' },
-  { name: 'daytime', sky: '#b87935', sand: '#b87935', ridge: '#8a5228', tint: 'rgba(255, 221, 151, 0.04)' },
-  { name: 'evening', sky: '#8e4b45', sand: '#9a6236', ridge: '#623a34', tint: 'rgba(173, 86, 255, 0.13)' },
-  { name: 'night', sky: '#25233d', sand: '#5b4a42', ridge: '#252a3b', tint: 'rgba(35, 213, 221, 0.16)' },
+  { name: 'morning', path: '/assets/fightcore/backgrounds/desert-arena/morning.png', sand: '#ba7d3a', ridge: '#8b5431', tint: 'rgba(255, 204, 137, 0.08)' },
+  { name: 'daytime', path: '/assets/fightcore/backgrounds/desert-arena/daytime.png', sand: '#b87935', ridge: '#8a5228', tint: 'rgba(255, 221, 151, 0.03)' },
+  { name: 'evening', path: '/assets/fightcore/backgrounds/desert-arena/evening.png', sand: '#9a6236', ridge: '#623a34', tint: 'rgba(173, 86, 255, 0.08)' },
+  { name: 'night', path: '/assets/fightcore/backgrounds/desert-arena/night.png', sand: '#5b4a42', ridge: '#252a3b', tint: 'rgba(35, 213, 221, 0.1)' },
+] as const;
+const FALLBACK_DESERT_ARENA_PATH = '/assets/fightcore/backgrounds/desert-arena/day.png';
+const ROCK_PROP_SHEET_PATH = '/assets/fightcore/backgrounds/desert-arena/rocks.png';
+const WIND_PROP_SHEET_PATH = '/assets/fightcore/backgrounds/desert-arena/wind.png';
+const rockPropRects = [
+  { x: 120, y: 170, w: 410, h: 155 },
+  { x: 705, y: 70, w: 235, h: 290 },
+  { x: 255, y: 400, w: 335, h: 220 },
+  { x: 665, y: 460, w: 400, h: 165 },
+  { x: 895, y: 705, w: 170, h: 165 },
+] as const;
+const windPropRects = [
+  { x: 70, y: 105, w: 230, h: 145 },
+  { x: 335, y: 95, w: 300, h: 150 },
+  { x: 1080, y: 315, w: 225, h: 225 },
+  { x: 280, y: 715, w: 480, h: 145 },
 ] as const;
 
 type StageVariant = (typeof stageVariants)[number];
@@ -116,10 +141,13 @@ export class RenderSystem {
   }
 
   private drawArena(ctx: CanvasRenderingContext2D): void {
-    const desertArena = this.assets.getImage(DESERT_ARENA_BACKGROUND_PATH);
     const variant = this.getStageBlend();
-    if (desertArena) {
-      this.drawDesertArenaImage(ctx, desertArena);
+    const currentArena = this.assets.getImage(variant.current.path);
+    const nextArena = this.assets.getImage(variant.next.path);
+    const fallbackArena = this.assets.getImage(FALLBACK_DESERT_ARENA_PATH);
+    if (currentArena || nextArena || fallbackArena) {
+      this.drawDesertArenaImage(ctx, currentArena ?? fallbackArena ?? nextArena!, 1);
+      if (nextArena) this.drawDesertArenaImage(ctx, nextArena, variant.amount);
       this.drawStageVariantTint(ctx, variant);
       this.drawWindLines(ctx, variant);
       return;
@@ -152,7 +180,7 @@ export class RenderSystem {
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
   }
 
-  private drawDesertArenaImage(ctx: CanvasRenderingContext2D, image: HTMLImageElement): void {
+  private drawDesertArenaImage(ctx: CanvasRenderingContext2D, image: HTMLImageElement, alpha = 1): void {
     const imageAspect = image.width / image.height;
     const arenaAspect = ARENA_WIDTH / ARENA_HEIGHT;
     const sourceWidth = imageAspect > arenaAspect ? image.height * arenaAspect : image.width;
@@ -160,7 +188,11 @@ export class RenderSystem {
     const sourceX = (image.width - sourceWidth) / 2;
     const sourceY = (image.height - sourceHeight) / 2;
 
+    ctx.save();
+    ctx.globalAlpha = alpha;
     ctx.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, 0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+    ctx.restore();
+    if (alpha < 1) return;
 
     const vignette = ctx.createRadialGradient(
       ARENA_WIDTH / 2,
@@ -288,6 +320,15 @@ export class RenderSystem {
       ctx.ellipse(obstacle.x, obstacle.y + obstacle.radius * 0.38, obstacle.radius * 1.1, obstacle.radius * 0.48, 0, 0, Math.PI * 2);
       ctx.fill();
       ctx.globalAlpha = 1;
+      const rockSheet = this.assets.getImage(ROCK_PROP_SHEET_PATH);
+      if (rockSheet) {
+        const rect = rockPropRects[Math.abs(hashString(obstacle.id)) % rockPropRects.length];
+        const width = obstacle.radius * 2.55;
+        const height = width * (rect.h / rect.w);
+        ctx.drawImage(rockSheet, rect.x, rect.y, rect.w, rect.h, obstacle.x - width / 2, obstacle.y - height * 0.72, width, height);
+        ctx.restore();
+        return;
+      }
       ctx.fillStyle = '#4d4036';
       this.drawRockShard(ctx, obstacle.x - obstacle.radius * 0.52, obstacle.y + 4, obstacle.radius * 0.72, '#514136');
       this.drawRockShard(ctx, obstacle.x, obstacle.y - obstacle.radius * 0.18, obstacle.radius * 0.95, '#6a5547');
@@ -315,6 +356,22 @@ export class RenderSystem {
   }
 
   private drawWindLines(ctx: CanvasRenderingContext2D, variant: StageBlend): void {
+    const windSheet = this.assets.getImage(WIND_PROP_SHEET_PATH);
+    if (windSheet) {
+      ctx.save();
+      const nightWeight = (variant.current.name === 'night' ? 1 - variant.amount : 0) + (variant.next.name === 'night' ? variant.amount : 0);
+      ctx.globalAlpha = 0.08 + nightWeight * 0.04;
+      for (let index = 0; index < 9; index += 1) {
+        const rect = windPropRects[index % windPropRects.length];
+        const x = 160 + ((index * 311) % (ARENA_WIDTH - 320));
+        const y = 150 + ((index * 179) % (ARENA_HEIGHT - 300));
+        const width = 130 + (index % 3) * 34;
+        ctx.drawImage(windSheet, rect.x, rect.y, rect.w, rect.h, x - width / 2, y - width * 0.28, width, width * (rect.h / rect.w));
+      }
+      ctx.restore();
+      return;
+    }
+
     ctx.save();
     const nightWeight = (variant.current.name === 'night' ? 1 - variant.amount : 0) + (variant.next.name === 'night' ? variant.amount : 0);
     ctx.globalAlpha = 0.16 + nightWeight * 0.06;
@@ -664,6 +721,14 @@ function parseHex(hex: string): [number, number, number] {
     Number.parseInt(value.slice(2, 4), 16),
     Number.parseInt(value.slice(4, 6), 16),
   ];
+}
+
+function hashString(value: string): number {
+  let hash = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    hash = (hash * 31 + value.charCodeAt(index)) | 0;
+  }
+  return hash;
 }
 
 function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {

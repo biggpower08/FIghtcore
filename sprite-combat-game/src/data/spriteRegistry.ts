@@ -144,7 +144,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     id: 'desert-stage',
     kind: 'desert-prop',
     basePath: '/assets/fightcore/backgrounds/desert-arena',
-    animations: ['morning', 'daytime', 'evening', 'night', 'wind_lines', 'sand_tile', 'rock_small', 'rock_large', 'bone_pile', 'arena_boundary_marker', 'dust_overlay'],
+    animations: ['morning', 'daytime', 'evening', 'night', 'wind', 'rocks', 'sand_tile', 'bone_pile', 'arena_boundary_marker', 'dust_overlay'],
   },
 ];
 

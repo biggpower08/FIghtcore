@@ -275,7 +275,7 @@ export class AssetLoader {
       ),
       failedUrls: [...this.failedLoads.values()].map((entry) => ({ ...entry })),
       backgrounds: [...new Set([...this.images.keys(), ...this.failedLoads.keys()])]
-        .filter((path) => path.startsWith('/backgrounds/'))
+        .filter((path) => path.startsWith('/backgrounds/') || path.startsWith('/assets/fightcore/backgrounds/'))
         .map((path) => ({ path, loaded: this.images.has(path) })),
       usingFallback: animations.some((animation) => animation.status === 'fallback' || animation.status === 'missing'),
       fallbackAnimations: animations
