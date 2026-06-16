@@ -9,6 +9,7 @@ import {
   OBSTACLE_COUNT,
   PLAYER_BASE_SPEED,
   STAMINA_REGEN_PER_SECOND,
+  ENEMY_STAMINA_REGEN_PER_SECOND,
 } from './constants';
 import { InputManager } from './InputManager';
 import { Boss } from '../entities/Boss';
@@ -56,6 +57,21 @@ interface VisualSuppression {
   endFrame: number;
 }
 
+interface ActiveGrappleLock {
+  attacker: Player | Enemy | Boss;
+  target: Player | Enemy | Boss;
+  remainingMs: number;
+  totalMs: number;
+  attackerStartX: number;
+  attackerStartY: number;
+  attackerEndX: number;
+  attackerEndY: number;
+  targetStartX: number;
+  targetStartY: number;
+  targetEndX: number;
+  targetEndY: number;
+}
+
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
   private readonly input = new InputManager();
@@ -82,6 +98,7 @@ export class Game {
   private dust: DustPuff[] = [];
   private impacts: ImpactSpark[] = [];
   private visualSuppressions = new Map<string, VisualSuppression>();
+  private activeGrapples: ActiveGrappleLock[] = [];
   private grappleDebug?: GrappleDebugRenderInfo;
   private hitPauseMs = 0;
   private screenShakeMs = 0;
@@ -141,6 +158,7 @@ export class Game {
 
   private update(deltaMs: number): void {
     const deltaSeconds = deltaMs / 1000;
+    this.updateActiveGrapples(deltaMs);
     this.updatePlayer(deltaSeconds);
     this.updateEnemies(deltaMs);
     this.updateTimers(deltaMs);
@@ -171,6 +189,12 @@ export class Game {
 
   private updatePlayer(deltaSeconds: number): void {
     const axis = this.input.getMovementAxis();
+    if (this.isGrappleLocked(this.player)) {
+      this.player.vx = 0;
+      this.player.vy = 0;
+      this.player.interruptMeditation('Meditation interrupted');
+      return;
+    }
     const speedBoost = this.player.dashMs > 0 ? 2.7 : 1;
     const canMove = this.player.stunMs <= 0;
     const speed = (this.player.speed || PLAYER_BASE_SPEED) * speedBoost * this.player.getSpeedMultiplier();
@@ -204,6 +228,11 @@ export class Game {
       const distance = Math.hypot(dx, dy) || 1;
       const canMove = enemy.stunMs <= 0 && enemy.attackLockMs <= 0;
       enemy.telegraphMs = Math.max(0, enemy.telegraphMs - deltaMs);
+      if (this.isGrappleLocked(enemy)) {
+        enemy.vx = 0;
+        enemy.vy = 0;
+        continue;
+      }
 
       if (canMove && distance > enemy.attackRange) {
         enemy.vx = (dx / distance) * enemy.speed;
@@ -233,6 +262,11 @@ export class Game {
       const distance = Math.hypot(dx, dy) || 1;
       boss.facing = this.player.x < boss.x ? -1 : 1;
       boss.telegraphMs = Math.max(0, boss.telegraphMs - deltaMs);
+      if (this.isGrappleLocked(boss)) {
+        boss.vx = 0;
+        boss.vy = 0;
+        return;
+      }
 
       if (boss.stunMs <= 0 && boss.attackLockMs <= 0 && distance > boss.definition.attackRange) {
         boss.vx = (dx / distance) * boss.speed;
@@ -272,7 +306,10 @@ export class Game {
     this.player.dashMs = Math.max(0, this.player.dashMs - deltaMs);
     this.player.dashCooldownMs = Math.max(0, this.player.dashCooldownMs - deltaMs);
 
-    for (const enemy of this.livingEnemies()) this.combat.updateFighterTimers(enemy, deltaMs);
+    for (const enemy of this.livingEnemies()) {
+      this.combat.updateFighterTimers(enemy, deltaMs);
+      enemy.stamina = Math.min(enemy.maxStamina, enemy.stamina + ENEMY_STAMINA_REGEN_PER_SECOND * (deltaMs / 1000));
+    }
 
     for (const puff of this.dust) puff.lifeMs -= deltaMs;
     this.dust = this.dust.filter((puff) => puff.lifeMs > 0);
@@ -305,8 +342,9 @@ export class Game {
         }
       }
       if (selected.move.hitboxWidth > 0 && selected.move.hitboxHeight > 0) this.hitboxes.push(hitbox);
+      const totalMs = selected.move.windupMs + selected.move.activeMs + selected.move.recoveryMs;
       this.animation.play(this.player, selected.move.animationKey, {
-        lockForMs: selected.move.windupMs + selected.move.activeMs + selected.move.recoveryMs,
+        lockForMs: Math.round(totalMs * 1.18),
         fallback: 'idle',
       });
     }
@@ -337,7 +375,7 @@ export class Game {
     }
 
     const grappleMove: MoveDefinition = { ...move };
-    const durationMs = Math.max(360, move.windupMs + move.activeMs + move.recoveryMs);
+    const durationMs = Math.max(760, Math.round((move.windupMs + move.activeMs + move.recoveryMs) * 1.45));
     this.player.stamina -= Math.min(this.player.stamina, this.player.getStaminaCost(move));
     this.player.moveCooldowns.set(move.id, Math.max(this.player.getCooldownMs(move), 680));
     this.player.attackLockMs = durationMs;
@@ -350,16 +388,26 @@ export class Game {
         : [];
       this.player.facing = target.x < this.player.x ? -1 : 1;
       const controlX = this.player.x + this.player.facing * (this.player.radius + target.radius * 0.55);
+      const targetStartX = target.x;
+      const targetStartY = target.y;
       target.x = controlX;
       target.y = this.player.y + Math.sign(target.y - this.player.y) * 8;
       target.takeDamage(Math.max(8, Math.round(move.damage * this.player.getDamageMultiplier())));
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
       target.stunMs = Math.max(target.stunMs, 620);
-      target.vx = this.player.facing * 170 * target.knockbackResistance;
-      target.vy = Math.sign(target.y - this.player.y || 1) * 28;
-      this.animation.play(target, 'knockdown', { lockForMs: 420, fallback: 'hit_react' });
+      target.vx = 0;
+      target.vy = 0;
+      this.animation.play(target, 'knockdown', { lockForMs: Math.min(durationMs, 680), fallback: 'hit_react' });
       this.suppressTargetSprite(target.id, this.player.character.id, grappleMove.animationKey, durationMs);
+      this.lockGrappleMotion(this.player, target, durationMs, {
+        attackerEndX: this.player.x,
+        attackerEndY: this.player.y,
+        targetStartX,
+        targetStartY,
+        targetEndX: this.player.x + this.player.facing * (this.player.radius + target.radius + 12),
+        targetEndY: this.player.y + 18,
+      });
       this.applySecondaryGrappleEffects(move, secondaryTargets);
       this.grappleDebug = this.createGrappleDebug(
         this.player.character.id,
@@ -406,13 +454,15 @@ export class Game {
         !hasValidTarget,
       );
       if (!hasValidTarget) return;
+      this.startEnemyGrappleAttack(enemy, move, animationKey);
+      return;
     }
     const hitbox = this.combat.startAttack(enemy, move);
     if (hitbox) {
       this.hitboxes.push(hitbox);
       const durationMs = move.windupMs + move.activeMs + move.recoveryMs;
       this.animation.play(enemy, animationKey, {
-        lockForMs: durationMs,
+        lockForMs: Math.round(durationMs * 1.18),
         fallback: 'idle',
       });
       this.suppressTargetSprite(this.player.id, enemy.definition.id, animationKey, durationMs);
@@ -437,7 +487,7 @@ export class Game {
     }
     const animationKey = this.player.ability.id;
     this.animation.play(this.player, animationKey, {
-      lockForMs: this.player.ability.id === 'meditation' ? this.player.ability.durationMs : 240,
+      lockForMs: this.player.ability.id === 'meditation' ? this.player.ability.durationMs : 760,
       fallback: 'idle',
     });
     this.impacts.push({
@@ -498,6 +548,7 @@ export class Game {
     this.hitboxes = [];
     this.impacts = [];
     this.visualSuppressions.clear();
+    this.activeGrapples = [];
     this.state = 'playing';
   }
 
@@ -546,9 +597,8 @@ export class Game {
     for (let i = 0; i < OBSTACLE_COUNT; i += 1) {
       const x = 180 + ((i * 257) % (ARENA_WIDTH - 360));
       const y = 160 + ((i * 173) % (ARENA_HEIGHT - 320));
-      const kind = i % 4 === 0 ? 'dead_bush' : 'rock';
-      const radius = kind === 'rock' ? 26 + (i % 3) * 8 : 22;
-      obstacles.push(new Obstacle(`obstacle_${i}`, kind, x, y, radius));
+      const radius = 22 + (i % 3) * 6;
+      obstacles.push(new Obstacle(`obstacle_${i}`, 'rock', x, y, radius));
     }
     return obstacles;
   }
@@ -575,6 +625,7 @@ export class Game {
     this.dust = [];
     this.impacts = [];
     this.visualSuppressions.clear();
+    this.activeGrapples = [];
     this.waves.wave = 0;
     this.rewardScreen.hide();
     this.spriteLab.hide();
@@ -635,6 +686,7 @@ export class Game {
     this.dust = [];
     this.impacts = [];
     this.visualSuppressions.clear();
+    this.activeGrapples = [];
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showHome(this.selectedCharacterId);
@@ -669,6 +721,7 @@ export class Game {
     this.selectedCharacterId = characterId;
     this.player = this.createPlayer();
     this.visualSuppressions.clear();
+    this.activeGrapples = [];
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
   }
@@ -721,6 +774,89 @@ export class Game {
     };
   }
 
+  private startEnemyGrappleAttack(enemy: Enemy | Boss, move: MoveDefinition, animationKey: string): void {
+    if (!enemy.canUseMove(move)) return;
+    enemy.stamina -= enemy.getStaminaCost(move);
+    enemy.moveCooldowns.set(move.id, enemy.getCooldownMs(move));
+    const durationMs = Math.max(820, Math.round((move.windupMs + move.activeMs + move.recoveryMs) * 1.5));
+    enemy.attackLockMs = durationMs;
+    enemy.activeMove = move;
+    enemy.activeMoveMs = Math.min(durationMs, 680);
+    enemy.facing = this.player.x < enemy.x ? -1 : 1;
+
+    const playerStartX = this.player.x;
+    const playerStartY = this.player.y;
+    const playerEndX = enemy.x + enemy.facing * (enemy.radius + this.player.radius + 12);
+    const playerEndY = enemy.y + 18;
+    this.player.takeDamage(move.damage * TEST_BALANCE.enemyDamageMultiplier);
+    this.player.stunMs = Math.max(this.player.stunMs, Math.min(durationMs, 720));
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.animation.play(enemy, animationKey, { lockForMs: durationMs, fallback: 'idle' });
+    this.animation.play(this.player, 'knockdown', { lockForMs: Math.min(durationMs, 720), fallback: 'hit_react' });
+    this.suppressTargetSprite(this.player.id, enemy.definition.id, animationKey, durationMs);
+    this.lockGrappleMotion(enemy, this.player, durationMs, {
+      attackerEndX: enemy.x,
+      attackerEndY: enemy.y,
+      targetStartX: playerStartX,
+      targetStartY: playerStartY,
+      targetEndX: playerEndX,
+      targetEndY: playerEndY,
+    });
+    this.grappleDebug = this.createGrappleDebug(enemy.definition.id, animationKey, [this.player], this.player, [], true, false);
+  }
+
+  private lockGrappleMotion(
+    attacker: Player | Enemy | Boss,
+    target: Player | Enemy | Boss,
+    durationMs: number,
+    placement: {
+      attackerEndX: number;
+      attackerEndY: number;
+      targetStartX: number;
+      targetStartY: number;
+      targetEndX: number;
+      targetEndY: number;
+    },
+  ): void {
+    this.activeGrapples = this.activeGrapples.filter((lock) => lock.attacker !== attacker && lock.target !== attacker && lock.attacker !== target && lock.target !== target);
+    this.activeGrapples.push({
+      attacker,
+      target,
+      remainingMs: durationMs,
+      totalMs: durationMs,
+      attackerStartX: attacker.x,
+      attackerStartY: attacker.y,
+      attackerEndX: placement.attackerEndX,
+      attackerEndY: placement.attackerEndY,
+      targetStartX: placement.targetStartX,
+      targetStartY: placement.targetStartY,
+      targetEndX: placement.targetEndX,
+      targetEndY: placement.targetEndY,
+    });
+  }
+
+  private updateActiveGrapples(deltaMs: number): void {
+    for (const lock of this.activeGrapples) {
+      lock.remainingMs = Math.max(0, lock.remainingMs - deltaMs);
+      const progress = 1 - lock.remainingMs / Math.max(1, lock.totalMs);
+      const eased = progress < 0.5 ? 2 * progress * progress : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+      lock.attacker.x = lerp(lock.attackerStartX, lock.attackerEndX, eased);
+      lock.attacker.y = lerp(lock.attackerStartY, lock.attackerEndY, eased);
+      lock.target.x = lerp(lock.targetStartX, lock.targetEndX, eased);
+      lock.target.y = lerp(lock.targetStartY, lock.targetEndY, eased);
+      lock.attacker.vx = 0;
+      lock.attacker.vy = 0;
+      lock.target.vx = 0;
+      lock.target.vy = 0;
+    }
+    this.activeGrapples = this.activeGrapples.filter((lock) => lock.remainingMs > 0 && lock.attacker.alive && lock.target.alive);
+  }
+
+  private isGrappleLocked(actor: Player | Enemy | Boss): boolean {
+    return this.activeGrapples.some((lock) => lock.attacker === actor || lock.target === actor);
+  }
+
   private updateFeedbackTimers(deltaMs: number): void {
     this.screenShakeMs = Math.max(0, this.screenShakeMs - deltaMs);
     for (const spark of this.impacts) spark.lifeMs -= deltaMs;
@@ -756,7 +892,7 @@ export class Game {
     const newQuarter = Math.floor((impact.target.health / impact.target.maxHealth) * 4);
     const majorDamage = impact.heavy || newQuarter < oldQuarter;
     this.animation.play(impact.target, majorDamage ? 'knockdown' : 'hit_react', {
-      lockForMs: majorDamage ? 360 : 180,
+      lockForMs: majorDamage ? 520 : 280,
       fallback: 'hit_react',
     });
   }
@@ -779,4 +915,8 @@ export class Game {
   private grappleSuppressionRenderInfo(): GrappleSuppressionRenderInfo[] {
     return Array.from(this.visualSuppressions.values());
   }
+}
+
+function lerp(start: number, end: number, amount: number): number {
+  return start + (end - start) * amount;
 }

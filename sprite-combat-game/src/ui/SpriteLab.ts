@@ -1,8 +1,6 @@
 import { getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { getAnimationEligibility } from '../data/animationEligibility';
-import { isMoveEligibleForCharacter } from '../data/characterLoadouts';
 import { getFrameQuality } from '../data/frameQuality';
-import { moves } from '../data/moves';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 
@@ -46,8 +44,7 @@ export class SpriteLab {
         </div>
         <div class="sprite-lab-controls">
           <label><span>Entity</span><select data-field="entity"></select></label>
-          <label><span>Animation</span><select data-field="animation"></select></label>
-          <label><span>Move</span><select data-field="move"></select></label>
+          <label><span>Animation / Move</span><select data-field="animation"></select></label>
         </div>
         <div class="sprite-lab-toggles">
           <label><input type="checkbox" data-toggle="checkerboard" checked /> Checkerboard</label>
@@ -76,8 +73,7 @@ export class SpriteLab {
 
     const entitySelect = this.root.querySelector<HTMLSelectElement>('[data-field="entity"]');
     const animationSelect = this.root.querySelector<HTMLSelectElement>('[data-field="animation"]');
-    const moveSelect = this.root.querySelector<HTMLSelectElement>('[data-field="move"]');
-    if (!entitySelect || !animationSelect || !moveSelect) return;
+    if (!entitySelect || !animationSelect) return;
 
     entitySelect.innerHTML = labEntityIds.map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
     const refreshAnimations = (): void => {
@@ -86,29 +82,20 @@ export class SpriteLab {
         keys.length > 0
           ? keys.map((key) => option(key, `${key} (${getAnimationEligibility(entitySelect.value, key).health})`)).join('')
           : option('idle', 'idle fallback');
-      moveSelect.innerHTML = `<option value="">Gameplay-ready moves</option>${moves
-        .filter((move) => isMoveEligibleForCharacter(entitySelect.value, move))
-        .map((move) => option(move.animationKey, move.name))
-        .join('')}`;
     };
 
     const refresh = (): void => {
-      void this.loadAndDraw(entitySelect.value, moveSelect.value || animationSelect.value);
+      void this.loadAndDraw(entitySelect.value, animationSelect.value);
     };
 
     refreshAnimations();
     refresh();
 
     entitySelect.addEventListener('change', () => {
-      moveSelect.value = '';
       refreshAnimations();
       refresh();
     });
-    animationSelect.addEventListener('change', () => {
-      moveSelect.value = '';
-      refresh();
-    });
-    moveSelect.addEventListener('change', refresh);
+    animationSelect.addEventListener('change', refresh);
 
     this.root.querySelectorAll<HTMLButtonElement>('[data-action]').forEach((button) => {
       button.addEventListener('click', () => {

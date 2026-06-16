@@ -483,34 +483,34 @@ function fallbackAnimation(
 
 function timingForAnimation(animationKey: string, index: number, frameCount: number): number {
   const attackTiming: Record<string, number[]> = {
-    jab: [85, 105, 120, 135],
-    cross: [95, 115, 130, 150],
-    low_kick: [95, 110, 130, 130, 145],
-    roundhouse_kick: [105, 120, 135, 145, 135, 155],
-    short_elbow: [95, 110, 130, 140, 150],
-    shadow_counter: [105, 120, 135, 135, 150, 165],
-    palm_strike: [95, 115, 130, 145, 155],
-    spinning_kick: [105, 120, 135, 150, 160, 170],
-    spinning_sweep: [125, 155, 170],
-    slice: [95, 115, 135, 145, 155, 170],
-    clinch_knee: [105, 125, 145, 155, 165],
-    hip_throw: [115, 135, 150, 165, 175],
-    o_goshi: [120, 145, 165, 180, 170],
-    seoi_nage: [120, 145, 165, 180, 170],
-    armbar: [125, 145, 165, 180, 185],
-    double_leg_shot: [110, 130, 150, 165, 180, 190],
-    double_leg_takedown: [110, 130, 150, 165, 180, 190],
-    duck_under_mat_return_slam: [125, 145, 165, 185, 200],
-    sprawl_counter: [110, 130, 150, 165, 180],
-    claw_swipe: [95, 110, 125, 140, 155],
-    claw_combo: [95, 110, 125, 140, 155, 170],
-    ground_slam: [120, 135, 150, 170, 190, 175, 165],
+    jab: [105, 125, 140, 155],
+    cross: [115, 135, 155, 175],
+    low_kick: [115, 135, 150, 155, 170],
+    roundhouse_kick: [135, 155, 175, 190, 175, 200],
+    short_elbow: [115, 135, 150, 165, 175],
+    shadow_counter: [130, 150, 170, 170, 185, 200],
+    palm_strike: [115, 140, 155, 175, 185],
+    spinning_kick: [135, 155, 175, 190, 200, 215],
+    spinning_sweep: [150, 180, 200],
+    slice: [115, 135, 155, 170, 190],
+    clinch_knee: [130, 150, 170, 185, 195],
+    hip_throw: [150, 175, 195, 215, 230],
+    o_goshi: [170, 200, 230, 260, 250, 230],
+    seoi_nage: [160, 190, 215, 240, 230],
+    armbar: [160, 185, 210, 235, 245],
+    double_leg_shot: [140, 165, 190, 210, 230, 245],
+    double_leg_takedown: [140, 165, 190, 210, 230, 245],
+    duck_under_mat_return_slam: [160, 185, 210, 235, 255],
+    sprawl_counter: [140, 165, 190, 210, 230],
+    claw_swipe: [115, 135, 150, 170, 185],
+    claw_combo: [115, 135, 150, 170, 185, 205],
+    ground_slam: [145, 165, 185, 210, 235, 215, 200],
   };
 
   if (animationKey === 'idle' || animationKey === 'ready') return 150;
-  if (animationKey === 'walk' || animationKey === 'run') return 95;
+  if (animationKey === 'walk' || animationKey === 'run') return 110;
   if (animationKey === 'dash') return 68;
-  if (animationKey === 'hit_react') return 95;
+  if (animationKey === 'hit_react') return 130;
   if (animationKey === 'recovery') return 120;
   if (animationKey === 'death') return 135;
   if (animationKey === 'knockdown') return 125;

@@ -57,6 +57,28 @@ export const cleanedSpriteFrameMetadata: CleanedSpriteAnimationMetadata[] = [
     frame(4, 80, 96, 0.5, 0.9167, 88, 125, 2, false),
     frame(5, 82, 96, 0.5, 0.9167, 88, 125, 3, false),
   ]),
+  cleaned('cyber-ninja', 'slice', [
+    frame(0, 64, 96, 0.5, 0.9167, 88, 115, 0, false),
+    frame(1, 104, 96, 0.5, 0.9167, 88, 135, 1, false),
+    frame(2, 96, 96, 0.5, 0.9167, 88, 155, 2, false),
+    frame(3, 86, 96, 0.5, 0.9167, 88, 170, 3, false),
+    frame(4, 64, 96, 0.5, 0.9167, 88, 190, 5, false),
+  ]),
+  cleaned('puppetmaster', 'o_goshi', [
+    frame(0, 90, 96, 0.5, 0.9167, 88, 170, 0, false),
+    frame(1, 69, 96, 0.5, 0.9167, 88, 200, 1, false),
+    frame(2, 64, 96, 0.5, 0.9167, 88, 230, 2, false),
+    frame(3, 110, 96, 0.5, 0.9167, 88, 260, 3, false),
+    frame(4, 110, 96, 0.5, 0.9167, 88, 250, 4, false),
+    frame(5, 96, 96, 0.5, 0.9167, 88, 230, 5, false),
+  ]),
+  cleaned('shadow-striker', 'hit_react', [
+    frame(0, 91, 96, 0.5, 0.9167, 88, 140, 0, false),
+    frame(1, 120, 96, 0.5, 0.9167, 88, 150, 1, true),
+    frame(2, 121, 96, 0.5, 0.9167, 88, 150, 1, true),
+    frame(3, 141, 96, 0.5, 0.9167, 88, 150, 2, false),
+    frame(4, 154, 96, 0.5, 0.9167, 88, 160, 3, false),
+  ]),
 ];
 
 export function getCleanedSpriteAnimation(entityId: string, animationKey: string): CleanedSpriteAnimationMetadata | undefined {

@@ -50,6 +50,22 @@ const DESERT_ARENA_BACKGROUND_PATH = '/assets/fightcore/backgrounds/desert-arena
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 const blockedFrameWarnings = new Set<string>();
+const stageVariants = [
+  { name: 'morning', sky: '#c98d5a', sand: '#ba7d3a', ridge: '#8b5431', tint: 'rgba(255, 204, 137, 0.14)' },
+  { name: 'daytime', sky: '#b87935', sand: '#b87935', ridge: '#8a5228', tint: 'rgba(255, 221, 151, 0.04)' },
+  { name: 'evening', sky: '#8e4b45', sand: '#9a6236', ridge: '#623a34', tint: 'rgba(173, 86, 255, 0.13)' },
+  { name: 'night', sky: '#25233d', sand: '#5b4a42', ridge: '#252a3b', tint: 'rgba(35, 213, 221, 0.16)' },
+] as const;
+
+type StageVariant = (typeof stageVariants)[number];
+
+interface StageBlend {
+  current: StageVariant;
+  next: StageVariant;
+  amount: number;
+  sand: string;
+  ridge: string;
+}
 
 export class RenderSystem {
   private readonly bodyDrawCounts = new Map<string, number>();
@@ -101,14 +117,17 @@ export class RenderSystem {
 
   private drawArena(ctx: CanvasRenderingContext2D): void {
     const desertArena = this.assets.getImage(DESERT_ARENA_BACKGROUND_PATH);
+    const variant = this.getStageBlend();
     if (desertArena) {
       this.drawDesertArenaImage(ctx, desertArena);
+      this.drawStageVariantTint(ctx, variant);
+      this.drawWindLines(ctx, variant);
       return;
     }
 
-    ctx.fillStyle = '#b87935';
+    ctx.fillStyle = variant.sand;
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
-    this.drawDistantDesertBackdrop(ctx);
+    this.drawDistantDesertBackdrop(ctx, variant);
 
     ctx.strokeStyle = '#6d3d1d';
     ctx.lineWidth = 36;
@@ -117,6 +136,7 @@ export class RenderSystem {
     this.drawArenaMarkers(ctx);
     this.drawSandTexture(ctx);
     this.drawStageDebris(ctx);
+    this.drawWindLines(ctx, variant);
 
     const gradient = ctx.createRadialGradient(
       ARENA_WIDTH / 2,
@@ -156,10 +176,10 @@ export class RenderSystem {
     ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
   }
 
-  private drawDistantDesertBackdrop(ctx: CanvasRenderingContext2D): void {
+  private drawDistantDesertBackdrop(ctx: CanvasRenderingContext2D, variant: Pick<StageBlend, 'ridge'> = stageVariants[1]): void {
     ctx.save();
     ctx.globalAlpha = 0.24;
-    ctx.fillStyle = '#8a5228';
+    ctx.fillStyle = variant.ridge;
     for (let x = -120; x < ARENA_WIDTH + 120; x += 260) {
       ctx.beginPath();
       ctx.moveTo(x, 150);
@@ -168,7 +188,7 @@ export class RenderSystem {
       ctx.closePath();
       ctx.fill();
     }
-    ctx.fillStyle = '#523622';
+    ctx.fillStyle = '#3e342d';
     for (let x = 150; x < ARENA_WIDTH; x += 520) {
       ctx.fillRect(x, 112, 86, 12);
       ctx.fillRect(x + 22, 86, 10, 28);
@@ -215,7 +235,7 @@ export class RenderSystem {
 
   private drawStageDebris(ctx: CanvasRenderingContext2D): void {
     ctx.save();
-    for (let index = 0; index < 22; index += 1) {
+    for (let index = 0; index < 18; index += 1) {
       const x = 160 + ((index * 389) % (ARENA_WIDTH - 320));
       const y = 180 + ((index * 251) % (ARENA_HEIGHT - 360));
       if (index % 3 === 0) this.drawBonePile(ctx, x, y);
@@ -262,24 +282,81 @@ export class RenderSystem {
   private drawObstacle(ctx: CanvasRenderingContext2D, obstacle: Obstacle): void {
     if (obstacle.kind === 'rock') {
       ctx.save();
-      ctx.globalAlpha = 0.08;
+      ctx.globalAlpha = 0.18;
       ctx.fillStyle = '#2b2018';
       ctx.beginPath();
-      ctx.ellipse(obstacle.x, obstacle.y, obstacle.radius * 0.9, obstacle.radius * 0.42, 0, 0, Math.PI * 2);
+      ctx.ellipse(obstacle.x, obstacle.y + obstacle.radius * 0.38, obstacle.radius * 1.1, obstacle.radius * 0.48, 0, 0, Math.PI * 2);
       ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = '#4d4036';
+      this.drawRockShard(ctx, obstacle.x - obstacle.radius * 0.52, obstacle.y + 4, obstacle.radius * 0.72, '#514136');
+      this.drawRockShard(ctx, obstacle.x, obstacle.y - obstacle.radius * 0.18, obstacle.radius * 0.95, '#6a5547');
+      this.drawRockShard(ctx, obstacle.x + obstacle.radius * 0.48, obstacle.y + 5, obstacle.radius * 0.62, '#3f352f');
+      ctx.strokeStyle = 'rgba(247, 226, 180, 0.18)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(obstacle.x - obstacle.radius * 0.2, obstacle.y - obstacle.radius * 0.44);
+      ctx.lineTo(obstacle.x + obstacle.radius * 0.22, obstacle.y - obstacle.radius * 0.05);
+      ctx.stroke();
       ctx.restore();
       return;
     }
+  }
 
-    ctx.strokeStyle = '#5b3219';
-    ctx.lineWidth = 4;
-    for (let i = 0; i < 5; i += 1) {
-      const angle = -Math.PI / 2 + (i - 2) * 0.42;
+  private drawRockShard(ctx: CanvasRenderingContext2D, x: number, y: number, size: number, color: string): void {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x - size * 0.52, y + size * 0.34);
+    ctx.lineTo(x - size * 0.18, y - size * 0.44);
+    ctx.lineTo(x + size * 0.42, y - size * 0.22);
+    ctx.lineTo(x + size * 0.55, y + size * 0.38);
+    ctx.closePath();
+    ctx.fill();
+  }
+
+  private drawWindLines(ctx: CanvasRenderingContext2D, variant: StageBlend): void {
+    ctx.save();
+    const nightWeight = (variant.current.name === 'night' ? 1 - variant.amount : 0) + (variant.next.name === 'night' ? variant.amount : 0);
+    ctx.globalAlpha = 0.16 + nightWeight * 0.06;
+    ctx.strokeStyle = nightWeight > 0.35 ? '#88f7ff' : '#ffe0aa';
+    ctx.lineWidth = 2;
+    for (let index = 0; index < 18; index += 1) {
+      const x = ((index * 197) % ARENA_WIDTH) - 120;
+      const y = 110 + ((index * 113) % (ARENA_HEIGHT - 220));
       ctx.beginPath();
-      ctx.moveTo(obstacle.x, obstacle.y + obstacle.radius * 0.45);
-      ctx.lineTo(obstacle.x + Math.cos(angle) * obstacle.radius, obstacle.y + Math.sin(angle) * obstacle.radius);
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + 86 + (index % 4) * 24, y - 12);
       ctx.stroke();
     }
+    ctx.restore();
+  }
+
+  private drawStageVariantTint(ctx: CanvasRenderingContext2D, variant: StageBlend): void {
+    ctx.save();
+    ctx.fillStyle = variant.current.tint;
+    ctx.globalAlpha = 1 - variant.amount;
+    ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+    ctx.fillStyle = variant.next.tint;
+    ctx.globalAlpha = variant.amount;
+    ctx.fillRect(0, 0, ARENA_WIDTH, ARENA_HEIGHT);
+    ctx.restore();
+  }
+
+  private getStageBlend(): StageBlend {
+    const cycleMs = 96000;
+    const time = typeof performance === 'undefined' ? 0 : performance.now() % cycleMs;
+    const exact = (time / cycleMs) * stageVariants.length;
+    const index = Math.floor(exact) % stageVariants.length;
+    const current = stageVariants[index] ?? stageVariants[1];
+    const next = stageVariants[(index + 1) % stageVariants.length] ?? stageVariants[1];
+    const amount = smoothstep(exact - Math.floor(exact));
+    return {
+      current,
+      next,
+      amount,
+      sand: blendHex(current.sand, next.sand, amount),
+      ridge: blendHex(current.ridge, next.ridge, amount),
+    };
   }
 
   private drawFighter(ctx: CanvasRenderingContext2D, entity: Entity, color: string): void {
@@ -566,6 +643,27 @@ function shouldDrawSpriteDebug(): boolean {
 
 function shouldDrawGrappleSuppressionDebug(): boolean {
   return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_GRAPPLE_SUPPRESSION_PARAM);
+}
+
+function smoothstep(value: number): number {
+  const clamped = Math.max(0, Math.min(1, value));
+  return clamped * clamped * (3 - 2 * clamped);
+}
+
+function blendHex(from: string, to: string, amount: number): string {
+  const start = parseHex(from);
+  const end = parseHex(to);
+  const channel = (index: number) => Math.round(start[index] + (end[index] - start[index]) * amount);
+  return `rgb(${channel(0)}, ${channel(1)}, ${channel(2)})`;
+}
+
+function parseHex(hex: string): [number, number, number] {
+  const value = hex.replace('#', '');
+  return [
+    Number.parseInt(value.slice(0, 2), 16),
+    Number.parseInt(value.slice(2, 4), 16),
+    Number.parseInt(value.slice(4, 6), 16),
+  ];
 }
 
 function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {

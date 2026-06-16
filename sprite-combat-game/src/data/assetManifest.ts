@@ -71,7 +71,7 @@ export const artAssetManifest: ArtAssetManifestEntry[] = [
     status: 'partial',
     sourcePath: 'public/assets/fightcore/sprites/shadow-striker/momentum-flow-strip.png',
     runtimePath: '/sprites/frames/shadow-striker/momentum_flow/',
-    notes: 'Imported U-key ability strip. The movement_flow alias uses the same cleaned frames.',
+    notes: 'Imported U-key ability strip. Gameplay and Sprite Lab use the player-facing Momentum Flow animation only.',
   },
   {
     id: 'thug-it-out-strip',
@@ -89,7 +89,7 @@ export const artAssetManifest: ArtAssetManifestEntry[] = [
     status: 'real',
     sourcePath: 'public/backgrounds/desert/desert-arena-main.png',
     runtimePath: '/backgrounds/desert/desert-arena-main.png',
-    notes: 'Generated desert wasteland arena is preloaded and used as the primary gameplay background.',
+    notes: 'Generated desert wasteland arena is preloaded, then blended with morning, daytime, evening, and night tint variants in gameplay.',
   },
   {
     id: 'desert-procedural-ground',

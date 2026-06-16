@@ -37,7 +37,7 @@ export interface SpriteSourceSheet {
 
 export const spriteRegistry: SpriteRegistration[] = [
   registerCharacter('cyber-ninja', 'hero', [...manifestAnimations('cyber-ninja'), 'critical_overload'], ['fightcore-cyber-ninja-atlas', 'fightcore-cyber-ninja-critical-overload-strip'], heroRenderProfile()),
-  registerCharacter('shadow-striker', 'hero', [...manifestAnimations('shadow-striker'), 'momentum_flow', 'movement_flow'], ['fightcore-shadow-striker-atlas', 'fightcore-shadow-striker-momentum-flow-strip'], heroRenderProfile()),
+  registerCharacter('shadow-striker', 'hero', [...manifestAnimations('shadow-striker'), 'momentum_flow'], ['fightcore-shadow-striker-atlas', 'fightcore-shadow-striker-momentum-flow-strip'], heroRenderProfile()),
   registerCharacter('puppetmaster', 'hero', [...manifestAnimations('puppetmaster'), 'thug_it_out'], ['fightcore-puppetmaster-atlas', 'fightcore-puppetmaster-thug-it-out-strip'], {
     ...heroRenderProfile(),
     scale: 0.98,
@@ -144,7 +144,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     id: 'desert-stage',
     kind: 'desert-prop',
     basePath: '/assets/fightcore/backgrounds/desert-arena',
-    animations: ['day', 'sand_tile', 'rock_small', 'rock_large', 'dead_bush', 'bone_pile', 'arena_boundary_marker', 'dust_overlay'],
+    animations: ['morning', 'daytime', 'evening', 'night', 'wind_lines', 'sand_tile', 'rock_small', 'rock_large', 'bone_pile', 'arena_boundary_marker', 'dust_overlay'],
   },
 ];
 
@@ -167,7 +167,7 @@ export const spriteSourceSheets: SpriteSourceSheet[] = [
     width: 640,
     height: 128,
     linkedSpriteIds: ['shadow-striker'],
-    animationHints: ['momentum_flow', 'movement_flow'],
+    animationHints: ['momentum_flow'],
     notes: 'Generated Momentum Flow source strip. Cleaned transparent frame PNGs are used by gameplay.',
   },
   {

@@ -4,7 +4,7 @@ body {
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background: #17120c;
+  background: #0d1117;
   color: #f7ead1;
   font-family:
     ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
@@ -35,8 +35,9 @@ body {
 
 .menu-root {
   background:
-    radial-gradient(circle at 50% 35%, rgba(255, 199, 101, 0.16), transparent 38%),
-    rgba(16, 10, 7, 0.88);
+    linear-gradient(135deg, rgba(35, 213, 221, 0.14), transparent 28%),
+    radial-gradient(circle at 50% 35%, rgba(255, 199, 101, 0.14), transparent 38%),
+    rgba(9, 13, 18, 0.9);
 }
 
 .menu-root.hidden,
@@ -50,7 +51,7 @@ body {
   padding: 24px;
   border: 3px solid #f0c36a;
   border-radius: 8px;
-  background: #24180f;
+  background: #121922;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
 
@@ -71,7 +72,7 @@ body {
 .menu-panel h1,
 .menu-panel h2 {
   margin: 0 0 10px;
-  color: #ffe7a3;
+  color: #f8e7b0;
 }
 
 .menu-panel h1 {
@@ -85,7 +86,7 @@ body {
 
 .menu-copy {
   margin: 0 0 16px;
-  color: #d7b985;
+  color: #c8d4d6;
   line-height: 1.45;
 }
 
@@ -130,7 +131,9 @@ body {
   place-items: center;
   border: 2px solid #7b5228;
   border-radius: 8px;
-  background: #322012;
+  background:
+    linear-gradient(180deg, rgba(35, 213, 221, 0.1), transparent),
+    #17120c;
 }
 
 .character-preview img {
@@ -145,7 +148,7 @@ body {
 .character-preview span {
   position: absolute;
   bottom: 12px;
-  color: #dfc18d;
+  color: #aeeef2;
   font-size: 12px;
 }
 
@@ -156,12 +159,6 @@ body {
   height: 18px;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.25);
-}
-
-.controls-preview {
-  grid-column: 1 / -1;
-  color: #dfc18d;
-  font-size: 13px;
 }
 
 .sheet-preview-list {
@@ -250,7 +247,7 @@ body {
 }
 
 .sprite-lab-controls {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .sprite-lab-toggles {

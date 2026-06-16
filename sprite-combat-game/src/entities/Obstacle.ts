@@ -1,4 +1,4 @@
-export type ObstacleKind = 'rock' | 'dead_bush';
+export type ObstacleKind = 'rock';
 
 export class Obstacle {
   constructor(
