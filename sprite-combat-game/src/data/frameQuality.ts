@@ -1,5 +1,6 @@
 import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetadata';
 import { hasCleanedSpriteAnimation } from './cleanedSpriteFrames';
+import { getAlphaHoleSpriteFrame } from './alphaHoleSpriteFrames';
 
 export type FrameRole = 'body' | 'effect' | 'invalid';
 
@@ -9,6 +10,11 @@ export interface FrameQuality {
   multiPoseCrop: boolean;
   componentCount?: number;
   silhouetteCount?: number;
+  invalidHollowFrame: boolean;
+  alphaHoleFrame: boolean;
+  alphaHoleCount: number;
+  repairedAlphaHoles: number;
+  usingRepairedAlpha: boolean;
   widthOutlier: boolean;
   reason?: string;
 }
@@ -23,6 +29,7 @@ const knownMultiPoseFrames = new Map<string, string>([
 const bodylessEffectFrames = new Set<string>();
 
 export function getFrameQuality(entityId: string, animationKey: string, frameIndex: number): FrameQuality {
+  const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, frameIndex);
   if (hasCleanedSpriteAnimation(entityId, animationKey)) {
     return {
       role: 'body',
@@ -30,8 +37,13 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       multiPoseCrop: false,
       componentCount: 1,
       silhouetteCount: 1,
+      invalidHollowFrame: Boolean(alphaHole?.invalidHollowFrame),
+      alphaHoleFrame: Boolean(alphaHole?.alphaHoleFrame),
+      alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
+      repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
+      usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier: false,
-      reason: 'Cleaned single-pose PNG frame is available and preferred over the raw crop.',
+      reason: alphaHole?.reason ?? 'Cleaned single-pose PNG frame is available and preferred over the raw crop.',
     };
   }
 
@@ -45,8 +57,30 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       multiPoseCrop: true,
       componentCount: 2,
       silhouetteCount: 2,
+      invalidHollowFrame: false,
+      alphaHoleFrame: Boolean(alphaHole?.alphaHoleFrame),
+      alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
+      repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
+      usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier,
       reason: knownReason,
+    };
+  }
+
+  if (alphaHole?.invalidHollowFrame) {
+    return {
+      role: 'invalid',
+      invalidMultiPoseFrame: false,
+      multiPoseCrop: false,
+      componentCount: 1,
+      silhouetteCount: 1,
+      invalidHollowFrame: true,
+      alphaHoleFrame: true,
+      alphaHoleCount: alphaHole.alphaHoleCount,
+      repairedAlphaHoles: alphaHole.repairedAlphaHoles,
+      usingRepairedAlpha: false,
+      widthOutlier,
+      reason: alphaHole.reason,
     };
   }
 
@@ -57,6 +91,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       multiPoseCrop: false,
       componentCount: 1,
       silhouetteCount: 0,
+      invalidHollowFrame: false,
+      alphaHoleFrame: Boolean(alphaHole?.alphaHoleFrame),
+      alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
+      repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
+      usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier,
       reason: 'Registered effect-only frame.',
     };
@@ -69,6 +108,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       multiPoseCrop: true,
       componentCount: 2,
       silhouetteCount: 2,
+      invalidHollowFrame: false,
+      alphaHoleFrame: Boolean(alphaHole?.alphaHoleFrame),
+      alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
+      repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
+      usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier,
       reason: 'Frame width is a large outlier for this body animation and is treated as a likely multi-pose crop.',
     };
@@ -80,17 +124,25 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
     multiPoseCrop: false,
     componentCount: 1,
     silhouetteCount: 1,
+    invalidHollowFrame: false,
+    alphaHoleFrame: Boolean(alphaHole?.alphaHoleFrame),
+    alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
+    repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
+    usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
     widthOutlier,
+    reason: alphaHole?.reason,
   };
 }
 
 export function hasInvalidBodyFrames(entityId: string, animationKey: string): boolean {
-  if (hasCleanedSpriteAnimation(entityId, animationKey)) return false;
   const metadata = fightcoreGeneratedFrameMetadata.find((entry) => entry.entityId === entityId && entry.animationKey === animationKey);
-  const frameCount = metadata?.frames.length ?? 1;
+  const cleanedFrameCount = hasCleanedSpriteAnimation(entityId, animationKey)
+    ? Math.max(...Array.from({ length: 16 }, (_, index) => (getAlphaHoleSpriteFrame(entityId, animationKey, index) ? index + 1 : 0)), 1)
+    : 1;
+  const frameCount = metadata?.frames.length ?? cleanedFrameCount;
   for (let index = 0; index < frameCount; index += 1) {
     const quality = getFrameQuality(entityId, animationKey, index);
-    if (quality.role === 'invalid' || quality.invalidMultiPoseFrame || quality.multiPoseCrop) return true;
+    if (quality.role === 'invalid' || quality.invalidMultiPoseFrame || quality.multiPoseCrop || quality.invalidHollowFrame) return true;
   }
   return false;
 }

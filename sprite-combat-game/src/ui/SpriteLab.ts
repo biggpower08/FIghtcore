@@ -211,6 +211,11 @@ export class SpriteLab {
         imageLoad: imageStatus,
         rawCropAvailable: frame?.rawCropAvailable,
         cleanedFrameAvailable: Boolean(frame?.cleanedFrameAvailable),
+        repairedFrameAvailable: Boolean(frame?.repairedFrameAvailable),
+        usingRepairedAlpha: Boolean(frame?.usingRepairedAlpha),
+        invalidHollowFrame: Boolean(frameQuality?.invalidHollowFrame),
+        alphaHoleCount: frameQuality?.alphaHoleCount ?? 0,
+        repairedAlphaHoles: frameQuality?.repairedAlphaHoles ?? 0,
         frameDimensions: {
           width: frame?.width ?? frame?.image?.width,
           height: frame?.height ?? frame?.image?.height,
@@ -232,6 +237,8 @@ export class SpriteLab {
           frame && this.isInvalidFrame(frame, framePosition)
             ? frameQuality?.invalidMultiPoseFrame || frameQuality?.multiPoseCrop
               ? 'This body frame contains multiple poses and is blocked from gameplay-ready rendering.'
+              : frameQuality?.invalidHollowFrame
+                ? 'This body frame has a large enclosed transparent body gap and is blocked from gameplay-ready rendering.'
               : 'This frame looks like a source strip/contact sheet and is blocked from normal gameplay rendering.'
             : undefined,
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
@@ -259,7 +266,11 @@ export class SpriteLab {
         ctx,
         centerX,
         floorY,
-        frameQuality?.invalidMultiPoseFrame || frameQuality?.multiPoseCrop ? 'BAD MULTI-POSE CROP' : 'BAD FRAME CROP',
+        frameQuality?.invalidMultiPoseFrame || frameQuality?.multiPoseCrop
+          ? 'BAD MULTI-POSE CROP'
+          : frameQuality?.invalidHollowFrame
+            ? 'BAD HOLLOW FRAME'
+            : 'BAD FRAME CROP',
       );
       return;
     }
@@ -434,6 +445,10 @@ export class SpriteLab {
       'does frame look like full strip?': this.isInvalidFrame(frame, framePosition),
       'invalidMultiPoseFrame': Boolean(frameQuality?.invalidMultiPoseFrame),
       'multiPoseCrop': Boolean(frameQuality?.multiPoseCrop),
+      'invalidHollowFrame': Boolean(frameQuality?.invalidHollowFrame),
+      'alphaHoleCount': frameQuality?.alphaHoleCount ?? 0,
+      'repairedAlphaHoles': frameQuality?.repairedAlphaHoles ?? 0,
+      'using repaired alpha': Boolean(frame.usingRepairedAlpha || frameQuality?.usingRepairedAlpha),
       'component count': frameQuality?.componentCount,
       'silhouette count': frameQuality?.silhouetteCount,
       'width outlier': Boolean(frameQuality?.widthOutlier),
@@ -475,7 +490,7 @@ export class SpriteLab {
   private isInvalidFrame(frame: ResolvedSpriteFrame, framePosition = 0): boolean {
     if (this.animation) {
       const frameQuality = getFrameQuality(this.animation.entityId, this.animation.animationKey, framePosition);
-      if (frameQuality.invalidMultiPoseFrame || frameQuality.multiPoseCrop || frameQuality.role === 'invalid') return true;
+      if (frameQuality.invalidMultiPoseFrame || frameQuality.multiPoseCrop || frameQuality.invalidHollowFrame || frameQuality.role === 'invalid') return true;
     }
     const width = frame.width ?? frame.image?.width ?? 0;
     const height = frame.height ?? frame.image?.height ?? 0;

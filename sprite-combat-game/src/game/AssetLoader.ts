@@ -1,6 +1,7 @@
 import { getSpriteAnimation, type SpriteAnimationDefinition, type SpriteFrameRef, type SpriteFrameSource } from '../data/spriteAnimations';
 import { getSpriteAtlasAnimation, type SpriteAtlasAnimation } from '../data/spriteAtlases';
 import { getCleanedSpriteAnimation } from '../data/cleanedSpriteFrames';
+import { getAlphaHoleSpriteFrame } from '../data/alphaHoleSpriteFrames';
 import { spriteRegistryById, spriteSourceSheetById } from '../data/spriteRegistry';
 import { publicAssetUrl } from './publicAssetUrl';
 
@@ -24,6 +25,11 @@ export interface ResolvedSpriteFrame {
   feetY?: number;
   rawCropAvailable?: boolean;
   cleanedFrameAvailable?: boolean;
+  repairedFrameAvailable?: boolean;
+  usingRepairedAlpha?: boolean;
+  invalidHollowFrame?: boolean;
+  alphaHoleCount?: number;
+  repairedAlphaHoles?: number;
   notes?: string;
 }
 
@@ -125,7 +131,8 @@ export class AssetLoader {
 
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
-      const path = `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
+      const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frame - 1);
+      const path = alphaHole?.repairedFramePath ?? `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
       if (isKnownBrokenFrame(path)) {
         this.warnBrokenFrame(path, 'Known hollow or low-coverage frame is blocked from normal gameplay.');
         continue;
@@ -312,6 +319,19 @@ export class AssetLoader {
       cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
       notes: cleaned?.frames[index]?.splitFromDirtyCrop ? 'Cleaned frame split from a multi-pose raw crop.' : undefined,
     }));
+    for (const [index, frame] of frames.entries()) {
+      const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
+      if (!alphaHole) continue;
+      frame.framePath = alphaHole.repairedFramePath ?? frame.framePath;
+      frame.repairedFrameAvailable = Boolean(alphaHole.repairedFramePath);
+      frame.usingRepairedAlpha = Boolean(alphaHole.repairedFramePath);
+      frame.invalidHollowFrame = alphaHole.invalidHollowFrame;
+      frame.alphaHoleCount = alphaHole.alphaHoleCount;
+      frame.repairedAlphaHoles = alphaHole.repairedAlphaHoles;
+      frame.notes = alphaHole.repairedFramePath
+        ? appendNote(frame.notes, 'Using repaired alpha-hole PNG frame.')
+        : appendNote(frame.notes, alphaHole.reason);
+    }
 
     return {
       entityId,
@@ -516,6 +536,10 @@ function isKnownBrokenFrame(path: string): boolean {
   return knownBrokenFrames.has(path);
 }
 
+function appendNote(current: string | undefined, note: string): string {
+  return current ? `${current} ${note}` : note;
+}
+
 function minimumFrameCount(animationKey: string): number {
   if (['idle', 'ready', 'walk', 'run', 'dash'].includes(animationKey)) return 4;
   return 1;
@@ -585,6 +609,9 @@ function isSpriteFrameHealthy(image: HTMLImageElement): boolean {
   const body = estimateCentralBodyOpacity(pixels, width, minX, minY, maxX, maxY);
   if (body.sampledPixels >= 64 && body.opaqueRatio < 0.14) return false;
 
+  const alphaHoles = detectInternalAlphaHoles(pixels, width, height);
+  if (alphaHoles.largestHolePixels > 220 || alphaHoles.totalHolePixels > 360) return false;
+
   return true;
 }
 
@@ -616,4 +643,70 @@ function estimateCentralBodyOpacity(
   }
 
   return { sampledPixels, opaqueRatio: opaquePixels / Math.max(1, sampledPixels) };
+}
+
+function detectInternalAlphaHoles(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+): { alphaHoleCount: number; totalHolePixels: number; largestHolePixels: number } {
+  const outside = new Uint8Array(width * height);
+  const visited = new Uint8Array(width * height);
+  const queue: number[] = [];
+  for (let x = 0; x < width; x += 1) {
+    queue.push(x, (height - 1) * width + x);
+  }
+  for (let y = 1; y < height - 1; y += 1) {
+    queue.push(y * width, y * width + width - 1);
+  }
+
+  while (queue.length > 0) {
+    const pixel = queue.pop();
+    if (pixel === undefined || outside[pixel] || pixels[pixel * 4 + 3] > 8) continue;
+    outside[pixel] = 1;
+    const x = pixel % width;
+    const y = Math.floor(pixel / width);
+    if (x > 0) queue.push(pixel - 1);
+    if (x < width - 1) queue.push(pixel + 1);
+    if (y > 0) queue.push(pixel - width);
+    if (y < height - 1) queue.push(pixel + width);
+  }
+
+  let alphaHoleCount = 0;
+  let totalHolePixels = 0;
+  let largestHolePixels = 0;
+  for (let pixel = 0; pixel < width * height; pixel += 1) {
+    if (visited[pixel] || outside[pixel] || pixels[pixel * 4 + 3] > 8) continue;
+    const area = floodInternalTransparentArea(pixels, width, height, pixel, visited, outside);
+    if (area < 2) continue;
+    alphaHoleCount += 1;
+    totalHolePixels += area;
+    largestHolePixels = Math.max(largestHolePixels, area);
+  }
+  return { alphaHoleCount, totalHolePixels, largestHolePixels };
+}
+
+function floodInternalTransparentArea(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  startPixel: number,
+  visited: Uint8Array,
+  outside: Uint8Array,
+): number {
+  const queue = [startPixel];
+  let area = 0;
+  while (queue.length > 0) {
+    const pixel = queue.pop();
+    if (pixel === undefined || visited[pixel] || outside[pixel] || pixels[pixel * 4 + 3] > 8) continue;
+    visited[pixel] = 1;
+    area += 1;
+    const x = pixel % width;
+    const y = Math.floor(pixel / width);
+    if (x > 0) queue.push(pixel - 1);
+    if (x < width - 1) queue.push(pixel + 1);
+    if (y > 0) queue.push(pixel - width);
+    if (y < height - 1) queue.push(pixel + width);
+  }
+  return area;
 }

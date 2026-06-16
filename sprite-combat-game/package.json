@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "assets:prepare": "python scripts/prepare-fightcore-assets.py",
     "sprite:clean": "node scripts/clean-sprite-frames.mjs",
+    "sprite:alpha-repair": "node scripts/repair-alpha-holes.mjs",
     "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",
     "sprite-factory:generate": "python tools/sprite-factory/scripts/generate-sprites.py",
     "sprite-factory:qa": "python tools/sprite-factory/scripts/qa-sprites.py",

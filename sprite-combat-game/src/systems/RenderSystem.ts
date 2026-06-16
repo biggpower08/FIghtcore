@@ -571,11 +571,11 @@ function shouldDrawGrappleSuppressionDebug(): boolean {
 function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   if (frame.entityId && frame.animationKey && frame.frameIndex !== undefined) {
     const quality = getFrameQuality(frame.entityId, frame.animationKey, frame.frameIndex);
-    if (quality.invalidMultiPoseFrame || quality.multiPoseCrop || quality.role === 'invalid') {
+    if (quality.invalidMultiPoseFrame || quality.multiPoseCrop || quality.invalidHollowFrame || quality.role === 'invalid') {
       const key = `${frame.entityId}:${frame.animationKey}:${frame.frameIndex}`;
       if (!blockedFrameWarnings.has(key)) {
         blockedFrameWarnings.add(key);
-        console.warn('Blocked invalid multi-pose body frame from runtime rendering', {
+        console.warn('Blocked invalid body frame from runtime rendering', {
           entityId: frame.entityId,
           animationKey: frame.animationKey,
           frameIndex: frame.frameIndex,
