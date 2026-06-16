@@ -56,15 +56,6 @@ export const artAssetManifest: ArtAssetManifestEntry[] = [
     notes: 'Generated source sheet exists and sliced frame PNGs are used in normal gameplay. Character remains selectable.',
   },
   {
-    id: 'cyber-monkey-grunt-sheet',
-    displayName: 'Cyber Monkey Grunt Sheet',
-    type: 'enemy-sheet',
-    status: 'partial',
-    sourcePath: 'public/sprites/source-generated/cyber-monkey-grunt-sheet.png',
-    runtimePath: '/sprites/frames/cyber-monkey-grunt/',
-    notes: 'Generated monkey art is sliced into runtime animation folders. Procedural fallback remains only if files are missing.',
-  },
-  {
     id: 'desert-arena-main',
     displayName: 'Desert Arena Main Background',
     type: 'environment-layer',

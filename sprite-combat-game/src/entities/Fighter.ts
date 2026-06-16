@@ -31,6 +31,18 @@ export class Fighter extends Entity {
   }
 
   canUseMove(move: MoveDefinition): boolean {
-    return this.stamina >= move.staminaCost && (this.moveCooldowns.get(move.id) ?? 0) <= 0 && this.attackLockMs <= 0;
+    return this.stamina >= this.getStaminaCost(move) && (this.moveCooldowns.get(move.id) ?? 0) <= 0 && this.attackLockMs <= 0;
+  }
+
+  getStaminaCost(move: MoveDefinition): number {
+    return move.staminaCost;
+  }
+
+  getCooldownMs(move: MoveDefinition): number {
+    return move.cooldownMs;
+  }
+
+  getDamageMultiplier(): number {
+    return 1;
   }
 }

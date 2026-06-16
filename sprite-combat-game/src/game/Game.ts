@@ -145,7 +145,11 @@ export class Game {
     this.updateEnemies(deltaMs);
     this.updateTimers(deltaMs);
 
+    const missedPlayerAttack = this.hitboxes.some(
+      (hitbox) => hitbox.owner === this.player && hitbox.remainingMs > 0 && hitbox.remainingMs - deltaMs <= 0 && hitbox.hitIds.size === 0,
+    );
     this.hitboxes = this.combat.updateHitboxes(this.hitboxes, deltaMs);
+    if (missedPlayerAttack) this.player.resetMomentum('Flow missed');
     for (const hitbox of this.hitboxes) {
       const targets = hitbox.owner === this.player ? this.livingEnemies() : [this.player];
       for (const impact of this.combat.applyHitbox(hitbox, targets)) {
@@ -169,13 +173,14 @@ export class Game {
     const axis = this.input.getMovementAxis();
     const speedBoost = this.player.dashMs > 0 ? 2.7 : 1;
     const canMove = this.player.stunMs <= 0;
-    const speed = (this.player.speed || PLAYER_BASE_SPEED) * speedBoost;
+    const speed = (this.player.speed || PLAYER_BASE_SPEED) * speedBoost * this.player.getSpeedMultiplier();
 
     this.player.vx = canMove ? axis.x * speed : this.player.vx * 0.92;
     this.player.vy = canMove ? axis.y * speed : this.player.vy * 0.92;
     if (canMove && axis.x !== 0) this.player.facing = axis.x < 0 ? -1 : 1;
 
     if (this.input.wasPressed(' ') && this.player.dashCooldownMs <= 0 && this.player.stamina >= DASH_STAMINA_COST) {
+      this.player.interruptMeditation('Meditation canceled');
       this.player.stamina -= DASH_STAMINA_COST;
       this.player.dashMs = DASH_DURATION_MS;
       this.player.dashCooldownMs = DASH_COOLDOWN_MS;
@@ -183,6 +188,10 @@ export class Game {
       this.dust.push({ x: this.player.x, y: this.player.y + 14, lifeMs: 300 });
     }
 
+    if ((axis.x !== 0 || axis.y !== 0) && this.player.meditationMs > 0) {
+      this.player.interruptMeditation('Meditation canceled');
+    }
+    this.handleAbilityInput();
     this.handleAttackInput();
     this.movement.update(this.player, deltaSeconds);
     this.collision.resolveObstacleCollision(this.player, this.obstacles);
@@ -250,6 +259,16 @@ export class Game {
   private updateTimers(deltaMs: number): void {
     this.combat.updateFighterTimers(this.player, deltaMs);
     this.player.stamina = Math.min(this.player.maxStamina, this.player.stamina + STAMINA_REGEN_PER_SECOND * (deltaMs / 1000));
+    const abilityRestore = this.player.updateAbilityTimers(deltaMs);
+    if (abilityRestore.healthRestored > 0 || abilityRestore.staminaRestored > 0) {
+      this.impacts.push({
+        x: this.player.x,
+        y: this.player.y - this.player.radius * 1.8,
+        lifeMs: 260,
+        color: '#63f7a6',
+        label: `+${Math.round(abilityRestore.healthRestored)} hp +${Math.round(abilityRestore.staminaRestored)} sta`,
+      });
+    }
     this.player.dashMs = Math.max(0, this.player.dashMs - deltaMs);
     this.player.dashCooldownMs = Math.max(0, this.player.dashCooldownMs - deltaMs);
 
@@ -265,6 +284,7 @@ export class Game {
     const selected = this.slotMovePressed();
 
     if (!selected) return;
+    this.player.interruptMeditation('Meditation canceled');
     if (shouldHideGrappleTargetSprite(this.player.character.id, selected.move.animationKey)) {
       this.tryPlayerGrapple(selected.move);
       return;
@@ -318,8 +338,8 @@ export class Game {
 
     const grappleMove: MoveDefinition = { ...move };
     const durationMs = Math.max(360, move.windupMs + move.activeMs + move.recoveryMs);
-    this.player.stamina -= Math.min(this.player.stamina, move.staminaCost);
-    this.player.moveCooldowns.set(move.id, Math.max(move.cooldownMs, 680));
+    this.player.stamina -= Math.min(this.player.stamina, this.player.getStaminaCost(move));
+    this.player.moveCooldowns.set(move.id, Math.max(this.player.getCooldownMs(move), 680));
     this.player.attackLockMs = durationMs;
     this.player.activeMove = grappleMove;
     this.player.activeMoveMs = Math.min(durationMs, 520);
@@ -332,7 +352,9 @@ export class Game {
       const controlX = this.player.x + this.player.facing * (this.player.radius + target.radius * 0.55);
       target.x = controlX;
       target.y = this.player.y + Math.sign(target.y - this.player.y) * 8;
-      target.takeDamage(Math.max(8, Math.round(move.damage)));
+      target.takeDamage(Math.max(8, Math.round(move.damage * this.player.getDamageMultiplier())));
+      if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
+      this.player.recordMomentumHit();
       target.stunMs = Math.max(target.stunMs, 620);
       target.vx = this.player.facing * 170 * target.knockbackResistance;
       target.vy = Math.sign(target.y - this.player.y || 1) * 28;
@@ -400,6 +422,33 @@ export class Game {
     }
   }
 
+  private handleAbilityInput(): void {
+    if (!this.input.wasPressed('u')) return;
+    if (!this.player.ability) return;
+    if (!this.player.activateAbility()) {
+      this.impacts.push({
+        x: this.player.x,
+        y: this.player.y - this.player.radius * 1.8,
+        lifeMs: 360,
+        color: '#ffef78',
+        label: 'U cooldown',
+      });
+      return;
+    }
+    const animationKey = this.player.ability.id === 'meditation' ? 'meditation' : 'idle';
+    this.animation.play(this.player, animationKey, {
+      lockForMs: this.player.ability.id === 'meditation' ? this.player.ability.durationMs : 240,
+      fallback: 'idle',
+    });
+    this.impacts.push({
+      x: this.player.x,
+      y: this.player.y - this.player.radius * 1.8,
+      lifeMs: 560,
+      color: '#23d5dd',
+      label: this.player.ability.name,
+    });
+  }
+
   private shouldTelegraphEnemyAttack(enemy: Enemy): boolean {
     return enemy.definition.id === CYBER_MONKEY_GRAPPLER_ID && enemy.attackLockMs <= 0;
   }
@@ -426,11 +475,20 @@ export class Game {
       return;
     }
 
-    this.rewardScreen.show(options, this.player, (move, slotIndex) => {
-      this.progression.replaceMove(this.player, move, slotIndex);
-      this.loot.restoreAfterWave(this.player);
-      this.spawnWave();
-    });
+    this.rewardScreen.show(
+      options,
+      this.player,
+      (move, slotIndex) => {
+        this.progression.replaceMove(this.player, move, slotIndex);
+        this.loot.restoreAfterWave(this.player);
+        this.spawnWave();
+      },
+      (option) => {
+        if (option.kind === 'upgrade') this.progression.applyUpgrade(this.player, option.upgrade);
+        this.loot.restoreAfterWave(this.player);
+        this.spawnWave();
+      },
+    );
   }
 
   private spawnWave(): void {
@@ -630,7 +688,7 @@ export class Game {
 
   private applySecondaryGrappleEffects(move: MoveDefinition, targets: Array<Enemy | Boss>): void {
     for (const target of targets) {
-      const damage = Math.max(4, Math.round(move.damage * TEST_BALANCE.grappleSecondaryDamageMultiplier));
+      const damage = Math.max(4, Math.round(move.damage * this.player.getDamageMultiplier() * TEST_BALANCE.grappleSecondaryDamageMultiplier));
       const stun = Math.round(move.stunMs * TEST_BALANCE.grappleSecondaryControlMultiplier);
       const knockback = move.knockback * TEST_BALANCE.grappleSecondaryControlMultiplier * target.knockbackResistance;
       const direction = Math.sign(target.x - this.player.x) || this.player.facing;
@@ -683,6 +741,10 @@ export class Game {
     });
     this.hitPauseMs = Math.max(this.hitPauseMs, impact.heavy ? 70 : 42);
     if (impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, 180);
+    if (impact.attacker === this.player) {
+      if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
+      this.player.recordMomentumHit();
+    }
     this.playDamageAnimation(impact);
   }
 

@@ -91,7 +91,9 @@ export class RenderSystem {
     actors.sort((a, b) => a.y - b.y);
     for (const actor of actors) this.drawFighter(ctx, actor, actor === player ? '#38a3ff' : actor === boss ? '#ad56ff' : '#c54c36');
 
-    for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
+    if (shouldDrawSpriteDebug()) {
+      for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
+    }
     for (const impact of impacts) this.drawImpactSpark(ctx, impact);
     if (shouldDrawGrappleSuppressionDebug()) this.drawGrappleSuppressionDebug(ctx, grappleSuppressions, grappleDebug);
     ctx.restore();

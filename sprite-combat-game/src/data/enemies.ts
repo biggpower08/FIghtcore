@@ -19,15 +19,6 @@ export const enemyDefinitions: EnemyDefinition[] = [
     attackAnimation: 'cross',
   },
   {
-    id: 'cyber-monkey-grunt',
-    name: 'Cyber Monkey Grunt',
-    maxHealth: 44,
-    speed: 155,
-    attackRange: 46,
-    moveId: 'palm_strike',
-    attackAnimation: 'claw_swipe',
-  },
-  {
     id: 'striker-monkey',
     name: 'Cyber Monkey Scrapper',
     maxHealth: 78,

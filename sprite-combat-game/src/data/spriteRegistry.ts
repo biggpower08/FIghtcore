@@ -122,16 +122,6 @@ export const spriteRegistry: SpriteRegistration[] = [
     'knockdown',
     'recovery',
   ], ['neo-operative-green-sheet', 'hero-sparring-reference-sheet', 'martial-arts-move-matrix-sheet', 'grappling-sequences-reference-sheet'], heroRenderProfile()),
-  registerCharacter('cyber-monkey-grunt', 'villain', [
-    'idle',
-    'run',
-    'leap',
-    'claw_swipe',
-    'palm_strike',
-    'hit_react',
-    'knockdown',
-    'death',
-  ], ['cyber-monkey-grunt-sheet'], { anchorX: 0.5, anchorY: 0.88, feetY: 84, scale: 0.92, shadowOffsetY: 8, hitboxOffsetY: -8 }),
   {
     id: 'beginning-effects',
     kind: 'effect',
@@ -201,16 +191,6 @@ export const spriteSourceSheets: SpriteSourceSheet[] = [
     linkedSpriteIds: ['neo-operative-green'],
     animationHints: ['idle', 'ready', 'walk', 'dash', 'crouch', 'level_change', 'double_leg_takedown', 'ground_control', 'hit_react', 'recovery'],
     notes: 'Generated Neo Operative source sheet. Sliced frame folders are the live gameplay source.',
-  },
-  {
-    id: 'cyber-monkey-grunt-sheet',
-    path: '/sprites/source-generated/cyber-monkey-grunt-sheet.png',
-    width: 1448,
-    height: 1086,
-    frameSize: { width: 64, height: 64 },
-    linkedSpriteIds: ['cyber-monkey-grunt'],
-    animationHints: ['idle', 'run', 'leap', 'claw_swipe', 'palm_strike', 'hit_react', 'knockdown', 'death'],
-    notes: 'Generated Cyber Monkey Grunt source sheet. Sliced frame folders are used for normal enemy gameplay.',
   },
   {
     id: 'hero-sparring-reference-sheet',

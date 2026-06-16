@@ -114,7 +114,6 @@ export const spriteAnimations: SpriteAnimationDefinition[] = [
     knockdown: [crop(neoSheet, 100, 825, 140, 150, 160)],
     recovery: row(neoSheet, 990, 825, 140, 150, 3, 160, 130),
   }),
-  ...fallbackOnly('cyber-monkey-grunt', ['idle', 'run', 'leap', 'claw_swipe', 'palm_strike', 'hit_react', 'knockdown', 'death']),
 ];
 
 export const spriteAnimationByKey = new Map(spriteAnimations.map((animation) => [animationKey(animation.entityId, animation.animationKey), animation]));
@@ -163,17 +162,6 @@ function characterSheetAnimations(
     fallbackAnimation: animationKey === 'idle' ? undefined : 'idle',
     frames,
     notes: `Approximate source-sheet crops from ${sheetId}. Tune rectangles after exact slicing.`,
-  }));
-}
-
-function fallbackOnly(entityId: string, animationKeys: string[]): SpriteAnimationDefinition[] {
-  return animationKeys.map((animationKey) => ({
-    entityId,
-    animationKey,
-    loop: ['idle', 'run'].includes(animationKey),
-    fallbackAnimation: animationKey === 'idle' ? undefined : 'idle',
-    frames: [{ durationMs: 120, notes: 'Pre-sliced frame folders are preferred; procedural drawing remains as a safety fallback.' }],
-    notes: 'Cyber Monkey runtime animation key with frame-folder priority and procedural fallback.',
   }));
 }
 

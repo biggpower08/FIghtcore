@@ -12,7 +12,6 @@ const labEntityIds = [
   'puppetmaster',
   'combat-monk',
   'monkey-grunt',
-  'cyber-monkey-grunt',
   'striker-monkey',
   'cyber-monkey-grappler',
 ];

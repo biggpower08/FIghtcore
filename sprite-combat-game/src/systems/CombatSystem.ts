@@ -31,8 +31,8 @@ export class CombatSystem {
   startAttack(attacker: Fighter, move: MoveDefinition): AttackHitbox | null {
     if (!attacker.canUseMove(move)) return null;
 
-    attacker.stamina -= move.staminaCost;
-    attacker.moveCooldowns.set(move.id, move.cooldownMs);
+    attacker.stamina -= attacker.getStaminaCost(move);
+    attacker.moveCooldowns.set(move.id, attacker.getCooldownMs(move));
     attacker.attackLockMs = move.windupMs + move.activeMs + move.recoveryMs;
     attacker.activeMove = move;
     attacker.activeMoveMs = move.windupMs + move.activeMs;
@@ -69,7 +69,7 @@ export class CombatSystem {
       if (!target.alive || target.id === hitbox.owner.id || hitbox.hitIds.has(target.id)) continue;
       if (!this.intersects(hitbox, target)) continue;
 
-      const damageMultiplier = hitbox.owner instanceof Player ? 1 : TEST_BALANCE.enemyDamageMultiplier;
+      const damageMultiplier = hitbox.owner instanceof Player ? hitbox.owner.getDamageMultiplier() : TEST_BALANCE.enemyDamageMultiplier;
       const damage = hitbox.move.damage * damageMultiplier;
       target.takeDamage(damage);
       target.stunMs = Math.max(target.stunMs, hitbox.move.stunMs);

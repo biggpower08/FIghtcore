@@ -35,6 +35,11 @@ const loadouts: CharacterLoadout[] = [
       slot('L', 'high_kick'),
     ],
     stats: { maxHealth: 124, speed: 304, stamina: 104, damageMultiplier: 1 },
+    ability: {
+      id: 'critical_overload',
+      name: 'Critical Overload',
+      description: 'Arm the next attack for heavy burst damage, then briefly lock attacks.',
+    },
   },
   {
     characterId: 'shadow-striker',

@@ -1,10 +1,16 @@
 import type { MoveDefinition } from '../data/moves';
 import type { Player } from '../entities/Player';
+import type { RewardOption } from '../systems/ProgressionSystem';
 
 export class RewardScreen {
   constructor(private readonly root: HTMLDivElement) {}
 
-  show(options: MoveDefinition[], player: Player, onChoose: (move: MoveDefinition, slotIndex: number) => void): void {
+  show(
+    options: RewardOption[],
+    player: Player,
+    onChooseMove: (move: MoveDefinition, slotIndex: number) => void,
+    onChooseUpgrade: (option: RewardOption) => void,
+  ): void {
     this.root.classList.remove('hidden');
     this.root.innerHTML = '';
 
@@ -23,15 +29,29 @@ export class RewardScreen {
       const button = document.createElement('button');
       button.className = 'reward-card';
       button.type = 'button';
-      button.innerHTML = `
-        <strong>${move.name}</strong>
-        <span>${move.style} / ${move.rarity}</span>
-        <span>${move.damage} damage, ${move.staminaCost} stamina</span>
-        <span>${move.cooldownMs}ms cooldown</span>
-        <span>Compatible with ${player.character.name}</span>
-      `;
+      if (move.kind === 'upgrade') {
+        button.innerHTML = `
+          <strong>${move.upgrade.name}</strong>
+          <span>Upgrade level ${move.upgrade.currentLevel(player) + 1}/${move.upgrade.maxLevel}</span>
+          <span>${move.upgrade.valueText(player)}</span>
+          <span>${move.upgrade.description}</span>
+        `;
+      } else {
+        button.innerHTML = `
+          <strong>${move.move.name}</strong>
+          <span>${move.move.style} / ${move.move.rarity}</span>
+          <span>${move.move.damage} damage, ${player.getStaminaCost(move.move)} stamina</span>
+          <span>${player.getCooldownMs(move.move)}ms cooldown</span>
+          <span>Compatible with ${player.character.name}</span>
+        `;
+      }
       button.addEventListener('click', () => {
-        this.showReplacementChoices(move, player, onChoose);
+        if (move.kind === 'upgrade') {
+          this.hide();
+          onChooseUpgrade(move);
+        } else {
+          this.showReplacementChoices(move.move, player, onChooseMove);
+        }
       });
       optionsRoot.append(button);
     }
@@ -47,7 +67,7 @@ export class RewardScreen {
     panel.className = 'reward-panel';
     panel.innerHTML = `
       <h2>Replace Which Move?</h2>
-      <p>${move.name} (${move.rarity}) - ${move.damage} damage, ${move.staminaCost} stamina, ${move.cooldownMs}ms cooldown.</p>
+      <p>${move.name} (${move.rarity}) - ${move.damage} damage, ${player.getStaminaCost(move)} stamina, ${player.getCooldownMs(move)}ms cooldown.</p>
       <div class="reward-options"></div>
     `;
 
@@ -62,7 +82,7 @@ export class RewardScreen {
         <strong>${slotKeys[index]}: ${currentMove.name}</strong>
         <span>Replace with ${move.name}</span>
         <span>${currentMove.damage} -> ${move.damage} damage</span>
-        <span>${currentMove.staminaCost} -> ${move.staminaCost} stamina</span>
+        <span>${player.getStaminaCost(currentMove)} -> ${player.getStaminaCost(move)} stamina</span>
       `;
       button.addEventListener('click', () => {
         this.hide();
