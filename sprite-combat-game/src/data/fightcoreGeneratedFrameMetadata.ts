@@ -1169,7 +1169,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "cross",
     "stripPath": "cross-strip.png",
     "frameHeight": 96,
-    "frameCount": 3,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 14,
     "loop": false,
@@ -1183,9 +1183,30 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
       },
       {
         "x": 58,
-        "w": 330,
+        "w": 80,
         "h": 96,
-        "anchorX": 165,
+        "anchorX": 40,
+        "anchorY": 88
+      },
+      {
+        "x": 138,
+        "w": 87,
+        "h": 96,
+        "anchorX": 44,
+        "anchorY": 88
+      },
+      {
+        "x": 225,
+        "w": 82,
+        "h": 96,
+        "anchorX": 41,
+        "anchorY": 88
+      },
+      {
+        "x": 307,
+        "w": 81,
+        "h": 96,
+        "anchorX": 40,
         "anchorY": 88
       },
       {
@@ -2647,7 +2668,7 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "o_goshi",
     "stripPath": "o-goshi-strip.png",
     "frameHeight": 96,
-    "frameCount": 4,
+    "frameCount": 6,
     "expectedFrameCount": null,
     "fps": 9,
     "loop": false,
@@ -2675,16 +2696,30 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
       },
       {
         "x": 220,
-        "w": 299,
+        "w": 110,
         "h": 96,
-        "anchorX": 150,
+        "anchorX": 55,
+        "anchorY": 88
+      },
+      {
+        "x": 330,
+        "w": 110,
+        "h": 96,
+        "anchorX": 55,
+        "anchorY": 88
+      },
+      {
+        "x": 440,
+        "w": 79,
+        "h": 96,
+        "anchorX": 40,
         "anchorY": 88
       }
     ],
     "embeddedTarget": true,
     "hideTargetSprite": true,
     "targetSuppressionStartFrame": 0,
-    "targetSuppressionEndFrame": 3
+    "targetSuppressionEndFrame": 5
   },
   {
     "entityId": "puppetmaster",
@@ -3043,16 +3078,30 @@ export const fightcoreGeneratedFrameMetadata: FightcoreGeneratedAnimationMetadat
     "animationKey": "spinning_sweep",
     "stripPath": "spinning-sweep-strip.png",
     "frameHeight": 96,
-    "frameCount": 2,
+    "frameCount": 4,
     "expectedFrameCount": null,
     "fps": 12,
     "loop": false,
     "frames": [
       {
         "x": 0,
-        "w": 478,
+        "w": 176,
         "h": 96,
-        "anchorX": 239,
+        "anchorX": 88,
+        "anchorY": 88
+      },
+      {
+        "x": 176,
+        "w": 160,
+        "h": 96,
+        "anchorX": 80,
+        "anchorY": 88
+      },
+      {
+        "x": 336,
+        "w": 142,
+        "h": 96,
+        "anchorX": 71,
         "anchorY": 88
       },
       {

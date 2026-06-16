@@ -287,9 +287,10 @@ export class RenderSystem {
     ctx.fill();
 
     if (resolvedAnimation && ['frame-png', 'atlas-crop', 'sheet-crop'].includes(resolvedAnimation.status)) {
-      this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation);
-      this.drawHealthBar(ctx, entity);
-      return;
+      if (this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation)) {
+        this.drawHealthBar(ctx, entity);
+        return;
+      }
     }
 
     if (assetId.startsWith('cyber-monkey')) {
@@ -322,13 +323,13 @@ export class RenderSystem {
     ctx.fillRect(entity.x - entity.radius, entity.y - entity.radius * 1.55, entity.radius * 2 * (entity.health / entity.maxHealth), 5);
   }
 
-  private drawResolvedSpriteFrame(ctx: CanvasRenderingContext2D, entity: Entity, animation: ResolvedSpriteAnimation): void {
+  private drawResolvedSpriteFrame(ctx: CanvasRenderingContext2D, entity: Entity, animation: ResolvedSpriteAnimation): boolean {
     const index = this.animation.getFrameIndex(
       entity,
       animation.frames.map((frame) => frame.durationMs),
     );
     const frame = animation.frames[index] ?? animation.frames[0];
-    if (!frame) return;
+    if (!frame || isInvalidResolvedFrame(frame)) return false;
 
     const sourceWidth = frame.width ?? frame.image?.width ?? 64;
     const sourceHeight = frame.height ?? frame.image?.height ?? 64;
@@ -350,6 +351,7 @@ export class RenderSystem {
     if (shouldDrawSpriteDebug()) {
       this.drawSpriteDebug(ctx, entity, animation, frame, index, dx, dy, width, height);
     }
+    return true;
   }
 
   private drawFlashOverlay(ctx: CanvasRenderingContext2D, entity: Entity, dx: number, dy: number, width: number, height: number): void {
@@ -546,4 +548,13 @@ function shouldDrawSpriteDebug(): boolean {
 
 function shouldDrawGrappleSuppressionDebug(): boolean {
   return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_GRAPPLE_SUPPRESSION_PARAM);
+}
+
+function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
+  const width = frame.width ?? frame.image?.width ?? 0;
+  const height = frame.height ?? frame.image?.height ?? 0;
+  if (width <= 0 || height <= 0) return true;
+  const sourceWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
+  const sourceStripDraw = Boolean(frame.sheetPath?.endsWith('-strip.png') && width >= sourceWidth && sourceWidth > 180);
+  return sourceStripDraw || width > 300 || (width > 220 && width / height > 2.65);
 }

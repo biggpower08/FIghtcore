@@ -218,6 +218,7 @@ export class SpriteLab {
         eligibility: getAnimationEligibility(this.animation.entityId, this.animation.animationKey),
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         invalidFrame: frame ? this.isInvalidFrame(frame) : 'missing-frame',
+        warning: frame && this.isInvalidFrame(frame) ? 'This frame looks like a source strip/contact sheet and is blocked from normal gameplay rendering.' : undefined,
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,
       },
@@ -368,6 +369,7 @@ export class SpriteLab {
   private describeFrameSource(frame?: ResolvedSpriteFrame): string {
     if (!frame) return 'missing frame';
     if (frame.framePath) return 'explicit PNG frame';
+    if (frame.sheetPath?.endsWith('-strip.png') && frame.x !== undefined) return 'prepared source-strip crop';
     if (frame.sheetPath && frame.x !== undefined) return 'sheet crop';
     if (frame.source === 'fallback') return 'procedural fallback';
     if (frame.source === 'missing') return 'missing asset fallback';
@@ -380,7 +382,7 @@ export class SpriteLab {
     if (width <= 0 || height <= 0) return true;
     const imageWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
     const looksLikeFullStrip = Boolean(frame.sheetPath?.includes('/assets/fightcore/sprites/') && frame.sheetPath.endsWith('-strip.png') && width >= imageWidth && imageWidth > 180);
-    return looksLikeFullStrip || width > 260;
+    return looksLikeFullStrip || width > 300 || (width > 220 && width / height > 2.65);
   }
 
   private drawBackgroundPreview(): void {

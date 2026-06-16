@@ -500,6 +500,7 @@ function shouldHealthCheckImage(context: AssetLoadContext): boolean {
 
 function isSpriteFrameHealthy(image: HTMLImageElement): boolean {
   if (image.width < 48 || image.height < 48) return false;
+  if (looksLikeContactSheetFrame(image.width, image.height)) return false;
 
   const canvas = document.createElement('canvas');
   canvas.width = image.width;
@@ -552,6 +553,11 @@ function isSpriteFrameHealthy(image: HTMLImageElement): boolean {
   if (body.sampledPixels >= 64 && body.opaqueRatio < 0.14) return false;
 
   return true;
+}
+
+function looksLikeContactSheetFrame(width: number, height: number): boolean {
+  if (height <= 0) return true;
+  return width > 300 || (width > 220 && width / height > 2.65);
 }
 
 function estimateCentralBodyOpacity(
