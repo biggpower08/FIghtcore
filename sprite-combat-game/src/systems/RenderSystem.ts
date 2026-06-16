@@ -521,25 +521,10 @@ export class RenderSystem {
   }
 
   private drawImpactSpark(ctx: CanvasRenderingContext2D, spark: ImpactSpark): void {
-    const alpha = Math.max(0, Math.min(1, spark.lifeMs / 260));
-    ctx.save();
-    ctx.globalAlpha = alpha;
-    ctx.strokeStyle = spark.color;
-    ctx.fillStyle = spark.color;
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(spark.x, spark.y, 5 + (1 - alpha) * 12, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(spark.x - 12, spark.y + 8);
-    ctx.lineTo(spark.x + 12, spark.y - 8);
-    ctx.stroke();
-    if (spark.label) {
-      ctx.font = '15px monospace';
-      ctx.fillText(spark.label, spark.x + 14, spark.y - 20 - (1 - alpha) * 18);
-    }
-    ctx.restore();
-  }
+  void ctx;
+  void spark;
+  // Hit effects intentionally disabled in normal gameplay.
+}
 
   private drawGrappleSuppressionDebug(
     ctx: CanvasRenderingContext2D,
