@@ -25,6 +25,7 @@ export class Player extends Fighter {
   criticalOverloadArmedMs = 0;
   momentumStacks = 0;
   meditationMs = 0;
+  meditationStatusMs = 0;
   thugItOutSurvivalUsed = false;
   recentDamageMs = 0;
   moveUpgradeLevels = new Map<string, number>();
@@ -109,6 +110,7 @@ export class Player extends Fighter {
     if (this.ability?.id !== 'meditation' || this.meditationMs <= 0) return;
     this.meditationMs = 0;
     this.abilityActiveMs = 0;
+    this.meditationStatusMs = 900;
     this.abilityStatus = reason.includes(this.ability.name) ? reason : `${this.ability.name} interrupted`;
   }
 
@@ -116,6 +118,7 @@ export class Player extends Fighter {
     this.abilityCooldownMs = Math.max(0, this.abilityCooldownMs - deltaMs);
     this.criticalOverloadArmedMs = Math.max(0, this.criticalOverloadArmedMs - deltaMs);
     this.abilityActiveMs = Math.max(0, this.abilityActiveMs - deltaMs);
+    this.meditationStatusMs = Math.max(0, this.meditationStatusMs - deltaMs);
     let healthRestored = 0;
     let staminaRestored = 0;
 
@@ -127,6 +130,7 @@ export class Player extends Fighter {
       const before = this.stamina;
       this.stamina = Math.min(this.maxStamina, this.stamina + (34 + this.upgrades.abilityLevel * 5) * seconds);
       staminaRestored = this.stamina - before;
+      this.meditationStatusMs = 0;
       this.abilityStatus = `${this.ability.name} active`;
     }
 
@@ -138,6 +142,9 @@ export class Player extends Fighter {
     }
     if (this.criticalOverloadArmedMs <= 0 && this.ability?.id === 'critical_overload') {
       this.abilityStatus = this.abilityCooldownMs > 0 && this.ability ? `${this.ability.name} on cooldown` : '';
+    }
+    if (this.ability?.id === 'meditation' && this.meditationMs <= 0 && this.meditationStatusMs <= 0) {
+      this.abilityStatus = '';
     }
     return { healthRestored, staminaRestored };
   }

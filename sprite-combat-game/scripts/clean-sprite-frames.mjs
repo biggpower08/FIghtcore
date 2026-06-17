@@ -29,7 +29,7 @@ const targetedFightcoreRepairs = [
     segment(177, 84, 85, 96, 0.5, 0.9167, 77, 2, true),
     segment(261, 57, 64, 96, 0.4844, 0.9167, 77, 3, false),
     segment(318, 54, 64, 96, 0.5, 0.9167, 77, 4, false),
-  ]),
+  ], { fillAlphaGaps: true, fillDarkGaps: true }),
   repair('shadow-striker', 'roundhouse_kick', 'roundhouse-kick-strip.png', [
     segment(0, 53, 64, 96, 0.4844, 0.9167, 77, 0, false),
     segment(53, 51, 64, 96, 0.5, 0.9167, 77, 1, false),
@@ -37,15 +37,15 @@ const targetedFightcoreRepairs = [
     segment(197, 67, 66, 96, 0.5, 0.9167, 77, 2, true),
     segment(264, 109, 109, 96, 0.4954, 0.9167, 77, 3, false),
     segment(373, 59, 64, 96, 0.5, 0.9167, 77, 4, false),
-  ]),
+  ], { fillAlphaGaps: true, fillDarkGaps: true }),
   repair('combat-monk', 'high_kick', 'high-kick-strip.png', [
     segment(0, 60, 64, 96, 0.5, 0.9167, 77, 0, false),
     segment(60, 61, 64, 96, 0.4844, 0.9167, 77, 1, false),
     segment(121, 89, 89, 96, 0.4944, 0.9167, 77, 2, false),
-    segment(210, 117, 117, 96, 0.5, 0.9167, 77, 3, true),
-    segment(327, 105, 93, 96, 0.5, 0.9167, 77, 3, true),
+    segment(210, 117, 117, 96, 0.5, 0.9167, 77, 3, true, 0, 18, 78, 58),
+    segment(327, 105, 93, 96, 0.5, 0.9167, 77, 3, true, 16, 14, 68, 58),
     segment(432, 64, 64, 96, 0.5, 0.9167, 77, 4, false),
-  ]),
+  ], { removeCyanBleed: true, fillAlphaGaps: true, fillDarkGaps: true }),
   repair('combat-monk', 'palm_strike', 'palm-strike-strip.png', [
     segment(0, 55, 64, 96, 0.5, 0.9167, 71, 0, false),
     segment(55, 77, 77, 96, 0.4935, 0.9167, 71, 1, false),
@@ -313,6 +313,250 @@ function keepMainForeground(source) {
   return output;
 }
 
+function keepPrimaryForeground(source) {
+  const output = clonePng(source);
+  const visited = new Uint16Array(output.width * output.height);
+  const components = [];
+  let nextComponentId = 1;
+
+  for (let y = 0; y < output.height; y += 1) {
+    for (let x = 0; x < output.width; x += 1) {
+      const pixel = y * output.width + x;
+      if (visited[pixel] || output.data[pixel * 4 + 3] <= 8) continue;
+      const component = floodComponent(output, x, y, visited, nextComponentId);
+      if (component.area > 0 && !isSheetLabelComponent(component, output)) components.push(component);
+      nextComponentId += 1;
+    }
+  }
+
+  if (components.length <= 1) return output;
+
+  components.sort((a, b) => b.area - a.area);
+  const main = components[0];
+  for (let pixel = 0; pixel < visited.length; pixel += 1) {
+    const componentId = visited[pixel];
+    if (componentId > 0 && componentId !== main.id) output.data[pixel * 4 + 3] = 0;
+  }
+
+  return output;
+}
+
+function removeCyanBleed(source) {
+  const output = clonePng(source);
+  for (let pixel = 0; pixel < output.width * output.height; pixel += 1) {
+    const offset = pixel * 4;
+    const red = output.data[offset];
+    const green = output.data[offset + 1];
+    const blue = output.data[offset + 2];
+    const alpha = output.data[offset + 3];
+    if (alpha <= 8) continue;
+    const warmBody = red > 105 && red > green + 16 && red > blue + 12;
+    const deepLinework = red < 70 && green < 70 && blue < 82;
+    const isCyanOrBlueBleed =
+      !warmBody &&
+      !deepLinework &&
+      green > 78 &&
+      blue > 92 &&
+      (blue > red + 12 || green > red + 8 || (red > 155 && green > 150 && blue > 150));
+    if (isCyanOrBlueBleed) output.data[offset + 3] = 0;
+  }
+  return output;
+}
+
+function fillAlphaGaps(source) {
+  const outside = markOutsideTransparency(source);
+  const visited = new Uint8Array(source.width * source.height);
+  const holes = [];
+
+  for (let y = 0; y < source.height; y += 1) {
+    for (let x = 0; x < source.width; x += 1) {
+      const pixel = y * source.width + x;
+      if (visited[pixel] || outside[pixel] || source.data[pixel * 4 + 3] > 8) continue;
+      const hole = floodAlphaGap(source, x, y, visited, outside);
+      if (hole && hole.area <= 260 && hole.width <= 34 && hole.height <= 34) holes.push(hole);
+    }
+  }
+
+  if (holes.length === 0) return source;
+  return paintGapsFromNeighbors(source, holes.flatMap((hole) => hole.pixels));
+}
+
+function fillDarkGaps(source) {
+  const visited = new Uint8Array(source.width * source.height);
+  const gapPixels = [];
+
+  for (let y = 0; y < source.height; y += 1) {
+    for (let x = 0; x < source.width; x += 1) {
+      const pixel = y * source.width + x;
+      if (visited[pixel] || !isDarkGapPixel(source, pixel)) continue;
+      const gap = floodDarkGap(source, x, y, visited);
+      if (!gap) continue;
+      const skinnyArtifact = gap.area <= 18 && Math.max(gap.width, gap.height) >= 3;
+      const enclosedArtifact = gap.area <= 70 && hasColoredNeighborRatio(source, gap) >= 0.58;
+      if (skinnyArtifact || enclosedArtifact) gapPixels.push(...gap.pixels);
+    }
+  }
+
+  if (gapPixels.length === 0) return source;
+  return paintGapsFromNeighbors(source, gapPixels, isDarkGapPixel);
+}
+
+function markOutsideTransparency(png) {
+  const outside = new Uint8Array(png.width * png.height);
+  const queue = [];
+  for (let x = 0; x < png.width; x += 1) queue.push([x, 0], [x, png.height - 1]);
+  for (let y = 1; y < png.height - 1; y += 1) queue.push([0, y], [png.width - 1, y]);
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+    const pixel = y * png.width + x;
+    if (outside[pixel] || png.data[pixel * 4 + 3] > 8) continue;
+    outside[pixel] = 1;
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+  return outside;
+}
+
+function floodAlphaGap(png, startX, startY, visited, outside) {
+  const queue = [[startX, startY]];
+  const pixels = [];
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+    const pixel = y * png.width + x;
+    if (visited[pixel] || outside[pixel] || png.data[pixel * 4 + 3] > 8) continue;
+    visited[pixel] = 1;
+    pixels.push(pixel);
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+
+  if (pixels.length === 0) return null;
+  return { pixels, area: pixels.length, minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+}
+
+function floodDarkGap(png, startX, startY, visited) {
+  const queue = [[startX, startY]];
+  const pixels = [];
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+    const pixel = y * png.width + x;
+    if (visited[pixel] || !isDarkGapPixel(png, pixel)) continue;
+    visited[pixel] = 1;
+    pixels.push(pixel);
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+
+  if (pixels.length === 0) return null;
+  return { pixels, area: pixels.length, minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+}
+
+function isDarkGapPixel(png, pixel) {
+  const offset = pixel * 4;
+  return png.data[offset + 3] > 8 && png.data[offset] < 18 && png.data[offset + 1] < 18 && png.data[offset + 2] < 22;
+}
+
+function hasColoredNeighborRatio(png, gap) {
+  let checked = 0;
+  let colored = 0;
+  for (let y = gap.minY - 2; y <= gap.maxY + 2; y += 1) {
+    for (let x = gap.minX - 2; x <= gap.maxX + 2; x += 1) {
+      if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+      if (x >= gap.minX && x <= gap.maxX && y >= gap.minY && y <= gap.maxY) continue;
+      const pixel = y * png.width + x;
+      const offset = pixel * 4;
+      if (png.data[offset + 3] <= 8) continue;
+      checked += 1;
+      if (!isDarkGapPixel(png, pixel)) colored += 1;
+    }
+  }
+  return colored / Math.max(1, checked);
+}
+
+function paintGapsFromNeighbors(source, pixels, rejectNeighbor = null) {
+  const output = clonePng(source);
+  const gapPixels = new Set(pixels);
+
+  for (let pass = 0; pass < source.width + source.height && gapPixels.size > 0; pass += 1) {
+    const changes = [];
+    for (const pixel of gapPixels) {
+      const x = pixel % source.width;
+      const y = Math.floor(pixel / source.width);
+      const color = averageVisibleNeighborColor(output, x, y, gapPixels, rejectNeighbor);
+      if (color) changes.push([pixel, color]);
+    }
+    if (changes.length === 0) break;
+    for (const [pixel, color] of changes) {
+      const offset = pixel * 4;
+      output.data[offset] = color[0];
+      output.data[offset + 1] = color[1];
+      output.data[offset + 2] = color[2];
+      output.data[offset + 3] = 255;
+      gapPixels.delete(pixel);
+    }
+  }
+
+  return output;
+}
+
+function averageVisibleNeighborColor(png, x, y, gapPixels, rejectNeighbor) {
+  let red = 0;
+  let green = 0;
+  let blue = 0;
+  let alpha = 0;
+  let count = 0;
+  for (let oy = -2; oy <= 2; oy += 1) {
+    for (let ox = -2; ox <= 2; ox += 1) {
+      if (ox === 0 && oy === 0) continue;
+      const nx = x + ox;
+      const ny = y + oy;
+      if (nx < 0 || ny < 0 || nx >= png.width || ny >= png.height) continue;
+      const pixel = ny * png.width + nx;
+      const offset = pixel * 4;
+      if (gapPixels.has(pixel) || png.data[offset + 3] <= 8 || rejectNeighbor?.(png, pixel)) continue;
+      red += png.data[offset];
+      green += png.data[offset + 1];
+      blue += png.data[offset + 2];
+      alpha += png.data[offset + 3];
+      count += 1;
+    }
+  }
+  if (count === 0) return null;
+  return [Math.round(red / count), Math.round(green / count), Math.round(blue / count), Math.round(alpha / count)];
+}
+
+function clearEdgeBleed(png, clearLeftPx = 0, clearRightPx = 0, clearLowerRightX = 0, clearLowerRightY = 0) {
+  if (clearLeftPx <= 0 && clearRightPx <= 0 && clearLowerRightX <= 0) return;
+  const leftLimit = Math.max(0, clearLeftPx);
+  const rightStart = Math.max(0, png.width - clearRightPx);
+  for (let y = 0; y < png.height; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const inLowerRightBleed = clearLowerRightX > 0 && x >= clearLowerRightX && y >= clearLowerRightY;
+      if (x >= leftLimit && x < rightStart && !inLowerRightBleed) continue;
+      png.data[(y * png.width + x) * 4 + 3] = 0;
+    }
+  }
+}
+
 function isSheetLabelComponent(component, png) {
   const touchesCropEdge = component.minX <= 4 || component.minY <= 4 || component.maxY >= png.height - 5;
   return touchesCropEdge && component.height <= 24;
@@ -474,11 +718,11 @@ function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
-function repair(entityId, animation, stripPath, frames) {
-  return { entityId, animation, stripPath, frames };
+function repair(entityId, animation, stripPath, frames, options = {}) {
+  return { entityId, animation, stripPath, frames, options };
 }
 
-function segment(sourceX, sourceWidth, width, height, anchorX, anchorY, durationMs, sourceFrameIndex, splitFromDirtyCrop) {
+function segment(sourceX, sourceWidth, width, height, anchorX, anchorY, durationMs, sourceFrameIndex, splitFromDirtyCrop, clearLeftPx = 0, clearRightPx = 0, clearLowerRightX = 0, clearLowerRightY = 0) {
   return {
     sourceX,
     sourceWidth,
@@ -489,6 +733,10 @@ function segment(sourceX, sourceWidth, width, height, anchorX, anchorY, duration
     durationMs,
     sourceFrameIndex,
     splitFromDirtyCrop,
+    clearLeftPx,
+    clearRightPx,
+    clearLowerRightX,
+    clearLowerRightY,
   };
 }
 
@@ -504,7 +752,11 @@ async function repairKnownFightcoreDirtyFrames(repairSpec, summary, rejected) {
     const frameFile = `${String(index + 1).padStart(4, '0')}.png`;
     const outputPath = path.join(outputAnimationDir, frameFile);
     const sourceCrop = cropPng(strip, frameSpec.sourceX, 0, frameSpec.sourceWidth, strip.height);
-    const foreground = keepMainForeground(removeEdgeConnectedBackground(sourceCrop));
+    let foreground = repairSpec.options?.removeCyanBleed
+      ? removeCyanBleed(keepPrimaryForeground(removeEdgeConnectedBackground(sourceCrop)))
+      : keepPrimaryForeground(removeEdgeConnectedBackground(sourceCrop));
+    if (repairSpec.options?.fillAlphaGaps) foreground = fillAlphaGaps(foreground);
+    if (repairSpec.options?.fillDarkGaps) foreground = fillDarkGaps(foreground);
     const bbox = getOpaqueBounds(foreground);
 
     if (!bbox) {
@@ -520,12 +772,16 @@ async function repairKnownFightcoreDirtyFrames(repairSpec, summary, rejected) {
       continue;
     }
 
-    const output = normalizeToCanvas(foreground, bbox, {
+    let output = normalizeToCanvas(foreground, bbox, {
       width: frameSpec.width,
       height: frameSpec.height,
       anchorX: frameSpec.anchorX,
       anchorY: frameSpec.anchorY,
     });
+    if (repairSpec.options?.fillAlphaGaps) output = fillAlphaGaps(output);
+    if (repairSpec.options?.fillDarkGaps) output = fillDarkGaps(output);
+    if (repairSpec.options?.removeCyanBleed) output = removeCyanBleed(output);
+    clearEdgeBleed(output, frameSpec.clearLeftPx, frameSpec.clearRightPx, frameSpec.clearLowerRightX, frameSpec.clearLowerRightY);
     await fs.writeFile(outputPath, PNG.sync.write(output));
     summary.push({
       entityId: repairSpec.entityId,

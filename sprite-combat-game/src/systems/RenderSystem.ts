@@ -68,6 +68,7 @@ export const DESERT_ARENA_ASSET_PATHS = [
 
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
+const RUNTIME_FRAME_DRAW_HEIGHT = 96;
 const blockedFrameWarnings = new Set<string>();
 const stageVariants = [
   { name: 'morning', path: '/assets/fightcore/backgrounds/desert-arena/morning.png', sand: '#ba7d3a', ridge: '#8b5431', tint: 'rgba(255, 204, 137, 0.08)' },
@@ -485,8 +486,9 @@ export class RenderSystem {
     const scale = profileScale * (entity instanceof Boss ? 1.08 : 1);
     const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
     const usesNativeFrameScale = usesPreparedFightcoreStrip || isRuntimeSpriteFrame(frame.framePath);
-    const height = usesNativeFrameScale ? sourceHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
-    const width = usesNativeFrameScale ? sourceWidth * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
+    const normalizedFrameHeight = isRuntimeSpriteFrame(frame.framePath) ? RUNTIME_FRAME_DRAW_HEIGHT : sourceHeight;
+    const height = usesNativeFrameScale ? normalizedFrameHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
+    const width = usesNativeFrameScale ? sourceWidth * (normalizedFrameHeight / Math.max(1, sourceHeight)) * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
     const dx = -width * frame.anchorX;
     const dy = -height * frame.anchorY;
 
