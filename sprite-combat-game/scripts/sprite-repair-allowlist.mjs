@@ -24,10 +24,19 @@ export const SPRITE_REPAIR_ALLOWLIST = new Set([
   'cyber-monkey-grappler:guillotine',
 ]);
 
+const requestedOnly = new Set(
+  (process.env.SPRITE_REPAIR_ONLY ?? '')
+    .split(',')
+    .map((entry) => entry.trim())
+    .filter(Boolean),
+);
+
 export function spriteRepairKey(entityId, animationKey) {
   return `${entityId}:${animationKey}`;
 }
 
 export function shouldRepairSprite(entityId, animationKey) {
-  return SPRITE_REPAIR_ALLOWLIST.has(spriteRepairKey(entityId, animationKey));
+  const key = spriteRepairKey(entityId, animationKey);
+  if (requestedOnly.size > 0) return requestedOnly.has(key);
+  return SPRITE_REPAIR_ALLOWLIST.has(key);
 }

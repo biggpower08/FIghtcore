@@ -9,10 +9,10 @@ export interface ArenaBounds {
 }
 
 export const PLAYABLE_ARENA_BOUNDS: ArenaBounds = {
-  minX: 70,
-  maxX: ARENA_WIDTH - 70,
-  minY: 520,
-  maxY: ARENA_HEIGHT - 90,
+  minX: 180,
+  maxX: ARENA_WIDTH - 180,
+  minY: 620,
+  maxY: ARENA_HEIGHT - 170,
 };
 
 export function clampToPlayableArena(

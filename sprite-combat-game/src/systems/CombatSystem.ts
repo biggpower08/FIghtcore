@@ -34,7 +34,7 @@ export class CombatSystem {
 
     attacker.stamina -= attacker.getStaminaCost(move);
     attacker.moveCooldowns.set(move.id, attacker.getCooldownMs(move));
-    attacker.attackLockMs = move.windupMs + move.activeMs + move.recoveryMs;
+    attacker.attackLockMs = attacker instanceof Player ? attacker.getAttackLockMs(move) : move.windupMs + move.activeMs + move.recoveryMs;
     attacker.activeMove = move;
     attacker.activeMoveMs = move.windupMs + move.activeMs;
 

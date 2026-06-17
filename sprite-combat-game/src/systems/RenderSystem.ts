@@ -484,8 +484,9 @@ export class RenderSystem {
     const profileScale = spriteRegistryById.get(this.getAssetId(entity))?.render?.scale ?? 1;
     const scale = profileScale * (entity instanceof Boss ? 1.08 : 1);
     const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
-    const height = usesPreparedFightcoreStrip ? sourceHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
-    const width = usesPreparedFightcoreStrip ? sourceWidth * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
+    const usesNativeFrameScale = usesPreparedFightcoreStrip || isRuntimeSpriteFrame(frame.framePath);
+    const height = usesNativeFrameScale ? sourceHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
+    const width = usesNativeFrameScale ? sourceWidth * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
     const dx = -width * frame.anchorX;
     const dy = -height * frame.anchorY;
 
@@ -790,6 +791,10 @@ function isValidSourceRect(frame: ResolvedSpriteFrame, image: HTMLImageElement):
     });
   }
   return valid;
+}
+
+function isRuntimeSpriteFrame(framePath: string | undefined): boolean {
+  return Boolean(framePath?.startsWith('/sprites/frames/') || framePath?.startsWith('/sprites/frames-alpha-repaired/'));
 }
 
 function logDrawImageFailure(

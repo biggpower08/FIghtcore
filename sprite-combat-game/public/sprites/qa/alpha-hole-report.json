@@ -1,7 +1,17 @@
 {
-  "generatedAt": "2026-06-17T02:36:51.104Z",
+  "generatedAt": "2026-06-17T04:37:44.014Z",
   "rule": "Approved animations are immutable unless explicitly targeted in scripts/sprite-repair-allowlist.mjs.",
   "preserved": [
+    {
+      "entityId": "combat-monk",
+      "animationKey": "palm_strike",
+      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
+    },
+    {
+      "entityId": "combat-monk",
+      "animationKey": "spinning_sweep",
+      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
+    },
     {
       "entityId": "cyber-monk-orange",
       "animationKey": "clinch_knee",
@@ -198,6 +208,11 @@
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
     },
     {
+      "entityId": "cyber-ninja",
+      "animationKey": "slice",
+      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
+    },
+    {
       "entityId": "cyber-ninja-blue",
       "animationKey": "cross",
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
@@ -329,7 +344,17 @@
     },
     {
       "entityId": "puppetmaster",
+      "animationKey": "o_goshi",
+      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
+    },
+    {
+      "entityId": "puppetmaster",
       "animationKey": "thug_it_out",
+      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
+    },
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "hit_react",
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
     },
     {
@@ -391,6 +416,11 @@
       "entityId": "shadow-striker-purple",
       "animationKey": "walk",
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
+    },
+    {
+      "entityId": "striker-monkey",
+      "animationKey": "idle",
+      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
     }
   ],
   "frames": [
@@ -444,240 +474,6 @@
       "largestAlphaHolePixels": 3,
       "repairedAlphaHoles": 1,
       "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/high_kick/0006.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 0,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 2,
-      "largestAlphaHolePixels": 2,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0001.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 1,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 17,
-      "largestAlphaHolePixels": 17,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0002.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 2,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 2,
-      "alphaHolePixels": 11,
-      "largestAlphaHolePixels": 9,
-      "repairedAlphaHoles": 2,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0003.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 3,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 17,
-      "largestAlphaHolePixels": 17,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0004.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "spinning_sweep",
-      "frameIndex": 1,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 2,
-      "alphaHolePixels": 5,
-      "largestAlphaHolePixels": 3,
-      "repairedAlphaHoles": 2,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/spinning_sweep/0002.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "cyber-ninja",
-      "animationKey": "slice",
-      "frameIndex": 0,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 73,
-      "largestAlphaHolePixels": 73,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/cyber-ninja/slice/0001.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "cyber-ninja",
-      "animationKey": "slice",
-      "frameIndex": 1,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 5,
-      "largestAlphaHolePixels": 5,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/cyber-ninja/slice/0002.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "cyber-ninja",
-      "animationKey": "slice",
-      "frameIndex": 2,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 22,
-      "largestAlphaHolePixels": 22,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/cyber-ninja/slice/0003.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "cyber-ninja",
-      "animationKey": "slice",
-      "frameIndex": 3,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 8,
-      "largestAlphaHolePixels": 8,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/cyber-ninja/slice/0004.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "cyber-ninja",
-      "animationKey": "slice",
-      "frameIndex": 4,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 3,
-      "largestAlphaHolePixels": 3,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/cyber-ninja/slice/0005.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "puppetmaster",
-      "animationKey": "o_goshi",
-      "frameIndex": 0,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 2,
-      "alphaHolePixels": 12,
-      "largestAlphaHolePixels": 9,
-      "repairedAlphaHoles": 2,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/puppetmaster/o_goshi/0001.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "puppetmaster",
-      "animationKey": "o_goshi",
-      "frameIndex": 1,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 3,
-      "alphaHolePixels": 26,
-      "largestAlphaHolePixels": 20,
-      "repairedAlphaHoles": 3,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/puppetmaster/o_goshi/0002.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "puppetmaster",
-      "animationKey": "o_goshi",
-      "frameIndex": 4,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 6,
-      "largestAlphaHolePixels": 6,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/puppetmaster/o_goshi/0005.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "puppetmaster",
-      "animationKey": "o_goshi",
-      "frameIndex": 5,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 13,
-      "largestAlphaHolePixels": 13,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/puppetmaster/o_goshi/0006.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "shadow-striker",
-      "animationKey": "hit_react",
-      "frameIndex": 0,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 3,
-      "alphaHolePixels": 10,
-      "largestAlphaHolePixels": 5,
-      "repairedAlphaHoles": 3,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/shadow-striker/hit_react/0001.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "shadow-striker",
-      "animationKey": "hit_react",
-      "frameIndex": 1,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 2,
-      "largestAlphaHolePixels": 2,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/shadow-striker/hit_react/0002.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "shadow-striker",
-      "animationKey": "hit_react",
-      "frameIndex": 2,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 25,
-      "largestAlphaHolePixels": 25,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/shadow-striker/hit_react/0003.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "shadow-striker",
-      "animationKey": "hit_react",
-      "frameIndex": 3,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 4,
-      "largestAlphaHolePixels": 4,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/shadow-striker/hit_react/0004.png",
       "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
     },
     {
@@ -769,32 +565,6 @@
       "largestAlphaHolePixels": 11,
       "repairedAlphaHoles": 1,
       "repairedFramePath": "/sprites/frames-alpha-repaired/shadow-striker/teep_kick/0006.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "striker-monkey",
-      "animationKey": "idle",
-      "frameIndex": 4,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 2,
-      "largestAlphaHolePixels": 2,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/striker-monkey/idle/0005.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "striker-monkey",
-      "animationKey": "idle",
-      "frameIndex": 5,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 2,
-      "alphaHolePixels": 4,
-      "largestAlphaHolePixels": 2,
-      "repairedAlphaHoles": 2,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/striker-monkey/idle/0006.png",
       "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
     }
   ]

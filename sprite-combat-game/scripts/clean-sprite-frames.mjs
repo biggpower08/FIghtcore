@@ -138,7 +138,7 @@ for (const entityId of entities) {
   }
 }
 
-for (const repairSpec of targetedFightcoreRepairs) {
+for (const repairSpec of targetedFightcoreRepairs.filter((entry) => shouldRepairSprite(entry.entityId, entry.animation))) {
   await repairKnownFightcoreDirtyFrames(repairSpec, summary, rejected);
 }
 

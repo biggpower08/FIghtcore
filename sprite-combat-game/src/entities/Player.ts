@@ -26,6 +26,7 @@ export class Player extends Fighter {
   momentumStacks = 0;
   meditationMs = 0;
   thugItOutSurvivalUsed = false;
+  recentDamageMs = 0;
   moveUpgradeLevels = new Map<string, number>();
   upgrades: PlayerUpgradeState = {
     damageLevel: 0,
@@ -49,8 +50,21 @@ export class Player extends Fighter {
   }
 
   override getCooldownMs(move: MoveDefinition): number {
+    if (this.character.id === 'shadow-striker') {
+      const shadowReduction = ['jab', 'cross'].includes(move.id) ? 0.82 : move.style === 'kickboxing' || move.style === 'muay-thai' ? 0.74 : 0.66;
+      return Math.max(45, Math.round(move.cooldownMs * (1 - shadowReduction)));
+    }
     const reduction = Math.min(0.3, this.upgrades.cooldownLevel * 0.06);
     return Math.max(120, Math.round(move.cooldownMs * (1 - reduction)));
+  }
+
+  getAttackLockMs(move: MoveDefinition): number {
+    const base = move.windupMs + move.activeMs + move.recoveryMs;
+    if (this.character.id !== 'shadow-striker') return base;
+    const isPunch = move.style === 'boxing';
+    const isKick = move.style === 'kickboxing' || move.style === 'muay-thai';
+    const fastLock = isPunch ? 0.34 : isKick ? 0.42 : 0.5;
+    return Math.max(isPunch ? 95 : 140, Math.round(base * fastLock));
   }
 
   override getDamageMultiplier(): number {
@@ -109,7 +123,7 @@ export class Player extends Fighter {
       this.meditationMs = Math.max(0, this.meditationMs - deltaMs);
       this.abilityActiveMs = this.meditationMs;
       const seconds = deltaMs / 1000;
-      healthRestored = this.heal((13 + this.upgrades.abilityLevel * 3) * seconds);
+      healthRestored = this.heal((32 + this.upgrades.abilityLevel * 8) * seconds);
       const before = this.stamina;
       this.stamina = Math.min(this.maxStamina, this.stamina + (34 + this.upgrades.abilityLevel * 5) * seconds);
       staminaRestored = this.stamina - before;
@@ -156,6 +170,11 @@ export class Player extends Fighter {
     return true;
   }
 
+  getDamageReduction(): number {
+    if (this.ability?.id !== 'thug_it_out' || this.abilityActiveMs <= 0) return 0;
+    return Math.min(0.55, 0.4 + this.upgrades.abilityLevel * 0.05);
+  }
+
   getMoveUpgradeLevel(moveId: string, type: 'damage' | 'efficiency' | 'control'): number {
     return this.moveUpgradeLevels.get(`${moveId}:${type}`) ?? 0;
   }
@@ -168,7 +187,9 @@ export class Player extends Fighter {
   override takeDamage(amount: number): void {
     this.interruptMeditation('Meditation interrupted');
     this.resetMomentum('Flow broken');
-    const nextHealth = this.health - amount;
+    this.recentDamageMs = 3000;
+    const reducedAmount = amount * (1 - this.getDamageReduction());
+    const nextHealth = this.health - reducedAmount;
     this.damageFlashMs = 150;
     if (nextHealth <= 0 && this.preventLethalDamage()) return;
     this.health = Math.max(0, nextHealth);

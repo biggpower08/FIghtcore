@@ -46,6 +46,7 @@ type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOv
 const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
 const CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS = 360;
 const CYBER_MONKEY_GRAPPLER_ATTACK_RELEASE_MS = 90;
+const PASSIVE_HEALTH_REGEN_PER_SECOND = 1.4;
 
 interface VisualSuppression {
   hiddenEntityId: string;
@@ -295,9 +296,7 @@ export class Game {
   private updateTimers(deltaMs: number): void {
     this.combat.updateFighterTimers(this.player, deltaMs);
     this.player.stamina = Math.min(this.player.maxStamina, this.player.stamina + STAMINA_REGEN_PER_SECOND * (deltaMs / 1000));
-    if (this.player.upgrades.healthRegenLevel > 0 && this.player.health < this.player.maxHealth && this.player.stunMs <= 0) {
-      this.player.health = Math.min(this.player.maxHealth, this.player.health + this.player.upgrades.healthRegenLevel * 0.7 * (deltaMs / 1000));
-    }
+    this.updatePassiveHealthRegen(deltaMs);
     const abilityRestore = this.player.updateAbilityTimers(deltaMs);
     if (abilityRestore.healthRestored > 0 || abilityRestore.staminaRestored > 0) {
       this.impacts.push({
@@ -348,8 +347,9 @@ export class Game {
       }
       if (selected.move.hitboxWidth > 0 && selected.move.hitboxHeight > 0) this.hitboxes.push(hitbox);
       const totalMs = selected.move.windupMs + selected.move.activeMs + selected.move.recoveryMs;
+      const lockForMs = this.player.character.id === 'shadow-striker' ? this.player.getAttackLockMs(selected.move) : Math.round(totalMs * 1.18);
       this.animation.play(this.player, selected.move.animationKey, {
-        lockForMs: Math.round(totalMs * 1.18),
+        lockForMs,
         fallback: 'idle',
       });
     }
@@ -881,6 +881,14 @@ export class Game {
       actor.healFlashMs = Math.max(0, actor.healFlashMs - deltaMs);
       actor.defeatHoldMs = Math.max(0, actor.defeatHoldMs - deltaMs);
     }
+  }
+
+  private updatePassiveHealthRegen(deltaMs: number): void {
+    this.player.recentDamageMs = Math.max(0, this.player.recentDamageMs - deltaMs);
+    if (!this.player.alive || this.player.health >= this.player.maxHealth || this.player.stunMs > 0) return;
+    if (this.player.recentDamageMs > 0) return;
+    const upgradeBonus = this.player.upgrades.healthRegenLevel * 0.7;
+    this.player.heal((PASSIVE_HEALTH_REGEN_PER_SECOND + upgradeBonus) * (deltaMs / 1000));
   }
 
   private handleHitImpact(impact: HitImpact): void {
