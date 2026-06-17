@@ -15,6 +15,7 @@ export class Entity {
   knockbackResistance = 1;
   damageFlashMs = 0;
   healFlashMs = 0;
+  defeatHoldMs = 0;
 
   constructor(id: string, x: number, y: number, radius: number, maxHealth: number) {
     this.id = id;

@@ -19,6 +19,7 @@ export interface AttackHitbox {
 export interface HitImpact {
   attacker: Fighter;
   target: Entity;
+  move: MoveDefinition;
   damage: number;
   heavy: boolean;
   x: number;
@@ -72,17 +73,19 @@ export class CombatSystem {
       const damageMultiplier = hitbox.owner instanceof Player ? hitbox.owner.getDamageMultiplier() : TEST_BALANCE.enemyDamageMultiplier;
       const damage = hitbox.move.damage * damageMultiplier;
       target.takeDamage(damage);
-      target.stunMs = Math.max(target.stunMs, hitbox.move.stunMs);
       const direction = Math.sign(target.x - hitbox.owner.x) || hitbox.owner.facing;
       const force = hitbox.move.knockback * target.knockbackResistance;
+      const heavy = damage >= 18 || hitbox.move.knockback >= 170;
+      if (heavy || hitbox.move.stunMs >= 300) target.stunMs = Math.max(target.stunMs, Math.min(hitbox.move.stunMs, 420));
       target.vx += direction * force;
       target.vy += (target.y - hitbox.owner.y > 0 ? 1 : -1) * force * 0.18;
       hitbox.hitIds.add(target.id);
       impacts.push({
         attacker: hitbox.owner,
         target,
+        move: hitbox.move,
         damage,
-        heavy: damage >= 18 || hitbox.move.knockback >= 170,
+        heavy,
         x: target.x,
         y: target.y - target.radius * 0.75,
       });

@@ -49,6 +49,12 @@ export const cleanedSpriteFrameMetadata: CleanedSpriteAnimationMetadata[] = [
     frame(3, 93, 96, 0.5, 0.9167, 88, 71, 3, true),
     frame(4, 86, 96, 0.5, 0.9167, 88, 71, 3, true),
   ]),
+  cleaned('combat-monk', 'spinning_sweep', [
+    frame(0, 176, 96, 0.5, 0.9167, 88, 150, 0, false),
+    frame(1, 160, 96, 0.5, 0.9167, 88, 180, 1, false),
+    frame(2, 142, 96, 0.5, 0.9167, 88, 200, 2, false),
+    frame(3, 156, 96, 0.5, 0.9167, 88, 210, 3, false),
+  ]),
   cleaned('striker-monkey', 'idle', [
     frame(0, 79, 96, 0.5, 0.9167, 88, 125, 0, true),
     frame(1, 74, 96, 0.5, 0.9167, 88, 125, 0, true),

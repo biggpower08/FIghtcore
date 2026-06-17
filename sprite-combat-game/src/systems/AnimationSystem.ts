@@ -18,6 +18,7 @@ export interface AnimationState {
   elapsedMs: number;
   loop: boolean;
   animationLockedUntilMs: number;
+  animationLockTotalMs: number;
   fallback?: string;
 }
 
@@ -28,6 +29,7 @@ export class AnimationSystem {
     for (const state of this.states.values()) {
       state.elapsedMs += deltaMs;
       state.animationLockedUntilMs = Math.max(0, state.animationLockedUntilMs - deltaMs);
+      if (state.animationLockedUntilMs <= 0) state.animationLockTotalMs = 0;
     }
   }
 
@@ -40,6 +42,7 @@ export class AnimationSystem {
     state.elapsedMs = 0;
     state.loop = options.loop ?? false;
     state.animationLockedUntilMs = options.lockForMs ?? 0;
+    state.animationLockTotalMs = options.lockForMs ?? 0;
     state.fallback = options.fallback;
   }
 
@@ -75,6 +78,9 @@ export class AnimationSystem {
 
     if (state.loop && totalDuration > 0) {
       remaining %= totalDuration;
+    } else if (state.animationLockTotalMs > totalDuration && totalDuration > 0) {
+      const progress = Math.min(0.999, state.elapsedMs / Math.max(1, state.animationLockTotalMs));
+      remaining = progress * totalDuration;
     }
 
     for (let i = 0; i < frameDurations.length; i += 1) {
@@ -101,6 +107,7 @@ export class AnimationSystem {
       elapsedMs: 0,
       loop: true,
       animationLockedUntilMs: 0,
+      animationLockTotalMs: 0,
     };
     this.states.set(entity.id, created);
     return created;

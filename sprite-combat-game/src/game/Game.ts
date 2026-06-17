@@ -101,6 +101,7 @@ export class Game {
   private grappleDebug?: GrappleDebugRenderInfo;
   private hitPauseMs = 0;
   private screenShakeMs = 0;
+  private hitReactionSeed = 0;
   private lastTime = 0;
   private state: GameState = 'home';
   private settingsReturnState: GameState = 'home';
@@ -174,8 +175,8 @@ export class Game {
       }
     }
 
-    this.enemies = this.enemies.filter((enemy) => enemy.alive);
-    if (this.boss && !this.boss.alive) this.boss = null;
+    this.enemies = this.enemies.filter((enemy) => enemy.alive || enemy.defeatHoldMs > 0);
+    if (this.boss && !this.boss.alive && this.boss.defeatHoldMs <= 0) this.boss = null;
 
     if (!this.player.alive) {
       this.openGameOver();
@@ -208,7 +209,6 @@ export class Game {
       this.player.dashMs = DASH_DURATION_MS;
       this.player.dashCooldownMs = DASH_COOLDOWN_MS;
       this.animation.play(this.player, 'dash', { lockForMs: DASH_DURATION_MS, fallback: 'walk' });
-      this.dust.push({ x: this.player.x, y: this.player.y + 14, lifeMs: 300 });
     }
 
     if ((axis.x !== 0 || axis.y !== 0) && this.player.meditationMs > 0) {
@@ -295,6 +295,9 @@ export class Game {
   private updateTimers(deltaMs: number): void {
     this.combat.updateFighterTimers(this.player, deltaMs);
     this.player.stamina = Math.min(this.player.maxStamina, this.player.stamina + STAMINA_REGEN_PER_SECOND * (deltaMs / 1000));
+    if (this.player.upgrades.healthRegenLevel > 0 && this.player.health < this.player.maxHealth && this.player.stunMs <= 0) {
+      this.player.health = Math.min(this.player.maxHealth, this.player.health + this.player.upgrades.healthRegenLevel * 0.7 * (deltaMs / 1000));
+    }
     const abilityRestore = this.player.updateAbilityTimers(deltaMs);
     if (abilityRestore.healthRestored > 0 || abilityRestore.staminaRestored > 0) {
       this.impacts.push({
@@ -399,6 +402,7 @@ export class Game {
       target.x = control.x;
       target.y = control.y;
       target.takeDamage(Math.max(8, Math.round(move.damage * this.player.getDamageMultiplier())));
+      if (!target.alive) target.defeatHoldMs = Math.max(target.defeatHoldMs, durationMs);
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
       target.stunMs = Math.max(target.stunMs, 620);
@@ -861,7 +865,7 @@ export class Game {
       lock.target.vx = 0;
       lock.target.vy = 0;
     }
-    this.activeGrapples = this.activeGrapples.filter((lock) => lock.remainingMs > 0 && lock.attacker.alive && lock.target.alive);
+    this.activeGrapples = this.activeGrapples.filter((lock) => lock.remainingMs > 0 && lock.attacker.alive && (lock.target.alive || lock.target.defeatHoldMs > 0));
   }
 
   private isGrappleLocked(actor: Player | Enemy | Boss): boolean {
@@ -872,20 +876,14 @@ export class Game {
     this.screenShakeMs = Math.max(0, this.screenShakeMs - deltaMs);
     for (const spark of this.impacts) spark.lifeMs -= deltaMs;
     this.impacts = this.impacts.filter((spark) => spark.lifeMs > 0);
-    for (const actor of [this.player, ...this.livingEnemies()]) {
+    for (const actor of [this.player, ...this.enemies, ...(this.boss ? [this.boss] : [])]) {
       actor.damageFlashMs = Math.max(0, actor.damageFlashMs - deltaMs);
       actor.healFlashMs = Math.max(0, actor.healFlashMs - deltaMs);
+      actor.defeatHoldMs = Math.max(0, actor.defeatHoldMs - deltaMs);
     }
   }
 
   private handleHitImpact(impact: HitImpact): void {
-    this.impacts.push({
-      x: impact.x,
-      y: impact.y,
-      lifeMs: impact.heavy ? 360 : 260,
-      color: impact.attacker === this.player ? '#ffef78' : '#ff6a4d',
-      label: `${Math.round(impact.damage)}`,
-    });
     this.hitPauseMs = Math.max(this.hitPauseMs, impact.heavy ? 70 : 42);
     if (impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, 180);
     if (impact.attacker === this.player) {
@@ -902,10 +900,22 @@ export class Game {
     const oldQuarter = Math.floor((oldHealth / impact.target.maxHealth) * 4);
     const newQuarter = Math.floor((impact.target.health / impact.target.maxHealth) * 4);
     const majorDamage = impact.heavy || newQuarter < oldQuarter;
+    if (!this.shouldPlayHitReaction(impact, majorDamage)) return;
     this.animation.play(impact.target, majorDamage ? 'knockdown' : 'hit_react', {
       lockForMs: majorDamage ? 520 : 280,
       fallback: 'hit_react',
     });
+  }
+
+  private shouldPlayHitReaction(impact: HitImpact, majorDamage: boolean): boolean {
+    const move = impact.move;
+    if (['judo', 'wrestling', 'jiujitsu'].includes(move.style) || move.knockback >= 230) return true;
+    if (majorDamage) return true;
+    this.hitReactionSeed = (this.hitReactionSeed + 1) % 1000;
+    const medium = move.damage >= 16 || move.knockback >= 130;
+    const chance = medium ? 0.38 : 0.2;
+    const roll = ((this.hitReactionSeed * 37 + Math.floor(impact.target.health) + move.id.length * 11) % 100) / 100;
+    return roll < chance;
   }
 
   private updateVisualSuppressions(deltaMs: number): void {

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T02:32:08.930Z",
+  "generatedAt": "2026-06-17T02:36:51.104Z",
   "rule": "Approved animations are immutable unless explicitly targeted in scripts/sprite-repair-allowlist.mjs.",
   "preserved": [
     {
@@ -496,6 +496,19 @@
       "largestAlphaHolePixels": 17,
       "repairedAlphaHoles": 1,
       "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0004.png",
+      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
+    },
+    {
+      "entityId": "combat-monk",
+      "animationKey": "spinning_sweep",
+      "frameIndex": 1,
+      "alphaHoleFrame": true,
+      "invalidHollowFrame": false,
+      "alphaHoleCount": 2,
+      "alphaHolePixels": 5,
+      "largestAlphaHolePixels": 3,
+      "repairedAlphaHoles": 2,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/spinning_sweep/0002.png",
       "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
     },
     {

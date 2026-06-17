@@ -31,6 +31,12 @@ const repairs = [
     segment(332, 141, 141, 96, 0.5, 0.9167, 150, 2, false),
     segment(473, 154, 154, 96, 0.5, 0.9167, 160, 3, false),
   ]),
+  repair('combat-monk', 'spinning_sweep', 'spinning-sweep-strip.png', [
+    segment(0, 176, 176, 96, 0.5, 0.9167, 150, 0, false),
+    segment(176, 160, 160, 96, 0.5, 0.9167, 180, 1, false),
+    segment(336, 142, 142, 96, 0.5, 0.9167, 200, 2, false),
+    segment(478, 156, 156, 96, 0.5, 0.9167, 210, 3, false),
+  ]),
 ];
 
 const summary = [];
