@@ -1,6 +1,7 @@
 import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetadata';
 import { hasCleanedSpriteAnimation } from './cleanedSpriteFrames';
 import { getAlphaHoleSpriteFrame } from './alphaHoleSpriteFrames';
+import { getBodyCropSpriteFrameQuality } from './bodyCroppedSpriteFrames';
 
 export type FrameRole = 'body' | 'effect' | 'invalid';
 
@@ -16,6 +17,11 @@ export interface FrameQuality {
   repairedAlphaHoles: number;
   usingRepairedAlpha: boolean;
   widthOutlier: boolean;
+  cleanedFrameAvailable: boolean;
+  hasAdjacentFrameBleed: boolean;
+  bleedFromNextFrame: boolean;
+  disconnectedNeighborBlob: boolean;
+  frameSource?: string;
   reason?: string;
 }
 
@@ -30,6 +36,7 @@ const bodylessEffectFrames = new Set<string>();
 
 export function getFrameQuality(entityId: string, animationKey: string, frameIndex: number): FrameQuality {
   const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, frameIndex);
+  const bodyCrop = getBodyCropSpriteFrameQuality(entityId, animationKey, frameIndex);
   if (hasCleanedSpriteAnimation(entityId, animationKey)) {
     return {
       role: 'body',
@@ -43,7 +50,12 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier: false,
-      reason: alphaHole?.reason ?? 'Cleaned single-pose PNG frame is available and preferred over the raw crop.',
+      cleanedFrameAvailable: true,
+      hasAdjacentFrameBleed: false,
+      bleedFromNextFrame: false,
+      disconnectedNeighborBlob: false,
+      frameSource: bodyCrop?.frameSource ?? 'cleaned-body-crop',
+      reason: alphaHole?.reason ?? bodyCrop?.reason ?? 'Cleaned single-pose PNG frame is available and preferred over the raw crop.',
     };
   }
 
@@ -63,6 +75,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier,
+      cleanedFrameAvailable: false,
+      hasAdjacentFrameBleed: bodyCrop?.hasAdjacentFrameBleed ?? true,
+      bleedFromNextFrame: bodyCrop?.bleedFromNextFrame ?? true,
+      disconnectedNeighborBlob: bodyCrop?.disconnectedNeighborBlob ?? true,
+      frameSource: bodyCrop?.frameSource ?? 'raw-crop-flagged',
       reason: knownReason,
     };
   }
@@ -80,6 +97,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       repairedAlphaHoles: alphaHole.repairedAlphaHoles,
       usingRepairedAlpha: false,
       widthOutlier,
+      cleanedFrameAvailable: false,
+      hasAdjacentFrameBleed: Boolean(bodyCrop?.hasAdjacentFrameBleed),
+      bleedFromNextFrame: Boolean(bodyCrop?.bleedFromNextFrame),
+      disconnectedNeighborBlob: Boolean(bodyCrop?.disconnectedNeighborBlob),
+      frameSource: bodyCrop?.frameSource,
       reason: alphaHole.reason,
     };
   }
@@ -97,6 +119,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier,
+      cleanedFrameAvailable: false,
+      hasAdjacentFrameBleed: Boolean(bodyCrop?.hasAdjacentFrameBleed),
+      bleedFromNextFrame: Boolean(bodyCrop?.bleedFromNextFrame),
+      disconnectedNeighborBlob: Boolean(bodyCrop?.disconnectedNeighborBlob),
+      frameSource: bodyCrop?.frameSource,
       reason: 'Registered effect-only frame.',
     };
   }
@@ -114,6 +141,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
       widthOutlier,
+      cleanedFrameAvailable: false,
+      hasAdjacentFrameBleed: bodyCrop?.hasAdjacentFrameBleed ?? true,
+      bleedFromNextFrame: bodyCrop?.bleedFromNextFrame ?? true,
+      disconnectedNeighborBlob: bodyCrop?.disconnectedNeighborBlob ?? true,
+      frameSource: bodyCrop?.frameSource ?? 'raw-crop-flagged',
       reason: 'Frame width is a large outlier for this body animation and is treated as a likely multi-pose crop.',
     };
   }
@@ -130,6 +162,11 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
     repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
     usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
     widthOutlier,
+    cleanedFrameAvailable: Boolean(bodyCrop?.cleanedFrameAvailable),
+    hasAdjacentFrameBleed: Boolean(bodyCrop?.hasAdjacentFrameBleed),
+    bleedFromNextFrame: Boolean(bodyCrop?.bleedFromNextFrame),
+    disconnectedNeighborBlob: Boolean(bodyCrop?.disconnectedNeighborBlob),
+    frameSource: bodyCrop?.frameSource,
     reason: alphaHole?.reason,
   };
 }

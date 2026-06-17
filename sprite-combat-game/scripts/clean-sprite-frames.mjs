@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { PNG } from 'pngjs';
+import { shouldRepairSprite } from './sprite-repair-allowlist.mjs';
 
 const repoRoot = process.cwd();
 const framesRoot = path.join(repoRoot, 'public', 'sprites', 'frames');
@@ -65,6 +66,7 @@ const targetedFightcoreRepairs = [
 const entities = await listDirs(sourceFramesRoot);
 const summary = [];
 const rejected = [];
+const preserved = [];
 
 for (const entityId of entities) {
   const entityDir = path.join(sourceFramesRoot, entityId);
@@ -73,6 +75,14 @@ for (const entityId of entities) {
   const animations = await listDirs(entityDir);
 
   for (const animation of animations) {
+    if (!shouldRepairSprite(entityId, animation)) {
+      preserved.push({
+        entityId,
+        animation,
+        reason: 'Approved/non-targeted animation preserved by sprite repair allowlist.',
+      });
+      continue;
+    }
     const animationDir = path.join(entityDir, animation);
     const outputAnimationDir = path.join(outputEntityDir, animation);
     await fs.mkdir(outputAnimationDir, { recursive: true });
@@ -134,7 +144,21 @@ for (const repairSpec of targetedFightcoreRepairs) {
 
 const reportPath = path.join(repoRoot, 'public', 'sprites', 'qa', 'cleanup-report.json');
 await fs.mkdir(path.dirname(reportPath), { recursive: true });
-await fs.writeFile(reportPath, JSON.stringify({ generatedAt: new Date().toISOString(), source: path.relative(repoRoot, sourceFramesRoot), rejected, frames: summary }, null, 2));
+await fs.writeFile(
+  reportPath,
+  JSON.stringify(
+    {
+      generatedAt: new Date().toISOString(),
+      source: path.relative(repoRoot, sourceFramesRoot),
+      rule: 'Approved animations are immutable unless explicitly targeted in scripts/sprite-repair-allowlist.mjs.',
+      preserved,
+      rejected,
+      frames: summary,
+    },
+    null,
+    2,
+  ),
+);
 
 const byEntity = new Map();
 for (const row of summary) {
@@ -146,6 +170,7 @@ for (const [entityId, count] of byEntity.entries()) {
   console.log(`- ${entityId}: ${count}`);
 }
 console.log(`Report: ${path.relative(repoRoot, reportPath)}`);
+console.log(`Preserved ${preserved.length} non-allowlisted animation(s).`);
 if (rejected.length > 0) {
   console.log(`Safety flagged ${rejected.length} frame(s); actor cleanup was used where foreground remained.`);
 }

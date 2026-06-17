@@ -325,7 +325,7 @@ export class RenderSystem {
         const rect = rockPropRects[Math.abs(hashString(obstacle.id)) % rockPropRects.length];
         const width = obstacle.radius * 2.55;
         const height = width * (rect.h / rect.w);
-        ctx.drawImage(rockSheet, rect.x, rect.y, rect.w, rect.h, obstacle.x - width / 2, obstacle.y - height * 0.72, width, height);
+        ctx.drawImage(rockSheet, rect.x, rect.y, rect.w, rect.h, obstacle.x - width / 2, obstacle.y - height, width, height);
         ctx.restore();
         return;
       }

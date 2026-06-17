@@ -1,8 +1,6 @@
 import { AssetLoader } from './AssetLoader';
 import { Camera } from './Camera';
 import {
-  ARENA_HEIGHT,
-  ARENA_WIDTH,
   DASH_COOLDOWN_MS,
   DASH_DURATION_MS,
   DASH_STAMINA_COST,
@@ -42,6 +40,7 @@ import { MenuScreen } from '../ui/MenuScreen';
 import { RewardScreen } from '../ui/RewardScreen';
 import { SpriteLab } from '../ui/SpriteLab';
 import { TEST_BALANCE } from './testBalance';
+import { PLAYABLE_ARENA_BOUNDS, clampEntityToPlayableArena, clampToPlayableArena } from './arenaBounds';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
 const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
@@ -219,6 +218,7 @@ export class Game {
     this.handleAttackInput();
     this.movement.update(this.player, deltaSeconds);
     this.collision.resolveObstacleCollision(this.player, this.obstacles);
+    clampEntityToPlayableArena(this.player);
   }
 
   private updateEnemies(deltaMs: number): void {
@@ -253,6 +253,7 @@ export class Game {
 
       this.movement.update(enemy, deltaMs / 1000);
       this.collision.resolveObstacleCollision(enemy, this.obstacles);
+      clampEntityToPlayableArena(enemy);
     }
 
     if (this.boss?.alive) {
@@ -287,6 +288,7 @@ export class Game {
 
       this.movement.update(boss, deltaMs / 1000);
       this.collision.resolveObstacleCollision(boss, this.obstacles);
+      clampEntityToPlayableArena(boss);
     }
   }
 
@@ -387,11 +389,15 @@ export class Game {
         ? targets.slice(1, 1 + TEST_BALANCE.grappleMaxSecondaryTargets)
         : [];
       this.player.facing = target.x < this.player.x ? -1 : 1;
-      const controlX = this.player.x + this.player.facing * (this.player.radius + target.radius * 0.55);
+      const control = clampToPlayableArena(
+        this.player.x + this.player.facing * (this.player.radius + target.radius * 0.55),
+        this.player.y + Math.sign(target.y - this.player.y) * 8,
+        target.radius,
+      );
       const targetStartX = target.x;
       const targetStartY = target.y;
-      target.x = controlX;
-      target.y = this.player.y + Math.sign(target.y - this.player.y) * 8;
+      target.x = control.x;
+      target.y = control.y;
       target.takeDamage(Math.max(8, Math.round(move.damage * this.player.getDamageMultiplier())));
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
@@ -594,10 +600,12 @@ export class Game {
 
   private createObstacles(): Obstacle[] {
     const obstacles: Obstacle[] = [];
+    const groundWidth = PLAYABLE_ARENA_BOUNDS.maxX - PLAYABLE_ARENA_BOUNDS.minX;
+    const groundHeight = PLAYABLE_ARENA_BOUNDS.maxY - PLAYABLE_ARENA_BOUNDS.minY;
     for (let i = 0; i < OBSTACLE_COUNT; i += 1) {
-      const x = 180 + ((i * 257) % (ARENA_WIDTH - 360));
-      const y = 160 + ((i * 173) % (ARENA_HEIGHT - 320));
       const radius = 22 + (i % 3) * 6;
+      const x = PLAYABLE_ARENA_BOUNDS.minX + radius + ((i * 257) % Math.max(1, groundWidth - radius * 2));
+      const y = PLAYABLE_ARENA_BOUNDS.minY + radius + ((i * 173) % Math.max(1, groundHeight - radius * 2));
       obstacles.push(new Obstacle(`obstacle_${i}`, 'rock', x, y, radius));
     }
     return obstacles;
@@ -786,8 +794,7 @@ export class Game {
 
     const playerStartX = this.player.x;
     const playerStartY = this.player.y;
-    const playerEndX = enemy.x + enemy.facing * (enemy.radius + this.player.radius + 12);
-    const playerEndY = enemy.y + 18;
+    const playerEnd = clampToPlayableArena(enemy.x + enemy.facing * (enemy.radius + this.player.radius + 12), enemy.y + 18, this.player.radius);
     this.player.takeDamage(move.damage * TEST_BALANCE.enemyDamageMultiplier);
     this.player.stunMs = Math.max(this.player.stunMs, Math.min(durationMs, 720));
     this.player.vx = 0;
@@ -800,8 +807,8 @@ export class Game {
       attackerEndY: enemy.y,
       targetStartX: playerStartX,
       targetStartY: playerStartY,
-      targetEndX: playerEndX,
-      targetEndY: playerEndY,
+      targetEndX: playerEnd.x,
+      targetEndY: playerEnd.y,
     });
     this.grappleDebug = this.createGrappleDebug(enemy.definition.id, animationKey, [this.player], this.player, [], true, false);
   }
@@ -820,6 +827,8 @@ export class Game {
     },
   ): void {
     this.activeGrapples = this.activeGrapples.filter((lock) => lock.attacker !== attacker && lock.target !== attacker && lock.attacker !== target && lock.target !== target);
+    const attackerEnd = clampToPlayableArena(placement.attackerEndX, placement.attackerEndY, attacker.radius);
+    const targetEnd = clampToPlayableArena(placement.targetEndX, placement.targetEndY, target.radius);
     this.activeGrapples.push({
       attacker,
       target,
@@ -827,12 +836,12 @@ export class Game {
       totalMs: durationMs,
       attackerStartX: attacker.x,
       attackerStartY: attacker.y,
-      attackerEndX: placement.attackerEndX,
-      attackerEndY: placement.attackerEndY,
+      attackerEndX: attackerEnd.x,
+      attackerEndY: attackerEnd.y,
       targetStartX: placement.targetStartX,
       targetStartY: placement.targetStartY,
-      targetEndX: placement.targetEndX,
-      targetEndY: placement.targetEndY,
+      targetEndX: targetEnd.x,
+      targetEndY: targetEnd.y,
     });
   }
 
@@ -845,6 +854,8 @@ export class Game {
       lock.attacker.y = lerp(lock.attackerStartY, lock.attackerEndY, eased);
       lock.target.x = lerp(lock.targetStartX, lock.targetEndX, eased);
       lock.target.y = lerp(lock.targetStartY, lock.targetEndY, eased);
+      clampEntityToPlayableArena(lock.attacker);
+      clampEntityToPlayableArena(lock.target);
       lock.attacker.vx = 0;
       lock.attacker.vy = 0;
       lock.target.vx = 0;

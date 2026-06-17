@@ -8,7 +8,7 @@ export class Hud {
     ctx.font = '16px monospace';
     ctx.textBaseline = 'top';
 
-    this.panel(ctx, 14, 12, 340, 184);
+    this.panel(ctx, 14, 12, 340, 158);
     this.bar(ctx, 22, 20, 230, 18, player.health / player.maxHealth, '#e94444', 'Health');
     this.bar(ctx, 22, 48, 230, 14, player.stamina / player.maxStamina, '#53d47c', 'Stamina');
 
@@ -23,11 +23,6 @@ export class Hud {
         : player.abilityStatus || `${ability.name} on cooldown ${Math.ceil(player.abilityCooldownMs / 1000)}s`
       : 'Ability unavailable';
     ctx.fillText(`U: ${ability?.name ?? 'No Ability'} (${abilityStatus})`, 22, 126);
-    ctx.fillText(
-      `Upgrades D${player.upgrades.damageLevel} S${player.upgrades.staminaLevel} C${player.upgrades.cooldownLevel} U${player.upgrades.abilityLevel}`,
-      22,
-      150,
-    );
 
     const slotKeys = ['H', 'J', 'K', 'L'];
     const moveText = player.equippedMoves.map((move, index) => `${slotKeys[index]}:${move.name}`).join('  ');

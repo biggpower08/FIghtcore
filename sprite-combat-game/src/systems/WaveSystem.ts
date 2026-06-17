@@ -1,4 +1,5 @@
 import { ARENA_HEIGHT, ARENA_WIDTH, BOSS_WAVE_INTERVAL } from '../game/constants';
+import { clampToPlayableArena } from '../game/arenaBounds';
 import { Boss } from '../entities/Boss';
 import { Enemy } from '../entities/Enemy';
 import { enemyDefinitions } from '../data/enemies';
@@ -19,7 +20,8 @@ export class WaveSystem {
       if (!definition) throw new Error('No active enemy definitions are available for boss spawning.');
       const move = moveById.get(definition.moveId);
       if (!move) throw new Error(`Missing boss move ${definition.moveId}`);
-      return { enemies: [], boss: new Boss(`boss_${this.wave}`, definition, ARENA_WIDTH - 500, ARENA_HEIGHT / 2, move) };
+      const position = clampToPlayableArena(ARENA_WIDTH - 500, ARENA_HEIGHT / 2, 42);
+      return { enemies: [], boss: new Boss(`boss_${this.wave}`, definition, position.x, position.y, move) };
     }
 
     const enemies: Enemy[] = [];
@@ -38,9 +40,8 @@ export class WaveSystem {
 
       for (let index = 0; index < group.count; index += 1) {
         const angle = (Math.PI * 2 * spawnedCount) / totalCount;
-        const x = ARENA_WIDTH / 2 + Math.cos(angle) * 520;
-        const y = ARENA_HEIGHT / 2 + Math.sin(angle) * 330;
-        enemies.push(new Enemy(`enemy_${this.wave}_${spawnedCount}`, definition, x, y, move));
+        const position = clampToPlayableArena(ARENA_WIDTH / 2 + Math.cos(angle) * 520, ARENA_HEIGHT / 2 + Math.sin(angle) * 330, 22);
+        enemies.push(new Enemy(`enemy_${this.wave}_${spawnedCount}`, definition, position.x, position.y, move));
         spawnedCount += 1;
       }
     }
@@ -53,9 +54,8 @@ export class WaveSystem {
       const bonusCount = Math.floor((this.wave / 2) * TEST_BALANCE.bonusEnemyCountMultiplier);
       for (let index = 0; index < bonusCount; index += 1) {
         const angle = (Math.PI * 2 * index) / bonusCount;
-        const x = ARENA_WIDTH / 2 + Math.cos(angle) * 590;
-        const y = ARENA_HEIGHT / 2 + Math.sin(angle) * 370;
-        enemies.push(new Enemy(`enemy_${this.wave}_bonus_${index}`, definition, x, y, move));
+        const position = clampToPlayableArena(ARENA_WIDTH / 2 + Math.cos(angle) * 590, ARENA_HEIGHT / 2 + Math.sin(angle) * 370, 22);
+        enemies.push(new Enemy(`enemy_${this.wave}_bonus_${index}`, definition, position.x, position.y, move));
       }
     }
 

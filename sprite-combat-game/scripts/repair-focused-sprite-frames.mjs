@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { PNG } from 'pngjs';
+import { shouldRepairSprite } from './sprite-repair-allowlist.mjs';
 
 const repoRoot = process.cwd();
 const stripRoot = path.join(repoRoot, 'public', 'assets', 'fightcore', 'sprites');
@@ -61,6 +62,14 @@ function segment(sourceX, sourceWidth, width, height, anchorX, anchorY, duration
 }
 
 async function repairKnownFightcoreFrames(repairSpec) {
+  if (!shouldRepairSprite(repairSpec.entityId, repairSpec.animation)) {
+    rejected.push({
+      entityId: repairSpec.entityId,
+      animation: repairSpec.animation,
+      reason: 'Repair skipped because animation is not in scripts/sprite-repair-allowlist.mjs.',
+    });
+    return;
+  }
   const sourcePath = path.join(stripRoot, repairSpec.entityId, repairSpec.stripPath);
   const outputAnimationDir = path.join(framesRoot, repairSpec.entityId, repairSpec.animation);
   const strip = PNG.sync.read(await fs.readFile(sourcePath));

@@ -1,5 +1,6 @@
 import type { Entity } from '../entities/Entity';
 import type { Obstacle } from '../entities/Obstacle';
+import { clampEntityToPlayableArena } from '../game/arenaBounds';
 
 export class CollisionSystem {
   resolveObstacleCollision(entity: Entity, obstacles: Obstacle[]): void {
@@ -15,6 +16,7 @@ export class CollisionSystem {
         const push = minimum - distance;
         entity.x += (dx / distance) * push;
         entity.y += (dy / distance) * push;
+        clampEntityToPlayableArena(entity);
       }
     }
   }

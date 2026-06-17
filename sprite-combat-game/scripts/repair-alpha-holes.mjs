@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { PNG } from 'pngjs';
+import { shouldRepairSprite } from './sprite-repair-allowlist.mjs';
 
 const repoRoot = process.cwd();
 const framesRoot = path.join(repoRoot, 'public', 'sprites', 'frames');
@@ -12,17 +13,26 @@ const maxAutoRepairHoleArea = 220;
 const maxAutoRepairTotalArea = 360;
 const maxAutoRepairHoleSpan = 32;
 
-await fs.rm(repairedRoot, { recursive: true, force: true });
 await fs.mkdir(repairedRoot, { recursive: true });
 await fs.mkdir(qaRoot, { recursive: true });
 
 const reports = [];
+const preserved = [];
 const entities = await listDirs(framesRoot);
 
 for (const entityId of entities) {
   const entityDir = path.join(framesRoot, entityId);
   const animations = await listDirs(entityDir);
   for (const animationKey of animations) {
+    if (!shouldRepairSprite(entityId, animationKey)) {
+      preserved.push({
+        entityId,
+        animationKey,
+        reason: 'Approved/non-targeted animation preserved by sprite repair allowlist.',
+      });
+      continue;
+    }
+    await fs.rm(path.join(repairedRoot, entityId, animationKey), { recursive: true, force: true });
     const animationDir = path.join(entityDir, animationKey);
     const frameFiles = (await fs.readdir(animationDir)).filter((file) => file.endsWith('.png')).sort();
     for (const [index, frameFile] of frameFiles.entries()) {
@@ -62,14 +72,40 @@ for (const entityId of entities) {
   }
 }
 
-await fs.writeFile(path.join(qaRoot, 'alpha-hole-report.json'), JSON.stringify({ generatedAt: new Date().toISOString(), frames: reports }, null, 2));
-await fs.writeFile(metadataPath, renderMetadata(reports));
+await fs.writeFile(
+  path.join(qaRoot, 'alpha-hole-report.json'),
+  JSON.stringify(
+    {
+      generatedAt: new Date().toISOString(),
+      rule: 'Approved animations are immutable unless explicitly targeted in scripts/sprite-repair-allowlist.mjs.',
+      preserved,
+      frames: reports,
+    },
+    null,
+    2,
+  ),
+);
+const preservedMetadata = await readPreservedAlphaMetadata(metadataPath);
+await fs.writeFile(metadataPath, renderMetadata([...preservedMetadata, ...reports]));
 
 console.log(`Alpha-hole QA scanned ${entities.length} entities.`);
 console.log(`Detected ${reports.length} hollow frame(s).`);
 console.log(`Auto-repaired ${reports.filter((entry) => entry.repairedFramePath).length} frame(s).`);
 console.log(`Blocked ${reports.filter((entry) => entry.invalidHollowFrame).length} large hollow frame(s).`);
+console.log(`Preserved ${preserved.length} non-allowlisted animation(s).`);
+console.log(`Preserved ${preservedMetadata.length} existing non-allowlisted metadata row(s).`);
 console.log(`Report: ${path.relative(repoRoot, path.join(qaRoot, 'alpha-hole-report.json'))}`);
+
+async function readPreservedAlphaMetadata(filePath) {
+  try {
+    const source = await fs.readFile(filePath, 'utf8');
+    return Array.from(source.matchAll(/  (\{"entityId":.+?\}),/g), (match) => JSON.parse(match[1])).filter(
+      (entry) => !shouldRepairSprite(entry.entityId, entry.animationKey),
+    );
+  } catch {
+    return [];
+  }
+}
 
 async function listDirs(dir) {
   try {
