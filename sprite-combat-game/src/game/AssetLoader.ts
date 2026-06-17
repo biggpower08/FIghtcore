@@ -30,7 +30,21 @@ export interface ResolvedSpriteFrame {
   invalidHollowFrame?: boolean;
   alphaHoleCount?: number;
   repairedAlphaHoles?: number;
+  bodyAnchorComputed?: boolean;
+  bodyAnchorSource?: string;
+  foregroundBounds?: SpriteFrameBounds;
+  bodyBounds?: SpriteFrameBounds;
   notes?: string;
+}
+
+export interface SpriteFrameBounds {
+  minX: number;
+  minY: number;
+  maxX: number;
+  maxY: number;
+  width: number;
+  height: number;
+  pixels?: number;
 }
 
 export interface ResolvedSpriteAnimation {
@@ -222,25 +236,27 @@ export class AssetLoader {
         );
         continue;
       }
-      frames.push({
-        source: 'atlas-crop',
-        entityId: frame.entityId,
-        animationKey: frame.animationKey,
-        frameIndex: frame.frameIndex,
-        durationMs: frame.durationMs,
-        sheetImage,
-        sheetId: frame.sheetId,
-        sheetPath: frame.sheetPath,
-        x: frame.x,
-        y: frame.y,
-        width: frame.width,
-        height: frame.height,
-        anchorX: frame.anchorX,
-        anchorY: frame.anchorY,
-        feetY: frame.feetY,
-        rawCropAvailable: true,
-        notes: frame.notes,
-      });
+      frames.push(
+        applyBodyAwareAnchor({
+          source: 'atlas-crop',
+          entityId: frame.entityId,
+          animationKey: frame.animationKey,
+          frameIndex: frame.frameIndex,
+          durationMs: frame.durationMs,
+          sheetImage,
+          sheetId: frame.sheetId,
+          sheetPath: frame.sheetPath,
+          x: frame.x,
+          y: frame.y,
+          width: frame.width,
+          height: frame.height,
+          anchorX: frame.anchorX,
+          anchorY: frame.anchorY,
+          feetY: frame.feetY,
+          rawCropAvailable: true,
+          notes: frame.notes,
+        }),
+      );
     }
 
     if (frames.length === 0) return null;
@@ -302,23 +318,25 @@ export class AssetLoader {
     }
     const renderProfile = spriteRegistryById.get(entityId)?.render;
 
-    const frames = images.map<ResolvedSpriteFrame>((image, index) => ({
-      source: 'frame-png',
-      entityId,
-      animationKey,
-      frameIndex: index,
-      durationMs: cleaned?.frames[index]?.durationMs ?? definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
-      image,
-      framePath: cleaned?.frames[index]?.path ?? `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-      width: cleaned?.frames[index]?.width,
-      height: cleaned?.frames[index]?.height,
-      anchorX: cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
-      anchorY: cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
-      feetY: cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
-      rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
-      cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
-      notes: cleaned?.frames[index]?.splitFromDirtyCrop ? 'Cleaned frame split from a multi-pose raw crop.' : undefined,
-    }));
+    const frames = images.map<ResolvedSpriteFrame>((image, index) =>
+      applyBodyAwareAnchor({
+        source: 'frame-png',
+        entityId,
+        animationKey,
+        frameIndex: index,
+        durationMs: cleaned?.frames[index]?.durationMs ?? definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
+        image,
+        framePath: cleaned?.frames[index]?.path ?? `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
+        width: cleaned?.frames[index]?.width,
+        height: cleaned?.frames[index]?.height,
+        anchorX: cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+        anchorY: cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+        feetY: cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
+        rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
+        cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
+        notes: cleaned?.frames[index]?.splitFromDirtyCrop ? 'Cleaned frame split from a multi-pose raw crop.' : undefined,
+      }),
+    );
     for (const [index, frame] of frames.entries()) {
       const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
       if (!alphaHole) continue;
@@ -375,7 +393,7 @@ export class AssetLoader {
     if (frame.framePath) {
       const image = await this.loadFrame(frame.framePath);
       if (!image) return null;
-      return {
+      return applyBodyAwareAnchor({
         source: 'frame-png',
         entityId,
         animationKey,
@@ -386,13 +404,13 @@ export class AssetLoader {
         anchorX: frame.anchorX ?? 0.5,
         anchorY: frame.anchorY ?? 0.84,
         notes: frame.notes,
-      };
+      });
     }
 
     if (frame.sheetId && frame.x !== undefined && frame.y !== undefined && frame.width && frame.height) {
       const sheetImage = await this.loadSheet(frame.sheetId);
       if (!sheetImage) return null;
-      return {
+      return applyBodyAwareAnchor({
         source: 'sheet-crop',
         entityId,
         animationKey,
@@ -410,7 +428,7 @@ export class AssetLoader {
         feetY: frame.feetY,
         rawCropAvailable: true,
         notes: frame.notes,
-      };
+      });
     }
 
     return {
@@ -538,6 +556,165 @@ function isKnownBrokenFrame(path: string): boolean {
 
 function appendNote(current: string | undefined, note: string): string {
   return current ? `${current} ${note}` : note;
+}
+
+function applyBodyAwareAnchor(frame: ResolvedSpriteFrame): ResolvedSpriteFrame {
+  const analysis = analyzeSpriteBody(frame);
+  if (!analysis) return frame;
+
+  const bodyCenterX = (analysis.bodyBounds.minX + analysis.bodyBounds.maxX + 1) / 2;
+  const bodyFootY = analysis.bodyBounds.maxY + 1;
+  const proposedAnchorX = bodyCenterX / Math.max(1, analysis.width);
+  const proposedAnchorY = bodyFootY / Math.max(1, analysis.height);
+
+  return {
+    ...frame,
+    anchorX: clampNumber(proposedAnchorX, Math.max(0.25, frame.anchorX - 0.18), Math.min(0.75, frame.anchorX + 0.18)),
+    anchorY: clampNumber(proposedAnchorY, Math.max(0.78, frame.anchorY - 0.08), Math.min(0.98, frame.anchorY + 0.08)),
+    feetY: Math.round(bodyFootY),
+    bodyAnchorComputed: true,
+    bodyAnchorSource: analysis.source,
+    foregroundBounds: analysis.foregroundBounds,
+    bodyBounds: analysis.bodyBounds,
+    notes: appendNote(frame.notes, 'Using body-aware silhouette anchor.'),
+  };
+}
+
+function analyzeSpriteBody(
+  frame: ResolvedSpriteFrame,
+):
+  | {
+      width: number;
+      height: number;
+      source: string;
+      foregroundBounds: SpriteFrameBounds;
+      bodyBounds: SpriteFrameBounds;
+    }
+  | undefined {
+  if (typeof document === 'undefined') return undefined;
+  const image = frame.image ?? frame.sheetImage;
+  if (!image) return undefined;
+  const width = frame.width ?? frame.image?.width ?? image.width;
+  const height = frame.height ?? frame.image?.height ?? image.height;
+  if (width <= 0 || height <= 0) return undefined;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = width;
+  canvas.height = height;
+  const context = canvas.getContext('2d', { willReadFrequently: true });
+  if (!context) return undefined;
+
+  if (frame.image) {
+    context.drawImage(frame.image, 0, 0, width, height);
+  } else if (frame.sheetImage && frame.x !== undefined && frame.y !== undefined && frame.width && frame.height) {
+    context.drawImage(frame.sheetImage, frame.x, frame.y, frame.width, frame.height, 0, 0, width, height);
+  } else {
+    return undefined;
+  }
+
+  const pixels = context.getImageData(0, 0, width, height).data;
+  const foregroundBounds = findForegroundBounds(pixels, width, height);
+  if (!foregroundBounds || (foregroundBounds.pixels ?? 0) < 80) return undefined;
+  const bodyBounds = findPrimaryBodyBounds(pixels, width, height, foregroundBounds);
+  if (!bodyBounds) return undefined;
+
+  return {
+    width,
+    height,
+    source: frame.image ? 'frame-png-alpha' : 'sheet-crop-alpha',
+    foregroundBounds,
+    bodyBounds,
+  };
+}
+
+function findForegroundBounds(pixels: Uint8ClampedArray, width: number, height: number): SpriteFrameBounds | undefined {
+  let minX = width;
+  let minY = height;
+  let maxX = -1;
+  let maxY = -1;
+  let foregroundPixels = 0;
+
+  for (let pixel = 0; pixel < width * height; pixel += 1) {
+    if (pixels[pixel * 4 + 3] <= 20) continue;
+    const x = pixel % width;
+    const y = Math.floor(pixel / width);
+    foregroundPixels += 1;
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+  }
+
+  if (maxX < minX || maxY < minY) return undefined;
+  return { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1, pixels: foregroundPixels };
+}
+
+function findPrimaryBodyBounds(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  foregroundBounds: SpriteFrameBounds,
+): SpriteFrameBounds | undefined {
+  const visited = new Uint8Array(width * height);
+  let primary: SpriteFrameBounds | undefined;
+  let primaryScore = 0;
+  const minimumBodyPixels = Math.max(48, Math.round((foregroundBounds.pixels ?? 0) * 0.08));
+
+  for (let y = foregroundBounds.minY; y <= foregroundBounds.maxY; y += 1) {
+    for (let x = foregroundBounds.minX; x <= foregroundBounds.maxX; x += 1) {
+      const start = y * width + x;
+      if (visited[start] || pixels[start * 4 + 3] <= 20) continue;
+      const component = floodOpaqueComponent(pixels, width, height, start, visited);
+      const componentPixels = component.pixels ?? 0;
+      if (componentPixels < minimumBodyPixels) continue;
+      const bottomWeight = 1 + component.maxY / Math.max(1, height);
+      const score = componentPixels * bottomWeight;
+      if (score > primaryScore) {
+        primary = component;
+        primaryScore = score;
+      }
+    }
+  }
+
+  return primary ?? foregroundBounds;
+}
+
+function floodOpaqueComponent(
+  pixels: Uint8ClampedArray,
+  width: number,
+  height: number,
+  startPixel: number,
+  visited: Uint8Array,
+): SpriteFrameBounds {
+  const queue = [startPixel];
+  let minX = width;
+  let minY = height;
+  let maxX = -1;
+  let maxY = -1;
+  let componentPixels = 0;
+
+  while (queue.length > 0) {
+    const pixel = queue.pop();
+    if (pixel === undefined || visited[pixel] || pixels[pixel * 4 + 3] <= 20) continue;
+    visited[pixel] = 1;
+    const x = pixel % width;
+    const y = Math.floor(pixel / width);
+    componentPixels += 1;
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    if (x > 0) queue.push(pixel - 1);
+    if (x < width - 1) queue.push(pixel + 1);
+    if (y > 0) queue.push(pixel - width);
+    if (y < height - 1) queue.push(pixel + width);
+  }
+
+  return { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1, pixels: componentPixels };
+}
+
+function clampNumber(value: number, min: number, max: number): number {
+  return Math.min(max, Math.max(min, value));
 }
 
 function minimumFrameCount(animationKey: string): number {

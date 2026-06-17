@@ -6,7 +6,7 @@ export interface BodyCropSpriteFrameQuality {
   hasAdjacentFrameBleed: boolean;
   bleedFromNextFrame: boolean;
   disconnectedNeighborBlob: boolean;
-  frameSource: 'cleaned-body-crop' | 'raw-crop-flagged';
+  frameSource: 'cleaned-body-crop' | 'raw-crop-flagged' | 'runtime-body-anchor-qa';
   reason: string;
 }
 
@@ -16,9 +16,27 @@ const repairedBodyCropAnimations = new Set([
   'shadow-striker:hit_react',
   'combat-monk:high_kick',
   'combat-monk:palm_strike',
+  'combat-monk:spinning_sweep',
   'striker-monkey:idle',
   'cyber-ninja:slice',
   'puppetmaster:o_goshi',
+]);
+
+const bodyAnchorQaAnimations = new Set([
+  'striker-monkey:jab',
+  'striker-monkey:cross',
+  'striker-monkey:hook',
+  'striker-monkey:round_kick',
+  'cyber-monkey-grappler:charge',
+  'cyber-monkey-grappler:dash',
+  'cyber-monkey-grappler:ground_slam',
+  'cyber-monkey-grappler:seoi_nage',
+  'cyber-monkey-grappler:armbar',
+  'cyber-monkey-grappler:o_goshi',
+  'cyber-monkey-grappler:guillotine',
+  'puppetmaster:dash',
+  'combat-monk:dash',
+  'combat-monk:standing_shoulder_lock',
 ]);
 
 const knownAdjacentBleedFrames = new Set([
@@ -34,9 +52,11 @@ export function getBodyCropSpriteFrameQuality(
   frameIndex: number,
 ): BodyCropSpriteFrameQuality | undefined {
   const key = frameKey(entityId, animationKey, frameIndex);
-  const cleanedFrameAvailable = repairedBodyCropAnimations.has(`${entityId}:${animationKey}`);
+  const animationId = `${entityId}:${animationKey}`;
+  const cleanedFrameAvailable = repairedBodyCropAnimations.has(animationId);
+  const bodyAnchorQa = bodyAnchorQaAnimations.has(animationId);
   const hasAdjacentFrameBleed = knownAdjacentBleedFrames.has(key);
-  if (!cleanedFrameAvailable && !hasAdjacentFrameBleed) return undefined;
+  if (!cleanedFrameAvailable && !hasAdjacentFrameBleed && !bodyAnchorQa) return undefined;
 
   return {
     entityId,
@@ -46,10 +66,12 @@ export function getBodyCropSpriteFrameQuality(
     hasAdjacentFrameBleed,
     bleedFromNextFrame: hasAdjacentFrameBleed,
     disconnectedNeighborBlob: hasAdjacentFrameBleed,
-    frameSource: cleanedFrameAvailable ? 'cleaned-body-crop' : 'raw-crop-flagged',
+    frameSource: cleanedFrameAvailable ? 'cleaned-body-crop' : hasAdjacentFrameBleed ? 'raw-crop-flagged' : 'runtime-body-anchor-qa',
     reason: cleanedFrameAvailable
       ? 'Body-aware cleaned frame is available and preferred over the raw crop.'
-      : 'Raw crop is flagged for likely adjacent-frame body bleed.',
+      : hasAdjacentFrameBleed
+        ? 'Raw crop is flagged for likely adjacent-frame body bleed.'
+        : 'Animation is marked for runtime body-anchor QA; Sprite Lab reports foreground bounds and computed body anchor.',
   };
 }
 
