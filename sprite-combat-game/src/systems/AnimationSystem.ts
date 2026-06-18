@@ -9,6 +9,7 @@ export interface PlayAnimationOptions {
   lockForMs?: number;
   fallback?: string;
   loop?: boolean;
+  force?: boolean;
 }
 
 export interface AnimationState {
@@ -35,7 +36,7 @@ export class AnimationSystem {
 
   play(entity: Entity, animationKey: string, options: PlayAnimationOptions = {}): void {
     const state = this.getState(entity);
-    if (state.animationLockedUntilMs > 0 && state.currentAnimationKey !== animationKey) return;
+    if (!options.force && state.animationLockedUntilMs > 0 && state.currentAnimationKey !== animationKey) return;
 
     state.currentAnimationKey = animationKey;
     state.frameIndex = 0;
@@ -44,6 +45,10 @@ export class AnimationSystem {
     state.animationLockedUntilMs = options.lockForMs ?? 0;
     state.animationLockTotalMs = options.lockForMs ?? 0;
     state.fallback = options.fallback;
+  }
+
+  getLockRemainingMs(entity: Entity): number {
+    return this.getState(entity).animationLockedUntilMs;
   }
 
   getPose(fighter: Fighter): 'idle' | 'move' | 'attack' | 'stunned' {

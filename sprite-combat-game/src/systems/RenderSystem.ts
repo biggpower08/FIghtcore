@@ -69,6 +69,7 @@ export const DESERT_ARENA_ASSET_PATHS = [
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 const RUNTIME_FRAME_DRAW_HEIGHT = 96;
+const COMBAT_MONK_REFERENCE_SCALE = 0.94;
 const blockedFrameWarnings = new Set<string>();
 const stageVariants = [
   { name: 'morning', path: '/assets/fightcore/backgrounds/desert-arena/morning.png', sand: '#ba7d3a', ridge: '#8b5431', tint: 'rgba(255, 204, 137, 0.08)' },
@@ -483,7 +484,8 @@ export class RenderSystem {
     const sourceWidth = frame.width ?? frame.image?.width ?? 64;
     const sourceHeight = frame.height ?? frame.image?.height ?? 64;
     const profileScale = spriteRegistryById.get(this.getAssetId(entity))?.render?.scale ?? 1;
-    const scale = profileScale * (entity instanceof Boss ? 1.08 : 1);
+    const referenceScale = this.referenceFrameScale(entity, frame);
+    const scale = profileScale * referenceScale * (entity instanceof Boss ? 1.08 : 1);
     const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
     const usesNativeFrameScale = usesPreparedFightcoreStrip || isRuntimeSpriteFrame(frame.framePath);
     const normalizedFrameHeight = isRuntimeSpriteFrame(frame.framePath) ? RUNTIME_FRAME_DRAW_HEIGHT : sourceHeight;
@@ -504,6 +506,12 @@ export class RenderSystem {
       this.drawSpriteDebug(ctx, entity, animation, frame, index, dx, dy, width, height);
     }
     return true;
+  }
+
+  private referenceFrameScale(entity: Entity, frame: ResolvedSpriteFrame): number {
+    const assetId = this.getAssetId(entity);
+    if (assetId === 'combat-monk' && frame.usingReferenceExtracted) return COMBAT_MONK_REFERENCE_SCALE;
+    return 1;
   }
 
   private drawFlashOverlay(ctx: CanvasRenderingContext2D, entity: Entity, dx: number, dy: number, width: number, height: number): void {
@@ -704,11 +712,17 @@ export class RenderSystem {
 }
 
 function shouldDrawSpriteDebug(): boolean {
-  return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_SPRITE_BOXES_PARAM);
+  return hasEnabledDebugParam(DEBUG_SPRITE_BOXES_PARAM);
 }
 
 function shouldDrawGrappleSuppressionDebug(): boolean {
-  return typeof window !== 'undefined' && new URLSearchParams(window.location.search).has(DEBUG_GRAPPLE_SUPPRESSION_PARAM);
+  return hasEnabledDebugParam(DEBUG_GRAPPLE_SUPPRESSION_PARAM);
+}
+
+function hasEnabledDebugParam(param: string): boolean {
+  if (typeof window === 'undefined') return false;
+  const value = new URLSearchParams(window.location.search).get(param);
+  return value === '1' || value === 'true';
 }
 
 function smoothstep(value: number): number {

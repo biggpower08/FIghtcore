@@ -12,6 +12,7 @@ import {
 import { InputManager } from './InputManager';
 import { Boss } from '../entities/Boss';
 import { Enemy } from '../entities/Enemy';
+import type { Fighter } from '../entities/Fighter';
 import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
@@ -72,6 +73,14 @@ interface ActiveGrappleLock {
   targetEndY: number;
 }
 
+interface PendingVisualState {
+  target: Player | Enemy | Boss;
+  animationKey: string;
+  remainingMs: number;
+  lockForMs: number;
+  fallback: string;
+}
+
 export class Game {
   private readonly ctx: CanvasRenderingContext2D;
   private readonly input = new InputManager();
@@ -98,6 +107,7 @@ export class Game {
   private dust: DustPuff[] = [];
   private impacts: ImpactSpark[] = [];
   private visualSuppressions = new Map<string, VisualSuppression>();
+  private pendingVisualStates = new Map<string, PendingVisualState>();
   private activeGrapples: ActiveGrappleLock[] = [];
   private grappleDebug?: GrappleDebugRenderInfo;
   private hitPauseMs = 0;
@@ -319,6 +329,7 @@ export class Game {
     this.dust = this.dust.filter((puff) => puff.lifeMs > 0);
     this.updateFeedbackTimers(deltaMs);
     this.updateVisualSuppressions(deltaMs);
+    this.updatePendingVisualStates(deltaMs);
   }
 
   private handleAttackInput(): void {
@@ -558,6 +569,7 @@ export class Game {
     this.hitboxes = [];
     this.impacts = [];
     this.visualSuppressions.clear();
+    this.pendingVisualStates.clear();
     this.activeGrapples = [];
     this.state = 'playing';
   }
@@ -637,6 +649,7 @@ export class Game {
     this.dust = [];
     this.impacts = [];
     this.visualSuppressions.clear();
+    this.pendingVisualStates.clear();
     this.activeGrapples = [];
     this.waves.wave = 0;
     this.rewardScreen.hide();
@@ -685,6 +698,7 @@ export class Game {
   private openGameOver(): void {
     this.state = 'gameOver';
     this.visualSuppressions.clear();
+    this.pendingVisualStates.clear();
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showGameOver();
@@ -698,6 +712,7 @@ export class Game {
     this.dust = [];
     this.impacts = [];
     this.visualSuppressions.clear();
+    this.pendingVisualStates.clear();
     this.activeGrapples = [];
     this.rewardScreen.hide();
     this.spriteLab.hide();
@@ -733,6 +748,7 @@ export class Game {
     this.selectedCharacterId = characterId;
     this.player = this.createPlayer();
     this.visualSuppressions.clear();
+    this.pendingVisualStates.clear();
     this.activeGrapples = [];
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
@@ -903,15 +919,67 @@ export class Game {
 
   private playDamageAnimation(impact: HitImpact): void {
     if (!(impact.target instanceof Enemy || impact.target instanceof Boss || impact.target instanceof Player)) return;
-    if (!impact.target.alive) return;
-    const oldHealth = impact.target.health + impact.damage;
-    const oldQuarter = Math.floor((oldHealth / impact.target.maxHealth) * 4);
-    const newQuarter = Math.floor((impact.target.health / impact.target.maxHealth) * 4);
+    const target = impact.target;
+    if (!target.alive) {
+      this.playDelayedDeathVisual(impact);
+      return;
+    }
+    const oldHealth = target.health + impact.damage;
+    const oldQuarter = Math.floor((oldHealth / target.maxHealth) * 4);
+    const newQuarter = Math.floor((target.health / target.maxHealth) * 4);
     const majorDamage = impact.heavy || newQuarter < oldQuarter;
     if (!this.shouldPlayHitReaction(impact, majorDamage)) return;
-    this.animation.play(impact.target, majorDamage ? 'knockdown' : 'hit_react', {
+    if (majorDamage) {
+      const delayMs = this.visualHandoffDelayMs(impact.attacker, 340);
+      this.animation.play(target, 'hit_react', {
+        lockForMs: Math.max(180, Math.min(280, delayMs || 220)),
+        fallback: 'hit_react',
+        force: true,
+      });
+      if (delayMs > 80) {
+        this.queueVisualState(target, 'knockdown', delayMs, 520, 'hit_react');
+        return;
+      }
+    }
+    this.animation.play(target, majorDamage ? 'knockdown' : 'hit_react', {
       lockForMs: majorDamage ? 520 : 280,
       fallback: 'hit_react',
+      force: majorDamage,
+    });
+  }
+
+  private playDelayedDeathVisual(impact: HitImpact): void {
+    const target = impact.target;
+    if (!(target instanceof Enemy || target instanceof Boss || target instanceof Player)) return;
+    const delayMs = this.visualHandoffDelayMs(impact.attacker, 620);
+    const deathAnimation = target instanceof Enemy ? 'death' : 'knockdown';
+    target.defeatHoldMs = Math.max(target.defeatHoldMs, delayMs + 720);
+    target.stunMs = 0;
+    target.vx = 0;
+    target.vy = 0;
+    if (delayMs > 80) {
+      this.animation.play(target, 'hit_react', {
+        lockForMs: Math.max(180, delayMs),
+        fallback: deathAnimation,
+        force: true,
+      });
+      this.queueVisualState(target, deathAnimation, delayMs, 640, 'hit_react');
+      return;
+    }
+    this.animation.play(target, deathAnimation, { lockForMs: 640, fallback: 'hit_react', force: true });
+  }
+
+  private visualHandoffDelayMs(attacker: Fighter, maxDelayMs: number): number {
+    return Math.max(0, Math.min(maxDelayMs, Math.max(attacker.attackLockMs, this.animation.getLockRemainingMs(attacker))));
+  }
+
+  private queueVisualState(target: Player | Enemy | Boss, animationKey: string, delayMs: number, lockForMs: number, fallback: string): void {
+    this.pendingVisualStates.set(target.id, {
+      target,
+      animationKey,
+      remainingMs: delayMs,
+      lockForMs,
+      fallback,
     });
   }
 
@@ -929,12 +997,30 @@ export class Game {
   private updateVisualSuppressions(deltaMs: number): void {
     for (const [entityId, suppression] of this.visualSuppressions) {
       suppression.remainingMs -= deltaMs;
-      const stillAlive =
-        entityId === this.player.id
-          ? this.player.alive
-          : this.livingEnemies().some((actor) => actor.id === entityId);
-      if (suppression.remainingMs <= 0 || !stillAlive) this.visualSuppressions.delete(entityId);
+      const stillPresent = this.isActorVisuallyPresent(entityId);
+      if (suppression.remainingMs <= 0 || !stillPresent) this.visualSuppressions.delete(entityId);
     }
+  }
+
+  private updatePendingVisualStates(deltaMs: number): void {
+    for (const [entityId, pending] of this.pendingVisualStates) {
+      pending.remainingMs -= deltaMs;
+      if (pending.remainingMs > 0) continue;
+      if (this.isActorVisuallyPresent(entityId)) {
+        this.animation.play(pending.target, pending.animationKey, {
+          lockForMs: pending.lockForMs,
+          fallback: pending.fallback,
+          force: true,
+        });
+      }
+      this.pendingVisualStates.delete(entityId);
+    }
+  }
+
+  private isActorVisuallyPresent(entityId: string): boolean {
+    if (entityId === this.player.id) return this.player.alive || this.player.defeatHoldMs > 0;
+    if (this.enemies.some((actor) => actor.id === entityId && (actor.alive || actor.defeatHoldMs > 0))) return true;
+    return Boolean(this.boss && this.boss.id === entityId && (this.boss.alive || this.boss.defeatHoldMs > 0));
   }
 
   private suppressedEntityIds(): Set<string> {

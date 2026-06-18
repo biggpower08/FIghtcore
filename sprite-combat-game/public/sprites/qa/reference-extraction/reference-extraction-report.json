@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T17:51:35.474Z",
+  "generatedAt": "2026-06-18T19:34:31.058Z",
   "animations": [
     {
       "entityId": "shadow-striker",
@@ -159,15 +159,15 @@
     {
       "entityId": "shadow-striker",
       "animationKey": "roundhouse_kick",
-      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Shadow-Striker-Roundhouse-Kick-Fixed.png",
-      "frameCount": 5,
+      "source": "public/assets/fightcore/sprites/shadow-striker/roundhouse-kick-strip.png",
+      "frameCount": 6,
       "frameSize": [
         160,
         128
       ],
       "baselineY": 120,
       "padding": 8,
-      "scale": 0.3146067415730337,
+      "scale": 1,
       "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\roundhouse_kick",
       "strip": "public\\sprites\\strips-reference\\shadow-striker\\roundhouse-kick-strip.png",
       "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__roundhouse_kick__white-check.png",
@@ -176,91 +176,115 @@
         {
           "frame": "0001.png",
           "crop": {
-            "x": 145,
-            "y": 174,
-            "w": 260,
-            "h": 390,
-            "label": "stance"
+            "x": 0,
+            "y": 0,
+            "w": 53,
+            "h": 96,
+            "label": "chamber",
+            "durationMs": 130
           },
           "foregroundBounds": {
-            "minX": 20,
-            "minY": 20,
-            "maxX": 239,
-            "maxY": 368,
-            "width": 220,
-            "height": 349
+            "minX": 0,
+            "minY": 0,
+            "maxX": 52,
+            "maxY": 87,
+            "width": 53,
+            "height": 88
           }
         },
         {
           "frame": "0002.png",
           "crop": {
-            "x": 532,
-            "y": 166,
-            "w": 246,
-            "h": 398,
-            "label": "chamber"
+            "x": 53,
+            "y": 0,
+            "w": 51,
+            "h": 96,
+            "label": "guard lift",
+            "durationMs": 145
           },
           "foregroundBounds": {
-            "minX": 20,
-            "minY": 21,
-            "maxX": 226,
-            "maxY": 376,
-            "width": 207,
-            "height": 356
+            "minX": 0,
+            "minY": 0,
+            "maxX": 50,
+            "maxY": 87,
+            "width": 51,
+            "height": 88
           }
         },
         {
           "frame": "0003.png",
           "crop": {
-            "x": 865,
-            "y": 177,
-            "w": 397,
-            "h": 387,
-            "label": "kick drive"
+            "x": 104,
+            "y": 0,
+            "w": 64,
+            "h": 96,
+            "label": "turn chamber",
+            "durationMs": 155
           },
           "foregroundBounds": {
-            "minX": 15,
-            "minY": 20,
-            "maxX": 382,
-            "maxY": 365,
-            "width": 368,
-            "height": 346
+            "minX": 0,
+            "minY": 3,
+            "maxX": 63,
+            "maxY": 87,
+            "width": 64,
+            "height": 85
           }
         },
         {
           "frame": "0004.png",
           "crop": {
-            "x": 1332,
-            "y": 175,
-            "w": 434,
-            "h": 389,
-            "label": "full extension"
+            "x": 168,
+            "y": 0,
+            "w": 96,
+            "h": 96,
+            "label": "high snap",
+            "durationMs": 165
           },
           "foregroundBounds": {
-            "minX": 20,
-            "minY": 20,
-            "maxX": 413,
-            "maxY": 367,
-            "width": 394,
-            "height": 348
+            "minX": 4,
+            "minY": 2,
+            "maxX": 95,
+            "maxY": 87,
+            "width": 92,
+            "height": 86
           }
         },
         {
           "frame": "0005.png",
           "crop": {
-            "x": 1787,
-            "y": 179,
-            "w": 258,
-            "h": 385,
-            "label": "recovery"
+            "x": 264,
+            "y": 0,
+            "w": 109,
+            "h": 96,
+            "label": "full extension",
+            "durationMs": 175
           },
           "foregroundBounds": {
-            "minX": 20,
-            "minY": 20,
-            "maxX": 238,
-            "maxY": 363,
-            "width": 219,
-            "height": 344
+            "minX": 0,
+            "minY": 2,
+            "maxX": 108,
+            "maxY": 87,
+            "width": 109,
+            "height": 86
+          }
+        },
+        {
+          "frame": "0006.png",
+          "crop": {
+            "x": 373,
+            "y": 0,
+            "w": 59,
+            "h": 96,
+            "label": "recovery",
+            "durationMs": 160
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 58,
+            "maxY": 87,
+            "width": 59,
+            "height": 88
           }
         }
       ]
@@ -394,6 +418,261 @@
             "maxY": 156,
             "width": 93,
             "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "cross",
+      "source": "public/assets/fightcore/sprites/shadow-striker/cross-strip.png",
+      "frameCount": 6,
+      "frameSize": [
+        128,
+        96
+      ],
+      "baselineY": 88,
+      "padding": 6,
+      "scale": 0.9545454545454546,
+      "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\cross",
+      "strip": "public\\sprites\\strips-reference\\shadow-striker\\cross-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__cross__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\shadow-striker__cross__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "w": 58,
+            "h": 96,
+            "label": "guard",
+            "durationMs": 105
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 57,
+            "maxY": 87,
+            "width": 58,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 58,
+            "y": 0,
+            "w": 70,
+            "h": 96,
+            "label": "drive",
+            "durationMs": 115
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 69,
+            "maxY": 87,
+            "width": 70,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 136,
+            "y": 0,
+            "w": 82,
+            "h": 96,
+            "label": "extension",
+            "durationMs": 125,
+            "outputErase": [
+              {
+                "x": 40,
+                "y": 12,
+                "w": 18,
+                "h": 8
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 2,
+            "minY": 1,
+            "maxX": 81,
+            "maxY": 87,
+            "width": 80,
+            "height": 87
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 218,
+            "y": 0,
+            "w": 90,
+            "h": 96,
+            "label": "full cross",
+            "durationMs": 135
+          },
+          "foregroundBounds": {
+            "minX": 1,
+            "minY": 1,
+            "maxX": 83,
+            "maxY": 86,
+            "width": 83,
+            "height": 86
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 317,
+            "y": 0,
+            "w": 71,
+            "h": 96,
+            "label": "impact",
+            "durationMs": 125
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 70,
+            "maxY": 86,
+            "width": 71,
+            "height": 87
+          }
+        },
+        {
+          "frame": "0006.png",
+          "crop": {
+            "x": 388,
+            "y": 0,
+            "w": 63,
+            "h": 96,
+            "label": "recovery",
+            "durationMs": 120
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 62,
+            "maxY": 87,
+            "width": 63,
+            "height": 88
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "jab",
+      "source": "public/assets/fightcore/sprites/shadow-striker/jab-strip.png",
+      "frameCount": 5,
+      "frameSize": [
+        128,
+        96
+      ],
+      "baselineY": 88,
+      "padding": 6,
+      "scale": 0.9545454545454546,
+      "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\jab",
+      "strip": "public\\sprites\\strips-reference\\shadow-striker\\jab-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__jab__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\shadow-striker__jab__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "w": 63,
+            "h": 96,
+            "label": "guard",
+            "durationMs": 95
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 62,
+            "maxY": 87,
+            "width": 63,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 63,
+            "y": 0,
+            "w": 65,
+            "h": 96,
+            "label": "ready",
+            "durationMs": 105
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 64,
+            "maxY": 87,
+            "width": 65,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 128,
+            "y": 0,
+            "w": 90,
+            "h": 96,
+            "label": "jab extension",
+            "durationMs": 115
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 89,
+            "maxY": 87,
+            "width": 90,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 218,
+            "y": 0,
+            "w": 99,
+            "h": 96,
+            "label": "full jab",
+            "durationMs": 115
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 98,
+            "maxY": 87,
+            "width": 99,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 317,
+            "y": 0,
+            "w": 92,
+            "h": 96,
+            "label": "recovery",
+            "durationMs": 110
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 91,
+            "maxY": 87,
+            "width": 92,
+            "height": 88
           }
         }
       ]

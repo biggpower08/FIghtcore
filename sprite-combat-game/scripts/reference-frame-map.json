@@ -43,20 +43,20 @@
       ]
     },
     "roundhouse_kick": {
-      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Shadow-Striker-Roundhouse-Kick-Fixed.png",
-      "sourceSheetLabel": "Shadow Striker fixed roundhouse sheet",
+      "source": "public/assets/fightcore/sprites/shadow-striker/roundhouse-kick-strip.png",
+      "sourceSheetLabel": "Shadow Striker fixed roundhouse strip",
       "frameSize": [160, 128],
       "baselineY": 120,
       "padding": 8,
       "anchorX": 0.5,
       "anchorY": 0.9375,
-      "durationMs": 154,
       "frames": [
-        { "x": 145, "y": 174, "w": 260, "h": 390, "label": "stance" },
-        { "x": 532, "y": 166, "w": 246, "h": 398, "label": "chamber" },
-        { "x": 865, "y": 177, "w": 397, "h": 387, "label": "kick drive" },
-        { "x": 1332, "y": 175, "w": 434, "h": 389, "label": "full extension" },
-        { "x": 1787, "y": 179, "w": 258, "h": 385, "label": "recovery" }
+        { "x": 0, "y": 0, "w": 53, "h": 96, "label": "chamber", "durationMs": 130 },
+        { "x": 53, "y": 0, "w": 51, "h": 96, "label": "guard lift", "durationMs": 145 },
+        { "x": 104, "y": 0, "w": 64, "h": 96, "label": "turn chamber", "durationMs": 155 },
+        { "x": 168, "y": 0, "w": 96, "h": 96, "label": "high snap", "durationMs": 165 },
+        { "x": 264, "y": 0, "w": 109, "h": 96, "label": "full extension", "durationMs": 175 },
+        { "x": 373, "y": 0, "w": 59, "h": 96, "label": "recovery", "durationMs": 160 }
       ]
     },
     "teep_kick": {
@@ -66,7 +66,7 @@
       "baselineY": 88,
       "anchorX": 0.5,
       "anchorY": 0.9167,
-      "durationMs": 77,
+      "durationMs": 130,
       "frames": [
         { "x": 112, "y": 682, "w": 120, "h": 172, "label": "stance chamber" },
         { "x": 238, "y": 682, "w": 116, "h": 172, "label": "knee chamber" },
@@ -94,6 +94,54 @@
           "label": "recovery",
           "erase": [{ "x": 0, "y": 45, "w": 14, "h": 16 }]
         }
+      ]
+    },
+    "cross": {
+      "source": "public/assets/fightcore/sprites/shadow-striker/cross-strip.png",
+      "sourceSheetLabel": "Shadow Striker fixed cross strip",
+      "frameSize": [128, 96],
+      "baselineY": 88,
+      "padding": 6,
+      "anchorX": 0.5,
+      "anchorY": 0.9167,
+      "frames": [
+        { "x": 0, "y": 0, "w": 58, "h": 96, "label": "guard", "durationMs": 105 },
+        { "x": 58, "y": 0, "w": 70, "h": 96, "label": "drive", "durationMs": 115 },
+        {
+          "x": 136,
+          "y": 0,
+          "w": 82,
+          "h": 96,
+          "label": "extension",
+          "durationMs": 125,
+          "outputErase": [{ "x": 40, "y": 12, "w": 18, "h": 8 }]
+        },
+        {
+          "x": 218,
+          "y": 0,
+          "w": 90,
+          "h": 96,
+          "label": "full cross",
+          "durationMs": 135
+        },
+        { "x": 317, "y": 0, "w": 71, "h": 96, "label": "impact", "durationMs": 125 },
+        { "x": 388, "y": 0, "w": 63, "h": 96, "label": "recovery", "durationMs": 120 }
+      ]
+    },
+    "jab": {
+      "source": "public/assets/fightcore/sprites/shadow-striker/jab-strip.png",
+      "sourceSheetLabel": "Shadow Striker fixed jab strip",
+      "frameSize": [128, 96],
+      "baselineY": 88,
+      "padding": 6,
+      "anchorX": 0.5,
+      "anchorY": 0.9167,
+      "frames": [
+        { "x": 0, "y": 0, "w": 63, "h": 96, "label": "guard", "durationMs": 95 },
+        { "x": 63, "y": 0, "w": 65, "h": 96, "label": "ready", "durationMs": 105 },
+        { "x": 128, "y": 0, "w": 90, "h": 96, "label": "jab extension", "durationMs": 115 },
+        { "x": 218, "y": 0, "w": 99, "h": 96, "label": "full jab", "durationMs": 115 },
+        { "x": 317, "y": 0, "w": 92, "h": 96, "label": "recovery", "durationMs": 110 }
       ]
     }
   },
