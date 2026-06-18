@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18T05:41:26.176Z",
+  "generatedAt": "2026-06-18T05:57:39.659Z",
   "animations": [
     {
       "entityId": "shadow-striker",
@@ -129,6 +129,150 @@
             "maxY": 156,
             "width": 93,
             "height": 138
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "hit_react",
+      "source": "public/assets/fightcore/sprites/shadow-striker/hit-react-strip.png",
+      "frameCount": 3,
+      "frameSize": [
+        128,
+        96
+      ],
+      "baselineY": 88,
+      "scale": 0.7792207792207793,
+      "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\hit_react",
+      "strip": "public\\sprites\\strips-reference\\shadow-striker\\hit-react-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__hit_react__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\shadow-striker__hit_react__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 0,
+            "w": 91,
+            "h": 96,
+            "anchorX": 46,
+            "anchorY": 88
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 90,
+            "maxY": 87,
+            "width": 91,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 332,
+            "w": 141,
+            "h": 96,
+            "anchorX": 70,
+            "anchorY": 88
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 2,
+            "maxX": 140,
+            "maxY": 87,
+            "width": 141,
+            "height": 86
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 473,
+            "w": 154,
+            "h": 96,
+            "anchorX": 77,
+            "anchorY": 88
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 14,
+            "maxX": 153,
+            "maxY": 87,
+            "width": 154,
+            "height": 74
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "puppetmaster",
+      "animationKey": "o_goshi",
+      "source": "public/assets/fightcore/sprites/puppetmaster/o-goshi-strip.png",
+      "frameCount": 3,
+      "frameSize": [
+        192,
+        96
+      ],
+      "baselineY": 88,
+      "scale": 1,
+      "outputFrames": "public\\sprites\\frames-reference\\puppetmaster\\o_goshi",
+      "strip": "public\\sprites\\strips-reference\\puppetmaster\\o-goshi-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\puppetmaster__o_goshi__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\puppetmaster__o_goshi__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 0,
+            "w": 90,
+            "h": 96,
+            "anchorX": 45,
+            "anchorY": 88
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 89,
+            "maxY": 87,
+            "width": 90,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 90,
+            "w": 69,
+            "h": 96,
+            "anchorX": 34,
+            "anchorY": 88
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 68,
+            "maxY": 87,
+            "width": 69,
+            "height": 88
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 159,
+            "w": 61,
+            "h": 96,
+            "anchorX": 30,
+            "anchorY": 88
+          },
+          "foregroundBounds": {
+            "minX": 0,
+            "minY": 0,
+            "maxX": 60,
+            "maxY": 87,
+            "width": 61,
+            "height": 88
           }
         }
       ]

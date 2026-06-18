@@ -4,6 +4,7 @@ import { PNG } from 'pngjs';
 
 const repoRoot = process.cwd();
 const configPath = path.join(repoRoot, 'scripts', 'reference-frame-map.json');
+const fixedStripConfigPath = path.join(repoRoot, 'scripts', 'fixed-strip-reference-map.json');
 const framesRoot = path.join(repoRoot, 'public', 'sprites', 'frames-reference');
 const stripsRoot = path.join(repoRoot, 'public', 'sprites', 'strips-reference');
 const qaRoot = path.join(repoRoot, 'public', 'sprites', 'qa', 'reference-extraction');
@@ -11,6 +12,7 @@ const metadataPath = path.join(repoRoot, 'src', 'data', 'referenceSpriteFrames.t
 const padding = 4;
 
 const config = JSON.parse(await fs.readFile(configPath, 'utf8'));
+const fixedStripConfig = await readOptionalJson(fixedStripConfigPath);
 const report = [];
 const metadata = [];
 
@@ -105,6 +107,99 @@ for (const [entityId, animations] of Object.entries(config)) {
   }
 }
 
+for (const [entityId, animations] of Object.entries(fixedStripConfig)) {
+  for (const [animationKey, spec] of Object.entries(animations)) {
+    const animationMetadata = JSON.parse(await fs.readFile(path.join(repoRoot, spec.metadata), 'utf8'));
+    const animation = animationMetadata.animations?.[animationKey];
+    if (!animation) throw new Error(`Missing animation metadata for ${entityId}/${animationKey} in ${spec.metadata}`);
+    const sourcePath = path.join(repoRoot, spec.source);
+    const source = PNG.sync.read(await fs.readFile(sourcePath));
+    const frameWidth = spec.frameSize[0];
+    const frameHeight = spec.frameSize[1];
+    const baselineY = spec.baselineY ?? animationMetadata.baselineY ?? Math.round(frameHeight * 0.9167);
+    const skippedSourceFrameIndices = new Set(spec.skipSourceFrameIndices ?? []);
+    const sourceFrames = animation.frames
+      .map((frameSpec, sourceFrameIndex) => ({ frameSpec, sourceFrameIndex }))
+      .filter((entry) => !skippedSourceFrameIndices.has(entry.sourceFrameIndex));
+    const crops = sourceFrames.map(({ frameSpec, sourceFrameIndex }, frameIndex) => {
+      const crop = cropPng(source, frameSpec.x, 0, frameSpec.w, frameSpec.h);
+      const cleaned = keepRelevantComponents(crop);
+      const bounds = getOpaqueBounds(cleaned);
+      if (!bounds) throw new Error(`No foreground in fixed strip ${entityId}/${animationKey} frame ${frameIndex + 1}`);
+      return { frameSpec, frameIndex, sourceFrameIndex, cleaned, bounds };
+    });
+    const maxContentWidth = Math.max(...crops.map((entry) => entry.bounds.width));
+    const maxContentHeight = Math.max(...crops.map((entry) => entry.bounds.height));
+    const scale = Math.min(1, (frameWidth - padding * 2) / maxContentWidth, (frameHeight - padding * 2) / maxContentHeight);
+    const outputDir = path.join(framesRoot, entityId, animationKey);
+    await fs.rm(outputDir, { recursive: true, force: true });
+    await fs.mkdir(outputDir, { recursive: true });
+
+    const frames = [];
+    for (const entry of crops) {
+      const frame = normalizeFrame(entry.cleaned, entry.bounds, {
+        width: frameWidth,
+        height: frameHeight,
+        baselineY,
+        scale,
+      });
+      const fileName = `${String(entry.frameIndex + 1).padStart(4, '0')}.png`;
+      const outputPath = path.join(outputDir, fileName);
+      await fs.writeFile(outputPath, PNG.sync.write(frame));
+      frames.push({ fileName, png: frame, entry, path: webPath(outputPath) });
+      metadata.push({
+        entityId,
+        animationKey,
+        frameIndex: entry.frameIndex,
+        framePath: webPath(outputPath),
+        sourceSheet: spec.source,
+        sourceSheetLabel: spec.sourceSheetLabel ?? spec.source,
+        crop: {
+          x: entry.frameSpec.x,
+          y: 0,
+          width: entry.frameSpec.w,
+          height: entry.frameSpec.h,
+        },
+        frameSize: { width: frameWidth, height: frameHeight },
+        baselineY,
+        anchorX: spec.anchorX ?? 0.5,
+        anchorY: spec.anchorY ?? baselineY / frameHeight,
+        durationMs: spec.durationMs ?? Math.round(1000 / Math.max(1, animation.fps ?? 12)),
+        backgroundRemoved: false,
+        label: entry.frameSpec.label,
+        sourceFrameIndex: entry.sourceFrameIndex,
+      });
+    }
+
+    const stripPath = path.join(stripsRoot, entityId, `${animationKey.replaceAll('_', '-')}-strip.png`);
+    await fs.mkdir(path.dirname(stripPath), { recursive: true });
+    await fs.writeFile(stripPath, PNG.sync.write(renderStrip(frames)));
+    const whiteCheckPath = path.join(qaRoot, `${entityId}__${animationKey}__white-check.png`);
+    const transparentReviewPath = path.join(qaRoot, `${entityId}__${animationKey}__transparent-review.png`);
+    await fs.writeFile(whiteCheckPath, PNG.sync.write(renderWhiteCheck(frames)));
+    await fs.writeFile(transparentReviewPath, PNG.sync.write(renderTransparentReview(frames)));
+
+    report.push({
+      entityId,
+      animationKey,
+      source: spec.source,
+      frameCount: frames.length,
+      frameSize: [frameWidth, frameHeight],
+      baselineY,
+      scale,
+      outputFrames: path.relative(repoRoot, outputDir),
+      strip: path.relative(repoRoot, stripPath),
+      whiteCheck: path.relative(repoRoot, whiteCheckPath),
+      transparentReview: path.relative(repoRoot, transparentReviewPath),
+      frames: frames.map((frame) => ({
+        frame: frame.fileName,
+        crop: frame.entry.frameSpec,
+        foregroundBounds: frame.entry.bounds,
+      })),
+    });
+  }
+}
+
 await fs.writeFile(path.join(qaRoot, 'reference-extraction-report.json'), JSON.stringify({ generatedAt: new Date().toISOString(), animations: report }, null, 2));
 await fs.writeFile(metadataPath, renderMetadata(metadata));
 
@@ -131,6 +226,15 @@ function cropPng(source, x, y, width, height) {
     }
   }
   return output;
+}
+
+async function readOptionalJson(filePath) {
+  try {
+    return JSON.parse(await fs.readFile(filePath, 'utf8'));
+  } catch (error) {
+    if (error?.code === 'ENOENT') return {};
+    throw error;
+  }
 }
 
 function removeReferenceBackground(source) {
@@ -404,6 +508,7 @@ function renderMetadata(rows) {
   durationMs?: number;
   backgroundRemoved: boolean;
   label?: string;
+  sourceFrameIndex?: number;
 }
 
 export const referenceSpriteFrameMetadata: ReferenceSpriteFrameMetadata[] = [

@@ -1,0 +1,22 @@
+{
+  "shadow-striker": {
+    "hit_react": {
+      "source": "public/assets/fightcore/sprites/shadow-striker/hit-react-strip.png",
+      "metadata": "public/assets/fightcore/sprites/shadow-striker/metadata.json",
+      "sourceSheetLabel": "Fightcore fixed Shadow Striker hit-react strip",
+      "frameSize": [128, 96],
+      "baselineY": 88,
+      "skipSourceFrameIndices": [1]
+    }
+  },
+  "puppetmaster": {
+    "o_goshi": {
+      "source": "public/assets/fightcore/sprites/puppetmaster/o-goshi-strip.png",
+      "metadata": "public/assets/fightcore/sprites/puppetmaster/metadata.json",
+      "sourceSheetLabel": "Fightcore fixed Puppetmaster o-goshi strip",
+      "frameSize": [192, 96],
+      "baselineY": 88,
+      "skipSourceFrameIndices": [3]
+    }
+  }
+}
