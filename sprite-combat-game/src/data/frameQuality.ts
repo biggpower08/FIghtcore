@@ -2,6 +2,7 @@ import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetada
 import { hasCleanedSpriteAnimation } from './cleanedSpriteFrames';
 import { getAlphaHoleSpriteFrame } from './alphaHoleSpriteFrames';
 import { getBodyCropSpriteFrameQuality } from './bodyCroppedSpriteFrames';
+import { getReferenceSpriteFrame } from './referenceSpriteFrames';
 
 export type FrameRole = 'body' | 'effect' | 'invalid';
 
@@ -22,6 +23,12 @@ export interface FrameQuality {
   bleedFromNextFrame: boolean;
   disconnectedNeighborBlob: boolean;
   frameSource?: string;
+  sourceSheet?: string;
+  sourceSheetLabel?: string;
+  cropBox?: string;
+  baselineY?: number;
+  frameSize?: string;
+  backgroundRemoved?: boolean;
   reason?: string;
 }
 
@@ -35,8 +42,36 @@ const knownMultiPoseFrames = new Map<string, string>([
 const bodylessEffectFrames = new Set<string>();
 
 export function getFrameQuality(entityId: string, animationKey: string, frameIndex: number): FrameQuality {
+  const reference = getReferenceSpriteFrame(entityId, animationKey, frameIndex);
   const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, frameIndex);
   const bodyCrop = getBodyCropSpriteFrameQuality(entityId, animationKey, frameIndex);
+  if (reference) {
+    return {
+      role: 'body',
+      invalidMultiPoseFrame: false,
+      multiPoseCrop: false,
+      componentCount: 1,
+      silhouetteCount: 1,
+      invalidHollowFrame: false,
+      alphaHoleFrame: false,
+      alphaHoleCount: 0,
+      repairedAlphaHoles: 0,
+      usingRepairedAlpha: false,
+      widthOutlier: false,
+      cleanedFrameAvailable: true,
+      hasAdjacentFrameBleed: false,
+      bleedFromNextFrame: false,
+      disconnectedNeighborBlob: false,
+      frameSource: 'reference-extracted',
+      sourceSheet: reference.sourceSheet,
+      sourceSheetLabel: reference.sourceSheetLabel,
+      cropBox: `${reference.crop.x},${reference.crop.y},${reference.crop.width}x${reference.crop.height}`,
+      baselineY: reference.baselineY,
+      frameSize: `${reference.frameSize.width}x${reference.frameSize.height}`,
+      backgroundRemoved: reference.backgroundRemoved,
+      reason: `Reference-extracted clean frame from ${reference.sourceSheetLabel}.`,
+    };
+  }
   if (hasCleanedSpriteAnimation(entityId, animationKey)) {
     return {
       role: 'body',

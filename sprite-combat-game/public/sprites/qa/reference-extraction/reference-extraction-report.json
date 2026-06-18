@@ -1,0 +1,137 @@
+{
+  "generatedAt": "2026-06-18T05:41:26.176Z",
+  "animations": [
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "teep_kick",
+      "source": "tools/raw-fightcore-assets/shadow-striker.png.png",
+      "frameCount": 5,
+      "frameSize": [
+        96,
+        96
+      ],
+      "baselineY": 88,
+      "scale": 0.5398773006134969,
+      "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\teep_kick",
+      "strip": "public\\sprites\\strips-reference\\shadow-striker\\teep-kick-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__teep_kick__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\shadow-striker__teep_kick__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 112,
+            "y": 682,
+            "w": 120,
+            "h": 172,
+            "label": "stance chamber"
+          },
+          "foregroundBounds": {
+            "minX": 14,
+            "minY": 9,
+            "maxX": 99,
+            "maxY": 157,
+            "width": 86,
+            "height": 149
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 238,
+            "y": 682,
+            "w": 116,
+            "h": 172,
+            "label": "knee chamber"
+          },
+          "foregroundBounds": {
+            "minX": 14,
+            "minY": 10,
+            "maxX": 91,
+            "maxY": 164,
+            "width": 78,
+            "height": 155
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 360,
+            "y": 682,
+            "w": 172,
+            "h": 172,
+            "label": "kick drive",
+            "erase": [
+              {
+                "x": 145,
+                "y": 0,
+                "w": 27,
+                "h": 94
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 18,
+            "minY": 15,
+            "maxX": 171,
+            "maxY": 159,
+            "width": 154,
+            "height": 145
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 492,
+            "y": 682,
+            "w": 178,
+            "h": 172,
+            "label": "full extension",
+            "erase": [
+              {
+                "x": 0,
+                "y": 76,
+                "w": 34,
+                "h": 20
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 15,
+            "minY": 16,
+            "maxX": 177,
+            "maxY": 158,
+            "width": 163,
+            "height": 143
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 652,
+            "y": 682,
+            "w": 126,
+            "h": 172,
+            "label": "recovery",
+            "erase": [
+              {
+                "x": 0,
+                "y": 45,
+                "w": 14,
+                "h": 16
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 13,
+            "minY": 19,
+            "maxX": 105,
+            "maxY": 156,
+            "width": 93,
+            "height": 138
+          }
+        }
+      ]
+    }
+  ]
+}

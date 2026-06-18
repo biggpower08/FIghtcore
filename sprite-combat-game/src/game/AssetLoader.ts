@@ -2,6 +2,7 @@ import { getSpriteAnimation, type SpriteAnimationDefinition, type SpriteFrameRef
 import { getSpriteAtlasAnimation, type SpriteAtlasAnimation } from '../data/spriteAtlases';
 import { getCleanedSpriteAnimation } from '../data/cleanedSpriteFrames';
 import { getAlphaHoleSpriteFrame } from '../data/alphaHoleSpriteFrames';
+import { getReferenceSpriteAnimation, getReferenceSpriteFrame } from '../data/referenceSpriteFrames';
 import { spriteRegistryById, spriteSourceSheetById } from '../data/spriteRegistry';
 import { publicAssetUrl } from './publicAssetUrl';
 
@@ -26,6 +27,12 @@ export interface ResolvedSpriteFrame {
   rawCropAvailable?: boolean;
   cleanedFrameAvailable?: boolean;
   repairedFrameAvailable?: boolean;
+  referenceFrameAvailable?: boolean;
+  usingReferenceExtracted?: boolean;
+  referenceSourceSheet?: string;
+  referenceCrop?: { x: number; y: number; width: number; height: number };
+  referenceBaselineY?: number;
+  referenceBackgroundRemoved?: boolean;
   usingRepairedAlpha?: boolean;
   invalidHollowFrame?: boolean;
   alphaHoleCount?: number;
@@ -145,8 +152,9 @@ export class AssetLoader {
 
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
+      const reference = getReferenceSpriteFrame(assetId, animation, frame - 1);
       const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frame - 1);
-      const path = alphaHole?.repairedFramePath ?? `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
+      const path = reference?.framePath ?? alphaHole?.repairedFramePath ?? `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
       if (isKnownBrokenFrame(path)) {
         this.warnBrokenFrame(path, 'Known hollow or low-coverage frame is blocked from normal gameplay.');
         continue;
@@ -306,9 +314,10 @@ export class AssetLoader {
     definition?: SpriteAnimationDefinition,
   ): Promise<ResolvedSpriteAnimation | null> {
     const cleaned = getCleanedSpriteAnimation(entityId, animationKey);
+    const reference = getReferenceSpriteAnimation(entityId, animationKey);
     const images = await this.loadOptionalFrames(entityId, animationKey, 8);
     if (images.length === 0) return null;
-    const expectedFrameCount = Math.min(8, cleaned?.frames.length ?? definition?.frames.length ?? minimumFrameCount(animationKey));
+    const expectedFrameCount = Math.min(8, reference.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey));
     if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
       this.warnOnce(
         `atlas-better:${entityId}:${animationKey}`,
@@ -319,25 +328,46 @@ export class AssetLoader {
     const renderProfile = spriteRegistryById.get(entityId)?.render;
 
     const frames = images.map<ResolvedSpriteFrame>((image, index) =>
-      applyBodyAwareAnchor({
-        source: 'frame-png',
-        entityId,
-        animationKey,
-        frameIndex: index,
-        durationMs: cleaned?.frames[index]?.durationMs ?? definition?.frames[index]?.durationMs ?? timingForAnimation(animationKey, index, images.length),
-        image,
-        framePath: cleaned?.frames[index]?.path ?? `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-        width: cleaned?.frames[index]?.width,
-        height: cleaned?.frames[index]?.height,
-        anchorX: cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
-        anchorY: cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
-        feetY: cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
-        rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
-        cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
-        notes: cleaned?.frames[index]?.splitFromDirtyCrop ? 'Cleaned frame split from a multi-pose raw crop.' : undefined,
-      }),
+      {
+        const referenceFrame = reference[index];
+        return applyBodyAwareAnchor({
+          source: 'frame-png',
+          entityId,
+          animationKey,
+          frameIndex: index,
+          durationMs:
+            referenceFrame?.durationMs ??
+            cleaned?.frames[index]?.durationMs ??
+            definition?.frames[index]?.durationMs ??
+            timingForAnimation(animationKey, index, images.length),
+          image,
+          framePath:
+            referenceFrame?.framePath ??
+            cleaned?.frames[index]?.path ??
+            `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
+          width: referenceFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
+          height: referenceFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
+          anchorX: referenceFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+          anchorY: referenceFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+          feetY: referenceFrame?.baselineY ?? cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
+          rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
+          cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
+          referenceFrameAvailable: Boolean(referenceFrame),
+          usingReferenceExtracted: Boolean(referenceFrame),
+          referenceSourceSheet: referenceFrame?.sourceSheet,
+          referenceCrop: referenceFrame?.crop,
+          referenceBaselineY: referenceFrame?.baselineY,
+          referenceBackgroundRemoved: referenceFrame?.backgroundRemoved,
+          notes: referenceFrame
+            ? `Using reference-extracted frame from ${referenceFrame.sourceSheetLabel}.`
+            : cleaned?.frames[index]?.splitFromDirtyCrop
+              ? 'Cleaned frame split from a multi-pose raw crop.'
+              : undefined,
+        });
+      },
     );
     for (const [index, frame] of frames.entries()) {
+      if (frame.usingReferenceExtracted) continue;
       const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
       if (!alphaHole) continue;
       frame.framePath = alphaHole.repairedFramePath ?? frame.framePath;
@@ -358,7 +388,12 @@ export class AssetLoader {
       status: 'frame-png',
       frames,
       fallbackAnimation: definition?.fallbackAnimation,
-      notes: cleaned ? 'Resolved from cleaned single-pose PNG frame folder.' : 'Resolved from pre-sliced PNG frame folder.',
+      notes:
+        reference.length > 0
+          ? 'Resolved from reference-extracted clean PNG frames.'
+          : cleaned
+            ? 'Resolved from cleaned single-pose PNG frame folder.'
+            : 'Resolved from pre-sliced PNG frame folder.',
     };
   }
 

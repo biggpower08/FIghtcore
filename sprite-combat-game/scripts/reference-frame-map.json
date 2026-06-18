@@ -1,0 +1,41 @@
+{
+  "shadow-striker": {
+    "teep_kick": {
+      "source": "tools/raw-fightcore-assets/shadow-striker.png.png",
+      "sourceSheetLabel": "Shadow Striker master reference sheet",
+      "frameSize": [96, 96],
+      "baselineY": 88,
+      "anchorX": 0.5,
+      "anchorY": 0.9167,
+      "durationMs": 77,
+      "frames": [
+        { "x": 112, "y": 682, "w": 120, "h": 172, "label": "stance chamber" },
+        { "x": 238, "y": 682, "w": 116, "h": 172, "label": "knee chamber" },
+        {
+          "x": 360,
+          "y": 682,
+          "w": 172,
+          "h": 172,
+          "label": "kick drive",
+          "erase": [{ "x": 145, "y": 0, "w": 27, "h": 94 }]
+        },
+        {
+          "x": 492,
+          "y": 682,
+          "w": 178,
+          "h": 172,
+          "label": "full extension",
+          "erase": [{ "x": 0, "y": 76, "w": 34, "h": 20 }]
+        },
+        {
+          "x": 652,
+          "y": 682,
+          "w": 126,
+          "h": 172,
+          "label": "recovery",
+          "erase": [{ "x": 0, "y": 45, "w": 14, "h": 16 }]
+        }
+      ]
+    }
+  }
+}
