@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-17T02:31:16.651Z",
+  "generatedAt": "2026-06-18T04:41:57.101Z",
   "repaired": [
     {
       "entityId": "cyber-ninja",
@@ -141,6 +141,87 @@
       "animation": "hit_react",
       "frame": "0005.png",
       "width": 154,
+      "height": 96,
+      "sourceFrameIndex": 3,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "shadow-striker",
+      "animation": "momentum_flow",
+      "frame": "0001.png",
+      "width": 128,
+      "height": 128,
+      "sourceFrameIndex": 0,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "shadow-striker",
+      "animation": "momentum_flow",
+      "frame": "0002.png",
+      "width": 128,
+      "height": 128,
+      "sourceFrameIndex": 1,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "shadow-striker",
+      "animation": "momentum_flow",
+      "frame": "0003.png",
+      "width": 128,
+      "height": 128,
+      "sourceFrameIndex": 2,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "shadow-striker",
+      "animation": "momentum_flow",
+      "frame": "0004.png",
+      "width": 128,
+      "height": 128,
+      "sourceFrameIndex": 3,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "shadow-striker",
+      "animation": "momentum_flow",
+      "frame": "0005.png",
+      "width": 128,
+      "height": 128,
+      "sourceFrameIndex": 4,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "combat-monk",
+      "animation": "spinning_sweep",
+      "frame": "0001.png",
+      "width": 176,
+      "height": 96,
+      "sourceFrameIndex": 0,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "combat-monk",
+      "animation": "spinning_sweep",
+      "frame": "0002.png",
+      "width": 160,
+      "height": 96,
+      "sourceFrameIndex": 1,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "combat-monk",
+      "animation": "spinning_sweep",
+      "frame": "0003.png",
+      "width": 142,
+      "height": 96,
+      "sourceFrameIndex": 2,
+      "splitFromDirtyCrop": false
+    },
+    {
+      "entityId": "combat-monk",
+      "animation": "spinning_sweep",
+      "frame": "0004.png",
+      "width": 156,
       "height": 96,
       "sourceFrameIndex": 3,
       "splitFromDirtyCrop": false

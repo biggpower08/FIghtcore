@@ -1,12 +1,7 @@
 {
-  "generatedAt": "2026-06-17T20:23:08.495Z",
+  "generatedAt": "2026-06-18T04:41:58.940Z",
   "rule": "Approved animations are immutable unless explicitly targeted in scripts/sprite-repair-allowlist.mjs.",
   "preserved": [
-    {
-      "entityId": "combat-monk",
-      "animationKey": "spinning_sweep",
-      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
-    },
     {
       "entityId": "cyber-monk-orange",
       "animationKey": "clinch_knee",
@@ -203,11 +198,6 @@
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
     },
     {
-      "entityId": "cyber-ninja",
-      "animationKey": "slice",
-      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
-    },
-    {
       "entityId": "cyber-ninja-blue",
       "animationKey": "cross",
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
@@ -339,22 +329,7 @@
     },
     {
       "entityId": "puppetmaster",
-      "animationKey": "o_goshi",
-      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
-    },
-    {
-      "entityId": "puppetmaster",
       "animationKey": "thug_it_out",
-      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
-    },
-    {
-      "entityId": "shadow-striker",
-      "animationKey": "hit_react",
-      "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
-    },
-    {
-      "entityId": "shadow-striker",
-      "animationKey": "momentum_flow",
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
     },
     {
@@ -418,58 +393,5 @@
       "reason": "Approved/non-targeted animation preserved by sprite repair allowlist."
     }
   ],
-  "frames": [
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 0,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 2,
-      "largestAlphaHolePixels": 2,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0001.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 1,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 17,
-      "largestAlphaHolePixels": 17,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0002.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 2,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 2,
-      "alphaHolePixels": 11,
-      "largestAlphaHolePixels": 9,
-      "repairedAlphaHoles": 2,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0003.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    },
-    {
-      "entityId": "combat-monk",
-      "animationKey": "palm_strike",
-      "frameIndex": 3,
-      "alphaHoleFrame": true,
-      "invalidHollowFrame": false,
-      "alphaHoleCount": 1,
-      "alphaHolePixels": 17,
-      "largestAlphaHolePixels": 17,
-      "repairedAlphaHoles": 1,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/combat-monk/palm_strike/0004.png",
-      "reason": "Small enclosed transparent region was repaired with neighboring sprite pixels."
-    }
-  ]
+  "frames": []
 }

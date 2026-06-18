@@ -52,7 +52,7 @@ const targetedFightcoreRepairs = [
     segment(132, 81, 81, 96, 0.4938, 0.9167, 71, 2, false),
     segment(213, 93, 93, 96, 0.5, 0.9167, 71, 3, true),
     segment(306, 85, 86, 96, 0.5, 0.9167, 71, 3, true),
-  ]),
+  ], { fillAlphaGaps: true }),
   repair('striker-monkey', 'idle', 'idle-strip.png', [
     segment(0, 79, 79, 96, 0.5, 0.9167, 125, 0, true),
     segment(79, 74, 74, 96, 0.5, 0.9167, 125, 0, true),
