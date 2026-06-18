@@ -1,5 +1,64 @@
 {
   "shadow-striker": {
+    "momentum_flow": {
+      "source": "public/assets/fightcore/sprites/shadow-striker/momentum-flow-strip.png",
+      "sourceSheetLabel": "Shadow Striker fixed momentum-flow strip",
+      "frameSize": [128, 96],
+      "baselineY": 88,
+      "anchorX": 0.5,
+      "anchorY": 0.9167,
+      "durationMs": 143,
+      "frames": [
+        { "x": 0, "y": 0, "w": 128, "h": 128, "label": "flow stance" },
+        {
+          "x": 128,
+          "y": 0,
+          "w": 128,
+          "h": 128,
+          "label": "rhythm guard",
+          "erase": [{ "x": 122, "y": 80, "w": 6, "h": 48 }],
+          "outputErase": [
+            { "x": 88, "y": 70, "w": 8, "h": 8 },
+            { "x": 96, "y": 84, "w": 6, "h": 6 }
+          ]
+        },
+        {
+          "x": 256,
+          "y": 0,
+          "w": 128,
+          "h": 128,
+          "label": "buff focus",
+          "erase": [{ "x": 116, "y": 78, "w": 12, "h": 50 }],
+          "outputErase": [{ "x": 94, "y": 78, "w": 8, "h": 14 }]
+        },
+        {
+          "x": 384,
+          "y": 0,
+          "w": 128,
+          "h": 128,
+          "label": "flow extension",
+          "erase": [{ "x": 119, "y": 30, "w": 9, "h": 56 }]
+        },
+        { "x": 512, "y": 0, "w": 128, "h": 128, "label": "flow recover" }
+      ]
+    },
+    "roundhouse_kick": {
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Shadow-Striker-Roundhouse-Kick-Fixed.png",
+      "sourceSheetLabel": "Shadow Striker fixed roundhouse sheet",
+      "frameSize": [160, 128],
+      "baselineY": 120,
+      "padding": 8,
+      "anchorX": 0.5,
+      "anchorY": 0.9375,
+      "durationMs": 154,
+      "frames": [
+        { "x": 145, "y": 174, "w": 260, "h": 390, "label": "stance" },
+        { "x": 532, "y": 166, "w": 246, "h": 398, "label": "chamber" },
+        { "x": 865, "y": 177, "w": 397, "h": 387, "label": "kick drive" },
+        { "x": 1332, "y": 175, "w": 434, "h": 389, "label": "full extension" },
+        { "x": 1787, "y": 179, "w": 258, "h": 385, "label": "recovery" }
+      ]
+    },
     "teep_kick": {
       "source": "tools/raw-fightcore-assets/shadow-striker.png.png",
       "sourceSheetLabel": "Shadow Striker master reference sheet",
@@ -35,6 +94,59 @@
           "label": "recovery",
           "erase": [{ "x": 0, "y": 45, "w": 14, "h": 16 }]
         }
+      ]
+    }
+  },
+  "combat-monk": {
+    "high_kick": {
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/cyber-monk-high-kick-fixed.png",
+      "sourceSheetLabel": "Combat Monk fixed high-kick sheet",
+      "frameSize": [128, 128],
+      "baselineY": 120,
+      "padding": 8,
+      "anchorX": 0.5,
+      "anchorY": 0.9375,
+      "durationMs": 154,
+      "frames": [
+        { "x": 115, "y": 186, "w": 230, "h": 350, "label": "stance" },
+        { "x": 504, "y": 157, "w": 224, "h": 379, "label": "chamber" },
+        { "x": 910, "y": 169, "w": 322, "h": 367, "label": "kick drive" },
+        { "x": 1360, "y": 154, "w": 333, "h": 382, "label": "high extension" },
+        { "x": 1773, "y": 198, "w": 225, "h": 338, "label": "recovery" }
+      ]
+    },
+    "palm_strike": {
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Combat-Monk-Palm-Strike-fixed.png",
+      "sourceSheetLabel": "Combat Monk fixed palm-strike sheet",
+      "frameSize": [128, 128],
+      "baselineY": 120,
+      "padding": 8,
+      "anchorX": 0.5,
+      "anchorY": 0.9375,
+      "durationMs": 143,
+      "frames": [
+        { "x": 115, "y": 189, "w": 250, "h": 382, "label": "stance" },
+        { "x": 518, "y": 198, "w": 270, "h": 373, "label": "windup" },
+        { "x": 904, "y": 232, "w": 384, "h": 339, "label": "strike" },
+        { "x": 1342, "y": 236, "w": 428, "h": 335, "label": "impact" },
+        { "x": 1811, "y": 205, "w": 248, "h": 366, "label": "recovery" }
+      ]
+    },
+    "spinning_sweep": {
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Cyber-monk-sweep-fixed.png",
+      "sourceSheetLabel": "Combat Monk fixed spinning-sweep sheet",
+      "frameSize": [256, 128],
+      "baselineY": 120,
+      "padding": 8,
+      "anchorX": 0.5,
+      "anchorY": 0.9375,
+      "durationMs": 167,
+      "frames": [
+        { "x": 110, "y": 249, "w": 255, "h": 295, "label": "stance" },
+        { "x": 479, "y": 264, "w": 314, "h": 280, "label": "turn" },
+        { "x": 891, "y": 319, "w": 347, "h": 225, "label": "low sweep" },
+        { "x": 1290, "y": 341, "w": 474, "h": 204, "label": "full sweep" },
+        { "x": 1811, "y": 250, "w": 254, "h": 294, "label": "recover" }
       ]
     }
   }

@@ -14,8 +14,11 @@
       "source": "public/assets/fightcore/sprites/puppetmaster/o-goshi-strip.png",
       "metadata": "public/assets/fightcore/sprites/puppetmaster/metadata.json",
       "sourceSheetLabel": "Fightcore fixed Puppetmaster o-goshi strip",
-      "frameSize": [192, 96],
-      "baselineY": 88,
+      "frameSize": [192, 128],
+      "baselineY": 120,
+      "padding": 8,
+      "anchorX": 0.5,
+      "anchorY": 0.9375,
       "skipSourceFrameIndices": [3]
     }
   }

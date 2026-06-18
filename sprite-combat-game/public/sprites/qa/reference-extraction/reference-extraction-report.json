@@ -1,6 +1,270 @@
 {
-  "generatedAt": "2026-06-18T05:57:39.659Z",
+  "generatedAt": "2026-06-18T17:51:35.474Z",
   "animations": [
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "momentum_flow",
+      "source": "public/assets/fightcore/sprites/shadow-striker/momentum-flow-strip.png",
+      "frameCount": 5,
+      "frameSize": [
+        128,
+        96
+      ],
+      "baselineY": 88,
+      "padding": 4,
+      "scale": 0.7457627118644068,
+      "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\momentum_flow",
+      "strip": "public\\sprites\\strips-reference\\shadow-striker\\momentum-flow-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__momentum_flow__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\shadow-striker__momentum_flow__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "w": 128,
+            "h": 128,
+            "label": "flow stance"
+          },
+          "foregroundBounds": {
+            "minX": 29,
+            "minY": 0,
+            "maxX": 98,
+            "maxY": 117,
+            "width": 70,
+            "height": 118
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 128,
+            "y": 0,
+            "w": 128,
+            "h": 128,
+            "label": "rhythm guard",
+            "erase": [
+              {
+                "x": 122,
+                "y": 80,
+                "w": 6,
+                "h": 48
+              }
+            ],
+            "outputErase": [
+              {
+                "x": 88,
+                "y": 70,
+                "w": 8,
+                "h": 8
+              },
+              {
+                "x": 96,
+                "y": 84,
+                "w": 6,
+                "h": 6
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 21,
+            "minY": 1,
+            "maxX": 106,
+            "maxY": 117,
+            "width": 86,
+            "height": 117
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 256,
+            "y": 0,
+            "w": 128,
+            "h": 128,
+            "label": "buff focus",
+            "erase": [
+              {
+                "x": 116,
+                "y": 78,
+                "w": 12,
+                "h": 50
+              }
+            ],
+            "outputErase": [
+              {
+                "x": 94,
+                "y": 78,
+                "w": 8,
+                "h": 14
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 19,
+            "minY": 0,
+            "maxX": 108,
+            "maxY": 117,
+            "width": 90,
+            "height": 118
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 384,
+            "y": 0,
+            "w": 128,
+            "h": 128,
+            "label": "flow extension",
+            "erase": [
+              {
+                "x": 119,
+                "y": 30,
+                "w": 9,
+                "h": 56
+              }
+            ]
+          },
+          "foregroundBounds": {
+            "minX": 17,
+            "minY": 0,
+            "maxX": 111,
+            "maxY": 117,
+            "width": 95,
+            "height": 118
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 512,
+            "y": 0,
+            "w": 128,
+            "h": 128,
+            "label": "flow recover"
+          },
+          "foregroundBounds": {
+            "minX": 26,
+            "minY": 0,
+            "maxX": 104,
+            "maxY": 117,
+            "width": 79,
+            "height": 118
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "shadow-striker",
+      "animationKey": "roundhouse_kick",
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Shadow-Striker-Roundhouse-Kick-Fixed.png",
+      "frameCount": 5,
+      "frameSize": [
+        160,
+        128
+      ],
+      "baselineY": 120,
+      "padding": 8,
+      "scale": 0.3146067415730337,
+      "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\roundhouse_kick",
+      "strip": "public\\sprites\\strips-reference\\shadow-striker\\roundhouse-kick-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\shadow-striker__roundhouse_kick__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\shadow-striker__roundhouse_kick__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 145,
+            "y": 174,
+            "w": 260,
+            "h": 390,
+            "label": "stance"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 239,
+            "maxY": 368,
+            "width": 220,
+            "height": 349
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 532,
+            "y": 166,
+            "w": 246,
+            "h": 398,
+            "label": "chamber"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 21,
+            "maxX": 226,
+            "maxY": 376,
+            "width": 207,
+            "height": 356
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 865,
+            "y": 177,
+            "w": 397,
+            "h": 387,
+            "label": "kick drive"
+          },
+          "foregroundBounds": {
+            "minX": 15,
+            "minY": 20,
+            "maxX": 382,
+            "maxY": 365,
+            "width": 368,
+            "height": 346
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 1332,
+            "y": 175,
+            "w": 434,
+            "h": 389,
+            "label": "full extension"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 413,
+            "maxY": 367,
+            "width": 394,
+            "height": 348
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 1787,
+            "y": 179,
+            "w": 258,
+            "h": 385,
+            "label": "recovery"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 238,
+            "maxY": 363,
+            "width": 219,
+            "height": 344
+          }
+        }
+      ]
+    },
     {
       "entityId": "shadow-striker",
       "animationKey": "teep_kick",
@@ -11,6 +275,7 @@
         96
       ],
       "baselineY": 88,
+      "padding": 4,
       "scale": 0.5398773006134969,
       "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\teep_kick",
       "strip": "public\\sprites\\strips-reference\\shadow-striker\\teep-kick-strip.png",
@@ -134,6 +399,333 @@
       ]
     },
     {
+      "entityId": "combat-monk",
+      "animationKey": "high_kick",
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/cyber-monk-high-kick-fixed.png",
+      "frameCount": 5,
+      "frameSize": [
+        128,
+        128
+      ],
+      "baselineY": 120,
+      "padding": 8,
+      "scale": 0.32748538011695905,
+      "outputFrames": "public\\sprites\\frames-reference\\combat-monk\\high_kick",
+      "strip": "public\\sprites\\strips-reference\\combat-monk\\high-kick-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\combat-monk__high_kick__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\combat-monk__high_kick__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 115,
+            "y": 186,
+            "w": 230,
+            "h": 350,
+            "label": "stance"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 210,
+            "maxY": 329,
+            "width": 191,
+            "height": 310
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 504,
+            "y": 157,
+            "w": 224,
+            "h": 379,
+            "label": "chamber"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 208,
+            "maxY": 361,
+            "width": 189,
+            "height": 342
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 910,
+            "y": 169,
+            "w": 322,
+            "h": 367,
+            "label": "kick drive"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 302,
+            "maxY": 346,
+            "width": 283,
+            "height": 327
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 1360,
+            "y": 154,
+            "w": 333,
+            "h": 382,
+            "label": "high extension"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 316,
+            "maxY": 361,
+            "width": 297,
+            "height": 342
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 1773,
+            "y": 198,
+            "w": 225,
+            "h": 338,
+            "label": "recovery"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 204,
+            "maxY": 317,
+            "width": 185,
+            "height": 298
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "combat-monk",
+      "animationKey": "palm_strike",
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Combat-Monk-Palm-Strike-fixed.png",
+      "frameCount": 5,
+      "frameSize": [
+        128,
+        128
+      ],
+      "baselineY": 120,
+      "padding": 8,
+      "scale": 0.28865979381443296,
+      "outputFrames": "public\\sprites\\frames-reference\\combat-monk\\palm_strike",
+      "strip": "public\\sprites\\strips-reference\\combat-monk\\palm-strike-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\combat-monk__palm_strike__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\combat-monk__palm_strike__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 115,
+            "y": 189,
+            "w": 250,
+            "h": 382,
+            "label": "stance"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 229,
+            "maxY": 361,
+            "width": 210,
+            "height": 342
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 518,
+            "y": 198,
+            "w": 270,
+            "h": 373,
+            "label": "windup"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 249,
+            "maxY": 352,
+            "width": 230,
+            "height": 333
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 904,
+            "y": 232,
+            "w": 384,
+            "h": 339,
+            "label": "strike"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 363,
+            "maxY": 318,
+            "width": 344,
+            "height": 299
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 1342,
+            "y": 236,
+            "w": 428,
+            "h": 335,
+            "label": "impact"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 407,
+            "maxY": 314,
+            "width": 388,
+            "height": 295
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 1811,
+            "y": 205,
+            "w": 248,
+            "h": 366,
+            "label": "recovery"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 231,
+            "maxY": 345,
+            "width": 212,
+            "height": 326
+          }
+        }
+      ]
+    },
+    {
+      "entityId": "combat-monk",
+      "animationKey": "spinning_sweep",
+      "source": "public/assets/fightcore/sprites-fightcore/reference-sheets/Cyber-monk-sweep-fixed.png",
+      "frameCount": 5,
+      "frameSize": [
+        256,
+        128
+      ],
+      "baselineY": 120,
+      "padding": 8,
+      "scale": 0.4392156862745098,
+      "outputFrames": "public\\sprites\\frames-reference\\combat-monk\\spinning_sweep",
+      "strip": "public\\sprites\\strips-reference\\combat-monk\\spinning-sweep-strip.png",
+      "whiteCheck": "public\\sprites\\qa\\reference-extraction\\combat-monk__spinning_sweep__white-check.png",
+      "transparentReview": "public\\sprites\\qa\\reference-extraction\\combat-monk__spinning_sweep__transparent-review.png",
+      "frames": [
+        {
+          "frame": "0001.png",
+          "crop": {
+            "x": 110,
+            "y": 249,
+            "w": 255,
+            "h": 295,
+            "label": "stance"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 234,
+            "maxY": 274,
+            "width": 215,
+            "height": 255
+          }
+        },
+        {
+          "frame": "0002.png",
+          "crop": {
+            "x": 479,
+            "y": 264,
+            "w": 314,
+            "h": 280,
+            "label": "turn"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 293,
+            "maxY": 259,
+            "width": 274,
+            "height": 240
+          }
+        },
+        {
+          "frame": "0003.png",
+          "crop": {
+            "x": 891,
+            "y": 319,
+            "w": 347,
+            "h": 225,
+            "label": "low sweep"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 326,
+            "maxY": 204,
+            "width": 307,
+            "height": 185
+          }
+        },
+        {
+          "frame": "0004.png",
+          "crop": {
+            "x": 1290,
+            "y": 341,
+            "w": 474,
+            "h": 204,
+            "label": "full sweep"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 453,
+            "maxY": 183,
+            "width": 434,
+            "height": 164
+          }
+        },
+        {
+          "frame": "0005.png",
+          "crop": {
+            "x": 1811,
+            "y": 250,
+            "w": 254,
+            "h": 294,
+            "label": "recover"
+          },
+          "foregroundBounds": {
+            "minX": 20,
+            "minY": 20,
+            "maxX": 233,
+            "maxY": 273,
+            "width": 214,
+            "height": 254
+          }
+        }
+      ]
+    },
+    {
       "entityId": "shadow-striker",
       "animationKey": "hit_react",
       "source": "public/assets/fightcore/sprites/shadow-striker/hit-react-strip.png",
@@ -143,6 +735,7 @@
         96
       ],
       "baselineY": 88,
+      "padding": 4,
       "scale": 0.7792207792207793,
       "outputFrames": "public\\sprites\\frames-reference\\shadow-striker\\hit_react",
       "strip": "public\\sprites\\strips-reference\\shadow-striker\\hit-react-strip.png",
@@ -212,9 +805,10 @@
       "frameCount": 3,
       "frameSize": [
         192,
-        96
+        128
       ],
-      "baselineY": 88,
+      "baselineY": 120,
+      "padding": 8,
       "scale": 1,
       "outputFrames": "public\\sprites\\frames-reference\\puppetmaster\\o_goshi",
       "strip": "public\\sprites\\strips-reference\\puppetmaster\\o-goshi-strip.png",

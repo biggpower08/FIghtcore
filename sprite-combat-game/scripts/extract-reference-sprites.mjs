@@ -26,6 +26,7 @@ for (const [entityId, animations] of Object.entries(config)) {
     const source = PNG.sync.read(await fs.readFile(sourcePath));
     const frameWidth = spec.frameSize[0];
     const frameHeight = spec.frameSize[1];
+    const framePadding = spec.padding ?? padding;
     const baselineY = spec.baselineY ?? Math.round(frameHeight * 0.9167);
     const crops = spec.frames.map((frameSpec, frameIndex) => {
       const crop = cropPng(source, frameSpec.x, frameSpec.y, frameSpec.w, frameSpec.h);
@@ -38,7 +39,7 @@ for (const [entityId, animations] of Object.entries(config)) {
     });
     const maxContentWidth = Math.max(...crops.map((entry) => entry.bounds.width));
     const maxContentHeight = Math.max(...crops.map((entry) => entry.bounds.height));
-    const scale = Math.min(1, (frameWidth - padding * 2) / maxContentWidth, (frameHeight - padding * 2) / maxContentHeight);
+    const scale = Math.min(1, (frameWidth - framePadding * 2) / maxContentWidth, (frameHeight - framePadding * 2) / maxContentHeight);
     const outputDir = path.join(framesRoot, entityId, animationKey);
     await fs.rm(outputDir, { recursive: true, force: true });
     await fs.mkdir(outputDir, { recursive: true });
@@ -51,6 +52,7 @@ for (const [entityId, animations] of Object.entries(config)) {
         baselineY,
         scale,
       });
+      eraseConfiguredMasks(frame, entry.frameSpec.outputErase);
       const fileName = `${String(entry.frameIndex + 1).padStart(4, '0')}.png`;
       const outputPath = path.join(outputDir, fileName);
       await fs.writeFile(outputPath, PNG.sync.write(frame));
@@ -93,6 +95,7 @@ for (const [entityId, animations] of Object.entries(config)) {
       frameCount: frames.length,
       frameSize: [frameWidth, frameHeight],
       baselineY,
+      padding: framePadding,
       scale,
       outputFrames: path.relative(repoRoot, outputDir),
       strip: path.relative(repoRoot, stripPath),
@@ -116,6 +119,7 @@ for (const [entityId, animations] of Object.entries(fixedStripConfig)) {
     const source = PNG.sync.read(await fs.readFile(sourcePath));
     const frameWidth = spec.frameSize[0];
     const frameHeight = spec.frameSize[1];
+    const framePadding = spec.padding ?? padding;
     const baselineY = spec.baselineY ?? animationMetadata.baselineY ?? Math.round(frameHeight * 0.9167);
     const skippedSourceFrameIndices = new Set(spec.skipSourceFrameIndices ?? []);
     const sourceFrames = animation.frames
@@ -130,7 +134,7 @@ for (const [entityId, animations] of Object.entries(fixedStripConfig)) {
     });
     const maxContentWidth = Math.max(...crops.map((entry) => entry.bounds.width));
     const maxContentHeight = Math.max(...crops.map((entry) => entry.bounds.height));
-    const scale = Math.min(1, (frameWidth - padding * 2) / maxContentWidth, (frameHeight - padding * 2) / maxContentHeight);
+    const scale = Math.min(1, (frameWidth - framePadding * 2) / maxContentWidth, (frameHeight - framePadding * 2) / maxContentHeight);
     const outputDir = path.join(framesRoot, entityId, animationKey);
     await fs.rm(outputDir, { recursive: true, force: true });
     await fs.mkdir(outputDir, { recursive: true });
@@ -143,6 +147,7 @@ for (const [entityId, animations] of Object.entries(fixedStripConfig)) {
         baselineY,
         scale,
       });
+      eraseConfiguredMasks(frame, entry.frameSpec.outputErase);
       const fileName = `${String(entry.frameIndex + 1).padStart(4, '0')}.png`;
       const outputPath = path.join(outputDir, fileName);
       await fs.writeFile(outputPath, PNG.sync.write(frame));
@@ -186,6 +191,7 @@ for (const [entityId, animations] of Object.entries(fixedStripConfig)) {
       frameCount: frames.length,
       frameSize: [frameWidth, frameHeight],
       baselineY,
+      padding: framePadding,
       scale,
       outputFrames: path.relative(repoRoot, outputDir),
       strip: path.relative(repoRoot, stripPath),
@@ -406,23 +412,25 @@ function renderStrip(frames) {
 
 function renderWhiteCheck(frames) {
   const scale = 3;
-  const cellWidth = frames[0].png.width * scale;
-  const cellHeight = frames[0].png.height * scale;
+  const gutter = 12;
+  const cellWidth = frames[0].png.width * scale + gutter * 2;
+  const cellHeight = frames[0].png.height * scale + gutter * 2;
   const output = new PNG({ width: cellWidth * frames.length, height: cellHeight });
   output.data.fill(255);
   for (const [index, frame] of frames.entries()) {
-    blitScaledOnWhite(frame.png, output, index * cellWidth, 0, scale);
+    blitScaledOnWhite(frame.png, output, index * cellWidth + gutter, gutter, scale);
     drawOutline(output, index * cellWidth, 0, cellWidth, cellHeight, [255, 0, 0, 255]);
   }
   return output;
 }
 
 function renderTransparentReview(frames) {
-  const cellWidth = frames[0].png.width;
-  const cellHeight = frames[0].png.height;
+  const gutter = 4;
+  const cellWidth = frames[0].png.width + gutter * 2;
+  const cellHeight = frames[0].png.height + gutter * 2;
   const output = new PNG({ width: cellWidth * frames.length, height: cellHeight });
   for (const [index, frame] of frames.entries()) {
-    blit(frame.png, output, index * cellWidth, 0);
+    blit(frame.png, output, index * cellWidth + gutter, gutter);
     drawOutline(output, index * cellWidth, 0, cellWidth, cellHeight, [255, 0, 0, 255]);
   }
   return output;
