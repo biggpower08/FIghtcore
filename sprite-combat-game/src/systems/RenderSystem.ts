@@ -68,7 +68,7 @@ export const DESERT_ARENA_ASSET_PATHS = [
 
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
-const RUNTIME_FRAME_DRAW_HEIGHT = 96;
+const DEBUG_RENDER_PARAM = 'debugRender';
 const COMBAT_MONK_REFERENCE_SCALE = 0.94;
 const blockedFrameWarnings = new Set<string>();
 const stageVariants = [
@@ -481,16 +481,16 @@ export class RenderSystem {
     const frame = animation.frames[index] ?? animation.frames[0];
     if (!frame || isInvalidResolvedFrame(frame)) return false;
 
-    const sourceWidth = frame.width ?? frame.image?.width ?? 64;
-    const sourceHeight = frame.height ?? frame.image?.height ?? 64;
+    const sourceWidth = frame.image?.naturalWidth || frame.image?.width || frame.width || frame.sheetImage?.width || 64;
+    const sourceHeight = frame.image?.naturalHeight || frame.image?.height || frame.height || frame.sheetImage?.height || 64;
     const profileScale = spriteRegistryById.get(this.getAssetId(entity))?.render?.scale ?? 1;
     const referenceScale = this.referenceFrameScale(entity, frame);
     const scale = profileScale * referenceScale * (entity instanceof Boss ? 1.08 : 1);
     const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
-    const usesNativeFrameScale = usesPreparedFightcoreStrip || isRuntimeSpriteFrame(frame.framePath);
-    const normalizedFrameHeight = isRuntimeSpriteFrame(frame.framePath) ? RUNTIME_FRAME_DRAW_HEIGHT : sourceHeight;
-    const height = usesNativeFrameScale ? normalizedFrameHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
-    const width = usesNativeFrameScale ? sourceWidth * (normalizedFrameHeight / Math.max(1, sourceHeight)) * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
+    const usesStandalonePngFrame = Boolean(frame.image);
+    const usesNativeFrameScale = usesStandalonePngFrame || usesPreparedFightcoreStrip || isRuntimeSpriteFrame(frame.framePath);
+    const height = usesNativeFrameScale ? sourceHeight * scale : Math.max(entity.radius * 3.2, sourceWidth * scale) * (sourceHeight / sourceWidth);
+    const width = usesNativeFrameScale ? sourceWidth * scale : Math.max(entity.radius * 3.2, sourceWidth * scale);
     const dx = -width * frame.anchorX;
     const dy = -height * frame.anchorY;
 
@@ -541,6 +541,12 @@ export class RenderSystem {
     ctx.strokeStyle = '#23d5dd';
     ctx.lineWidth = 2;
     ctx.strokeRect(drawX, drawY, width, height);
+    ctx.strokeStyle = 'rgba(255, 237, 135, 0.82)';
+    ctx.strokeRect(entity.x - entity.radius, entity.y - entity.radius * 2, entity.radius * 2, entity.radius * 2);
+    ctx.strokeStyle = 'rgba(255, 110, 90, 0.85)';
+    ctx.beginPath();
+    ctx.arc(entity.x, entity.y, entity.radius, 0, Math.PI * 2);
+    ctx.stroke();
     ctx.fillStyle = '#ffef78';
     ctx.fillRect(entity.x - 2, entity.y - 2, 4, 4);
     ctx.fillStyle = '#101820';
@@ -712,7 +718,7 @@ export class RenderSystem {
 }
 
 function shouldDrawSpriteDebug(): boolean {
-  return hasEnabledDebugParam(DEBUG_SPRITE_BOXES_PARAM);
+  return hasEnabledDebugParam(DEBUG_SPRITE_BOXES_PARAM) || hasEnabledDebugParam(DEBUG_RENDER_PARAM);
 }
 
 function shouldDrawGrappleSuppressionDebug(): boolean {
