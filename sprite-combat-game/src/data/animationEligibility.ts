@@ -1,6 +1,7 @@
 import { getSpriteAtlasAnimation } from './spriteAtlases';
 import { getSpriteAnimation, getKnownAnimationKeys } from './spriteAnimations';
 import { hasInvalidBodyFrames } from './frameQuality';
+import { getSemiRealisticSpriteAnimation } from './semiRealisticSpriteFrames';
 
 export type AnimationHealth = 'ready' | 'blocked' | 'missing';
 
@@ -14,12 +15,13 @@ export interface AnimationEligibility {
 export function getAnimationEligibility(characterId: string, animationKey: string): AnimationEligibility {
   const definition = getSpriteAnimation(characterId, animationKey);
   const atlas = getSpriteAtlasAnimation(characterId, animationKey);
-  const hasKnownKey = getKnownAnimationKeys(characterId).includes(animationKey);
-  if (!definition && !atlas && !hasKnownKey) {
+  const semiRealistic = getSemiRealisticSpriteAnimation(characterId, animationKey);
+  const hasKnownKey = getKnownAnimationKeys(characterId).includes(animationKey) || semiRealistic.length > 0;
+  if (!definition && !atlas && !hasKnownKey && semiRealistic.length === 0) {
     return { characterId, animationKey, health: 'missing', reason: 'No registered animation key, frame folder, or atlas crop exists.' };
   }
 
-  const hasFrames = Boolean(definition?.frames.length || atlas?.frames.length || hasKnownKey);
+  const hasFrames = Boolean(semiRealistic.length || definition?.frames.length || atlas?.frames.length || hasKnownKey);
   if (!hasFrames) {
     return { characterId, animationKey, health: 'missing', reason: 'Animation exists but has no usable frames.' };
   }
@@ -28,7 +30,7 @@ export function getAnimationEligibility(characterId: string, animationKey: strin
     return { characterId, animationKey, health: 'blocked', reason: 'Animation has a multi-pose body crop and is not gameplay-ready.' };
   }
 
-  return { characterId, animationKey, health: 'ready', reason: 'Animation has a registered frame folder or atlas crop.' };
+  return { characterId, animationKey, health: 'ready', reason: 'Animation has a registered frame folder, atlas crop, or semi-realistic frame set.' };
 }
 
 export function isGameplayReadyAnimation(characterId: string, animationKey: string): boolean {

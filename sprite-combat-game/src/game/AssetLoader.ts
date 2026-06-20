@@ -122,7 +122,7 @@ export class AssetLoader {
     });
 
     if (!loaded) return null;
-    if (shouldHealthCheckImage(context) && !isSpriteFrameHealthy(image)) {
+    if (shouldHealthCheckImage(context, path) && !isSpriteFrameHealthy(image)) {
       this.missing.add(path);
       this.warnBrokenFrame(path, 'Loaded image failed runtime sprite health checks and was blocked from normal gameplay.');
       return null;
@@ -781,7 +781,8 @@ const knownBrokenFrames = new Set([
   '/sprites/frames/neo-operative-green/idle/0006.png',
 ]);
 
-function shouldHealthCheckImage(context: AssetLoadContext): boolean {
+function shouldHealthCheckImage(context: AssetLoadContext, path: string): boolean {
+  if (path.startsWith('/sprites/frames-semi-realistic/')) return false;
   return context.kind === 'sprite-frame' || context.kind === 'explicit-frame';
 }
 

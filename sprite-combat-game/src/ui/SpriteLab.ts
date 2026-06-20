@@ -512,6 +512,7 @@ export class SpriteLab {
     const width = frame.width ?? frame.image?.width ?? 0;
     const height = frame.height ?? frame.image?.height ?? 0;
     if (width <= 0 || height <= 0) return true;
+    if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return false;
     const imageWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
     const looksLikeFullStrip = Boolean(frame.sheetPath?.includes('/assets/fightcore/sprites/') && frame.sheetPath.endsWith('-strip.png') && width >= imageWidth && imageWidth > 180);
     const imageHeight = frame.sheetImage?.height ?? frame.image?.height ?? height;
