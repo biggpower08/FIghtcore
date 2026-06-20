@@ -1,6 +1,8 @@
 import { getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { getAnimationEligibility } from '../data/animationEligibility';
 import { getFrameQuality } from '../data/frameQuality';
+import { getCharacterVisualProfile } from '../data/characterVisualProfiles';
+import { getCombatMoveProfileByAnimation } from '../data/combatMoveProfiles';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 
@@ -25,6 +27,7 @@ export class SpriteLab {
   private playbackId = 0;
   private readonly options = {
     checkerboard: true,
+    whiteBackground: false,
     ground: true,
     anchor: true,
     hitbox: true,
@@ -53,6 +56,7 @@ export class SpriteLab {
         </div>
         <div class="sprite-lab-toggles">
           <label><input type="checkbox" data-toggle="checkerboard" checked /> Checkerboard</label>
+          <label><input type="checkbox" data-toggle="whiteBackground" /> White background</label>
           <label><input type="checkbox" data-toggle="ground" checked /> Ground</label>
           <label><input type="checkbox" data-toggle="anchor" checked /> Anchor</label>
           <label><input type="checkbox" data-toggle="hitbox" checked /> Hitbox</label>
@@ -170,7 +174,10 @@ export class SpriteLab {
     if (!ctx) return;
     ctx.imageSmoothingEnabled = false;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (this.options.checkerboard) this.drawCheckerboard(ctx, canvas.width, canvas.height);
+    if (this.options.whiteBackground) {
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    } else if (this.options.checkerboard) this.drawCheckerboard(ctx, canvas.width, canvas.height);
     else {
       ctx.fillStyle = '#17120c';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -235,6 +242,8 @@ export class SpriteLab {
         frameQuality,
         qa: frame ? this.getFrameQa(frame, alpha, framePosition) : undefined,
         eligibility: getAnimationEligibility(this.animation.entityId, this.animation.animationKey),
+        visualProfile: getCharacterVisualProfile(this.animation.entityId),
+        combatProfile: getCombatMoveProfileByAnimation(this.animation.animationKey),
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         invalidFrame: frame ? this.isInvalidFrame(frame, framePosition) : 'missing-frame',
         warning:
@@ -287,16 +296,30 @@ export class SpriteLab {
     const height = sourceHeight * scale;
     const dx = centerX - width * frame.anchorX;
     const dy = floorY - height * frame.anchorY;
+    const visualProfile = this.animation ? getCharacterVisualProfile(this.animation.entityId) : undefined;
+    const combatProfile = this.animation ? getCombatMoveProfileByAnimation(this.animation.animationKey) : undefined;
 
     if (this.options.hurtbox) {
-      ctx.strokeStyle = 'rgba(56, 163, 255, 0.82)';
+      ctx.strokeStyle = 'rgba(35, 213, 221, 0.82)';
       ctx.lineWidth = 2;
       ctx.strokeRect(dx, dy, width, height);
+      if (visualProfile) {
+        ctx.strokeStyle = 'rgba(56, 163, 255, 0.9)';
+        ctx.strokeRect(centerX - visualProfile.hurtboxSize.w / 2, floorY - visualProfile.hurtboxSize.h, visualProfile.hurtboxSize.w, visualProfile.hurtboxSize.h);
+        ctx.strokeStyle = 'rgba(255, 110, 90, 0.9)';
+        ctx.strokeRect(centerX - visualProfile.collisionSize.w / 2, floorY - visualProfile.collisionSize.h, visualProfile.collisionSize.w, visualProfile.collisionSize.h);
+      }
     }
     if (this.options.hitbox) {
-      ctx.strokeStyle = 'rgba(255, 237, 135, 0.82)';
+      const active = combatProfile?.activeFrames.includes(framePosition + 1) ?? false;
+      ctx.strokeStyle = active ? 'rgba(255, 237, 135, 0.96)' : 'rgba(255, 237, 135, 0.36)';
+      ctx.fillStyle = active ? 'rgba(255, 237, 135, 0.16)' : 'rgba(255, 237, 135, 0.06)';
       ctx.lineWidth = 2;
-      ctx.strokeRect(centerX - 46, floorY - 82, 92, 76);
+      const hitbox = combatProfile?.hitbox ?? { x: 46, y: -82, w: 92, h: 76 };
+      const hitboxX = centerX + hitbox.x - hitbox.w / 2;
+      const hitboxY = floorY + hitbox.y - hitbox.h / 2;
+      ctx.fillRect(hitboxX, hitboxY, hitbox.w, hitbox.h);
+      ctx.strokeRect(hitboxX, hitboxY, hitbox.w, hitbox.h);
     }
 
     try {

@@ -908,8 +908,8 @@ export class Game {
   }
 
   private handleHitImpact(impact: HitImpact): void {
-    this.hitPauseMs = Math.max(this.hitPauseMs, impact.heavy ? 70 : 42);
-    if (impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, 180);
+    this.hitPauseMs = Math.max(this.hitPauseMs, impact.hitstopMs);
+    if (impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, Math.max(140, impact.hitstopMs * 3));
     if (impact.attacker === this.player) {
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
@@ -932,7 +932,7 @@ export class Game {
     if (majorDamage) {
       const delayMs = this.visualHandoffDelayMs(impact.attacker, 340);
       this.animation.play(target, 'hit_react', {
-        lockForMs: Math.max(180, Math.min(280, delayMs || 220)),
+        lockForMs: Math.max(impact.hitstunMs, Math.min(360, delayMs || impact.hitstunMs)),
         fallback: 'hit_react',
         force: true,
       });
@@ -942,7 +942,7 @@ export class Game {
       }
     }
     this.animation.play(target, majorDamage ? 'knockdown' : 'hit_react', {
-      lockForMs: majorDamage ? 520 : 280,
+      lockForMs: majorDamage ? Math.max(520, impact.hitstunMs) : Math.max(220, impact.hitstunMs),
       fallback: 'hit_react',
       force: majorDamage,
     });

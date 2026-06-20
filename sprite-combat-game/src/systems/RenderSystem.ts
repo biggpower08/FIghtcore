@@ -11,6 +11,7 @@ import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '
 import type { Camera } from '../game/Camera';
 import { spriteRegistryById } from '../data/spriteRegistry';
 import { getFrameQuality } from '../data/frameQuality';
+import { getCharacterVisualProfile } from '../data/characterVisualProfiles';
 
 export interface DustPuff {
   x: number;
@@ -431,9 +432,10 @@ export class RenderSystem {
     const animationKey = this.animation.getCurrentAnimationKey(entity);
     const resolvedAnimation = this.assets.getResolvedAnimation(assetId, animationKey) ?? this.assets.getResolvedAnimation(assetId, 'idle');
     const profile = spriteRegistryById.get(assetId)?.render;
+    const visualProfile = getCharacterVisualProfile(assetId);
     ctx.fillStyle = 'rgba(42, 23, 13, 0.34)';
     ctx.beginPath();
-    ctx.ellipse(entity.x, entity.y + (profile?.shadowOffsetY ?? 8), entity.radius * 1.05, entity.radius * 0.34, 0, 0, Math.PI * 2);
+    ctx.ellipse(entity.x, entity.y + (profile?.shadowOffsetY ?? 8), visualProfile.collisionSize.w * 0.62, entity.radius * 0.34, 0, 0, Math.PI * 2);
     ctx.fill();
 
     if (resolvedAnimation && ['frame-png', 'atlas-crop', 'sheet-crop'].includes(resolvedAnimation.status)) {
@@ -483,7 +485,8 @@ export class RenderSystem {
 
     const sourceWidth = frame.image?.naturalWidth || frame.image?.width || frame.width || frame.sheetImage?.width || 64;
     const sourceHeight = frame.image?.naturalHeight || frame.image?.height || frame.height || frame.sheetImage?.height || 64;
-    const profileScale = spriteRegistryById.get(this.getAssetId(entity))?.render?.scale ?? 1;
+    const assetId = this.getAssetId(entity);
+    const profileScale = getCharacterVisualProfile(assetId).visualScale || spriteRegistryById.get(assetId)?.render?.scale || 1;
     const referenceScale = this.referenceFrameScale(entity, frame);
     const scale = profileScale * referenceScale * (entity instanceof Boss ? 1.08 : 1);
     const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
@@ -542,8 +545,12 @@ export class RenderSystem {
     ctx.lineWidth = 2;
     ctx.strokeRect(drawX, drawY, width, height);
     ctx.strokeStyle = 'rgba(255, 237, 135, 0.82)';
-    ctx.strokeRect(entity.x - entity.radius, entity.y - entity.radius * 2, entity.radius * 2, entity.radius * 2);
+    const profile = getCharacterVisualProfile(this.getAssetId(entity));
+    ctx.strokeRect(entity.x - profile.bodyBounds.w / 2, entity.y - profile.bodyBounds.h, profile.bodyBounds.w, profile.bodyBounds.h);
+    ctx.strokeStyle = 'rgba(56, 163, 255, 0.85)';
+    ctx.strokeRect(entity.x - profile.hurtboxSize.w / 2, entity.y - profile.hurtboxSize.h, profile.hurtboxSize.w, profile.hurtboxSize.h);
     ctx.strokeStyle = 'rgba(255, 110, 90, 0.85)';
+    ctx.strokeRect(entity.x - profile.collisionSize.w / 2, entity.y - profile.collisionSize.h, profile.collisionSize.w, profile.collisionSize.h);
     ctx.beginPath();
     ctx.arc(entity.x, entity.y, entity.radius, 0, Math.PI * 2);
     ctx.stroke();
@@ -660,7 +667,8 @@ export class RenderSystem {
   }
 
   private drawHitbox(ctx: CanvasRenderingContext2D, hitbox: AttackHitbox): void {
-    if (hitbox.remainingMs > hitbox.move.activeMs) return;
+    const frame = Math.floor(hitbox.elapsedMs / (1000 / 60)) + 1;
+    if (!hitbox.activeFrames.includes(frame)) return;
     ctx.fillStyle = 'rgba(255, 237, 135, 0.18)';
     ctx.strokeStyle = 'rgba(255, 237, 135, 0.48)';
     ctx.lineWidth = 2;
