@@ -1,0 +1,47 @@
+{
+  "sourceDir": "public/sprites/semi-realistic-source",
+  "outputDir": "public/sprites/frames-semi-realistic",
+  "stripOutputDir": "public/sprites/strips-semi-realistic",
+  "qaDir": "public/sprites/qa/semi-realistic-import",
+  "metadataPath": "src/data/semiRealisticSpriteFrames.ts",
+  "characters": [
+    {
+      "entityId": "ronin",
+      "sourceLabel": "Ronin semi-realistic generated sprite sheets",
+      "anchorX": 0.5,
+      "anchorY": 0.92,
+      "animations": [
+        { "key": "idle", "file": "ronin_idle.png", "frames": 5, "durationMs": 170, "loop": true },
+        { "key": "walk", "file": "ronin_walk.png", "frames": 6, "durationMs": 120, "loop": true },
+        { "key": "dash", "file": "ronin_dash.png", "frames": 5, "durationMs": 80 },
+        { "key": "density", "file": "ronin_density.png", "frames": 5, "durationMs": 180 },
+        { "key": "jab", "file": "ronin_jab.png", "frames": 5, "durationMs": 95 },
+        { "key": "cross", "file": "ronin_cross.png", "frames": 5, "durationMs": 115 },
+        { "key": "calf_kick", "file": "ronin_calf_kick.png", "frames": 5, "durationMs": 135 },
+        { "key": "knee", "file": "ronin_knee.png", "frames": 5, "durationMs": 130 },
+        { "key": "hit_react", "file": "ronin_hit_react.png", "frames": 5, "durationMs": 120 },
+        { "key": "recovery", "file": "ronin_recovery.png", "frames": 5, "durationMs": 135 },
+        { "key": "stand_up", "file": "ronin_stand_up.png", "frames": 6, "durationMs": 145 }
+      ]
+    },
+    {
+      "entityId": "supreme-emperor",
+      "sourceLabel": "Supreme Emperor semi-realistic generated sprite sheets",
+      "anchorX": 0.5,
+      "anchorY": 0.92,
+      "animations": [
+        { "key": "idle", "file": "supreme_emperor_idle.png", "frames": 5, "durationMs": 180, "loop": true },
+        { "key": "walk", "file": "supreme_emperor_walk.png", "frames": 6, "durationMs": 130, "loop": true },
+        { "key": "dash", "file": "supreme_emperor_dash.png", "frames": 5, "durationMs": 85 },
+        { "key": "instant_death", "file": "supreme_emperor_instant_death.png", "frames": 5, "durationMs": 180 },
+        { "key": "jab_cross", "file": "supreme_emperor_jab_cross.png", "frames": 6, "durationMs": 115 },
+        { "key": "feint_rear_hook", "file": "supreme_emperor_feint_rear_hook.png", "frames": 6, "durationMs": 140 },
+        { "key": "tornado_kick", "file": "supreme_emperor_tornado_kick.png", "frames": 7, "durationMs": 150 },
+        { "key": "roundhouse_kick", "file": "supreme_emperor_roundhouse_kick.png", "frames": 7, "durationMs": 145 },
+        { "key": "hit_react", "file": "supreme_emperor_hit_react.png", "frames": 5, "durationMs": 125 },
+        { "key": "recovery", "file": "supreme_emperor_recovery.png", "frames": 5, "durationMs": 140 },
+        { "key": "stand_up", "file": "supreme_emperor_stand_up.png", "frames": 6, "durationMs": 155 }
+      ]
+    }
+  ]
+}

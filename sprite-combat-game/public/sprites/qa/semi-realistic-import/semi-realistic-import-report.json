@@ -1,0 +1,160 @@
+{
+  "missing": [
+    "public\\sprites\\semi-realistic-source\\ronin_idle.png",
+    "public\\sprites\\semi-realistic-source\\ronin_walk.png",
+    "public\\sprites\\semi-realistic-source\\ronin_dash.png",
+    "public\\sprites\\semi-realistic-source\\ronin_density.png",
+    "public\\sprites\\semi-realistic-source\\ronin_jab.png",
+    "public\\sprites\\semi-realistic-source\\ronin_cross.png",
+    "public\\sprites\\semi-realistic-source\\ronin_calf_kick.png",
+    "public\\sprites\\semi-realistic-source\\ronin_knee.png",
+    "public\\sprites\\semi-realistic-source\\ronin_hit_react.png",
+    "public\\sprites\\semi-realistic-source\\ronin_recovery.png",
+    "public\\sprites\\semi-realistic-source\\ronin_stand_up.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_idle.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_walk.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_dash.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_instant_death.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_jab_cross.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_feint_rear_hook.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_tornado_kick.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_roundhouse_kick.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_hit_react.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_recovery.png",
+    "public\\sprites\\semi-realistic-source\\supreme_emperor_stand_up.png"
+  ],
+  "report": [
+    {
+      "entityId": "ronin",
+      "animationKey": "idle",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_idle.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "walk",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_walk.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "dash",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_dash.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "density",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_density.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "jab",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_jab.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "cross",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_cross.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "calf_kick",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_calf_kick.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "knee",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_knee.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "hit_react",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_hit_react.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "recovery",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_recovery.png"
+    },
+    {
+      "entityId": "ronin",
+      "animationKey": "stand_up",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_stand_up.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "idle",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_idle.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "walk",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_walk.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "dash",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_dash.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "instant_death",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_instant_death.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "jab_cross",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_jab_cross.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "feint_rear_hook",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_feint_rear_hook.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "tornado_kick",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_tornado_kick.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "roundhouse_kick",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_roundhouse_kick.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "hit_react",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_hit_react.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "recovery",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_recovery.png"
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationKey": "stand_up",
+      "status": "missing-source",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_stand_up.png"
+    }
+  ]
+}

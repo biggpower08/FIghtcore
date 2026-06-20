@@ -1,4 +1,5 @@
 import { getLoadoutMoves } from './characterLoadouts';
+import { hasRoninAssets, hasSupremeEmperorAssets } from './semiRealisticCharacters';
 
 export interface CharacterDefinition {
   id: string;
@@ -10,7 +11,7 @@ export interface CharacterDefinition {
   logoPath?: string;
 }
 
-export const characters: CharacterDefinition[] = [
+const baseCharacters: CharacterDefinition[] = [
   {
     id: 'cyber-ninja',
     name: 'Cyber Ninja',
@@ -47,6 +48,35 @@ export const characters: CharacterDefinition[] = [
     logoPath: '/assets/fightcore/sprites/combat-monk/logo-emblem.png',
   },
 ];
+
+const semiRealisticCharacters: CharacterDefinition[] = [
+  ...(hasRoninAssets()
+    ? [
+        {
+          id: 'ronin',
+          name: 'Ronin',
+          identity: 'Athletic all-around fighter / close-range striker',
+          maxHealth: 146,
+          speed: 286,
+          iconPath: '/sprites/frames-semi-realistic/ronin/idle/0001.png',
+        },
+      ]
+    : []),
+  ...(hasSupremeEmperorAssets()
+    ? [
+        {
+          id: 'supreme-emperor',
+          name: 'Supreme Emperor',
+          identity: 'Overpowered final-boss testing striker',
+          maxHealth: 188,
+          speed: 280,
+          iconPath: '/sprites/frames-semi-realistic/supreme-emperor/idle/0001.png',
+        },
+      ]
+    : []),
+];
+
+export const characters: CharacterDefinition[] = [...baseCharacters, ...semiRealisticCharacters];
 
 export function getCharacterMoves(character: CharacterDefinition) {
   return getLoadoutMoves(character.id);

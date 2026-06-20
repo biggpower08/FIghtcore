@@ -1,5 +1,7 @@
 import { fightcoreSpriteManifest } from './fightcoreSpriteManifest';
 import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetadata';
+import { getSemiRealisticSpriteAnimation } from './semiRealisticSpriteFrames';
+import { semiRealisticAnimationKeysByCharacter } from './semiRealisticCharacters';
 
 export type SpriteKind = 'hero' | 'villain' | 'effect' | 'desert-prop';
 
@@ -46,6 +48,7 @@ export const spriteRegistry: SpriteRegistration[] = [
     ...heroRenderProfile(),
     scale: 0.98,
   }),
+  ...semiRealisticCharacterRegistrations(),
   registerCharacter('monkey-grunt', 'villain', manifestAnimations('monkey-grunt'), ['fightcore-monkey-grunt-atlas'], {
     anchorX: 0.5,
     anchorY: 0.88,
@@ -357,4 +360,19 @@ function fightcoreStripWidth(entityId: string, animationKey: string): number | u
 
 function fightcoreStripHeight(entityId: string, animationKey: string): number | undefined {
   return fightcoreGeneratedFrameMetadata.find((entry) => entry.entityId === entityId && entry.animationKey === animationKey)?.frameHeight;
+}
+
+function semiRealisticCharacterRegistrations(): SpriteRegistration[] {
+  return Object.entries(semiRealisticAnimationKeysByCharacter)
+    .map(([entityId, animationKeys]) => {
+      const importedAnimations = animationKeys.filter((animationKey) => getSemiRealisticSpriteAnimation(entityId, animationKey).length > 0);
+      if (importedAnimations.length === 0) return undefined;
+      return registerCharacter(entityId, 'hero', importedAnimations, [], {
+        ...heroRenderProfile(),
+        scale: entityId === 'supreme-emperor' ? 0.82 : 0.86,
+        anchorY: 0.92,
+        feetY: 0,
+      });
+    })
+    .filter((entry): entry is SpriteRegistration => Boolean(entry));
 }

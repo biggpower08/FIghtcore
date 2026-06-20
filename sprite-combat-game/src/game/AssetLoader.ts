@@ -3,6 +3,7 @@ import { getSpriteAtlasAnimation, type SpriteAtlasAnimation } from '../data/spri
 import { getCleanedSpriteAnimation } from '../data/cleanedSpriteFrames';
 import { getAlphaHoleSpriteFrame } from '../data/alphaHoleSpriteFrames';
 import { getReferenceSpriteAnimation, getReferenceSpriteFrame } from '../data/referenceSpriteFrames';
+import { getSemiRealisticSpriteAnimation, getSemiRealisticSpriteFrame } from '../data/semiRealisticSpriteFrames';
 import { spriteRegistryById, spriteSourceSheetById } from '../data/spriteRegistry';
 import { publicAssetUrl } from './publicAssetUrl';
 
@@ -33,6 +34,8 @@ export interface ResolvedSpriteFrame {
   referenceCrop?: { x: number; y: number; width: number; height: number };
   referenceBaselineY?: number;
   referenceBackgroundRemoved?: boolean;
+  usingSemiRealisticFrame?: boolean;
+  semiRealisticSourceSheet?: string;
   usingRepairedAlpha?: boolean;
   invalidHollowFrame?: boolean;
   alphaHoleCount?: number;
@@ -153,8 +156,13 @@ export class AssetLoader {
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
       const reference = getReferenceSpriteFrame(assetId, animation, frame - 1);
+      const semiRealistic = getSemiRealisticSpriteFrame(assetId, animation, frame - 1);
       const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frame - 1);
-      const path = reference?.framePath ?? alphaHole?.repairedFramePath ?? `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
+      const path =
+        semiRealistic?.framePath ??
+        reference?.framePath ??
+        alphaHole?.repairedFramePath ??
+        `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
       if (isKnownBrokenFrame(path)) {
         this.warnBrokenFrame(path, 'Known hollow or low-coverage frame is blocked from normal gameplay.');
         continue;
@@ -315,9 +323,10 @@ export class AssetLoader {
   ): Promise<ResolvedSpriteAnimation | null> {
     const cleaned = getCleanedSpriteAnimation(entityId, animationKey);
     const reference = getReferenceSpriteAnimation(entityId, animationKey);
-    const images = await this.loadOptionalFrames(entityId, animationKey, 8);
+    const semiRealistic = getSemiRealisticSpriteAnimation(entityId, animationKey);
+    const images = await this.loadOptionalFrames(entityId, animationKey, 12);
     if (images.length === 0) return null;
-    const expectedFrameCount = Math.min(8, reference.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey));
+    const expectedFrameCount = Math.min(12, semiRealistic.length || reference.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey));
     if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
       this.warnOnce(
         `atlas-better:${entityId}:${animationKey}`,
@@ -330,25 +339,28 @@ export class AssetLoader {
     const frames = images.map<ResolvedSpriteFrame>((image, index) =>
       {
         const referenceFrame = reference[index];
+        const semiRealisticFrame = semiRealistic[index];
         return applyBodyAwareAnchor({
           source: 'frame-png',
           entityId,
           animationKey,
           frameIndex: index,
           durationMs:
+            semiRealisticFrame?.durationMs ??
             referenceFrame?.durationMs ??
             cleaned?.frames[index]?.durationMs ??
             definition?.frames[index]?.durationMs ??
             timingForAnimation(animationKey, index, images.length),
           image,
           framePath:
+            semiRealisticFrame?.framePath ??
             referenceFrame?.framePath ??
             cleaned?.frames[index]?.path ??
             `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-          width: referenceFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
-          height: referenceFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
-          anchorX: referenceFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
-          anchorY: referenceFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+          width: semiRealisticFrame?.frameSize.width ?? referenceFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
+          height: semiRealisticFrame?.frameSize.height ?? referenceFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
+          anchorX: semiRealisticFrame?.anchorX ?? referenceFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+          anchorY: semiRealisticFrame?.anchorY ?? referenceFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
           feetY: referenceFrame?.baselineY ?? cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
           rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
           cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
@@ -358,7 +370,11 @@ export class AssetLoader {
           referenceCrop: referenceFrame?.crop,
           referenceBaselineY: referenceFrame?.baselineY,
           referenceBackgroundRemoved: referenceFrame?.backgroundRemoved,
-          notes: referenceFrame
+          usingSemiRealisticFrame: Boolean(semiRealisticFrame),
+          semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
+          notes: semiRealisticFrame
+            ? `Using semi-realistic frame from ${semiRealisticFrame.sourceSheetLabel}.`
+            : referenceFrame
             ? `Using reference-extracted frame from ${referenceFrame.sourceSheetLabel}.`
             : cleaned?.frames[index]?.splitFromDirtyCrop
               ? 'Cleaned frame split from a multi-pose raw crop.'
@@ -389,7 +405,9 @@ export class AssetLoader {
       frames,
       fallbackAnimation: definition?.fallbackAnimation,
       notes:
-        reference.length > 0
+        semiRealistic.length > 0
+          ? 'Resolved from semi-realistic PNG frame folder.'
+          : reference.length > 0
           ? 'Resolved from reference-extracted clean PNG frames.'
           : cleaned
             ? 'Resolved from cleaned single-pose PNG frame folder.'

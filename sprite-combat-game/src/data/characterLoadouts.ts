@@ -1,5 +1,6 @@
 import { isGameplayReadyAnimation } from './animationEligibility';
 import { moveById, type MoveDefinition } from './moves';
+import { hasRoninAssets, hasSupremeEmperorAssets } from './semiRealisticCharacters';
 
 export type MoveSlotKey = 'H' | 'J' | 'K' | 'L';
 
@@ -86,6 +87,39 @@ const loadouts: CharacterLoadout[] = [
       description: 'Recharge health and stamina through meditation.',
     },
   },
+  ...(hasRoninAssets()
+    ? [
+        {
+          characterId: 'ronin',
+          slots: [slot('H', 'jab'), slot('J', 'cross'), slot('K', 'calf_kick'), slot('L', 'knee')],
+          stats: { maxHealth: 146, speed: 286, stamina: 124, damageMultiplier: 1.05 },
+          ability: {
+            id: 'density',
+            name: 'Density',
+            description: 'Become immune to damage for a few seconds, but attacks are locked during the state.',
+          },
+        },
+      ]
+    : []),
+  ...(hasSupremeEmperorAssets()
+    ? [
+        {
+          characterId: 'supreme-emperor',
+          slots: [
+            slot('H', 'jab_cross'),
+            slot('J', 'feint_rear_hook'),
+            slot('K', 'tornado_kick'),
+            slot('L', 'roundhouse_kick'),
+          ],
+          stats: { maxHealth: 188, speed: 280, stamina: 142, damageMultiplier: 1.62 },
+          ability: {
+            id: 'instant_death',
+            name: 'Instant Death',
+            description: 'For a short window, strikes have a 50% chance to instantly kill normal enemies.',
+          },
+        },
+      ]
+    : []),
 ];
 
 export const characterLoadouts = loadouts.map(validateLoadout);

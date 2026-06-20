@@ -4,7 +4,7 @@ import { getFrameQuality } from '../data/frameQuality';
 import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 
-const labEntityIds = [
+const coreLabEntityIds = [
   'cyber-ninja',
   'shadow-striker',
   'puppetmaster',
@@ -13,6 +13,11 @@ const labEntityIds = [
   'striker-monkey',
   'cyber-monkey-grappler',
 ];
+
+function labEntityIds(): string[] {
+  const registered = spriteRegistry.map((sprite) => sprite.id);
+  return [...new Set([...coreLabEntityIds, ...registered])];
+}
 
 export class SpriteLab {
   private frameIndex = 0;
@@ -75,7 +80,7 @@ export class SpriteLab {
     const animationSelect = this.root.querySelector<HTMLSelectElement>('[data-field="animation"]');
     if (!entitySelect || !animationSelect) return;
 
-    entitySelect.innerHTML = labEntityIds.map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
+    entitySelect.innerHTML = labEntityIds().map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
     const refreshAnimations = (): void => {
       const keys = getKnownAnimationKeys(entitySelect.value);
       animationSelect.innerHTML =

@@ -1,4 +1,4 @@
-export type SpecialAbilityId = 'critical_overload' | 'momentum_flow' | 'meditation' | 'thug_it_out';
+export type SpecialAbilityId = 'critical_overload' | 'momentum_flow' | 'meditation' | 'thug_it_out' | 'density' | 'instant_death';
 
 export interface SpecialAbilityDefinition {
   id: SpecialAbilityId;
@@ -43,6 +43,22 @@ export const specialAbilities: SpecialAbilityDefinition[] = [
     cooldownMs: 14000,
     durationMs: 6500,
     description: 'Temporarily boosts combat stats and prevents lethal damage during the buff.',
+  },
+  {
+    id: 'density',
+    characterId: 'ronin',
+    name: 'Density',
+    cooldownMs: 12000,
+    durationMs: 3200,
+    description: 'Become immune to incoming damage, but attacks are locked while the state is active.',
+  },
+  {
+    id: 'instant_death',
+    characterId: 'supreme-emperor',
+    name: 'Instant Death',
+    cooldownMs: 16000,
+    durationMs: 5000,
+    description: 'Strikes have a 50% chance to instantly kill normal enemies during the window.',
   },
 ];
 

@@ -59,6 +59,11 @@ export class Player extends Fighter {
     return Math.max(120, Math.round(move.cooldownMs * (1 - reduction)));
   }
 
+  override canUseMove(move: MoveDefinition): boolean {
+    if (this.ability?.id === 'density' && this.abilityActiveMs > 0) return false;
+    return super.canUseMove(move);
+  }
+
   getAttackLockMs(move: MoveDefinition): number {
     const base = move.windupMs + move.activeMs + move.recoveryMs;
     if (this.character.id !== 'shadow-striker') return base;
@@ -192,6 +197,11 @@ export class Player extends Fighter {
   }
 
   override takeDamage(amount: number): void {
+    if (this.ability?.id === 'density' && this.abilityActiveMs > 0) {
+      this.damageFlashMs = 90;
+      this.abilityStatus = `${this.ability.name} absorbed damage`;
+      return;
+    }
     this.interruptMeditation('Meditation interrupted');
     this.resetMomentum('Flow broken');
     this.recentDamageMs = 3000;
