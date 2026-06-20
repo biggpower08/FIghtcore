@@ -22,20 +22,28 @@ for (const character of config.characters) {
     }
 
     const sheet = PNG.sync.read(await fs.readFile(sourcePath));
-    if (sheet.width % animation.frames !== 0) {
-      throw new Error(`${sourcePath} width ${sheet.width} is not divisible by configured frame count ${animation.frames}. Update ${configPath}.`);
+    removeLightBackground(sheet);
+    const componentFrames = extractComponentFrames(sheet, animation.frames);
+    const framesToWrite =
+      componentFrames ??
+      (sheet.width % animation.frames === 0
+        ? extractEqualFrames(sheet, animation.frames)
+        : undefined);
+    if (!framesToWrite) {
+      throw new Error(
+        `${sourcePath} could not be segmented into ${animation.frames} frame(s). Update ${configPath} or inspect the source sheet.`,
+      );
     }
-    const frameWidth = sheet.width / animation.frames;
-    const frameHeight = sheet.height;
+    const frameWidth = framesToWrite[0]?.width ?? 0;
+    const frameHeight = framesToWrite[0]?.height ?? 0;
     const outputDir = path.join(config.outputDir, character.entityId, animation.key);
     const stripDir = path.join(config.stripOutputDir, character.entityId);
     await fs.mkdir(outputDir, { recursive: true });
     await fs.mkdir(stripDir, { recursive: true });
 
     const frames = [];
-    for (let frameIndex = 0; frameIndex < animation.frames; frameIndex += 1) {
-      const frame = extractFrame(sheet, frameIndex * frameWidth, 0, frameWidth, frameHeight);
-      removeLightBackground(frame);
+    for (let frameIndex = 0; frameIndex < framesToWrite.length; frameIndex += 1) {
+      const frame = framesToWrite[frameIndex];
       const bounds = foregroundBounds(frame);
       const anchor = anchorFromBounds(bounds, frameWidth, frameHeight, character.anchorX, character.anchorY);
       const fileName = `${String(frameIndex + 1).padStart(4, '0')}.png`;
@@ -65,7 +73,7 @@ for (const character of config.characters) {
       animationKey: animation.key,
       status: 'imported',
       sourcePath,
-      frameCount: animation.frames,
+      frameCount: framesToWrite.length,
       frameSize: { width: frameWidth, height: frameHeight },
       outputDir: webPath(outputDir),
       stripPath: webPath(stripPath),
@@ -94,6 +102,77 @@ function extractFrame(source, x, y, width, height) {
   const frame = new PNG({ width, height });
   PNG.bitblt(source, frame, x, y, width, height, 0, 0);
   return frame;
+}
+
+function extractEqualFrames(sheet, frameCount) {
+  const frameWidth = sheet.width / frameCount;
+  return Array.from({ length: frameCount }, (_, index) => extractFrame(sheet, index * frameWidth, 0, frameWidth, sheet.height));
+}
+
+function extractComponentFrames(sheet, expectedCount) {
+  const components = findOpaqueComponents(sheet).filter((component) => component.pixels > 1000);
+  if (components.length !== expectedCount) return undefined;
+  const padding = Math.max(24, Math.round(Math.min(sheet.width / expectedCount, sheet.height) * 0.05));
+  const maxWidth = Math.max(...components.map((component) => component.width));
+  const maxHeight = Math.max(...components.map((component) => component.height));
+  const frameWidth = maxWidth + padding * 2;
+  const frameHeight = maxHeight + padding * 2;
+  return components.map((component) => {
+    const frame = new PNG({ width: frameWidth, height: frameHeight });
+    const destX = Math.round((frameWidth - component.width) / 2);
+    const destY = frameHeight - padding - component.height;
+    PNG.bitblt(sheet, frame, component.minX, component.minY, component.width, component.height, destX, destY);
+    return frame;
+  });
+}
+
+function findOpaqueComponents(frame) {
+  const visited = new Uint8Array(frame.width * frame.height);
+  const components = [];
+  for (let y = 0; y < frame.height; y += 1) {
+    for (let x = 0; x < frame.width; x += 1) {
+      const start = y * frame.width + x;
+      if (visited[start] || frame.data[start * 4 + 3] <= 16) continue;
+      const component = floodComponent(frame, start, visited);
+      if (component.pixels > 1000) components.push(component);
+    }
+  }
+  return components.sort((a, b) => a.minX - b.minX);
+}
+
+function floodComponent(frame, start, visited) {
+  const queue = [start];
+  visited[start] = 1;
+  let minX = start % frame.width;
+  let maxX = minX;
+  let minY = Math.floor(start / frame.width);
+  let maxY = minY;
+  let pixels = 0;
+  for (let index = 0; index < queue.length; index += 1) {
+    const current = queue[index];
+    const x = current % frame.width;
+    const y = Math.floor(current / frame.width);
+    pixels += 1;
+    minX = Math.min(minX, x);
+    maxX = Math.max(maxX, x);
+    minY = Math.min(minY, y);
+    maxY = Math.max(maxY, y);
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ]) {
+      const nextX = x + dx;
+      const nextY = y + dy;
+      if (nextX < 0 || nextY < 0 || nextX >= frame.width || nextY >= frame.height) continue;
+      const next = nextY * frame.width + nextX;
+      if (visited[next] || frame.data[next * 4 + 3] <= 16) continue;
+      visited[next] = 1;
+      queue.push(next);
+    }
+  }
+  return { minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1, pixels };
 }
 
 function removeLightBackground(frame) {

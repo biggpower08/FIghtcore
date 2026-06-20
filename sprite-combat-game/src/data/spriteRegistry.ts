@@ -369,7 +369,7 @@ function semiRealisticCharacterRegistrations(): SpriteRegistration[] {
       if (importedAnimations.length === 0) return undefined;
       return registerCharacter(entityId, 'hero', importedAnimations, [], {
         ...heroRenderProfile(),
-        scale: entityId === 'supreme-emperor' ? 0.82 : 0.86,
+        scale: entityId === 'supreme-emperor' ? 0.21 : 0.22,
         anchorY: 0.92,
         feetY: 0,
       });

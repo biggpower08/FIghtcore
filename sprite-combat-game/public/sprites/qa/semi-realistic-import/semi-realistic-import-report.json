@@ -1,160 +1,291 @@
 {
-  "missing": [
-    "public\\sprites\\semi-realistic-source\\ronin_idle.png",
-    "public\\sprites\\semi-realistic-source\\ronin_walk.png",
-    "public\\sprites\\semi-realistic-source\\ronin_dash.png",
-    "public\\sprites\\semi-realistic-source\\ronin_density.png",
-    "public\\sprites\\semi-realistic-source\\ronin_jab.png",
-    "public\\sprites\\semi-realistic-source\\ronin_cross.png",
-    "public\\sprites\\semi-realistic-source\\ronin_calf_kick.png",
-    "public\\sprites\\semi-realistic-source\\ronin_knee.png",
-    "public\\sprites\\semi-realistic-source\\ronin_hit_react.png",
-    "public\\sprites\\semi-realistic-source\\ronin_recovery.png",
-    "public\\sprites\\semi-realistic-source\\ronin_stand_up.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_idle.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_walk.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_dash.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_instant_death.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_jab_cross.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_feint_rear_hook.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_tornado_kick.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_roundhouse_kick.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_hit_react.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_recovery.png",
-    "public\\sprites\\semi-realistic-source\\supreme_emperor_stand_up.png"
-  ],
+  "missing": [],
   "report": [
     {
       "entityId": "ronin",
       "animationKey": "idle",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_idle.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_idle.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 384,
+        "height": 650
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/idle",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/idle-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "walk",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_walk.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_walk.png",
+      "frameCount": 6,
+      "frameSize": {
+        "width": 386,
+        "height": 628
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/walk",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/walk-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "dash",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_dash.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_dash.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 526,
+        "height": 548
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/dash",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/dash-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "density",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_density.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_density.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 409,
+        "height": 617
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/density",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/density-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "jab",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_jab.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_jab.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 474,
+        "height": 580
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/jab",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/jab-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "cross",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_cross.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_cross.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 528,
+        "height": 617
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/cross",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/cross-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "calf_kick",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_calf_kick.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_calf_kick.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 524,
+        "height": 603
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/calf_kick",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/calf-kick-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "knee",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_knee.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_knee.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 401,
+        "height": 641
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/knee",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/knee-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "hit_react",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_hit_react.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_hit_react.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 443,
+        "height": 640
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/hit_react",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/hit-react-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "recovery",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_recovery.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_recovery.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 374,
+        "height": 617
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/recovery",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/recovery-strip.png"
     },
     {
       "entityId": "ronin",
       "animationKey": "stand_up",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_stand_up.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\ronin_stand_up.png",
+      "frameCount": 6,
+      "frameSize": {
+        "width": 458,
+        "height": 530
+      },
+      "outputDir": "/sprites/frames-semi-realistic/ronin/stand_up",
+      "stripPath": "/sprites/strips-semi-realistic/ronin/stand-up-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "idle",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_idle.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_idle.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 379,
+        "height": 721
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/idle",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/idle-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "walk",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_walk.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_walk.png",
+      "frameCount": 6,
+      "frameSize": {
+        "width": 426,
+        "height": 650
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/walk",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/walk-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "dash",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_dash.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_dash.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 531,
+        "height": 551
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/dash",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/dash-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "instant_death",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_instant_death.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_instant_death.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 473,
+        "height": 666
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/instant_death",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/instant-death-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "jab_cross",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_jab_cross.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_jab_cross.png",
+      "frameCount": 6,
+      "frameSize": {
+        "width": 383,
+        "height": 456
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/jab_cross",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/jab-cross-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "feint_rear_hook",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_feint_rear_hook.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_feint_rear_hook.png",
+      "frameCount": 8,
+      "frameSize": {
+        "width": 308,
+        "height": 392
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/feint_rear_hook",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/feint-rear-hook-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "tornado_kick",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_tornado_kick.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_tornado_kick.png",
+      "frameCount": 9,
+      "frameSize": {
+        "width": 310,
+        "height": 349
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/tornado_kick",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/tornado-kick-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "roundhouse_kick",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_roundhouse_kick.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_roundhouse_kick.png",
+      "frameCount": 7,
+      "frameSize": {
+        "width": 417,
+        "height": 469
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/roundhouse_kick",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/roundhouse-kick-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "hit_react",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_hit_react.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_hit_react.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 399,
+        "height": 682
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/hit_react",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/hit-react-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "recovery",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_recovery.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_recovery.png",
+      "frameCount": 5,
+      "frameSize": {
+        "width": 417,
+        "height": 658
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/recovery",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/recovery-strip.png"
     },
     {
       "entityId": "supreme-emperor",
       "animationKey": "stand_up",
-      "status": "missing-source",
-      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_stand_up.png"
+      "status": "imported",
+      "sourcePath": "public\\sprites\\semi-realistic-source\\supreme_emperor_stand_up.png",
+      "frameCount": 6,
+      "frameSize": {
+        "width": 481,
+        "height": 573
+      },
+      "outputDir": "/sprites/frames-semi-realistic/supreme-emperor/stand_up",
+      "stripPath": "/sprites/strips-semi-realistic/supreme-emperor/stand-up-strip.png"
     }
   ]
 }
