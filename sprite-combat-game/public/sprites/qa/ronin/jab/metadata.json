@@ -1,0 +1,208 @@
+{
+  "id": "jab",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_jab.png",
+  "outputDir": "/sprites/frames-pack/ronin/jab",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 474,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 40,
+      "y": 0,
+      "w": 342,
+      "h": 724
+    },
+    {
+      "x": 456,
+      "y": 0,
+      "w": 379,
+      "h": 724
+    },
+    {
+      "x": 882,
+      "y": 0,
+      "w": 431,
+      "h": 724
+    },
+    {
+      "x": 1298,
+      "y": 0,
+      "w": 474,
+      "h": 724
+    },
+    {
+      "x": 1788,
+      "y": 0,
+      "w": 348,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.22736030828516376,
+  "bodyVariance": 0.0423728813559322,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/jab/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 40,
+        "y": 0,
+        "w": 342,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 94,
+        "w": 294,
+        "h": 533,
+        "pixels": 67062
+      },
+      "bodyBounds": {
+        "x": 79,
+        "y": 27,
+        "w": 67,
+        "h": 121
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/jab/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 456,
+        "y": 0,
+        "w": 379,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 108,
+        "w": 332,
+        "h": 519,
+        "pixels": 66749
+      },
+      "bodyBounds": {
+        "x": 75,
+        "y": 30,
+        "w": 75,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/jab/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 882,
+        "y": 0,
+        "w": 431,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 117,
+        "w": 383,
+        "h": 510,
+        "pixels": 65272
+      },
+      "bodyBounds": {
+        "x": 69,
+        "y": 32,
+        "w": 87,
+        "h": 116
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/jab/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1298,
+        "y": 0,
+        "w": 474,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 113,
+        "w": 426,
+        "h": 514,
+        "pixels": 65442
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 31,
+        "w": 97,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/jab/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1788,
+        "y": 0,
+        "w": 348,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 101,
+        "w": 300,
+        "h": 526,
+        "pixels": 66141
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 28,
+        "w": 68,
+        "h": 120
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    }
+  ]
+}

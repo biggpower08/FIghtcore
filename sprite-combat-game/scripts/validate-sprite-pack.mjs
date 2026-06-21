@@ -3,7 +3,7 @@ import path from 'node:path';
 
 const root = path.resolve('public/sprite-packs');
 
-const requiredCharacterFields = ['id', 'displayName', 'style', 'enabled', 'animations'];
+const requiredCharacterFields = ['id', 'style', 'enabled', 'animations'];
 
 async function main() {
   const packs = await findPacks();
@@ -30,6 +30,7 @@ async function findPacks() {
 async function validatePack(packDir) {
   const manifestPath = path.join(packDir, 'character.json');
   const errors = [];
+  const warnings = [];
   let manifest;
   try {
     manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
@@ -40,14 +41,27 @@ async function validatePack(packDir) {
   for (const field of requiredCharacterFields) {
     if (manifest[field] === undefined) errors.push(`Missing required field: ${field}`);
   }
+  if (!manifest.name && !manifest.displayName) errors.push('Missing required field: name or displayName');
   if (!['pixel-art', 'semi-realistic'].includes(manifest.style)) errors.push('style must be pixel-art or semi-realistic');
-  if (!Array.isArray(manifest.animations) || manifest.animations.length === 0) errors.push('animations must be a non-empty array');
+  const animationEntries = Array.isArray(manifest.animations)
+    ? manifest.animations.map((animation) => [animation.id, animation])
+    : Object.entries(manifest.animations ?? {});
+  if (animationEntries.length === 0) errors.push('animations must be a non-empty object or array');
 
-  for (const animation of manifest.animations ?? []) {
-    if (!animation.id) errors.push('animation missing id');
-    if (!Number.isFinite(animation.frameCount) || animation.frameCount <= 0) errors.push(`${animation.id ?? 'animation'} has invalid frameCount`);
-    const animationDir = path.join(packDir, 'animations', animation.id ?? '');
-    if (!(await exists(animationDir))) errors.push(`${animation.id ?? 'animation'} missing animations/${animation.id} folder`);
+  for (const [animationId, animation] of animationEntries) {
+    if (!animationId) errors.push('animation missing id');
+    const frames = animation.frames ?? animation.frameCount;
+    if (!Number.isFinite(frames) || frames <= 0) errors.push(`${animationId ?? 'animation'} has invalid frames/frameCount`);
+    if (!animation.file) {
+      errors.push(`${animationId ?? 'animation'} missing file`);
+      continue;
+    }
+    const sourceImage = path.resolve(packDir, animation.file);
+    if (!(await exists(sourceImage))) {
+      const message = `${animationId ?? 'animation'} missing source image: ${animation.file}`;
+      if (manifest.enabled === false) warnings.push(`${message} (allowed because pack is disabled)`);
+      else errors.push(message);
+    }
   }
 
   return {
@@ -56,6 +70,7 @@ async function validatePack(packDir) {
     enabled: Boolean(manifest.enabled),
     ok: errors.length === 0,
     errors,
+    warnings,
   };
 }
 

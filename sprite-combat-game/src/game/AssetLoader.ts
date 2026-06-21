@@ -4,6 +4,7 @@ import { getCleanedSpriteAnimation } from '../data/cleanedSpriteFrames';
 import { getAlphaHoleSpriteFrame } from '../data/alphaHoleSpriteFrames';
 import { getReferenceSpriteAnimation, getReferenceSpriteFrame } from '../data/referenceSpriteFrames';
 import { getSemiRealisticSpriteAnimation, getSemiRealisticSpriteFrame } from '../data/semiRealisticSpriteFrames';
+import { getGeneratedSpritePackAnimation, getGeneratedSpritePackFrame } from '../data/generatedSpriteRegistry';
 import { spriteRegistryById, spriteSourceSheetById } from '../data/spriteRegistry';
 import { publicAssetUrl } from './publicAssetUrl';
 
@@ -36,6 +37,7 @@ export interface ResolvedSpriteFrame {
   referenceBackgroundRemoved?: boolean;
   usingSemiRealisticFrame?: boolean;
   semiRealisticSourceSheet?: string;
+  usingGeneratedPackFrame?: boolean;
   usingRepairedAlpha?: boolean;
   invalidHollowFrame?: boolean;
   alphaHoleCount?: number;
@@ -155,10 +157,12 @@ export class AssetLoader {
 
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
+      const generatedPack = getGeneratedSpritePackFrame(assetId, animation, frame - 1);
       const reference = getReferenceSpriteFrame(assetId, animation, frame - 1);
       const semiRealistic = getSemiRealisticSpriteFrame(assetId, animation, frame - 1);
       const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frame - 1);
       const path =
+        generatedPack?.framePath ??
         semiRealistic?.framePath ??
         reference?.framePath ??
         alphaHole?.repairedFramePath ??
@@ -324,9 +328,13 @@ export class AssetLoader {
     const cleaned = getCleanedSpriteAnimation(entityId, animationKey);
     const reference = getReferenceSpriteAnimation(entityId, animationKey);
     const semiRealistic = getSemiRealisticSpriteAnimation(entityId, animationKey);
+    const generatedPack = getGeneratedSpritePackAnimation(entityId, animationKey);
     const images = await this.loadOptionalFrames(entityId, animationKey, 12);
     if (images.length === 0) return null;
-    const expectedFrameCount = Math.min(12, semiRealistic.length || reference.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey));
+    const expectedFrameCount = Math.min(
+      12,
+      generatedPack?.frames.length || semiRealistic.length || reference.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey),
+    );
     if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
       this.warnOnce(
         `atlas-better:${entityId}:${animationKey}`,
@@ -340,12 +348,14 @@ export class AssetLoader {
       {
         const referenceFrame = reference[index];
         const semiRealisticFrame = semiRealistic[index];
+        const generatedPackFrame = generatedPack?.frames[index];
         return applyBodyAwareAnchor({
           source: 'frame-png',
           entityId,
           animationKey,
           frameIndex: index,
           durationMs:
+            generatedPackFrame?.durationMs ??
             semiRealisticFrame?.durationMs ??
             referenceFrame?.durationMs ??
             cleaned?.frames[index]?.durationMs ??
@@ -353,14 +363,15 @@ export class AssetLoader {
             timingForAnimation(animationKey, index, images.length),
           image,
           framePath:
+            generatedPackFrame?.framePath ??
             semiRealisticFrame?.framePath ??
             referenceFrame?.framePath ??
             cleaned?.frames[index]?.path ??
             `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-          width: semiRealisticFrame?.frameSize.width ?? referenceFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
-          height: semiRealisticFrame?.frameSize.height ?? referenceFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
-          anchorX: semiRealisticFrame?.anchorX ?? referenceFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
-          anchorY: semiRealisticFrame?.anchorY ?? referenceFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+          width: generatedPackFrame?.frameSize.w ?? semiRealisticFrame?.frameSize.width ?? referenceFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
+          height: generatedPackFrame?.frameSize.h ?? semiRealisticFrame?.frameSize.height ?? referenceFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
+          anchorX: generatedPackFrame?.anchorX ?? semiRealisticFrame?.anchorX ?? referenceFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+          anchorY: generatedPackFrame?.anchorY ?? semiRealisticFrame?.anchorY ?? referenceFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
           feetY: referenceFrame?.baselineY ?? cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
           rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
           cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
@@ -370,9 +381,12 @@ export class AssetLoader {
           referenceCrop: referenceFrame?.crop,
           referenceBaselineY: referenceFrame?.baselineY,
           referenceBackgroundRemoved: referenceFrame?.backgroundRemoved,
+          usingGeneratedPackFrame: Boolean(generatedPackFrame),
           usingSemiRealisticFrame: Boolean(semiRealisticFrame),
           semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
-          notes: semiRealisticFrame
+          notes: generatedPackFrame
+            ? 'Using normalized transparent sprite-pack frame.'
+            : semiRealisticFrame
             ? `Using semi-realistic frame from ${semiRealisticFrame.sourceSheetLabel}.`
             : referenceFrame
             ? `Using reference-extracted frame from ${referenceFrame.sourceSheetLabel}.`
@@ -405,7 +419,9 @@ export class AssetLoader {
       frames,
       fallbackAnimation: definition?.fallbackAnimation,
       notes:
-        semiRealistic.length > 0
+        generatedPack
+          ? 'Resolved from normalized transparent sprite-pack frames.'
+          : semiRealistic.length > 0
           ? 'Resolved from semi-realistic PNG frame folder.'
           : reference.length > 0
           ? 'Resolved from reference-extracted clean PNG frames.'
@@ -782,6 +798,7 @@ const knownBrokenFrames = new Set([
 ]);
 
 function shouldHealthCheckImage(context: AssetLoadContext, path: string): boolean {
+  if (path.startsWith('/sprites/frames-pack/')) return false;
   if (path.startsWith('/sprites/frames-semi-realistic/')) return false;
   return context.kind === 'sprite-frame' || context.kind === 'explicit-frame';
 }

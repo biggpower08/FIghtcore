@@ -788,6 +788,7 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const width = frame.width ?? frame.image?.width ?? 0;
   const height = frame.height ?? frame.image?.height ?? 0;
   if (width <= 0 || height <= 0) return true;
+  if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
   if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return false;
   const sourceWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
   const sourceStripDraw = Boolean(frame.sheetPath?.endsWith('-strip.png') && width >= sourceWidth && sourceWidth > 180);

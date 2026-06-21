@@ -1,0 +1,360 @@
+{
+  "id": "tornado_kick",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_tornado_kick.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/tornado_kick",
+  "frameCount": 9,
+  "sourceFrameSize": {
+    "w": 312,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 20,
+      "y": 0,
+      "w": 197,
+      "h": 724
+    },
+    {
+      "x": 259,
+      "y": 0,
+      "w": 213,
+      "h": 724
+    },
+    {
+      "x": 542,
+      "y": 0,
+      "w": 220,
+      "h": 724
+    },
+    {
+      "x": 793,
+      "y": 0,
+      "w": 154,
+      "h": 724
+    },
+    {
+      "x": 1017,
+      "y": 0,
+      "w": 180,
+      "h": 724
+    },
+    {
+      "x": 1224,
+      "y": 0,
+      "w": 174,
+      "h": 724
+    },
+    {
+      "x": 1424,
+      "y": 0,
+      "w": 312,
+      "h": 724
+    },
+    {
+      "x": 1700,
+      "y": 0,
+      "w": 217,
+      "h": 724
+    },
+    {
+      "x": 1932,
+      "y": 0,
+      "w": 195,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 256,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.41403508771929826,
+  "bodyVariance": 0.2033898305084746,
+  "warnings": [
+    "frame 7: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 8: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "body height variance 20.3% exceeds 18%"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0001.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 20,
+        "y": 0,
+        "w": 197,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 201,
+        "w": 149,
+        "h": 286,
+        "pixels": 20146
+      },
+      "bodyBounds": {
+        "x": 97,
+        "y": 30,
+        "w": 62,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0002.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 259,
+        "y": 0,
+        "w": 213,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 205,
+        "w": 165,
+        "h": 282,
+        "pixels": 20048
+      },
+      "bodyBounds": {
+        "x": 94,
+        "y": 31,
+        "w": 68,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0003.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 542,
+        "y": 0,
+        "w": 220,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 208,
+        "w": 173,
+        "h": 277,
+        "pixels": 20241
+      },
+      "bodyBounds": {
+        "x": 92,
+        "y": 33,
+        "w": 72,
+        "h": 115
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0004.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 793,
+        "y": 0,
+        "w": 154,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 205,
+        "w": 106,
+        "h": 280,
+        "pixels": 15591
+      },
+      "bodyBounds": {
+        "x": 106,
+        "y": 32,
+        "w": 44,
+        "h": 116
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0005.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1017,
+        "y": 0,
+        "w": 180,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 176,
+        "w": 133,
+        "h": 302,
+        "pixels": 18107
+      },
+      "bodyBounds": {
+        "x": 101,
+        "y": 23,
+        "w": 55,
+        "h": 125
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0006.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1224,
+        "y": 0,
+        "w": 174,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 185,
+        "w": 126,
+        "h": 290,
+        "pixels": 16586
+      },
+      "bodyBounds": {
+        "x": 102,
+        "y": 28,
+        "w": 52,
+        "h": 120
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 6,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0007.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1424,
+        "y": 0,
+        "w": 312,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 2,
+        "y": 191,
+        "w": 310,
+        "h": 295,
+        "pixels": 21631
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 26,
+        "w": 128,
+        "h": 122
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 7,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0008.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1700,
+        "y": 0,
+        "w": 217,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 0,
+        "y": 242,
+        "w": 193,
+        "h": 244,
+        "pixels": 17434
+      },
+      "bodyBounds": {
+        "x": 88,
+        "y": 47,
+        "w": 80,
+        "h": 101
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 8,
+      "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0009.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1932,
+        "y": 0,
+        "w": 195,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 202,
+        "w": 147,
+        "h": 285,
+        "pixels": 19653
+      },
+      "bodyBounds": {
+        "x": 98,
+        "y": 30,
+        "w": 61,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    }
+  ]
+}

@@ -1,0 +1,247 @@
+{
+  "id": "stand_up",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_stand_up.png",
+  "outputDir": "/sprites/frames-pack/ronin/stand_up",
+  "frameCount": 6,
+  "sourceFrameSize": {
+    "w": 447,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 447,
+      "h": 724
+    },
+    {
+      "x": 437,
+      "y": 0,
+      "w": 399,
+      "h": 724
+    },
+    {
+      "x": 863,
+      "y": 0,
+      "w": 309,
+      "h": 724
+    },
+    {
+      "x": 1192,
+      "y": 0,
+      "w": 296,
+      "h": 724
+    },
+    {
+      "x": 1512,
+      "y": 0,
+      "w": 292,
+      "h": 724
+    },
+    {
+      "x": 1834,
+      "y": 0,
+      "w": 320,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 224
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.34402332361516036,
+  "bodyVariance": 1.0084745762711864,
+  "warnings": [
+    "body height variance 100.8% exceeds 18%"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/stand_up/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 224
+      },
+      "sourceSlice": {
+        "x": 0,
+        "y": 0,
+        "w": 447,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 13,
+        "y": 456,
+        "w": 410,
+        "h": 138,
+        "pixels": 34016
+      },
+      "bodyBounds": {
+        "x": 42,
+        "y": 165,
+        "w": 141,
+        "h": 47
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.9464285714285714,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/stand_up/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 224
+      },
+      "sourceSlice": {
+        "x": 437,
+        "y": 0,
+        "w": 399,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 374,
+        "w": 353,
+        "h": 228,
+        "pixels": 35489
+      },
+      "bodyBounds": {
+        "x": 52,
+        "y": 134,
+        "w": 121,
+        "h": 78
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.9464285714285714,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/stand_up/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 224
+      },
+      "sourceSlice": {
+        "x": 863,
+        "y": 0,
+        "w": 309,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 314,
+        "w": 261,
+        "h": 287,
+        "pixels": 40021
+      },
+      "bodyBounds": {
+        "x": 67,
+        "y": 113,
+        "w": 90,
+        "h": 99
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.9464285714285714,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/stand_up/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 224
+      },
+      "sourceSlice": {
+        "x": 1192,
+        "y": 0,
+        "w": 296,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 253,
+        "w": 249,
+        "h": 343,
+        "pixels": 42537
+      },
+      "bodyBounds": {
+        "x": 69,
+        "y": 94,
+        "w": 86,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.9464285714285714,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/stand_up/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 224
+      },
+      "sourceSlice": {
+        "x": 1512,
+        "y": 0,
+        "w": 292,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 149,
+        "w": 244,
+        "h": 453,
+        "pixels": 52689
+      },
+      "bodyBounds": {
+        "x": 70,
+        "y": 56,
+        "w": 84,
+        "h": 156
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.9464285714285714,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/ronin/stand_up/0006.png",
+      "frameSize": {
+        "w": 224,
+        "h": 224
+      },
+      "sourceSlice": {
+        "x": 1834,
+        "y": 0,
+        "w": 320,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 120,
+        "w": 272,
+        "h": 483,
+        "pixels": 53922
+      },
+      "bodyBounds": {
+        "x": 65,
+        "y": 46,
+        "w": 94,
+        "h": 166
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.9464285714285714,
+      "durationMs": 143,
+      "cutoff": false
+    }
+  ]
+}

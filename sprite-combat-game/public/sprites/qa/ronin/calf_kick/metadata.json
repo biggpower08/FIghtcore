@@ -1,0 +1,213 @@
+{
+  "id": "calf_kick",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_calf_kick.png",
+  "outputDir": "/sprites/frames-pack/ronin/calf_kick",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 436,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 434,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 868,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 1302,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 1736,
+      "y": 0,
+      "w": 436,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 256,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.21338155515370705,
+  "bodyVariance": 0.0847457627118644,
+  "warnings": [
+    "frame 1: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 2: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 5: visible pixels reached source slice edge; possible frame bleed or tight crop"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/calf_kick/0001.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 0,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 22,
+        "y": 80,
+        "w": 412,
+        "h": 555,
+        "pixels": 74724
+      },
+      "bodyBounds": {
+        "x": 84,
+        "y": 30,
+        "w": 88,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 111,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/calf_kick/0002.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 434,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 0,
+        "y": 81,
+        "w": 300,
+        "h": 553,
+        "pixels": 75691
+      },
+      "bodyBounds": {
+        "x": 96,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 111,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/calf_kick/0003.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 868,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 115,
+        "w": 379,
+        "h": 512,
+        "pixels": 65456
+      },
+      "bodyBounds": {
+        "x": 88,
+        "y": 39,
+        "w": 81,
+        "h": 109
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 111,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/calf_kick/0004.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1302,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 3,
+        "y": 121,
+        "w": 431,
+        "h": 506,
+        "pixels": 68553
+      },
+      "bodyBounds": {
+        "x": 82,
+        "y": 40,
+        "w": 92,
+        "h": 108
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 111,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/calf_kick/0005.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1736,
+        "y": 0,
+        "w": 436,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 0,
+        "y": 81,
+        "w": 395,
+        "h": 554,
+        "pixels": 77405
+      },
+      "bodyBounds": {
+        "x": 86,
+        "y": 30,
+        "w": 84,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 111,
+      "cutoff": false
+    }
+  ]
+}

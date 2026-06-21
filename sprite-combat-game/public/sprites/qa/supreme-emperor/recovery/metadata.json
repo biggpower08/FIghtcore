@@ -1,0 +1,210 @@
+{
+  "id": "recovery",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_recovery.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/recovery",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 417,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 56,
+      "y": 0,
+      "w": 361,
+      "h": 724
+    },
+    {
+      "x": 449,
+      "y": 0,
+      "w": 417,
+      "h": 724
+    },
+    {
+      "x": 909,
+      "y": 0,
+      "w": 361,
+      "h": 724
+    },
+    {
+      "x": 1340,
+      "y": 0,
+      "w": 341,
+      "h": 724
+    },
+    {
+      "x": 1753,
+      "y": 0,
+      "w": 315,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.21493624772313297,
+  "bodyVariance": 0.4745762711864407,
+  "warnings": [
+    "body height variance 47.5% exceeds 18%"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/recovery/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 56,
+        "y": 0,
+        "w": 361,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 304,
+        "w": 314,
+        "h": 350,
+        "pixels": 66989
+      },
+      "bodyBounds": {
+        "x": 79,
+        "y": 73,
+        "w": 67,
+        "h": 75
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/recovery/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 449,
+        "y": 0,
+        "w": 417,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 244,
+        "w": 369,
+        "h": 406,
+        "pixels": 77592
+      },
+      "bodyBounds": {
+        "x": 73,
+        "y": 61,
+        "w": 79,
+        "h": 87
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/recovery/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 909,
+        "y": 0,
+        "w": 361,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 103,
+        "w": 314,
+        "h": 549,
+        "pixels": 81776
+      },
+      "bodyBounds": {
+        "x": 79,
+        "y": 30,
+        "w": 67,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/recovery/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1340,
+        "y": 0,
+        "w": 341,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 22,
+        "y": 42,
+        "w": 298,
+        "h": 610,
+        "pixels": 85312
+      },
+      "bodyBounds": {
+        "x": 80,
+        "y": 17,
+        "w": 64,
+        "h": 131
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/recovery/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1753,
+        "y": 0,
+        "w": 315,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 43,
+        "w": 272,
+        "h": 609,
+        "pixels": 82762
+      },
+      "bodyBounds": {
+        "x": 83,
+        "y": 17,
+        "w": 58,
+        "h": 131
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    }
+  ]
+}

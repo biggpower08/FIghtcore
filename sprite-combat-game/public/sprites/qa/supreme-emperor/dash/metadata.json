@@ -1,0 +1,214 @@
+{
+  "id": "dash",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_dash.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/dash",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 436,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 434,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 868,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 1302,
+      "y": 0,
+      "w": 434,
+      "h": 724
+    },
+    {
+      "x": 1736,
+      "y": 0,
+      "w": 436,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.28028503562945367,
+  "bodyVariance": 0.3389830508474576,
+  "warnings": [
+    "frame 2: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 5: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "body height variance 33.9% exceeds 18%"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/dash/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 0,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 29,
+        "y": 122,
+        "w": 324,
+        "h": 503,
+        "pixels": 75975
+      },
+      "bodyBounds": {
+        "x": 67,
+        "y": 7,
+        "w": 91,
+        "h": 141
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 71,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/dash/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 434,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 19,
+        "y": 261,
+        "w": 415,
+        "h": 359,
+        "pixels": 61134
+      },
+      "bodyBounds": {
+        "x": 54,
+        "y": 47,
+        "w": 116,
+        "h": 101
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 71,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/dash/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 868,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 0,
+        "y": 196,
+        "w": 434,
+        "h": 421,
+        "pixels": 63897
+      },
+      "bodyBounds": {
+        "x": 51,
+        "y": 30,
+        "w": 122,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 71,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/dash/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1302,
+        "y": 0,
+        "w": 434,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 0,
+        "y": 204,
+        "w": 434,
+        "h": 414,
+        "pixels": 65883
+      },
+      "bodyBounds": {
+        "x": 51,
+        "y": 32,
+        "w": 122,
+        "h": 116
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 71,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/dash/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1736,
+        "y": 0,
+        "w": 436,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 0,
+        "y": 145,
+        "w": 394,
+        "h": 480,
+        "pixels": 64905
+      },
+      "bodyBounds": {
+        "x": 57,
+        "y": 13,
+        "w": 110,
+        "h": 135
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 71,
+      "cutoff": false
+    }
+  ]
+}

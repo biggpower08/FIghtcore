@@ -1,0 +1,210 @@
+{
+  "id": "recovery",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_recovery.png",
+  "outputDir": "/sprites/frames-pack/ronin/recovery",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 374,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 41,
+      "y": 0,
+      "w": 374,
+      "h": 724
+    },
+    {
+      "x": 496,
+      "y": 0,
+      "w": 328,
+      "h": 724
+    },
+    {
+      "x": 899,
+      "y": 0,
+      "w": 356,
+      "h": 724
+    },
+    {
+      "x": 1331,
+      "y": 0,
+      "w": 353,
+      "h": 724
+    },
+    {
+      "x": 1756,
+      "y": 0,
+      "w": 358,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.22736030828516376,
+  "bodyVariance": 0.4322033898305085,
+  "warnings": [
+    "body height variance 43.2% exceeds 18%"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/recovery/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 41,
+        "y": 0,
+        "w": 374,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 299,
+        "w": 327,
+        "h": 341,
+        "pixels": 60502
+      },
+      "bodyBounds": {
+        "x": 75,
+        "y": 70,
+        "w": 74,
+        "h": 78
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/recovery/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 496,
+        "y": 0,
+        "w": 328,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 190,
+        "w": 280,
+        "h": 446,
+        "pixels": 62817
+      },
+      "bodyBounds": {
+        "x": 80,
+        "y": 47,
+        "w": 64,
+        "h": 101
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/recovery/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 899,
+        "y": 0,
+        "w": 356,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 118,
+        "w": 309,
+        "h": 519,
+        "pixels": 74015
+      },
+      "bodyBounds": {
+        "x": 77,
+        "y": 30,
+        "w": 70,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/recovery/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1331,
+        "y": 0,
+        "w": 353,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 69,
+        "w": 305,
+        "h": 568,
+        "pixels": 75100
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 19,
+        "w": 69,
+        "h": 129
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/recovery/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1756,
+        "y": 0,
+        "w": 358,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 69,
+        "w": 310,
+        "h": 569,
+        "pixels": 75831
+      },
+      "bodyBounds": {
+        "x": 77,
+        "y": 19,
+        "w": 70,
+        "h": 129
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    }
+  ]
+}

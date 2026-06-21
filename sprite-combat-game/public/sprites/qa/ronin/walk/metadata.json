@@ -1,0 +1,245 @@
+{
+  "id": "walk",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_walk.png",
+  "outputDir": "/sprites/frames-pack/ronin/walk",
+  "frameCount": 6,
+  "sourceFrameSize": {
+    "w": 386,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 28,
+      "y": 0,
+      "w": 370,
+      "h": 724
+    },
+    {
+      "x": 388,
+      "y": 0,
+      "w": 335,
+      "h": 724
+    },
+    {
+      "x": 704,
+      "y": 0,
+      "w": 386,
+      "h": 724
+    },
+    {
+      "x": 1078,
+      "y": 0,
+      "w": 351,
+      "h": 724
+    },
+    {
+      "x": 1435,
+      "y": 0,
+      "w": 338,
+      "h": 724
+    },
+    {
+      "x": 1767,
+      "y": 0,
+      "w": 371,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.20557491289198607,
+  "bodyVariance": 0.01694915254237288,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/walk/0001.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 28,
+        "y": 0,
+        "w": 370,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 66,
+        "w": 322,
+        "h": 580,
+        "pixels": 78865
+      },
+      "bodyBounds": {
+        "x": 63,
+        "y": 29,
+        "w": 66,
+        "h": 119
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/walk/0002.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 388,
+        "y": 0,
+        "w": 335,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 66,
+        "w": 288,
+        "h": 574,
+        "pixels": 67873
+      },
+      "bodyBounds": {
+        "x": 67,
+        "y": 30,
+        "w": 59,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/walk/0003.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 704,
+        "y": 0,
+        "w": 386,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 68,
+        "w": 338,
+        "h": 570,
+        "pixels": 74258
+      },
+      "bodyBounds": {
+        "x": 62,
+        "y": 31,
+        "w": 69,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/walk/0004.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1078,
+        "y": 0,
+        "w": 351,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 67,
+        "w": 304,
+        "h": 572,
+        "pixels": 75071
+      },
+      "bodyBounds": {
+        "x": 65,
+        "y": 30,
+        "w": 62,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/walk/0005.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1435,
+        "y": 0,
+        "w": 338,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 67,
+        "w": 290,
+        "h": 573,
+        "pixels": 73896
+      },
+      "bodyBounds": {
+        "x": 66,
+        "y": 30,
+        "w": 60,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/ronin/walk/0006.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1767,
+        "y": 0,
+        "w": 371,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 66,
+        "w": 324,
+        "h": 579,
+        "pixels": 79612
+      },
+      "bodyBounds": {
+        "x": 63,
+        "y": 29,
+        "w": 67,
+        "h": 119
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    }
+  ]
+}

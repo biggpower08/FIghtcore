@@ -1,0 +1,2 @@
+frame 4: 1241 background-like opaque pixels remain after cleanup
+frame 5: 3479 background-like opaque pixels remain after cleanup

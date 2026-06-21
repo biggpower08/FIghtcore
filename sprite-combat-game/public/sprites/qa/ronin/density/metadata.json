@@ -1,0 +1,211 @@
+{
+  "id": "density",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_density.png",
+  "outputDir": "/sprites/frames-pack/ronin/density",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 409,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 47,
+      "y": 0,
+      "w": 342,
+      "h": 724
+    },
+    {
+      "x": 441,
+      "y": 0,
+      "w": 409,
+      "h": 724
+    },
+    {
+      "x": 905,
+      "y": 0,
+      "w": 384,
+      "h": 724
+    },
+    {
+      "x": 1336,
+      "y": 0,
+      "w": 398,
+      "h": 724
+    },
+    {
+      "x": 1741,
+      "y": 0,
+      "w": 399,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.2110912343470483,
+  "bodyVariance": 0.05084745762711865,
+  "warnings": [
+    "frame 4: 1241 background-like opaque pixels remain after cleanup",
+    "frame 5: 3479 background-like opaque pixels remain after cleanup"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/density/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 47,
+        "y": 0,
+        "w": 342,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 81,
+        "w": 294,
+        "h": 559,
+        "pixels": 71660
+      },
+      "bodyBounds": {
+        "x": 81,
+        "y": 30,
+        "w": 62,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/density/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 441,
+        "y": 0,
+        "w": 409,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 81,
+        "w": 362,
+        "h": 559,
+        "pixels": 77165
+      },
+      "bodyBounds": {
+        "x": 74,
+        "y": 30,
+        "w": 76,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/density/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 905,
+        "y": 0,
+        "w": 384,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 84,
+        "w": 336,
+        "h": 556,
+        "pixels": 76749
+      },
+      "bodyBounds": {
+        "x": 77,
+        "y": 31,
+        "w": 71,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/density/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1336,
+        "y": 0,
+        "w": 398,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 22,
+        "y": 69,
+        "w": 354,
+        "h": 572,
+        "pixels": 92575
+      },
+      "bodyBounds": {
+        "x": 75,
+        "y": 27,
+        "w": 75,
+        "h": 121
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/density/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1741,
+        "y": 0,
+        "w": 399,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 22,
+        "y": 61,
+        "w": 357,
+        "h": 583,
+        "pixels": 108488
+      },
+      "bodyBounds": {
+        "x": 75,
+        "y": 25,
+        "w": 75,
+        "h": 123
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    }
+  ]
+}

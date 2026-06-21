@@ -1,0 +1,208 @@
+{
+  "id": "knee",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_knee.png",
+  "outputDir": "/sprites/frames-pack/ronin/knee",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 401,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 71,
+      "y": 0,
+      "w": 367,
+      "h": 724
+    },
+    {
+      "x": 510,
+      "y": 0,
+      "w": 401,
+      "h": 724
+    },
+    {
+      "x": 992,
+      "y": 0,
+      "w": 309,
+      "h": 724
+    },
+    {
+      "x": 1383,
+      "y": 0,
+      "w": 287,
+      "h": 724
+    },
+    {
+      "x": 1740,
+      "y": 0,
+      "w": 362,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.20068027210884354,
+  "bodyVariance": 0.01694915254237288,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/knee/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 71,
+        "y": 0,
+        "w": 367,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 71,
+        "w": 319,
+        "h": 583,
+        "pixels": 80379
+      },
+      "bodyBounds": {
+        "x": 80,
+        "y": 31,
+        "w": 64,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/knee/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 510,
+        "y": 0,
+        "w": 401,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 60,
+        "w": 354,
+        "h": 593,
+        "pixels": 81083
+      },
+      "bodyBounds": {
+        "x": 77,
+        "y": 29,
+        "w": 71,
+        "h": 119
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/knee/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 992,
+        "y": 0,
+        "w": 309,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 49,
+        "w": 261,
+        "h": 592,
+        "pixels": 73709
+      },
+      "bodyBounds": {
+        "x": 86,
+        "y": 29,
+        "w": 52,
+        "h": 119
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/knee/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1383,
+        "y": 0,
+        "w": 287,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 55,
+        "w": 239,
+        "h": 586,
+        "pixels": 68637
+      },
+      "bodyBounds": {
+        "x": 88,
+        "y": 30,
+        "w": 48,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/knee/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1740,
+        "y": 0,
+        "w": 362,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 65,
+        "w": 314,
+        "h": 588,
+        "pixels": 78566
+      },
+      "bodyBounds": {
+        "x": 81,
+        "y": 30,
+        "w": 63,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    }
+  ]
+}

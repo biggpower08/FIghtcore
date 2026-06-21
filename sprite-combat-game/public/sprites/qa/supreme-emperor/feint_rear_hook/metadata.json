@@ -1,0 +1,321 @@
+{
+  "id": "feint_rear_hook",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_feint_rear_hook.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/feint_rear_hook",
+  "frameCount": 8,
+  "sourceFrameSize": {
+    "w": 332,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 1,
+      "y": 0,
+      "w": 229,
+      "h": 724
+    },
+    {
+      "x": 278,
+      "y": 0,
+      "w": 225,
+      "h": 724
+    },
+    {
+      "x": 551,
+      "y": 0,
+      "w": 238,
+      "h": 724
+    },
+    {
+      "x": 812,
+      "y": 0,
+      "w": 257,
+      "h": 724
+    },
+    {
+      "x": 1095,
+      "y": 0,
+      "w": 252,
+      "h": 724
+    },
+    {
+      "x": 1357,
+      "y": 0,
+      "w": 256,
+      "h": 724
+    },
+    {
+      "x": 1614,
+      "y": 0,
+      "w": 332,
+      "h": 724
+    },
+    {
+      "x": 1938,
+      "y": 0,
+      "w": 230,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.37579617834394907,
+  "bodyVariance": 0.3220338983050847,
+  "warnings": [
+    "body height variance 32.2% exceeds 18%"
+  ],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1,
+        "y": 0,
+        "w": 229,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 190,
+        "w": 181,
+        "h": 345,
+        "pixels": 28709
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 18,
+        "w": 68,
+        "h": 130
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 278,
+        "y": 0,
+        "w": 225,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 239,
+        "w": 177,
+        "h": 296,
+        "pixels": 25855
+      },
+      "bodyBounds": {
+        "x": 79,
+        "y": 37,
+        "w": 67,
+        "h": 111
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 551,
+        "y": 0,
+        "w": 238,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 272,
+        "w": 191,
+        "h": 263,
+        "pixels": 24441
+      },
+      "bodyBounds": {
+        "x": 76,
+        "y": 49,
+        "w": 72,
+        "h": 99
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 812,
+        "y": 0,
+        "w": 257,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 289,
+        "w": 209,
+        "h": 246,
+        "pixels": 22047
+      },
+      "bodyBounds": {
+        "x": 73,
+        "y": 56,
+        "w": 79,
+        "h": 92
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1095,
+        "y": 0,
+        "w": 252,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 223,
+        "w": 204,
+        "h": 312,
+        "pixels": 27010
+      },
+      "bodyBounds": {
+        "x": 74,
+        "y": 31,
+        "w": 77,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0006.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1357,
+        "y": 0,
+        "w": 256,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 211,
+        "w": 209,
+        "h": 323,
+        "pixels": 26909
+      },
+      "bodyBounds": {
+        "x": 73,
+        "y": 27,
+        "w": 79,
+        "h": 121
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 6,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0007.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1614,
+        "y": 0,
+        "w": 332,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 220,
+        "w": 289,
+        "h": 314,
+        "pixels": 27399
+      },
+      "bodyBounds": {
+        "x": 58,
+        "y": 30,
+        "w": 109,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 7,
+      "framePath": "/sprites/frames-pack/supreme-emperor/feint_rear_hook/0008.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1938,
+        "y": 0,
+        "w": 230,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 193,
+        "w": 182,
+        "h": 343,
+        "pixels": 28356
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 19,
+        "w": 68,
+        "h": 129
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    }
+  ]
+}

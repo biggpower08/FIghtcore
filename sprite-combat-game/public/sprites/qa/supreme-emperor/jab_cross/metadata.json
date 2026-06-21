@@ -1,0 +1,245 @@
+{
+  "id": "jab_cross",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_jab_cross.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/jab_cross",
+  "frameCount": 6,
+  "sourceFrameSize": {
+    "w": 404,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 32,
+      "y": 0,
+      "w": 283,
+      "h": 724
+    },
+    {
+      "x": 386,
+      "y": 0,
+      "w": 302,
+      "h": 724
+    },
+    {
+      "x": 699,
+      "y": 0,
+      "w": 383,
+      "h": 724
+    },
+    {
+      "x": 1069,
+      "y": 0,
+      "w": 404,
+      "h": 724
+    },
+    {
+      "x": 1466,
+      "y": 0,
+      "w": 259,
+      "h": 724
+    },
+    {
+      "x": 1835,
+      "y": 0,
+      "w": 282,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.2935323383084577,
+  "bodyVariance": 0.025423728813559324,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/jab_cross/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 32,
+        "y": 0,
+        "w": 283,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 152,
+        "w": 235,
+        "h": 409,
+        "pixels": 40764
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 28,
+        "w": 69,
+        "h": 120
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/jab_cross/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 386,
+        "y": 0,
+        "w": 302,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 161,
+        "w": 254,
+        "h": 402,
+        "pixels": 41266
+      },
+      "bodyBounds": {
+        "x": 75,
+        "y": 30,
+        "w": 75,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/jab_cross/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 699,
+        "y": 0,
+        "w": 383,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 168,
+        "w": 336,
+        "h": 398,
+        "pixels": 41784
+      },
+      "bodyBounds": {
+        "x": 63,
+        "y": 31,
+        "w": 99,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/jab_cross/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1069,
+        "y": 0,
+        "w": 404,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 164,
+        "w": 359,
+        "h": 402,
+        "pixels": 40828
+      },
+      "bodyBounds": {
+        "x": 60,
+        "y": 30,
+        "w": 105,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/jab_cross/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1466,
+        "y": 0,
+        "w": 259,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 163,
+        "w": 211,
+        "h": 404,
+        "pixels": 38879
+      },
+      "bodyBounds": {
+        "x": 81,
+        "y": 29,
+        "w": 62,
+        "h": 119
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/supreme-emperor/jab_cross/0006.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1835,
+        "y": 0,
+        "w": 282,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 169,
+        "w": 234,
+        "h": 400,
+        "pixels": 39044
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 31,
+        "w": 69,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 91,
+      "cutoff": false
+    }
+  ]
+}

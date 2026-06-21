@@ -1,0 +1,245 @@
+{
+  "id": "walk",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_walk.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/walk",
+  "frameCount": 6,
+  "sourceFrameSize": {
+    "w": 421,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 20,
+      "y": 0,
+      "w": 296,
+      "h": 724
+    },
+    {
+      "x": 323,
+      "y": 0,
+      "w": 421,
+      "h": 724
+    },
+    {
+      "x": 737,
+      "y": 0,
+      "w": 365,
+      "h": 724
+    },
+    {
+      "x": 1105,
+      "y": 0,
+      "w": 327,
+      "h": 724
+    },
+    {
+      "x": 1444,
+      "y": 0,
+      "w": 366,
+      "h": 724
+    },
+    {
+      "x": 1854,
+      "y": 0,
+      "w": 296,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.19633943427620631,
+  "bodyVariance": 0,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/walk/0001.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 20,
+        "y": 0,
+        "w": 296,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 20,
+        "y": 55,
+        "w": 253,
+        "h": 601,
+        "pixels": 75470
+      },
+      "bodyBounds": {
+        "x": 71,
+        "y": 30,
+        "w": 50,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/walk/0002.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 323,
+        "y": 0,
+        "w": 421,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 20,
+        "y": 56,
+        "w": 378,
+        "h": 599,
+        "pixels": 79133
+      },
+      "bodyBounds": {
+        "x": 59,
+        "y": 30,
+        "w": 74,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/walk/0003.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 737,
+        "y": 0,
+        "w": 365,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 17,
+        "y": 56,
+        "w": 324,
+        "h": 600,
+        "pixels": 77588
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/walk/0004.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1105,
+        "y": 0,
+        "w": 327,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 21,
+        "y": 53,
+        "w": 283,
+        "h": 601,
+        "pixels": 71759
+      },
+      "bodyBounds": {
+        "x": 68,
+        "y": 30,
+        "w": 56,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/walk/0005.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1444,
+        "y": 0,
+        "w": 366,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 17,
+        "y": 55,
+        "w": 325,
+        "h": 599,
+        "pixels": 76760
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/supreme-emperor/walk/0006.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1854,
+        "y": 0,
+        "w": 296,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 19,
+        "y": 54,
+        "w": 254,
+        "h": 602,
+        "pixels": 75187
+      },
+      "bodyBounds": {
+        "x": 71,
+        "y": 30,
+        "w": 50,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    }
+  ]
+}

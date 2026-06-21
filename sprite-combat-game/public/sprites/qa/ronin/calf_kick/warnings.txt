@@ -1,0 +1,4 @@
+frame 1: visible pixels reached source slice edge; possible frame bleed or tight crop
+frame 2: visible pixels reached source slice edge; possible frame bleed or tight crop
+frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop
+frame 5: visible pixels reached source slice edge; possible frame bleed or tight crop

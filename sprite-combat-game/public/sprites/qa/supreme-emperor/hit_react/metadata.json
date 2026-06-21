@@ -1,0 +1,208 @@
+{
+  "id": "hit_react",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_hit_react.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/hit_react",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 397,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 35,
+      "y": 0,
+      "w": 382,
+      "h": 724
+    },
+    {
+      "x": 469,
+      "y": 0,
+      "w": 397,
+      "h": 724
+    },
+    {
+      "x": 915,
+      "y": 0,
+      "w": 378,
+      "h": 724
+    },
+    {
+      "x": 1312,
+      "y": 0,
+      "w": 379,
+      "h": 724
+    },
+    {
+      "x": 1745,
+      "y": 0,
+      "w": 371,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.1888,
+  "bodyVariance": 0.03389830508474576,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/hit_react/0001.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 35,
+        "y": 0,
+        "w": 382,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 45,
+        "w": 338,
+        "h": 633,
+        "pixels": 93198
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 28,
+        "w": 64,
+        "h": 120
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/hit_react/0002.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 469,
+        "y": 0,
+        "w": 397,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 53,
+        "w": 351,
+        "h": 625,
+        "pixels": 97244
+      },
+      "bodyBounds": {
+        "x": 63,
+        "y": 30,
+        "w": 66,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/hit_react/0003.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 915,
+        "y": 0,
+        "w": 378,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 61,
+        "w": 332,
+        "h": 617,
+        "pixels": 94146
+      },
+      "bodyBounds": {
+        "x": 65,
+        "y": 32,
+        "w": 63,
+        "h": 116
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/hit_react/0004.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1312,
+        "y": 0,
+        "w": 379,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 56,
+        "w": 333,
+        "h": 622,
+        "pixels": 94506
+      },
+      "bodyBounds": {
+        "x": 65,
+        "y": 31,
+        "w": 63,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/hit_react/0005.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1745,
+        "y": 0,
+        "w": 371,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 23,
+        "y": 44,
+        "w": 327,
+        "h": 634,
+        "pixels": 93913
+      },
+      "bodyBounds": {
+        "x": 65,
+        "y": 28,
+        "w": 62,
+        "h": 120
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 125,
+      "cutoff": false
+    }
+  ]
+}

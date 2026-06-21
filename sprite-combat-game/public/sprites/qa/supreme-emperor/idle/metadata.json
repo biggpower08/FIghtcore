@@ -1,0 +1,208 @@
+{
+  "id": "idle",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_idle.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/idle",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 367,
+    "h": 881
+  },
+  "sourceSlices": [
+    {
+      "x": 24,
+      "y": 0,
+      "w": 313,
+      "h": 881
+    },
+    {
+      "x": 353,
+      "y": 0,
+      "w": 316,
+      "h": 881
+    },
+    {
+      "x": 725,
+      "y": 0,
+      "w": 318,
+      "h": 881
+    },
+    {
+      "x": 1059,
+      "y": 0,
+      "w": 367,
+      "h": 881
+    },
+    {
+      "x": 1432,
+      "y": 0,
+      "w": 311,
+      "h": 881
+    }
+  ],
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.17771084337349397,
+  "bodyVariance": 0.03389830508474576,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/idle/0001.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 24,
+        "y": 0,
+        "w": 313,
+        "h": 881
+      },
+      "sourceBounds": {
+        "x": 20,
+        "y": 96,
+        "w": 275,
+        "h": 666,
+        "pixels": 90460
+      },
+      "bodyBounds": {
+        "x": 72,
+        "y": 30,
+        "w": 49,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/idle/0002.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 353,
+        "y": 0,
+        "w": 316,
+        "h": 881
+      },
+      "sourceBounds": {
+        "x": 20,
+        "y": 87,
+        "w": 278,
+        "h": 675,
+        "pixels": 93495
+      },
+      "bodyBounds": {
+        "x": 72,
+        "y": 28,
+        "w": 49,
+        "h": 120
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/idle/0003.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 725,
+        "y": 0,
+        "w": 318,
+        "h": 881
+      },
+      "sourceBounds": {
+        "x": 19,
+        "y": 105,
+        "w": 275,
+        "h": 659,
+        "pixels": 91070
+      },
+      "bodyBounds": {
+        "x": 72,
+        "y": 31,
+        "w": 49,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/idle/0004.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1059,
+        "y": 0,
+        "w": 367,
+        "h": 881
+      },
+      "sourceBounds": {
+        "x": 18,
+        "y": 112,
+        "w": 333,
+        "h": 650,
+        "pixels": 93052
+      },
+      "bodyBounds": {
+        "x": 67,
+        "y": 32,
+        "w": 59,
+        "h": 116
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/idle/0005.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1432,
+        "y": 0,
+        "w": 311,
+        "h": 881
+      },
+      "sourceBounds": {
+        "x": 19,
+        "y": 98,
+        "w": 275,
+        "h": 664,
+        "pixels": 89401
+      },
+      "bodyBounds": {
+        "x": 72,
+        "y": 30,
+        "w": 49,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    }
+  ]
+}

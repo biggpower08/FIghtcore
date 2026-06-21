@@ -1,0 +1,208 @@
+{
+  "id": "idle",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_idle.png",
+  "outputDir": "/sprites/frames-pack/ronin/idle",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 384,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 29,
+      "y": 0,
+      "w": 374,
+      "h": 724
+    },
+    {
+      "x": 457,
+      "y": 0,
+      "w": 375,
+      "h": 724
+    },
+    {
+      "x": 885,
+      "y": 0,
+      "w": 384,
+      "h": 724
+    },
+    {
+      "x": 1333,
+      "y": 0,
+      "w": 377,
+      "h": 724
+    },
+    {
+      "x": 1756,
+      "y": 0,
+      "w": 376,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.19633943427620631,
+  "bodyVariance": 0.00847457627118644,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/idle/0001.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 29,
+        "y": 0,
+        "w": 374,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 59,
+        "w": 326,
+        "h": 601,
+        "pixels": 83553
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/idle/0002.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 457,
+        "y": 0,
+        "w": 375,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 58,
+        "w": 327,
+        "h": 602,
+        "pixels": 83306
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/idle/0003.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 885,
+        "y": 0,
+        "w": 384,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 64,
+        "w": 336,
+        "h": 596,
+        "pixels": 84951
+      },
+      "bodyBounds": {
+        "x": 63,
+        "y": 31,
+        "w": 66,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/idle/0004.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1333,
+        "y": 0,
+        "w": 377,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 58,
+        "w": 329,
+        "h": 602,
+        "pixels": 84598
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 30,
+        "w": 65,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/idle/0005.png",
+      "frameSize": {
+        "w": 192,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1756,
+        "y": 0,
+        "w": 376,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 59,
+        "w": 328,
+        "h": 601,
+        "pixels": 84565
+      },
+      "bodyBounds": {
+        "x": 64,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 167,
+      "cutoff": false
+    }
+  ]
+}

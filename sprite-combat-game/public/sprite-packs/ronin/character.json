@@ -1,0 +1,28 @@
+{
+  "id": "ronin",
+  "name": "Ronin",
+  "enabled": true,
+  "style": "semi-realistic",
+  "targetBodyHeight": 118,
+  "visualScale": 0.72,
+  "baselineY": 148,
+  "moveMapping": {
+    "H": "jab",
+    "J": "cross",
+    "K": "calf_kick",
+    "L": "recovery"
+  },
+  "animations": {
+    "idle": { "file": "../../sprites/semi-realistic-source/ronin_idle.png", "frames": 5, "loop": true, "fps": 6, "outputCanvas": { "w": 192, "h": 160 } },
+    "walk": { "file": "../../sprites/semi-realistic-source/ronin_walk.png", "frames": 6, "loop": true, "fps": 8, "outputCanvas": { "w": 192, "h": 160 } },
+    "dash": { "file": "../../sprites/semi-realistic-source/ronin_dash.png", "frames": 5, "loop": false, "fps": 14, "outputCanvas": { "w": 224, "h": 160 } },
+    "density": { "file": "../../sprites/semi-realistic-source/ronin_density.png", "frames": 5, "loop": false, "fps": 6, "outputCanvas": { "w": 224, "h": 160 } },
+    "jab": { "file": "../../sprites/semi-realistic-source/ronin_jab.png", "frames": 5, "loop": false, "fps": 11, "outputCanvas": { "w": 224, "h": 160 } },
+    "cross": { "file": "../../sprites/semi-realistic-source/ronin_cross.png", "frames": 5, "loop": false, "fps": 10, "outputCanvas": { "w": 224, "h": 160 } },
+    "calf_kick": { "file": "../../sprites/semi-realistic-source/ronin_calf_kick.png", "frames": 5, "loop": false, "fps": 9, "outputCanvas": { "w": 256, "h": 160 } },
+    "knee": { "file": "../../sprites/semi-realistic-source/ronin_knee.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 224, "h": 160 } },
+    "hit_react": { "file": "../../sprites/semi-realistic-source/ronin_hit_react.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 192, "h": 160 } },
+    "recovery": { "file": "../../sprites/semi-realistic-source/ronin_recovery.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 224, "h": 160 } },
+    "stand_up": { "file": "../../sprites/semi-realistic-source/ronin_stand_up.png", "frames": 6, "loop": false, "fps": 7, "outputCanvas": { "w": 224, "h": 224, "baselineY": 212 } }
+  }
+}

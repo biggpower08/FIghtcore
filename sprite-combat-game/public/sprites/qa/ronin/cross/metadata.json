@@ -1,0 +1,208 @@
+{
+  "id": "cross",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_cross.png",
+  "outputDir": "/sprites/frames-pack/ronin/cross",
+  "frameCount": 5,
+  "sourceFrameSize": {
+    "w": 528,
+    "h": 724
+  },
+  "sourceSlices": [
+    {
+      "x": 17,
+      "y": 0,
+      "w": 370,
+      "h": 724
+    },
+    {
+      "x": 411,
+      "y": 0,
+      "w": 401,
+      "h": 724
+    },
+    {
+      "x": 825,
+      "y": 0,
+      "w": 442,
+      "h": 724
+    },
+    {
+      "x": 1258,
+      "y": 0,
+      "w": 528,
+      "h": 724
+    },
+    {
+      "x": 1801,
+      "y": 0,
+      "w": 365,
+      "h": 724
+    }
+  ],
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.21223021582733814,
+  "bodyVariance": 0.0423728813559322,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/ronin/cross/0001.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 17,
+        "y": 0,
+        "w": 370,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 71,
+        "w": 323,
+        "h": 570,
+        "pixels": 77172
+      },
+      "bodyBounds": {
+        "x": 78,
+        "y": 27,
+        "w": 69,
+        "h": 121
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 100,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/ronin/cross/0002.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 411,
+        "y": 0,
+        "w": 401,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 85,
+        "w": 354,
+        "h": 556,
+        "pixels": 79576
+      },
+      "bodyBounds": {
+        "x": 75,
+        "y": 30,
+        "w": 75,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 100,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/ronin/cross/0003.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 825,
+        "y": 0,
+        "w": 442,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 94,
+        "w": 394,
+        "h": 547,
+        "pixels": 81440
+      },
+      "bodyBounds": {
+        "x": 70,
+        "y": 32,
+        "w": 84,
+        "h": 116
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 100,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/ronin/cross/0004.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1258,
+        "y": 0,
+        "w": 528,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 90,
+        "w": 480,
+        "h": 551,
+        "pixels": 77694
+      },
+      "bodyBounds": {
+        "x": 61,
+        "y": 31,
+        "w": 102,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 100,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/ronin/cross/0005.png",
+      "frameSize": {
+        "w": 224,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1801,
+        "y": 0,
+        "w": 365,
+        "h": 724
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 77,
+        "w": 317,
+        "h": 563,
+        "pixels": 75864
+      },
+      "bodyBounds": {
+        "x": 79,
+        "y": 29,
+        "w": 67,
+        "h": 119
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 100,
+      "cutoff": false
+    }
+  ]
+}

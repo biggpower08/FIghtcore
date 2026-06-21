@@ -1,0 +1,282 @@
+{
+  "id": "roundhouse_kick",
+  "imported": true,
+  "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\supreme_emperor_roundhouse_kick.png",
+  "outputDir": "/sprites/frames-pack/supreme-emperor/roundhouse_kick",
+  "frameCount": 7,
+  "sourceFrameSize": {
+    "w": 416,
+    "h": 821
+  },
+  "sourceSlices": [
+    {
+      "x": 0,
+      "y": 0,
+      "w": 234,
+      "h": 821
+    },
+    {
+      "x": 230,
+      "y": 0,
+      "w": 257,
+      "h": 821
+    },
+    {
+      "x": 526,
+      "y": 0,
+      "w": 230,
+      "h": 821
+    },
+    {
+      "x": 794,
+      "y": 0,
+      "w": 280,
+      "h": 821
+    },
+    {
+      "x": 1064,
+      "y": 0,
+      "w": 416,
+      "h": 821
+    },
+    {
+      "x": 1475,
+      "y": 0,
+      "w": 197,
+      "h": 821
+    },
+    {
+      "x": 1688,
+      "y": 0,
+      "w": 221,
+      "h": 821
+    }
+  ],
+  "outputCanvas": {
+    "w": 256,
+    "h": 160
+  },
+  "targetBodyHeight": 118,
+  "normalizedScale": 0.291358024691358,
+  "bodyVariance": 0.09322033898305085,
+  "warnings": [],
+  "frames": [
+    {
+      "frameIndex": 0,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0001.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 0,
+        "y": 0,
+        "w": 234,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 21,
+        "y": 209,
+        "w": 189,
+        "h": 415,
+        "pixels": 37318
+      },
+      "bodyBounds": {
+        "x": 101,
+        "y": 27,
+        "w": 55,
+        "h": 121
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 1,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0002.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 230,
+        "y": 0,
+        "w": 257,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 21,
+        "y": 219,
+        "w": 212,
+        "h": 405,
+        "pixels": 35790
+      },
+      "bodyBounds": {
+        "x": 97,
+        "y": 30,
+        "w": 62,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 2,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0003.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 526,
+        "y": 0,
+        "w": 230,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 201,
+        "w": 182,
+        "h": 421,
+        "pixels": 33372
+      },
+      "bodyBounds": {
+        "x": 102,
+        "y": 25,
+        "w": 53,
+        "h": 123
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 3,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0004.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 794,
+        "y": 0,
+        "w": 280,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 209,
+        "w": 232,
+        "h": 405,
+        "pixels": 33985
+      },
+      "bodyBounds": {
+        "x": 94,
+        "y": 30,
+        "w": 68,
+        "h": 118
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 4,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0005.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1064,
+        "y": 0,
+        "w": 416,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 230,
+        "w": 369,
+        "h": 384,
+        "pixels": 36995
+      },
+      "bodyBounds": {
+        "x": 74,
+        "y": 36,
+        "w": 108,
+        "h": 112
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 5,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0006.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1475,
+        "y": 0,
+        "w": 197,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 24,
+        "y": 215,
+        "w": 149,
+        "h": 402,
+        "pixels": 29940
+      },
+      "bodyBounds": {
+        "x": 107,
+        "y": 31,
+        "w": 43,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    },
+    {
+      "frameIndex": 6,
+      "framePath": "/sprites/frames-pack/supreme-emperor/roundhouse_kick/0007.png",
+      "frameSize": {
+        "w": 256,
+        "h": 160
+      },
+      "sourceSlice": {
+        "x": 1688,
+        "y": 0,
+        "w": 221,
+        "h": 821
+      },
+      "sourceBounds": {
+        "x": 21,
+        "y": 224,
+        "w": 176,
+        "h": 402,
+        "pixels": 34470
+      },
+      "bodyBounds": {
+        "x": 103,
+        "y": 31,
+        "w": 51,
+        "h": 117
+      },
+      "anchorX": 0.5,
+      "anchorY": 0.925,
+      "durationMs": 143,
+      "cutoff": false
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop
+frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop
+body height variance 28.0% exceeds 18%

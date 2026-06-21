@@ -2,6 +2,7 @@ import { fightcoreSpriteManifest } from './fightcoreSpriteManifest';
 import { fightcoreGeneratedFrameMetadata } from './fightcoreGeneratedFrameMetadata';
 import { semiRealisticAnimationKeysByCharacter } from './semiRealisticCharacters';
 import { getSemiRealisticSpriteAnimation } from './semiRealisticSpriteFrames';
+import { generatedSpriteRegistry } from './generatedSpriteRegistry';
 import { fightcoreStripSheetId, spriteRegistry, spriteSourceSheetById } from './spriteRegistry';
 
 export type SpriteFrameSource = 'frame-png' | 'atlas-crop' | 'sheet-crop' | 'fallback' | 'missing';
@@ -134,7 +135,11 @@ export function getKnownAnimationKeys(entityId: string): string[] {
     semiRealisticAnimationKeysByCharacter[entityId as keyof typeof semiRealisticAnimationKeysByCharacter]?.filter(
       (animationKey) => getSemiRealisticSpriteAnimation(entityId, animationKey).length > 0,
     ) ?? [];
-  return [...new Set([...registered, ...mapped, ...semiRealistic])];
+  const generated =
+    generatedSpriteRegistry.find((pack) => pack.enabled && pack.id === entityId)?.animations
+      .filter((animation) => animation.frames.length > 0)
+      .map((animation) => animation.id) ?? [];
+  return [...new Set([...registered, ...mapped, ...semiRealistic, ...generated])];
 }
 
 export function getSpriteCoverageRows(): SpriteCoverageRow[] {

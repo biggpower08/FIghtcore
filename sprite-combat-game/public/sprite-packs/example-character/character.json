@@ -1,0 +1,31 @@
+{
+  "id": "example-character",
+  "name": "Example Character",
+  "enabled": false,
+  "style": "semi-realistic",
+  "targetBodyHeight": 118,
+  "visualScale": 0.72,
+  "baselineY": 148,
+  "moveMapping": {
+    "H": "jab",
+    "J": "cross",
+    "K": "roundhouse_kick",
+    "L": "recovery"
+  },
+  "animations": {
+    "idle": {
+      "file": "animations/idle.png",
+      "frames": 5,
+      "loop": true,
+      "fps": 8,
+      "outputCanvas": { "w": 192, "h": 160 }
+    },
+    "roundhouse_kick": {
+      "file": "animations/roundhouse_kick.png",
+      "frames": 7,
+      "loop": false,
+      "fps": 12,
+      "outputCanvas": { "w": 256, "h": 160 }
+    }
+  }
+}
