@@ -1,0 +1,84 @@
+{
+  "character": "ronin",
+  "animation": "hit_react",
+  "sourceDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\hit_react",
+  "outputDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react",
+  "qaDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa-cleaned\\ronin\\hit_react",
+  "frameCount": 5,
+  "totals": {
+    "transparentRgbCleared": 23354,
+    "pixelsMadeTransparent": 0,
+    "pixelsDecontaminated": 0,
+    "pixelsRecoloredFromNeighbor": 0,
+    "suspectedWhiteHaloPixelsRemaining": 0,
+    "edgePixelsTouchingCanvasBoundary": 0
+  },
+  "warnings": [],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\hit_react\\0001.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0001.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4301,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0002.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\hit_react\\0002.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0002.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4229,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0003.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\hit_react\\0003.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0003.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4097,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0004.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\hit_react\\0004.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0004.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 6316,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0005.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\hit_react\\0005.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0005.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4411,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    }
+  ]
+}

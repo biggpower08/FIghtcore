@@ -562,6 +562,7 @@ export class SpriteLab {
   private describeFrameSource(frame?: ResolvedSpriteFrame): string {
     if (!frame) return 'missing frame';
     if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return 'manual override PNG frame';
+    if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return 'alpha-cleaned PNG frame';
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return 'normalized sprite-pack PNG frame';
     if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return 'reference-extracted PNG frame';
     if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return 'semi-realistic PNG frame';
@@ -603,6 +604,7 @@ export class SpriteLab {
     const height = frame.height ?? frame.image?.height ?? 0;
     if (width <= 0 || height <= 0) return true;
     if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return false;
+    if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return false;
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
     if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return false;
     if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return false;

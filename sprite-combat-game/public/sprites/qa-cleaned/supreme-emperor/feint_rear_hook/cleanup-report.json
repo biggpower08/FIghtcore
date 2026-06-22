@@ -1,0 +1,123 @@
+{
+  "character": "supreme-emperor",
+  "animation": "feint_rear_hook",
+  "sourceDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook",
+  "outputDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook",
+  "qaDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa-cleaned\\supreme-emperor\\feint_rear_hook",
+  "frameCount": 8,
+  "totals": {
+    "transparentRgbCleared": 41186,
+    "pixelsMadeTransparent": 0,
+    "pixelsDecontaminated": 0,
+    "pixelsRecoloredFromNeighbor": 0,
+    "suspectedWhiteHaloPixelsRemaining": 0,
+    "edgePixelsTouchingCanvasBoundary": 0
+  },
+  "warnings": [],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0001.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0001.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4791,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0002.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0002.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0002.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 3805,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0003.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0003.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0003.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 3680,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0004.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0004.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0004.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4158,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0005.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0005.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0005.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 5215,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0006.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0006.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0006.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 5764,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0007.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0007.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0007.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 9001,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0008.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\feint_rear_hook\\0008.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0008.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4772,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    }
+  ]
+}

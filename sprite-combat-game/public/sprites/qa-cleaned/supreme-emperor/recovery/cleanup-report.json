@@ -1,0 +1,84 @@
+{
+  "character": "supreme-emperor",
+  "animation": "recovery",
+  "sourceDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\recovery",
+  "outputDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery",
+  "qaDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa-cleaned\\supreme-emperor\\recovery",
+  "frameCount": 5,
+  "totals": {
+    "transparentRgbCleared": 17598,
+    "pixelsMadeTransparent": 0,
+    "pixelsDecontaminated": 0,
+    "pixelsRecoloredFromNeighbor": 0,
+    "suspectedWhiteHaloPixelsRemaining": 0,
+    "edgePixelsTouchingCanvasBoundary": 0
+  },
+  "warnings": [],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\recovery\\0001.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0001.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 1935,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0002.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\recovery\\0002.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0002.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 3301,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0003.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\recovery\\0003.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0003.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4127,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0004.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\recovery\\0004.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0004.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4450,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0005.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\supreme-emperor\\recovery\\0005.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0005.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 3785,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    }
+  ]
+}

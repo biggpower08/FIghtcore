@@ -1,0 +1,84 @@
+{
+  "character": "ronin",
+  "animation": "dash",
+  "sourceDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\dash",
+  "outputDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash",
+  "qaDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa-cleaned\\ronin\\dash",
+  "frameCount": 5,
+  "totals": {
+    "transparentRgbCleared": 38994,
+    "pixelsMadeTransparent": 0,
+    "pixelsDecontaminated": 0,
+    "pixelsRecoloredFromNeighbor": 0,
+    "suspectedWhiteHaloPixelsRemaining": 0,
+    "edgePixelsTouchingCanvasBoundary": 0
+  },
+  "warnings": [],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\dash\\0001.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0001.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 6526,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0002.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\dash\\0002.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0002.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 6558,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0003.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\dash\\0003.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0003.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 9539,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0004.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\dash\\0004.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0004.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 9757,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0005.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\dash\\0005.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0005.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 6614,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "character": "ronin",
+  "animation": "knee",
+  "sourceDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\knee",
+  "outputDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\knee",
+  "qaDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa-cleaned\\ronin\\knee",
+  "frameCount": 5,
+  "totals": {
+    "transparentRgbCleared": 19893,
+    "pixelsMadeTransparent": 0,
+    "pixelsDecontaminated": 0,
+    "pixelsRecoloredFromNeighbor": 0,
+    "suspectedWhiteHaloPixelsRemaining": 0,
+    "edgePixelsTouchingCanvasBoundary": 0
+  },
+  "warnings": [],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\knee\\0001.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\knee\\0001.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4264,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0002.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\knee\\0002.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\knee\\0002.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 5201,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0003.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\knee\\0003.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\knee\\0003.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 3242,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0004.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\knee\\0004.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\knee\\0004.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 2902,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0005.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-pack\\ronin\\knee\\0005.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\knee\\0005.png",
+      "beforeSuspectedWhiteHaloPixels": 0,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 4284,
+      "madeTransparent": 0,
+      "decontaminated": 0,
+      "neighborRecolored": 0,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    }
+  ]
+}

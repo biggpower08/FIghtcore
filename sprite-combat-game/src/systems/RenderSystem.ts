@@ -790,6 +790,7 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const height = frame.height ?? frame.image?.height ?? 0;
   if (width <= 0 || height <= 0) return true;
   if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return false;
+  if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return false;
   if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
   if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return false;
   if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return false;
@@ -842,6 +843,7 @@ function isValidSourceRect(frame: ResolvedSpriteFrame, image: HTMLImageElement):
 function isRuntimeSpriteFrame(framePath: string | undefined): boolean {
   return Boolean(
     framePath?.startsWith('/sprites/manual-overrides/') ||
+      framePath?.startsWith('/sprites/frames-cleaned/') ||
       framePath?.startsWith('/sprites/frames-pack/') ||
       framePath?.startsWith('/sprites/frames-reference/') ||
       framePath?.startsWith('/sprites/frames-semi-realistic/') ||
