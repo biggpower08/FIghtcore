@@ -11,6 +11,14 @@ export interface PlayerUpgradeState {
   cooldownLevel: number;
   abilityLevel: number;
   healthRegenLevel: number;
+  speedLevel: number;
+  dashLevel: number;
+  maxStaminaLevel: number;
+  defenseLevel: number;
+  waveHealLevel: number;
+  critLevel: number;
+  knockbackLevel: number;
+  abilityCooldownLevel: number;
 }
 
 export class Player extends Fighter {
@@ -35,6 +43,14 @@ export class Player extends Fighter {
     cooldownLevel: 0,
     abilityLevel: 0,
     healthRegenLevel: 0,
+    speedLevel: 0,
+    dashLevel: 0,
+    maxStaminaLevel: 0,
+    defenseLevel: 0,
+    waveHealLevel: 0,
+    critLevel: 0,
+    knockbackLevel: 0,
+    abilityCooldownLevel: 0,
   };
 
   constructor(character: CharacterDefinition, loadout: CharacterLoadout, moves: MoveDefinition[]) {
@@ -83,8 +99,23 @@ export class Player extends Fighter {
   }
 
   getSpeedMultiplier(): number {
-    if (this.abilityActiveMs > 0 && this.ability?.id === 'thug_it_out') return 1.18 + this.upgrades.abilityLevel * 0.04;
-    return 1;
+    const upgradeSpeed = 1 + this.upgrades.speedLevel * 0.05;
+    if (this.abilityActiveMs > 0 && this.ability?.id === 'thug_it_out') return upgradeSpeed * (1.18 + this.upgrades.abilityLevel * 0.04);
+    return upgradeSpeed;
+  }
+
+  getAbilityCooldownMs(): number {
+    if (!this.ability) return 0;
+    return Math.max(2800, Math.round(this.ability.cooldownMs * (1 - Math.min(0.35, this.upgrades.abilityCooldownLevel * 0.08))));
+  }
+
+  getInstantDeathChance(): number {
+    const base = this.ability?.id === 'instant_death' ? 0.34 : 0;
+    return Math.min(0.7, base + this.upgrades.abilityLevel * 0.04 + this.upgrades.critLevel * 0.03);
+  }
+
+  getKnockbackMultiplier(): number {
+    return 1 + this.upgrades.knockbackLevel * 0.1;
   }
 
   canActivateAbility(): boolean {
@@ -97,13 +128,13 @@ export class Player extends Fighter {
     const durationBonus = this.upgrades.abilityLevel * 450;
     if (this.ability.id === 'critical_overload') {
       this.criticalOverloadArmedMs = this.ability.durationMs + durationBonus;
-      this.abilityCooldownMs = this.ability.cooldownMs;
+      this.abilityCooldownMs = this.getAbilityCooldownMs();
       this.abilityStatus = `${this.ability.name} armed`;
       return true;
     }
 
     this.abilityActiveMs = this.ability.durationMs + durationBonus;
-    this.abilityCooldownMs = this.ability.cooldownMs;
+    this.abilityCooldownMs = this.getAbilityCooldownMs();
     this.abilityStatus = `${this.ability.name} active`;
     if (this.ability.id === 'momentum_flow') this.momentumStacks = 0;
     if (this.ability.id === 'meditation') this.meditationMs = this.abilityActiveMs;
@@ -183,8 +214,9 @@ export class Player extends Fighter {
   }
 
   getDamageReduction(): number {
-    if (this.ability?.id !== 'thug_it_out' || this.abilityActiveMs <= 0) return 0;
-    return Math.min(0.55, 0.4 + this.upgrades.abilityLevel * 0.05);
+    const generalReduction = Math.min(0.3, this.upgrades.defenseLevel * 0.06);
+    if (this.ability?.id !== 'thug_it_out' || this.abilityActiveMs <= 0) return generalReduction;
+    return Math.min(0.65, generalReduction + 0.4 + this.upgrades.abilityLevel * 0.05);
   }
 
   getMoveUpgradeLevel(moveId: string, type: 'damage' | 'efficiency' | 'control'): number {

@@ -1,0 +1,97 @@
+{
+  "character": "striker-monkey",
+  "animation": "idle",
+  "sourceDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle",
+  "outputDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle",
+  "qaDir": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa-cleaned\\striker-monkey\\idle",
+  "frameCount": 6,
+  "totals": {
+    "transparentRgbCleared": 1920,
+    "pixelsMadeTransparent": 0,
+    "pixelsDecontaminated": 36,
+    "pixelsRecoloredFromNeighbor": 34,
+    "suspectedWhiteHaloPixelsRemaining": 0,
+    "edgePixelsTouchingCanvasBoundary": 0
+  },
+  "warnings": [],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle\\0001.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle\\0001.png",
+      "beforeSuspectedWhiteHaloPixels": 9,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 366,
+      "madeTransparent": 0,
+      "decontaminated": 9,
+      "neighborRecolored": 9,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0002.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle\\0002.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle\\0002.png",
+      "beforeSuspectedWhiteHaloPixels": 8,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 296,
+      "madeTransparent": 0,
+      "decontaminated": 8,
+      "neighborRecolored": 8,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0003.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle\\0003.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle\\0003.png",
+      "beforeSuspectedWhiteHaloPixels": 6,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 241,
+      "madeTransparent": 0,
+      "decontaminated": 6,
+      "neighborRecolored": 4,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0004.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle\\0004.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle\\0004.png",
+      "beforeSuspectedWhiteHaloPixels": 6,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 412,
+      "madeTransparent": 0,
+      "decontaminated": 6,
+      "neighborRecolored": 6,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0005.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle\\0005.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle\\0005.png",
+      "beforeSuspectedWhiteHaloPixels": 4,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 326,
+      "madeTransparent": 0,
+      "decontaminated": 4,
+      "neighborRecolored": 4,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    },
+    {
+      "frame": "0006.png",
+      "sourcePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames\\striker-monkey\\idle\\0006.png",
+      "outputPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\striker-monkey\\idle\\0006.png",
+      "beforeSuspectedWhiteHaloPixels": 3,
+      "suspectedWhiteHaloPixelsRemaining": 0,
+      "transparentRgbCleared": 279,
+      "madeTransparent": 0,
+      "decontaminated": 3,
+      "neighborRecolored": 3,
+      "edgePixelsTouchingCanvasBoundary": 0,
+      "warnings": []
+    }
+  ]
+}

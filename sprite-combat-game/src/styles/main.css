@@ -47,7 +47,7 @@ body {
 
 .menu-panel,
 .reward-panel {
-  width: min(760px, calc(100vw - 32px));
+  width: min(900px, calc(100vw - 32px));
   padding: 24px;
   border: 3px solid #f0c36a;
   border-radius: 8px;
@@ -57,9 +57,8 @@ body {
 
 .home-panel {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(180px, 0.8fr);
-  gap: 22px;
-  align-items: center;
+  gap: 20px;
+  align-items: stretch;
 }
 
 .eyebrow {
@@ -90,11 +89,16 @@ body {
   line-height: 1.45;
 }
 
+.home-copy {
+  max-width: 620px;
+}
+
 .menu-actions {
   display: flex;
   flex-wrap: wrap;
   grid-column: 1 / -1;
   gap: 10px;
+  align-items: center;
 }
 
 .menu-actions.stacked {
@@ -161,26 +165,37 @@ body {
   background: rgba(0, 0, 0, 0.25);
 }
 
-.sheet-preview-list {
+.sheet-preview-list,
+.path-card-list {
   display: grid;
   grid-column: 1 / -1;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.character-card {
+.character-card,
+.path-card {
   display: grid;
   gap: 8px;
-  padding: 8px;
+  padding: 12px;
   color: #ffeec5;
   text-align: left;
   border: 2px solid #7b5228;
   border-radius: 8px;
   background: #24180f;
+}
+
+.character-card {
   cursor: pointer;
 }
 
-.character-card.selected {
+.path-card {
+  grid-template-rows: auto 1fr auto;
+  min-height: 330px;
+}
+
+.character-card.selected,
+.path-card.selected {
   border-color: #23d5dd;
   box-shadow: 0 0 0 2px rgba(35, 213, 221, 0.28);
 }
@@ -212,15 +227,48 @@ body {
   display: none;
 }
 
-.character-card strong {
+.character-card strong,
+.path-card strong {
   color: #ffe7a3;
-  font-size: 13px;
+  font-size: 18px;
 }
 
-.character-card span {
+.character-card span,
+.path-card span {
   color: #dfc18d;
   font-size: 11px;
   line-height: 1.3;
+}
+
+.path-card p {
+  margin: 8px 0 0;
+  color: #d7c6a6;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.path-card .path-role {
+  display: block;
+  margin-top: 3px;
+  color: #aeeef2;
+  font-size: 12px;
+}
+
+.dev-tools {
+  color: #947f5e;
+  font-size: 12px;
+}
+
+.dev-tools summary {
+  padding: 10px 12px;
+  border: 1px solid #60462a;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.dev-tools button {
+  margin-top: 8px;
+  background: #6d5637;
 }
 
 .settings-panel {
@@ -364,4 +412,31 @@ body {
   margin-top: 5px;
   color: #dfc18d;
   font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .home-panel,
+  .sprite-lab-stage,
+  .sprite-lab-controls,
+  .path-card-list {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-panel,
+  .reward-panel {
+    width: min(100%, calc(100vw - 20px));
+    padding: 18px;
+  }
+
+  .menu-panel h1 {
+    font-size: 42px;
+  }
+
+  .path-card {
+    min-height: 0;
+  }
+
+  .settings-panel label {
+    grid-template-columns: 1fr;
+  }
 }

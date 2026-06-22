@@ -9,7 +9,7 @@ export type RewardOption =
 
 export class ProgressionSystem {
   shouldOfferReward(wave: number): boolean {
-    return wave === 1 || wave % 3 === 0 || wave % 5 === 0;
+    return wave >= 1;
   }
 
   getRewardOptions(player: Player, wave: number): RewardOption[] {
@@ -39,7 +39,8 @@ export class ProgressionSystem {
       .sort((a, b) => a.unlockLevel - b.unlockLevel)
       .slice(0, 2)
       .map<RewardOption>((move) => ({ kind: 'move', move }));
-    return [...upgradeOptions.slice(0, 2), ...moveOptions].slice(0, 3);
+    const rotatedUpgrades = rotate(upgradeOptions, wave + player.learnedMoves.length);
+    return [...rotatedUpgrades.slice(0, 3), ...moveOptions].slice(0, 3);
   }
 
   replaceMove(player: Player, move: MoveDefinition, slotIndex: number): void {
@@ -61,4 +62,10 @@ export class ProgressionSystem {
 
 function isUnlocked(move: MoveDefinition, learned: Set<string>): boolean {
   return !move.lockedByDefault || learned.has(move.id);
+}
+
+function rotate<T>(items: T[], amount: number): T[] {
+  if (items.length === 0) return items;
+  const offset = amount % items.length;
+  return [...items.slice(offset), ...items.slice(0, offset)];
 }

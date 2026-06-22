@@ -106,10 +106,12 @@ export class CombatSystem {
         hitbox.owner.ability?.id === 'instant_death' &&
         hitbox.owner.abilityActiveMs > 0 &&
         !(target instanceof Boss) &&
-        Math.random() < 0.5;
+        Math.random() < hitbox.owner.getInstantDeathChance();
       const baseDamage = activeHit.damage ?? hitbox.move.damage;
+      const activeMoveControlLevel = hitbox.owner instanceof Player ? hitbox.owner.getMoveUpgradeLevel(hitbox.move.id, 'control') : 0;
+      const controlMultiplier = hitbox.owner instanceof Player ? hitbox.owner.getKnockbackMultiplier() + activeMoveControlLevel * 0.08 : 1;
       const knockback = activeHit.knockback ?? hitbox.profile.knockback;
-      const hitstunFrames = activeHit.hitstunFrames ?? hitbox.profile.hitstunFrames;
+      const hitstunFrames = Math.round((activeHit.hitstunFrames ?? hitbox.profile.hitstunFrames) * (1 + activeMoveControlLevel * 0.08));
       const hitstopFrames = activeHit.hitstopFrames ?? hitbox.profile.hitstopFrames;
       const damage = instantDeath ? target.health : baseDamage * damageMultiplier;
       target.takeDamage(damage);
@@ -118,8 +120,8 @@ export class CombatSystem {
       const heavy = damage >= 18 || Math.abs(knockback.x) >= 170 || Math.abs(knockback.y) >= 48;
       const hitstunMs = frameToMs(hitstunFrames);
       target.stunMs = Math.max(target.stunMs, Math.min(hitstunMs, heavy ? 620 : 360));
-      target.vx += direction * knockback.x * resistance;
-      target.vy += knockback.y * resistance;
+      target.vx += direction * knockback.x * resistance * controlMultiplier;
+      target.vy += knockback.y * resistance * controlMultiplier;
       if (!target.alive && target instanceof Fighter) {
         target.activeMove = null;
         target.activeMoveMs = 0;

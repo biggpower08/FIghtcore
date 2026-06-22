@@ -2456,27 +2456,28 @@ Other available frame folders:
 ## Striker Monkey / idle
 
 - Character id: `striker-monkey`
-- Runtime source: `frames` (raw fallback PNGs)
-- Runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle`
+- Runtime source: `frames-cleaned` (alpha-cleaned PNGs)
+- Runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle`
 - Runtime frame count: 6
 - Source sheet: `not registered or not known from current metadata`
 - QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\idle`
 - Manifest: `not sprite-pack manifest backed`
-- Registry or metadata source: `src/data/spriteAnimations.ts plus runtime filesystem fallback`
+- Registry or metadata source: `filesystem alpha-cleaned frames; metadata inherited from source frame`
 - Manual edit safety: not safe in this generated/fallback folder
-- Importer overwrite warning: Raw fallback folder. Do not hand-edit unless you intentionally want to change the fallback asset.
+- Importer overwrite warning: Generated output. npm.cmd run sprites:clean-alpha may overwrite this folder.
 
 Runtime frame PNGs:
 
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle\0001.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle\0002.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle\0003.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle\0004.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle\0005.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle\0006.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle\0001.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle\0002.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle\0003.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle\0004.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle\0005.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\striker-monkey\idle\0006.png`
 
 Other available frame folders:
 
+- `frames`: 6 frame(s), folder `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames\striker-monkey\idle`. Raw fallback folder. Do not hand-edit unless you intentionally want to change the fallback asset.
 - `frames-alpha-repaired`: 2 frame(s), folder `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\striker-monkey\idle`. Generated output. Alpha repair scripts may overwrite this folder.
 
 ## Supreme Emperor / dash

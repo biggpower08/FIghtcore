@@ -67,7 +67,8 @@ const semiRealisticCharacters: CharacterDefinition[] = [
   },
 ];
 
-export const characters: CharacterDefinition[] = [...baseCharacters, ...semiRealisticCharacters];
+export const devCharacters: CharacterDefinition[] = [...baseCharacters, ...semiRealisticCharacters];
+export const characters: CharacterDefinition[] = semiRealisticCharacters;
 
 export function getCharacterMoves(character: CharacterDefinition) {
   return getLoadoutMoves(character.id);

@@ -20,7 +20,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   },
   {
     id: 'striker-monkey',
-    name: 'Cyber Monkey Scrapper',
+    name: 'Monkey Striker',
     maxHealth: 78,
     speed: 148,
     attackRange: 64,
@@ -29,7 +29,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   },
   {
     id: 'cyber-monkey-grappler',
-    name: 'Cyber Monkey Grappler',
+    name: 'Monkey Grappler',
     maxHealth: 112,
     speed: 136,
     attackRange: 62,

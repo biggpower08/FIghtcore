@@ -99,7 +99,7 @@ export class Game {
   private readonly rewardScreen: RewardScreen;
   private readonly spriteLab: SpriteLab;
   private readonly obstacles = this.createObstacles();
-  private selectedCharacterId = 'cyber-ninja';
+  private selectedCharacterId = 'ronin';
   private player = this.createPlayer();
   private enemies: Enemy[] = [];
   private boss: Boss | null = null;
@@ -134,8 +134,12 @@ export class Game {
       onControls: () => this.openControls(),
       onSpriteLab: () => this.openSpriteLab(),
       onCharacterSelect: (characterId) => this.selectCharacter(characterId),
+      onStartCharacter: (characterId) => this.startCharacterRun(characterId),
+      onCredits: () => this.openCredits(),
+      onFullscreen: () => this.toggleFullscreen(),
       onBack: () => this.closeMenuPanel(),
       onResume: () => this.resumeGame(),
+      onRestart: () => this.startNewRun(),
       onHome: () => this.returnHome(),
     });
     this.resize();
@@ -218,7 +222,7 @@ export class Game {
       this.player.interruptMeditation('Meditation canceled');
       this.player.stamina -= DASH_STAMINA_COST;
       this.player.dashMs = DASH_DURATION_MS;
-      this.player.dashCooldownMs = DASH_COOLDOWN_MS;
+      this.player.dashCooldownMs = Math.max(220, DASH_COOLDOWN_MS - this.player.upgrades.dashLevel * 90);
       this.animation.play(this.player, 'dash', { lockForMs: DASH_DURATION_MS, fallback: 'walk' });
     }
 
@@ -551,15 +555,26 @@ export class Game {
       this.player,
       (move, slotIndex) => {
         this.progression.replaceMove(this.player, move, slotIndex);
-        this.loot.restoreAfterWave(this.player);
+        this.applyWaveClearRecovery();
         this.spawnWave();
       },
       (option) => {
         if (option.kind === 'upgrade') this.progression.applyUpgrade(this.player, option.upgrade);
-        this.loot.restoreAfterWave(this.player);
+        this.applyWaveClearRecovery();
         this.spawnWave();
       },
     );
+  }
+
+  private applyWaveClearRecovery(): void {
+    const restored = this.loot.restoreAfterWave(this.player);
+    this.impacts.push({
+      x: this.player.x,
+      y: this.player.y - this.player.radius * 1.9,
+      lifeMs: 900,
+      color: '#63f7a6',
+      label: `Wave clear +${Math.round(restored.health)} hp`,
+    });
   }
 
   private spawnWave(): void {
@@ -684,6 +699,12 @@ export class Game {
     this.menuScreen.showControls();
   }
 
+  private openCredits(): void {
+    if (this.state !== 'home') return;
+    this.settingsReturnState = 'home';
+    this.menuScreen.showCredits();
+  }
+
   private closeMenuPanel(): void {
     if (this.settingsReturnState === 'paused') {
       this.state = 'paused';
@@ -692,7 +713,7 @@ export class Game {
     }
 
     this.state = 'home';
-    this.menuScreen.showHome();
+    this.menuScreen.showHome(this.selectedCharacterId);
   }
 
   private openGameOver(): void {
@@ -717,6 +738,11 @@ export class Game {
     this.rewardScreen.hide();
     this.spriteLab.hide();
     this.menuScreen.showHome(this.selectedCharacterId);
+  }
+
+  private startCharacterRun(characterId: string): void {
+    this.selectedCharacterId = characterId;
+    this.startNewRun();
   }
 
   private createPlayer(): Player {
@@ -752,6 +778,14 @@ export class Game {
     this.activeGrapples = [];
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
+  }
+
+  private toggleFullscreen(): void {
+    if (!document.fullscreenElement) {
+      void document.documentElement.requestFullscreen?.();
+    } else {
+      void document.exitFullscreen?.();
+    }
   }
 
   private suppressTargetSprite(hiddenEntityId: string, sourceEntityId: string, animationKey: string, durationMs: number): void {

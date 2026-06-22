@@ -4,10 +4,14 @@ import path from 'node:path';
 import { PNG } from 'pngjs';
 
 const repoRoot = process.cwd();
-const defaultSourceRoot = path.join(repoRoot, 'public', 'sprites', 'frames-pack');
+const packedSourceRoot = path.join(repoRoot, 'public', 'sprites', 'frames-pack');
+const legacySourceRoot = path.join(repoRoot, 'public', 'sprites', 'frames');
 const outputRoot = path.join(repoRoot, 'public', 'sprites', 'frames-cleaned');
 const qaRoot = path.join(repoRoot, 'public', 'sprites', 'qa-cleaned');
-const defaultCharacters = ['ronin', 'supreme-emperor'];
+const defaultSourceSpecs = [
+  { sourceRoot: packedSourceRoot, characters: ['ronin', 'supreme-emperor'] },
+  { sourceRoot: legacySourceRoot, characters: ['monkey-grunt', 'striker-monkey', 'cyber-monkey-grappler'] },
+];
 const backgroundChecks = [
   { file: 'white-check.png', color: [255, 255, 255, 255] },
   { file: 'black-check.png', color: [0, 0, 0, 255] },
@@ -31,25 +35,24 @@ const config = {
 const args = new Set(process.argv.slice(2));
 const qaOnly = args.has('--qa-only');
 const allCharacters = args.has('--all');
-const characters = getArgValue('--character')
-  ? getArgValue('--character').split(',').map((item) => item.trim()).filter(Boolean)
-  : allCharacters
-    ? await listDirectories(defaultSourceRoot)
-    : defaultCharacters;
+const requestedCharacters = getArgValue('--character')?.split(',').map((item) => item.trim()).filter(Boolean);
+const sourceSpecs = await getSourceSpecs();
 
 const reports = [];
-for (const character of characters) {
-  const sourceCharacterDir = path.join(defaultSourceRoot, character);
-  if (!existsSync(sourceCharacterDir)) continue;
-  for (const animation of await listDirectories(sourceCharacterDir)) {
-    reports.push(await cleanAnimation(character, animation));
+for (const sourceSpec of sourceSpecs) {
+  for (const character of sourceSpec.characters) {
+    const sourceCharacterDir = path.join(sourceSpec.sourceRoot, character);
+    if (!existsSync(sourceCharacterDir)) continue;
+    for (const animation of await listDirectories(sourceCharacterDir)) {
+      reports.push(await cleanAnimation(sourceSpec.sourceRoot, character, animation));
+    }
   }
 }
 
-console.log(JSON.stringify({ sourceRoot: defaultSourceRoot, outputRoot, qaRoot, qaOnly, config, reports }, null, 2));
+console.log(JSON.stringify({ sourceRoots: sourceSpecs.map((spec) => spec.sourceRoot), outputRoot, qaRoot, qaOnly, config, reports }, null, 2));
 
-async function cleanAnimation(character, animation) {
-  const sourceDir = path.join(defaultSourceRoot, character, animation);
+async function cleanAnimation(sourceRoot, character, animation) {
+  const sourceDir = path.join(sourceRoot, character, animation);
   const outputDir = path.join(outputRoot, character, animation);
   const qaDir = path.join(qaRoot, character, animation);
   await mkdir(outputDir, { recursive: true });
@@ -117,6 +120,20 @@ async function cleanAnimation(character, animation) {
   };
   await writeFile(path.join(qaDir, 'cleanup-report.json'), JSON.stringify(report, null, 2));
   return report;
+}
+
+async function getSourceSpecs() {
+  if (requestedCharacters?.length) {
+    return [
+      { sourceRoot: packedSourceRoot, characters: requestedCharacters },
+      { sourceRoot: legacySourceRoot, characters: requestedCharacters },
+    ];
+  }
+  if (!allCharacters) return defaultSourceSpecs;
+  return [
+    { sourceRoot: packedSourceRoot, characters: await listDirectories(packedSourceRoot) },
+    { sourceRoot: legacySourceRoot, characters: await listDirectories(legacySourceRoot) },
+  ];
 }
 
 function cleanFrame(source) {
