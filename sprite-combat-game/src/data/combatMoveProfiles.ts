@@ -5,12 +5,28 @@ export interface KnockbackVector {
   y: number;
 }
 
+export interface CombatHitWindow {
+  hitId: string;
+  activeFrames: number[];
+  damage?: number;
+  hitstopFrames?: number;
+  hitstunFrames?: number;
+  knockback?: KnockbackVector;
+  hitbox?: {
+    x: number;
+    y: number;
+    w: number;
+    h: number;
+  };
+}
+
 export interface CombatMoveProfile {
   id: string;
   displayName: string;
   animationKey: string;
   startupFrames: number;
   activeFrames: number[];
+  hits: CombatHitWindow[];
   recoveryFrames: number;
   hitstopFrames: number;
   hitstunFrames: number;
@@ -33,7 +49,32 @@ const FRAME_MS = 1000 / FPS;
 const overrides: Record<string, Partial<CombatMoveProfile>> = {
   jab: { hitstopFrames: 3, hitstunFrames: 8, knockback: { x: 92, y: 0 }, launchAngleDegrees: 0 },
   cross: { hitstopFrames: 4, hitstunFrames: 10, knockback: { x: 132, y: -8 }, launchAngleDegrees: -4 },
-  jab_cross: { hitstopFrames: 5, hitstunFrames: 14, knockback: { x: 170, y: -12 }, launchAngleDegrees: -5 },
+  jab_cross: {
+    hitstopFrames: 5,
+    hitstunFrames: 14,
+    knockback: { x: 170, y: -12 },
+    launchAngleDegrees: -5,
+    hits: [
+      {
+        hitId: 'jab',
+        activeFrames: [9, 10],
+        damage: 8,
+        hitstopFrames: 3,
+        hitstunFrames: 8,
+        knockback: { x: 82, y: 0 },
+        hitbox: { x: 58, y: -48, w: 46, h: 26 },
+      },
+      {
+        hitId: 'cross',
+        activeFrames: [14, 15],
+        damage: 16,
+        hitstopFrames: 5,
+        hitstunFrames: 14,
+        knockback: { x: 185, y: -20 },
+        hitbox: { x: 72, y: -52, w: 58, h: 30 },
+      },
+    ],
+  },
   palm_strike: { hitstopFrames: 4, hitstunFrames: 11, knockback: { x: 124, y: -8 }, launchAngleDegrees: -4 },
   high_kick: { hitstopFrames: 6, hitstunFrames: 16, knockback: { x: 168, y: -42 }, launchAngleDegrees: -14 },
   roundhouse_kick: { hitstopFrames: 7, hitstunFrames: 18, knockback: { x: 188, y: -28 }, launchAngleDegrees: -10 },
@@ -91,18 +132,36 @@ function createCombatMoveProfile(move: MoveDefinition): CombatMoveProfile {
     movementLock: move.damage >= 24 || ['wrestling', 'judo', 'jiujitsu'].includes(move.style) ? 'full' : 'partial',
     lockFacing: true,
     interruptible: false,
+    hits: [],
   };
-  return {
+  const override = overrides[move.id];
+  const profile = {
     ...base,
-    ...overrides[move.id],
+    ...override,
     hitbox: {
       ...base.hitbox,
-      ...overrides[move.id]?.hitbox,
+      ...override?.hitbox,
     },
     knockback: {
       ...base.knockback,
-      ...overrides[move.id]?.knockback,
+      ...override?.knockback,
     },
+  };
+  const hits = override?.hits ?? [
+    {
+      hitId: 'main',
+      activeFrames: profile.activeFrames,
+      damage: move.damage,
+      hitstopFrames: profile.hitstopFrames,
+      hitstunFrames: profile.hitstunFrames,
+      knockback: profile.knockback,
+      hitbox: profile.hitbox,
+    },
+  ];
+  return {
+    ...profile,
+    activeFrames: [...new Set(hits.flatMap((hit) => hit.activeFrames))].sort((a, b) => a - b),
+    hits,
   };
 }
 

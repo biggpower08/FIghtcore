@@ -54,14 +54,14 @@ export const characterVisualProfiles: CharacterVisualProfile[] = [
   {
     id: 'supreme-emperor',
     style: 'semi-realistic',
-    canonicalBodyHeight: 126,
+    canonicalBodyHeight: 136,
     visualScale: 0.21,
     anchorMode: 'feet',
     baselineOffset: 0,
-    bodyBounds: { w: 62, h: 126 },
-    renderBounds: { w: 152, h: 158 },
-    collisionSize: { w: 48, h: 98 },
-    hurtboxSize: { w: 62, h: 120 },
+    bodyBounds: { w: 68, h: 136 },
+    renderBounds: { w: 168, h: 172 },
+    collisionSize: { w: 54, h: 108 },
+    hurtboxSize: { w: 68, h: 132 },
   },
 ];
 

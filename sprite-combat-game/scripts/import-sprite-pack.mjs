@@ -188,6 +188,8 @@ async function importAnimation(pack, animation) {
       frameIndex: index,
       framePath,
       frameSize: canvas,
+      targetBodyHeight: pack.targetBodyHeight,
+      visualScale: pack.visualScale,
       sourceSlice: slice,
       sourceBounds: bounds,
       bodyBounds: normalized.bodyBounds,
@@ -480,6 +482,8 @@ function renderRegistry(packs) {
   frameIndex: number;
   framePath: string;
   frameSize: { w: number; h: number };
+  targetBodyHeight?: number;
+  visualScale?: number;
   sourceSlice?: { x: number; y: number; w: number; h: number };
   sourceBounds?: { x: number; y: number; w: number; h: number; pixels: number };
   bodyBounds?: { x: number; y: number; w: number; h: number };

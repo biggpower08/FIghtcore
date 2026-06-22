@@ -1,7 +1,7 @@
 import type { Entity } from '../entities/Entity';
 import { Fighter } from '../entities/Fighter';
 import type { MoveDefinition } from '../data/moves';
-import { getCombatMoveProfile, frameToMs, type CombatMoveProfile } from '../data/combatMoveProfiles';
+import { getCombatMoveProfile, frameToMs, type CombatHitWindow, type CombatMoveProfile } from '../data/combatMoveProfiles';
 import { getCharacterVisualProfile } from '../data/characterVisualProfiles';
 import { Player } from '../entities/Player';
 import { Boss } from '../entities/Boss';
@@ -48,16 +48,19 @@ export class CombatSystem {
     attacker.activeMove = move;
     attacker.activeMoveMs = move.windupMs + move.activeMs;
     const profile = getCombatMoveProfile(move);
-    const totalMs = frameToMs(profile.startupFrames + profile.activeFrames.length + profile.recoveryFrames);
+    const finalActiveFrame = Math.max(profile.startupFrames, ...profile.hits.flatMap((hit) => hit.activeFrames));
+    const totalMs = frameToMs(finalActiveFrame + profile.recoveryFrames);
+    const initialHit = profile.hits[0];
+    const initialHitbox = initialHit.hitbox ?? profile.hitbox;
 
     return {
       id: `attack_${this.nextAttackId++}`,
       owner: attacker,
       move,
-      x: attacker.x + attacker.facing * profile.hitbox.x,
-      y: attacker.y + profile.hitbox.y,
-      width: profile.hitbox.w,
-      height: profile.hitbox.h,
+      x: attacker.x + attacker.facing * initialHitbox.x,
+      y: attacker.y + initialHitbox.y,
+      width: initialHitbox.w,
+      height: initialHitbox.h,
       elapsedMs: 0,
       totalMs,
       remainingMs: totalMs,
@@ -71,8 +74,12 @@ export class CombatSystem {
     for (const hitbox of hitboxes) {
       hitbox.elapsedMs += deltaMs;
       hitbox.remainingMs -= deltaMs;
-      hitbox.x = hitbox.owner.x + hitbox.owner.facing * hitbox.profile.hitbox.x;
-      hitbox.y = hitbox.owner.y + hitbox.profile.hitbox.y;
+      const activeHit = this.currentHitWindow(hitbox) ?? hitbox.profile.hits[0];
+      const rect = activeHit.hitbox ?? hitbox.profile.hitbox;
+      hitbox.x = hitbox.owner.x + hitbox.owner.facing * rect.x;
+      hitbox.y = hitbox.owner.y + rect.y;
+      hitbox.width = rect.w;
+      hitbox.height = rect.h;
     }
 
     return hitboxes.filter((hitbox) => hitbox.remainingMs > 0);
@@ -80,10 +87,17 @@ export class CombatSystem {
 
   applyHitbox(hitbox: AttackHitbox, targets: Entity[]): HitImpact[] {
     const impacts: HitImpact[] = [];
-    if (!this.isHitboxActive(hitbox)) return impacts;
+    const activeHit = this.currentHitWindow(hitbox);
+    if (!activeHit) return impacts;
+    const activeRect = activeHit.hitbox ?? hitbox.profile.hitbox;
+    hitbox.x = hitbox.owner.x + hitbox.owner.facing * activeRect.x;
+    hitbox.y = hitbox.owner.y + activeRect.y;
+    hitbox.width = activeRect.w;
+    hitbox.height = activeRect.h;
 
     for (const target of targets) {
-      if (!target.alive || target.id === hitbox.owner.id || hitbox.hitIds.has(target.id)) continue;
+      const hitKey = `${activeHit.hitId}:${target.id}`;
+      if (!target.alive || target.id === hitbox.owner.id || hitbox.hitIds.has(hitKey)) continue;
       if (!this.intersects(hitbox, target)) continue;
 
       const damageMultiplier = hitbox.owner instanceof Player ? hitbox.owner.getDamageMultiplier() : TEST_BALANCE.enemyDamageMultiplier;
@@ -93,28 +107,32 @@ export class CombatSystem {
         hitbox.owner.abilityActiveMs > 0 &&
         !(target instanceof Boss) &&
         Math.random() < 0.5;
-      const damage = instantDeath ? target.health : hitbox.move.damage * damageMultiplier;
+      const baseDamage = activeHit.damage ?? hitbox.move.damage;
+      const knockback = activeHit.knockback ?? hitbox.profile.knockback;
+      const hitstunFrames = activeHit.hitstunFrames ?? hitbox.profile.hitstunFrames;
+      const hitstopFrames = activeHit.hitstopFrames ?? hitbox.profile.hitstopFrames;
+      const damage = instantDeath ? target.health : baseDamage * damageMultiplier;
       target.takeDamage(damage);
       const direction = Math.sign(target.x - hitbox.owner.x) || hitbox.owner.facing;
       const resistance = target.knockbackResistance;
-      const heavy = damage >= 18 || Math.abs(hitbox.profile.knockback.x) >= 170 || Math.abs(hitbox.profile.knockback.y) >= 48;
-      const hitstunMs = frameToMs(hitbox.profile.hitstunFrames);
+      const heavy = damage >= 18 || Math.abs(knockback.x) >= 170 || Math.abs(knockback.y) >= 48;
+      const hitstunMs = frameToMs(hitstunFrames);
       target.stunMs = Math.max(target.stunMs, Math.min(hitstunMs, heavy ? 620 : 360));
-      target.vx += direction * hitbox.profile.knockback.x * resistance;
-      target.vy += hitbox.profile.knockback.y * resistance;
+      target.vx += direction * knockback.x * resistance;
+      target.vy += knockback.y * resistance;
       if (!target.alive && target instanceof Fighter) {
         target.activeMove = null;
         target.activeMoveMs = 0;
         target.attackLockMs = 0;
       }
-      hitbox.hitIds.add(target.id);
+      hitbox.hitIds.add(hitKey);
       impacts.push({
         attacker: hitbox.owner,
         target,
         move: hitbox.move,
         damage,
         heavy,
-        hitstopMs: frameToMs(hitbox.profile.hitstopFrames),
+        hitstopMs: frameToMs(hitstopFrames),
         hitstunMs,
         x: target.x,
         y: target.y - target.radius * 0.75,
@@ -145,9 +163,9 @@ export class CombatSystem {
     }
   }
 
-  private isHitboxActive(hitbox: AttackHitbox): boolean {
+  private currentHitWindow(hitbox: AttackHitbox): CombatHitWindow | undefined {
     const frame = Math.floor(hitbox.elapsedMs / (1000 / 60)) + 1;
-    return hitbox.activeFrames.includes(frame);
+    return hitbox.profile.hits.find((hit) => hit.activeFrames.includes(frame));
   }
 
   private intersects(hitbox: AttackHitbox, target: Entity): boolean {

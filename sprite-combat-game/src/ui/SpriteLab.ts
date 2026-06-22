@@ -16,6 +16,22 @@ const coreLabEntityIds = [
   'cyber-monkey-grappler',
 ];
 
+interface SpriteScaleDiagnostics {
+  sourcePriority: string;
+  visibleBodyHeight?: number;
+  finalRenderedBodyHeight?: number;
+  runtimeScale: number;
+  characterVisualScale?: number;
+  canonicalBodyHeight?: number;
+  framePackTargetBodyHeight?: number;
+  framePackManifestVisualScale?: number;
+  framePackMetadataBodyHeight?: number;
+  bodyBounds?: string;
+  generatedPackBodyBounds?: string;
+  baseline?: number;
+  isDoubleScaled: boolean;
+}
+
 function labEntityIds(): string[] {
   const registered = spriteRegistry.map((sprite) => sprite.id);
   return [...new Set([...coreLabEntityIds, ...registered])];
@@ -194,6 +210,7 @@ export class SpriteLab {
     if (this.options.anchor) this.drawAnchor(ctx, canvas.width / 2, floorY);
     const alpha = frame ? this.getAlphaInfo(frame) : undefined;
     const imageStatus = this.getImageStatus(frame);
+    const scaleDiagnostics = frame ? this.getScaleDiagnostics(frame, alpha) : undefined;
 
     info.textContent = JSON.stringify(
       {
@@ -238,6 +255,8 @@ export class SpriteLab {
           : undefined,
         foregroundBounds: frame?.foregroundBounds,
         bodyBounds: frame?.bodyBounds,
+        scaleDiagnostics,
+        bodyHeightComparison: this.getBodyHeightComparison(scaleDiagnostics?.finalRenderedBodyHeight),
         alpha,
         frameQuality,
         qa: frame ? this.getFrameQa(frame, alpha, framePosition) : undefined,
@@ -493,6 +512,50 @@ export class SpriteLab {
       'silhouette count': frameQuality?.silhouetteCount,
       'width outlier': Boolean(frameQuality?.widthOutlier),
       'frame role': frameQuality?.role,
+    };
+  }
+
+  private getScaleDiagnostics(
+    frame: ResolvedSpriteFrame,
+    alpha?: ReturnType<SpriteLab['getAlphaInfo']>,
+  ): SpriteScaleDiagnostics {
+    const profile = this.animation ? getCharacterVisualProfile(this.animation.entityId) : undefined;
+    const visibleBodyHeight = frame.bodyBounds?.height ?? alpha?.bounds?.height;
+    const normalizedPackBodyHeight = frame.generatedPackBodyBounds?.h ?? frame.generatedPackTargetBodyHeight;
+    const runtimeScale =
+      frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')
+        ? visibleBodyHeight && profile
+          ? profile.canonicalBodyHeight / visibleBodyHeight
+          : 1
+        : profile?.visualScale ?? 1;
+    const finalRenderedBodyHeight = visibleBodyHeight ? visibleBodyHeight * runtimeScale : undefined;
+    return {
+      sourcePriority: this.describeFrameSource(frame),
+      visibleBodyHeight,
+      finalRenderedBodyHeight,
+      runtimeScale,
+      characterVisualScale: profile?.visualScale,
+      canonicalBodyHeight: profile?.canonicalBodyHeight,
+      framePackTargetBodyHeight: frame.generatedPackTargetBodyHeight,
+      framePackManifestVisualScale: frame.generatedPackVisualScale,
+      framePackMetadataBodyHeight: normalizedPackBodyHeight,
+      bodyBounds: frame.bodyBounds ? `${frame.bodyBounds.width}x${frame.bodyBounds.height}` : undefined,
+      generatedPackBodyBounds: frame.generatedPackBodyBounds
+        ? `${frame.generatedPackBodyBounds.w}x${frame.generatedPackBodyBounds.h}`
+        : undefined,
+      baseline: frame.feetY ?? frame.referenceBaselineY,
+      isDoubleScaled: Boolean((frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) && profile && profile.visualScale < 0.5),
+    };
+  }
+
+  private getBodyHeightComparison(currentFinalBodyHeight?: number): Record<string, number | undefined> {
+    return {
+      'Cyber Ninja target': getCharacterVisualProfile('cyber-ninja').canonicalBodyHeight,
+      'Shadow Striker target': getCharacterVisualProfile('shadow-striker').canonicalBodyHeight,
+      'Combat Monk target': getCharacterVisualProfile('combat-monk').canonicalBodyHeight,
+      'Ronin target': getCharacterVisualProfile('ronin').canonicalBodyHeight,
+      'Supreme Emperor target': getCharacterVisualProfile('supreme-emperor').canonicalBodyHeight,
+      'Current final rendered body height': currentFinalBodyHeight,
     };
   }
 

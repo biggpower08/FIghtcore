@@ -2,6 +2,8 @@ export interface GeneratedSpritePackFrame {
   frameIndex: number;
   framePath: string;
   frameSize: { w: number; h: number };
+  targetBodyHeight?: number;
+  visualScale?: number;
   sourceSlice?: { x: number; y: number; w: number; h: number };
   sourceBounds?: { x: number; y: number; w: number; h: number; pixels: number };
   bodyBounds?: { x: number; y: number; w: number; h: number };
@@ -70,6 +72,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 29,
               "y": 0,
@@ -101,6 +105,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 457,
               "y": 0,
@@ -132,6 +138,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 885,
               "y": 0,
@@ -163,6 +171,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1333,
               "y": 0,
@@ -194,6 +204,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1756,
               "y": 0,
@@ -238,6 +250,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 28,
               "y": 0,
@@ -269,6 +283,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 388,
               "y": 0,
@@ -300,6 +316,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 704,
               "y": 0,
@@ -331,6 +349,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1078,
               "y": 0,
@@ -362,6 +382,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1435,
               "y": 0,
@@ -393,6 +415,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1767,
               "y": 0,
@@ -441,6 +465,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 56,
               "y": 0,
@@ -472,6 +498,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 404,
               "y": 0,
@@ -503,6 +531,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 784,
               "y": 0,
@@ -534,6 +564,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1242,
               "y": 0,
@@ -565,6 +597,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1789,
               "y": 0,
@@ -612,6 +646,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 47,
               "y": 0,
@@ -643,6 +679,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 441,
               "y": 0,
@@ -674,6 +712,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 905,
               "y": 0,
@@ -705,6 +745,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1336,
               "y": 0,
@@ -736,6 +778,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1741,
               "y": 0,
@@ -780,6 +824,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 40,
               "y": 0,
@@ -811,6 +857,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 456,
               "y": 0,
@@ -842,6 +890,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 882,
               "y": 0,
@@ -873,6 +923,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1298,
               "y": 0,
@@ -904,6 +956,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1788,
               "y": 0,
@@ -948,6 +1002,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 17,
               "y": 0,
@@ -979,6 +1035,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 411,
               "y": 0,
@@ -1010,6 +1068,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 825,
               "y": 0,
@@ -1041,6 +1101,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1258,
               "y": 0,
@@ -1072,6 +1134,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1801,
               "y": 0,
@@ -1121,6 +1185,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 0,
               "y": 0,
@@ -1152,6 +1218,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 434,
               "y": 0,
@@ -1183,6 +1251,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 868,
               "y": 0,
@@ -1214,6 +1284,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1302,
               "y": 0,
@@ -1245,6 +1317,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1736,
               "y": 0,
@@ -1289,6 +1363,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 71,
               "y": 0,
@@ -1320,6 +1396,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 510,
               "y": 0,
@@ -1351,6 +1429,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 992,
               "y": 0,
@@ -1382,6 +1462,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1383,
               "y": 0,
@@ -1413,6 +1495,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1740,
               "y": 0,
@@ -1460,6 +1544,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 21,
               "y": 0,
@@ -1491,6 +1577,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 497,
               "y": 0,
@@ -1522,6 +1610,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 939,
               "y": 0,
@@ -1553,6 +1643,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1255,
               "y": 0,
@@ -1584,6 +1676,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1717,
               "y": 0,
@@ -1630,6 +1724,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 41,
               "y": 0,
@@ -1661,6 +1757,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 496,
               "y": 0,
@@ -1692,6 +1790,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 899,
               "y": 0,
@@ -1723,6 +1823,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1331,
               "y": 0,
@@ -1754,6 +1856,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1756,
               "y": 0,
@@ -1800,6 +1904,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 0,
               "y": 0,
@@ -1831,6 +1937,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 437,
               "y": 0,
@@ -1862,6 +1970,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 863,
               "y": 0,
@@ -1893,6 +2003,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1192,
               "y": 0,
@@ -1924,6 +2036,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1512,
               "y": 0,
@@ -1955,6 +2069,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1834,
               "y": 0,
@@ -2010,6 +2126,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 24,
               "y": 0,
@@ -2041,6 +2159,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 353,
               "y": 0,
@@ -2072,6 +2192,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 725,
               "y": 0,
@@ -2103,6 +2225,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1059,
               "y": 0,
@@ -2134,6 +2258,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1432,
               "y": 0,
@@ -2178,6 +2304,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 20,
               "y": 0,
@@ -2209,6 +2337,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 323,
               "y": 0,
@@ -2240,6 +2370,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 737,
               "y": 0,
@@ -2271,6 +2403,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1105,
               "y": 0,
@@ -2302,6 +2436,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1444,
               "y": 0,
@@ -2333,6 +2469,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1854,
               "y": 0,
@@ -2383,6 +2521,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 0,
               "y": 0,
@@ -2414,6 +2554,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 434,
               "y": 0,
@@ -2445,6 +2587,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 868,
               "y": 0,
@@ -2476,6 +2620,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1302,
               "y": 0,
@@ -2507,6 +2653,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1736,
               "y": 0,
@@ -2551,6 +2699,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 32,
               "y": 0,
@@ -2582,6 +2732,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 386,
               "y": 0,
@@ -2613,6 +2765,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 699,
               "y": 0,
@@ -2644,6 +2798,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1069,
               "y": 0,
@@ -2675,6 +2831,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1466,
               "y": 0,
@@ -2706,6 +2864,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1835,
               "y": 0,
@@ -2752,6 +2912,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1,
               "y": 0,
@@ -2783,6 +2945,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 278,
               "y": 0,
@@ -2814,6 +2978,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 551,
               "y": 0,
@@ -2845,6 +3011,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 812,
               "y": 0,
@@ -2876,6 +3044,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1095,
               "y": 0,
@@ -2907,6 +3077,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1357,
               "y": 0,
@@ -2938,6 +3110,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1614,
               "y": 0,
@@ -2969,6 +3143,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1938,
               "y": 0,
@@ -3017,6 +3193,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 20,
               "y": 0,
@@ -3048,6 +3226,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 259,
               "y": 0,
@@ -3079,6 +3259,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 542,
               "y": 0,
@@ -3110,6 +3292,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 793,
               "y": 0,
@@ -3141,6 +3325,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1017,
               "y": 0,
@@ -3172,6 +3358,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1224,
               "y": 0,
@@ -3203,6 +3391,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1424,
               "y": 0,
@@ -3234,6 +3424,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1700,
               "y": 0,
@@ -3265,6 +3457,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1932,
               "y": 0,
@@ -3309,6 +3503,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 0,
               "y": 0,
@@ -3340,6 +3536,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 230,
               "y": 0,
@@ -3371,6 +3569,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 526,
               "y": 0,
@@ -3402,6 +3602,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 794,
               "y": 0,
@@ -3433,6 +3635,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1064,
               "y": 0,
@@ -3464,6 +3668,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1475,
               "y": 0,
@@ -3495,6 +3701,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 256,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1688,
               "y": 0,
@@ -3539,6 +3747,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 35,
               "y": 0,
@@ -3570,6 +3780,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 469,
               "y": 0,
@@ -3601,6 +3813,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 915,
               "y": 0,
@@ -3632,6 +3846,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1312,
               "y": 0,
@@ -3663,6 +3879,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 192,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1745,
               "y": 0,
@@ -3709,6 +3927,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 56,
               "y": 0,
@@ -3740,6 +3960,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 449,
               "y": 0,
@@ -3771,6 +3993,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 909,
               "y": 0,
@@ -3802,6 +4026,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1340,
               "y": 0,
@@ -3833,6 +4059,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1753,
               "y": 0,
@@ -3879,6 +4107,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 0,
               "y": 0,
@@ -3910,6 +4140,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 493,
               "y": 0,
@@ -3941,6 +4173,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 832,
               "y": 0,
@@ -3972,6 +4206,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1194,
               "y": 0,
@@ -4003,6 +4239,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1531,
               "y": 0,
@@ -4034,6 +4272,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 224
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1861,
               "y": 0,
@@ -4078,6 +4318,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 56,
               "y": 0,
@@ -4109,6 +4351,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 434,
               "y": 0,
@@ -4140,6 +4384,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 860,
               "y": 0,
@@ -4171,6 +4417,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1262,
               "y": 0,
@@ -4202,6 +4450,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "w": 224,
               "h": 160
             },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
             "sourceSlice": {
               "x": 1674,
               "y": 0,

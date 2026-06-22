@@ -11,7 +11,7 @@ import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '
 import type { Camera } from '../game/Camera';
 import { spriteRegistryById } from '../data/spriteRegistry';
 import { getFrameQuality } from '../data/frameQuality';
-import { getCharacterVisualProfile } from '../data/characterVisualProfiles';
+import { getCharacterVisualProfile, type CharacterVisualProfile } from '../data/characterVisualProfiles';
 
 export interface DustPuff {
   x: number;
@@ -486,7 +486,8 @@ export class RenderSystem {
     const sourceWidth = frame.image?.naturalWidth || frame.image?.width || frame.width || frame.sheetImage?.width || 64;
     const sourceHeight = frame.image?.naturalHeight || frame.image?.height || frame.height || frame.sheetImage?.height || 64;
     const assetId = this.getAssetId(entity);
-    const profileScale = getCharacterVisualProfile(assetId).visualScale || spriteRegistryById.get(assetId)?.render?.scale || 1;
+    const profile = getCharacterVisualProfile(assetId);
+    const profileScale = runtimeSpriteScale(assetId, frame, profile);
     const referenceScale = this.referenceFrameScale(entity, frame);
     const scale = profileScale * referenceScale * (entity instanceof Boss ? 1.08 : 1);
     const usesPreparedFightcoreStrip = frame.sheetPath?.startsWith('/assets/fightcore/sprites/') ?? false;
@@ -540,12 +541,12 @@ export class RenderSystem {
   ): void {
     const drawX = entity.x + dx;
     const drawY = entity.y + dy;
+    const profile = getCharacterVisualProfile(this.getAssetId(entity));
     ctx.save();
     ctx.strokeStyle = '#23d5dd';
     ctx.lineWidth = 2;
     ctx.strokeRect(drawX, drawY, width, height);
     ctx.strokeStyle = 'rgba(255, 237, 135, 0.82)';
-    const profile = getCharacterVisualProfile(this.getAssetId(entity));
     ctx.strokeRect(entity.x - profile.bodyBounds.w / 2, entity.y - profile.bodyBounds.h, profile.bodyBounds.w, profile.bodyBounds.h);
     ctx.strokeStyle = 'rgba(56, 163, 255, 0.85)';
     ctx.strokeRect(entity.x - profile.hurtboxSize.w / 2, entity.y - profile.hurtboxSize.h, profile.hurtboxSize.w, profile.hurtboxSize.h);
@@ -793,6 +794,17 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const sourceWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
   const sourceStripDraw = Boolean(frame.sheetPath?.endsWith('-strip.png') && width >= sourceWidth && sourceWidth > 180);
   return sourceStripDraw || width > 300 || (width > 220 && width / height > 2.65);
+}
+
+function runtimeSpriteScale(assetId: string, frame: ResolvedSpriteFrame, profile: CharacterVisualProfile): number {
+  if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) {
+    const normalizedBodyHeight = frame.bodyBounds?.height ?? frame.generatedPackBodyBounds?.h ?? frame.generatedPackTargetBodyHeight;
+    if (normalizedBodyHeight && normalizedBodyHeight > 0) {
+      return profile.canonicalBodyHeight / normalizedBodyHeight;
+    }
+    return 1;
+  }
+  return profile.visualScale || spriteRegistryById.get(assetId)?.render?.scale || 1;
 }
 
 function isFiniteRect(x: number, y: number, width: number, height: number): boolean {

@@ -38,6 +38,10 @@ export interface ResolvedSpriteFrame {
   usingSemiRealisticFrame?: boolean;
   semiRealisticSourceSheet?: string;
   usingGeneratedPackFrame?: boolean;
+  generatedPackTargetBodyHeight?: number;
+  generatedPackVisualScale?: number;
+  generatedPackSourceBounds?: { x: number; y: number; w: number; h: number; pixels: number };
+  generatedPackBodyBounds?: { x: number; y: number; w: number; h: number };
   usingRepairedAlpha?: boolean;
   invalidHollowFrame?: boolean;
   alphaHoleCount?: number;
@@ -382,6 +386,10 @@ export class AssetLoader {
           referenceBaselineY: referenceFrame?.baselineY,
           referenceBackgroundRemoved: referenceFrame?.backgroundRemoved,
           usingGeneratedPackFrame: Boolean(generatedPackFrame),
+          generatedPackTargetBodyHeight: generatedPackFrame?.targetBodyHeight,
+          generatedPackVisualScale: generatedPackFrame?.visualScale,
+          generatedPackSourceBounds: generatedPackFrame?.sourceBounds,
+          generatedPackBodyBounds: generatedPackFrame?.bodyBounds,
           usingSemiRealisticFrame: Boolean(semiRealisticFrame),
           semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
           notes: generatedPackFrame

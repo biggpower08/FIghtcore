@@ -76,6 +76,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 1,
         "y": 0,
@@ -107,6 +109,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 278,
         "y": 0,
@@ -138,6 +142,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 551,
         "y": 0,
@@ -169,6 +175,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 812,
         "y": 0,
@@ -200,6 +208,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 1095,
         "y": 0,
@@ -231,6 +241,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 1357,
         "y": 0,
@@ -262,6 +274,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 1614,
         "y": 0,
@@ -293,6 +307,8 @@
         "w": 224,
         "h": 160
       },
+      "targetBodyHeight": 118,
+      "visualScale": 0.72,
       "sourceSlice": {
         "x": 1938,
         "y": 0,
