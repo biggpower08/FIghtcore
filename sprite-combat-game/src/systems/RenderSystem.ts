@@ -789,7 +789,9 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const width = frame.width ?? frame.image?.width ?? 0;
   const height = frame.height ?? frame.image?.height ?? 0;
   if (width <= 0 || height <= 0) return true;
+  if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return false;
   if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
+  if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return false;
   if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return false;
   const sourceWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
   const sourceStripDraw = Boolean(frame.sheetPath?.endsWith('-strip.png') && width >= sourceWidth && sourceWidth > 180);
@@ -838,7 +840,14 @@ function isValidSourceRect(frame: ResolvedSpriteFrame, image: HTMLImageElement):
 }
 
 function isRuntimeSpriteFrame(framePath: string | undefined): boolean {
-  return Boolean(framePath?.startsWith('/sprites/frames/') || framePath?.startsWith('/sprites/frames-alpha-repaired/'));
+  return Boolean(
+    framePath?.startsWith('/sprites/manual-overrides/') ||
+      framePath?.startsWith('/sprites/frames-pack/') ||
+      framePath?.startsWith('/sprites/frames-reference/') ||
+      framePath?.startsWith('/sprites/frames-semi-realistic/') ||
+      framePath?.startsWith('/sprites/frames/') ||
+      framePath?.startsWith('/sprites/frames-alpha-repaired/'),
+  );
 }
 
 function logDrawImageFailure(

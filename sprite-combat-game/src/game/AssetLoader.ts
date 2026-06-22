@@ -29,6 +29,10 @@ export interface ResolvedSpriteFrame {
   rawCropAvailable?: boolean;
   cleanedFrameAvailable?: boolean;
   repairedFrameAvailable?: boolean;
+  manualOverrideFrameAvailable?: boolean;
+  usingManualOverrideFrame?: boolean;
+  manualOverrideFramePath?: string;
+  manualOverrideSourceFramePath?: string;
   referenceFrameAvailable?: boolean;
   usingReferenceExtracted?: boolean;
   referenceSourceSheet?: string;
@@ -138,6 +142,29 @@ export class AssetLoader {
     return image;
   }
 
+  private async loadOptionalImage(path: string): Promise<HTMLImageElement | null> {
+    const cached = this.images.get(path);
+    if (cached) return cached;
+    if (this.missing.has(path)) return null;
+
+    const resolvedUrl = publicAssetUrl(path);
+    this.resolvedByPath.set(path, resolvedUrl);
+    const image = new Image();
+    image.src = resolvedUrl;
+
+    const loaded = await new Promise<boolean>((resolve) => {
+      image.onload = () => resolve(true);
+      image.onerror = () => {
+        this.missing.add(path);
+        resolve(false);
+      };
+    });
+
+    if (!loaded) return null;
+    this.images.set(path, image);
+    return image;
+  }
+
   getImage(path: string): HTMLImageElement | undefined {
     return this.images.get(path);
   }
@@ -161,14 +188,20 @@ export class AssetLoader {
 
     const frames: HTMLImageElement[] = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
+      const overridePath = manualOverrideFramePath(assetId, animation, frame - 1);
+      const overrideImage = await this.loadOptionalImage(overridePath);
+      if (overrideImage) {
+        frames.push(overrideImage);
+        continue;
+      }
       const generatedPack = getGeneratedSpritePackFrame(assetId, animation, frame - 1);
       const reference = getReferenceSpriteFrame(assetId, animation, frame - 1);
       const semiRealistic = getSemiRealisticSpriteFrame(assetId, animation, frame - 1);
       const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frame - 1);
       const path =
         generatedPack?.framePath ??
-        semiRealistic?.framePath ??
         reference?.framePath ??
+        semiRealistic?.framePath ??
         alphaHole?.repairedFramePath ??
         `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
       if (isKnownBrokenFrame(path)) {
@@ -337,7 +370,7 @@ export class AssetLoader {
     if (images.length === 0) return null;
     const expectedFrameCount = Math.min(
       12,
-      generatedPack?.frames.length || semiRealistic.length || reference.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey),
+      generatedPack?.frames.length || reference.length || semiRealistic.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey),
     );
     if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
       this.warnOnce(
@@ -353,6 +386,14 @@ export class AssetLoader {
         const referenceFrame = reference[index];
         const semiRealisticFrame = semiRealistic[index];
         const generatedPackFrame = generatedPack?.frames[index];
+        const overridePath = manualOverrideFramePath(entityId, animationKey, index);
+        const usingManualOverride = image === this.images.get(overridePath);
+        const sourceFramePath =
+          generatedPackFrame?.framePath ??
+          referenceFrame?.framePath ??
+          semiRealisticFrame?.framePath ??
+          cleaned?.frames[index]?.path ??
+          `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`;
         return applyBodyAwareAnchor({
           source: 'frame-png',
           entityId,
@@ -366,19 +407,18 @@ export class AssetLoader {
             definition?.frames[index]?.durationMs ??
             timingForAnimation(animationKey, index, images.length),
           image,
-          framePath:
-            generatedPackFrame?.framePath ??
-            semiRealisticFrame?.framePath ??
-            referenceFrame?.framePath ??
-            cleaned?.frames[index]?.path ??
-            `/sprites/frames/${entityId}/${animationKey}/${String(index + 1).padStart(4, '0')}.png`,
-          width: generatedPackFrame?.frameSize.w ?? semiRealisticFrame?.frameSize.width ?? referenceFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
-          height: generatedPackFrame?.frameSize.h ?? semiRealisticFrame?.frameSize.height ?? referenceFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
-          anchorX: generatedPackFrame?.anchorX ?? semiRealisticFrame?.anchorX ?? referenceFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
-          anchorY: generatedPackFrame?.anchorY ?? semiRealisticFrame?.anchorY ?? referenceFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
+          framePath: usingManualOverride ? overridePath : sourceFramePath,
+          width: generatedPackFrame?.frameSize.w ?? referenceFrame?.frameSize.width ?? semiRealisticFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
+          height: generatedPackFrame?.frameSize.h ?? referenceFrame?.frameSize.height ?? semiRealisticFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
+          anchorX: generatedPackFrame?.anchorX ?? referenceFrame?.anchorX ?? semiRealisticFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
+          anchorY: generatedPackFrame?.anchorY ?? referenceFrame?.anchorY ?? semiRealisticFrame?.anchorY ?? cleaned?.frames[index]?.anchorY ?? renderProfile?.anchorY ?? definition?.frames[index]?.anchorY ?? 0.86,
           feetY: referenceFrame?.baselineY ?? cleaned?.frames[index]?.feetY ?? renderProfile?.feetY,
           rawCropAvailable: Boolean(getSpriteAtlasAnimation(entityId, animationKey)?.frames[index]),
           cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
+          manualOverrideFrameAvailable: usingManualOverride,
+          usingManualOverrideFrame: usingManualOverride,
+          manualOverrideFramePath: usingManualOverride ? overridePath : undefined,
+          manualOverrideSourceFramePath: usingManualOverride ? sourceFramePath : undefined,
           referenceFrameAvailable: Boolean(referenceFrame),
           usingReferenceExtracted: Boolean(referenceFrame),
           referenceSourceSheet: referenceFrame?.sourceSheet,
@@ -392,12 +432,14 @@ export class AssetLoader {
           generatedPackBodyBounds: generatedPackFrame?.bodyBounds,
           usingSemiRealisticFrame: Boolean(semiRealisticFrame),
           semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
-          notes: generatedPackFrame
+          notes: usingManualOverride
+            ? `Using manual override PNG frame over ${sourceFramePath}.`
+            : generatedPackFrame
             ? 'Using normalized transparent sprite-pack frame.'
-            : semiRealisticFrame
-            ? `Using semi-realistic frame from ${semiRealisticFrame.sourceSheetLabel}.`
             : referenceFrame
             ? `Using reference-extracted frame from ${referenceFrame.sourceSheetLabel}.`
+            : semiRealisticFrame
+            ? `Using semi-realistic frame from ${semiRealisticFrame.sourceSheetLabel}.`
             : cleaned?.frames[index]?.splitFromDirtyCrop
               ? 'Cleaned frame split from a multi-pose raw crop.'
               : undefined,
@@ -405,7 +447,7 @@ export class AssetLoader {
       },
     );
     for (const [index, frame] of frames.entries()) {
-      if (frame.usingReferenceExtracted) continue;
+      if (frame.usingManualOverrideFrame || frame.usingGeneratedPackFrame || frame.usingReferenceExtracted) continue;
       const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
       if (!alphaHole) continue;
       frame.framePath = alphaHole.repairedFramePath ?? frame.framePath;
@@ -429,10 +471,10 @@ export class AssetLoader {
       notes:
         generatedPack
           ? 'Resolved from normalized transparent sprite-pack frames.'
-          : semiRealistic.length > 0
-          ? 'Resolved from semi-realistic PNG frame folder.'
           : reference.length > 0
           ? 'Resolved from reference-extracted clean PNG frames.'
+          : semiRealistic.length > 0
+          ? 'Resolved from semi-realistic PNG frame folder.'
           : cleaned
             ? 'Resolved from cleaned single-pose PNG frame folder.'
             : 'Resolved from pre-sliced PNG frame folder.',
@@ -799,6 +841,10 @@ function minimumFrameCount(animationKey: string): number {
   return 1;
 }
 
+function manualOverrideFramePath(entityId: string, animationKey: string, frameIndex: number): string {
+  return `/sprites/manual-overrides/${entityId}/${animationKey}/${String(frameIndex + 1).padStart(4, '0')}.png`;
+}
+
 const knownBrokenFrames = new Set([
   '/sprites/frames/shadow-striker-purple/walk/0005.png',
   '/sprites/frames/shadow-striker-purple/short_elbow/0005.png',
@@ -806,7 +852,9 @@ const knownBrokenFrames = new Set([
 ]);
 
 function shouldHealthCheckImage(context: AssetLoadContext, path: string): boolean {
+  if (path.startsWith('/sprites/manual-overrides/')) return false;
   if (path.startsWith('/sprites/frames-pack/')) return false;
+  if (path.startsWith('/sprites/frames-reference/')) return false;
   if (path.startsWith('/sprites/frames-semi-realistic/')) return false;
   return context.kind === 'sprite-frame' || context.kind === 'explicit-frame';
 }

@@ -561,7 +561,10 @@ export class SpriteLab {
 
   private describeFrameSource(frame?: ResolvedSpriteFrame): string {
     if (!frame) return 'missing frame';
+    if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return 'manual override PNG frame';
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return 'normalized sprite-pack PNG frame';
+    if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return 'reference-extracted PNG frame';
+    if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return 'semi-realistic PNG frame';
     if (frame.framePath) return 'explicit PNG frame';
     if (frame.sheetPath?.endsWith('-strip.png') && frame.x !== undefined) return 'prepared source-strip crop';
     if (frame.sheetPath && frame.x !== undefined) return 'sheet crop';
@@ -599,7 +602,9 @@ export class SpriteLab {
     const width = frame.width ?? frame.image?.width ?? 0;
     const height = frame.height ?? frame.image?.height ?? 0;
     if (width <= 0 || height <= 0) return true;
+    if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return false;
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
+    if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return false;
     if (frame.usingSemiRealisticFrame || frame.framePath?.startsWith('/sprites/frames-semi-realistic/')) return false;
     const imageWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
     const looksLikeFullStrip = Boolean(frame.sheetPath?.includes('/assets/fightcore/sprites/') && frame.sheetPath.endsWith('-strip.png') && width >= imageWidth && imageWidth > 180);

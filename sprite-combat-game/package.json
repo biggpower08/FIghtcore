@@ -15,6 +15,7 @@
     "sprite:import-semi-realistic": "node scripts/import-semi-realistic-sprites.mjs",
     "sprite-pack:validate": "node scripts/validate-sprite-pack.mjs",
     "sprite-pack:import": "node scripts/import-sprite-pack.mjs",
+    "sprite-pack:list-frames": "node scripts/list-sprite-frames.mjs",
     "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",
     "sprite-factory:generate": "python tools/sprite-factory/scripts/generate-sprites.py",
     "sprite-factory:qa": "python tools/sprite-factory/scripts/qa-sprites.py",
