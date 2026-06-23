@@ -1,0 +1,164 @@
+{
+  "entityId": "ronin",
+  "animationId": "recovery",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "normalizedScale": 0.22736030828516376,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\recovery\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\recovery\\0001.png",
+      "visibleBodyHeight": 78,
+      "visibleBodyWidth": 74,
+      "heightVsIdle": 0.6610169491525424,
+      "widthVsIdle": 1.15625,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 88,
+        "y": 87,
+        "w": 47,
+        "h": 27
+      },
+      "approximateLegZone": {
+        "x": 84,
+        "y": 114,
+        "w": 56,
+        "h": 33
+      },
+      "approximateArmReachZone": {
+        "x": 75,
+        "y": 84,
+        "w": 74,
+        "h": 30
+      },
+      "flags": [
+        "body height 66% of idle"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\recovery\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\recovery\\0002.png",
+      "visibleBodyHeight": 101,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 0.8559322033898306,
+      "widthVsIdle": 1,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 92,
+        "y": 69,
+        "w": 41,
+        "h": 34
+      },
+      "approximateLegZone": {
+        "x": 88,
+        "y": 104,
+        "w": 49,
+        "h": 42
+      },
+      "approximateArmReachZone": {
+        "x": 80,
+        "y": 65,
+        "w": 64,
+        "h": 38
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\recovery\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\recovery\\0003.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 70,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.09375,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 90,
+        "y": 56,
+        "w": 45,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 85,
+        "y": 96,
+        "w": 53,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 77,
+        "y": 51,
+        "w": 70,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\recovery\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\recovery\\0004.png",
+      "visibleBodyHeight": 129,
+      "visibleBodyWidth": 69,
+      "heightVsIdle": 1.0932203389830508,
+      "widthVsIdle": 1.078125,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 90,
+        "y": 47,
+        "w": 44,
+        "h": 44
+      },
+      "approximateLegZone": {
+        "x": 86,
+        "y": 91,
+        "w": 52,
+        "h": 54
+      },
+      "approximateArmReachZone": {
+        "x": 78,
+        "y": 42,
+        "w": 69,
+        "h": 49
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\recovery\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\recovery\\0005.png",
+      "visibleBodyHeight": 129,
+      "visibleBodyWidth": 70,
+      "heightVsIdle": 1.0932203389830508,
+      "widthVsIdle": 1.09375,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 90,
+        "y": 47,
+        "w": 45,
+        "h": 44
+      },
+      "approximateLegZone": {
+        "x": 85,
+        "y": 91,
+        "w": 53,
+        "h": 54
+      },
+      "approximateArmReachZone": {
+        "x": 77,
+        "y": 42,
+        "w": 70,
+        "h": 49
+      },
+      "flags": []
+    }
+  ]
+}

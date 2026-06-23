@@ -1,0 +1,195 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "jab_cross",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "normalizedScale": 0.2935323383084577,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\jab_cross\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\jab_cross\\0001.png",
+      "visibleBodyHeight": 120,
+      "visibleBodyWidth": 69,
+      "heightVsIdle": 1.0169491525423728,
+      "widthVsIdle": 1.4081632653061225,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 90,
+        "y": 54,
+        "w": 44,
+        "h": 41
+      },
+      "approximateLegZone": {
+        "x": 86,
+        "y": 95,
+        "w": 52,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 78,
+        "y": 50,
+        "w": 69,
+        "h": 46
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\jab_cross\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\jab_cross\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 75,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.530612244897959,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 89,
+        "y": 56,
+        "w": 48,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 84,
+        "y": 96,
+        "w": 57,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 75,
+        "y": 51,
+        "w": 75,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\jab_cross\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\jab_cross\\0003.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 99,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 2.020408163265306,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 81,
+        "y": 57,
+        "w": 63,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 75,
+        "y": 97,
+        "w": 75,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 63,
+        "y": 52,
+        "w": 99,
+        "h": 44
+      },
+      "flags": [
+        "body width 202% of idle"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\jab_cross\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\jab_cross\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 105,
+      "heightVsIdle": 1,
+      "widthVsIdle": 2.142857142857143,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 79,
+        "y": 56,
+        "w": 67,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 73,
+        "y": 96,
+        "w": 80,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 60,
+        "y": 51,
+        "w": 105,
+        "h": 45
+      },
+      "flags": [
+        "body width 214% of idle"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\jab_cross\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\jab_cross\\0005.png",
+      "visibleBodyHeight": 119,
+      "visibleBodyWidth": 62,
+      "heightVsIdle": 1.0084745762711864,
+      "widthVsIdle": 1.2653061224489797,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 92,
+        "y": 55,
+        "w": 40,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 88,
+        "y": 96,
+        "w": 47,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 81,
+        "y": 50,
+        "w": 62,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\jab_cross\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\jab_cross\\0006.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 69,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 1.4081632653061225,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 90,
+        "y": 57,
+        "w": 44,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 86,
+        "y": 97,
+        "w": 52,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 78,
+        "y": 52,
+        "w": 69,
+        "h": 44
+      },
+      "flags": []
+    }
+  ]
+}

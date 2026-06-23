@@ -1,0 +1,164 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "instant_death",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "normalizedScale": 0.19376026272577998,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\instant_death\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\instant_death\\0001.png",
+      "visibleBodyHeight": 120,
+      "visibleBodyWidth": 53,
+      "heightVsIdle": 1.0169491525423728,
+      "widthVsIdle": 1.0816326530612246,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 96,
+        "y": 54,
+        "w": 34,
+        "h": 41
+      },
+      "approximateLegZone": {
+        "x": 92,
+        "y": 95,
+        "w": 40,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 86,
+        "y": 50,
+        "w": 53,
+        "h": 46
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\instant_death\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\instant_death\\0002.png",
+      "visibleBodyHeight": 119,
+      "visibleBodyWidth": 57,
+      "heightVsIdle": 1.0084745762711864,
+      "widthVsIdle": 1.163265306122449,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 94,
+        "y": 55,
+        "w": 36,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 91,
+        "y": 96,
+        "w": 43,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 84,
+        "y": 50,
+        "w": 57,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\instant_death\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\instant_death\\0003.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 60,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.2244897959183674,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 93,
+        "y": 56,
+        "w": 38,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 89,
+        "y": 96,
+        "w": 46,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 82,
+        "y": 51,
+        "w": 60,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\instant_death\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\instant_death\\0004.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 71,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 1.4489795918367347,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 90,
+        "y": 57,
+        "w": 45,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 86,
+        "y": 97,
+        "w": 54,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 77,
+        "y": 52,
+        "w": 71,
+        "h": 44
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\instant_death\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\instant_death\\0005.png",
+      "visibleBodyHeight": 103,
+      "visibleBodyWidth": 82,
+      "heightVsIdle": 0.8728813559322034,
+      "widthVsIdle": 1.6734693877551021,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 86,
+        "y": 68,
+        "w": 52,
+        "h": 35
+      },
+      "approximateLegZone": {
+        "x": 81,
+        "y": 103,
+        "w": 62,
+        "h": 43
+      },
+      "approximateArmReachZone": {
+        "x": 71,
+        "y": 64,
+        "w": 82,
+        "h": 39
+      },
+      "flags": [
+        "body width 167% of idle"
+      ]
+    }
+  ]
+}

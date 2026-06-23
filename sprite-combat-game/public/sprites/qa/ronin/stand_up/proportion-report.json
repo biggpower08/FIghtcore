@@ -1,0 +1,201 @@
+{
+  "entityId": "ronin",
+  "animationId": "stand_up",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 224,
+    "h": 224
+  },
+  "normalizedScale": 0.34402332361516036,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\stand_up\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\stand_up\\0001.png",
+      "visibleBodyHeight": 47,
+      "visibleBodyWidth": 141,
+      "heightVsIdle": 0.3983050847457627,
+      "widthVsIdle": 2.203125,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 67,
+        "y": 175,
+        "w": 90,
+        "h": 16
+      },
+      "approximateLegZone": {
+        "x": 59,
+        "y": 191,
+        "w": 107,
+        "h": 20
+      },
+      "approximateArmReachZone": {
+        "x": 42,
+        "y": 173,
+        "w": 141,
+        "h": 18
+      },
+      "flags": [
+        "body height 40% of idle",
+        "body width 220% of idle"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\stand_up\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\stand_up\\0002.png",
+      "visibleBodyHeight": 78,
+      "visibleBodyWidth": 121,
+      "heightVsIdle": 0.6610169491525424,
+      "widthVsIdle": 1.890625,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 74,
+        "y": 151,
+        "w": 77,
+        "h": 27
+      },
+      "approximateLegZone": {
+        "x": 67,
+        "y": 178,
+        "w": 92,
+        "h": 33
+      },
+      "approximateArmReachZone": {
+        "x": 52,
+        "y": 148,
+        "w": 121,
+        "h": 30
+      },
+      "flags": [
+        "body height 66% of idle",
+        "body width 189% of idle"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\stand_up\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\stand_up\\0003.png",
+      "visibleBodyHeight": 99,
+      "visibleBodyWidth": 90,
+      "heightVsIdle": 0.8389830508474576,
+      "widthVsIdle": 1.40625,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 83,
+        "y": 135,
+        "w": 58,
+        "h": 34
+      },
+      "approximateLegZone": {
+        "x": 78,
+        "y": 168,
+        "w": 68,
+        "h": 42
+      },
+      "approximateArmReachZone": {
+        "x": 67,
+        "y": 131,
+        "w": 90,
+        "h": 38
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\stand_up\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\stand_up\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 86,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.34375,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 84,
+        "y": 120,
+        "w": 55,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 79,
+        "y": 160,
+        "w": 65,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 69,
+        "y": 115,
+        "w": 86,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\stand_up\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\stand_up\\0005.png",
+      "visibleBodyHeight": 156,
+      "visibleBodyWidth": 84,
+      "heightVsIdle": 1.3220338983050848,
+      "widthVsIdle": 1.3125,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 85,
+        "y": 90,
+        "w": 54,
+        "h": 53
+      },
+      "approximateLegZone": {
+        "x": 80,
+        "y": 143,
+        "w": 64,
+        "h": 66
+      },
+      "approximateArmReachZone": {
+        "x": 70,
+        "y": 84,
+        "w": 84,
+        "h": 59
+      },
+      "flags": [
+        "body height 132% of idle"
+      ]
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\stand_up\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\stand_up\\0006.png",
+      "visibleBodyHeight": 166,
+      "visibleBodyWidth": 94,
+      "heightVsIdle": 1.4067796610169492,
+      "widthVsIdle": 1.46875,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 82,
+        "y": 83,
+        "w": 60,
+        "h": 56
+      },
+      "approximateLegZone": {
+        "x": 76,
+        "y": 139,
+        "w": 71,
+        "h": 70
+      },
+      "approximateArmReachZone": {
+        "x": 65,
+        "y": 76,
+        "w": 94,
+        "h": 63
+      },
+      "flags": [
+        "body height 141% of idle"
+      ]
+    }
+  ]
+}

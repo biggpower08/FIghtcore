@@ -9,6 +9,7 @@ export class RewardScreen {
   show(
     options: RewardOption[],
     player: Player,
+    cyberWarning: string,
     onChooseMove: (move: MoveDefinition, slotIndex: number) => void,
     onChooseUpgrade: (option: RewardOption) => void,
   ): void {
@@ -20,6 +21,7 @@ export class RewardScreen {
     panel.innerHTML = `
       <h2>Wave Cleared</h2>
       <p>Choose a compatible move, then pick which H/J/K/L slot it replaces.</p>
+      <p class="menu-copy">${cyberWarning}</p>
       <div class="reward-options"></div>
     `;
 

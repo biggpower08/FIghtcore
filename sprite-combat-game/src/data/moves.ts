@@ -36,8 +36,8 @@ export interface MoveDefinition {
 }
 
 export const moves: MoveDefinition[] = [
-  createMove('jab', 'Jab', 'boxing', 'common', 8, 8, 220, 58, 46, 32, 60, 90, 100, 50, 120, 1),
-  createMove('cross', 'Cross', 'boxing', 'common', 12, 12, 340, 68, 52, 34, 85, 95, 150, 90, 150, 1),
+  createMove('jab', 'Jab', 'boxing', 'common', 8, 8, 190, 58, 46, 32, 82, 110, 90, 50, 120, 1),
+  createMove('cross', 'Cross', 'boxing', 'common', 12, 12, 270, 68, 52, 34, 105, 120, 120, 90, 150, 1),
   createMove('hook', 'Hook', 'boxing', 'common', 14, 13, 390, 56, 50, 38, 90, 95, 160, 110, 170, 2),
   createMove('uppercut', 'Uppercut', 'boxing', 'uncommon', 18, 16, 520, 48, 46, 54, 105, 90, 190, 130, 220, 2),
   createMove('low_kick', 'Low Kick', 'kickboxing', 'common', 10, 10, 310, 62, 58, 32, 80, 100, 140, 70, 120, 1),

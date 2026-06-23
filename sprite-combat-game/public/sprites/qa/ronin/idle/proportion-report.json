@@ -1,0 +1,162 @@
+{
+  "entityId": "ronin",
+  "animationId": "idle",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "normalizedScale": 0.19633943427620631,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\idle\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\idle\\0001.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 41,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 51,
+        "w": 64,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\idle\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\idle\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 41,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 51,
+        "w": 64,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\idle\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\idle\\0003.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 66,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 1.03125,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 75,
+        "y": 57,
+        "w": 42,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 71,
+        "y": 97,
+        "w": 50,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 63,
+        "y": 52,
+        "w": 66,
+        "h": 44
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\idle\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\idle\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 65,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.015625,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 42,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 51,
+        "w": 65,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\idle\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\idle\\0005.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 41,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 51,
+        "w": 64,
+        "h": 45
+      },
+      "flags": []
+    }
+  ]
+}

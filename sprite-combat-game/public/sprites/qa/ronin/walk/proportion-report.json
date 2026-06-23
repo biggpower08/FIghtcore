@@ -1,0 +1,191 @@
+{
+  "entityId": "ronin",
+  "animationId": "walk",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "normalizedScale": 0.20557491289198607,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\walk\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\walk\\0001.png",
+      "visibleBodyHeight": 119,
+      "visibleBodyWidth": 66,
+      "heightVsIdle": 1.0084745762711864,
+      "widthVsIdle": 1.03125,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 75,
+        "y": 55,
+        "w": 42,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 71,
+        "y": 96,
+        "w": 50,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 63,
+        "y": 50,
+        "w": 66,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\walk\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\walk\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 59,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.921875,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 78,
+        "y": 56,
+        "w": 38,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 74,
+        "y": 96,
+        "w": 45,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 67,
+        "y": 51,
+        "w": 59,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\walk\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\walk\\0003.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 69,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 1.078125,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 74,
+        "y": 57,
+        "w": 44,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 70,
+        "y": 97,
+        "w": 52,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 62,
+        "y": 52,
+        "w": 69,
+        "h": 44
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\walk\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\walk\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 62,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.96875,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 40,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 47,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 65,
+        "y": 51,
+        "w": 62,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\walk\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\walk\\0005.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 60,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.9375,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 77,
+        "y": 56,
+        "w": 38,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 73,
+        "y": 96,
+        "w": 46,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 66,
+        "y": 51,
+        "w": 60,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\walk\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\walk\\0006.png",
+      "visibleBodyHeight": 119,
+      "visibleBodyWidth": 67,
+      "heightVsIdle": 1.0084745762711864,
+      "widthVsIdle": 1.046875,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 75,
+        "y": 55,
+        "w": 43,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 71,
+        "y": 96,
+        "w": 51,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 63,
+        "y": 50,
+        "w": 67,
+        "h": 45
+      },
+      "flags": []
+    }
+  ]
+}

@@ -1,0 +1,220 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "roundhouse_kick",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 256,
+    "h": 160
+  },
+  "normalizedScale": 0.291358024691358,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0001.png",
+      "visibleBodyHeight": 121,
+      "visibleBodyWidth": 55,
+      "heightVsIdle": 1.0254237288135593,
+      "widthVsIdle": 1.1224489795918366,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 111,
+        "y": 54,
+        "w": 35,
+        "h": 41
+      },
+      "approximateLegZone": {
+        "x": 108,
+        "y": 95,
+        "w": 42,
+        "h": 51
+      },
+      "approximateArmReachZone": {
+        "x": 101,
+        "y": 49,
+        "w": 55,
+        "h": 46
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 62,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.2653061224489797,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 108,
+        "y": 56,
+        "w": 40,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 104,
+        "y": 96,
+        "w": 47,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 97,
+        "y": 51,
+        "w": 62,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0003.png",
+      "visibleBodyHeight": 123,
+      "visibleBodyWidth": 53,
+      "heightVsIdle": 1.0423728813559323,
+      "widthVsIdle": 1.0816326530612246,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 112,
+        "y": 52,
+        "w": 34,
+        "h": 42
+      },
+      "approximateLegZone": {
+        "x": 108,
+        "y": 94,
+        "w": 40,
+        "h": 52
+      },
+      "approximateArmReachZone": {
+        "x": 102,
+        "y": 47,
+        "w": 53,
+        "h": 47
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 68,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.3877551020408163,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 106,
+        "y": 56,
+        "w": 44,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 102,
+        "y": 96,
+        "w": 52,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 94,
+        "y": 51,
+        "w": 68,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0005.png",
+      "visibleBodyHeight": 112,
+      "visibleBodyWidth": 108,
+      "heightVsIdle": 0.9491525423728814,
+      "widthVsIdle": 2.204081632653061,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 93,
+        "y": 61,
+        "w": 69,
+        "h": 38
+      },
+      "approximateLegZone": {
+        "x": 87,
+        "y": 99,
+        "w": 82,
+        "h": 47
+      },
+      "approximateArmReachZone": {
+        "x": 74,
+        "y": 56,
+        "w": 108,
+        "h": 43
+      },
+      "flags": []
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0006.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 43,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 0.8775510204081632,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 115,
+        "y": 57,
+        "w": 28,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 112,
+        "y": 97,
+        "w": 33,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 107,
+        "y": 52,
+        "w": 43,
+        "h": 44
+      },
+      "flags": []
+    },
+    {
+      "frame": "0007",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\roundhouse_kick\\0007.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\roundhouse_kick\\0007.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 51,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 1.0408163265306123,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 112,
+        "y": 57,
+        "w": 33,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 109,
+        "y": 97,
+        "w": 39,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 103,
+        "y": 52,
+        "w": 51,
+        "h": 44
+      },
+      "flags": []
+    }
+  ]
+}

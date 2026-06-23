@@ -1,0 +1,11 @@
+{
+  "entityId": "monkey-grunt",
+  "animationId": "death",
+  "note": "No per-frame QA metadata exists yet. Runtime likely uses an atlas strip; use Sprite Lab/manual override PNGs for detailed body metrics.",
+  "reference": {
+    "bodyHeight": 70,
+    "bodyWidth": 44,
+    "source": "idle metadata median"
+  },
+  "frames": []
+}

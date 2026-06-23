@@ -26,12 +26,19 @@ interface SpriteScaleDiagnostics {
   bodyBounds?: string;
   generatedPackBodyBounds?: string;
   baseline?: number;
+  visibleBodyWidth?: number;
+  widthVsIdlePercent?: number;
+  heightVsIdlePercent?: number;
+  approximateTorsoZone?: string;
+  approximateLegZone?: string;
+  approximateArmReachZone?: string;
   isDoubleScaled: boolean;
 }
 
-function labEntityIds(): string[] {
+function labEntityIds(scope: 'current' | 'legacy'): string[] {
   const registered = spriteRegistry.map((sprite) => sprite.id);
-  return [...new Set([...coreLabEntityIds, ...registered])];
+  if (scope === 'current') return coreLabEntityIds;
+  return [...new Set(registered)].filter((id) => !coreLabEntityIds.includes(id));
 }
 
 function estimateHoldCount(frames: ResolvedSpriteFrame[], framePosition: number): number {
@@ -71,6 +78,10 @@ export class SpriteLab {
           <button data-action="back">Back</button>
         </div>
         <div class="sprite-lab-controls">
+          <label><span>Scope</span><select data-field="scope">
+            <option value="current">Current</option>
+            <option value="legacy">Dev/Legacy</option>
+          </select></label>
           <label><span>Entity</span><select data-field="entity"></select></label>
           <label><span>Animation / Move</span><select data-field="animation"></select></label>
         </div>
@@ -100,11 +111,15 @@ export class SpriteLab {
       </section>
     `;
 
+    const scopeSelect = this.root.querySelector<HTMLSelectElement>('[data-field="scope"]');
     const entitySelect = this.root.querySelector<HTMLSelectElement>('[data-field="entity"]');
     const animationSelect = this.root.querySelector<HTMLSelectElement>('[data-field="animation"]');
-    if (!entitySelect || !animationSelect) return;
+    if (!scopeSelect || !entitySelect || !animationSelect) return;
 
-    entitySelect.innerHTML = labEntityIds().map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
+    const refreshEntities = (): void => {
+      const scope = scopeSelect.value === 'legacy' ? 'legacy' : 'current';
+      entitySelect.innerHTML = labEntityIds(scope).map((id) => option(id, spriteRegistry.find((sprite) => sprite.id === id)?.id ?? id)).join('');
+    };
     const refreshAnimations = (): void => {
       const keys = getKnownAnimationKeys(entitySelect.value);
       animationSelect.innerHTML =
@@ -117,9 +132,15 @@ export class SpriteLab {
       void this.loadAndDraw(entitySelect.value, animationSelect.value);
     };
 
+    refreshEntities();
     refreshAnimations();
     refresh();
 
+    scopeSelect.addEventListener('change', () => {
+      refreshEntities();
+      refreshAnimations();
+      refresh();
+    });
     entitySelect.addEventListener('change', () => {
       refreshAnimations();
       refresh();
@@ -184,7 +205,7 @@ export class SpriteLab {
 
   private pause(): void {
     if (!this.playbackId) return;
-    window.clearInterval(this.playbackId);
+    window.clearTimeout(this.playbackId);
     this.playbackId = 0;
   }
 
@@ -372,6 +393,7 @@ export class SpriteLab {
       ctx.fillRect(hitboxX, hitboxY, hitbox.w, hitbox.h);
       ctx.strokeRect(hitboxX, hitboxY, hitbox.w, hitbox.h);
     }
+    this.drawProportionOverlay(ctx, centerX, floorY, frame, width, height);
 
     try {
       if (frame.image) {
@@ -448,6 +470,27 @@ export class SpriteLab {
     ctx.strokeStyle = '#17120c';
     ctx.lineWidth = 2;
     ctx.stroke();
+  }
+
+  private drawProportionOverlay(ctx: CanvasRenderingContext2D, centerX: number, floorY: number, frame: ResolvedSpriteFrame, width: number, height: number): void {
+    if (!this.options.hurtbox || !frame.bodyBounds) return;
+    const sourceWidth = Math.max(1, frame.width ?? frame.image?.width ?? width);
+    const sourceHeight = Math.max(1, frame.height ?? frame.image?.height ?? height);
+    const scaleX = width / sourceWidth;
+    const scaleY = height / sourceHeight;
+    const left = centerX - width * frame.anchorX + frame.bodyBounds.minX * scaleX;
+    const top = floorY - height * frame.anchorY + frame.bodyBounds.minY * scaleY;
+    const bodyWidth = frame.bodyBounds.width * scaleX;
+    const bodyHeight = frame.bodyBounds.height * scaleY;
+    ctx.save();
+    ctx.setLineDash([4, 4]);
+    ctx.strokeStyle = 'rgba(173, 86, 255, 0.72)';
+    ctx.strokeRect(left, top, bodyWidth, bodyHeight);
+    ctx.strokeStyle = 'rgba(99, 247, 166, 0.72)';
+    ctx.strokeRect(left + bodyWidth * 0.18, top + bodyHeight * 0.22, bodyWidth * 0.64, bodyHeight * 0.34);
+    ctx.strokeStyle = 'rgba(255, 176, 90, 0.72)';
+    ctx.strokeRect(left + bodyWidth * 0.12, top + bodyHeight * 0.56, bodyWidth * 0.76, bodyHeight * 0.42);
+    ctx.restore();
   }
 
   private getAlphaInfo(
@@ -553,6 +596,7 @@ export class SpriteLab {
   ): SpriteScaleDiagnostics {
     const profile = this.animation ? getCharacterVisualProfile(this.animation.entityId) : undefined;
     const visibleBodyHeight = frame.bodyBounds?.height ?? alpha?.bounds?.height;
+    const visibleBodyWidth = frame.bodyBounds?.width ?? alpha?.bounds?.width;
     const normalizedPackBodyHeight = frame.generatedPackBodyBounds?.h ?? frame.generatedPackTargetBodyHeight;
     const runtimeScale =
       frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')
@@ -576,17 +620,28 @@ export class SpriteLab {
         ? `${frame.generatedPackBodyBounds.w}x${frame.generatedPackBodyBounds.h}`
         : undefined,
       baseline: frame.feetY ?? frame.referenceBaselineY,
+      visibleBodyWidth,
+      widthVsIdlePercent: visibleBodyWidth && profile ? Math.round((visibleBodyWidth / Math.max(1, profile.bodyBounds.w)) * 100) : undefined,
+      heightVsIdlePercent: visibleBodyHeight && profile ? Math.round((visibleBodyHeight / Math.max(1, profile.canonicalBodyHeight)) * 100) : undefined,
+      approximateTorsoZone: frame.bodyBounds
+        ? `${Math.round(frame.bodyBounds.minX + frame.bodyBounds.width * 0.18)},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.22)} ${Math.round(frame.bodyBounds.width * 0.64)}x${Math.round(frame.bodyBounds.height * 0.34)}`
+        : undefined,
+      approximateLegZone: frame.bodyBounds
+        ? `${Math.round(frame.bodyBounds.minX + frame.bodyBounds.width * 0.12)},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.56)} ${Math.round(frame.bodyBounds.width * 0.76)}x${Math.round(frame.bodyBounds.height * 0.42)}`
+        : undefined,
+      approximateArmReachZone: frame.bodyBounds
+        ? `${frame.bodyBounds.minX},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.18)} ${frame.bodyBounds.width}x${Math.round(frame.bodyBounds.height * 0.38)}`
+        : undefined,
       isDoubleScaled: Boolean((frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) && profile && profile.visualScale < 0.5),
     };
   }
 
   private getBodyHeightComparison(currentFinalBodyHeight?: number): Record<string, number | undefined> {
     return {
-      'Cyber Ninja target': getCharacterVisualProfile('cyber-ninja').canonicalBodyHeight,
-      'Shadow Striker target': getCharacterVisualProfile('shadow-striker').canonicalBodyHeight,
-      'Combat Monk target': getCharacterVisualProfile('combat-monk').canonicalBodyHeight,
       'Ronin target': getCharacterVisualProfile('ronin').canonicalBodyHeight,
       'Supreme Emperor target': getCharacterVisualProfile('supreme-emperor').canonicalBodyHeight,
+      'Monkey Grunt target': getCharacterVisualProfile('monkey-grunt').canonicalBodyHeight,
+      'Monkey Striker target': getCharacterVisualProfile('striker-monkey').canonicalBodyHeight,
       'Current final rendered body height': currentFinalBodyHeight,
     };
   }

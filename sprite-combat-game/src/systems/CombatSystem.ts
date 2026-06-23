@@ -39,9 +39,9 @@ export interface HitImpact {
 export class CombatSystem {
   private nextAttackId = 1;
 
-  startAttack(attacker: Fighter, move: MoveDefinition, options: { ignoreAttackLock?: boolean } = {}): AttackHitbox | null {
+  startAttack(attacker: Fighter, move: MoveDefinition, options: { ignoreAttackLock?: boolean; ignoreCooldown?: boolean } = {}): AttackHitbox | null {
     const canUse = options.ignoreAttackLock
-      ? (attacker instanceof Player || attacker.stamina >= attacker.getStaminaCost(move)) && (attacker.moveCooldowns.get(move.id) ?? 0) <= 0
+      ? (attacker instanceof Player || attacker.stamina >= attacker.getStaminaCost(move)) && (options.ignoreCooldown || (attacker.moveCooldowns.get(move.id) ?? 0) <= 0)
       : attacker.canUseMove(move);
     if (!canUse) return null;
 

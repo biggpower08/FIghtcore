@@ -1,0 +1,167 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "recovery",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 224,
+    "h": 160
+  },
+  "normalizedScale": 0.21493624772313297,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\recovery\\0001.png",
+      "visibleBodyHeight": 75,
+      "visibleBodyWidth": 67,
+      "heightVsIdle": 0.635593220338983,
+      "widthVsIdle": 1.3673469387755102,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 91,
+        "y": 90,
+        "w": 43,
+        "h": 26
+      },
+      "approximateLegZone": {
+        "x": 87,
+        "y": 115,
+        "w": 51,
+        "h": 32
+      },
+      "approximateArmReachZone": {
+        "x": 79,
+        "y": 87,
+        "w": 67,
+        "h": 29
+      },
+      "flags": [
+        "body height 64% of idle"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\recovery\\0002.png",
+      "visibleBodyHeight": 87,
+      "visibleBodyWidth": 79,
+      "heightVsIdle": 0.7372881355932204,
+      "widthVsIdle": 1.6122448979591837,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 87,
+        "y": 80,
+        "w": 51,
+        "h": 30
+      },
+      "approximateLegZone": {
+        "x": 82,
+        "y": 110,
+        "w": 60,
+        "h": 37
+      },
+      "approximateArmReachZone": {
+        "x": 73,
+        "y": 77,
+        "w": 79,
+        "h": 33
+      },
+      "flags": [
+        "body height 74% of idle",
+        "body width 161% of idle"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\recovery\\0003.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 67,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.3673469387755102,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 91,
+        "y": 56,
+        "w": 43,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 87,
+        "y": 96,
+        "w": 51,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 79,
+        "y": 51,
+        "w": 67,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\recovery\\0004.png",
+      "visibleBodyHeight": 131,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1.1101694915254237,
+      "widthVsIdle": 1.3061224489795917,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 92,
+        "y": 46,
+        "w": 41,
+        "h": 45
+      },
+      "approximateLegZone": {
+        "x": 88,
+        "y": 90,
+        "w": 49,
+        "h": 55
+      },
+      "approximateArmReachZone": {
+        "x": 80,
+        "y": 41,
+        "w": 64,
+        "h": 50
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\recovery\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\recovery\\0005.png",
+      "visibleBodyHeight": 131,
+      "visibleBodyWidth": 58,
+      "heightVsIdle": 1.1101694915254237,
+      "widthVsIdle": 1.183673469387755,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 93,
+        "y": 46,
+        "w": 37,
+        "h": 45
+      },
+      "approximateLegZone": {
+        "x": 90,
+        "y": 90,
+        "w": 44,
+        "h": 55
+      },
+      "approximateArmReachZone": {
+        "x": 83,
+        "y": 41,
+        "w": 58,
+        "h": 50
+      },
+      "flags": []
+    }
+  ]
+}

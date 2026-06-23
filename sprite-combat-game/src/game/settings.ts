@@ -1,10 +1,12 @@
 export interface GameSettings {
   screenShake: boolean;
+  cameraDistance: 'close' | 'normal' | 'far';
 }
 
 const storageKey = 'fightcore-settings';
 const defaults: GameSettings = {
   screenShake: true,
+  cameraDistance: 'normal',
 };
 
 export function loadGameSettings(): GameSettings {

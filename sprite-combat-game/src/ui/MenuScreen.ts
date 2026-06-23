@@ -11,6 +11,7 @@ type MenuHandlers = {
   onCredits: () => void;
   onFullscreen: () => void;
   onToggleScreenShake: (enabled: boolean) => void;
+  onCameraDistance: (distance: 'close' | 'normal' | 'far') => void;
   onBack: () => void;
   onResume: () => void;
   onRestart: () => void;
@@ -69,11 +70,16 @@ export class MenuScreen {
     this.installPreviewFallbacks();
   }
 
-  showSettings(screenShakeEnabled = true): void {
+  showSettings(screenShakeEnabled = true, cameraDistance: 'close' | 'normal' | 'far' = 'normal'): void {
     this.show(`
       <section class="menu-panel settings-panel">
         <h2>Options</h2>
         <label class="toggle-row"><span>Screen shake</span><input data-setting="screen-shake" type="checkbox" ${screenShakeEnabled ? 'checked' : ''} /></label>
+        <label class="toggle-row"><span>Camera distance</span><select data-setting="camera-distance">
+          <option value="close" ${cameraDistance === 'close' ? 'selected' : ''}>Close</option>
+          <option value="normal" ${cameraDistance === 'normal' ? 'selected' : ''}>Normal</option>
+          <option value="far" ${cameraDistance === 'far' ? 'selected' : ''}>Far</option>
+        </select></label>
         <button data-action="fullscreen" type="button">Toggle Fullscreen</button>
         <button data-action="back">Back</button>
       </section>
@@ -143,6 +149,9 @@ export class MenuScreen {
     });
     this.root.querySelectorAll<HTMLInputElement>('input[data-setting="screen-shake"]').forEach((input) => {
       input.addEventListener('change', () => this.handlers?.onToggleScreenShake(input.checked));
+    });
+    this.root.querySelectorAll<HTMLSelectElement>('select[data-setting="camera-distance"]').forEach((select) => {
+      select.addEventListener('change', () => this.handlers?.onCameraDistance(select.value as 'close' | 'normal' | 'far'));
     });
   }
 

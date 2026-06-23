@@ -49,13 +49,21 @@ const FPS = 60;
 const FRAME_MS = 1000 / FPS;
 
 const overrides: Record<string, Partial<CombatMoveProfile>> = {
-  jab: { hitstopFrames: 3, hitstunFrames: 8, knockback: { x: 92, y: 0 }, launchAngleDegrees: 0 },
+  jab: {
+    hitstopFrames: 3,
+    hitstunFrames: 8,
+    knockback: { x: 92, y: 0 },
+    launchAngleDegrees: 0,
+    activeFrames: range(6, 15),
+    visualActiveFrames: [3],
+    impactFrame: 3,
+  },
   cross: {
     hitstopFrames: 4,
     hitstunFrames: 10,
     knockback: { x: 132, y: -8 },
     launchAngleDegrees: -4,
-    activeFrames: range(10, 24),
+    activeFrames: range(8, 20),
     visualActiveFrames: [3],
     impactFrame: 3,
   },
@@ -69,7 +77,7 @@ const overrides: Record<string, Partial<CombatMoveProfile>> = {
     hits: [
       {
         hitId: 'jab',
-        activeFrames: range(5, 12),
+        activeFrames: range(7, 14),
         damage: 8,
         hitstopFrames: 3,
         hitstunFrames: 8,
@@ -78,7 +86,7 @@ const overrides: Record<string, Partial<CombatMoveProfile>> = {
       },
       {
         hitId: 'cross',
-        activeFrames: range(24, 38),
+        activeFrames: range(25, 42),
         damage: 16,
         hitstopFrames: 5,
         hitstunFrames: 14,

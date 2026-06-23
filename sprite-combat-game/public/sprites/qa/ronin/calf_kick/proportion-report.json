@@ -1,0 +1,162 @@
+{
+  "entityId": "ronin",
+  "animationId": "calf_kick",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 256,
+    "h": 160
+  },
+  "normalizedScale": 0.21338155515370705,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0001.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 88,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.375,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 100,
+        "y": 56,
+        "w": 56,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 95,
+        "y": 96,
+        "w": 67,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 84,
+        "y": 51,
+        "w": 88,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 108,
+        "y": 56,
+        "w": 41,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 104,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 96,
+        "y": 51,
+        "w": 64,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0003.png",
+      "visibleBodyHeight": 109,
+      "visibleBodyWidth": 81,
+      "heightVsIdle": 0.923728813559322,
+      "widthVsIdle": 1.265625,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 103,
+        "y": 63,
+        "w": 52,
+        "h": 37
+      },
+      "approximateLegZone": {
+        "x": 98,
+        "y": 100,
+        "w": 62,
+        "h": 46
+      },
+      "approximateArmReachZone": {
+        "x": 88,
+        "y": 59,
+        "w": 81,
+        "h": 41
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0004.png",
+      "visibleBodyHeight": 108,
+      "visibleBodyWidth": 92,
+      "heightVsIdle": 0.9152542372881356,
+      "widthVsIdle": 1.4375,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 99,
+        "y": 64,
+        "w": 59,
+        "h": 37
+      },
+      "approximateLegZone": {
+        "x": 93,
+        "y": 100,
+        "w": 70,
+        "h": 45
+      },
+      "approximateArmReachZone": {
+        "x": 82,
+        "y": 59,
+        "w": 92,
+        "h": 41
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0005.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 84,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.3125,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 101,
+        "y": 56,
+        "w": 54,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 96,
+        "y": 96,
+        "w": 64,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 86,
+        "y": 51,
+        "w": 84,
+        "h": 45
+      },
+      "flags": []
+    }
+  ]
+}

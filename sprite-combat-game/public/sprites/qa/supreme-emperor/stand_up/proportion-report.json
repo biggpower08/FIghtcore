@@ -1,0 +1,206 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "stand_up",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 224,
+    "h": 224
+  },
+  "normalizedScale": 0.36875,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0001.png",
+      "visibleBodyHeight": 77,
+      "visibleBodyWidth": 160,
+      "heightVsIdle": 0.652542372881356,
+      "widthVsIdle": 3.2653061224489797,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 61,
+        "y": 152,
+        "w": 102,
+        "h": 26
+      },
+      "approximateLegZone": {
+        "x": 51,
+        "y": 178,
+        "w": 122,
+        "h": 32
+      },
+      "approximateArmReachZone": {
+        "x": 32,
+        "y": 149,
+        "w": 160,
+        "h": 29
+      },
+      "flags": [
+        "body height 65% of idle",
+        "body width 327% of idle"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0002.png",
+      "visibleBodyHeight": 101,
+      "visibleBodyWidth": 90,
+      "heightVsIdle": 0.8559322033898306,
+      "widthVsIdle": 1.836734693877551,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 83,
+        "y": 133,
+        "w": 58,
+        "h": 34
+      },
+      "approximateLegZone": {
+        "x": 78,
+        "y": 168,
+        "w": 68,
+        "h": 42
+      },
+      "approximateArmReachZone": {
+        "x": 67,
+        "y": 129,
+        "w": 90,
+        "h": 38
+      },
+      "flags": [
+        "body width 184% of idle"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0003.png",
+      "visibleBodyHeight": 114,
+      "visibleBodyWidth": 107,
+      "heightVsIdle": 0.9661016949152542,
+      "widthVsIdle": 2.183673469387755,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 78,
+        "y": 123,
+        "w": 68,
+        "h": 39
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 162,
+        "w": 81,
+        "h": 48
+      },
+      "approximateArmReachZone": {
+        "x": 59,
+        "y": 119,
+        "w": 107,
+        "h": 43
+      },
+      "flags": [
+        "body width 218% of idle"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 94,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.9183673469387754,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 82,
+        "y": 120,
+        "w": 60,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 76,
+        "y": 160,
+        "w": 71,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 65,
+        "y": 115,
+        "w": 94,
+        "h": 45
+      },
+      "flags": [
+        "body width 192% of idle"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0005.png",
+      "visibleBodyHeight": 180,
+      "visibleBodyWidth": 92,
+      "heightVsIdle": 1.5254237288135593,
+      "widthVsIdle": 1.8775510204081634,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 83,
+        "y": 72,
+        "w": 59,
+        "h": 61
+      },
+      "approximateLegZone": {
+        "x": 77,
+        "y": 133,
+        "w": 70,
+        "h": 76
+      },
+      "approximateArmReachZone": {
+        "x": 66,
+        "y": 64,
+        "w": 92,
+        "h": 68
+      },
+      "flags": [
+        "body height 153% of idle",
+        "body width 188% of idle"
+      ]
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0006.png",
+      "visibleBodyHeight": 194,
+      "visibleBodyWidth": 87,
+      "heightVsIdle": 1.6440677966101696,
+      "widthVsIdle": 1.7755102040816326,
+      "baseline": 212,
+      "approximateTorsoZone": {
+        "x": 85,
+        "y": 61,
+        "w": 56,
+        "h": 66
+      },
+      "approximateLegZone": {
+        "x": 79,
+        "y": 127,
+        "w": 66,
+        "h": 81
+      },
+      "approximateArmReachZone": {
+        "x": 69,
+        "y": 53,
+        "w": 87,
+        "h": 74
+      },
+      "flags": [
+        "body height 164% of idle",
+        "body width 178% of idle"
+      ]
+    }
+  ]
+}

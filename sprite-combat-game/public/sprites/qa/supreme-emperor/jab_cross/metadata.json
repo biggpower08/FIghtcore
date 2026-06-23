@@ -51,12 +51,12 @@
     "h": 160
   },
   "frameDurations": [
-    60,
-    180,
-    70,
-    70,
+    80,
+    170,
+    90,
+    95,
     260,
-    90
+    120
   ],
   "holdFrames": {
     "0002": 2,
@@ -97,7 +97,7 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.925,
-      "durationMs": 60,
+      "durationMs": 80,
       "holdCount": 1,
       "cutoff": false
     },
@@ -131,7 +131,7 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.925,
-      "durationMs": 180,
+      "durationMs": 170,
       "holdCount": 2,
       "cutoff": false
     },
@@ -165,7 +165,7 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.925,
-      "durationMs": 70,
+      "durationMs": 90,
       "holdCount": 1,
       "cutoff": false
     },
@@ -199,7 +199,7 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.925,
-      "durationMs": 70,
+      "durationMs": 95,
       "holdCount": 1,
       "cutoff": false
     },
@@ -267,7 +267,7 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.925,
-      "durationMs": 90,
+      "durationMs": 120,
       "holdCount": 1,
       "cutoff": false
     }

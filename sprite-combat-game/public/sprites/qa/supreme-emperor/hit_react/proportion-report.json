@@ -1,0 +1,162 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "hit_react",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "normalizedScale": 0.1888,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\hit_react\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\hit_react\\0001.png",
+      "visibleBodyHeight": 120,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1.0169491525423728,
+      "widthVsIdle": 1.3061224489795917,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 54,
+        "w": 41,
+        "h": 41
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 95,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 50,
+        "w": 64,
+        "h": 46
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\hit_react\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\hit_react\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 66,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.346938775510204,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 75,
+        "y": 56,
+        "w": 42,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 71,
+        "y": 96,
+        "w": 50,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 63,
+        "y": 51,
+        "w": 66,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\hit_react\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\hit_react\\0003.png",
+      "visibleBodyHeight": 116,
+      "visibleBodyWidth": 63,
+      "heightVsIdle": 0.9830508474576272,
+      "widthVsIdle": 1.2857142857142858,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 58,
+        "w": 40,
+        "h": 39
+      },
+      "approximateLegZone": {
+        "x": 73,
+        "y": 97,
+        "w": 48,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 65,
+        "y": 53,
+        "w": 63,
+        "h": 44
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\hit_react\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\hit_react\\0004.png",
+      "visibleBodyHeight": 117,
+      "visibleBodyWidth": 63,
+      "heightVsIdle": 0.9915254237288136,
+      "widthVsIdle": 1.2857142857142858,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 57,
+        "w": 40,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 73,
+        "y": 97,
+        "w": 48,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 65,
+        "y": 52,
+        "w": 63,
+        "h": 44
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\hit_react\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\hit_react\\0005.png",
+      "visibleBodyHeight": 120,
+      "visibleBodyWidth": 62,
+      "heightVsIdle": 1.0169491525423728,
+      "widthVsIdle": 1.2653061224489797,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 54,
+        "w": 40,
+        "h": 41
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 95,
+        "w": 47,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 65,
+        "y": 50,
+        "w": 62,
+        "h": 46
+      },
+      "flags": []
+    }
+  ]
+}

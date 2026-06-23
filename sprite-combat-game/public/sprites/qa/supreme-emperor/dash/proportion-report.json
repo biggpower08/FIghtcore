@@ -1,0 +1,173 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "dash",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 288,
+    "h": 176
+  },
+  "normalizedScale": 0.28028503562945367,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\dash\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\dash\\0001.png",
+      "visibleBodyHeight": 141,
+      "visibleBodyWidth": 91,
+      "heightVsIdle": 1.194915254237288,
+      "widthVsIdle": 1.8571428571428572,
+      "baseline": 164,
+      "approximateTorsoZone": {
+        "x": 115,
+        "y": 54,
+        "w": 58,
+        "h": 48
+      },
+      "approximateLegZone": {
+        "x": 110,
+        "y": 102,
+        "w": 69,
+        "h": 59
+      },
+      "approximateArmReachZone": {
+        "x": 99,
+        "y": 48,
+        "w": 91,
+        "h": 54
+      },
+      "flags": [
+        "body height 119% of idle",
+        "body width 186% of idle"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\dash\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\dash\\0002.png",
+      "visibleBodyHeight": 101,
+      "visibleBodyWidth": 86,
+      "heightVsIdle": 0.8559322033898306,
+      "widthVsIdle": 1.7551020408163265,
+      "baseline": 164,
+      "approximateTorsoZone": {
+        "x": 116,
+        "y": 85,
+        "w": 55,
+        "h": 34
+      },
+      "approximateLegZone": {
+        "x": 111,
+        "y": 120,
+        "w": 65,
+        "h": 42
+      },
+      "approximateArmReachZone": {
+        "x": 101,
+        "y": 81,
+        "w": 86,
+        "h": 38
+      },
+      "flags": [
+        "body width 176% of idle"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\dash\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\dash\\0003.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 119,
+      "heightVsIdle": 1,
+      "widthVsIdle": 2.4285714285714284,
+      "baseline": 164,
+      "approximateTorsoZone": {
+        "x": 106,
+        "y": 72,
+        "w": 76,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 99,
+        "y": 112,
+        "w": 90,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 85,
+        "y": 67,
+        "w": 119,
+        "h": 45
+      },
+      "flags": [
+        "body width 243% of idle"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\dash\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\dash\\0004.png",
+      "visibleBodyHeight": 116,
+      "visibleBodyWidth": 122,
+      "heightVsIdle": 0.9830508474576272,
+      "widthVsIdle": 2.489795918367347,
+      "baseline": 164,
+      "approximateTorsoZone": {
+        "x": 105,
+        "y": 74,
+        "w": 78,
+        "h": 39
+      },
+      "approximateLegZone": {
+        "x": 98,
+        "y": 113,
+        "w": 93,
+        "h": 49
+      },
+      "approximateArmReachZone": {
+        "x": 83,
+        "y": 69,
+        "w": 122,
+        "h": 44
+      },
+      "flags": [
+        "body width 249% of idle"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\dash\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\dash\\0005.png",
+      "visibleBodyHeight": 135,
+      "visibleBodyWidth": 106,
+      "heightVsIdle": 1.1440677966101696,
+      "widthVsIdle": 2.163265306122449,
+      "baseline": 164,
+      "approximateTorsoZone": {
+        "x": 110,
+        "y": 59,
+        "w": 68,
+        "h": 46
+      },
+      "approximateLegZone": {
+        "x": 104,
+        "y": 105,
+        "w": 81,
+        "h": 57
+      },
+      "approximateArmReachZone": {
+        "x": 91,
+        "y": 53,
+        "w": 106,
+        "h": 51
+      },
+      "flags": [
+        "body width 216% of idle"
+      ]
+    }
+  ]
+}

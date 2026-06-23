@@ -2792,6 +2792,8 @@ Use manual overrides for permanent hand edits. Generated folders may be overwrit
 
 ## Ronin - Jab
 
+**Problem animation to check first.**
+
 - Character id: `ronin`
 - Animation id: `jab`
 - Runtime source: `frames-cleaned`
@@ -2801,6 +2803,11 @@ Use manual overrides for permanent hand edits. Generated folders may be overwrit
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\jab`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\jab\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\jab\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\jab\proportion-report.json`
+- Held impact frames: `0003` x2
+- Frame durations: `0001:90ms`, `0002:120ms`, `0003:155ms`, `0004:125ms`, `0005:90ms`
+- Visual active frames: `0003`
+- Impact frame: `0003`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2816,6 +2823,8 @@ Runtime frames:
 
 ## Ronin - Cross
 
+**Problem animation to check first.**
+
 - Character id: `ronin`
 - Animation id: `cross`
 - Runtime source: `frames-cleaned`
@@ -2825,6 +2834,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\cross`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\cross\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\cross\proportion-report.json`
+- Held impact frames: `0003` x3
+- Frame durations: `0001:90ms`, `0002:115ms`, `0003:230ms`, `0004:135ms`, `0005:95ms`
+- Visual active frames: `0003`
+- Impact frame: `0003`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2849,6 +2863,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\calf_kick`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\calf_kick\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\calf_kick\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\calf_kick\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2873,6 +2892,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\knee`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\knee\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\knee\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\knee\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2897,6 +2921,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\dash`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\dash\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\dash\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\dash\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2921,6 +2950,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\hit_react`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\hit_react\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\hit_react\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\hit_react\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\hit_react`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\hit_react\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2945,6 +2979,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\recovery`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\recovery\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\recovery\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\recovery\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\recovery`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\recovery\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2969,6 +3008,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\stand_up`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\stand_up\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\stand_up\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\stand_up\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2985,6 +3029,8 @@ Runtime frames:
 
 ## Supreme Emperor - Jab-Cross
 
+**Problem animation to check first.**
+
 - Character id: `supreme-emperor`
 - Animation id: `jab_cross`
 - Runtime source: `frames-cleaned`
@@ -2994,6 +3040,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\jab_cross`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\jab_cross\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\proportion-report.json`
+- Held impact frames: `0002` x2, `0005` x3
+- Frame durations: `0001:80ms`, `0002:170ms`, `0003:90ms`, `0004:95ms`, `0005:260ms`, `0006:120ms`
+- Visual active frames: `0002`, `0005`
+- Impact frame: `0005`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3010,6 +3061,8 @@ Runtime frames:
 
 ## Supreme Emperor - Cross second hit inside Jab-Cross
 
+**Problem animation to check first.**
+
 - Character id: `supreme-emperor`
 - Animation id: `jab_cross`
 - Runtime source: `frames-cleaned`
@@ -3019,6 +3072,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\jab_cross`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\jab_cross\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\proportion-report.json`
+- Held impact frames: `0002` x2, `0005` x3
+- Frame durations: `0001:80ms`, `0002:170ms`, `0003:90ms`, `0004:95ms`, `0005:260ms`, `0006:120ms`
+- Visual active frames: `0002`, `0005`
+- Impact frame: `0005`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3044,6 +3102,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\feint_rear_hook`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\feint_rear_hook\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\feint_rear_hook\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\feint_rear_hook\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3062,6 +3125,8 @@ Runtime frames:
 
 ## Supreme Emperor - Tornado Kick
 
+**Problem animation to check first.**
+
 - Character id: `supreme-emperor`
 - Animation id: `tornado_kick`
 - Runtime source: `frames-cleaned`
@@ -3071,6 +3136,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\tornado_kick`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\tornado_kick\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\tornado_kick\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\tornado_kick\proportion-report.json`
+- Held impact frames: `0007` x4
+- Frame durations: `0001:70ms`, `0002:70ms`, `0003:70ms`, `0004:80ms`, `0005:120ms`, `0006:100ms`, `0007:360ms`, `0008:80ms`, `0009:70ms`
+- Visual active frames: `0007`
+- Impact frame: `0007`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3099,6 +3169,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\roundhouse_kick`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\roundhouse_kick\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\roundhouse_kick\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\roundhouse_kick\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3125,6 +3200,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\dash`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\dash\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\dash\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\dash\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\dash`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\dash\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3149,6 +3229,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\hit_react`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\hit_react\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\hit_react\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\hit_react\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3173,6 +3258,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\recovery`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\recovery\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\recovery\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\recovery\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3197,6 +3287,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\stand_up`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\stand_up\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\stand_up\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\stand_up\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\stand_up`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\stand_up\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3222,6 +3317,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\cross`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\cross\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\cross\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\cross\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3243,6 +3343,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\hit_react`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\hit_react\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\hit_react\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\hit_react\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\hit_react`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\hit_react\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3264,6 +3369,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\death`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\death\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\death\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\death\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\death`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\death\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3285,6 +3395,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\knockdown`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\knockdown\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\monkey-grunt\knockdown\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\monkey-grunt\knockdown\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\knockdown`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\knockdown\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3297,6 +3412,8 @@ Runtime frames:
 
 ## Monkey Striker - Attack / Round Kick
 
+**Problem animation to check first.**
+
 - Character id: `striker-monkey`
 - Animation id: `round_kick`
 - Runtime source: `atlas-strip`
@@ -3306,6 +3423,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\round_kick`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\round_kick\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\round_kick\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\round_kick\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\round_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\round_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3327,6 +3449,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\hit_react`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\hit_react\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\hit_react\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\hit_react\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\hit_react`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\hit_react\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3339,6 +3466,8 @@ Runtime frames:
 
 ## Monkey Striker - Run
 
+**Problem animation to check first.**
+
 - Character id: `striker-monkey`
 - Animation id: `run`
 - Runtime source: `atlas-strip`
@@ -3348,6 +3477,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\run`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\run\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\run\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\run\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\run`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\run\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3369,6 +3503,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\idle`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\idle\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\idle\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\idle\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\idle`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\idle\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3394,6 +3533,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\death`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\death\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\death\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\death\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\death`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\death\0001.png`
 - Rerunning import/clean can overwrite active folder: no
@@ -3415,6 +3559,11 @@ Runtime frames:
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\knockdown`
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\knockdown\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\striker-monkey\knockdown\frame-continuity.json`
+- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\striker-monkey\knockdown\proportion-report.json`
+- Held impact frames: none
+- Frame durations: runtime default
+- Visual active frames: combat profile/default
+- Impact frame: not marked
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\knockdown`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\knockdown\0001.png`
 - Rerunning import/clean can overwrite active folder: no

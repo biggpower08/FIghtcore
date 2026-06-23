@@ -873,13 +873,15 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "h": 160
         },
         "frameDurations": [
-          91,
-          91,
-          91,
-          91,
-          91
+          90,
+          120,
+          155,
+          125,
+          90
         ],
-        "holdFrames": {},
+        "holdFrames": {
+          "0003": 2
+        },
         "warnings": [],
         "frames": [
           {
@@ -912,7 +914,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 90,
             "holdCount": 1,
             "cutoff": false
           },
@@ -946,7 +948,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 120,
             "holdCount": 1,
             "cutoff": false
           },
@@ -980,8 +982,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
-            "holdCount": 1,
+            "durationMs": 155,
+            "holdCount": 2,
             "cutoff": false
           },
           {
@@ -1014,7 +1016,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 125,
             "holdCount": 1,
             "cutoff": false
           },
@@ -1048,7 +1050,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 90,
             "holdCount": 1,
             "cutoff": false
           }
@@ -1064,11 +1066,11 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "h": 160
         },
         "frameDurations": [
-          70,
-          80,
-          260,
-          110,
-          80
+          90,
+          115,
+          230,
+          135,
+          95
         ],
         "holdFrames": {
           "0003": 3
@@ -1105,7 +1107,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 70,
+            "durationMs": 90,
             "holdCount": 1,
             "cutoff": false
           },
@@ -1139,7 +1141,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 80,
+            "durationMs": 115,
             "holdCount": 1,
             "cutoff": false
           },
@@ -1173,7 +1175,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 260,
+            "durationMs": 230,
             "holdCount": 3,
             "cutoff": false
           },
@@ -1207,7 +1209,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 110,
+            "durationMs": 135,
             "holdCount": 1,
             "cutoff": false
           },
@@ -1241,7 +1243,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 80,
+            "durationMs": 95,
             "holdCount": 1,
             "cutoff": false
           }
@@ -2882,12 +2884,12 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "h": 160
         },
         "frameDurations": [
-          60,
-          180,
-          70,
-          70,
+          80,
+          170,
+          90,
+          95,
           260,
-          90
+          120
         ],
         "holdFrames": {
           "0002": 2,
@@ -2925,7 +2927,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 60,
+            "durationMs": 80,
             "holdCount": 1,
             "cutoff": false
           },
@@ -2959,7 +2961,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 180,
+            "durationMs": 170,
             "holdCount": 2,
             "cutoff": false
           },
@@ -2993,7 +2995,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 70,
+            "durationMs": 90,
             "holdCount": 1,
             "cutoff": false
           },
@@ -3027,7 +3029,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 70,
+            "durationMs": 95,
             "holdCount": 1,
             "cutoff": false
           },
@@ -3095,7 +3097,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 90,
+            "durationMs": 120,
             "holdCount": 1,
             "cutoff": false
           }

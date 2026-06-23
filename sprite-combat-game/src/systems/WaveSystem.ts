@@ -21,7 +21,9 @@ export class WaveSystem {
       const move = moveById.get(definition.moveId);
       if (!move) throw new Error(`Missing boss move ${definition.moveId}`);
       const position = clampToPlayableArena(ARENA_WIDTH - 500, ARENA_HEIGHT / 2, 42);
-      return { enemies: [], boss: new Boss(`boss_${this.wave}`, definition, position.x, position.y, move) };
+      const boss = new Boss(`boss_${this.wave}`, definition, position.x, position.y, move);
+      this.applyEnemyStrength(boss);
+      return { enemies: [], boss };
     }
 
     const enemies: Enemy[] = [];
@@ -41,7 +43,9 @@ export class WaveSystem {
       for (let index = 0; index < group.count; index += 1) {
         const angle = (Math.PI * 2 * spawnedCount) / totalCount;
         const position = clampToPlayableArena(ARENA_WIDTH / 2 + Math.cos(angle) * 520, ARENA_HEIGHT / 2 + Math.sin(angle) * 330, 22);
-        enemies.push(new Enemy(`enemy_${this.wave}_${spawnedCount}`, definition, position.x, position.y, move));
+        const enemy = new Enemy(`enemy_${this.wave}_${spawnedCount}`, definition, position.x, position.y, move);
+        this.applyEnemyStrength(enemy);
+        enemies.push(enemy);
         spawnedCount += 1;
       }
     }
@@ -55,10 +59,19 @@ export class WaveSystem {
       for (let index = 0; index < bonusCount; index += 1) {
         const angle = (Math.PI * 2 * index) / bonusCount;
         const position = clampToPlayableArena(ARENA_WIDTH / 2 + Math.cos(angle) * 590, ARENA_HEIGHT / 2 + Math.sin(angle) * 370, 22);
-        enemies.push(new Enemy(`enemy_${this.wave}_bonus_${index}`, definition, position.x, position.y, move));
+        const enemy = new Enemy(`enemy_${this.wave}_bonus_${index}`, definition, position.x, position.y, move);
+        this.applyEnemyStrength(enemy);
+        enemies.push(enemy);
       }
     }
 
     return { enemies, boss: null };
+  }
+
+  private applyEnemyStrength(enemy: Enemy | Boss): void {
+    const scalar = 1 + Math.min(0.12, Math.max(0, this.wave - 1) * 0.01);
+    enemy.maxHealth = Math.round(enemy.maxHealth * scalar);
+    enemy.health = enemy.maxHealth;
+    enemy.speed *= 1 + Math.min(0.06, Math.max(0, this.wave - 1) * 0.005);
   }
 }

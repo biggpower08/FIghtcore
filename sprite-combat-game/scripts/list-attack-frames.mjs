@@ -46,18 +46,18 @@ const runtimeSources = [
 ];
 
 const activeAnimations = [
-  entry('ronin', 'Ronin', 'Jab', 'jab'),
-  entry('ronin', 'Ronin', 'Cross', 'cross'),
+  entry('ronin', 'Ronin', 'Jab', 'jab', { problem: true, visualActiveFrames: [3], impactFrame: 3 }),
+  entry('ronin', 'Ronin', 'Cross', 'cross', { problem: true, visualActiveFrames: [3], impactFrame: 3 }),
   entry('ronin', 'Ronin', 'Calf Kick', 'calf_kick'),
   entry('ronin', 'Ronin', 'Knee', 'knee'),
   entry('ronin', 'Ronin', 'Dash', 'dash'),
   entry('ronin', 'Ronin', 'Hit React', 'hit_react'),
   entry('ronin', 'Ronin', 'Recovery', 'recovery'),
   entry('ronin', 'Ronin', 'Stand Up', 'stand_up'),
-  entry('supreme-emperor', 'Supreme Emperor', 'Jab-Cross', 'jab_cross'),
-  entry('supreme-emperor', 'Supreme Emperor', 'Cross second hit inside Jab-Cross', 'jab_cross'),
+  entry('supreme-emperor', 'Supreme Emperor', 'Jab-Cross', 'jab_cross', { problem: true, visualActiveFrames: [2, 5], impactFrame: 5 }),
+  entry('supreme-emperor', 'Supreme Emperor', 'Cross second hit inside Jab-Cross', 'jab_cross', { problem: true, visualActiveFrames: [2, 5], impactFrame: 5 }),
   entry('supreme-emperor', 'Supreme Emperor', 'Feint-Rear Hook', 'feint_rear_hook'),
-  entry('supreme-emperor', 'Supreme Emperor', 'Tornado Kick', 'tornado_kick'),
+  entry('supreme-emperor', 'Supreme Emperor', 'Tornado Kick', 'tornado_kick', { problem: true, visualActiveFrames: [7], impactFrame: 7 }),
   entry('supreme-emperor', 'Supreme Emperor', 'Roundhouse Kick', 'roundhouse_kick'),
   entry('supreme-emperor', 'Supreme Emperor', 'Dash', 'dash'),
   entry('supreme-emperor', 'Supreme Emperor', 'Hit React', 'hit_react'),
@@ -67,9 +67,9 @@ const activeAnimations = [
   entry('monkey-grunt', 'Monkey Grunt', 'Hit React', 'hit_react'),
   entry('monkey-grunt', 'Monkey Grunt', 'Death', 'death'),
   entry('monkey-grunt', 'Monkey Grunt', 'Knockdown', 'knockdown'),
-  entry('striker-monkey', 'Monkey Striker', 'Attack / Round Kick', 'round_kick'),
+  entry('striker-monkey', 'Monkey Striker', 'Attack / Round Kick', 'round_kick', { problem: true }),
   entry('striker-monkey', 'Monkey Striker', 'Hit React', 'hit_react'),
-  entry('striker-monkey', 'Monkey Striker', 'Run', 'run'),
+  entry('striker-monkey', 'Monkey Striker', 'Run', 'run', { problem: true }),
   entry('striker-monkey', 'Monkey Striker', 'Idle', 'idle'),
   entry('striker-monkey', 'Monkey Striker', 'Death', 'death'),
   entry('striker-monkey', 'Monkey Striker', 'Knockdown', 'knockdown'),
@@ -87,8 +87,8 @@ console.log(markdown);
 console.log(`\nWrote ${docPath}`);
 console.log(`Updated ${mainFrameDocPath}`);
 
-function entry(characterId, displayName, moveName, animationId) {
-  return { characterId, displayName, moveName, animationId };
+function entry(characterId, displayName, moveName, animationId, options = {}) {
+  return { characterId, displayName, moveName, animationId, ...options };
 }
 
 async function toReportRow(item) {
@@ -106,9 +106,15 @@ async function toReportRow(item) {
     cleanedQaFolder,
     continuityPath: path.join(qaFolder, 'frame-continuity.json'),
     cleanedContinuityPath: path.join(cleanedQaFolder, 'frame-continuity.json'),
+    proportionPath: path.join(qaFolder, 'proportion-report.json'),
     manualOverrideFolder: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId),
     manualOverrideExample: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId, '0001.png'),
     framesPackFolder: path.resolve(cwd, 'public/sprites/frames-pack', item.characterId, item.animationId),
+    frameDurations: manifest?.frameDurations ?? [],
+    holdFrames: manifest?.holdFrames ?? {},
+    visualActiveFrames: item.visualActiveFrames ?? [],
+    impactFrame: item.impactFrame,
+    problem: Boolean(item.problem),
     metadata,
   };
 }
@@ -169,6 +175,8 @@ async function loadSpritePackManifests() {
       animations.set(animationId, {
         sourcePath: path.resolve(path.dirname(manifestPath), animation.file),
         manifestPath,
+        frameDurations: Array.isArray(animation.frameDurations) ? animation.frameDurations : [],
+        holdFrames: animation.holdFrames ?? {},
       });
     }
     result.set(characterId, { manifestPath, animations });
@@ -211,6 +219,8 @@ function renderMarkdown(items) {
   for (const row of items) {
     lines.push(`## ${row.displayName} - ${row.moveName}`);
     lines.push('');
+    if (row.problem) lines.push('**Problem animation to check first.**');
+    if (row.problem) lines.push('');
     lines.push(`- Character id: \`${row.characterId}\``);
     lines.push(`- Animation id: \`${row.animationId}\``);
     lines.push(`- Runtime source: \`${row.runtime.id}\``);
@@ -220,6 +230,11 @@ function renderMarkdown(items) {
     lines.push(`- Cleaned QA folder: \`${row.cleanedQaFolder}\``);
     lines.push(`- Frame continuity report: \`${row.continuityPath}\``);
     lines.push(`- Cleaned continuity report: \`${row.cleanedContinuityPath}\``);
+    lines.push(`- Proportion report: \`${row.proportionPath}\``);
+    lines.push(`- Held impact frames: ${Object.keys(row.holdFrames).length > 0 ? Object.entries(row.holdFrames).map(([frame, count]) => `\`${frame}\` x${count}`).join(', ') : 'none'}`);
+    lines.push(`- Frame durations: ${row.frameDurations.length > 0 ? row.frameDurations.map((duration, index) => `\`${String(index + 1).padStart(4, '0')}:${duration}ms\``).join(', ') : 'runtime default'}`);
+    lines.push(`- Visual active frames: ${row.visualActiveFrames.length > 0 ? row.visualActiveFrames.map((frame) => `\`${String(frame).padStart(4, '0')}\``).join(', ') : 'combat profile/default'}`);
+    lines.push(`- Impact frame: ${row.impactFrame ? `\`${String(row.impactFrame).padStart(4, '0')}\`` : 'not marked'}`);
     lines.push(`- Manual override folder: \`${row.manualOverrideFolder}\``);
     lines.push(`- Manual override example: \`${row.manualOverrideExample}\``);
     lines.push(`- Rerunning import/clean can overwrite active folder: ${row.runtime.overwrittenByImport ? 'yes' : 'no'}`);

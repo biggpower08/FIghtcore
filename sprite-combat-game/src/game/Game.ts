@@ -48,6 +48,8 @@ const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
 const CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS = 360;
 const CYBER_MONKEY_GRAPPLER_ATTACK_RELEASE_MS = 90;
 const PASSIVE_HEALTH_REGEN_PER_SECOND = 1.4;
+const PLAYER_ATTACK_QUEUE_TIMEOUT_MS = 360;
+const FINAL_SCOPE_ENTITY_IDS = ['ronin', 'supreme-emperor', 'monkey-grunt', 'striker-monkey'] as const;
 
 interface VisualSuppression {
   hiddenEntityId: string;
@@ -110,6 +112,8 @@ export class Game {
   private pendingVisualStates = new Map<string, PendingVisualState>();
   private activeGrapples: ActiveGrappleLock[] = [];
   private queuedPlayerMove: MoveDefinition | null = null;
+  private queuedPlayerMoveMs = 0;
+  private playerChainGraceMs = 0;
   private grappleDebug?: GrappleDebugRenderInfo;
   private hitPauseMs = 0;
   private screenShakeMs = 0;
@@ -140,6 +144,7 @@ export class Game {
       onCredits: () => this.openCredits(),
       onFullscreen: () => this.toggleFullscreen(),
       onToggleScreenShake: (enabled) => this.updateScreenShakeSetting(enabled),
+      onCameraDistance: (distance) => this.updateCameraDistance(distance),
       onBack: () => this.closeMenuPanel(),
       onResume: () => this.resumeGame(),
       onRestart: () => this.startNewRun(),
@@ -147,6 +152,7 @@ export class Game {
     });
     this.resize();
     window.addEventListener('resize', this.resize);
+    this.camera.distance = this.settings.cameraDistance;
     this.camera.follow(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
     void this.preloadBeginningSprites();
@@ -180,6 +186,7 @@ export class Game {
     this.updatePlayer(deltaSeconds);
     this.updateEnemies(deltaMs);
     this.updateTimers(deltaMs);
+    this.updateQueuedAttack(deltaMs);
 
     const missedPlayerAttack = this.hitboxes.some(
       (hitbox) => hitbox.owner === this.player && hitbox.remainingMs > 0 && hitbox.remainingMs - deltaMs <= 0 && hitbox.hitIds.size === 0,
@@ -346,8 +353,12 @@ export class Game {
 
   private handleAttackInput(): void {
     const pressed = this.slotMovePressed();
+    if (pressed && this.player.attackLockMs > 0 && this.canQueuePlayerMove(pressed.move)) {
+      this.queuePlayerMove(pressed.move);
+      return;
+    }
     if (pressed && !this.player.canUseMove(pressed.move)) {
-      if (this.canQueuePlayerMove(pressed.move)) this.queuedPlayerMove = pressed.move;
+      if (this.canQueuePlayerMove(pressed.move)) this.queuePlayerMove(pressed.move);
       return;
     }
     const queued = !pressed && this.queuedPlayerMove && this.canReleaseQueuedMove(this.queuedPlayerMove) ? { slot: 'H' as MoveSlotKey, move: this.queuedPlayerMove } : undefined;
@@ -360,9 +371,15 @@ export class Game {
       return;
     }
 
-    if (selected.move === this.queuedPlayerMove) this.queuedPlayerMove = null;
-    const hitbox = this.combat.startAttack(this.player, selected.move, { ignoreAttackLock: selected === queued });
+    const chained = selected.move === this.queuedPlayerMove || this.playerChainGraceMs > 0 || this.player.dashMs > 0;
+    if (selected.move === this.queuedPlayerMove) this.clearQueuedPlayerMove();
+    const hitbox = this.combat.startAttack(this.player, selected.move, {
+      ignoreAttackLock: selected === queued || chained,
+      ignoreCooldown: chained && ['jab', 'cross'].includes(selected.move.id),
+    });
     if (hitbox) {
+      if (chained) this.shortenChainedStartup(selected.move, hitbox);
+      if (selected.move.id === 'tornado_kick' && this.player.character.id === 'supreme-emperor') this.applyTornadoKickSpacing();
       if (selected.move.healAmount) {
         const restored = this.player.heal(selected.move.healAmount);
         if (restored > 0) {
@@ -378,8 +395,9 @@ export class Game {
       if (selected.move.hitboxWidth > 0 && selected.move.hitboxHeight > 0) this.hitboxes.push(hitbox);
       const lockForMs = this.player.getAttackLockMs(selected.move);
       this.animation.play(this.player, selected.move.animationKey, {
-        lockForMs,
+        lockForMs: this.visualLockMs(selected.move, lockForMs),
         fallback: 'idle',
+        force: chained,
       });
     }
   }
@@ -391,7 +409,60 @@ export class Game {
 
   private canReleaseQueuedMove(move: MoveDefinition): boolean {
     if (this.player.stunMs > 0) return false;
-    return this.player.attackLockMs <= Math.max(90, this.player.getAttackLockMs(move) * 0.34);
+    const cancelPoint = this.player.lastLandedMoveId ? 0.54 : 0.38;
+    return this.player.attackLockMs <= Math.max(95, this.player.getAttackLockMs(move) * cancelPoint);
+  }
+
+  private queuePlayerMove(move: MoveDefinition): void {
+    this.queuedPlayerMove = move;
+    this.queuedPlayerMoveMs = PLAYER_ATTACK_QUEUE_TIMEOUT_MS;
+  }
+
+  private clearQueuedPlayerMove(): void {
+    this.queuedPlayerMove = null;
+    this.queuedPlayerMoveMs = 0;
+  }
+
+  private updateQueuedAttack(deltaMs: number): void {
+    this.playerChainGraceMs = Math.max(0, this.playerChainGraceMs - deltaMs);
+    if (!this.queuedPlayerMove) return;
+    this.queuedPlayerMoveMs = Math.max(0, this.queuedPlayerMoveMs - deltaMs);
+    if (this.queuedPlayerMoveMs <= 0 || this.player.stunMs > 0) this.clearQueuedPlayerMove();
+  }
+
+  private shortenChainedStartup(move: MoveDefinition, hitbox: AttackHitbox): void {
+    if (!['jab', 'cross'].includes(move.id) && this.player.dashMs <= 0) return;
+    const skipMs = move.id === 'jab' ? 34 : 46;
+    hitbox.elapsedMs = Math.min(hitbox.elapsedMs + skipMs, hitbox.totalMs * 0.28);
+    hitbox.remainingMs = Math.max(0, hitbox.totalMs - hitbox.elapsedMs);
+    this.player.attackLockMs = Math.max(120, this.player.attackLockMs - skipMs);
+  }
+
+  private visualLockMs(move: MoveDefinition, baseLockMs: number): number {
+    const minimums: Record<string, number> = {
+      jab: 520,
+      cross: 600,
+      jab_cross: 820,
+      tornado_kick: 1040,
+    };
+    return Math.max(baseLockMs, minimums[move.id] ?? move.windupMs + move.activeMs + move.recoveryMs);
+  }
+
+  private applyTornadoKickSpacing(): void {
+    const sweetspot = 118;
+    for (const target of this.livingEnemies()) {
+      if (!target.alive || target.stunMs > 0 || target.y < this.player.y - 84 || target.y > this.player.y + 72) continue;
+      const dx = target.x - this.player.x;
+      const direction = Math.sign(dx || this.player.facing) || 1;
+      const distance = Math.abs(dx);
+      if (distance > 96) continue;
+      const next = clampToPlayableArena(this.player.x + direction * sweetspot, target.y, target.radius);
+      const push = Math.min(72, Math.abs(next.x - target.x));
+      target.x += direction * push;
+      target.vx = Math.max(Math.abs(target.vx), 170) * direction;
+      target.vy *= 0.55;
+      this.dust.push({ x: target.x, y: target.y + 8, lifeMs: 220 });
+    }
   }
 
   private slotMovePressed(): { slot: MoveSlotKey; move: MoveDefinition } | undefined {
@@ -576,6 +647,7 @@ export class Game {
     this.rewardScreen.show(
       options,
       this.player,
+      this.cyberWarningText(),
       (move, slotIndex) => {
         this.progression.replaceMove(this.player, move, slotIndex);
         this.applyWaveClearRecovery();
@@ -610,6 +682,11 @@ export class Game {
     this.pendingVisualStates.clear();
     this.activeGrapples = [];
     this.state = 'playing';
+  }
+
+  private cyberWarningText(): string {
+    const strength = Math.min(12, Math.max(0, Math.floor((this.waves.wave - 1) / 2)));
+    return `CYBER WARNING: enemy strength calibration +${strength}% next wave. Pressure rises slowly and stays survivable.`;
   }
 
   private livingEnemies(): Array<Enemy | Boss> {
@@ -718,13 +795,20 @@ export class Game {
     if (this.state !== 'home' && this.state !== 'paused') return;
     this.settingsReturnState = this.state;
     this.state = 'settings';
-    this.menuScreen.showSettings(this.settings.screenShake);
+    this.menuScreen.showSettings(this.settings.screenShake, this.settings.cameraDistance);
   }
 
   private updateScreenShakeSetting(enabled: boolean): void {
     this.settings = { ...this.settings, screenShake: enabled };
     saveGameSettings(this.settings);
     if (!enabled) this.screenShakeMs = 0;
+  }
+
+  private updateCameraDistance(distance: 'close' | 'normal' | 'far'): void {
+    this.settings = { ...this.settings, cameraDistance: distance };
+    this.camera.distance = distance;
+    saveGameSettings(this.settings);
+    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
   }
 
   private openControls(): void {
@@ -787,7 +871,7 @@ export class Game {
   private async preloadBeginningSprites(): Promise<void> {
     await Promise.all([
       ...DESERT_ARENA_ASSET_PATHS.map((path) => this.assets.loadImage(path, { kind: 'background' })),
-      ...spriteRegistry.flatMap((sprite) =>
+      ...spriteRegistry.filter((sprite) => FINAL_SCOPE_ENTITY_IDS.includes(sprite.id as (typeof FINAL_SCOPE_ENTITY_IDS)[number])).flatMap((sprite) =>
         getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation)),
       ),
     ]);
@@ -979,6 +1063,7 @@ export class Game {
     this.hitPauseMs = Math.max(this.hitPauseMs, impact.hitstopMs);
     if (this.settings.screenShake && impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, Math.max(140, impact.hitstopMs * 3));
     if (impact.attacker === this.player) {
+      this.playerChainGraceMs = Math.max(this.playerChainGraceMs, 260);
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
       const killed = (impact.target instanceof Enemy || impact.target instanceof Boss) && !impact.target.alive;

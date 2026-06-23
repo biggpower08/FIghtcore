@@ -1,0 +1,191 @@
+{
+  "entityId": "supreme-emperor",
+  "animationId": "walk",
+  "reference": {
+    "bodyHeight": 118,
+    "bodyWidth": 49,
+    "source": "idle metadata median"
+  },
+  "outputCanvas": {
+    "w": 192,
+    "h": 160
+  },
+  "normalizedScale": 0.19633943427620631,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\walk\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\walk\\0001.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 50,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.0204081632653061,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 80,
+        "y": 56,
+        "w": 32,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 77,
+        "y": 96,
+        "w": 38,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 71,
+        "y": 51,
+        "w": 50,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\walk\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\walk\\0002.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 74,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.510204081632653,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 72,
+        "y": 56,
+        "w": 47,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 68,
+        "y": 96,
+        "w": 56,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 59,
+        "y": 51,
+        "w": 74,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\walk\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\walk\\0003.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.3061224489795917,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 41,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 51,
+        "w": 64,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\walk\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\walk\\0004.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 56,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.1428571428571428,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 78,
+        "y": 56,
+        "w": 36,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 75,
+        "y": 96,
+        "w": 43,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 68,
+        "y": 51,
+        "w": 56,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\walk\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\walk\\0005.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.3061224489795917,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 76,
+        "y": 56,
+        "w": 41,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 72,
+        "y": 96,
+        "w": 49,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 64,
+        "y": 51,
+        "w": 64,
+        "h": 45
+      },
+      "flags": []
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\walk\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\walk\\0006.png",
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 50,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.0204081632653061,
+      "baseline": 148,
+      "approximateTorsoZone": {
+        "x": 80,
+        "y": 56,
+        "w": 32,
+        "h": 40
+      },
+      "approximateLegZone": {
+        "x": 77,
+        "y": 96,
+        "w": 38,
+        "h": 50
+      },
+      "approximateArmReachZone": {
+        "x": 71,
+        "y": 51,
+        "w": 50,
+        "h": 45
+      },
+      "flags": []
+    }
+  ]
+}
