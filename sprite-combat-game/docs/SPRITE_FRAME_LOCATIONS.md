@@ -2835,10 +2835,11 @@ Runtime frames:
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\cross\frame-continuity.json`
 - Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\cross\proportion-report.json`
-- Held impact frames: `0003` x3
-- Frame durations: `0001:90ms`, `0002:115ms`, `0003:230ms`, `0004:135ms`, `0005:95ms`
-- Visual active frames: `0003`
-- Impact frame: `0003`
+- Held impact frames: `0004` x3
+- Frame durations: `0001:80ms`, `0002:85ms`, `0003:70ms`, `0004:230ms`, `0005:95ms`
+- Visual active frames: `0004`
+- Impact frame: `0004`
+- Timing note: Corrected this pass: old held frame was `0003` pre-impact; new held/impact frame is `0004` full extension.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3041,10 +3042,11 @@ Runtime frames:
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\jab_cross\frame-continuity.json`
 - Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\proportion-report.json`
-- Held impact frames: `0002` x2, `0005` x3
-- Frame durations: `0001:80ms`, `0002:170ms`, `0003:90ms`, `0004:95ms`, `0005:260ms`, `0006:120ms`
-- Visual active frames: `0002`, `0005`
-- Impact frame: `0005`
+- Held impact frames: `0003` x2, `0004` x3
+- Frame durations: `0001:80ms`, `0002:70ms`, `0003:170ms`, `0004:260ms`, `0005:90ms`, `0006:120ms`
+- Visual active frames: `0003`, `0004`
+- Impact frame: `0004`
+- Timing note: Corrected this pass: old holds were `0002`/`0005`; new held impact frames are `0003` jab and `0004` cross.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -3073,10 +3075,11 @@ Runtime frames:
 - Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\frame-continuity.json`
 - Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\supreme-emperor\jab_cross\frame-continuity.json`
 - Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\supreme-emperor\jab_cross\proportion-report.json`
-- Held impact frames: `0002` x2, `0005` x3
-- Frame durations: `0001:80ms`, `0002:170ms`, `0003:90ms`, `0004:95ms`, `0005:260ms`, `0006:120ms`
-- Visual active frames: `0002`, `0005`
-- Impact frame: `0005`
+- Held impact frames: `0003` x2, `0004` x3
+- Frame durations: `0001:80ms`, `0002:70ms`, `0003:170ms`, `0004:260ms`, `0005:90ms`, `0006:120ms`
+- Visual active frames: `0003`, `0004`
+- Impact frame: `0004`
+- Timing note: Second hit now resolves on `0004`, the full cross/spark contact pose.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`
 - Rerunning import/clean can overwrite active folder: yes

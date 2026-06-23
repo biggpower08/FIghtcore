@@ -1,10 +1,12 @@
 {
   "entityId": "supreme-emperor",
   "animationId": "stand_up",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 49,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 224,
@@ -17,189 +19,262 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 224
+      },
+      "runtimeDrawScale": 1.7662,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 77,
       "visibleBodyWidth": 160,
-      "heightVsIdle": 0.652542372881356,
-      "widthVsIdle": 3.2653061224489797,
-      "baseline": 212,
-      "approximateTorsoZone": {
-        "x": 61,
-        "y": 152,
-        "w": 102,
-        "h": 26
-      },
-      "approximateLegZone": {
-        "x": 51,
-        "y": 178,
-        "w": 122,
-        "h": 32
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.6525,
+      "widthVsIdle": 3.2653,
+      "topY": 135,
+      "bottomFeetY": 211,
+      "baselineY": 212,
+      "baselineShift": 64,
+      "centerX": 112,
+      "centerY": 173.5,
+      "torsoCoreHeightEstimate": 26.18,
+      "torsoCoreWidthEstimate": 102.4,
+      "lowerBodyLegZoneHeightEstimate": 32.34,
+      "armReachExtensionBounds": {
         "x": 32,
-        "y": 149,
+        "y": 148.86,
         "w": 160,
-        "h": 29
+        "h": 29.26
       },
-      "flags": [
+      "warnings": [
         "body height 65% of idle",
-        "body width 327% of idle"
+        "body width 327% of idle",
+        "baseline shifted 64px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 224
+      },
+      "runtimeDrawScale": 1.3465,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 101,
       "visibleBodyWidth": 90,
-      "heightVsIdle": 0.8559322033898306,
-      "widthVsIdle": 1.836734693877551,
-      "baseline": 212,
-      "approximateTorsoZone": {
-        "x": 83,
-        "y": 133,
-        "w": 58,
-        "h": 34
-      },
-      "approximateLegZone": {
-        "x": 78,
-        "y": 168,
-        "w": 68,
-        "h": 42
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.8559,
+      "widthVsIdle": 1.8367,
+      "topY": 111,
+      "bottomFeetY": 211,
+      "baselineY": 212,
+      "baselineShift": 64,
+      "centerX": 112,
+      "centerY": 161.5,
+      "torsoCoreHeightEstimate": 34.34,
+      "torsoCoreWidthEstimate": 57.6,
+      "lowerBodyLegZoneHeightEstimate": 42.42,
+      "armReachExtensionBounds": {
         "x": 67,
-        "y": 129,
+        "y": 129.18,
         "w": 90,
-        "h": 38
+        "h": 38.38
       },
-      "flags": [
-        "body width 184% of idle"
+      "warnings": [
+        "body height 86% of idle",
+        "body width 184% of idle",
+        "baseline shifted 64px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 224
+      },
+      "runtimeDrawScale": 1.193,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 114,
       "visibleBodyWidth": 107,
-      "heightVsIdle": 0.9661016949152542,
-      "widthVsIdle": 2.183673469387755,
-      "baseline": 212,
-      "approximateTorsoZone": {
-        "x": 78,
-        "y": 123,
-        "w": 68,
-        "h": 39
-      },
-      "approximateLegZone": {
-        "x": 72,
-        "y": 162,
-        "w": 81,
-        "h": 48
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9661,
+      "widthVsIdle": 2.1837,
+      "topY": 98,
+      "bottomFeetY": 211,
+      "baselineY": 212,
+      "baselineShift": 64,
+      "centerX": 112.5,
+      "centerY": 155,
+      "torsoCoreHeightEstimate": 38.76,
+      "torsoCoreWidthEstimate": 68.48,
+      "lowerBodyLegZoneHeightEstimate": 47.88,
+      "armReachExtensionBounds": {
         "x": 59,
-        "y": 119,
+        "y": 118.52,
         "w": 107,
-        "h": 43
+        "h": 43.32
       },
-      "flags": [
-        "body width 218% of idle"
+      "warnings": [
+        "body width 218% of idle",
+        "baseline shifted 64px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 224
+      },
+      "runtimeDrawScale": 1.1525,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 94,
       "heightVsIdle": 1,
-      "widthVsIdle": 1.9183673469387754,
-      "baseline": 212,
-      "approximateTorsoZone": {
-        "x": 82,
-        "y": 120,
-        "w": 60,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 76,
-        "y": 160,
-        "w": 71,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 1.9184,
+      "topY": 94,
+      "bottomFeetY": 211,
+      "baselineY": 212,
+      "baselineShift": 64,
+      "centerX": 112,
+      "centerY": 153,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 60.16,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 65,
-        "y": 115,
+        "y": 115.24,
         "w": 94,
-        "h": 45
+        "h": 44.84
       },
-      "flags": [
-        "body width 192% of idle"
+      "warnings": [
+        "body width 192% of idle",
+        "baseline shifted 64px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 224
+      },
+      "runtimeDrawScale": 0.7556,
+      "finalRenderedBodyHeight": 136.01,
       "visibleBodyHeight": 180,
       "visibleBodyWidth": 92,
-      "heightVsIdle": 1.5254237288135593,
-      "widthVsIdle": 1.8775510204081634,
-      "baseline": 212,
-      "approximateTorsoZone": {
-        "x": 83,
-        "y": 72,
-        "w": 59,
-        "h": 61
-      },
-      "approximateLegZone": {
-        "x": 77,
-        "y": 133,
-        "w": 70,
-        "h": 76
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.5254,
+      "widthVsIdle": 1.8776,
+      "topY": 32,
+      "bottomFeetY": 211,
+      "baselineY": 212,
+      "baselineShift": 64,
+      "centerX": 112,
+      "centerY": 122,
+      "torsoCoreHeightEstimate": 61.2,
+      "torsoCoreWidthEstimate": 58.88,
+      "lowerBodyLegZoneHeightEstimate": 75.6,
+      "armReachExtensionBounds": {
         "x": 66,
-        "y": 64,
+        "y": 64.4,
         "w": 92,
-        "h": 68
+        "h": 68.4
       },
-      "flags": [
+      "warnings": [
         "body height 153% of idle",
-        "body width 188% of idle"
+        "body width 188% of idle",
+        "baseline shifted 64px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0006",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\stand_up\\0006.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\stand_up\\0006.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 224
+      },
+      "runtimeDrawScale": 0.701,
+      "finalRenderedBodyHeight": 135.99,
       "visibleBodyHeight": 194,
       "visibleBodyWidth": 87,
-      "heightVsIdle": 1.6440677966101696,
-      "widthVsIdle": 1.7755102040816326,
-      "baseline": 212,
-      "approximateTorsoZone": {
-        "x": 85,
-        "y": 61,
-        "w": 56,
-        "h": 66
-      },
-      "approximateLegZone": {
-        "x": 79,
-        "y": 127,
-        "w": 66,
-        "h": 81
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.6441,
+      "widthVsIdle": 1.7755,
+      "topY": 18,
+      "bottomFeetY": 211,
+      "baselineY": 212,
+      "baselineShift": 64,
+      "centerX": 112.5,
+      "centerY": 115,
+      "torsoCoreHeightEstimate": 65.96,
+      "torsoCoreWidthEstimate": 55.68,
+      "lowerBodyLegZoneHeightEstimate": 81.48,
+      "armReachExtensionBounds": {
         "x": 69,
-        "y": 53,
+        "y": 52.92,
         "w": 87,
-        "h": 74
+        "h": 73.72
       },
-      "flags": [
+      "warnings": [
         "body height 164% of idle",
-        "body width 178% of idle"
+        "body width 178% of idle",
+        "baseline shifted 64px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
       ]
     }
   ]

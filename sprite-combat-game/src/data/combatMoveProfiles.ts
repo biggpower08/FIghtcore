@@ -63,17 +63,17 @@ const overrides: Record<string, Partial<CombatMoveProfile>> = {
     hitstunFrames: 10,
     knockback: { x: 132, y: -8 },
     launchAngleDegrees: -4,
-    activeFrames: range(8, 20),
-    visualActiveFrames: [3],
-    impactFrame: 3,
+    activeFrames: range(13, 24),
+    visualActiveFrames: [4],
+    impactFrame: 4,
   },
   jab_cross: {
     hitstopFrames: 5,
     hitstunFrames: 14,
     knockback: { x: 170, y: -12 },
     launchAngleDegrees: -5,
-    visualActiveFrames: [2, 5],
-    impactFrame: 5,
+    visualActiveFrames: [3, 4],
+    impactFrame: 4,
     hits: [
       {
         hitId: 'jab',
@@ -86,7 +86,7 @@ const overrides: Record<string, Partial<CombatMoveProfile>> = {
       },
       {
         hitId: 'cross',
-        activeFrames: range(25, 42),
+        activeFrames: range(20, 35),
         damage: 16,
         hitstopFrames: 5,
         hitstunFrames: 14,

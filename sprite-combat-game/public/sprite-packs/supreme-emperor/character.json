@@ -16,7 +16,7 @@
     "idle": { "file": "../../sprites/semi-realistic-source/supreme_emperor_idle.png", "frames": 5, "loop": true, "fps": 6, "outputCanvas": { "w": 192, "h": 160 } },
     "walk": { "file": "../../sprites/semi-realistic-source/supreme_emperor_walk.png", "frames": 6, "loop": true, "fps": 8, "outputCanvas": { "w": 192, "h": 160 } },
     "dash": { "file": "../../sprites/semi-realistic-source/supreme_emperor_dash.png", "frames": 5, "loop": false, "fps": 14, "outputCanvas": { "w": 288, "h": 176, "baselineY": 164 }, "dropDetachedComponents": true },
-    "jab_cross": { "file": "../../sprites/semi-realistic-source/supreme_emperor_jab_cross.png", "frames": 6, "loop": false, "fps": 11, "outputCanvas": { "w": 224, "h": 160 }, "frameDurations": [80, 170, 90, 95, 260, 120], "holdFrames": { "0002": 2, "0005": 3 } },
+    "jab_cross": { "file": "../../sprites/semi-realistic-source/supreme_emperor_jab_cross.png", "frames": 6, "loop": false, "fps": 11, "outputCanvas": { "w": 224, "h": 160 }, "frameDurations": [80, 70, 170, 260, 90, 120], "holdFrames": { "0003": 2, "0004": 3 } },
     "feint_rear_hook": { "file": "../../sprites/semi-realistic-source/supreme_emperor_feint_rear_hook.png", "frames": 8, "loop": false, "fps": 8, "outputCanvas": { "w": 224, "h": 160 } },
     "tornado_kick": { "file": "../../sprites/semi-realistic-source/supreme_emperor_tornado_kick.png", "frames": 9, "loop": false, "fps": 7, "outputCanvas": { "w": 320, "h": 176, "baselineY": 164 }, "dropDetachedComponents": true, "frameDurations": [70, 70, 70, 80, 120, 100, 360, 80, 70], "holdFrames": { "0007": 4 } },
     "roundhouse_kick": { "file": "../../sprites/semi-realistic-source/supreme_emperor_roundhouse_kick.png", "frames": 7, "loop": false, "fps": 7, "outputCanvas": { "w": 256, "h": 160 } },

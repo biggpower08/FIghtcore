@@ -1,6 +1,6 @@
 {
-  "entityId": "monkey-grunt",
-  "animationId": "hit_react",
+  "entityId": "striker-monkey",
+  "animationId": "hook",
   "note": "Measured from active atlas crop because no per-frame PNG metadata exists yet.",
   "idleReference": {
     "bodyHeight": 88,
@@ -12,12 +12,12 @@
     "w": 96,
     "h": 96
   },
-  "targetBodyHeight": 70,
+  "targetBodyHeight": 74,
   "frames": [
     {
       "frame": "0001",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row5-frame1",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\hit_react\\0001.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row4-frame1",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hook\\0001.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -56,8 +56,8 @@
     },
     {
       "frame": "0002",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row5-frame2",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\hit_react\\0002.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row4-frame2",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hook\\0002.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -96,8 +96,8 @@
     },
     {
       "frame": "0003",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row5-frame3",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\hit_react\\0003.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row4-frame3",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hook\\0003.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -106,26 +106,26 @@
       "runtimeDrawScale": 1,
       "finalRenderedBodyHeight": 88,
       "visibleBodyHeight": 88,
-      "visibleBodyWidth": 53,
+      "visibleBodyWidth": 76,
       "heightVsIdle": 1,
-      "widthVsIdle": 0.5521,
+      "widthVsIdle": 0.7917,
       "topY": 0,
       "bottomFeetY": 87,
       "baselineY": 96,
       "baselineShift": 0,
-      "centerX": 26.5,
+      "centerX": 38,
       "centerY": 44,
       "torsoCoreHeightEstimate": 29.92,
-      "torsoCoreWidthEstimate": 33.92,
+      "torsoCoreWidthEstimate": 48.64,
       "lowerBodyLegZoneHeightEstimate": 36.96,
       "armReachExtensionBounds": {
         "x": 0,
         "y": 15.84,
-        "w": 53,
+        "w": 76,
         "h": 33.44
       },
       "warnings": [
-        "body width 55% of idle",
+        "body width 79% of idle",
         "head/body touch top crop edge"
       ],
       "likelyCauses": [
@@ -134,6 +134,24 @@
       "recommendedAction": [
         "manual override or source replacement preferred over deformation scaling"
       ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row4-frame4",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hook\\0004.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     }
   ]
 }

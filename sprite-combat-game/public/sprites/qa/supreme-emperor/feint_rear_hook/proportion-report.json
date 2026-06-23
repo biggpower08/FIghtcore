@@ -1,10 +1,12 @@
 {
   "entityId": "supreme-emperor",
   "animationId": "feint_rear_hook",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 49,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 224,
@@ -17,242 +19,315 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0462,
+      "finalRenderedBodyHeight": 136.01,
       "visibleBodyHeight": 130,
       "visibleBodyWidth": 68,
-      "heightVsIdle": 1.1016949152542372,
-      "widthVsIdle": 1.3877551020408163,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 90,
-        "y": 47,
-        "w": 44,
-        "h": 44
-      },
-      "approximateLegZone": {
-        "x": 86,
-        "y": 91,
-        "w": 52,
-        "h": 55
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.1017,
+      "widthVsIdle": 1.3878,
+      "topY": 18,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 83,
+      "torsoCoreHeightEstimate": 44.2,
+      "torsoCoreWidthEstimate": 43.52,
+      "lowerBodyLegZoneHeightEstimate": 54.6,
+      "armReachExtensionBounds": {
         "x": 78,
-        "y": 41,
+        "y": 41.4,
         "w": 68,
-        "h": 49
+        "h": 49.4
       },
-      "flags": []
+      "warnings": [
+        "body height 110% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.2252,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 111,
       "visibleBodyWidth": 67,
-      "heightVsIdle": 0.940677966101695,
-      "widthVsIdle": 1.3673469387755102,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 91,
-        "y": 61,
-        "w": 43,
-        "h": 38
-      },
-      "approximateLegZone": {
-        "x": 87,
-        "y": 99,
-        "w": 51,
-        "h": 47
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9407,
+      "widthVsIdle": 1.3673,
+      "topY": 37,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 92.5,
+      "torsoCoreHeightEstimate": 37.74,
+      "torsoCoreWidthEstimate": 42.88,
+      "lowerBodyLegZoneHeightEstimate": 46.62,
+      "armReachExtensionBounds": {
         "x": 79,
-        "y": 57,
+        "y": 56.98,
         "w": 67,
-        "h": 42
+        "h": 42.18
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.3737,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 99,
       "visibleBodyWidth": 72,
-      "heightVsIdle": 0.8389830508474576,
-      "widthVsIdle": 1.469387755102041,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 89,
-        "y": 71,
-        "w": 46,
-        "h": 34
-      },
-      "approximateLegZone": {
-        "x": 85,
-        "y": 104,
-        "w": 55,
-        "h": 42
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.839,
+      "widthVsIdle": 1.4694,
+      "topY": 49,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 98.5,
+      "torsoCoreHeightEstimate": 33.66,
+      "torsoCoreWidthEstimate": 46.08,
+      "lowerBodyLegZoneHeightEstimate": 41.58,
+      "armReachExtensionBounds": {
         "x": 76,
-        "y": 67,
+        "y": 66.82,
         "w": 72,
-        "h": 38
+        "h": 37.62
       },
-      "flags": []
+      "warnings": [
+        "body height 84% of idle",
+        "body width 147% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.4783,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 92,
       "visibleBodyWidth": 79,
-      "heightVsIdle": 0.7796610169491526,
-      "widthVsIdle": 1.6122448979591837,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 87,
-        "y": 76,
-        "w": 51,
-        "h": 31
-      },
-      "approximateLegZone": {
-        "x": 82,
-        "y": 108,
-        "w": 60,
-        "h": 39
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.7797,
+      "widthVsIdle": 1.6122,
+      "topY": 56,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 102,
+      "torsoCoreHeightEstimate": 31.28,
+      "torsoCoreWidthEstimate": 50.56,
+      "lowerBodyLegZoneHeightEstimate": 38.64,
+      "armReachExtensionBounds": {
         "x": 73,
-        "y": 73,
+        "y": 72.56,
         "w": 79,
-        "h": 35
+        "h": 34.96
       },
-      "flags": [
+      "warnings": [
         "body height 78% of idle",
         "body width 161% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.1624,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 117,
       "visibleBodyWidth": 77,
-      "heightVsIdle": 0.9915254237288136,
-      "widthVsIdle": 1.5714285714285714,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 88,
-        "y": 57,
-        "w": 49,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 83,
-        "y": 97,
-        "w": 59,
-        "h": 49
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9915,
+      "widthVsIdle": 1.5714,
+      "topY": 31,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 89.5,
+      "torsoCoreHeightEstimate": 39.78,
+      "torsoCoreWidthEstimate": 49.28,
+      "lowerBodyLegZoneHeightEstimate": 49.14,
+      "armReachExtensionBounds": {
         "x": 74,
-        "y": 52,
+        "y": 52.06,
         "w": 77,
-        "h": 44
+        "h": 44.46
       },
-      "flags": [
+      "warnings": [
         "body width 157% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0006",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0006.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0006.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.124,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 121,
       "visibleBodyWidth": 79,
-      "heightVsIdle": 1.0254237288135593,
-      "widthVsIdle": 1.6122448979591837,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 87,
-        "y": 54,
-        "w": 51,
-        "h": 41
-      },
-      "approximateLegZone": {
-        "x": 82,
-        "y": 95,
-        "w": 60,
-        "h": 51
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0254,
+      "widthVsIdle": 1.6122,
+      "topY": 27,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 87.5,
+      "torsoCoreHeightEstimate": 41.14,
+      "torsoCoreWidthEstimate": 50.56,
+      "lowerBodyLegZoneHeightEstimate": 50.82,
+      "armReachExtensionBounds": {
         "x": 73,
-        "y": 49,
+        "y": 48.78,
         "w": 79,
-        "h": 46
+        "h": 45.98
       },
-      "flags": [
+      "warnings": [
         "body width 161% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0007",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0007.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0007.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.1525,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 109,
       "heightVsIdle": 1,
-      "widthVsIdle": 2.2244897959183674,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 78,
-        "y": 56,
-        "w": 70,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 71,
-        "y": 96,
-        "w": 83,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 2.2245,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 69.76,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 58,
-        "y": 51,
+        "y": 51.24,
         "w": 109,
-        "h": 45
+        "h": 44.84
       },
-      "flags": [
+      "warnings": [
         "body width 222% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0008",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\feint_rear_hook\\0008.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\feint_rear_hook\\0008.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0543,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 129,
       "visibleBodyWidth": 68,
-      "heightVsIdle": 1.0932203389830508,
-      "widthVsIdle": 1.3877551020408163,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 90,
-        "y": 47,
-        "w": 44,
-        "h": 44
-      },
-      "approximateLegZone": {
-        "x": 86,
-        "y": 91,
-        "w": 52,
-        "h": 54
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0932,
+      "widthVsIdle": 1.3878,
+      "topY": 19,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 83.5,
+      "torsoCoreHeightEstimate": 43.86,
+      "torsoCoreWidthEstimate": 43.52,
+      "lowerBodyLegZoneHeightEstimate": 54.18,
+      "armReachExtensionBounds": {
         "x": 78,
-        "y": 42,
+        "y": 42.22,
         "w": 68,
-        "h": 49
+        "h": 49.02
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     }
   ]
 }

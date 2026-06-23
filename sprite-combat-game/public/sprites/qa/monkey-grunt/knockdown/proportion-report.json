@@ -1,11 +1,218 @@
 {
   "entityId": "monkey-grunt",
   "animationId": "knockdown",
-  "note": "No per-frame QA metadata exists yet. Runtime likely uses an atlas strip; use Sprite Lab/manual override PNGs for detailed body metrics.",
-  "reference": {
-    "bodyHeight": 70,
-    "bodyWidth": 44,
-    "source": "idle metadata median"
+  "note": "Measured from active atlas crop because no per-frame PNG metadata exists yet.",
+  "idleReference": {
+    "bodyHeight": 88,
+    "bodyWidth": 96,
+    "baselineY": 96,
+    "source": "idle atlas crop median"
   },
-  "frames": []
+  "outputCanvas": {
+    "w": 96,
+    "h": 96
+  },
+  "targetBodyHeight": 70,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row6-frame1",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\knockdown\\0001.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row6-frame2",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\knockdown\\0002.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 68,
+      "visibleBodyHeight": 68,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.7727,
+      "widthVsIdle": 1,
+      "topY": 20,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 54,
+      "torsoCoreHeightEstimate": 23.12,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 28.56,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 32.24,
+        "w": 96,
+        "h": 25.84
+      },
+      "warnings": [
+        "body height 77% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row6-frame3",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\knockdown\\0003.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 53,
+      "visibleBodyHeight": 53,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.6023,
+      "widthVsIdle": 1,
+      "topY": 35,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 61.5,
+      "torsoCoreHeightEstimate": 18.02,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 22.26,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 44.54,
+        "w": 96,
+        "h": 20.14
+      },
+      "warnings": [
+        "body height 60% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row6-frame4",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\knockdown\\0004.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 70,
+      "visibleBodyHeight": 70,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.7955,
+      "widthVsIdle": 1,
+      "topY": 18,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 53,
+      "torsoCoreHeightEstimate": 23.8,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 29.4,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 30.6,
+        "w": 96,
+        "h": 26.6
+      },
+      "warnings": [
+        "body height 80% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row6-frame5",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\knockdown\\0005.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 60,
+      "visibleBodyHeight": 60,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.6818,
+      "widthVsIdle": 1,
+      "topY": 28,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 58,
+      "torsoCoreHeightEstimate": 20.4,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 25.2,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 38.8,
+        "w": 96,
+        "h": 22.8
+      },
+      "warnings": [
+        "body height 68% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    }
+  ]
 }

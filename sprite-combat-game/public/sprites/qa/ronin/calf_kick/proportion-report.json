@@ -1,10 +1,12 @@
 {
   "entityId": "ronin",
   "animationId": "calf_kick",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 64,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 256,
@@ -17,146 +19,181 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 256,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 88,
       "heightVsIdle": 1,
       "widthVsIdle": 1.375,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 100,
-        "y": 56,
-        "w": 56,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 95,
-        "y": 96,
-        "w": 67,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 128,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 56.32,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 84,
-        "y": 51,
+        "y": 51.24,
         "w": 88,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 256,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 64,
       "heightVsIdle": 1,
       "widthVsIdle": 1,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 108,
-        "y": 56,
-        "w": 41,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 104,
-        "y": 96,
-        "w": 49,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 128,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 40.96,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 96,
-        "y": 51,
+        "y": 51.24,
         "w": 64,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 256,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0826,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 109,
       "visibleBodyWidth": 81,
-      "heightVsIdle": 0.923728813559322,
-      "widthVsIdle": 1.265625,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 103,
-        "y": 63,
-        "w": 52,
-        "h": 37
-      },
-      "approximateLegZone": {
-        "x": 98,
-        "y": 100,
-        "w": 62,
-        "h": 46
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9237,
+      "widthVsIdle": 1.2656,
+      "topY": 39,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 128.5,
+      "centerY": 93.5,
+      "torsoCoreHeightEstimate": 37.06,
+      "torsoCoreWidthEstimate": 51.84,
+      "lowerBodyLegZoneHeightEstimate": 45.78,
+      "armReachExtensionBounds": {
         "x": 88,
-        "y": 59,
+        "y": 58.62,
         "w": 81,
-        "h": 41
+        "h": 41.42
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 256,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0926,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 108,
       "visibleBodyWidth": 92,
-      "heightVsIdle": 0.9152542372881356,
+      "heightVsIdle": 0.9153,
       "widthVsIdle": 1.4375,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 99,
-        "y": 64,
-        "w": 59,
-        "h": 37
-      },
-      "approximateLegZone": {
-        "x": 93,
-        "y": 100,
-        "w": 70,
-        "h": 45
-      },
-      "approximateArmReachZone": {
+      "topY": 40,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 128,
+      "centerY": 94,
+      "torsoCoreHeightEstimate": 36.72,
+      "torsoCoreWidthEstimate": 58.88,
+      "lowerBodyLegZoneHeightEstimate": 45.36,
+      "armReachExtensionBounds": {
         "x": 82,
-        "y": 59,
+        "y": 59.44,
         "w": 92,
-        "h": 41
+        "h": 41.04
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\calf_kick\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\calf_kick\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 256,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 84,
       "heightVsIdle": 1,
       "widthVsIdle": 1.3125,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 101,
-        "y": 56,
-        "w": 54,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 96,
-        "y": 96,
-        "w": 64,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 128,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 53.76,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 86,
-        "y": 51,
+        "y": 51.24,
         "w": 84,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     }
   ]
 }

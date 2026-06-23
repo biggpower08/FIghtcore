@@ -1,6 +1,6 @@
 {
-  "entityId": "striker-monkey",
-  "animationId": "idle",
+  "entityId": "monkey-grunt",
+  "animationId": "run",
   "note": "Measured from active atlas crop because no per-frame PNG metadata exists yet.",
   "idleReference": {
     "bodyHeight": 88,
@@ -12,12 +12,12 @@
     "w": 96,
     "h": 96
   },
-  "targetBodyHeight": 74,
+  "targetBodyHeight": 70,
   "frames": [
     {
       "frame": "0001",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row0-frame1",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\idle\\0001.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row1-frame1",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\run\\0001.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -56,8 +56,8 @@
     },
     {
       "frame": "0002",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row0-frame2",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\idle\\0002.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row1-frame2",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\run\\0002.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -96,8 +96,8 @@
     },
     {
       "frame": "0003",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row0-frame3",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\idle\\0003.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row1-frame3",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\run\\0003.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -136,8 +136,8 @@
     },
     {
       "frame": "0004",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row0-frame4",
-      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\idle\\0004.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row1-frame4",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\run\\0004.png",
       "sourcePriority": "fallback/raw atlas",
       "outputCanvas": {
         "w": 96,
@@ -162,6 +162,86 @@
         "x": 0,
         "y": 15.84,
         "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row1-frame5",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\run\\0005.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row1-frame6",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\run\\0006.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 84,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.875,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 42,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 53.76,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 84,
         "h": 33.44
       },
       "warnings": [

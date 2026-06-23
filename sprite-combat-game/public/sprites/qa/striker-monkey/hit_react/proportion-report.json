@@ -1,11 +1,179 @@
 {
   "entityId": "striker-monkey",
   "animationId": "hit_react",
-  "note": "No per-frame QA metadata exists yet. Runtime likely uses an atlas strip; use Sprite Lab/manual override PNGs for detailed body metrics.",
-  "reference": {
-    "bodyHeight": 74,
-    "bodyWidth": 46,
-    "source": "idle metadata median"
+  "note": "Measured from active atlas crop because no per-frame PNG metadata exists yet.",
+  "idleReference": {
+    "bodyHeight": 88,
+    "bodyWidth": 96,
+    "baselineY": 96,
+    "source": "idle atlas crop median"
   },
-  "frames": []
+  "outputCanvas": {
+    "w": 96,
+    "h": 96
+  },
+  "targetBodyHeight": 74,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row6-frame1",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hit_react\\0001.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row6-frame2",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hit_react\\0002.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row6-frame3",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hit_react\\0003.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\striker-monkey\\atlas.png#row6-frame4",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\striker-monkey\\hit_react\\0004.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 78,
+      "visibleBodyHeight": 78,
+      "visibleBodyWidth": 43,
+      "heightVsIdle": 0.8864,
+      "widthVsIdle": 0.4479,
+      "topY": 8,
+      "bottomFeetY": 85,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 21.5,
+      "centerY": 47,
+      "torsoCoreHeightEstimate": 26.52,
+      "torsoCoreWidthEstimate": 27.52,
+      "lowerBodyLegZoneHeightEstimate": 32.76,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 22.04,
+        "w": 43,
+        "h": 29.64
+      },
+      "warnings": [
+        "body height 89% of idle",
+        "body width 45% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    }
+  ]
 }

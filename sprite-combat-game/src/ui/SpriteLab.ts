@@ -32,6 +32,7 @@ interface SpriteScaleDiagnostics {
   approximateTorsoZone?: string;
   approximateLegZone?: string;
   approximateArmReachZone?: string;
+  warningBadges?: string[];
   isDoubleScaled: boolean;
 }
 
@@ -239,6 +240,7 @@ export class SpriteLab {
     const alpha = frame ? this.getAlphaInfo(frame) : undefined;
     const imageStatus = this.getImageStatus(frame);
     const scaleDiagnostics = frame ? this.getScaleDiagnostics(frame, alpha) : undefined;
+    const warningBadges = frame ? this.getProportionWarningBadges(frame, scaleDiagnostics, alpha, framePosition) : [];
     const combatProfile = getCombatMoveProfileByAnimation(this.animation.animationKey);
     const manualOverridePath = `C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\${this.animation.entityId}\\${this.animation.animationKey}\\${String(framePosition + 1).padStart(4, '0')}.png`;
 
@@ -272,6 +274,8 @@ export class SpriteLab {
         sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
         manualOverridePath,
+        currentSourcePriorityLabel: scaleDiagnostics?.sourcePriority,
+        proportionWarningBadges: warningBadges,
         sourceKind: frame?.source,
         sourceDescription: this.describeFrameSource(frame),
         imageLoad: imageStatus,
@@ -325,7 +329,9 @@ export class SpriteLab {
               : frameQuality?.invalidHollowFrame
                 ? 'This body frame has a large enclosed transparent body gap and is blocked from gameplay-ready rendering.'
               : 'This frame looks like a source strip/contact sheet and is blocked from normal gameplay rendering.'
-            : undefined,
+            : warningBadges.length > 0
+              ? `Proportion warnings: ${warningBadges.join(', ')}`
+              : undefined,
         rect: frame?.x === undefined ? undefined : { x: frame.x, y: frame.y, width: frame.width, height: frame.height },
         notes: frame?.notes ?? this.animation.notes,
       },
@@ -632,8 +638,37 @@ export class SpriteLab {
       approximateArmReachZone: frame.bodyBounds
         ? `${frame.bodyBounds.minX},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.18)} ${frame.bodyBounds.width}x${Math.round(frame.bodyBounds.height * 0.38)}`
         : undefined,
+      warningBadges: this.getProportionWarningBadges(frame, undefined, alpha),
       isDoubleScaled: Boolean((frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) && profile && profile.visualScale < 0.5),
     };
+  }
+
+  private getProportionWarningBadges(
+    frame: ResolvedSpriteFrame,
+    diagnostics?: SpriteScaleDiagnostics,
+    alpha?: ReturnType<SpriteLab['getAlphaInfo']>,
+    framePosition = 0,
+  ): string[] {
+    const profile = this.animation ? getCharacterVisualProfile(this.animation.entityId) : undefined;
+    const frameQuality = this.animation ? getFrameQuality(this.animation.entityId, this.animation.animationKey, framePosition) : undefined;
+    const bodyHeight = diagnostics?.visibleBodyHeight ?? frame.bodyBounds?.height ?? alpha?.bounds?.height;
+    const bodyWidth = diagnostics?.visibleBodyWidth ?? frame.bodyBounds?.width ?? alpha?.bounds?.width;
+    const baseline = diagnostics?.baseline ?? frame.feetY ?? frame.referenceBaselineY;
+    const badges: string[] = [];
+    if (bodyHeight && profile) {
+      const heightRatio = bodyHeight / Math.max(1, profile.canonicalBodyHeight);
+      if (heightRatio < 0.9 || heightRatio > 1.1) badges.push('height mismatch');
+    }
+    if (bodyWidth && profile) {
+      const widthRatio = bodyWidth / Math.max(1, profile.bodyBounds.w);
+      const widePose = this.animation ? /kick|sweep|dash|tornado/.test(this.animation.animationKey) : false;
+      if (widthRatio < 0.8 || widthRatio > (widePose ? 2.25 : 1.45)) badges.push('width mismatch');
+    }
+    if (baseline !== undefined && frame.height && Math.abs(baseline - frame.height * frame.anchorY) > 4) badges.push('baseline mismatch');
+    if (alpha?.bounds && frame.height && (alpha.bounds.minY <= 1 || alpha.bounds.maxY >= frame.height - 2)) badges.push('crop risk');
+    if (frame.placeholderFrame || this.animation?.status === 'fallback' || this.animation?.status === 'missing') badges.push('source priority mismatch');
+    if (frame.usingCleanedAlphaFrame && (frameQuality?.hasAdjacentFrameBleed || frameQuality?.disconnectedNeighborBlob || frameQuality?.invalidHollowFrame)) badges.push('cleanup risk');
+    return [...new Set(badges)];
   }
 
   private getBodyHeightComparison(currentFinalBodyHeight?: number): Record<string, number | undefined> {

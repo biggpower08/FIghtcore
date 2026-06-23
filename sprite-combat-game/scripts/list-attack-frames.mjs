@@ -47,15 +47,30 @@ const runtimeSources = [
 
 const activeAnimations = [
   entry('ronin', 'Ronin', 'Jab', 'jab', { problem: true, visualActiveFrames: [3], impactFrame: 3 }),
-  entry('ronin', 'Ronin', 'Cross', 'cross', { problem: true, visualActiveFrames: [3], impactFrame: 3 }),
+  entry('ronin', 'Ronin', 'Cross', 'cross', {
+    problem: true,
+    visualActiveFrames: [4],
+    impactFrame: 4,
+    timingNote: 'Corrected this pass: old held frame was `0003` pre-impact; new held/impact frame is `0004` full extension.',
+  }),
   entry('ronin', 'Ronin', 'Calf Kick', 'calf_kick'),
   entry('ronin', 'Ronin', 'Knee', 'knee'),
   entry('ronin', 'Ronin', 'Dash', 'dash'),
   entry('ronin', 'Ronin', 'Hit React', 'hit_react'),
   entry('ronin', 'Ronin', 'Recovery', 'recovery'),
   entry('ronin', 'Ronin', 'Stand Up', 'stand_up'),
-  entry('supreme-emperor', 'Supreme Emperor', 'Jab-Cross', 'jab_cross', { problem: true, visualActiveFrames: [2, 5], impactFrame: 5 }),
-  entry('supreme-emperor', 'Supreme Emperor', 'Cross second hit inside Jab-Cross', 'jab_cross', { problem: true, visualActiveFrames: [2, 5], impactFrame: 5 }),
+  entry('supreme-emperor', 'Supreme Emperor', 'Jab-Cross', 'jab_cross', {
+    problem: true,
+    visualActiveFrames: [3, 4],
+    impactFrame: 4,
+    timingNote: 'Corrected this pass: old holds were `0002`/`0005`; new held impact frames are `0003` jab and `0004` cross.',
+  }),
+  entry('supreme-emperor', 'Supreme Emperor', 'Cross second hit inside Jab-Cross', 'jab_cross', {
+    problem: true,
+    visualActiveFrames: [3, 4],
+    impactFrame: 4,
+    timingNote: 'Second hit now resolves on `0004`, the full cross/spark contact pose.',
+  }),
   entry('supreme-emperor', 'Supreme Emperor', 'Feint-Rear Hook', 'feint_rear_hook'),
   entry('supreme-emperor', 'Supreme Emperor', 'Tornado Kick', 'tornado_kick', { problem: true, visualActiveFrames: [7], impactFrame: 7 }),
   entry('supreme-emperor', 'Supreme Emperor', 'Roundhouse Kick', 'roundhouse_kick'),
@@ -235,6 +250,7 @@ function renderMarkdown(items) {
     lines.push(`- Frame durations: ${row.frameDurations.length > 0 ? row.frameDurations.map((duration, index) => `\`${String(index + 1).padStart(4, '0')}:${duration}ms\``).join(', ') : 'runtime default'}`);
     lines.push(`- Visual active frames: ${row.visualActiveFrames.length > 0 ? row.visualActiveFrames.map((frame) => `\`${String(frame).padStart(4, '0')}\``).join(', ') : 'combat profile/default'}`);
     lines.push(`- Impact frame: ${row.impactFrame ? `\`${String(row.impactFrame).padStart(4, '0')}\`` : 'not marked'}`);
+    if (row.timingNote) lines.push(`- Timing note: ${row.timingNote}`);
     lines.push(`- Manual override folder: \`${row.manualOverrideFolder}\``);
     lines.push(`- Manual override example: \`${row.manualOverrideExample}\``);
     lines.push(`- Rerunning import/clean can overwrite active folder: ${row.runtime.overwrittenByImport ? 'yes' : 'no'}`);

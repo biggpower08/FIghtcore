@@ -19,6 +19,7 @@
     "sprite-pack:list-attacks": "node scripts/list-attack-frames.mjs",
     "sprites:clean-alpha": "node scripts/clean-sprite-alpha.mjs",
     "sprites:proportions": "node scripts/report-sprite-proportions.mjs",
+    "sprite-pack:proportions": "node scripts/report-sprite-proportions.mjs",
     "sprites:qa-cleaned": "node scripts/clean-sprite-alpha.mjs --qa-only",
     "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",
     "sprite-factory:generate": "python tools/sprite-factory/scripts/generate-sprites.py",

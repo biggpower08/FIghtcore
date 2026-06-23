@@ -1,11 +1,298 @@
 {
   "entityId": "monkey-grunt",
   "animationId": "death",
-  "note": "No per-frame QA metadata exists yet. Runtime likely uses an atlas strip; use Sprite Lab/manual override PNGs for detailed body metrics.",
-  "reference": {
-    "bodyHeight": 70,
-    "bodyWidth": 44,
-    "source": "idle metadata median"
+  "note": "Measured from active atlas crop because no per-frame PNG metadata exists yet.",
+  "idleReference": {
+    "bodyHeight": 88,
+    "bodyWidth": 96,
+    "baselineY": 96,
+    "source": "idle atlas crop median"
   },
-  "frames": []
+  "outputCanvas": {
+    "w": 96,
+    "h": 96
+  },
+  "targetBodyHeight": 70,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame1",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0001.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 62,
+      "visibleBodyHeight": 62,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.7045,
+      "widthVsIdle": 1,
+      "topY": 26,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 57,
+      "torsoCoreHeightEstimate": 21.08,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 26.04,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 37.16,
+        "w": 96,
+        "h": 23.56
+      },
+      "warnings": [
+        "body height 70% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame2",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0002.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 56,
+      "visibleBodyHeight": 56,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.6364,
+      "widthVsIdle": 1,
+      "topY": 30,
+      "bottomFeetY": 85,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 58,
+      "torsoCoreHeightEstimate": 19.04,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 23.52,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 40.08,
+        "w": 96,
+        "h": 21.28
+      },
+      "warnings": [
+        "body height 64% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame3",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0003.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 52,
+      "visibleBodyHeight": 52,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.5909,
+      "widthVsIdle": 1,
+      "topY": 36,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 62,
+      "torsoCoreHeightEstimate": 17.68,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 21.84,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 45.36,
+        "w": 96,
+        "h": 19.76
+      },
+      "warnings": [
+        "body height 59% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame4",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0004.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 58,
+      "visibleBodyHeight": 58,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.6591,
+      "widthVsIdle": 1,
+      "topY": 30,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 59,
+      "torsoCoreHeightEstimate": 19.72,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 24.36,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 40.44,
+        "w": 96,
+        "h": 22.04
+      },
+      "warnings": [
+        "body height 66% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame5",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0005.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 45,
+      "visibleBodyHeight": 45,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.5114,
+      "widthVsIdle": 1,
+      "topY": 42,
+      "bottomFeetY": 86,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 64.5,
+      "torsoCoreHeightEstimate": 15.3,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 18.9,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 50.1,
+        "w": 96,
+        "h": 17.1
+      },
+      "warnings": [
+        "body height 51% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame6",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0006.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 51,
+      "visibleBodyHeight": 51,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.5795,
+      "widthVsIdle": 1,
+      "topY": 37,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 62.5,
+      "torsoCoreHeightEstimate": 17.34,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 21.42,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 46.18,
+        "w": 96,
+        "h": 19.38
+      },
+      "warnings": [
+        "body height 58% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0007",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row7-frame7",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\death\\0007.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 49,
+      "visibleBodyHeight": 49,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.5568,
+      "widthVsIdle": 1,
+      "topY": 39,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 63.5,
+      "torsoCoreHeightEstimate": 16.66,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 20.58,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 47.82,
+        "w": 96,
+        "h": 18.62
+      },
+      "warnings": [
+        "body height 56% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    }
+  ]
 }

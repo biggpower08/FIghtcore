@@ -1,10 +1,12 @@
 {
   "entityId": "ronin",
   "animationId": "hit_react",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 64,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 192,
@@ -17,146 +19,181 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\hit_react\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 192,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 64,
       "heightVsIdle": 1,
       "widthVsIdle": 1,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 76,
-        "y": 56,
-        "w": 41,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 72,
-        "y": 96,
-        "w": 49,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 96,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 40.96,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 64,
-        "y": 51,
+        "y": 51.24,
         "w": 64,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\hit_react\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 192,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 63,
       "heightVsIdle": 1,
-      "widthVsIdle": 0.984375,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 76,
-        "y": 56,
-        "w": 40,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 73,
-        "y": 96,
-        "w": 48,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 0.9844,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 96.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 40.32,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 65,
-        "y": 51,
+        "y": 51.24,
         "w": 63,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\hit_react\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 192,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0442,
+      "finalRenderedBodyHeight": 117.99,
       "visibleBodyHeight": 113,
       "visibleBodyWidth": 64,
-      "heightVsIdle": 0.9576271186440678,
+      "heightVsIdle": 0.9576,
       "widthVsIdle": 1,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 76,
-        "y": 60,
-        "w": 41,
-        "h": 38
-      },
-      "approximateLegZone": {
-        "x": 72,
-        "y": 98,
-        "w": 49,
-        "h": 47
-      },
-      "approximateArmReachZone": {
+      "topY": 35,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 96,
+      "centerY": 91.5,
+      "torsoCoreHeightEstimate": 38.42,
+      "torsoCoreWidthEstimate": 40.96,
+      "lowerBodyLegZoneHeightEstimate": 47.46,
+      "armReachExtensionBounds": {
         "x": 64,
-        "y": 55,
+        "y": 55.34,
         "w": 64,
-        "h": 43
+        "h": 42.94
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\hit_react\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 192,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0351,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 114,
       "visibleBodyWidth": 83,
-      "heightVsIdle": 0.9661016949152542,
-      "widthVsIdle": 1.296875,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 70,
-        "y": 59,
-        "w": 53,
-        "h": 39
-      },
-      "approximateLegZone": {
-        "x": 65,
-        "y": 98,
-        "w": 63,
-        "h": 48
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9661,
+      "widthVsIdle": 1.2969,
+      "topY": 34,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 96.5,
+      "centerY": 91,
+      "torsoCoreHeightEstimate": 38.76,
+      "torsoCoreWidthEstimate": 53.12,
+      "lowerBodyLegZoneHeightEstimate": 47.88,
+      "armReachExtensionBounds": {
         "x": 55,
-        "y": 55,
+        "y": 54.52,
         "w": 83,
-        "h": 43
+        "h": 43.32
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\hit_react\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\hit_react\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 192,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 65,
       "heightVsIdle": 1,
-      "widthVsIdle": 1.015625,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 76,
-        "y": 56,
-        "w": 42,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 72,
-        "y": 96,
-        "w": 49,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 1.0156,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 96.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 41.6,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 64,
-        "y": 51,
+        "y": 51.24,
         "w": 65,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     }
   ]
 }

@@ -1,10 +1,12 @@
 {
   "entityId": "supreme-emperor",
   "animationId": "tornado_kick",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 49,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 320,
@@ -17,262 +19,367 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.1525,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 62,
       "heightVsIdle": 1,
-      "widthVsIdle": 1.2653061224489797,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 140,
-        "y": 72,
-        "w": 40,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 136,
-        "y": 112,
-        "w": 47,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 1.2653,
+      "topY": 46,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160,
+      "centerY": 105,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 39.68,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 129,
-        "y": 67,
+        "y": 67.24,
         "w": 62,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.1624,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 117,
       "visibleBodyWidth": 68,
-      "heightVsIdle": 0.9915254237288136,
-      "widthVsIdle": 1.3877551020408163,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 138,
-        "y": 73,
-        "w": 44,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 134,
-        "y": 113,
-        "w": 52,
-        "h": 49
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9915,
+      "widthVsIdle": 1.3878,
+      "topY": 47,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160,
+      "centerY": 105.5,
+      "torsoCoreHeightEstimate": 39.78,
+      "torsoCoreWidthEstimate": 43.52,
+      "lowerBodyLegZoneHeightEstimate": 49.14,
+      "armReachExtensionBounds": {
         "x": 126,
-        "y": 68,
+        "y": 68.06,
         "w": 68,
-        "h": 44
+        "h": 44.46
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.1826,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 115,
       "visibleBodyWidth": 72,
-      "heightVsIdle": 0.9745762711864406,
-      "widthVsIdle": 1.469387755102041,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 137,
-        "y": 74,
-        "w": 46,
-        "h": 39
-      },
-      "approximateLegZone": {
-        "x": 133,
-        "y": 113,
-        "w": 55,
-        "h": 48
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9746,
+      "widthVsIdle": 1.4694,
+      "topY": 49,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160,
+      "centerY": 106.5,
+      "torsoCoreHeightEstimate": 39.1,
+      "torsoCoreWidthEstimate": 46.08,
+      "lowerBodyLegZoneHeightEstimate": 48.3,
+      "armReachExtensionBounds": {
         "x": 124,
-        "y": 70,
+        "y": 69.7,
         "w": 72,
-        "h": 44
+        "h": 43.7
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.1724,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 116,
       "visibleBodyWidth": 44,
-      "heightVsIdle": 0.9830508474576272,
-      "widthVsIdle": 0.8979591836734694,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 146,
-        "y": 74,
-        "w": 28,
-        "h": 39
-      },
-      "approximateLegZone": {
-        "x": 143,
-        "y": 113,
-        "w": 33,
-        "h": 49
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9831,
+      "widthVsIdle": 0.898,
+      "topY": 48,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160,
+      "centerY": 106,
+      "torsoCoreHeightEstimate": 39.44,
+      "torsoCoreWidthEstimate": 28.16,
+      "lowerBodyLegZoneHeightEstimate": 48.72,
+      "armReachExtensionBounds": {
         "x": 138,
-        "y": 69,
+        "y": 68.88,
         "w": 44,
-        "h": 44
+        "h": 44.08
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.088,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 125,
       "visibleBodyWidth": 55,
-      "heightVsIdle": 1.0593220338983051,
-      "widthVsIdle": 1.1224489795918366,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 143,
-        "y": 67,
-        "w": 35,
-        "h": 43
-      },
-      "approximateLegZone": {
-        "x": 140,
-        "y": 109,
-        "w": 42,
-        "h": 53
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0593,
+      "widthVsIdle": 1.1224,
+      "topY": 39,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160.5,
+      "centerY": 101.5,
+      "torsoCoreHeightEstimate": 42.5,
+      "torsoCoreWidthEstimate": 35.2,
+      "lowerBodyLegZoneHeightEstimate": 52.5,
+      "armReachExtensionBounds": {
         "x": 133,
-        "y": 62,
+        "y": 61.5,
         "w": 55,
-        "h": 48
+        "h": 47.5
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     },
     {
       "frame": "0006",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0006.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0006.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.1333,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 120,
       "visibleBodyWidth": 52,
-      "heightVsIdle": 1.0169491525423728,
-      "widthVsIdle": 1.0612244897959184,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 143,
-        "y": 70,
-        "w": 33,
-        "h": 41
-      },
-      "approximateLegZone": {
-        "x": 140,
-        "y": 111,
-        "w": 40,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0169,
+      "widthVsIdle": 1.0612,
+      "topY": 44,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160,
+      "centerY": 104,
+      "torsoCoreHeightEstimate": 40.8,
+      "torsoCoreWidthEstimate": 33.28,
+      "lowerBodyLegZoneHeightEstimate": 50.4,
+      "armReachExtensionBounds": {
         "x": 134,
-        "y": 66,
+        "y": 65.6,
         "w": 52,
-        "h": 46
+        "h": 45.6
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     },
     {
       "frame": "0007",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0007.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0007.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.124,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 121,
       "visibleBodyWidth": 113,
-      "heightVsIdle": 1.0254237288135593,
-      "widthVsIdle": 2.306122448979592,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 124,
-        "y": 70,
-        "w": 72,
-        "h": 41
-      },
-      "approximateLegZone": {
-        "x": 118,
-        "y": 111,
-        "w": 86,
-        "h": 51
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0254,
+      "widthVsIdle": 2.3061,
+      "topY": 43,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160.5,
+      "centerY": 103.5,
+      "torsoCoreHeightEstimate": 41.14,
+      "torsoCoreWidthEstimate": 72.32,
+      "lowerBodyLegZoneHeightEstimate": 50.82,
+      "armReachExtensionBounds": {
         "x": 104,
-        "y": 65,
+        "y": 64.78,
         "w": 113,
-        "h": 46
+        "h": 45.98
       },
-      "flags": []
+      "warnings": [
+        "body width 231% of idle",
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0008",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0008.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0008.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.3465,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 101,
       "visibleBodyWidth": 70,
-      "heightVsIdle": 0.8559322033898306,
-      "widthVsIdle": 1.4285714285714286,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 138,
-        "y": 85,
-        "w": 45,
-        "h": 34
-      },
-      "approximateLegZone": {
-        "x": 133,
-        "y": 120,
-        "w": 53,
-        "h": 42
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.8559,
+      "widthVsIdle": 1.4286,
+      "topY": 63,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160,
+      "centerY": 113.5,
+      "torsoCoreHeightEstimate": 34.34,
+      "torsoCoreWidthEstimate": 44.8,
+      "lowerBodyLegZoneHeightEstimate": 42.42,
+      "armReachExtensionBounds": {
         "x": 125,
-        "y": 81,
+        "y": 81.18,
         "w": 70,
-        "h": 38
+        "h": 38.38
       },
-      "flags": []
+      "warnings": [
+        "body height 86% of idle",
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority",
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0009",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\supreme-emperor\\tornado_kick\\0009.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\supreme-emperor\\tornado_kick\\0009.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 320,
+        "h": 176
+      },
+      "runtimeDrawScale": 1.1525,
+      "finalRenderedBodyHeight": 136,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 61,
       "heightVsIdle": 1,
-      "widthVsIdle": 1.2448979591836735,
-      "baseline": 164,
-      "approximateTorsoZone": {
-        "x": 141,
-        "y": 72,
-        "w": 39,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 137,
-        "y": 112,
-        "w": 46,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 1.2449,
+      "topY": 46,
+      "bottomFeetY": 163,
+      "baselineY": 164,
+      "baselineShift": 16,
+      "centerX": 160.5,
+      "centerY": 105,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 39.04,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 130,
-        "y": 67,
+        "y": 67.24,
         "w": 61,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [
+        "baseline shifted 16px from idle"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue"
+      ],
+      "recommendedAction": [
+        "check output canvas, anchor, baseline, and runtime source priority"
+      ]
     }
   ]
 }

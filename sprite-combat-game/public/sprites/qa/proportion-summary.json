@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T17:12:34.003Z",
+  "generatedAt": "2026-06-23T17:52:11.163Z",
   "finalScope": [
     "ronin",
     "supreme-emperor",
@@ -10,114 +10,212 @@
     {
       "entityId": "ronin",
       "animationId": "calf_kick",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\calf_kick\\proportion-report.json",
+      "reportPath": "public/sprites/qa/ronin/calf_kick/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "ronin",
       "animationId": "cross",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\cross\\proportion-report.json",
+      "reportPath": "public/sprites/qa/ronin/cross/proportion-report.json",
       "suspiciousFrames": 1,
-      "worstFlags": [
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
         "0004: body width 159% of idle"
       ]
     },
     {
       "entityId": "ronin",
       "animationId": "dash",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\dash\\proportion-report.json",
-      "suspiciousFrames": 4,
-      "worstFlags": [
+      "reportPath": "public/sprites/qa/ronin/dash/proportion-report.json",
+      "suspiciousFrames": 2,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
         "0001: body height 119% of idle",
-        "0003: body width 200% of idle",
-        "0004: body width 213% of idle",
         "0005: body height 119% of idle"
       ]
     },
     {
       "entityId": "ronin",
       "animationId": "density",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\density\\proportion-report.json",
+      "reportPath": "public/sprites/qa/ronin/density/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "ronin",
       "animationId": "hit_react",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\hit_react\\proportion-report.json",
+      "reportPath": "public/sprites/qa/ronin/hit_react/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "ronin",
       "animationId": "idle",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\idle\\proportion-report.json",
+      "reportPath": "public/sprites/qa/ronin/idle/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "ronin",
       "animationId": "jab",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\jab\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/ronin/jab/proportion-report.json",
+      "suspiciousFrames": 1,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0004: body width 152% of idle"
+      ]
     },
     {
       "entityId": "ronin",
       "animationId": "knee",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\knee\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/ronin/knee/proportion-report.json",
+      "suspiciousFrames": 1,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0004: body width 75% of idle"
+      ]
     },
     {
       "entityId": "ronin",
       "animationId": "recovery",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\recovery\\proportion-report.json",
-      "suspiciousFrames": 1,
-      "worstFlags": [
-        "0001: body height 66% of idle"
+      "reportPath": "public/sprites/qa/ronin/recovery/proportion-report.json",
+      "suspiciousFrames": 2,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
+        "0001: body height 66% of idle",
+        "0002: body height 86% of idle"
       ]
     },
     {
       "entityId": "ronin",
       "animationId": "stand_up",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\stand_up\\proportion-report.json",
-      "suspiciousFrames": 4,
-      "worstFlags": [
+      "reportPath": "public/sprites/qa/ronin/stand_up/proportion-report.json",
+      "suspiciousFrames": 6,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "worstWarnings": [
         "0001: body height 40% of idle",
         "0001: body width 220% of idle",
+        "0001: baseline shifted 64px from idle",
         "0002: body height 66% of idle",
         "0002: body width 189% of idle",
-        "0005: body height 132% of idle"
+        "0002: baseline shifted 64px from idle",
+        "0003: body height 84% of idle",
+        "0003: baseline shifted 64px from idle"
       ]
     },
     {
       "entityId": "ronin",
       "animationId": "walk",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\ronin\\walk\\proportion-report.json",
+      "reportPath": "public/sprites/qa/ronin/walk/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "dash",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\dash\\proportion-report.json",
+      "reportPath": "public/sprites/qa/supreme-emperor/dash/proportion-report.json",
       "suspiciousFrames": 5,
-      "worstFlags": [
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "worstWarnings": [
         "0001: body height 119% of idle",
-        "0001: body width 186% of idle",
-        "0002: body width 176% of idle",
+        "0001: baseline shifted 16px from idle",
+        "0002: body height 86% of idle",
+        "0002: baseline shifted 16px from idle",
         "0003: body width 243% of idle",
-        "0004: body width 249% of idle"
+        "0003: baseline shifted 16px from idle",
+        "0004: body width 249% of idle",
+        "0004: baseline shifted 16px from idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "feint_rear_hook",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\feint_rear_hook\\proportion-report.json",
-      "suspiciousFrames": 4,
-      "worstFlags": [
+      "reportPath": "public/sprites/qa/supreme-emperor/feint_rear_hook/proportion-report.json",
+      "suspiciousFrames": 6,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
+        "0001: body height 110% of idle",
+        "0003: body height 84% of idle",
+        "0003: body width 147% of idle",
         "0004: body height 78% of idle",
         "0004: body width 161% of idle",
         "0005: body width 157% of idle",
@@ -128,32 +226,60 @@
     {
       "entityId": "supreme-emperor",
       "animationId": "hit_react",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\hit_react\\proportion-report.json",
+      "reportPath": "public/sprites/qa/supreme-emperor/hit_react/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "idle",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\idle\\proportion-report.json",
+      "reportPath": "public/sprites/qa/supreme-emperor/idle/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "instant_death",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\instant_death\\proportion-report.json",
+      "reportPath": "public/sprites/qa/supreme-emperor/instant_death/proportion-report.json",
       "suspiciousFrames": 1,
-      "worstFlags": [
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0005: body height 87% of idle",
         "0005: body width 167% of idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "jab_cross",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\jab_cross\\proportion-report.json",
-      "suspiciousFrames": 2,
-      "worstFlags": [
+      "reportPath": "public/sprites/qa/supreme-emperor/jab_cross/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0002: body width 153% of idle",
         "0003: body width 202% of idle",
         "0004: body width 214% of idle"
       ]
@@ -161,117 +287,420 @@
     {
       "entityId": "supreme-emperor",
       "animationId": "recovery",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\recovery\\proportion-report.json",
-      "suspiciousFrames": 2,
-      "worstFlags": [
+      "reportPath": "public/sprites/qa/supreme-emperor/recovery/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
         "0001: body height 64% of idle",
         "0002: body height 74% of idle",
-        "0002: body width 161% of idle"
+        "0002: body width 161% of idle",
+        "0004: body height 111% of idle",
+        "0005: body height 111% of idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "roundhouse_kick",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\roundhouse_kick\\proportion-report.json",
+      "reportPath": "public/sprites/qa/supreme-emperor/roundhouse_kick/proportion-report.json",
       "suspiciousFrames": 0,
-      "worstFlags": []
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "worstWarnings": []
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "stand_up",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\stand_up\\proportion-report.json",
+      "reportPath": "public/sprites/qa/supreme-emperor/stand_up/proportion-report.json",
       "suspiciousFrames": 6,
-      "worstFlags": [
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "worstWarnings": [
         "0001: body height 65% of idle",
         "0001: body width 327% of idle",
+        "0001: baseline shifted 64px from idle",
+        "0002: body height 86% of idle",
         "0002: body width 184% of idle",
+        "0002: baseline shifted 64px from idle",
         "0003: body width 218% of idle",
-        "0004: body width 192% of idle"
+        "0003: baseline shifted 64px from idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "tornado_kick",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\tornado_kick\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/supreme-emperor/tornado_kick/proportion-report.json",
+      "suspiciousFrames": 9,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "metadata/canvas issue",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: baseline shifted 16px from idle",
+        "0002: baseline shifted 16px from idle",
+        "0003: baseline shifted 16px from idle",
+        "0004: baseline shifted 16px from idle",
+        "0005: baseline shifted 16px from idle",
+        "0006: baseline shifted 16px from idle",
+        "0007: body width 231% of idle",
+        "0007: baseline shifted 16px from idle"
+      ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "walk",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\supreme-emperor\\walk\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/supreme-emperor/walk/proportion-report.json",
+      "suspiciousFrames": 1,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0002: body width 151% of idle"
+      ]
     },
     {
       "entityId": "monkey-grunt",
       "animationId": "cross",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\monkey-grunt\\cross\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/monkey-grunt/cross/proportion-report.json",
+      "suspiciousFrames": 5,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: head/body touch top crop edge",
+        "0005: body width 43% of idle",
+        "0005: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "monkey-grunt",
       "animationId": "death",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\monkey-grunt\\death\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/monkey-grunt/death/proportion-report.json",
+      "suspiciousFrames": 7,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: body height 70% of idle",
+        "0002: body height 64% of idle",
+        "0003: body height 59% of idle",
+        "0004: body height 66% of idle",
+        "0005: body height 51% of idle",
+        "0006: body height 58% of idle",
+        "0007: body height 56% of idle"
+      ]
+    },
+    {
+      "entityId": "monkey-grunt",
+      "animationId": "grab",
+      "reportPath": "public/sprites/qa/monkey-grunt/grab/proportion-report.json",
+      "suspiciousFrames": 6,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: head/body touch top crop edge",
+        "0005: head/body touch top crop edge",
+        "0006: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "monkey-grunt",
       "animationId": "hit_react",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\monkey-grunt\\hit_react\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/monkey-grunt/hit_react/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: body width 55% of idle",
+        "0003: head/body touch top crop edge"
+      ]
+    },
+    {
+      "entityId": "monkey-grunt",
+      "animationId": "idle",
+      "reportPath": "public/sprites/qa/monkey-grunt/idle/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: body width 25% of idle",
+        "0004: head/body touch top crop edge"
+      ]
+    },
+    {
+      "entityId": "monkey-grunt",
+      "animationId": "jab",
+      "reportPath": "public/sprites/qa/monkey-grunt/jab/proportion-report.json",
+      "suspiciousFrames": 5,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: head/body touch top crop edge",
+        "0005: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "monkey-grunt",
       "animationId": "knockdown",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\monkey-grunt\\knockdown\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/monkey-grunt/knockdown/proportion-report.json",
+      "suspiciousFrames": 5,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: body height 77% of idle",
+        "0003: body height 60% of idle",
+        "0004: body height 80% of idle",
+        "0005: body height 68% of idle"
+      ]
+    },
+    {
+      "entityId": "monkey-grunt",
+      "animationId": "run",
+      "reportPath": "public/sprites/qa/monkey-grunt/run/proportion-report.json",
+      "suspiciousFrames": 6,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: head/body touch top crop edge",
+        "0005: head/body touch top crop edge",
+        "0006: head/body touch top crop edge"
+      ]
+    },
+    {
+      "entityId": "striker-monkey",
+      "animationId": "cross",
+      "reportPath": "public/sprites/qa/striker-monkey/cross/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: body width 56% of idle",
+        "0004: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "striker-monkey",
       "animationId": "death",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\striker-monkey\\death\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/striker-monkey/death/proportion-report.json",
+      "suspiciousFrames": 5,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: body height 52% of idle",
+        "0002: body height 58% of idle",
+        "0003: body height 53% of idle",
+        "0004: body height 52% of idle",
+        "0005: body height 53% of idle"
+      ]
     },
     {
       "entityId": "striker-monkey",
       "animationId": "hit_react",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\striker-monkey\\hit_react\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/striker-monkey/hit_react/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: body height 89% of idle",
+        "0004: body width 45% of idle"
+      ]
+    },
+    {
+      "entityId": "striker-monkey",
+      "animationId": "hook",
+      "reportPath": "public/sprites/qa/striker-monkey/hook/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: body width 79% of idle",
+        "0003: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "striker-monkey",
       "animationId": "idle",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\striker-monkey\\idle\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/striker-monkey/idle/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge",
+        "0004: head/body touch top crop edge"
+      ]
+    },
+    {
+      "entityId": "striker-monkey",
+      "animationId": "jab",
+      "reportPath": "public/sprites/qa/striker-monkey/jab/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0003: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "striker-monkey",
       "animationId": "knockdown",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\striker-monkey\\knockdown\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/striker-monkey/knockdown/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0004: body height 78% of idle",
+        "0005: body height 50% of idle"
+      ]
     },
     {
       "entityId": "striker-monkey",
       "animationId": "round_kick",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\striker-monkey\\round_kick\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/striker-monkey/round_kick/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0004: body width 78% of idle",
+        "0004: head/body touch top crop edge"
+      ]
     },
     {
       "entityId": "striker-monkey",
       "animationId": "run",
-      "reportPath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\qa\\striker-monkey\\run\\proportion-report.json",
-      "suspiciousFrames": 0,
-      "worstFlags": []
+      "reportPath": "public/sprites/qa/striker-monkey/run/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "fallback/raw atlas"
+      ],
+      "likelyCauses": [
+        "source art issue",
+        "within measured tolerance"
+      ],
+      "worstWarnings": [
+        "0001: head/body touch top crop edge",
+        "0002: head/body touch top crop edge",
+        "0004: head/body touch top crop edge",
+        "0005: head/body touch top crop edge"
+      ]
     }
   ]
 }

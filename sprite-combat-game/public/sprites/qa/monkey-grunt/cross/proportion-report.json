@@ -1,11 +1,219 @@
 {
   "entityId": "monkey-grunt",
   "animationId": "cross",
-  "note": "No per-frame QA metadata exists yet. Runtime likely uses an atlas strip; use Sprite Lab/manual override PNGs for detailed body metrics.",
-  "reference": {
-    "bodyHeight": 70,
-    "bodyWidth": 44,
-    "source": "idle metadata median"
+  "note": "Measured from active atlas crop because no per-frame PNG metadata exists yet.",
+  "idleReference": {
+    "bodyHeight": 88,
+    "bodyWidth": 96,
+    "baselineY": 96,
+    "source": "idle atlas crop median"
   },
-  "frames": []
+  "outputCanvas": {
+    "w": 96,
+    "h": 96
+  },
+  "targetBodyHeight": 70,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row3-frame1",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\cross\\0001.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row3-frame2",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\cross\\0002.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row3-frame3",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\cross\\0003.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 88,
+      "visibleBodyHeight": 88,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "topY": 0,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44,
+      "torsoCoreHeightEstimate": 29.92,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.96,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.84,
+        "w": 96,
+        "h": 33.44
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row3-frame4",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\cross\\0004.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 87,
+      "visibleBodyHeight": 87,
+      "visibleBodyWidth": 96,
+      "heightVsIdle": 0.9886,
+      "widthVsIdle": 1,
+      "topY": 1,
+      "bottomFeetY": 87,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 48,
+      "centerY": 44.5,
+      "torsoCoreHeightEstimate": 29.58,
+      "torsoCoreWidthEstimate": 61.44,
+      "lowerBodyLegZoneHeightEstimate": 36.54,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 16.66,
+        "w": 96,
+        "h": 33.06
+      },
+      "warnings": [
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\assets\\fightcore\\sprites\\monkey-grunt\\atlas.png#row3-frame5",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\monkey-grunt\\cross\\0005.png",
+      "sourcePriority": "fallback/raw atlas",
+      "outputCanvas": {
+        "w": 96,
+        "h": 96
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 87,
+      "visibleBodyHeight": 87,
+      "visibleBodyWidth": 41,
+      "heightVsIdle": 0.9886,
+      "widthVsIdle": 0.4271,
+      "topY": 0,
+      "bottomFeetY": 86,
+      "baselineY": 96,
+      "baselineShift": 0,
+      "centerX": 20.5,
+      "centerY": 43.5,
+      "torsoCoreHeightEstimate": 29.58,
+      "torsoCoreWidthEstimate": 26.24,
+      "lowerBodyLegZoneHeightEstimate": 36.54,
+      "armReachExtensionBounds": {
+        "x": 0,
+        "y": 15.66,
+        "w": 41,
+        "h": 33.06
+      },
+      "warnings": [
+        "body width 43% of idle",
+        "head/body touch top crop edge"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    }
+  ]
 }

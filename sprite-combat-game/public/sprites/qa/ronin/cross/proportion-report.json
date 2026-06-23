@@ -1,10 +1,12 @@
 {
   "entityId": "ronin",
   "animationId": "cross",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 64,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 224,
@@ -17,148 +19,185 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\cross\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\cross\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 0.9752,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 121,
       "visibleBodyWidth": 69,
-      "heightVsIdle": 1.0254237288135593,
-      "widthVsIdle": 1.078125,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 90,
-        "y": 54,
-        "w": 44,
-        "h": 41
-      },
-      "approximateLegZone": {
-        "x": 86,
-        "y": 95,
-        "w": 52,
-        "h": 51
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0254,
+      "widthVsIdle": 1.0781,
+      "topY": 27,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 87.5,
+      "torsoCoreHeightEstimate": 41.14,
+      "torsoCoreWidthEstimate": 44.16,
+      "lowerBodyLegZoneHeightEstimate": 50.82,
+      "armReachExtensionBounds": {
         "x": 78,
-        "y": 49,
+        "y": 48.78,
         "w": 69,
-        "h": 46
+        "h": 45.98
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\cross\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\cross\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 75,
       "heightVsIdle": 1,
-      "widthVsIdle": 1.171875,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 89,
-        "y": 56,
-        "w": 48,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 84,
-        "y": 96,
-        "w": 57,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 1.1719,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 48,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 75,
-        "y": 51,
+        "y": 51.24,
         "w": 75,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\cross\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\cross\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0172,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 116,
       "visibleBodyWidth": 84,
-      "heightVsIdle": 0.9830508474576272,
+      "heightVsIdle": 0.9831,
       "widthVsIdle": 1.3125,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 85,
-        "y": 58,
-        "w": 54,
-        "h": 39
-      },
-      "approximateLegZone": {
-        "x": 80,
-        "y": 97,
-        "w": 64,
-        "h": 49
-      },
-      "approximateArmReachZone": {
+      "topY": 32,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 90,
+      "torsoCoreHeightEstimate": 39.44,
+      "torsoCoreWidthEstimate": 53.76,
+      "lowerBodyLegZoneHeightEstimate": 48.72,
+      "armReachExtensionBounds": {
         "x": 70,
-        "y": 53,
+        "y": 52.88,
         "w": 84,
-        "h": 44
+        "h": 44.08
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\cross\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\cross\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0085,
+      "finalRenderedBodyHeight": 117.99,
       "visibleBodyHeight": 117,
       "visibleBodyWidth": 102,
-      "heightVsIdle": 0.9915254237288136,
-      "widthVsIdle": 1.59375,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 79,
-        "y": 57,
-        "w": 65,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 73,
-        "y": 97,
-        "w": 78,
-        "h": 49
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 0.9915,
+      "widthVsIdle": 1.5938,
+      "topY": 31,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 89.5,
+      "torsoCoreHeightEstimate": 39.78,
+      "torsoCoreWidthEstimate": 65.28,
+      "lowerBodyLegZoneHeightEstimate": 49.14,
+      "armReachExtensionBounds": {
         "x": 61,
-        "y": 52,
+        "y": 52.06,
         "w": 102,
-        "h": 44
+        "h": 44.46
       },
-      "flags": [
+      "warnings": [
         "body width 159% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\cross\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\cross\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 0.9916,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 119,
       "visibleBodyWidth": 67,
-      "heightVsIdle": 1.0084745762711864,
-      "widthVsIdle": 1.046875,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 91,
-        "y": 55,
-        "w": 43,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 87,
-        "y": 96,
-        "w": 51,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.0085,
+      "widthVsIdle": 1.0469,
+      "topY": 29,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 88.5,
+      "torsoCoreHeightEstimate": 40.46,
+      "torsoCoreWidthEstimate": 42.88,
+      "lowerBodyLegZoneHeightEstimate": 49.98,
+      "armReachExtensionBounds": {
         "x": 79,
-        "y": 50,
+        "y": 50.42,
         "w": 67,
-        "h": 45
+        "h": 45.22
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     }
   ]
 }

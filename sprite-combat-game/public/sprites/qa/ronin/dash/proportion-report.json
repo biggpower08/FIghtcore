@@ -1,10 +1,12 @@
 {
   "entityId": "ronin",
   "animationId": "dash",
-  "reference": {
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 64,
-    "source": "idle metadata median"
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
   },
   "outputCanvas": {
     "w": 224,
@@ -17,153 +19,188 @@
       "frame": "0001",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\dash\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 0.8429,
+      "finalRenderedBodyHeight": 118.01,
       "visibleBodyHeight": 140,
       "visibleBodyWidth": 81,
-      "heightVsIdle": 1.1864406779661016,
-      "widthVsIdle": 1.265625,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 87,
-        "y": 39,
-        "w": 52,
-        "h": 48
-      },
-      "approximateLegZone": {
-        "x": 82,
-        "y": 86,
-        "w": 62,
-        "h": 59
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.1864,
+      "widthVsIdle": 1.2656,
+      "topY": 8,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 78,
+      "torsoCoreHeightEstimate": 47.6,
+      "torsoCoreWidthEstimate": 51.84,
+      "lowerBodyLegZoneHeightEstimate": 58.8,
+      "armReachExtensionBounds": {
         "x": 72,
-        "y": 33,
+        "y": 33.2,
         "w": 81,
-        "h": 53
+        "h": 53.2
       },
-      "flags": [
+      "warnings": [
         "body height 119% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     },
     {
       "frame": "0002",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\dash\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 93,
       "heightVsIdle": 1,
-      "widthVsIdle": 1.453125,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 83,
-        "y": 56,
-        "w": 60,
-        "h": 40
-      },
-      "approximateLegZone": {
-        "x": 77,
-        "y": 96,
-        "w": 71,
-        "h": 50
-      },
-      "approximateArmReachZone": {
+      "widthVsIdle": 1.4531,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 59.52,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "armReachExtensionBounds": {
         "x": 66,
-        "y": 51,
+        "y": 51.24,
         "w": 93,
-        "h": 45
+        "h": 44.84
       },
-      "flags": []
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0003",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\dash\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.0351,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 114,
       "visibleBodyWidth": 128,
-      "heightVsIdle": 0.9661016949152542,
+      "heightVsIdle": 0.9661,
       "widthVsIdle": 2,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 71,
-        "y": 59,
-        "w": 82,
-        "h": 39
-      },
-      "approximateLegZone": {
-        "x": 63,
-        "y": 98,
-        "w": 97,
-        "h": 48
-      },
-      "approximateArmReachZone": {
+      "topY": 34,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 91,
+      "torsoCoreHeightEstimate": 38.76,
+      "torsoCoreWidthEstimate": 81.92,
+      "lowerBodyLegZoneHeightEstimate": 47.88,
+      "armReachExtensionBounds": {
         "x": 48,
-        "y": 55,
+        "y": 54.52,
         "w": 128,
-        "h": 43
+        "h": 43.32
       },
-      "flags": [
-        "body width 200% of idle"
-      ]
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0004",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\dash\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 1.1028,
+      "finalRenderedBodyHeight": 118,
       "visibleBodyHeight": 107,
       "visibleBodyWidth": 136,
-      "heightVsIdle": 0.9067796610169492,
+      "heightVsIdle": 0.9068,
       "widthVsIdle": 2.125,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 68,
-        "y": 65,
-        "w": 87,
-        "h": 36
-      },
-      "approximateLegZone": {
-        "x": 60,
-        "y": 101,
-        "w": 103,
-        "h": 45
-      },
-      "approximateArmReachZone": {
+      "topY": 41,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 94.5,
+      "torsoCoreHeightEstimate": 36.38,
+      "torsoCoreWidthEstimate": 87.04,
+      "lowerBodyLegZoneHeightEstimate": 44.94,
+      "armReachExtensionBounds": {
         "x": 44,
-        "y": 60,
+        "y": 60.26,
         "w": 136,
-        "h": 41
+        "h": 40.66
       },
-      "flags": [
-        "body width 213% of idle"
-      ]
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
     },
     {
       "frame": "0005",
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\dash\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\dash\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 224,
+        "h": 160
+      },
+      "runtimeDrawScale": 0.8429,
+      "finalRenderedBodyHeight": 118.01,
       "visibleBodyHeight": 140,
       "visibleBodyWidth": 82,
-      "heightVsIdle": 1.1864406779661016,
-      "widthVsIdle": 1.28125,
-      "baseline": 148,
-      "approximateTorsoZone": {
-        "x": 86,
-        "y": 39,
-        "w": 52,
-        "h": 48
-      },
-      "approximateLegZone": {
-        "x": 81,
-        "y": 86,
-        "w": 62,
-        "h": 59
-      },
-      "approximateArmReachZone": {
+      "heightVsIdle": 1.1864,
+      "widthVsIdle": 1.2813,
+      "topY": 8,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 112,
+      "centerY": 78,
+      "torsoCoreHeightEstimate": 47.6,
+      "torsoCoreWidthEstimate": 52.48,
+      "lowerBodyLegZoneHeightEstimate": 58.8,
+      "armReachExtensionBounds": {
         "x": 71,
-        "y": 33,
+        "y": 33.2,
         "w": 82,
-        "h": 53
+        "h": 53.2
       },
-      "flags": [
+      "warnings": [
         "body height 119% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
       ]
     }
   ]
