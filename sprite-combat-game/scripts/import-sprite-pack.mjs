@@ -71,6 +71,8 @@ function normalizeManifest(packDir, manifest) {
       fps: Number(animation.fps ?? 10),
       outputCanvas: animation.outputCanvas,
       dropDetachedComponents: Boolean(animation.dropDetachedComponents),
+      frameDurations: Array.isArray(animation.frameDurations) ? animation.frameDurations.map((duration) => Number(duration)) : undefined,
+      holdFrames: animation.holdFrames && typeof animation.holdFrames === 'object' ? animation.holdFrames : undefined,
     })),
   };
 }
@@ -200,7 +202,8 @@ async function importAnimation(pack, animation) {
           bodyBounds: null,
           anchorX: 0.5,
           anchorY: baselineY / canvas.h,
-          durationMs: Math.round(1000 / Math.max(1, animation.fps)),
+          durationMs: durationForFrame(animation, index),
+          holdCount: holdCountForFrame(animation, index),
           cutoff: false,
           placeholderFrame: true,
           placeholderFromFrameIndex: null,
@@ -210,6 +213,7 @@ async function importAnimation(pack, animation) {
       }
     }
     const normalized = normalizeFrame(frame, bounds, canvas, baselineY, normalizedScale);
+    const durationMs = durationForFrame(animation, index);
     const framePath = `/sprites/frames-pack/${pack.id}/${animation.id}/${String(index + 1).padStart(4, '0')}.png`;
     await writeFile(path.join(outputDir, `${String(index + 1).padStart(4, '0')}.png`), PNG.sync.write(normalized.png));
     const cutoff = normalized.cutoff;
@@ -230,7 +234,8 @@ async function importAnimation(pack, animation) {
       bodyBounds: normalized.bodyBounds,
       anchorX: 0.5,
       anchorY: baselineY / canvas.h,
-      durationMs: Math.round(1000 / Math.max(1, animation.fps)),
+      durationMs,
+      holdCount: holdCountForFrame(animation, index),
       cutoff,
       ...(placeholderFromFrameIndex !== null
         ? {
@@ -254,6 +259,8 @@ async function importAnimation(pack, animation) {
     sourceFrameSize: { w: sourceFrameWidth, h: sourceFrameHeight },
     sourceSlices: frameSlices,
     outputCanvas: canvas,
+    frameDurations: normalizedFrames.map((frame) => frame.durationMs),
+    holdFrames: animation.holdFrames ?? {},
     targetBodyHeight: pack.targetBodyHeight,
     normalizedScale,
     bodyVariance,
@@ -269,6 +276,8 @@ async function importAnimation(pack, animation) {
       fps: animation.fps,
       loop: animation.loop,
       outputCanvas: canvas,
+      frameDurations: normalizedFrames.map((frame) => frame.durationMs),
+      holdFrames: animation.holdFrames ?? {},
       warnings,
       frames: normalizedFrames,
     },
@@ -504,6 +513,20 @@ function normalizeFrame(frame, bounds, canvas, baselineY, scale) {
   };
 }
 
+function durationForFrame(animation, index) {
+  const explicit = Number(animation.frameDurations?.[index]);
+  if (Number.isFinite(explicit) && explicit > 0) return Math.round(explicit);
+  return Math.round((1000 / Math.max(1, animation.fps)) * holdCountForFrame(animation, index));
+}
+
+function holdCountForFrame(animation, index) {
+  const key = String(index + 1).padStart(4, '0');
+  const numeric = String(index + 1);
+  const raw = animation.holdFrames?.[key] ?? animation.holdFrames?.[numeric] ?? 1;
+  const hold = Number(raw);
+  return Number.isFinite(hold) && hold > 0 ? hold : 1;
+}
+
 async function writeQaSheets(qaDir, frames, warnings, expectedFrameCount = frames.length) {
   const width = Math.max(1, ...frames.map((frame) => frame.frameSize.w)) * Math.max(1, frames.length);
   const height = Math.max(1, ...frames.map((frame) => frame.frameSize.h));
@@ -650,6 +673,7 @@ function renderRegistry(packs) {
   anchorX: number;
   anchorY: number;
   durationMs: number;
+  holdCount?: number;
   cutoff?: boolean;
 }
 
@@ -659,6 +683,8 @@ export interface GeneratedSpritePackAnimation {
   fps?: number;
   loop?: boolean;
   outputCanvas?: { w: number; h: number };
+  frameDurations?: number[];
+  holdFrames?: Record<string, number>;
   warnings?: string[];
   frames: GeneratedSpritePackFrame[];
 }

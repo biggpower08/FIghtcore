@@ -18,7 +18,7 @@
     "dash": { "file": "../../sprites/semi-realistic-source/ronin_dash.png", "frames": 5, "loop": false, "fps": 14, "outputCanvas": { "w": 224, "h": 160 } },
     "density": { "file": "../../sprites/semi-realistic-source/ronin_density.png", "frames": 5, "loop": false, "fps": 6, "outputCanvas": { "w": 224, "h": 160 } },
     "jab": { "file": "../../sprites/semi-realistic-source/ronin_jab.png", "frames": 5, "loop": false, "fps": 11, "outputCanvas": { "w": 224, "h": 160 } },
-    "cross": { "file": "../../sprites/semi-realistic-source/ronin_cross.png", "frames": 5, "loop": false, "fps": 10, "outputCanvas": { "w": 224, "h": 160 } },
+    "cross": { "file": "../../sprites/semi-realistic-source/ronin_cross.png", "frames": 5, "loop": false, "fps": 10, "outputCanvas": { "w": 224, "h": 160 }, "frameDurations": [70, 80, 260, 110, 80], "holdFrames": { "0003": 3 } },
     "calf_kick": { "file": "../../sprites/semi-realistic-source/ronin_calf_kick.png", "frames": 5, "loop": false, "fps": 9, "outputCanvas": { "w": 256, "h": 160 } },
     "knee": { "file": "../../sprites/semi-realistic-source/ronin_knee.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 224, "h": 160 } },
     "hit_react": { "file": "../../sprites/semi-realistic-source/ronin_hit_react.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 192, "h": 160 } },

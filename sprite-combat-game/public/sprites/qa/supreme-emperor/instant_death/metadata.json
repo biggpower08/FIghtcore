@@ -44,6 +44,14 @@
     "w": 224,
     "h": 160
   },
+  "frameDurations": [
+    143,
+    143,
+    143,
+    143,
+    143
+  ],
+  "holdFrames": {},
   "targetBodyHeight": 118,
   "normalizedScale": 0.19376026272577998,
   "bodyVariance": 0.1440677966101695,
@@ -80,6 +88,7 @@
       "anchorX": 0.5,
       "anchorY": 0.925,
       "durationMs": 143,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -113,6 +122,7 @@
       "anchorX": 0.5,
       "anchorY": 0.925,
       "durationMs": 143,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -146,6 +156,7 @@
       "anchorX": 0.5,
       "anchorY": 0.925,
       "durationMs": 143,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -179,6 +190,7 @@
       "anchorX": 0.5,
       "anchorY": 0.925,
       "durationMs": 143,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -212,6 +224,7 @@
       "anchorX": 0.5,
       "anchorY": 0.925,
       "durationMs": 143,
+      "holdCount": 1,
       "cutoff": false
     }
   ]

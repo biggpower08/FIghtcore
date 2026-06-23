@@ -34,6 +34,13 @@ function labEntityIds(): string[] {
   return [...new Set([...coreLabEntityIds, ...registered])];
 }
 
+function estimateHoldCount(frames: ResolvedSpriteFrame[], framePosition: number): number {
+  const durations = frames.map((frame) => frame.durationMs).filter((duration) => duration > 0);
+  const base = Math.min(...durations);
+  if (!Number.isFinite(base) || base <= 0) return 1;
+  return Math.max(1, Math.round((frames[framePosition]?.durationMs ?? base) / base));
+}
+
 export class SpriteLab {
   private frameIndex = 0;
   private animation: ResolvedSpriteAnimation | null = null;
@@ -166,10 +173,13 @@ export class SpriteLab {
       this.draw();
       return;
     }
-    this.playbackId = window.setInterval(() => {
+    const step = (): void => {
+      if (!this.animation) return;
       this.frameIndex += 1;
       this.draw();
-    }, Math.max(70, this.animation.frames[this.frameIndex % this.animation.frames.length]?.durationMs ?? 120));
+      this.playbackId = window.setTimeout(step, Math.max(45, this.animation.frames[this.frameIndex % this.animation.frames.length]?.durationMs ?? 120));
+    };
+    this.playbackId = window.setTimeout(step, Math.max(45, this.animation.frames[this.frameIndex % this.animation.frames.length]?.durationMs ?? 120));
   }
 
   private pause(): void {
@@ -208,6 +218,8 @@ export class SpriteLab {
     const alpha = frame ? this.getAlphaInfo(frame) : undefined;
     const imageStatus = this.getImageStatus(frame);
     const scaleDiagnostics = frame ? this.getScaleDiagnostics(frame, alpha) : undefined;
+    const combatProfile = getCombatMoveProfileByAnimation(this.animation.animationKey);
+    const manualOverridePath = `C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\${this.animation.entityId}\\${this.animation.animationKey}\\${String(framePosition + 1).padStart(4, '0')}.png`;
 
     info.textContent = JSON.stringify(
       {
@@ -218,6 +230,12 @@ export class SpriteLab {
         expectedFrameCount: this.animation.frames.length,
         actualRuntimeFrameCount: this.animation.frames.length,
         frameIndex: framePosition,
+        frameDurationMs: frame?.durationMs,
+        frameHoldCount: frame?.generatedPackHoldCount ?? estimateHoldCount(this.animation.frames, framePosition),
+        activeHitboxFrames60fps: combatProfile?.activeFrames,
+        visualActiveFrames: combatProfile?.visualActiveFrames,
+        currentFrameIsVisualActive: combatProfile?.visualActiveFrames?.includes(framePosition + 1) ?? false,
+        impactFrame: combatProfile?.impactFrame,
         placeholderFrames: this.animation.frames
           .filter((candidate) => candidate.placeholderFrame)
           .map((candidate) => ({
@@ -232,6 +250,7 @@ export class SpriteLab {
         sheetId: frame?.sheetId,
         sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
+        manualOverridePath,
         sourceKind: frame?.source,
         sourceDescription: this.describeFrameSource(frame),
         imageLoad: imageStatus,
@@ -272,7 +291,7 @@ export class SpriteLab {
         qa: frame ? this.getFrameQa(frame, alpha, framePosition) : undefined,
         eligibility: getAnimationEligibility(this.animation.entityId, this.animation.animationKey),
         visualProfile: getCharacterVisualProfile(this.animation.entityId),
-        combatProfile: getCombatMoveProfileByAnimation(this.animation.animationKey),
+        combatProfile,
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         invalidFrame: frame ? this.isInvalidFrame(frame, framePosition) : 'missing-frame',
         warning:
@@ -343,7 +362,7 @@ export class SpriteLab {
       }
     }
     if (this.options.hitbox) {
-      const active = combatProfile?.activeFrames.includes(framePosition + 1) ?? false;
+      const active = combatProfile?.visualActiveFrames?.includes(framePosition + 1) ?? combatProfile?.activeFrames.includes(framePosition + 1) ?? false;
       ctx.strokeStyle = active ? 'rgba(255, 237, 135, 0.96)' : 'rgba(255, 237, 135, 0.36)';
       ctx.fillStyle = active ? 'rgba(255, 237, 135, 0.16)' : 'rgba(255, 237, 135, 0.06)';
       ctx.lineWidth = 2;

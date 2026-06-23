@@ -50,6 +50,7 @@ export interface ResolvedSpriteFrame {
   generatedPackVisualScale?: number;
   generatedPackSourceBounds?: { x: number; y: number; w: number; h: number; pixels: number };
   generatedPackBodyBounds?: { x: number; y: number; w: number; h: number };
+  generatedPackHoldCount?: number;
   usingRepairedAlpha?: boolean;
   invalidHollowFrame?: boolean;
   alphaHoleCount?: number;
@@ -526,6 +527,7 @@ export class AssetLoader {
           generatedPackVisualScale: generatedPackFrame?.visualScale,
           generatedPackSourceBounds: generatedPackFrame?.sourceBounds,
           generatedPackBodyBounds: generatedPackFrame?.bodyBounds,
+          generatedPackHoldCount: generatedPackFrame?.holdCount,
           usingSemiRealisticFrame: Boolean(semiRealisticFrame),
           semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
           notes: usingManualOverride

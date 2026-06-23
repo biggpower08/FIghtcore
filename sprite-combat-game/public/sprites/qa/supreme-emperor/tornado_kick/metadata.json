@@ -68,6 +68,20 @@
     "w": 320,
     "h": 176
   },
+  "frameDurations": [
+    70,
+    70,
+    70,
+    80,
+    120,
+    100,
+    360,
+    80,
+    70
+  ],
+  "holdFrames": {
+    "0007": 4
+  },
   "targetBodyHeight": 118,
   "normalizedScale": 0.41403508771929826,
   "bodyVariance": 0.2033898305084746,
@@ -105,7 +119,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 70,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -138,7 +153,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 70,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -171,7 +187,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 70,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -204,7 +221,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 80,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -237,7 +255,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 120,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -270,7 +289,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 100,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -303,7 +323,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 360,
+      "holdCount": 4,
       "cutoff": false
     },
     {
@@ -336,7 +357,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 80,
+      "holdCount": 1,
       "cutoff": false
     },
     {
@@ -369,7 +391,8 @@
       },
       "anchorX": 0.5,
       "anchorY": 0.9318181818181818,
-      "durationMs": 143,
+      "durationMs": 70,
+      "holdCount": 1,
       "cutoff": false
     }
   ]

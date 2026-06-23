@@ -26,6 +26,8 @@ export interface CombatMoveProfile {
   animationKey: string;
   startupFrames: number;
   activeFrames: number[];
+  visualActiveFrames?: number[];
+  impactFrame?: number;
   hits: CombatHitWindow[];
   recoveryFrames: number;
   hitstopFrames: number;
@@ -48,16 +50,26 @@ const FRAME_MS = 1000 / FPS;
 
 const overrides: Record<string, Partial<CombatMoveProfile>> = {
   jab: { hitstopFrames: 3, hitstunFrames: 8, knockback: { x: 92, y: 0 }, launchAngleDegrees: 0 },
-  cross: { hitstopFrames: 4, hitstunFrames: 10, knockback: { x: 132, y: -8 }, launchAngleDegrees: -4 },
+  cross: {
+    hitstopFrames: 4,
+    hitstunFrames: 10,
+    knockback: { x: 132, y: -8 },
+    launchAngleDegrees: -4,
+    activeFrames: range(10, 24),
+    visualActiveFrames: [3],
+    impactFrame: 3,
+  },
   jab_cross: {
     hitstopFrames: 5,
     hitstunFrames: 14,
     knockback: { x: 170, y: -12 },
     launchAngleDegrees: -5,
+    visualActiveFrames: [2, 5],
+    impactFrame: 5,
     hits: [
       {
         hitId: 'jab',
-        activeFrames: [9, 10],
+        activeFrames: range(5, 12),
         damage: 8,
         hitstopFrames: 3,
         hitstunFrames: 8,
@@ -66,7 +78,7 @@ const overrides: Record<string, Partial<CombatMoveProfile>> = {
       },
       {
         hitId: 'cross',
-        activeFrames: [14, 15],
+        activeFrames: range(24, 38),
         damage: 16,
         hitstopFrames: 5,
         hitstunFrames: 14,
@@ -82,7 +94,16 @@ const overrides: Record<string, Partial<CombatMoveProfile>> = {
   calf_kick: { hitstopFrames: 4, hitstunFrames: 12, knockback: { x: 126, y: 12 }, launchAngleDegrees: 6 },
   knee: { hitstopFrames: 6, hitstunFrames: 18, knockback: { x: 126, y: -64 }, launchAngleDegrees: -26 },
   spinning_sweep: { hitstopFrames: 6, hitstunFrames: 18, knockback: { x: 150, y: 36 }, launchAngleDegrees: 12 },
-  tornado_kick: { hitstopFrames: 8, hitstunFrames: 24, knockback: { x: 248, y: -68 }, launchAngleDegrees: -18 },
+  tornado_kick: {
+    hitstopFrames: 8,
+    hitstunFrames: 24,
+    knockback: { x: 248, y: -68 },
+    launchAngleDegrees: -18,
+    activeFrames: range(35, 52),
+    visualActiveFrames: [7],
+    impactFrame: 7,
+    hitbox: { x: 112, y: -70, w: 104, h: 74 },
+  },
   feint_rear_hook: { hitstopFrames: 7, hitstunFrames: 20, knockback: { x: 210, y: -24 }, launchAngleDegrees: -8 },
   o_goshi: { hitstopFrames: 6, hitstunFrames: 22, knockback: { x: 136, y: 48 }, launchAngleDegrees: 18, movementLock: 'full' },
 };
@@ -168,4 +189,8 @@ function createCombatMoveProfile(move: MoveDefinition): CombatMoveProfile {
 export function getCombatMoveProfileById(moveId: string): CombatMoveProfile | undefined {
   const move = moveById.get(moveId);
   return move ? getCombatMoveProfile(move) : undefined;
+}
+
+function range(start: number, endInclusive: number): number[] {
+  return Array.from({ length: Math.max(0, endInclusive - start + 1) }, (_, index) => start + index);
 }

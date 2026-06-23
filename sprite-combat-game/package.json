@@ -16,6 +16,7 @@
     "sprite-pack:validate": "node scripts/validate-sprite-pack.mjs",
     "sprite-pack:import": "node scripts/import-sprite-pack.mjs",
     "sprite-pack:list-frames": "node scripts/list-sprite-frames.mjs",
+    "sprite-pack:list-attacks": "node scripts/list-attack-frames.mjs",
     "sprites:clean-alpha": "node scripts/clean-sprite-alpha.mjs",
     "sprites:qa-cleaned": "node scripts/clean-sprite-alpha.mjs --qa-only",
     "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",

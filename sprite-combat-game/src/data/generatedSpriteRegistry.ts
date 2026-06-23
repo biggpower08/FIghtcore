@@ -10,6 +10,7 @@ export interface GeneratedSpritePackFrame {
   anchorX: number;
   anchorY: number;
   durationMs: number;
+  holdCount?: number;
   cutoff?: boolean;
 }
 
@@ -19,6 +20,8 @@ export interface GeneratedSpritePackAnimation {
   fps?: number;
   loop?: boolean;
   outputCanvas?: { w: number; h: number };
+  frameDurations?: number[];
+  holdFrames?: Record<string, number>;
   warnings?: string[];
   frames: GeneratedSpritePackFrame[];
 }
@@ -63,6 +66,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 192,
           "h": 160
         },
+        "frameDurations": [
+          167,
+          167,
+          167,
+          167,
+          167
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -96,6 +107,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -129,6 +141,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -162,6 +175,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -195,6 +209,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -228,6 +243,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -241,6 +257,15 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 192,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -274,6 +299,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -307,6 +333,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -340,6 +367,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -373,6 +401,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -406,6 +435,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -439,6 +469,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -452,6 +483,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          71,
+          71,
+          71,
+          71,
+          71
+        ],
+        "holdFrames": {},
         "warnings": [
           "frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop",
@@ -489,6 +528,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -522,6 +562,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -555,6 +596,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -588,6 +630,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -621,6 +664,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -634,6 +678,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          167,
+          167,
+          167,
+          167,
+          167
+        ],
+        "holdFrames": {},
         "warnings": [
           "frame 4: 1241 background-like opaque pixels remain after cleanup",
           "frame 5: 3479 background-like opaque pixels remain after cleanup"
@@ -670,6 +722,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -703,6 +756,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -736,6 +790,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -769,6 +824,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -802,6 +858,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -815,6 +872,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          91,
+          91,
+          91,
+          91,
+          91
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -848,6 +913,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 91,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -881,6 +947,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 91,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -914,6 +981,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 91,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -947,6 +1015,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 91,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -980,6 +1049,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 91,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -992,6 +1062,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
         "outputCanvas": {
           "w": 224,
           "h": 160
+        },
+        "frameDurations": [
+          70,
+          80,
+          260,
+          110,
+          80
+        ],
+        "holdFrames": {
+          "0003": 3
         },
         "warnings": [],
         "frames": [
@@ -1025,7 +1105,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 100,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1058,7 +1139,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 100,
+            "durationMs": 80,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1091,7 +1173,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 100,
+            "durationMs": 260,
+            "holdCount": 3,
             "cutoff": false
           },
           {
@@ -1124,7 +1207,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 100,
+            "durationMs": 110,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1157,7 +1241,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 100,
+            "durationMs": 80,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -1171,6 +1256,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 256,
           "h": 160
         },
+        "frameDurations": [
+          111,
+          111,
+          111,
+          111,
+          111
+        ],
+        "holdFrames": {},
         "warnings": [
           "frame 1: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "frame 2: visible pixels reached source slice edge; possible frame bleed or tight crop",
@@ -1209,6 +1302,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 111,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1242,6 +1336,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 111,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1275,6 +1370,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 111,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1308,6 +1404,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 111,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1341,6 +1438,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 111,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -1354,6 +1452,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -1387,6 +1493,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1420,6 +1527,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1453,6 +1561,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1486,6 +1595,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1519,6 +1629,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -1532,6 +1643,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 192,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [
           "frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop"
@@ -1568,6 +1687,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1601,6 +1721,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1634,6 +1755,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1667,6 +1789,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1700,6 +1823,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -1713,6 +1837,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [
           "body height variance 43.2% exceeds 18%"
         ],
@@ -1748,6 +1880,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1781,6 +1914,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1814,6 +1948,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1847,6 +1982,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1880,6 +2016,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -1893,6 +2030,15 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 224
         },
+        "frameDurations": [
+          143,
+          143,
+          143,
+          143,
+          143,
+          143
+        ],
+        "holdFrames": {},
         "warnings": [
           "body height variance 100.8% exceeds 18%"
         ],
@@ -1928,6 +2074,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1961,6 +2108,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -1994,6 +2142,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2027,6 +2176,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2060,6 +2210,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2093,6 +2244,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -2117,6 +2269,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 192,
           "h": 160
         },
+        "frameDurations": [
+          167,
+          167,
+          167,
+          167,
+          167
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -2150,6 +2310,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2183,6 +2344,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2216,6 +2378,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2249,6 +2412,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2282,6 +2446,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 167,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -2295,6 +2460,15 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 192,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -2328,6 +2502,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2361,6 +2536,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2394,6 +2570,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2427,6 +2604,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2460,6 +2638,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2493,6 +2672,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -2506,6 +2686,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 288,
           "h": 176
         },
+        "frameDurations": [
+          71,
+          71,
+          71,
+          71,
+          71
+        ],
+        "holdFrames": {},
         "warnings": [
           "frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop",
@@ -2543,6 +2731,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2576,6 +2765,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2609,6 +2799,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2642,6 +2833,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2675,6 +2867,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
             "durationMs": 71,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -2687,6 +2880,18 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
         "outputCanvas": {
           "w": 224,
           "h": 160
+        },
+        "frameDurations": [
+          60,
+          180,
+          70,
+          70,
+          260,
+          90
+        ],
+        "holdFrames": {
+          "0002": 2,
+          "0005": 3
         },
         "warnings": [],
         "frames": [
@@ -2720,7 +2925,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 60,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2753,7 +2959,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 180,
+            "holdCount": 2,
             "cutoff": false
           },
           {
@@ -2786,7 +2993,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2819,7 +3027,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2852,7 +3061,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 260,
+            "holdCount": 3,
             "cutoff": false
           },
           {
@@ -2885,7 +3095,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.925,
-            "durationMs": 91,
+            "durationMs": 90,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -2899,6 +3110,17 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [
           "body height variance 32.2% exceeds 18%"
         ],
@@ -2934,6 +3156,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -2967,6 +3190,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3000,6 +3224,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3033,6 +3258,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3066,6 +3292,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3099,6 +3326,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3132,6 +3360,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3165,6 +3394,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -3177,6 +3407,20 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
         "outputCanvas": {
           "w": 320,
           "h": 176
+        },
+        "frameDurations": [
+          70,
+          70,
+          70,
+          80,
+          120,
+          100,
+          360,
+          80,
+          70
+        ],
+        "holdFrames": {
+          "0007": 4
         },
         "warnings": [
           "body height variance 20.3% exceeds 18%"
@@ -3212,7 +3456,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3245,7 +3490,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3278,7 +3524,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3311,7 +3558,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 80,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3344,7 +3592,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 120,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3377,7 +3626,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 100,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3410,7 +3660,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 360,
+            "holdCount": 4,
             "cutoff": false
           },
           {
@@ -3443,7 +3694,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 80,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3476,7 +3728,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             },
             "anchorX": 0.5,
             "anchorY": 0.9318181818181818,
-            "durationMs": 143,
+            "durationMs": 70,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -3490,6 +3743,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 256,
           "h": 160
         },
+        "frameDurations": [
+          143,
+          143,
+          143,
+          143,
+          143,
+          143,
+          143
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -3523,6 +3786,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3556,6 +3820,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3589,6 +3854,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3622,6 +3888,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3655,6 +3922,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3688,6 +3956,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3721,6 +3990,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -3734,6 +4004,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 192,
           "h": 160
         },
+        "frameDurations": [
+          125,
+          125,
+          125,
+          125,
+          125
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -3767,6 +4045,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3800,6 +4079,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3833,6 +4113,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3866,6 +4147,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3899,6 +4181,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 125,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -3912,6 +4195,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          143,
+          143,
+          143,
+          143,
+          143
+        ],
+        "holdFrames": {},
         "warnings": [
           "body height variance 47.5% exceeds 18%"
         ],
@@ -3947,6 +4238,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -3980,6 +4272,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4013,6 +4306,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4046,6 +4340,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4079,6 +4374,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -4092,6 +4388,15 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 224
         },
+        "frameDurations": [
+          143,
+          143,
+          143,
+          143,
+          143,
+          143
+        ],
+        "holdFrames": {},
         "warnings": [
           "body height variance 99.2% exceeds 18%"
         ],
@@ -4127,6 +4432,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4160,6 +4466,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4193,6 +4500,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4226,6 +4534,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4259,6 +4568,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4292,6 +4602,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.9464285714285714,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
@@ -4305,6 +4616,14 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
           "w": 224,
           "h": 160
         },
+        "frameDurations": [
+          143,
+          143,
+          143,
+          143,
+          143
+        ],
+        "holdFrames": {},
         "warnings": [],
         "frames": [
           {
@@ -4338,6 +4657,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4371,6 +4691,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4404,6 +4725,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4437,6 +4759,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           },
           {
@@ -4470,6 +4793,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "anchorX": 0.5,
             "anchorY": 0.925,
             "durationMs": 143,
+            "holdCount": 1,
             "cutoff": false
           }
         ]
