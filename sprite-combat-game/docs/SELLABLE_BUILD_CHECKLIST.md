@@ -7,10 +7,9 @@ This checklist defines the current small paid-build target: a focused $1.99 brow
 - Two playable paths only:
   - Ronin
   - Supreme Emperor
-- Three normal enemies only:
+- Two normal enemies only:
   - Monkey Grunt
   - Monkey Striker
-  - Monkey Grappler
 - One clear home screen with two large path cards.
 - Developer tools hidden behind a collapsible section.
 - No backend, API keys, or server requirements.
@@ -55,7 +54,7 @@ This checklist defines the current small paid-build target: a focused $1.99 brow
 - No QA checkerboards, white backgrounds, or red dividers in gameplay assets.
 - Cleaned frames stay in `public/sprites/frames-cleaned`.
 - QA sheets stay in `public/sprites/qa-cleaned`.
-- Ronin, Supreme Emperor, Monkey Grunt, Monkey Striker, and Monkey Grappler should be covered by alpha cleanup.
+- Ronin, Supreme Emperor, Monkey Grunt, and Monkey Striker should be covered by alpha cleanup where matching frame folders exist.
 - Manual frame override workflow must remain intact.
 - Fallback rendering must remain intact for missing frames.
 

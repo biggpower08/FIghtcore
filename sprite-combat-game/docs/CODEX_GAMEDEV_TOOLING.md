@@ -20,7 +20,7 @@ Keep source packs separate from runtime-ready frames.
 
 - `public/sprites/frames-pack`: generated/imported playable hero packs.
 - `public/sprites/frames`: legacy enemy and older frame folders.
-- `public/sprites/frames-cleaned`: alpha-cleaned runtime preference frames.
+- `public/sprites/frames-cleaned`: alpha-cleaned runtime preference frames for the final active scope, currently Ronin, Supreme Emperor, Monkey Grunt, and Monkey Striker where matching frame folders exist.
 - `public/sprites/qa-cleaned`: white, black, teal, red, and transparent review sheets.
 - `docs/SPRITE_FRAME_LOCATIONS.md`: generated frame inventory.
 

@@ -30,8 +30,8 @@ export const waveDefinitions: WaveDefinition[] = [
   {
     wave: 4,
     enemies: [
-      { enemyId: 'striker-monkey', count: 1 },
-      { enemyId: 'cyber-monkey-grappler', count: 1 },
+      { enemyId: 'monkey-grunt', count: 2 },
+      { enemyId: 'striker-monkey', count: 2 },
     ],
     isBoss: false,
   },
@@ -41,7 +41,7 @@ export const waveDefinitions: WaveDefinition[] = [
       { enemyId: 'monkey-grunt', count: 2 },
       { enemyId: 'monkey-grunt', count: 1 },
       { enemyId: 'striker-monkey', count: 1 },
-      { enemyId: 'cyber-monkey-grappler', count: 1 },
+      { enemyId: 'striker-monkey', count: 1 },
     ],
     isBoss: false,
   },

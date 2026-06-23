@@ -27,13 +27,4 @@ export const enemyDefinitions: EnemyDefinition[] = [
     moveId: 'round_kick',
     attackAnimation: 'round_kick',
   },
-  {
-    id: 'cyber-monkey-grappler',
-    name: 'Monkey Grappler',
-    maxHealth: 112,
-    speed: 136,
-    attackRange: 62,
-    moveId: 'seoi_nage',
-    attackAnimation: 'seoi_nage',
-  },
 ];

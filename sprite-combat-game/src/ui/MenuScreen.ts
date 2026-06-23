@@ -31,7 +31,7 @@ export class MenuScreen {
         <div class="home-copy">
           <p class="eyebrow">Short combat roguelite</p>
           <h1>FIghtcore</h1>
-          <p class="menu-copy">Choose one fighter path, clear monkey waves, take upgrades, and push one more round.</p>
+          <p class="menu-copy">A compact two-path combat roguelite about staying active, chaining clean hits, and surviving one more wave.</p>
         </div>
         <div class="path-card-list">
           ${characters
@@ -56,7 +56,7 @@ export class MenuScreen {
         </div>
         <div class="menu-actions">
           <button data-action="start">Start Run</button>
-          <button data-action="settings">Settings</button>
+          <button data-action="settings">Options</button>
           <button data-action="controls">Controls</button>
           <button data-action="credits">Credits</button>
           <details class="dev-tools">
@@ -72,7 +72,7 @@ export class MenuScreen {
   showSettings(): void {
     this.show(`
       <section class="menu-panel settings-panel">
-        <h2>Settings</h2>
+        <h2>Options</h2>
         <label><span>Master volume</span><input type="range" min="0" max="100" value="70" /></label>
         <label><span>Music volume</span><input type="range" min="0" max="100" value="55" /></label>
         <label><span>SFX volume</span><input type="range" min="0" max="100" value="80" /></label>
@@ -114,7 +114,7 @@ export class MenuScreen {
         <div class="menu-actions stacked">
           <button data-action="resume">Resume</button>
           <button data-action="restart">Restart Run</button>
-          <button data-action="settings">Settings</button>
+          <button data-action="settings">Options</button>
           <button data-action="home">Return Home</button>
         </div>
       </section>
@@ -189,12 +189,12 @@ function pathDetails(characterId: string): { role: string; style: string; abilit
   if (characterId === 'supreme-emperor') {
     return {
       role: 'Power striker / high-impact path',
-      style: 'Explosive pressure, huge damage, risky recovery windows.',
+      style: 'Explosive pressure, huge damage, and heavier recovery windows.',
       ability: 'Instant Death - a short proc window that can erase normal enemies.',
     };
   }
   return {
-    role: 'Balanced striker / survivor',
+    role: 'Balanced path / technical survivor',
     style: 'Grounded, technical, reliable. Best path for learning a full run.',
     ability: 'Density - brief damage immunity while you reset the fight.',
   };

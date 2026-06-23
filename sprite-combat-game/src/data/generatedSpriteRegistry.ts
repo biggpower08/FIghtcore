@@ -2503,14 +2503,12 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
         "fps": 14,
         "loop": false,
         "outputCanvas": {
-          "w": 224,
-          "h": 160
+          "w": 288,
+          "h": 176
         },
         "warnings": [
-          "frame 2: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop",
-          "frame 5: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "body height variance 33.9% exceeds 18%"
         ],
         "frames": [
@@ -2518,8 +2516,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 0,
             "framePath": "/sprites/frames-pack/supreme-emperor/dash/0001.png",
             "frameSize": {
-              "w": 224,
-              "h": 160
+              "w": 288,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -2534,16 +2532,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 122,
               "w": 324,
               "h": 503,
-              "pixels": 75975
+              "pixels": 75972
             },
             "bodyBounds": {
-              "x": 67,
-              "y": 7,
+              "x": 99,
+              "y": 23,
               "w": 91,
               "h": 141
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 71,
             "cutoff": false
           },
@@ -2551,8 +2549,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 1,
             "framePath": "/sprites/frames-pack/supreme-emperor/dash/0002.png",
             "frameSize": {
-              "w": 224,
-              "h": 160
+              "w": 288,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -2565,18 +2563,18 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "sourceBounds": {
               "x": 19,
               "y": 261,
-              "w": 415,
+              "w": 308,
               "h": 359,
-              "pixels": 61134
+              "pixels": 57840
             },
             "bodyBounds": {
-              "x": 54,
-              "y": 47,
-              "w": 116,
+              "x": 101,
+              "y": 63,
+              "w": 86,
               "h": 101
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 71,
             "cutoff": false
           },
@@ -2584,8 +2582,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 2,
             "framePath": "/sprites/frames-pack/supreme-emperor/dash/0003.png",
             "frameSize": {
-              "w": 224,
-              "h": 160
+              "w": 288,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -2598,18 +2596,18 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "sourceBounds": {
               "x": 0,
               "y": 196,
-              "w": 434,
+              "w": 423,
               "h": 421,
-              "pixels": 63897
+              "pixels": 63180
             },
             "bodyBounds": {
-              "x": 51,
-              "y": 30,
-              "w": 122,
+              "x": 85,
+              "y": 46,
+              "w": 119,
               "h": 118
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 71,
             "cutoff": false
           },
@@ -2617,8 +2615,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 3,
             "framePath": "/sprites/frames-pack/supreme-emperor/dash/0004.png",
             "frameSize": {
-              "w": 224,
-              "h": 160
+              "w": 288,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -2633,16 +2631,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 204,
               "w": 434,
               "h": 414,
-              "pixels": 65883
+              "pixels": 65627
             },
             "bodyBounds": {
-              "x": 51,
-              "y": 32,
+              "x": 83,
+              "y": 48,
               "w": 122,
               "h": 116
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 71,
             "cutoff": false
           },
@@ -2650,8 +2648,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 4,
             "framePath": "/sprites/frames-pack/supreme-emperor/dash/0005.png",
             "frameSize": {
-              "w": 224,
-              "h": 160
+              "w": 288,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -2662,20 +2660,20 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "h": 724
             },
             "sourceBounds": {
-              "x": 0,
+              "x": 17,
               "y": 145,
-              "w": 394,
+              "w": 377,
               "h": 480,
-              "pixels": 64905
+              "pixels": 64892
             },
             "bodyBounds": {
-              "x": 57,
-              "y": 13,
-              "w": 110,
+              "x": 91,
+              "y": 29,
+              "w": 106,
               "h": 135
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 71,
             "cutoff": false
           }

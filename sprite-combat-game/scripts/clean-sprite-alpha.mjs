@@ -10,7 +10,7 @@ const outputRoot = path.join(repoRoot, 'public', 'sprites', 'frames-cleaned');
 const qaRoot = path.join(repoRoot, 'public', 'sprites', 'qa-cleaned');
 const defaultSourceSpecs = [
   { sourceRoot: packedSourceRoot, characters: ['ronin', 'supreme-emperor'] },
-  { sourceRoot: legacySourceRoot, characters: ['monkey-grunt', 'striker-monkey', 'cyber-monkey-grappler'] },
+  { sourceRoot: legacySourceRoot, characters: ['monkey-grunt', 'striker-monkey'] },
 ];
 const backgroundChecks = [
   { file: 'white-check.png', color: [255, 255, 255, 255] },

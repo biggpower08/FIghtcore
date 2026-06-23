@@ -190,8 +190,14 @@ body {
 }
 
 .path-card {
-  grid-template-rows: auto 1fr auto;
-  min-height: 330px;
+  position: relative;
+  grid-template-rows: 1fr auto;
+  min-height: 430px;
+  padding: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 55% 40%, rgba(240, 195, 106, 0.16), transparent 42%),
+    #0e1116;
 }
 
 .character-card.selected,
@@ -213,6 +219,18 @@ body {
   overflow: hidden;
 }
 
+.path-card .character-card-preview {
+  position: absolute;
+  inset: 0;
+  height: auto;
+  border: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(180deg, rgba(35, 213, 221, 0.08), rgba(0, 0, 0, 0.28)),
+    radial-gradient(circle at 50% 60%, rgba(240, 195, 106, 0.18), transparent 48%),
+    #11161e;
+}
+
 .character-card img {
   width: 92%;
   height: 96%;
@@ -220,6 +238,35 @@ body {
   object-position: center bottom;
   image-rendering: pixelated;
   filter: saturate(0.92) contrast(1.08);
+}
+
+.path-card .character-card-preview img {
+  width: 96%;
+  height: 96%;
+  object-fit: contain;
+  object-position: center bottom;
+  opacity: 0.94;
+  filter: saturate(1.04) contrast(1.08);
+}
+
+.path-card > div:not(.character-card-preview) {
+  position: relative;
+  z-index: 1;
+  align-self: end;
+  margin: 184px 14px 14px;
+  padding: 14px;
+  border: 1px solid rgba(240, 195, 106, 0.32);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(11, 14, 18, 0.62), rgba(11, 14, 18, 0.86)),
+    rgba(16, 20, 26, 0.72);
+  backdrop-filter: blur(3px);
+}
+
+.path-card button {
+  position: relative;
+  z-index: 1;
+  margin: 0 14px 14px;
 }
 
 .character-card img.failed-preview,
@@ -433,7 +480,11 @@ body {
   }
 
   .path-card {
-    min-height: 0;
+    min-height: 380px;
+  }
+
+  .path-card > div:not(.character-card-preview) {
+    margin-top: 150px;
   }
 
   .settings-panel label {

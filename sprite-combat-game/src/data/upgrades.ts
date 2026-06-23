@@ -14,22 +14,27 @@ export type UpgradeId =
   | 'deeper_gas_tank'
   | 'guard_conditioning'
   | 'second_wind'
-  | 'cruel_edge'
-  | 'impact_transfer'
-  | 'density_duration'
-  | 'density_coolant'
-  | 'ronin_survivor'
-  | 'jab_accelerator'
-  | 'cross_compression'
-  | 'calf_kick_chop'
-  | 'knee_clinch'
+  | 'momentum_heal'
+  | 'clean_footwork'
+  | 'pressure_engine'
+  | 'relentless'
+  | 'sharp_entry'
+  | 'perfect_rhythm'
+  | 'density_control'
+  | 'counter_step'
+  | 'calf_breaker'
+  | 'flow_guard'
+  | 'clean_cross'
+  | 'pressure_chain'
   | 'instant_death_focus'
   | 'emperor_coolant'
-  | 'heavy_armor'
-  | 'jab_cross_breaker'
-  | 'feint_hook_crush'
-  | 'roundhouse_torque'
-  | 'tornado_terror';
+  | 'royal_pressure'
+  | 'crown_crush'
+  | 'emperors_tempo'
+  | 'golden_threat'
+  | 'execution_chance'
+  | 'dominance_armor'
+  | 'imperial_finish';
 
 export interface UpgradeDefinition {
   id: UpgradeId;
@@ -47,40 +52,38 @@ export interface UpgradeDefinition {
 }
 
 export const upgrades: UpgradeDefinition[] = [
-  stat('iron_momentum', 'Iron Momentum', 'All attacks deal 12% more damage per level.', 5, 'damageLevel', 'Damage'),
-  stat('breath_economy', 'Breath Economy', 'All equipped moves cost 8% less stamina per level.', 5, 'staminaLevel', 'Stamina cost'),
-  stat('rhythm_reset', 'Rhythm Reset', 'All equipped moves recover 6% faster per level.', 5, 'cooldownLevel', 'Move cooldown'),
+  stat('iron_momentum', 'Iron Momentum', 'All attacks hit a little harder.', 4, 'damageLevel', 'Damage'),
+  stat('breath_economy', 'Breath Economy', 'Attacks spend less stamina, keeping stamina as a soft limiter.', 4, 'staminaLevel', 'Stamina economy'),
+  stat('rhythm_reset', 'Rhythm Reset', 'Moves recover faster and chain more comfortably.', 4, 'cooldownLevel', 'Move recovery'),
   stat('cellular_patch', 'Cellular Patch', 'Slowly regenerate more health when you have not been hit recently.', 3, 'healthRegenLevel', 'Health regen'),
-  stat('footwork_drills', 'Footwork Drills', 'Move 5% faster per level.', 4, 'speedLevel', 'Move speed'),
-  stat('shorter_dash', 'Shorter Dash Reset', 'Dash cooldown drops by 90ms per level.', 4, 'dashLevel', 'Dash cooldown'),
-  stat('guard_conditioning', 'Guard Conditioning', 'Reduce incoming damage by 6% per level.', 5, 'defenseLevel', 'Defense'),
-  stat('second_wind', 'Second Wind', 'Wave-clear recovery gains a small extra buffer.', 3, 'waveHealLevel', 'Wave recovery'),
-  stat('cruel_edge', 'Cruel Edge', 'Proc and burst effects become slightly more reliable.', 4, 'critLevel', 'Proc chance'),
-  stat('impact_transfer', 'Impact Transfer', 'Player knockback is 10% stronger per level.', 3, 'knockbackLevel', 'Knockback'),
+  stat('footwork_drills', 'Footwork Drills', 'Move 5% faster per level.', 3, 'speedLevel', 'Move speed'),
+  stat('shorter_dash', 'Shorter Dash Reset', 'Dash cooldown drops by 90ms per level.', 3, 'dashLevel', 'Dash cooldown'),
+  stat('second_wind', 'Focused Breathing', 'Wave-clear recovery gains a small extra buffer.', 3, 'waveHealLevel', 'Wave recovery'),
+  stat('momentum_heal', 'Momentum Heal', 'Entering max Activity heals a small amount.', 3, 'killHealLevel', 'Flow heal'),
+  stat('clean_footwork', 'Clean Footwork', 'Dashing near enemies grants more Activity.', 3, 'dashActivityLevel', 'Dash Activity'),
+  stat('pressure_engine', 'Pressure Engine', 'Activity decays more slowly.', 3, 'activityDecayLevel', 'Activity decay'),
+  stat('relentless', 'Relentless', 'High Activity improves ability recharge and flow damage.', 3, 'flowDamageLevel', 'Flow pressure'),
+  stat('sharp_entry', 'Sharp Entry', 'High Activity adds stronger control and knockback.', 3, 'knockbackLevel', 'Control'),
   stamina('deeper_gas_tank', 'Deeper Gas Tank', 'Increase max stamina and refill it immediately.', 3),
   maxHealth('vital_reserve', 'Vital Reserve', 'Increase maximum health and immediately heal the added amount.', 4),
 
-  ability('density_duration', 'Dense Window', 'ronin', 'density', 'Density lasts longer.', 3),
-  abilityCooldown('density_coolant', 'Density Coolant', 'ronin', 'density', 'Density comes back faster.'),
-  characterStat('ronin_survivor', 'Ronin Survivor', 'ronin', 'Ronin takes less damage and recovers better between waves.', 3, (player) => {
-    player.upgrades.defenseLevel += 1;
-    player.upgrades.waveHealLevel += 1;
-  }),
-  moveUpgrade('jab_accelerator', 'Jab Accelerator', 'ronin', 'jab', 'efficiency', 'Jab costs less stamina.'),
-  moveUpgrade('cross_compression', 'Cross Compression', 'ronin', 'cross', 'damage', 'Cross deals more damage.'),
-  moveUpgrade('calf_kick_chop', 'Calf Kick Chop', 'ronin', 'calf_kick', 'control', 'Calf Kick pushes and staggers harder.'),
-  moveUpgrade('knee_clinch', 'Knee Clinch', 'ronin', 'knee', 'damage', 'Knee hits harder.'),
+  characterField('perfect_rhythm', 'Perfect Rhythm', 'ronin', 'Ronin chains recover faster when you keep attacking.', 3, 'roninChainLevel', 'Rhythm'),
+  ability('density_control', 'Density Control', 'ronin', 'density', 'Density lasts longer and feeds the survivor path.', 3),
+  characterField('counter_step', 'Counter Step', 'ronin', 'Dashing close to enemies grants more Activity.', 3, 'dashActivityLevel', 'Counter Activity'),
+  characterField('calf_breaker', 'Calf Breaker', 'ronin', 'Calf Kick gets stronger control and damage pressure.', 3, 'roninCalfLevel', 'Calf pressure'),
+  characterField('flow_guard', 'Flow Guard', 'ronin', 'High Activity grants damage reduction.', 3, 'highActivityDefenseLevel', 'Flow guard'),
+  characterField('clean_cross', 'Clean Cross', 'ronin', 'Cross deals bonus damage after Jab connects.', 3, 'roninCrossLevel', 'Jab to cross'),
+  characterField('pressure_chain', 'Pressure Chain', 'ronin', 'Landed pressure improves recovery and Activity gain.', 3, 'flowRecoveryLevel', 'Pressure chain'),
 
   ability('instant_death_focus', 'Instant Death Focus', 'supreme-emperor', 'instant_death', 'Instant Death lasts longer and procs more often.', 4),
   abilityCooldown('emperor_coolant', 'Emperor Coolant', 'supreme-emperor', 'instant_death', 'Instant Death comes back faster.'),
-  characterStat('heavy_armor', 'Heavy Armor', 'supreme-emperor', 'Take less damage while committing to heavy strikes.', 3, (player) => {
-    player.upgrades.defenseLevel += 1;
-    player.upgrades.knockbackLevel += 1;
-  }),
-  moveUpgrade('jab_cross_breaker', 'Jab-Cross Breaker', 'supreme-emperor', 'jab_cross', 'damage', 'Jab-Cross deals more damage.'),
-  moveUpgrade('feint_hook_crush', 'Feint-Hook Crush', 'supreme-emperor', 'feint_rear_hook', 'control', 'Feint-Rear Hook causes stronger hitstun.'),
-  moveUpgrade('roundhouse_torque', 'Roundhouse Torque', 'supreme-emperor', 'roundhouse_kick', 'control', 'Roundhouse Kick knocks enemies back harder.'),
-  moveUpgrade('tornado_terror', 'Tornado Terror', 'supreme-emperor', 'tornado_kick', 'damage', 'Tornado Kick deals more damage.'),
+  characterField('royal_pressure', 'Royal Pressure', 'supreme-emperor', 'Heavy hits generate extra Activity.', 3, 'emperorHeavyActivityLevel', 'Royal pressure'),
+  characterField('crown_crush', 'Crown Crush', 'supreme-emperor', 'High Activity makes heavy hits hit harder.', 3, 'emperorHighActivityDamageLevel', 'Crown crush'),
+  characterField('emperors_tempo', "Emperor's Tempo", 'supreme-emperor', 'Jab-Cross and heavy chains recover faster at high Activity.', 3, 'flowRecoveryLevel', 'Tempo'),
+  characterField('golden_threat', 'Golden Threat', 'supreme-emperor', 'Heavy strikes gain more damage and control.', 3, 'knockbackLevel', 'Threat'),
+  characterField('execution_chance', 'Execution Chance', 'supreme-emperor', 'Instant Death chance rises only near max Activity.', 3, 'emperorExecutionLevel', 'Execution'),
+  characterField('dominance_armor', 'Dominance Armor', 'supreme-emperor', 'High Activity grants armor during attacks.', 3, 'emperorArmorLevel', 'Dominance armor'),
+  characterField('imperial_finish', 'Imperial Finish', 'supreme-emperor', 'Defeating enemies grants a small heal and helps sustain pressure.', 3, 'emperorKillHealLevel', 'Finish heal'),
 ];
 
 function stat(
@@ -181,13 +184,14 @@ function abilityCooldown(id: UpgradeId, name: string, characterId: string, abili
   };
 }
 
-function characterStat(
+function characterField(
   id: UpgradeId,
   name: string,
   characterId: string,
   description: string,
   maxLevel: number,
-  apply: (player: Player) => void,
+  field: keyof Player['upgrades'],
+  label: string,
 ): UpgradeDefinition {
   return {
     id,
@@ -196,45 +200,11 @@ function characterStat(
     characterId,
     description,
     maxLevel,
-    apply,
-    currentLevel: (player) => Math.min(player.upgrades.defenseLevel, player.upgrades.waveHealLevel + player.upgrades.knockbackLevel),
-    valueText: () => `${name} level up`,
+    apply: (player) => {
+      player.upgrades[field] += 1;
+    },
+    currentLevel: (player) => player.upgrades[field],
+    valueText: (player) => `${label} level ${player.upgrades[field] + 1}`,
     isAvailable: (player) => player.character.id === characterId,
   };
-}
-
-function moveUpgrade(
-  id: UpgradeId,
-  name: string,
-  characterId: string,
-  moveId: string,
-  type: 'damage' | 'efficiency' | 'control',
-  description: string,
-): UpgradeDefinition {
-  return {
-    id,
-    name,
-    category: 'Move',
-    characterId,
-    moveId,
-    description,
-    maxLevel: 3,
-    apply: (player) => player.addMoveUpgrade(moveId, type),
-    currentLevel: (player) => player.getMoveUpgradeLevel(moveId, type),
-    valueText: (player) => `${moveDisplayName(moveId)} ${typeLabel(type)} level ${player.getMoveUpgradeLevel(moveId, type) + 1}`,
-    isAvailable: (player) => player.character.id === characterId && player.equippedMoves.some((move) => move.id === moveId),
-  };
-}
-
-function moveDisplayName(moveId: string): string {
-  return moveId
-    .split('_')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
-
-function typeLabel(type: 'damage' | 'efficiency' | 'control'): string {
-  if (type === 'damage') return 'damage';
-  if (type === 'control') return 'control';
-  return 'efficiency';
 }

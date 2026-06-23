@@ -30,12 +30,14 @@ export class Hud {
     ctx.fillStyle = '#9fdde2';
     ctx.fillText(`${abilityStatus}  |  ${moveText}`, leftX + 10, leftY + 30);
 
-    const rightHeight = 86;
+    const rightHeight = 104;
     const rightX = ctx.canvas.width - rightWidth - 14;
     const rightY = ctx.canvas.height - rightHeight - 14;
     this.panel(ctx, rightX, rightY, rightWidth, rightHeight);
     this.bar(ctx, rightX + 12, rightY + 12, 190, 14, player.health / player.maxHealth, '#e94444', 'Health');
-    this.bar(ctx, rightX + 12, rightY + 42, 190, 12, player.stamina / player.maxStamina, '#53d47c', 'Stamina');
+    const activityColor = player.getActivityTier() === 'flow' ? '#ffe769' : player.getActivityTier() === 'high' ? '#ff9c3f' : '#35d5dd';
+    this.bar(ctx, rightX + 12, rightY + 42, 190, 14, player.activity / player.maxActivity, activityColor, player.getActivityTier() === 'flow' ? 'Activity: Flow' : 'Activity');
+    this.bar(ctx, rightX + 12, rightY + 74, 120, 8, player.stamina / player.maxStamina, '#53d47c', 'Stamina');
     ctx.font = '10px monospace';
     ctx.fillStyle = '#b9cbd0';
     ctx.fillText('Esc pause', rightX + 214, rightY + 14);

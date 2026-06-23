@@ -39,8 +39,11 @@ export interface HitImpact {
 export class CombatSystem {
   private nextAttackId = 1;
 
-  startAttack(attacker: Fighter, move: MoveDefinition): AttackHitbox | null {
-    if (!attacker.canUseMove(move)) return null;
+  startAttack(attacker: Fighter, move: MoveDefinition, options: { ignoreAttackLock?: boolean } = {}): AttackHitbox | null {
+    const canUse = options.ignoreAttackLock
+      ? attacker.stamina >= attacker.getStaminaCost(move) && (attacker.moveCooldowns.get(move.id) ?? 0) <= 0
+      : attacker.canUseMove(move);
+    if (!canUse) return null;
 
     attacker.stamina -= attacker.getStaminaCost(move);
     attacker.moveCooldowns.set(move.id, attacker.getCooldownMs(move));
@@ -108,7 +111,9 @@ export class CombatSystem {
         !(target instanceof Boss) &&
         Math.random() < hitbox.owner.getInstantDeathChance();
       const baseDamage = activeHit.damage ?? hitbox.move.damage;
-      const activeMoveControlLevel = hitbox.owner instanceof Player ? hitbox.owner.getMoveUpgradeLevel(hitbox.move.id, 'control') : 0;
+      const activeMoveControlLevel = hitbox.owner instanceof Player
+        ? hitbox.owner.getMoveUpgradeLevel(hitbox.move.id, 'control') + (hitbox.owner.character.id === 'ronin' && hitbox.move.id === 'calf_kick' ? hitbox.owner.upgrades.roninCalfLevel : 0)
+        : 0;
       const controlMultiplier = hitbox.owner instanceof Player ? hitbox.owner.getKnockbackMultiplier() + activeMoveControlLevel * 0.08 : 1;
       const knockback = activeHit.knockback ?? hitbox.profile.knockback;
       const hitstunFrames = Math.round((activeHit.hitstunFrames ?? hitbox.profile.hitstunFrames) * (1 + activeMoveControlLevel * 0.08));

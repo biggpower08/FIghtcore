@@ -109,6 +109,7 @@ export class Game {
   private visualSuppressions = new Map<string, VisualSuppression>();
   private pendingVisualStates = new Map<string, PendingVisualState>();
   private activeGrapples: ActiveGrappleLock[] = [];
+  private queuedPlayerMove: MoveDefinition | null = null;
   private grappleDebug?: GrappleDebugRenderInfo;
   private hitPauseMs = 0;
   private screenShakeMs = 0;
@@ -210,6 +211,7 @@ export class Game {
       this.player.interruptMeditation('Meditation interrupted');
       return;
     }
+    const moving = axis.x !== 0 || axis.y !== 0;
     const speedBoost = this.player.dashMs > 0 ? 2.7 : 1;
     const canMove = this.player.stunMs <= 0;
     const speed = (this.player.speed || PLAYER_BASE_SPEED) * speedBoost * this.player.getSpeedMultiplier();
@@ -223,10 +225,11 @@ export class Game {
       this.player.stamina -= DASH_STAMINA_COST;
       this.player.dashMs = DASH_DURATION_MS;
       this.player.dashCooldownMs = Math.max(220, DASH_COOLDOWN_MS - this.player.upgrades.dashLevel * 90);
+      if (this.nearestEnemyDistance() < 210) this.player.gainActivity(7 + this.player.upgrades.dashActivityLevel * 3);
       this.animation.play(this.player, 'dash', { lockForMs: DASH_DURATION_MS, fallback: 'walk' });
     }
 
-    if ((axis.x !== 0 || axis.y !== 0) && this.player.meditationMs > 0) {
+    if (moving && this.player.meditationMs > 0) {
       this.player.interruptMeditation('Meditation canceled');
     }
     this.handleAbilityInput();
@@ -234,6 +237,7 @@ export class Game {
     this.movement.update(this.player, deltaSeconds);
     this.collision.resolveObstacleCollision(this.player, this.obstacles);
     clampEntityToPlayableArena(this.player);
+    this.player.updateActivity(deltaSeconds * 1000, moving || this.player.activeMove !== null || this.player.dashMs > 0);
   }
 
   private updateEnemies(deltaMs: number): void {
@@ -312,6 +316,9 @@ export class Game {
     this.player.stamina = Math.min(this.player.maxStamina, this.player.stamina + STAMINA_REGEN_PER_SECOND * (deltaMs / 1000));
     this.updatePassiveHealthRegen(deltaMs);
     const abilityRestore = this.player.updateAbilityTimers(deltaMs);
+    if (this.player.activity >= 70 && this.player.abilityCooldownMs > 0) {
+      this.player.abilityCooldownMs = Math.max(0, this.player.abilityCooldownMs - deltaMs * 0.35);
+    }
     if (abilityRestore.healthRestored > 0 || abilityRestore.staminaRestored > 0) {
       this.impacts.push({
         x: this.player.x,
@@ -337,7 +344,13 @@ export class Game {
   }
 
   private handleAttackInput(): void {
-    const selected = this.slotMovePressed();
+    const pressed = this.slotMovePressed();
+    if (pressed && !this.player.canUseMove(pressed.move)) {
+      if (this.canQueuePlayerMove(pressed.move)) this.queuedPlayerMove = pressed.move;
+      return;
+    }
+    const queued = !pressed && this.queuedPlayerMove && this.canReleaseQueuedMove(this.queuedPlayerMove) ? { slot: 'H' as MoveSlotKey, move: this.queuedPlayerMove } : undefined;
+    const selected = pressed ?? queued;
 
     if (!selected) return;
     this.player.interruptMeditation('Meditation canceled');
@@ -346,7 +359,8 @@ export class Game {
       return;
     }
 
-    const hitbox = this.combat.startAttack(this.player, selected.move);
+    if (selected.move === this.queuedPlayerMove) this.queuedPlayerMove = null;
+    const hitbox = this.combat.startAttack(this.player, selected.move, { ignoreAttackLock: selected === queued });
     if (hitbox) {
       if (selected.move.healAmount) {
         const restored = this.player.heal(selected.move.healAmount);
@@ -361,13 +375,23 @@ export class Game {
         }
       }
       if (selected.move.hitboxWidth > 0 && selected.move.hitboxHeight > 0) this.hitboxes.push(hitbox);
-      const totalMs = selected.move.windupMs + selected.move.activeMs + selected.move.recoveryMs;
-      const lockForMs = this.player.character.id === 'shadow-striker' ? this.player.getAttackLockMs(selected.move) : Math.round(totalMs * 1.18);
+      const lockForMs = this.player.getAttackLockMs(selected.move);
       this.animation.play(this.player, selected.move.animationKey, {
         lockForMs,
         fallback: 'idle',
       });
     }
+  }
+
+  private canQueuePlayerMove(move: MoveDefinition): boolean {
+    if (this.player.stunMs > 0 || (this.player.abilityActiveMs > 0 && this.player.ability?.id === 'density')) return false;
+    if (this.player.stamina < this.player.getStaminaCost(move)) return false;
+    return this.player.attackLockMs > 0 && this.player.attackLockMs < Math.max(220, this.player.getAttackLockMs(move) * 0.72);
+  }
+
+  private canReleaseQueuedMove(move: MoveDefinition): boolean {
+    if (this.player.stunMs > 0 || this.player.stamina < this.player.getStaminaCost(move)) return false;
+    return this.player.attackLockMs <= Math.max(90, this.player.getAttackLockMs(move) * 0.34);
   }
 
   private slotMovePressed(): { slot: MoveSlotKey; move: MoveDefinition } | undefined {
@@ -593,6 +617,11 @@ export class Game {
     const actors: Array<Enemy | Boss> = this.enemies.filter((enemy) => enemy.alive);
     if (this.boss?.alive) actors.push(this.boss);
     return actors;
+  }
+
+  private nearestEnemyDistance(): number {
+    const distances = this.livingEnemies().map((enemy) => Math.hypot(enemy.x - this.player.x, enemy.y - this.player.y));
+    return Math.min(Number.POSITIVE_INFINITY, ...distances);
   }
 
   private draw(): void {
@@ -947,6 +976,16 @@ export class Game {
     if (impact.attacker === this.player) {
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
+      const killed = (impact.target instanceof Enemy || impact.target instanceof Boss) && !impact.target.alive;
+      const heavyBonus = impact.heavy ? 5 + this.player.upgrades.emperorHeavyActivityLevel * 3 : 0;
+      this.player.gainActivity(10 + heavyBonus + (killed ? 18 : 0));
+      this.player.lastLandedMoveId = impact.move.id;
+      if (killed) {
+        const heal = this.player.upgrades.emperorKillHealLevel * 3 + this.player.upgrades.killHealLevel * 2;
+        if (heal > 0) this.player.heal(heal);
+      }
+    } else if (impact.target === this.player) {
+      this.player.spendActivity(16);
     }
     this.playDamageAnimation(impact);
   }

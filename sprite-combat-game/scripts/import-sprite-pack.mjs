@@ -70,6 +70,7 @@ function normalizeManifest(packDir, manifest) {
       loop: Boolean(animation.loop),
       fps: Number(animation.fps ?? 10),
       outputCanvas: animation.outputCanvas,
+      dropDetachedComponents: Boolean(animation.dropDetachedComponents),
     })),
   };
 }
@@ -152,6 +153,7 @@ async function importAnimation(pack, animation) {
     const slice = frameSlices[index];
     const frame = cropFrame(source, slice.x, slice.y, slice.w, slice.h);
     removeFlatBackground(frame);
+    if (animation.dropDetachedComponents) removeDetachedComponents(frame);
     const bounds = detectBounds(frame);
     frameBounds.push(bounds);
     if (bounds) bodyHeights.push(bounds.h);
@@ -169,6 +171,7 @@ async function importAnimation(pack, animation) {
     const slice = frameSlices[index];
     const frame = cropFrame(source, slice.x, slice.y, slice.w, slice.h);
     removeFlatBackground(frame);
+    if (animation.dropDetachedComponents) removeDetachedComponents(frame);
     const bounds = frameBounds[index];
     if (!bounds) {
       warnings.push(`frame ${index + 1}: no visible pixels`);
@@ -340,6 +343,77 @@ function detectBounds(png) {
   }
   if (maxX < minX || maxY < minY) return undefined;
   return { x: minX, y: minY, w: maxX - minX + 1, h: maxY - minY + 1, pixels };
+}
+
+function removeDetachedComponents(png) {
+  const visited = new Int32Array(png.width * png.height);
+  const components = [];
+  let nextId = 1;
+  for (let y = 0; y < png.height; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const pixel = y * png.width + x;
+      if (visited[pixel] || png.data[pixel * 4 + 3] <= 20) continue;
+      const component = floodComponent(png, x, y, visited, nextId);
+      if (component.pixels > 0) components.push(component);
+      nextId += 1;
+    }
+  }
+  if (components.length <= 1) return;
+  components.sort((a, b) => b.pixels - a.pixels);
+  const main = components[0];
+  const keep = new Set([main.id]);
+  for (const component of components.slice(1)) {
+    const nearMain =
+      component.minX <= main.maxX + 18 &&
+      component.maxX >= main.minX - 18 &&
+      component.minY <= main.maxY + 18 &&
+      component.maxY >= main.minY - 18;
+    if (nearMain && component.width > 5 && component.height > 5 && component.pixels >= Math.max(96, main.pixels * 0.02)) keep.add(component.id);
+  }
+  for (let pixel = 0; pixel < visited.length; pixel += 1) {
+    if (visited[pixel] > 0 && !keep.has(visited[pixel])) {
+      const offset = pixel * 4;
+      png.data[offset] = 0;
+      png.data[offset + 1] = 0;
+      png.data[offset + 2] = 0;
+      png.data[offset + 3] = 0;
+    }
+  }
+}
+
+function floodComponent(png, startX, startY, visited, id) {
+  const queue = [[startX, startY]];
+  visited[startY * png.width + startX] = id;
+  let cursor = 0;
+  let pixels = 0;
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
+  while (cursor < queue.length) {
+    const [x, y] = queue[cursor];
+    cursor += 1;
+    pixels += 1;
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    for (const [dx, dy] of [
+      [1, 0],
+      [-1, 0],
+      [0, 1],
+      [0, -1],
+    ]) {
+      const nx = x + dx;
+      const ny = y + dy;
+      if (nx < 0 || ny < 0 || nx >= png.width || ny >= png.height) continue;
+      const pixel = ny * png.width + nx;
+      if (visited[pixel] || png.data[pixel * 4 + 3] <= 20) continue;
+      visited[pixel] = id;
+      queue.push([nx, ny]);
+    }
+  }
+  return { id, pixels, minX, minY, maxX, maxY };
 }
 
 function countBackgroundArtifacts(png) {
