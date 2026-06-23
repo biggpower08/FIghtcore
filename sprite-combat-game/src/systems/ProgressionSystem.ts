@@ -17,6 +17,7 @@ export class ProgressionSystem {
 
     const upgradeOptions = upgrades
       .filter((upgrade) => upgrade.currentLevel(player) < upgrade.maxLevel && (upgrade.isAvailable?.(player) ?? true))
+      .filter((upgrade) => isUpgradeInWaveTier(upgrade, wave))
       .map<RewardOption>((upgrade) => ({ kind: 'upgrade', upgrade }));
 
     const current = new Set(player.equippedMoves.map((move) => move.id));
@@ -39,7 +40,7 @@ export class ProgressionSystem {
       .sort((a, b) => a.unlockLevel - b.unlockLevel)
       .slice(0, 2)
       .map<RewardOption>((move) => ({ kind: 'move', move }));
-    const rotatedUpgrades = rotate(upgradeOptions, wave + player.learnedMoves.length);
+    const rotatedUpgrades = rotate(upgradeOptions, wave + player.learnedMoves.length + player.equippedMoves.length);
     return [...rotatedUpgrades.slice(0, 3), ...moveOptions].slice(0, 3);
   }
 
@@ -68,4 +69,14 @@ function rotate<T>(items: T[], amount: number): T[] {
   if (items.length === 0) return items;
   const offset = amount % items.length;
   return [...items.slice(offset), ...items.slice(0, offset)];
+}
+
+function isUpgradeInWaveTier(upgrade: UpgradeDefinition, wave: number): boolean {
+  if (wave <= 2) {
+    return upgrade.category === 'Activity/Flow' || upgrade.category === 'Survival' || upgrade.category === 'Wave Momentum';
+  }
+  if (wave <= 4) {
+    return upgrade.category !== 'Supreme Path' || upgrade.characterId === 'supreme-emperor';
+  }
+  return true;
 }

@@ -1,3 +1,1 @@
-frame 7: visible pixels reached source slice edge; possible frame bleed or tight crop
-frame 8: visible pixels reached source slice edge; possible frame bleed or tight crop
 body height variance 20.3% exceeds 18%

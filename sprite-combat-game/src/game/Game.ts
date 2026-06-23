@@ -3,7 +3,6 @@ import { Camera } from './Camera';
 import {
   DASH_COOLDOWN_MS,
   DASH_DURATION_MS,
-  DASH_STAMINA_COST,
   OBSTACLE_COUNT,
   PLAYER_BASE_SPEED,
   STAMINA_REGEN_PER_SECOND,
@@ -42,6 +41,7 @@ import { RewardScreen } from '../ui/RewardScreen';
 import { SpriteLab } from '../ui/SpriteLab';
 import { TEST_BALANCE } from './testBalance';
 import { PLAYABLE_ARENA_BOUNDS, clampEntityToPlayableArena, clampToPlayableArena } from './arenaBounds';
+import { loadGameSettings, saveGameSettings, type GameSettings } from './settings';
 
 type GameState = 'home' | 'settings' | 'playing' | 'paused' | 'reward' | 'gameOver' | 'spriteLab';
 const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
@@ -117,6 +117,7 @@ export class Game {
   private lastTime = 0;
   private state: GameState = 'home';
   private settingsReturnState: GameState = 'home';
+  private settings: GameSettings = loadGameSettings();
 
   constructor(
     private readonly canvas: HTMLCanvasElement,
@@ -138,6 +139,7 @@ export class Game {
       onStartCharacter: (characterId) => this.startCharacterRun(characterId),
       onCredits: () => this.openCredits(),
       onFullscreen: () => this.toggleFullscreen(),
+      onToggleScreenShake: (enabled) => this.updateScreenShakeSetting(enabled),
       onBack: () => this.closeMenuPanel(),
       onResume: () => this.resumeGame(),
       onRestart: () => this.startNewRun(),
@@ -220,9 +222,8 @@ export class Game {
     this.player.vy = canMove ? axis.y * speed : this.player.vy * 0.92;
     if (canMove && axis.x !== 0) this.player.facing = axis.x < 0 ? -1 : 1;
 
-    if (this.input.wasPressed(' ') && this.player.dashCooldownMs <= 0 && this.player.stamina >= DASH_STAMINA_COST) {
+    if (this.input.wasPressed(' ') && this.player.dashCooldownMs <= 0) {
       this.player.interruptMeditation('Meditation canceled');
-      this.player.stamina -= DASH_STAMINA_COST;
       this.player.dashMs = DASH_DURATION_MS;
       this.player.dashCooldownMs = Math.max(220, DASH_COOLDOWN_MS - this.player.upgrades.dashLevel * 90);
       if (this.nearestEnemyDistance() < 210) this.player.gainActivity(7 + this.player.upgrades.dashActivityLevel * 3);
@@ -319,13 +320,13 @@ export class Game {
     if (this.player.activity >= 70 && this.player.abilityCooldownMs > 0) {
       this.player.abilityCooldownMs = Math.max(0, this.player.abilityCooldownMs - deltaMs * 0.35);
     }
-    if (abilityRestore.healthRestored > 0 || abilityRestore.staminaRestored > 0) {
+    if (abilityRestore.healthRestored > 0) {
       this.impacts.push({
         x: this.player.x,
         y: this.player.y - this.player.radius * 1.8,
         lifeMs: 260,
         color: '#63f7a6',
-        label: `+${Math.round(abilityRestore.healthRestored)} hp +${Math.round(abilityRestore.staminaRestored)} sta`,
+        label: `+${Math.round(abilityRestore.healthRestored)} hp`,
       });
     }
     this.player.dashMs = Math.max(0, this.player.dashMs - deltaMs);
@@ -385,12 +386,11 @@ export class Game {
 
   private canQueuePlayerMove(move: MoveDefinition): boolean {
     if (this.player.stunMs > 0 || (this.player.abilityActiveMs > 0 && this.player.ability?.id === 'density')) return false;
-    if (this.player.stamina < this.player.getStaminaCost(move)) return false;
     return this.player.attackLockMs > 0 && this.player.attackLockMs < Math.max(220, this.player.getAttackLockMs(move) * 0.72);
   }
 
   private canReleaseQueuedMove(move: MoveDefinition): boolean {
-    if (this.player.stunMs > 0 || this.player.stamina < this.player.getStaminaCost(move)) return false;
+    if (this.player.stunMs > 0) return false;
     return this.player.attackLockMs <= Math.max(90, this.player.getAttackLockMs(move) * 0.34);
   }
 
@@ -420,7 +420,6 @@ export class Game {
 
     const grappleMove: MoveDefinition = { ...move };
     const durationMs = Math.max(760, Math.round((move.windupMs + move.activeMs + move.recoveryMs) * 1.45));
-    this.player.stamina -= Math.min(this.player.stamina, this.player.getStaminaCost(move));
     this.player.moveCooldowns.set(move.id, Math.max(this.player.getCooldownMs(move), 680));
     this.player.attackLockMs = durationMs;
     this.player.activeMove = grappleMove;
@@ -719,7 +718,13 @@ export class Game {
     if (this.state !== 'home' && this.state !== 'paused') return;
     this.settingsReturnState = this.state;
     this.state = 'settings';
-    this.menuScreen.showSettings();
+    this.menuScreen.showSettings(this.settings.screenShake);
+  }
+
+  private updateScreenShakeSetting(enabled: boolean): void {
+    this.settings = { ...this.settings, screenShake: enabled };
+    saveGameSettings(this.settings);
+    if (!enabled) this.screenShakeMs = 0;
   }
 
   private openControls(): void {
@@ -972,7 +977,7 @@ export class Game {
 
   private handleHitImpact(impact: HitImpact): void {
     this.hitPauseMs = Math.max(this.hitPauseMs, impact.hitstopMs);
-    if (impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, Math.max(140, impact.hitstopMs * 3));
+    if (this.settings.screenShake && impact.heavy) this.screenShakeMs = Math.max(this.screenShakeMs, Math.max(140, impact.hitstopMs * 3));
     if (impact.attacker === this.player) {
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();

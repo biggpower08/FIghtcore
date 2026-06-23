@@ -450,6 +450,21 @@ body {
   display: block;
 }
 
+.reward-icon {
+  width: 34px;
+  height: 26px;
+  margin-bottom: 10px;
+  display: inline-grid;
+  place-items: center;
+  color: #102228 !important;
+  font-weight: 800;
+  font-size: 11px !important;
+  letter-spacing: 0;
+  border-radius: 6px;
+  background: #f0c36a;
+  box-shadow: 0 0 0 2px rgba(255, 238, 197, 0.18);
+}
+
 .reward-card strong {
   margin-bottom: 8px;
   font-size: 16px;

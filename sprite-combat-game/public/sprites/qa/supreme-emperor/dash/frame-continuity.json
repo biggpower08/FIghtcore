@@ -1,0 +1,19 @@
+{
+  "expectedFrames": 5,
+  "actualFilesFound": [
+    "0001.png",
+    "0002.png",
+    "0003.png",
+    "0004.png",
+    "0005.png"
+  ],
+  "missingFrames": [],
+  "placeholderFrames": [],
+  "bodyHeightVariance": 0.3389830508474576,
+  "anchorVariance": 0,
+  "warnings": [
+    "frame 3: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "frame 4: visible pixels reached source slice edge; possible frame bleed or tight crop",
+    "body height variance 33.9% exceeds 18%"
+  ]
+}

@@ -41,11 +41,11 @@ export class CombatSystem {
 
   startAttack(attacker: Fighter, move: MoveDefinition, options: { ignoreAttackLock?: boolean } = {}): AttackHitbox | null {
     const canUse = options.ignoreAttackLock
-      ? attacker.stamina >= attacker.getStaminaCost(move) && (attacker.moveCooldowns.get(move.id) ?? 0) <= 0
+      ? (attacker instanceof Player || attacker.stamina >= attacker.getStaminaCost(move)) && (attacker.moveCooldowns.get(move.id) ?? 0) <= 0
       : attacker.canUseMove(move);
     if (!canUse) return null;
 
-    attacker.stamina -= attacker.getStaminaCost(move);
+    if (!(attacker instanceof Player)) attacker.stamina -= attacker.getStaminaCost(move);
     attacker.moveCooldowns.set(move.id, attacker.getCooldownMs(move));
     attacker.attackLockMs = attacker instanceof Player ? attacker.getAttackLockMs(move) : move.windupMs + move.activeMs + move.recoveryMs;
     attacker.activeMove = move;

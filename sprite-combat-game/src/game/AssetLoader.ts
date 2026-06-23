@@ -59,6 +59,10 @@ export interface ResolvedSpriteFrame {
   foregroundBounds?: SpriteFrameBounds;
   bodyBounds?: SpriteFrameBounds;
   notes?: string;
+  placeholderFrame?: boolean;
+  placeholderFromFrameIndex?: number;
+  missingFramePath?: string;
+  placeholderReason?: string;
 }
 
 export interface SpriteFrameBounds {
@@ -88,6 +92,19 @@ export interface AssetLoadContext {
   kind?: string;
 }
 
+interface LoadedOptionalFrameSlot {
+  image: HTMLImageElement;
+  requestedFrameIndex: number;
+  loadedFrameIndex: number;
+  framePath: string;
+  sourceFramePath: string;
+  usingManualOverride: boolean;
+  usingCleanedAlpha: boolean;
+  placeholder: boolean;
+  missingFramePath?: string;
+  placeholderReason?: string;
+}
+
 export interface AssetLoadReport {
   totalSpriteFramesExpected: number;
   totalSpriteFramesLoaded: number;
@@ -110,6 +127,7 @@ export class AssetLoader {
   private readonly resolvedByPath = new Map<string, string>();
   private readonly failedLoads = new Map<string, AssetLoadContext & { originalPath: string; resolvedUrl: string }>();
   private readonly frameCache = new Map<string, HTMLImageElement[]>();
+  private readonly frameSlotCache = new Map<string, LoadedOptionalFrameSlot[]>();
   private readonly sheetCache = new Map<string, HTMLImageElement | null>();
   private readonly animationCache = new Map<string, ResolvedSpriteAnimation>();
   private readonly warnedMissing = new Set<string>();
@@ -189,33 +207,53 @@ export class AssetLoader {
     const key = `${assetId}:${animation}`;
     const cached = this.frameCache.get(key);
     if (cached) return cached;
+    const slots = await this.loadOptionalFrameSlots(assetId, animation, frameCount);
+    const frames = slots.map((slot) => slot.image);
+    this.frameCache.set(key, frames);
+    return frames;
+  }
 
-    const frames: HTMLImageElement[] = [];
+  private async loadOptionalFrameSlots(assetId: string, animation: string, frameCount = 4): Promise<LoadedOptionalFrameSlot[]> {
+    const key = `${assetId}:${animation}:${frameCount}`;
+    const cached = this.frameSlotCache.get(key);
+    if (cached) return cached;
+
+    const slots: Array<LoadedOptionalFrameSlot | null> = [];
     for (let frame = 1; frame <= frameCount; frame += 1) {
       const overridePath = manualOverrideFramePath(assetId, animation, frame - 1);
       const overrideImage = await this.loadOptionalImage(overridePath);
       if (overrideImage) {
-        frames.push(overrideImage);
+        slots.push({
+          image: overrideImage,
+          requestedFrameIndex: frame - 1,
+          loadedFrameIndex: frame - 1,
+          framePath: overridePath,
+          sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
+          usingManualOverride: true,
+          usingCleanedAlpha: false,
+          placeholder: false,
+        });
         continue;
       }
       const cleanedPath = cleanedAlphaFramePath(assetId, animation, frame - 1);
       const cleanedImage = await this.loadOptionalImage(cleanedPath);
       if (cleanedImage) {
-        frames.push(cleanedImage);
+        slots.push({
+          image: cleanedImage,
+          requestedFrameIndex: frame - 1,
+          loadedFrameIndex: frame - 1,
+          framePath: cleanedPath,
+          sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
+          usingManualOverride: false,
+          usingCleanedAlpha: true,
+          placeholder: false,
+        });
         continue;
       }
-      const generatedPack = getGeneratedSpritePackFrame(assetId, animation, frame - 1);
-      const reference = getReferenceSpriteFrame(assetId, animation, frame - 1);
-      const semiRealistic = getSemiRealisticSpriteFrame(assetId, animation, frame - 1);
-      const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frame - 1);
-      const path =
-        generatedPack?.framePath ??
-        reference?.framePath ??
-        semiRealistic?.framePath ??
-        alphaHole?.repairedFramePath ??
-        `/sprites/frames/${assetId}/${animation}/${String(frame).padStart(4, '0')}.png`;
+      const path = this.sourceFramePathFor(assetId, animation, frame - 1);
       if (isKnownBrokenFrame(path)) {
         this.warnBrokenFrame(path, 'Known hollow or low-coverage frame is blocked from normal gameplay.');
+        slots.push(null);
         continue;
       }
       const image = await this.loadImage(path, {
@@ -224,15 +262,59 @@ export class AssetLoader {
         frameIndex: frame,
         kind: 'sprite-frame',
       });
-      if (!image) {
-        if (frame === 1) break;
-      } else {
-        frames.push(image);
-      }
+      slots.push(
+        image
+          ? {
+              image,
+              requestedFrameIndex: frame - 1,
+              loadedFrameIndex: frame - 1,
+              framePath: path,
+              sourceFramePath: path,
+              usingManualOverride: false,
+              usingCleanedAlpha: false,
+              placeholder: false,
+            }
+          : null,
+      );
     }
 
-    this.frameCache.set(key, frames);
-    return frames;
+    const validSlots = slots.filter((slot): slot is LoadedOptionalFrameSlot => Boolean(slot));
+    if (validSlots.length === 0) {
+      this.frameSlotCache.set(key, []);
+      return [];
+    }
+
+    const resolvedSlots = slots.map((slot, index) => {
+      if (slot) return slot;
+      const nearest = nearestSlot(validSlots, index);
+      const missingFramePath = this.sourceFramePathFor(assetId, animation, index);
+      return {
+        ...nearest,
+        requestedFrameIndex: index,
+        framePath: nearest.framePath,
+        placeholder: true,
+        missingFramePath,
+        placeholderReason: 'missing_or_invalid_frame',
+      };
+    });
+    this.frameSlotCache.set(key, resolvedSlots);
+    this.frameCache.set(`${assetId}:${animation}`, resolvedSlots.map((slot) => slot.image));
+    return resolvedSlots;
+  }
+
+  private sourceFramePathFor(assetId: string, animation: string, frameIndex: number): string {
+    const frameNumber = String(frameIndex + 1).padStart(4, '0');
+    const generatedPack = getGeneratedSpritePackFrame(assetId, animation, frameIndex);
+    const reference = getReferenceSpriteFrame(assetId, animation, frameIndex);
+    const semiRealistic = getSemiRealisticSpriteFrame(assetId, animation, frameIndex);
+    const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frameIndex);
+    return (
+      generatedPack?.framePath ??
+      reference?.framePath ??
+      semiRealistic?.framePath ??
+      alphaHole?.repairedFramePath ??
+      `/sprites/frames/${assetId}/${animation}/${frameNumber}.png`
+    );
   }
 
   getFrames(assetId: string, animation: string): HTMLImageElement[] {
@@ -376,13 +458,13 @@ export class AssetLoader {
     const reference = getReferenceSpriteAnimation(entityId, animationKey);
     const semiRealistic = getSemiRealisticSpriteAnimation(entityId, animationKey);
     const generatedPack = getGeneratedSpritePackAnimation(entityId, animationKey);
-    const images = await this.loadOptionalFrames(entityId, animationKey, 12);
-    if (images.length === 0) return null;
     const expectedFrameCount = Math.min(
       12,
       generatedPack?.frames.length || reference.length || semiRealistic.length || cleaned?.frames.length || definition?.frames.length || minimumFrameCount(animationKey),
     );
-    if (images.length < expectedFrameCount && getSpriteAtlasAnimation(entityId, animationKey)) {
+    const slots = await this.loadOptionalFrameSlots(entityId, animationKey, expectedFrameCount);
+    if (slots.length === 0) return null;
+    if (slots.filter((slot) => !slot.placeholder).length === 0 && getSpriteAtlasAnimation(entityId, animationKey)) {
       this.warnOnce(
         `atlas-better:${entityId}:${animationKey}`,
         `Sprite frame folder is incomplete or failed health checks for ${entityId}/${animationKey}; using atlas crop as the safer gameplay source.`,
@@ -391,15 +473,13 @@ export class AssetLoader {
     }
     const renderProfile = spriteRegistryById.get(entityId)?.render;
 
-    const frames = images.map<ResolvedSpriteFrame>((image, index) =>
+    const frames = slots.map<ResolvedSpriteFrame>((slot, index) =>
       {
         const referenceFrame = reference[index];
         const semiRealisticFrame = semiRealistic[index];
         const generatedPackFrame = generatedPack?.frames[index];
-        const overridePath = manualOverrideFramePath(entityId, animationKey, index);
-        const usingManualOverride = image === this.images.get(overridePath);
-        const alphaCleanedPath = cleanedAlphaFramePath(entityId, animationKey, index);
-        const usingCleanedAlpha = !usingManualOverride && image === this.images.get(alphaCleanedPath);
+        const usingManualOverride = slot.usingManualOverride;
+        const usingCleanedAlpha = slot.usingCleanedAlpha;
         const sourceFramePath =
           generatedPackFrame?.framePath ??
           referenceFrame?.framePath ??
@@ -417,9 +497,9 @@ export class AssetLoader {
             referenceFrame?.durationMs ??
             cleaned?.frames[index]?.durationMs ??
             definition?.frames[index]?.durationMs ??
-            timingForAnimation(animationKey, index, images.length),
-          image,
-          framePath: usingManualOverride ? overridePath : usingCleanedAlpha ? alphaCleanedPath : sourceFramePath,
+            timingForAnimation(animationKey, index, slots.length),
+          image: slot.image,
+          framePath: slot.placeholder ? slot.framePath : usingManualOverride || usingCleanedAlpha ? slot.framePath : sourceFramePath,
           width: generatedPackFrame?.frameSize.w ?? referenceFrame?.frameSize.width ?? semiRealisticFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
           height: generatedPackFrame?.frameSize.h ?? referenceFrame?.frameSize.height ?? semiRealisticFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
           anchorX: generatedPackFrame?.anchorX ?? referenceFrame?.anchorX ?? semiRealisticFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
@@ -429,11 +509,11 @@ export class AssetLoader {
           cleanedFrameAvailable: Boolean(cleaned?.frames[index]),
           manualOverrideFrameAvailable: usingManualOverride,
           usingManualOverrideFrame: usingManualOverride,
-          manualOverrideFramePath: usingManualOverride ? overridePath : undefined,
+          manualOverrideFramePath: usingManualOverride ? slot.framePath : undefined,
           manualOverrideSourceFramePath: usingManualOverride ? sourceFramePath : undefined,
           cleanedAlphaFrameAvailable: usingCleanedAlpha,
           usingCleanedAlphaFrame: usingCleanedAlpha,
-          cleanedAlphaFramePath: usingCleanedAlpha ? alphaCleanedPath : undefined,
+          cleanedAlphaFramePath: usingCleanedAlpha ? slot.framePath : undefined,
           cleanedAlphaSourceFramePath: usingCleanedAlpha ? sourceFramePath : undefined,
           referenceFrameAvailable: Boolean(referenceFrame),
           usingReferenceExtracted: Boolean(referenceFrame),
@@ -452,6 +532,8 @@ export class AssetLoader {
             ? `Using manual override PNG frame over ${sourceFramePath}.`
             : usingCleanedAlpha
             ? `Using alpha-cleaned PNG frame over ${sourceFramePath}.`
+            : slot.placeholder
+              ? `Placeholder frame copied from ${String(slot.loadedFrameIndex + 1).padStart(4, '0')} because ${slot.missingFramePath} was missing or invalid.`
             : generatedPackFrame
             ? 'Using normalized transparent sprite-pack frame.'
             : referenceFrame
@@ -461,6 +543,10 @@ export class AssetLoader {
             : cleaned?.frames[index]?.splitFromDirtyCrop
               ? 'Cleaned frame split from a multi-pose raw crop.'
               : undefined,
+          placeholderFrame: slot.placeholder,
+          placeholderFromFrameIndex: slot.placeholder ? slot.loadedFrameIndex : undefined,
+          missingFramePath: slot.missingFramePath,
+          placeholderReason: slot.placeholderReason,
         });
       },
     );
@@ -693,6 +779,14 @@ function isKnownBrokenFrame(path: string): boolean {
 
 function appendNote(current: string | undefined, note: string): string {
   return current ? `${current} ${note}` : note;
+}
+
+function nearestSlot(slots: LoadedOptionalFrameSlot[], frameIndex: number): LoadedOptionalFrameSlot {
+  return slots.reduce((best, slot) => {
+    const bestDistance = Math.abs(best.loadedFrameIndex - frameIndex);
+    const slotDistance = Math.abs(slot.loadedFrameIndex - frameIndex);
+    return slotDistance < bestDistance ? slot : best;
+  });
 }
 
 function applyBodyAwareAnchor(frame: ResolvedSpriteFrame): ResolvedSpriteFrame {

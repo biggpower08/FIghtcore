@@ -95,9 +95,8 @@ export class Player extends Fighter {
   }
 
   override getStaminaCost(move: MoveDefinition): number {
-    const moveLevel = this.getMoveUpgradeLevel(move.id, 'efficiency');
-    const discount = Math.min(0.5, this.upgrades.staminaLevel * 0.08 + moveLevel * 0.08);
-    return Math.max(1, Math.round(move.staminaCost * 0.42 * (1 - discount)));
+    void move;
+    return 0;
   }
 
   override getCooldownMs(move: MoveDefinition): number {
@@ -112,7 +111,7 @@ export class Player extends Fighter {
 
   override canUseMove(move: MoveDefinition): boolean {
     if (this.ability?.id === 'density' && this.abilityActiveMs > 0) return false;
-    return super.canUseMove(move);
+    return (this.moveCooldowns.get(move.id) ?? 0) <= 0 && this.attackLockMs <= 0;
   }
 
   getAttackLockMs(move: MoveDefinition): number {

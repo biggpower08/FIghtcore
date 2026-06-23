@@ -3175,12 +3175,10 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
         "fps": 7,
         "loop": false,
         "outputCanvas": {
-          "w": 256,
-          "h": 160
+          "w": 320,
+          "h": 176
         },
         "warnings": [
-          "frame 7: visible pixels reached source slice edge; possible frame bleed or tight crop",
-          "frame 8: visible pixels reached source slice edge; possible frame bleed or tight crop",
           "body height variance 20.3% exceeds 18%"
         ],
         "frames": [
@@ -3188,8 +3186,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 0,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0001.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3204,16 +3202,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 201,
               "w": 149,
               "h": 286,
-              "pixels": 20146
+              "pixels": 20145
             },
             "bodyBounds": {
-              "x": 97,
-              "y": 30,
+              "x": 129,
+              "y": 46,
               "w": 62,
               "h": 118
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3221,8 +3219,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 1,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0002.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3240,13 +3238,13 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "pixels": 20048
             },
             "bodyBounds": {
-              "x": 94,
-              "y": 31,
+              "x": 126,
+              "y": 47,
               "w": 68,
               "h": 117
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3254,8 +3252,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 2,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0003.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3270,16 +3268,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 208,
               "w": 173,
               "h": 277,
-              "pixels": 20241
+              "pixels": 20240
             },
             "bodyBounds": {
-              "x": 92,
-              "y": 33,
+              "x": 124,
+              "y": 49,
               "w": 72,
               "h": 115
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3287,8 +3285,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 3,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0004.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3303,16 +3301,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 205,
               "w": 106,
               "h": 280,
-              "pixels": 15591
+              "pixels": 15589
             },
             "bodyBounds": {
-              "x": 106,
-              "y": 32,
+              "x": 138,
+              "y": 48,
               "w": 44,
               "h": 116
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3320,8 +3318,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 4,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0005.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3339,13 +3337,13 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "pixels": 18107
             },
             "bodyBounds": {
-              "x": 101,
-              "y": 23,
+              "x": 133,
+              "y": 39,
               "w": 55,
               "h": 125
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3353,8 +3351,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 5,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0006.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3369,16 +3367,16 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 185,
               "w": 126,
               "h": 290,
-              "pixels": 16586
+              "pixels": 16583
             },
             "bodyBounds": {
-              "x": 102,
-              "y": 28,
+              "x": 134,
+              "y": 44,
               "w": 52,
               "h": 120
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3386,8 +3384,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 6,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0007.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3398,20 +3396,20 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "h": 724
             },
             "sourceBounds": {
-              "x": 2,
+              "x": 16,
               "y": 191,
-              "w": 310,
-              "h": 295,
-              "pixels": 21631
+              "w": 272,
+              "h": 292,
+              "pixels": 21281
             },
             "bodyBounds": {
-              "x": 64,
-              "y": 26,
-              "w": 128,
-              "h": 122
+              "x": 104,
+              "y": 43,
+              "w": 113,
+              "h": 121
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3419,8 +3417,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 7,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0008.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3431,20 +3429,20 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "h": 724
             },
             "sourceBounds": {
-              "x": 0,
+              "x": 24,
               "y": 242,
-              "w": 193,
+              "w": 169,
               "h": 244,
-              "pixels": 17434
+              "pixels": 17218
             },
             "bodyBounds": {
-              "x": 88,
-              "y": 47,
-              "w": 80,
+              "x": 125,
+              "y": 63,
+              "w": 70,
               "h": 101
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           },
@@ -3452,8 +3450,8 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
             "frameIndex": 8,
             "framePath": "/sprites/frames-pack/supreme-emperor/tornado_kick/0009.png",
             "frameSize": {
-              "w": 256,
-              "h": 160
+              "w": 320,
+              "h": 176
             },
             "targetBodyHeight": 118,
             "visualScale": 0.72,
@@ -3471,13 +3469,13 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "pixels": 19653
             },
             "bodyBounds": {
-              "x": 98,
-              "y": 30,
+              "x": 130,
+              "y": 46,
               "w": 61,
               "h": 118
             },
             "anchorX": 0.5,
-            "anchorY": 0.925,
+            "anchorY": 0.9318181818181818,
             "durationMs": 143,
             "cutoff": false
           }

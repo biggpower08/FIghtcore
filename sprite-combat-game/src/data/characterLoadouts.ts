@@ -83,7 +83,7 @@ const loadouts: CharacterLoadout[] = [
     ability: {
       id: 'meditation',
       name: 'Meditation',
-      description: 'Recharge health and stamina through meditation.',
+      description: 'Hold position to recover health through meditation.',
     },
   },
   {

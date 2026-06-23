@@ -1,4 +1,5 @@
 import type { MoveDefinition } from '../data/moves';
+import type { UpgradeDefinition } from '../data/upgrades';
 import type { Player } from '../entities/Player';
 import type { RewardOption } from '../systems/ProgressionSystem';
 
@@ -31,6 +32,7 @@ export class RewardScreen {
       button.type = 'button';
       if (move.kind === 'upgrade') {
         button.innerHTML = `
+          <span class="reward-icon">${upgradeIcon(move.upgrade)}</span>
           <strong>${move.upgrade.name}</strong>
           <span>${move.upgrade.category} Upgrade - level ${move.upgrade.currentLevel(player) + 1}/${move.upgrade.maxLevel}</span>
           <span>${move.upgrade.valueText(player)}</span>
@@ -38,9 +40,10 @@ export class RewardScreen {
         `;
       } else {
         button.innerHTML = `
+          <span class="reward-icon">${moveIcon(move.move)}</span>
           <strong>${move.move.name}</strong>
           <span>${move.move.style} / ${move.move.rarity}</span>
-          <span>${move.move.damage} damage, ${player.getStaminaCost(move.move)} stamina</span>
+          <span>${move.move.damage} damage</span>
           <span>${player.getCooldownMs(move.move)}ms cooldown</span>
           <span>Compatible with ${player.character.name}</span>
         `;
@@ -67,7 +70,7 @@ export class RewardScreen {
     panel.className = 'reward-panel';
     panel.innerHTML = `
       <h2>Replace Which Move?</h2>
-      <p>${move.name} (${move.rarity}) - ${move.damage} damage, ${player.getStaminaCost(move)} stamina, ${player.getCooldownMs(move)}ms cooldown.</p>
+      <p>${move.name} (${move.rarity}) - ${move.damage} damage, ${player.getCooldownMs(move)}ms cooldown.</p>
       <div class="reward-options"></div>
     `;
 
@@ -82,7 +85,7 @@ export class RewardScreen {
         <strong>${slotKeys[index]}: ${currentMove.name}</strong>
         <span>Replace with ${move.name}</span>
         <span>${currentMove.damage} -> ${move.damage} damage</span>
-        <span>${player.getStaminaCost(currentMove)} -> ${player.getStaminaCost(move)} stamina</span>
+        <span>${player.getCooldownMs(currentMove)} -> ${player.getCooldownMs(move)}ms cooldown</span>
       `;
       button.addEventListener('click', () => {
         this.hide();
@@ -98,4 +101,20 @@ export class RewardScreen {
     this.root.classList.add('hidden');
     this.root.innerHTML = '';
   }
+}
+
+function upgradeIcon(upgrade: UpgradeDefinition): string {
+  if (upgrade.characterId === 'supreme-emperor') return 'CR';
+  if (upgrade.characterId === 'ronin') return 'RN';
+  if (upgrade.category === 'Ability') return 'SP';
+  if (upgrade.id.includes('flow') || upgrade.id.includes('activity') || upgrade.name.includes('Flow')) return 'FL';
+  if (upgrade.id.includes('heal') || upgrade.id.includes('vital') || upgrade.id.includes('breath')) return 'HP';
+  return 'UP';
+}
+
+function moveIcon(move: MoveDefinition): string {
+  if (move.style.includes('kick') || move.id.includes('kick') || move.id.includes('knee')) return 'FT';
+  if (move.style === 'boxing' || move.id.includes('jab') || move.id.includes('cross') || move.id.includes('hook')) return 'FS';
+  if (move.style === 'wrestling' || move.style === 'judo' || move.style === 'jiujitsu') return 'GR';
+  return 'MV';
 }

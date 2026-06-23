@@ -7,13 +7,10 @@ import { spriteRegistry } from '../data/spriteRegistry';
 import type { AssetLoader, ResolvedSpriteAnimation, ResolvedSpriteFrame } from '../game/AssetLoader';
 
 const coreLabEntityIds = [
-  'cyber-ninja',
-  'shadow-striker',
-  'puppetmaster',
-  'combat-monk',
+  'ronin',
+  'supreme-emperor',
   'monkey-grunt',
   'striker-monkey',
-  'cyber-monkey-grappler',
 ];
 
 interface SpriteScaleDiagnostics {
@@ -218,7 +215,20 @@ export class SpriteLab {
         animationKey: this.animation.animationKey,
         status: this.animation.status,
         frame: `${framePosition + 1}/${this.animation.frames.length}`,
+        expectedFrameCount: this.animation.frames.length,
+        actualRuntimeFrameCount: this.animation.frames.length,
         frameIndex: framePosition,
+        placeholderFrames: this.animation.frames
+          .filter((candidate) => candidate.placeholderFrame)
+          .map((candidate) => ({
+            frame: (candidate.frameIndex ?? 0) + 1,
+            from: candidate.placeholderFromFrameIndex !== undefined ? candidate.placeholderFromFrameIndex + 1 : undefined,
+            missing: candidate.missingFramePath,
+            reason: candidate.placeholderReason,
+          })),
+        currentFramePlaceholder: Boolean(frame?.placeholderFrame),
+        placeholderFromFrame: frame?.placeholderFromFrameIndex !== undefined ? frame.placeholderFromFrameIndex + 1 : undefined,
+        missingFramePath: frame?.missingFramePath,
         sheetId: frame?.sheetId,
         sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
@@ -266,6 +276,9 @@ export class SpriteLab {
         fallbackUsed: this.animation.status === 'fallback' || this.animation.status === 'missing',
         invalidFrame: frame ? this.isInvalidFrame(frame, framePosition) : 'missing-frame',
         warning:
+          frame?.placeholderFrame
+            ? `Frame ${framePosition + 1} is a placeholder copied from frame ${(frame.placeholderFromFrameIndex ?? 0) + 1}; replace ${frame.missingFramePath ?? 'the missing slot'} with a manual override when ready.`
+            : 
           frame && this.isInvalidFrame(frame, framePosition)
             ? frameQuality?.invalidMultiPoseFrame || frameQuality?.multiPoseCrop
               ? 'This body frame contains multiple poses and is blocked from gameplay-ready rendering.'

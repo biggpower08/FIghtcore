@@ -2,7 +2,7 @@ import type { Player } from '../entities/Player';
 import type { SpecialAbilityId } from './specialAbilities';
 
 export type RewardKind = 'move' | 'upgrade';
-export type UpgradeCategory = 'General' | 'Character' | 'Move' | 'Ability';
+export type UpgradeCategory = 'Activity/Flow' | 'Survival' | 'Move Mastery' | 'Wave Momentum' | 'Ronin Path' | 'Supreme Path' | 'Ability';
 export type UpgradeId =
   | 'iron_momentum'
   | 'breath_economy'
@@ -52,36 +52,39 @@ export interface UpgradeDefinition {
 }
 
 export const upgrades: UpgradeDefinition[] = [
-  stat('iron_momentum', 'Iron Momentum', 'All attacks hit a little harder.', 4, 'damageLevel', 'Damage'),
-  stat('breath_economy', 'Breath Economy', 'Attacks spend less stamina, keeping stamina as a soft limiter.', 4, 'staminaLevel', 'Stamina economy'),
-  stat('rhythm_reset', 'Rhythm Reset', 'Moves recover faster and chain more comfortably.', 4, 'cooldownLevel', 'Move recovery'),
-  stat('cellular_patch', 'Cellular Patch', 'Slowly regenerate more health when you have not been hit recently.', 3, 'healthRegenLevel', 'Health regen'),
-  stat('footwork_drills', 'Footwork Drills', 'Move 5% faster per level.', 3, 'speedLevel', 'Move speed'),
-  stat('shorter_dash', 'Shorter Dash Reset', 'Dash cooldown drops by 90ms per level.', 3, 'dashLevel', 'Dash cooldown'),
-  stat('second_wind', 'Focused Breathing', 'Wave-clear recovery gains a small extra buffer.', 3, 'waveHealLevel', 'Wave recovery'),
-  stat('momentum_heal', 'Momentum Heal', 'Entering max Activity heals a small amount.', 3, 'killHealLevel', 'Flow heal'),
-  stat('clean_footwork', 'Clean Footwork', 'Dashing near enemies grants more Activity.', 3, 'dashActivityLevel', 'Dash Activity'),
-  stat('pressure_engine', 'Pressure Engine', 'Activity decays more slowly.', 3, 'activityDecayLevel', 'Activity decay'),
-  stat('relentless', 'Relentless', 'High Activity improves ability recharge and flow damage.', 3, 'flowDamageLevel', 'Flow pressure'),
-  stat('sharp_entry', 'Sharp Entry', 'High Activity adds stronger control and knockback.', 3, 'knockbackLevel', 'Control'),
-  stamina('deeper_gas_tank', 'Deeper Gas Tank', 'Increase max stamina and refill it immediately.', 3),
-  maxHealth('vital_reserve', 'Vital Reserve', 'Increase maximum health and immediately heal the added amount.', 4),
+  stat('iron_momentum', 'Heat Check', 'All attacks hit a little harder.', 4, 'damageLevel', 'Damage', 'Move Mastery'),
+  stat('breath_economy', 'Flow State', 'Build Activity faster so pressure turns into Flow more often.', 4, 'activityGainLevel', 'Activity gain', 'Activity/Flow'),
+  stat('rhythm_reset', 'Relentless Hands', 'Moves recover faster and chain more comfortably.', 4, 'cooldownLevel', 'Move recovery', 'Move Mastery'),
+  stat('cellular_patch', 'Damage Memory', 'Slowly regenerate more health when you have not been hit recently.', 3, 'healthRegenLevel', 'Health regen', 'Survival'),
+  stat('footwork_drills', 'No Back Step', 'Move 5% faster per level.', 3, 'speedLevel', 'Move speed', 'Move Mastery'),
+  stat('shorter_dash', 'Counter Step Reset', 'Dash cooldown drops by 90ms per level.', 3, 'dashLevel', 'Dash cooldown', 'Move Mastery'),
+  stat('second_wind', 'Breath Between Rounds', 'Wave-clear recovery gains a small extra buffer.', 3, 'waveHealLevel', 'Wave recovery', 'Wave Momentum'),
+  stat('momentum_heal', 'Flow Mending', 'Entering max Activity heals a small amount.', 3, 'killHealLevel', 'Flow heal', 'Activity/Flow'),
+  stat('clean_footwork', 'Angle Tax', 'Dashing near enemies grants more Activity.', 3, 'dashActivityLevel', 'Dash Activity', 'Activity/Flow'),
+  stat('pressure_engine', 'Pressure Engine', 'Activity decays more slowly.', 3, 'activityDecayLevel', 'Activity decay', 'Activity/Flow'),
+  stat('relentless', 'Redline Pressure', 'High Activity improves ability recharge and flow damage.', 3, 'flowDamageLevel', 'Flow pressure', 'Activity/Flow'),
+  stat('sharp_entry', 'Hard Entry', 'High Activity adds stronger control and knockback.', 3, 'knockbackLevel', 'Control', 'Move Mastery'),
+  stat('deeper_gas_tank', 'Bigger Aura', 'Increase maximum Activity and immediately fill the new space.', 3, 'maxStaminaLevel', 'Activity capacity', 'Activity/Flow', (player) => {
+    player.maxActivity += 12;
+    player.activity = player.maxActivity;
+  }),
+  maxHealth('vital_reserve', 'Stay Standing', 'Increase maximum health and immediately heal the added amount.', 4),
 
-  characterField('perfect_rhythm', 'Perfect Rhythm', 'ronin', 'Ronin chains recover faster when you keep attacking.', 3, 'roninChainLevel', 'Rhythm'),
-  ability('density_control', 'Density Control', 'ronin', 'density', 'Density lasts longer and feeds the survivor path.', 3),
+  characterField('perfect_rhythm', 'Clean Entry', 'ronin', 'Ronin chains recover faster when you keep attacking.', 3, 'roninChainLevel', 'Rhythm'),
+  ability('density_control', 'Density Breath', 'ronin', 'density', 'Density lasts longer and feeds the survivor path.', 3),
   characterField('counter_step', 'Counter Step', 'ronin', 'Dashing close to enemies grants more Activity.', 3, 'dashActivityLevel', 'Counter Activity'),
-  characterField('calf_breaker', 'Calf Breaker', 'ronin', 'Calf Kick gets stronger control and damage pressure.', 3, 'roninCalfLevel', 'Calf pressure'),
-  characterField('flow_guard', 'Flow Guard', 'ronin', 'High Activity grants damage reduction.', 3, 'highActivityDefenseLevel', 'Flow guard'),
-  characterField('clean_cross', 'Clean Cross', 'ronin', 'Cross deals bonus damage after Jab connects.', 3, 'roninCrossLevel', 'Jab to cross'),
-  characterField('pressure_chain', 'Pressure Chain', 'ronin', 'Landed pressure improves recovery and Activity gain.', 3, 'flowRecoveryLevel', 'Pressure chain'),
+  characterField('calf_breaker', 'Low-Line Tax', 'ronin', 'Calf Kick gets stronger control and damage pressure.', 3, 'roninCalfLevel', 'Low line'),
+  characterField('flow_guard', 'Second Wind Stance', 'ronin', 'High Activity grants damage reduction.', 3, 'highActivityDefenseLevel', 'Flow guard'),
+  characterField('clean_cross', 'Cross Discipline', 'ronin', 'Cross deals bonus damage after Jab connects.', 3, 'roninCrossLevel', 'Jab to cross'),
+  characterField('pressure_chain', 'Quiet Pressure', 'ronin', 'Landed pressure improves recovery and Activity gain.', 3, 'flowRecoveryLevel', 'Pressure chain'),
 
-  ability('instant_death_focus', 'Instant Death Focus', 'supreme-emperor', 'instant_death', 'Instant Death lasts longer and procs more often.', 4),
-  abilityCooldown('emperor_coolant', 'Emperor Coolant', 'supreme-emperor', 'instant_death', 'Instant Death comes back faster.'),
+  ability('instant_death_focus', "Emperor's Decree", 'supreme-emperor', 'instant_death', 'Instant Death lasts longer and procs more often.', 4),
+  abilityCooldown('emperor_coolant', 'Throne Momentum', 'supreme-emperor', 'instant_death', 'Instant Death comes back faster.'),
   characterField('royal_pressure', 'Royal Pressure', 'supreme-emperor', 'Heavy hits generate extra Activity.', 3, 'emperorHeavyActivityLevel', 'Royal pressure'),
-  characterField('crown_crush', 'Crown Crush', 'supreme-emperor', 'High Activity makes heavy hits hit harder.', 3, 'emperorHighActivityDamageLevel', 'Crown crush'),
-  characterField('emperors_tempo', "Emperor's Tempo", 'supreme-emperor', 'Jab-Cross and heavy chains recover faster at high Activity.', 3, 'flowRecoveryLevel', 'Tempo'),
+  characterField('crown_crush', 'Crown Breaker', 'supreme-emperor', 'High Activity makes heavy hits hit harder.', 3, 'emperorHighActivityDamageLevel', 'Crown breaker'),
+  characterField('emperors_tempo', 'Imperial Tempo', 'supreme-emperor', 'Jab-Cross and heavy chains recover faster at high Activity.', 3, 'flowRecoveryLevel', 'Tempo'),
   characterField('golden_threat', 'Golden Threat', 'supreme-emperor', 'Heavy strikes gain more damage and control.', 3, 'knockbackLevel', 'Threat'),
-  characterField('execution_chance', 'Execution Chance', 'supreme-emperor', 'Instant Death chance rises only near max Activity.', 3, 'emperorExecutionLevel', 'Execution'),
+  characterField('execution_chance', 'Execution Window', 'supreme-emperor', 'Instant Death chance rises only near max Activity.', 3, 'emperorExecutionLevel', 'Execution'),
   characterField('dominance_armor', 'Dominance Armor', 'supreme-emperor', 'High Activity grants armor during attacks.', 3, 'emperorArmorLevel', 'Dominance armor'),
   characterField('imperial_finish', 'Imperial Finish', 'supreme-emperor', 'Defeating enemies grants a small heal and helps sustain pressure.', 3, 'emperorKillHealLevel', 'Finish heal'),
 ];
@@ -93,15 +96,18 @@ function stat(
   maxLevel: number,
   field: keyof Player['upgrades'],
   label: string,
+  category: UpgradeCategory,
+  extraApply?: (player: Player) => void,
 ): UpgradeDefinition {
   return {
     id,
     name,
-    category: 'General',
+    category,
     description,
     maxLevel,
     apply: (player) => {
       player.upgrades[field] += 1;
+      extraApply?.(player);
     },
     currentLevel: (player) => player.upgrades[field],
     valueText: (player) => `${label} level ${player.upgrades[field] + 1}`,
@@ -112,7 +118,7 @@ function maxHealth(id: UpgradeId, name: string, description: string, maxLevel: n
   return {
     id,
     name,
-    category: 'General',
+    category: 'Survival',
     description,
     maxLevel,
     apply: (player) => {
@@ -121,23 +127,6 @@ function maxHealth(id: UpgradeId, name: string, description: string, maxLevel: n
     },
     currentLevel: (player) => Math.max(0, Math.round((player.maxHealth - player.loadout.stats.maxHealth) / 14)),
     valueText: (player) => `Max health +${14 * (Math.max(0, Math.round((player.maxHealth - player.loadout.stats.maxHealth) / 14)) + 1)}`,
-  };
-}
-
-function stamina(id: UpgradeId, name: string, description: string, maxLevel: number): UpgradeDefinition {
-  return {
-    id,
-    name,
-    category: 'General',
-    description,
-    maxLevel,
-    apply: (player) => {
-      player.upgrades.maxStaminaLevel += 1;
-      player.maxStamina += 12;
-      player.stamina = player.maxStamina;
-    },
-    currentLevel: (player) => player.upgrades.maxStaminaLevel,
-    valueText: (player) => `Max stamina level ${player.upgrades.maxStaminaLevel + 1}`,
   };
 }
 
@@ -152,7 +141,7 @@ function ability(
   return {
     id,
     name,
-    category: 'Ability',
+    category: characterId === 'ronin' ? 'Ronin Path' : characterId === 'supreme-emperor' ? 'Supreme Path' : 'Ability',
     characterId,
     abilityId,
     description,
@@ -170,7 +159,7 @@ function abilityCooldown(id: UpgradeId, name: string, characterId: string, abili
   return {
     id,
     name,
-    category: 'Ability',
+    category: characterId === 'supreme-emperor' ? 'Supreme Path' : 'Ability',
     characterId,
     abilityId,
     description,
@@ -179,7 +168,7 @@ function abilityCooldown(id: UpgradeId, name: string, characterId: string, abili
       player.upgrades.abilityCooldownLevel += 1;
     },
     currentLevel: (player) => player.upgrades.abilityCooldownLevel,
-    valueText: (player) => `Ability cooldown level ${player.upgrades.abilityCooldownLevel + 1}`,
+    valueText: (player) => `Ability reset level ${player.upgrades.abilityCooldownLevel + 1}`,
     isAvailable: (player) => player.character.id === characterId && player.ability?.id === abilityId,
   };
 }
@@ -196,7 +185,7 @@ function characterField(
   return {
     id,
     name,
-    category: 'Character',
+    category: characterId === 'ronin' ? 'Ronin Path' : characterId === 'supreme-emperor' ? 'Supreme Path' : 'Move Mastery',
     characterId,
     description,
     maxLevel,

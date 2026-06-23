@@ -34,7 +34,7 @@ export const specialAbilities: SpecialAbilityDefinition[] = [
     name: 'Meditation',
     cooldownMs: 12000,
     durationMs: 2800,
-    description: 'Hold still to restore health and stamina. Damage, movement, dash, or attacks interrupt it.',
+    description: 'Hold still to restore health. Damage, movement, dash, or attacks interrupt it.',
   },
   {
     id: 'thug_it_out',

@@ -7,6 +7,8 @@ export class Hud {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.textBaseline = 'top';
 
+    this.drawWaveBanner(ctx, player, wave);
+
     const ability = player.ability;
     const abilityReady = ability ? player.abilityCooldownMs <= 0 && player.abilityActiveMs <= 0 && player.criticalOverloadArmedMs <= 0 : false;
     const abilityStatus = ability
@@ -26,25 +28,24 @@ export class Hud {
     this.panel(ctx, leftX, leftY, leftWidth, leftHeight);
     ctx.font = '13px monospace';
     ctx.fillStyle = '#fff0c2';
-    ctx.fillText(`Wave ${wave}  ${player.character.name}`, leftX + 10, leftY + 9);
+    ctx.fillText(player.character.name, leftX + 10, leftY + 9);
     ctx.fillStyle = '#9fdde2';
     ctx.fillText(`${abilityStatus}  |  ${moveText}`, leftX + 10, leftY + 30);
 
-    const rightHeight = 104;
+    const rightHeight = 78;
     const rightX = ctx.canvas.width - rightWidth - 14;
     const rightY = ctx.canvas.height - rightHeight - 14;
     this.panel(ctx, rightX, rightY, rightWidth, rightHeight);
     this.bar(ctx, rightX + 12, rightY + 12, 190, 14, player.health / player.maxHealth, '#e94444', 'Health');
     const activityColor = player.getActivityTier() === 'flow' ? '#ffe769' : player.getActivityTier() === 'high' ? '#ff9c3f' : '#35d5dd';
     this.bar(ctx, rightX + 12, rightY + 42, 190, 14, player.activity / player.maxActivity, activityColor, player.getActivityTier() === 'flow' ? 'Activity: Flow' : 'Activity');
-    this.bar(ctx, rightX + 12, rightY + 74, 120, 8, player.stamina / player.maxStamina, '#53d47c', 'Stamina');
     ctx.font = '10px monospace';
     ctx.fillStyle = '#b9cbd0';
     ctx.fillText('Esc pause', rightX + 214, rightY + 14);
 
     if (boss?.alive) {
       ctx.font = '16px monospace';
-      this.bar(ctx, ctx.canvas.width / 2 - 180, 22, 360, 18, boss.health / boss.maxHealth, '#a84dff', boss.definition.name);
+      this.bar(ctx, ctx.canvas.width / 2 - 180, 66, 360, 18, boss.health / boss.maxHealth, '#a84dff', boss.definition.name);
     }
 
     ctx.restore();
@@ -58,6 +59,18 @@ export class Hud {
     ctx.strokeRect(x + 0.5, y + 0.5, width - 1, height - 1);
     ctx.fillStyle = 'rgba(240, 195, 106, 0.16)';
     ctx.fillRect(x, y, width, 4);
+  }
+
+  private drawWaveBanner(ctx: CanvasRenderingContext2D, player: Player, wave: number): void {
+    const width = 220;
+    const x = ctx.canvas.width / 2 - width / 2;
+    const y = 14;
+    this.panel(ctx, x, y, width, 40);
+    ctx.font = '15px monospace';
+    ctx.fillStyle = '#fff0c2';
+    ctx.fillText(`Wave ${wave}`, x + 12, y + 10);
+    ctx.fillStyle = player.getActivityTier() === 'flow' ? '#ffe769' : '#9fdde2';
+    ctx.fillText(player.getActivityTier() === 'flow' ? 'Flow active' : 'Build Activity', x + 88, y + 10);
   }
 
   private bar(

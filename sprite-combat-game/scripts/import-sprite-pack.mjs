@@ -169,13 +169,45 @@ async function importAnimation(pack, animation) {
   const warnings = [];
   for (let index = 0; index < frameCount; index += 1) {
     const slice = frameSlices[index];
-    const frame = cropFrame(source, slice.x, slice.y, slice.w, slice.h);
+    let frame = cropFrame(source, slice.x, slice.y, slice.w, slice.h);
     removeFlatBackground(frame);
     if (animation.dropDetachedComponents) removeDetachedComponents(frame);
-    const bounds = frameBounds[index];
+    let bounds = frameBounds[index];
+    let placeholderFromFrameIndex = null;
     if (!bounds) {
-      warnings.push(`frame ${index + 1}: no visible pixels`);
-      continue;
+      const fallbackIndex = nearestFrameIndex(frameBounds, index);
+      if (fallbackIndex >= 0) {
+        const fallbackSlice = frameSlices[fallbackIndex];
+        frame = cropFrame(source, fallbackSlice.x, fallbackSlice.y, fallbackSlice.w, fallbackSlice.h);
+        removeFlatBackground(frame);
+        if (animation.dropDetachedComponents) removeDetachedComponents(frame);
+        bounds = frameBounds[fallbackIndex];
+        placeholderFromFrameIndex = fallbackIndex;
+        warnings.push(`frame ${index + 1}: no visible pixels; wrote placeholder from frame ${fallbackIndex + 1}`);
+      } else {
+        const framePath = `/sprites/frames-pack/${pack.id}/${animation.id}/${String(index + 1).padStart(4, '0')}.png`;
+        const blank = new PNG({ width: canvas.w, height: canvas.h });
+        await writeFile(path.join(outputDir, `${String(index + 1).padStart(4, '0')}.png`), PNG.sync.write(blank));
+        warnings.push(`frame ${index + 1}: no visible pixels and no fallback frame available; wrote transparent placeholder`);
+        normalizedFrames.push({
+          frameIndex: index,
+          framePath,
+          frameSize: canvas,
+          targetBodyHeight: pack.targetBodyHeight,
+          visualScale: pack.visualScale,
+          sourceSlice: slice,
+          sourceBounds: null,
+          bodyBounds: null,
+          anchorX: 0.5,
+          anchorY: baselineY / canvas.h,
+          durationMs: Math.round(1000 / Math.max(1, animation.fps)),
+          cutoff: false,
+          placeholderFrame: true,
+          placeholderFromFrameIndex: null,
+          placeholderReason: 'empty_source_frame',
+        });
+        continue;
+      }
     }
     const normalized = normalizeFrame(frame, bounds, canvas, baselineY, normalizedScale);
     const framePath = `/sprites/frames-pack/${pack.id}/${animation.id}/${String(index + 1).padStart(4, '0')}.png`;
@@ -200,18 +232,25 @@ async function importAnimation(pack, animation) {
       anchorY: baselineY / canvas.h,
       durationMs: Math.round(1000 / Math.max(1, animation.fps)),
       cutoff,
+      ...(placeholderFromFrameIndex !== null
+        ? {
+            placeholderFrame: true,
+            placeholderFromFrameIndex,
+            placeholderReason: 'empty_source_frame',
+          }
+        : {}),
     });
   }
 
   const bodyVariance = varianceRatio(normalizedFrames.map((frame) => frame.bodyBounds?.h ?? 0));
   if (bodyVariance > 0.18) warnings.push(`body height variance ${(bodyVariance * 100).toFixed(1)}% exceeds 18%`);
-  await writeQaSheets(qaDir, normalizedFrames, warnings);
+  await writeQaSheets(qaDir, normalizedFrames, warnings, frameCount);
   const metadata = {
     id: animation.id,
     imported: true,
     sourcePath,
     outputDir: `/sprites/frames-pack/${pack.id}/${animation.id}`,
-    frameCount: normalizedFrames.length,
+    frameCount,
     sourceFrameSize: { w: sourceFrameWidth, h: sourceFrameHeight },
     sourceSlices: frameSlices,
     outputCanvas: canvas,
@@ -226,7 +265,7 @@ async function importAnimation(pack, animation) {
     ...metadata,
     registry: {
       id: animation.id,
-      frameCount: normalizedFrames.length,
+      frameCount,
       fps: animation.fps,
       loop: animation.loop,
       outputCanvas: canvas,
@@ -465,7 +504,7 @@ function normalizeFrame(frame, bounds, canvas, baselineY, scale) {
   };
 }
 
-async function writeQaSheets(qaDir, frames, warnings) {
+async function writeQaSheets(qaDir, frames, warnings, expectedFrameCount = frames.length) {
   const width = Math.max(1, ...frames.map((frame) => frame.frameSize.w)) * Math.max(1, frames.length);
   const height = Math.max(1, ...frames.map((frame) => frame.frameSize.h));
   const white = new PNG({ width, height });
@@ -482,6 +521,53 @@ async function writeQaSheets(qaDir, frames, warnings) {
   await writeFile(path.join(qaDir, 'white-check.png'), PNG.sync.write(white));
   await writeFile(path.join(qaDir, 'bounds-check.png'), PNG.sync.write(bounds));
   await writeFile(path.join(qaDir, 'warnings.txt'), warnings.join('\n'));
+  await writeFrameContinuityReport(qaDir, frames, expectedFrameCount, warnings);
+}
+
+async function writeFrameContinuityReport(qaDir, frames, expectedFrameCount, warnings = []) {
+  const actualFilesFound = frames.map((frame) => `${String(frame.frameIndex + 1).padStart(4, '0')}.png`);
+  const present = new Set(frames.map((frame) => frame.frameIndex + 1));
+  const missingFrames = [];
+  for (let frame = 1; frame <= expectedFrameCount; frame += 1) {
+    if (!present.has(frame)) missingFrames.push(`${String(frame).padStart(4, '0')}.png`);
+  }
+  const bodyHeights = frames.map((frame) => frame.bodyBounds?.h ?? 0).filter((height) => height > 0);
+  const anchors = frames.map((frame) => frame.anchorY ?? 0).filter((anchor) => anchor > 0);
+  const report = {
+    expectedFrames: expectedFrameCount,
+    actualFilesFound,
+    missingFrames,
+    placeholderFrames: frames
+      .filter((frame) => frame.placeholderFrame)
+      .map((frame) => ({
+        frame: `${String(frame.frameIndex + 1).padStart(4, '0')}.png`,
+        placeholderFromFrame: Number.isInteger(frame.placeholderFromFrameIndex)
+          ? `${String(frame.placeholderFromFrameIndex + 1).padStart(4, '0')}.png`
+          : null,
+        reason: frame.placeholderReason ?? 'placeholder',
+      })),
+    bodyHeightVariance: varianceRatio(bodyHeights),
+    anchorVariance: varianceRatio(anchors),
+    warnings: [
+      ...warnings,
+      ...(missingFrames.length ? [`missing frame slot(s): ${missingFrames.join(', ')}`] : []),
+    ],
+  };
+  await writeFile(path.join(qaDir, 'frame-continuity.json'), JSON.stringify(report, null, 2));
+}
+
+function nearestFrameIndex(frameBounds, index) {
+  let bestIndex = -1;
+  let bestDistance = Number.POSITIVE_INFINITY;
+  for (let candidate = 0; candidate < frameBounds.length; candidate += 1) {
+    if (!frameBounds[candidate]) continue;
+    const distance = Math.abs(candidate - index);
+    if (distance < bestDistance) {
+      bestIndex = candidate;
+      bestDistance = distance;
+    }
+  }
+  return bestIndex;
 }
 
 function blit(src, dst, dx, dy) {

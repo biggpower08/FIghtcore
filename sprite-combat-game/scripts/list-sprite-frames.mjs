@@ -250,6 +250,8 @@ function renderMarkdown(items) {
   lines.push('');
   lines.push('Manual edits belong in `public/sprites/manual-overrides/<character>/<animation>/0001.png`. Missing override frames fall back normally, one frame at a time.');
   lines.push('');
+  lines.push('Manual override workflow: copy only the bad transparent frame into `public/sprites/manual-overrides/<character>/<animation>/<frame>.png`, clean that single PNG by hand, keep the same filename, and leave every other frame out of the override folder. Runtime checks overrides first, then cleaned/generated/fallback frames without renumbering the animation.');
+  lines.push('');
   lines.push('Do not hand-edit generated runtime folders unless you are comfortable losing those edits during an importer run.');
   lines.push('');
   lines.push('PowerShell helpers:');

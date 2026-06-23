@@ -1,0 +1,17 @@
+{
+  "expectedFrames": 5,
+  "actualFilesFound": [
+    "0001.png",
+    "0002.png",
+    "0003.png",
+    "0004.png",
+    "0005.png"
+  ],
+  "missingFrames": [],
+  "placeholderFrames": [],
+  "bodyHeightVariance": 0.4745762711864407,
+  "anchorVariance": 0,
+  "warnings": [
+    "body height variance 47.5% exceeds 18%"
+  ]
+}

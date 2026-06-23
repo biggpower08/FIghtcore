@@ -95,7 +95,7 @@ async function cleanAnimation(sourceRoot, character, animation) {
     });
   }
 
-  await writeQaSheets(qaDir, cleanedFrames);
+  await writeQaSheets(qaDir, cleanedFrames, files);
   const warnings = [];
   if (totalRemainingHalo > 0) warnings.push(`${totalRemainingHalo} suspected white/gray edge pixels remain after cleanup`);
   if (totalCanvasEdgePixels > 0) warnings.push(`${totalCanvasEdgePixels} opaque or semi-transparent pixels touch the canvas boundary`);
@@ -299,12 +299,64 @@ function isNearTransparency(data, width, height, x, y, radius) {
   return false;
 }
 
-async function writeQaSheets(qaDir, frames) {
+async function writeQaSheets(qaDir, frames, sourceFiles) {
   await mkdir(qaDir, { recursive: true });
   for (const check of backgroundChecks) {
     await writeFile(path.join(qaDir, check.file), PNG.sync.write(composeStrip(frames, check.color)));
   }
   await writeFile(path.join(qaDir, 'transparent-strip.png'), PNG.sync.write(composeStrip(frames, [0, 0, 0, 0])));
+  await writeFrameContinuityReport(qaDir, frames, sourceFiles);
+}
+
+async function writeFrameContinuityReport(qaDir, frames, sourceFiles) {
+  const actualNumbers = sourceFiles
+    .map((file) => Number.parseInt(file, 10))
+    .filter((value) => Number.isFinite(value));
+  const expectedFrames = actualNumbers.length > 0 ? Math.max(...actualNumbers) : frames.length;
+  const present = new Set(actualNumbers);
+  const missingFrames = [];
+  for (let frame = 1; frame <= expectedFrames; frame += 1) {
+    if (!present.has(frame)) missingFrames.push(`${String(frame).padStart(4, '0')}.png`);
+  }
+  const bodyHeights = frames.map((frame) => detectOpaqueBounds(frame.png)?.h ?? 0).filter((height) => height > 0);
+  const report = {
+    expectedFrames,
+    actualFilesFound: sourceFiles,
+    missingFrames,
+    placeholderFrames: [],
+    bodyHeightVariance: varianceRatio(bodyHeights),
+    anchorVariance: 0,
+    warnings: missingFrames.length ? [`missing frame slot(s): ${missingFrames.join(', ')}`] : [],
+  };
+  await writeFile(path.join(qaDir, 'frame-continuity.json'), JSON.stringify(report, null, 2));
+}
+
+function detectOpaqueBounds(png) {
+  let minX = png.width;
+  let minY = png.height;
+  let maxX = -1;
+  let maxY = -1;
+  let pixels = 0;
+  for (let y = 0; y < png.height; y += 1) {
+    for (let x = 0; x < png.width; x += 1) {
+      const alpha = png.data[(y * png.width + x) * 4 + 3];
+      if (alpha <= 20) continue;
+      pixels += 1;
+      minX = Math.min(minX, x);
+      minY = Math.min(minY, y);
+      maxX = Math.max(maxX, x);
+      maxY = Math.max(maxY, y);
+    }
+  }
+  if (maxX < minX || maxY < minY) return undefined;
+  return { x: minX, y: minY, w: maxX - minX + 1, h: maxY - minY + 1, pixels };
+}
+
+function varianceRatio(values) {
+  if (values.length <= 1) return 0;
+  const average = values.reduce((total, value) => total + value, 0) / values.length;
+  if (average <= 0) return 0;
+  return (Math.max(...values) - Math.min(...values)) / average;
 }
 
 function composeStrip(frames, background) {

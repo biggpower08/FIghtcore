@@ -10,6 +10,7 @@ type MenuHandlers = {
   onStartCharacter: (characterId: string) => void;
   onCredits: () => void;
   onFullscreen: () => void;
+  onToggleScreenShake: (enabled: boolean) => void;
   onBack: () => void;
   onResume: () => void;
   onRestart: () => void;
@@ -55,7 +56,6 @@ export class MenuScreen {
             .join('')}
         </div>
         <div class="menu-actions">
-          <button data-action="start">Start Run</button>
           <button data-action="settings">Options</button>
           <button data-action="controls">Controls</button>
           <button data-action="credits">Credits</button>
@@ -69,16 +69,12 @@ export class MenuScreen {
     this.installPreviewFallbacks();
   }
 
-  showSettings(): void {
+  showSettings(screenShakeEnabled = true): void {
     this.show(`
       <section class="menu-panel settings-panel">
         <h2>Options</h2>
-        <label><span>Master volume</span><input type="range" min="0" max="100" value="70" /></label>
-        <label><span>Music volume</span><input type="range" min="0" max="100" value="55" /></label>
-        <label><span>SFX volume</span><input type="range" min="0" max="100" value="80" /></label>
-        <label class="toggle-row"><span>Screen shake</span><input type="checkbox" checked /></label>
+        <label class="toggle-row"><span>Screen shake</span><input data-setting="screen-shake" type="checkbox" ${screenShakeEnabled ? 'checked' : ''} /></label>
         <button data-action="fullscreen" type="button">Toggle Fullscreen</button>
-        <p class="menu-copy">Audio sliders are presentation placeholders until the final audio pass is wired.</p>
         <button data-action="back">Back</button>
       </section>
     `);
@@ -144,6 +140,9 @@ export class MenuScreen {
     this.root.innerHTML = markup;
     this.root.querySelectorAll<HTMLButtonElement>('[data-action]').forEach((button) => {
       button.addEventListener('click', () => this.handleAction(button));
+    });
+    this.root.querySelectorAll<HTMLInputElement>('input[data-setting="screen-shake"]').forEach((input) => {
+      input.addEventListener('change', () => this.handlers?.onToggleScreenShake(input.checked));
     });
   }
 
