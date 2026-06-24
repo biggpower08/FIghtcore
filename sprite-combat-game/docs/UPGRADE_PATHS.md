@@ -28,7 +28,7 @@ Enemy scaling remains intentionally mild so later waves feel more alert without 
 - `impact-star.png`: impact, control, and knockback upgrades.
 - `step-arrow.png`: dash and movement upgrades.
 
-Runtime icon path: `public/ui/upgrade-icons/`.
+Runtime icon path: `public/ui/upgrade-icons/`. Reward cards resolve these through Vite's `BASE_URL`, so the same icon paths work locally and on GitHub Pages.
 
 ## Implemented Ronin Upgrades
 

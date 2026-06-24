@@ -28,6 +28,7 @@ const config = {
   edgeRadius: Number(process.env.SPRITE_EDGE_RADIUS ?? 2),
   neighborRadius: Number(process.env.SPRITE_NEIGHBOR_RADIUS ?? 8),
   matte: Number(process.env.SPRITE_MATTE_RGB ?? 245),
+  whiteSpeckMaxArea: Number(process.env.SPRITE_WHITE_SPECK_MAX_AREA ?? 12),
   decontaminate: process.env.SPRITE_DECONTAMINATE !== '0',
   neighborFallback: process.env.SPRITE_NEIGHBOR_FALLBACK !== '0',
 };
@@ -67,6 +68,7 @@ async function cleanAnimation(sourceRoot, character, animation) {
   let totalMadeTransparent = 0;
   let totalDecontaminated = 0;
   let totalNeighborRecolored = 0;
+  let totalWhiteSpecksRemoved = 0;
   let totalRemainingHalo = 0;
   let totalCanvasEdgePixels = 0;
 
@@ -83,6 +85,7 @@ async function cleanAnimation(sourceRoot, character, animation) {
     totalMadeTransparent += result.report.madeTransparent;
     totalDecontaminated += result.report.decontaminated;
     totalNeighborRecolored += result.report.neighborRecolored;
+    totalWhiteSpecksRemoved += result.report.whiteSpecksRemoved;
     totalRemainingHalo += afterHalo;
     totalCanvasEdgePixels += result.report.edgePixelsTouchingCanvasBoundary;
     frameReports.push({
@@ -112,6 +115,7 @@ async function cleanAnimation(sourceRoot, character, animation) {
       pixelsMadeTransparent: totalMadeTransparent,
       pixelsDecontaminated: totalDecontaminated,
       pixelsRecoloredFromNeighbor: totalNeighborRecolored,
+      tinyWhiteSpeckPixelsRemoved: totalWhiteSpecksRemoved,
       suspectedWhiteHaloPixelsRemaining: totalRemainingHalo,
       edgePixelsTouchingCanvasBoundary: totalCanvasEdgePixels,
     },
@@ -146,6 +150,7 @@ function cleanFrame(source) {
     madeTransparent: 0,
     decontaminated: 0,
     neighborRecolored: 0,
+    whiteSpecksRemoved: 0,
     suspectedWhiteHaloPixelsRemaining: 0,
     edgePixelsTouchingCanvasBoundary: countCanvasBoundaryPixels(source),
     warnings: [],
@@ -203,6 +208,7 @@ function cleanFrame(source) {
     }
   }
 
+  report.whiteSpecksRemoved = removeTinyWhiteSpecks(png);
   report.suspectedWhiteHaloPixelsRemaining = countSuspectedHaloPixels(png);
   if (report.suspectedWhiteHaloPixelsRemaining > 0) {
     report.warnings.push(`${report.suspectedWhiteHaloPixelsRemaining} suspected white/gray edge pixels remain`);
@@ -269,6 +275,67 @@ function countSuspectedHaloPixels(png) {
     }
   }
   return total;
+}
+
+function removeTinyWhiteSpecks(png) {
+  const width = png.width;
+  const height = png.height;
+  const visited = new Uint8Array(width * height);
+  let removed = 0;
+
+  for (let y = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1) {
+      const start = y * width + x;
+      if (visited[start] || !isWhiteSpeckCandidate(png.data, width, height, x, y)) continue;
+
+      const component = [];
+      const stack = [[x, y]];
+      let touchesTransparency = false;
+      visited[start] = 1;
+
+      while (stack.length > 0) {
+        const [cx, cy] = stack.pop();
+        component.push([cx, cy]);
+        if (isNearTransparency(png.data, width, height, cx, cy, 1)) touchesTransparency = true;
+
+        for (let dy = -1; dy <= 1; dy += 1) {
+          for (let dx = -1; dx <= 1; dx += 1) {
+            if (dx === 0 && dy === 0) continue;
+            const nx = cx + dx;
+            const ny = cy + dy;
+            if (nx < 0 || ny < 0 || nx >= width || ny >= height) continue;
+            const next = ny * width + nx;
+            if (visited[next] || !isWhiteSpeckCandidate(png.data, width, height, nx, ny)) continue;
+            visited[next] = 1;
+            stack.push([nx, ny]);
+          }
+        }
+      }
+
+      if (!touchesTransparency || component.length > config.whiteSpeckMaxArea) continue;
+      for (const [cx, cy] of component) {
+        const offset = (cy * width + cx) * 4;
+        png.data[offset] = 0;
+        png.data[offset + 1] = 0;
+        png.data[offset + 2] = 0;
+        png.data[offset + 3] = 0;
+        removed += 1;
+      }
+    }
+  }
+
+  return removed;
+}
+
+function isWhiteSpeckCandidate(data, width, height, x, y) {
+  const offset = (y * width + x) * 4;
+  const alpha = data[offset + 3];
+  if (alpha <= 0) return false;
+  if (!isNearTransparency(data, width, height, x, y, 2)) return false;
+  const rgb = [data[offset], data[offset + 1], data[offset + 2]];
+  const average = avg(rgb);
+  const saturation = sat(rgb);
+  return average >= 218 && saturation <= 34;
 }
 
 function countCanvasBoundaryPixels(png) {

@@ -38,8 +38,16 @@ export class RewardScreen {
         const icon = button.querySelector<HTMLImageElement>('.reward-icon img');
         icon?.addEventListener('error', () => {
           const root = icon.parentElement;
+          if (icon.dataset.fallbackTried !== '1') {
+            icon.dataset.fallbackTried = '1';
+            icon.src = resolvePublicAssetPath('/ui/upgrade-icons/impact-star.png');
+            return;
+          }
           icon.remove();
-          if (root) root.textContent = upgradeIconFallback(move.upgrade);
+          if (root) {
+            root.classList.remove('reward-image-icon');
+            root.textContent = upgradeIconFallback(move.upgrade);
+          }
         });
       } else {
         button.innerHTML = `
@@ -112,10 +120,11 @@ function upgradeCardHtml(upgrade: UpgradeDefinition, player: Player): string {
   const stackText = upgrade.stackingMode === 'unique' || upgrade.stackingMode === 'transform' ? upgrade.stackingMode : `${nextLevel}/${upgrade.maxStacks}`;
   const affectedMove = upgrade.affectedMove ? `<span class="reward-affected">Affects ${escapeHtml(upgrade.affectedMove)}</span>` : '';
   const flavor = upgrade.flavor ? `<span class="reward-flavor">${escapeHtml(upgrade.flavor)}</span>` : '';
+  const iconPath = resolvePublicAssetPath(upgrade.icon);
 
   return `
     <span class="reward-card-header">
-      <span class="reward-icon reward-image-icon"><img src="${escapeHtml(upgrade.icon)}" alt="" loading="lazy" /></span>
+      <span class="reward-icon reward-image-icon"><img src="${escapeHtml(iconPath)}" alt="" loading="eager" decoding="async" /></span>
       <span class="reward-badges">
         <span class="reward-badge">${escapeHtml(pathLabel)}</span>
         <span class="reward-badge reward-rarity-${upgrade.rarity}">${escapeHtml(upgrade.rarity)}</span>
@@ -128,6 +137,13 @@ function upgradeCardHtml(upgrade: UpgradeDefinition, player: Player): string {
     ${affectedMove}
     ${flavor}
   `;
+}
+
+function resolvePublicAssetPath(assetPath: string): string {
+  const base = import.meta.env.BASE_URL || '/';
+  const normalizedBase = base.endsWith('/') ? base : `${base}/`;
+  const normalizedAsset = assetPath.startsWith('/') ? assetPath.slice(1) : assetPath;
+  return `${normalizedBase}${normalizedAsset}`;
 }
 
 function upgradeIconFallback(upgrade: UpgradeDefinition): string {

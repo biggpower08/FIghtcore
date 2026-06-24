@@ -10,6 +10,7 @@
     "pixelsMadeTransparent": 0,
     "pixelsDecontaminated": 36,
     "pixelsRecoloredFromNeighbor": 34,
+    "tinyWhiteSpeckPixelsRemoved": 0,
     "suspectedWhiteHaloPixelsRemaining": 0,
     "edgePixelsTouchingCanvasBoundary": 0
   },
@@ -25,6 +26,7 @@
       "madeTransparent": 0,
       "decontaminated": 9,
       "neighborRecolored": 9,
+      "whiteSpecksRemoved": 0,
       "edgePixelsTouchingCanvasBoundary": 0,
       "warnings": []
     },
@@ -38,6 +40,7 @@
       "madeTransparent": 0,
       "decontaminated": 8,
       "neighborRecolored": 8,
+      "whiteSpecksRemoved": 0,
       "edgePixelsTouchingCanvasBoundary": 0,
       "warnings": []
     },
@@ -51,6 +54,7 @@
       "madeTransparent": 0,
       "decontaminated": 6,
       "neighborRecolored": 4,
+      "whiteSpecksRemoved": 0,
       "edgePixelsTouchingCanvasBoundary": 0,
       "warnings": []
     },
@@ -64,6 +68,7 @@
       "madeTransparent": 0,
       "decontaminated": 6,
       "neighborRecolored": 6,
+      "whiteSpecksRemoved": 0,
       "edgePixelsTouchingCanvasBoundary": 0,
       "warnings": []
     },
@@ -77,6 +82,7 @@
       "madeTransparent": 0,
       "decontaminated": 4,
       "neighborRecolored": 4,
+      "whiteSpecksRemoved": 0,
       "edgePixelsTouchingCanvasBoundary": 0,
       "warnings": []
     },
@@ -90,6 +96,7 @@
       "madeTransparent": 0,
       "decontaminated": 3,
       "neighborRecolored": 3,
+      "whiteSpecksRemoved": 0,
       "edgePixelsTouchingCanvasBoundary": 0,
       "warnings": []
     }
