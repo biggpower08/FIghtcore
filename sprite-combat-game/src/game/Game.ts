@@ -48,6 +48,16 @@ const CYBER_MONKEY_GRAPPLER_ID = 'cyber-monkey-grappler';
 const CYBER_MONKEY_GRAPPLER_TELEGRAPH_MS = 360;
 const CYBER_MONKEY_GRAPPLER_ATTACK_RELEASE_MS = 90;
 const PASSIVE_HEALTH_REGEN_PER_SECOND = 1.4;
+const chainVisuals: Record<string, { frames: number[]; durations: number[]; skipMs: number; note: string }> = {
+  jab: { frames: [2, 3, 4], durations: [54, 92, 54], skipMs: 54, note: '0003 pre-impact, 0004 impact, 0005 recovery' },
+  cross: { frames: [2, 3, 4], durations: [46, 126, 58], skipMs: 76, note: '0003 pre-impact, 0004 held impact, 0005 recovery' },
+  calf_kick: { frames: [2, 3, 4], durations: [54, 104, 62], skipMs: 72, note: '0003 chamber, 0004 impact extension, 0005 recovery' },
+  knee: { frames: [1, 2, 3], durations: [54, 116, 68], skipMs: 70, note: '0002 entry, 0003 knee impact, 0004 recovery' },
+  jab_cross: { frames: [2, 3, 4], durations: [78, 142, 60], skipMs: 92, note: '0003 jab impact, 0004 cross impact, 0005 recovery' },
+  feint_rear_hook: { frames: [4, 5, 6], durations: [62, 130, 68], skipMs: 110, note: '0005 pre-hook, 0006 hook impact, 0007 recovery' },
+  roundhouse_kick: { frames: [3, 4, 5], durations: [68, 140, 72], skipMs: 118, note: '0004 chamber, 0005 kick impact, 0006 recovery' },
+  tornado_kick: { frames: [5, 6, 7], durations: [72, 170, 66], skipMs: 150, note: '0006 pre-impact, 0007 held impact, 0008 recovery' },
+};
 const PLAYER_ATTACK_QUEUE_TIMEOUT_MS = 360;
 const FINAL_SCOPE_ENTITY_IDS = ['ronin', 'supreme-emperor', 'monkey-grunt', 'striker-monkey'] as const;
 
@@ -233,7 +243,7 @@ export class Game {
       this.player.interruptMeditation('Meditation canceled');
       this.player.dashMs = DASH_DURATION_MS;
       this.player.dashCooldownMs = Math.max(220, DASH_COOLDOWN_MS - this.player.upgrades.dashLevel * 90);
-      if (this.nearestEnemyDistance() < 210) this.player.gainActivity(7 + this.player.upgrades.dashActivityLevel * 3);
+      if (this.nearestEnemyDistance() < 240) this.player.gainActivity(11 + this.player.upgrades.dashActivityLevel * 4, 1150);
       this.animation.play(this.player, 'dash', { lockForMs: DASH_DURATION_MS, fallback: 'walk' });
     }
 
@@ -245,7 +255,9 @@ export class Game {
     this.movement.update(this.player, deltaSeconds);
     this.collision.resolveObstacleCollision(this.player, this.obstacles);
     clampEntityToPlayableArena(this.player);
-    this.player.updateActivity(deltaSeconds * 1000, moving || this.player.activeMove !== null || this.player.dashMs > 0);
+    const nearEnemy = this.nearestEnemyDistance() < 150;
+    if (nearEnemy && canMove) this.player.gainActivity(1.8 * deltaSeconds, 700);
+    this.player.updateActivity(deltaSeconds * 1000, moving || nearEnemy || this.player.activeMove !== null || this.player.dashMs > 0);
   }
 
   private updateEnemies(deltaMs: number): void {
@@ -395,9 +407,10 @@ export class Game {
       if (selected.move.hitboxWidth > 0 && selected.move.hitboxHeight > 0) this.hitboxes.push(hitbox);
       const lockForMs = this.player.getAttackLockMs(selected.move);
       this.animation.play(this.player, selected.move.animationKey, {
-        lockForMs: this.visualLockMs(selected.move, lockForMs),
+        lockForMs: this.visualLockMs(selected.move, lockForMs, chained),
         fallback: 'idle',
         force: chained,
+        ...this.chainVisualOptions(selected.move, chained),
       });
     }
   }
@@ -431,14 +444,17 @@ export class Game {
   }
 
   private shortenChainedStartup(move: MoveDefinition, hitbox: AttackHitbox): void {
-    if (!['jab', 'cross'].includes(move.id) && this.player.dashMs <= 0) return;
-    const skipMs = move.id === 'jab' ? 34 : 46;
+    const visual = chainVisuals[move.id];
+    if (!visual && this.player.dashMs <= 0) return;
+    const skipMs = visual?.skipMs ?? 48;
     hitbox.elapsedMs = Math.min(hitbox.elapsedMs + skipMs, hitbox.totalMs * 0.28);
     hitbox.remainingMs = Math.max(0, hitbox.totalMs - hitbox.elapsedMs);
     this.player.attackLockMs = Math.max(120, this.player.attackLockMs - skipMs);
   }
 
-  private visualLockMs(move: MoveDefinition, baseLockMs: number): number {
+  private visualLockMs(move: MoveDefinition, baseLockMs: number, chained = false): number {
+    const chain = chainVisuals[move.id];
+    if (chained && chain) return Math.max(baseLockMs, chain.durations.reduce((total, duration) => total + duration, 0));
     const minimums: Record<string, number> = {
       jab: 520,
       cross: 600,
@@ -446,6 +462,12 @@ export class Game {
       tornado_kick: 1040,
     };
     return Math.max(baseLockMs, minimums[move.id] ?? move.windupMs + move.activeMs + move.recoveryMs);
+  }
+
+  private chainVisualOptions(move: MoveDefinition, chained: boolean): { frameSequence?: number[]; frameDurations?: number[] } {
+    const chain = chained ? chainVisuals[move.id] : undefined;
+    if (!chain) return {};
+    return { frameSequence: chain.frames, frameDurations: chain.durations };
   }
 
   private applyTornadoKickSpacing(): void {
@@ -1070,16 +1092,17 @@ export class Game {
       if (this.player.criticalOverloadArmedMs > 0) this.player.consumeCriticalOverload();
       this.player.recordMomentumHit();
       const killed = (impact.target instanceof Enemy || impact.target instanceof Boss) && !impact.target.alive;
-      const heavyBonus = impact.heavy ? 5 + this.player.upgrades.emperorHeavyActivityLevel * 3 : 0;
-      const finishBonus = killed ? 18 + this.player.upgrades.emperorKillHealLevel * 5 : 0;
-      this.player.gainActivity(10 + heavyBonus + finishBonus);
+      const chainBonus = this.player.lastLandedMoveId && this.player.lastLandedMoveId !== impact.move.id ? 5 : 2;
+      const heavyBonus = impact.heavy ? 7 + this.player.upgrades.emperorHeavyActivityLevel * 4 : 0;
+      const finishBonus = killed ? 26 + this.player.upgrades.emperorKillHealLevel * 6 : 0;
+      this.player.gainActivity(14 + chainBonus + heavyBonus + finishBonus, killed ? 2000 : 1350);
       this.player.lastLandedMoveId = impact.move.id;
       if (killed) {
         const heal = this.player.upgrades.emperorKillHealLevel * 3 + this.player.upgrades.killHealLevel * 2;
         if (heal > 0) this.player.heal(heal);
       }
     } else if (impact.target === this.player) {
-      this.player.spendActivity(16);
+      this.player.spendActivity(impact.heavy ? 14 : 8, impact.heavy ? 16 : 10);
     }
     this.playDamageAnimation(impact);
   }

@@ -45,6 +45,17 @@ const runtimeSources = [
   },
 ];
 
+const chainVisualMappings = new Map([
+  ['ronin:jab', { frames: ['0003', '0004', '0005'], durations: [54, 92, 54], note: 'Chained jab skips startup and anchors on the contact extension.' }],
+  ['ronin:cross', { frames: ['0003', '0004', '0005'], durations: [46, 126, 58], note: 'Old held visual was the pre-impact `0003`; chained cross now holds true impact `0004`.' }],
+  ['ronin:calf_kick', { frames: ['0003', '0004', '0005'], durations: [54, 104, 62], note: 'Chained calf kick uses chamber, impact extension, recovery.' }],
+  ['ronin:knee', { frames: ['0002', '0003', '0004'], durations: [54, 116, 68], note: 'Chained knee enters close, shows impact, then exits quickly.' }],
+  ['supreme-emperor:jab_cross', { frames: ['0003', '0004', '0005'], durations: [78, 142, 60], note: 'Chained one-two holds jab/cross impact frames instead of full windup.' }],
+  ['supreme-emperor:feint_rear_hook', { frames: ['0005', '0006', '0007'], durations: [62, 130, 68], note: 'Chained hook skips feint setup and centers on hook contact.' }],
+  ['supreme-emperor:roundhouse_kick', { frames: ['0004', '0005', '0006'], durations: [68, 140, 72], note: 'Chained roundhouse uses chamber, kick impact, recovery.' }],
+  ['supreme-emperor:tornado_kick', { frames: ['0006', '0007', '0008'], durations: [72, 170, 66], note: 'Chained tornado keeps the true `0007` impact anchor.' }],
+]);
+
 const activeAnimations = [
   entry('ronin', 'Ronin', 'Jab', 'jab', { problem: true, visualActiveFrames: [3], impactFrame: 3 }),
   entry('ronin', 'Ronin', 'Cross', 'cross', {
@@ -122,6 +133,7 @@ async function toReportRow(item) {
     continuityPath: path.join(qaFolder, 'frame-continuity.json'),
     cleanedContinuityPath: path.join(cleanedQaFolder, 'frame-continuity.json'),
     proportionPath: path.join(qaFolder, 'proportion-report.json'),
+    chainVisual: chainVisualMappings.get(`${item.characterId}:${item.animationId}`),
     manualOverrideFolder: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId),
     manualOverrideExample: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId, '0001.png'),
     framesPackFolder: path.resolve(cwd, 'public/sprites/frames-pack', item.characterId, item.animationId),
@@ -250,6 +262,10 @@ function renderMarkdown(items) {
     lines.push(`- Frame durations: ${row.frameDurations.length > 0 ? row.frameDurations.map((duration, index) => `\`${String(index + 1).padStart(4, '0')}:${duration}ms\``).join(', ') : 'runtime default'}`);
     lines.push(`- Visual active frames: ${row.visualActiveFrames.length > 0 ? row.visualActiveFrames.map((frame) => `\`${String(frame).padStart(4, '0')}\``).join(', ') : 'combat profile/default'}`);
     lines.push(`- Impact frame: ${row.impactFrame ? `\`${String(row.impactFrame).padStart(4, '0')}\`` : 'not marked'}`);
+    if (row.chainVisual) {
+      lines.push(`- Chained visual frames: ${row.chainVisual.frames.map((frame, index) => `\`${frame}:${row.chainVisual.durations[index]}ms\``).join(' -> ')}`);
+      lines.push(`- Chained visual note: ${row.chainVisual.note}`);
+    }
     if (row.timingNote) lines.push(`- Timing note: ${row.timingNote}`);
     lines.push(`- Manual override folder: \`${row.manualOverrideFolder}\``);
     lines.push(`- Manual override example: \`${row.manualOverrideExample}\``);

@@ -10,6 +10,8 @@ export interface PlayAnimationOptions {
   fallback?: string;
   loop?: boolean;
   force?: boolean;
+  frameSequence?: number[];
+  frameDurations?: number[];
 }
 
 export interface AnimationState {
@@ -21,6 +23,8 @@ export interface AnimationState {
   animationLockedUntilMs: number;
   animationLockTotalMs: number;
   fallback?: string;
+  frameSequence?: number[];
+  frameDurations?: number[];
 }
 
 export class AnimationSystem {
@@ -45,6 +49,8 @@ export class AnimationSystem {
     state.animationLockedUntilMs = options.lockForMs ?? 0;
     state.animationLockTotalMs = options.lockForMs ?? 0;
     state.fallback = options.fallback;
+    state.frameSequence = options.frameSequence;
+    state.frameDurations = options.frameDurations;
   }
 
   getLockRemainingMs(entity: Entity): number {
@@ -68,6 +74,8 @@ export class AnimationSystem {
       state.frameIndex = 0;
       state.elapsedMs = 0;
       state.loop = ['idle', 'ready', 'walk', 'run', 'dash'].includes(next);
+      state.frameSequence = undefined;
+      state.frameDurations = undefined;
     }
 
     return state.currentAnimationKey;
@@ -77,9 +85,11 @@ export class AnimationSystem {
     const state = this.getState(entity);
     if (frameDurations.length <= 1) return 0;
 
+    const sequence = state.frameSequence;
+    const durations = sequence && state.frameDurations?.length === sequence.length ? state.frameDurations : frameDurations;
     let remaining = state.elapsedMs;
     let index = 0;
-    const totalDuration = frameDurations.reduce((total, duration) => total + duration, 0);
+    const totalDuration = durations.reduce((total, duration) => total + duration, 0);
 
     if (state.loop && totalDuration > 0) {
       remaining %= totalDuration;
@@ -88,17 +98,18 @@ export class AnimationSystem {
       remaining = progress * totalDuration;
     }
 
-    for (let i = 0; i < frameDurations.length; i += 1) {
-      if (remaining < frameDurations[i]) {
+    for (let i = 0; i < durations.length; i += 1) {
+      if (remaining < durations[i]) {
         index = i;
         break;
       }
-      remaining -= frameDurations[i];
+      remaining -= durations[i];
       index = i;
     }
 
-    state.frameIndex = index;
-    return index;
+    const resolvedIndex = sequence?.[index] ?? index;
+    state.frameIndex = resolvedIndex;
+    return resolvedIndex;
   }
 
   private getState(entity: Entity): AnimationState {

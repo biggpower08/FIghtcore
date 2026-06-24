@@ -5,6 +5,9 @@
   "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 64,
+    "widthToHeightRatio": 0.5424,
+    "torsoCoreWidth": 40.96,
+    "feetSpanWidth": 58.88,
     "baselineY": 148,
     "source": "idle metadata/runtime PNG median"
   },
@@ -26,10 +29,15 @@
       },
       "runtimeDrawScale": 1,
       "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 88,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 88,
+      "widthToHeightRatio": 0.7458,
       "heightVsIdle": 1,
       "widthVsIdle": 1.375,
+      "ratioVsIdle": 1.375,
+      "torsoCoreWidthVsIdle": 1.375,
+      "feetSpanVsIdle": 1.375,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -38,18 +46,26 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 56.32,
+      "chestUpperBodyWidthEstimate": 59.84,
+      "waistHipWidthEstimate": 49.28,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 66.88,
+      "feetSpanWidthEstimate": 80.96,
       "armReachExtensionBounds": {
         "x": 84,
         "y": 51.24,
         "w": 88,
         "h": 44.84
       },
-      "warnings": [],
-      "likelyCauses": [
-        "within measured tolerance"
+      "warnings": [
+        "torso/core width 138% of idle"
       ],
-      "recommendedAction": []
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0002",
@@ -62,10 +78,15 @@
       },
       "runtimeDrawScale": 1,
       "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 64,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 64,
+      "widthToHeightRatio": 0.5424,
       "heightVsIdle": 1,
       "widthVsIdle": 1,
+      "ratioVsIdle": 1,
+      "torsoCoreWidthVsIdle": 1,
+      "feetSpanVsIdle": 1,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -74,7 +95,11 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 40.96,
+      "chestUpperBodyWidthEstimate": 43.52,
+      "waistHipWidthEstimate": 35.84,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 48.64,
+      "feetSpanWidthEstimate": 58.88,
       "armReachExtensionBounds": {
         "x": 96,
         "y": 51.24,
@@ -98,10 +123,15 @@
       },
       "runtimeDrawScale": 1.0826,
       "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 87.69,
       "visibleBodyHeight": 109,
       "visibleBodyWidth": 81,
+      "widthToHeightRatio": 0.7431,
       "heightVsIdle": 0.9237,
       "widthVsIdle": 1.2656,
+      "ratioVsIdle": 1.37,
+      "torsoCoreWidthVsIdle": 1.2656,
+      "feetSpanVsIdle": 1.2656,
       "topY": 39,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -110,18 +140,26 @@
       "centerY": 93.5,
       "torsoCoreHeightEstimate": 37.06,
       "torsoCoreWidthEstimate": 51.84,
+      "chestUpperBodyWidthEstimate": 55.08,
+      "waistHipWidthEstimate": 45.36,
       "lowerBodyLegZoneHeightEstimate": 45.78,
+      "legSpreadWidthEstimate": 61.56,
+      "feetSpanWidthEstimate": 74.52,
       "armReachExtensionBounds": {
         "x": 88,
         "y": 58.62,
         "w": 81,
         "h": 41.42
       },
-      "warnings": [],
-      "likelyCauses": [
-        "within measured tolerance"
+      "warnings": [
+        "torso/core width 127% of idle"
       ],
-      "recommendedAction": []
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0004",
@@ -134,10 +172,15 @@
       },
       "runtimeDrawScale": 1.0926,
       "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 100.52,
       "visibleBodyHeight": 108,
       "visibleBodyWidth": 92,
+      "widthToHeightRatio": 0.8519,
       "heightVsIdle": 0.9153,
       "widthVsIdle": 1.4375,
+      "ratioVsIdle": 1.5706,
+      "torsoCoreWidthVsIdle": 1.4375,
+      "feetSpanVsIdle": 1.4375,
       "topY": 40,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -146,18 +189,26 @@
       "centerY": 94,
       "torsoCoreHeightEstimate": 36.72,
       "torsoCoreWidthEstimate": 58.88,
+      "chestUpperBodyWidthEstimate": 62.56,
+      "waistHipWidthEstimate": 51.52,
       "lowerBodyLegZoneHeightEstimate": 45.36,
+      "legSpreadWidthEstimate": 69.92,
+      "feetSpanWidthEstimate": 84.64,
       "armReachExtensionBounds": {
         "x": 82,
         "y": 59.44,
         "w": 92,
         "h": 41.04
       },
-      "warnings": [],
-      "likelyCauses": [
-        "within measured tolerance"
+      "warnings": [
+        "torso/core width 144% of idle"
       ],
-      "recommendedAction": []
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0005",
@@ -170,10 +221,15 @@
       },
       "runtimeDrawScale": 1,
       "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 84,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 84,
+      "widthToHeightRatio": 0.7119,
       "heightVsIdle": 1,
       "widthVsIdle": 1.3125,
+      "ratioVsIdle": 1.3125,
+      "torsoCoreWidthVsIdle": 1.3125,
+      "feetSpanVsIdle": 1.3125,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -182,18 +238,26 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 53.76,
+      "chestUpperBodyWidthEstimate": 57.12,
+      "waistHipWidthEstimate": 47.04,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 63.84,
+      "feetSpanWidthEstimate": 77.28,
       "armReachExtensionBounds": {
         "x": 86,
         "y": 51.24,
         "w": 84,
         "h": 44.84
       },
-      "warnings": [],
-      "likelyCauses": [
-        "within measured tolerance"
+      "warnings": [
+        "torso/core width 131% of idle"
       ],
-      "recommendedAction": []
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     }
   ]
 }

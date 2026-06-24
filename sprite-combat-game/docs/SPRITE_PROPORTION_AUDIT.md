@@ -8,131 +8,180 @@ Final scope: Ronin, Supreme Emperor, Monkey Grunt, Monkey Striker.
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 88 | 138% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 64 | 100% | 0 | frames-cleaned | ok |
-| 0003 | 109 | 92% | 81 | 127% | 0 | frames-cleaned | ok |
-| 0004 | 108 | 92% | 92 | 144% | 0 | frames-cleaned | ok |
-| 0005 | 118 | 100% | 84 | 131% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 88 | 138% | 138% | 138% | 138% | 0 | frames-cleaned | torso/core width 138% of idle |
+| 0002 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0003 | 109 | 92% | 81 | 127% | 137% | 127% | 127% | 0 | frames-cleaned | torso/core width 127% of idle |
+| 0004 | 108 | 92% | 92 | 144% | 157% | 144% | 144% | 0 | frames-cleaned | torso/core width 144% of idle |
+| 0005 | 118 | 100% | 84 | 131% | 131% | 131% | 131% | 0 | frames-cleaned | torso/core width 131% of idle |
+
+Flagged frame details:
+- ronin/calf_kick/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/calf_kick/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/calf_kick/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/calf_kick/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / cross
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 121 | 103% | 69 | 108% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 75 | 117% | 0 | frames-cleaned | ok |
-| 0003 | 116 | 98% | 84 | 131% | 0 | frames-cleaned | ok |
-| 0004 | 117 | 99% | 102 | 159% | 0 | frames-cleaned | body width 159% of idle |
-| 0005 | 119 | 101% | 67 | 105% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 121 | 103% | 69 | 108% | 105% | 108% | 108% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 75 | 117% | 117% | 117% | 117% | 0 | frames-cleaned | width/height ratio 117% of idle; torso/core width 117% of idle |
+| 0003 | 116 | 98% | 84 | 131% | 134% | 131% | 131% | 0 | frames-cleaned | width/height ratio 134% of idle; torso/core width 131% of idle |
+| 0004 | 117 | 99% | 102 | 159% | 161% | 159% | 159% | 0 | frames-cleaned | body width 159% of idle; width/height ratio 161% of idle; torso/core width 159% of idle; feet/leg span 159% of idle |
+| 0005 | 119 | 101% | 67 | 105% | 104% | 105% | 105% | 0 | frames-cleaned | ok |
 
 Flagged frame details:
+- ronin/cross/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\cross\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/cross/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\cross\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - ronin/cross/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\cross\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / dash
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 140 | 119% | 81 | 127% | 0 | frames-cleaned | body height 119% of idle |
-| 0002 | 118 | 100% | 93 | 145% | 0 | frames-cleaned | ok |
-| 0003 | 114 | 97% | 128 | 200% | 0 | frames-cleaned | ok |
-| 0004 | 107 | 91% | 136 | 213% | 0 | frames-cleaned | ok |
-| 0005 | 140 | 119% | 82 | 128% | 0 | frames-cleaned | body height 119% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 140 | 119% | 81 | 127% | 107% | 127% | 127% | 0 | frames-cleaned | body height 119% of idle; torso/core width 127% of idle |
+| 0002 | 118 | 100% | 93 | 145% | 145% | 145% | 145% | 0 | frames-cleaned | torso/core width 145% of idle |
+| 0003 | 114 | 97% | 128 | 200% | 207% | 200% | 200% | 0 | frames-cleaned | width/height ratio 207% of idle; torso/core width 200% of idle |
+| 0004 | 107 | 91% | 136 | 213% | 234% | 213% | 213% | 0 | frames-cleaned | width/height ratio 234% of idle; torso/core width 213% of idle; feet/leg span 213% of idle |
+| 0005 | 140 | 119% | 82 | 128% | 108% | 128% | 128% | 0 | frames-cleaned | body height 119% of idle; torso/core width 128% of idle |
 
 Flagged frame details:
 - ronin/dash/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\dash\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/dash/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\dash\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/dash/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\dash\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/dash/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\dash\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - ronin/dash/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\dash\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\dash\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / density
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 62 | 97% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 76 | 119% | 0 | frames-cleaned | ok |
-| 0003 | 117 | 99% | 71 | 111% | 0 | frames-cleaned | ok |
-| 0004 | 121 | 103% | 75 | 117% | 0 | frames-cleaned | ok |
-| 0005 | 123 | 104% | 75 | 117% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 62 | 97% | 97% | 97% | 97% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 76 | 119% | 119% | 119% | 119% | 0 | frames-cleaned | width/height ratio 119% of idle; torso/core width 119% of idle |
+| 0003 | 117 | 99% | 71 | 111% | 112% | 111% | 111% | 0 | frames-cleaned | ok |
+| 0004 | 121 | 103% | 75 | 117% | 114% | 117% | 117% | 0 | frames-cleaned | torso/core width 117% of idle |
+| 0005 | 123 | 104% | 75 | 117% | 112% | 117% | 117% | 0 | frames-cleaned | torso/core width 117% of idle |
+
+Flagged frame details:
+- ronin/density/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\density\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\density\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/density/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\density\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\density\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/density/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\density\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\density\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / hit_react
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 64 | 100% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 63 | 98% | 0 | frames-cleaned | ok |
-| 0003 | 113 | 96% | 64 | 100% | 0 | frames-cleaned | ok |
-| 0004 | 114 | 97% | 83 | 130% | 0 | frames-cleaned | ok |
-| 0005 | 118 | 100% | 65 | 102% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 63 | 98% | 98% | 98% | 98% | 0 | frames-cleaned | ok |
+| 0003 | 113 | 96% | 64 | 100% | 104% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0004 | 114 | 97% | 83 | 130% | 134% | 130% | 130% | 0 | frames-cleaned | width/height ratio 134% of idle; torso/core width 130% of idle |
+| 0005 | 118 | 100% | 65 | 102% | 102% | 102% | 102% | 0 | frames-cleaned | ok |
+
+Flagged frame details:
+- ronin/hit_react/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\hit_react\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\hit_react\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / idle
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 64 | 100% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 64 | 100% | 0 | frames-cleaned | ok |
-| 0003 | 117 | 99% | 66 | 103% | 0 | frames-cleaned | ok |
-| 0004 | 118 | 100% | 65 | 102% | 0 | frames-cleaned | ok |
-| 0005 | 118 | 100% | 64 | 100% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0003 | 117 | 99% | 66 | 103% | 104% | 103% | 103% | 0 | frames-cleaned | ok |
+| 0004 | 118 | 100% | 65 | 102% | 102% | 102% | 102% | 0 | frames-cleaned | ok |
+| 0005 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
 
 ## Character: Ronin / jab
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 121 | 103% | 67 | 105% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 75 | 117% | 0 | frames-cleaned | ok |
-| 0003 | 116 | 98% | 87 | 136% | 0 | frames-cleaned | ok |
-| 0004 | 117 | 99% | 97 | 152% | 0 | frames-cleaned | body width 152% of idle |
-| 0005 | 120 | 102% | 68 | 106% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 121 | 103% | 67 | 105% | 102% | 105% | 105% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 75 | 117% | 117% | 117% | 117% | 0 | frames-cleaned | width/height ratio 117% of idle; torso/core width 117% of idle |
+| 0003 | 116 | 98% | 87 | 136% | 138% | 136% | 136% | 0 | frames-cleaned | width/height ratio 138% of idle; torso/core width 136% of idle |
+| 0004 | 117 | 99% | 97 | 152% | 153% | 152% | 152% | 0 | frames-cleaned | body width 152% of idle; width/height ratio 153% of idle; torso/core width 152% of idle; feet/leg span 152% of idle |
+| 0005 | 120 | 102% | 68 | 106% | 104% | 106% | 106% | 0 | frames-cleaned | ok |
 
 Flagged frame details:
+- ronin/jab/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\jab\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/jab/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\jab\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - ronin/jab/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\jab\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / knee
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 117 | 99% | 64 | 100% | 0 | frames-cleaned | ok |
-| 0002 | 119 | 101% | 71 | 111% | 0 | frames-cleaned | ok |
-| 0003 | 119 | 101% | 52 | 81% | 0 | frames-cleaned | ok |
-| 0004 | 118 | 100% | 48 | 75% | 0 | frames-cleaned | body width 75% of idle |
-| 0005 | 118 | 100% | 63 | 98% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 117 | 99% | 64 | 100% | 101% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0002 | 119 | 101% | 71 | 111% | 110% | 111% | 111% | 0 | frames-cleaned | ok |
+| 0003 | 119 | 101% | 52 | 81% | 81% | 81% | 81% | 0 | frames-cleaned | width/height ratio 81% of idle; torso/core width 81% of idle |
+| 0004 | 118 | 100% | 48 | 75% | 75% | 75% | 75% | 0 | frames-cleaned | body width 75% of idle; width/height ratio 75% of idle; torso/core width 75% of idle |
+| 0005 | 118 | 100% | 63 | 98% | 98% | 98% | 98% | 0 | frames-cleaned | ok |
 
 Flagged frame details:
+- ronin/knee/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - ronin/knee/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / recovery
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 78 | 66% | 74 | 116% | 0 | frames-cleaned | body height 66% of idle |
-| 0002 | 101 | 86% | 64 | 100% | 0 | frames-cleaned | body height 86% of idle |
-| 0003 | 118 | 100% | 70 | 109% | 0 | frames-cleaned | ok |
-| 0004 | 129 | 109% | 69 | 108% | 0 | frames-cleaned | ok |
-| 0005 | 129 | 109% | 70 | 109% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 78 | 66% | 74 | 116% | 175% | 116% | 116% | 0 | frames-cleaned | body height 66% of idle; width/height ratio 175% of idle; torso/core width 116% of idle |
+| 0002 | 101 | 86% | 64 | 100% | 117% | 100% | 100% | 0 | frames-cleaned | body height 86% of idle; width/height ratio 117% of idle |
+| 0003 | 118 | 100% | 70 | 109% | 109% | 109% | 109% | 0 | frames-cleaned | ok |
+| 0004 | 129 | 109% | 69 | 108% | 99% | 108% | 108% | 0 | frames-cleaned | ok |
+| 0005 | 129 | 109% | 70 | 109% | 100% | 109% | 109% | 0 | frames-cleaned | ok |
 
 Flagged frame details:
 - ronin/recovery/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\recovery\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\recovery\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -142,21 +191,24 @@ Flagged frame details:
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 47 | 40% | 141 | 220% | 64 | frames-cleaned | body height 40% of idle; body width 220% of idle; baseline shifted 64px from idle |
-| 0002 | 78 | 66% | 121 | 189% | 64 | frames-cleaned | body height 66% of idle; body width 189% of idle; baseline shifted 64px from idle |
-| 0003 | 99 | 84% | 90 | 141% | 64 | frames-cleaned | body height 84% of idle; baseline shifted 64px from idle |
-| 0004 | 118 | 100% | 86 | 134% | 64 | frames-cleaned | baseline shifted 64px from idle |
-| 0005 | 156 | 132% | 84 | 131% | 64 | frames-cleaned | body height 132% of idle; baseline shifted 64px from idle |
-| 0006 | 166 | 141% | 94 | 147% | 64 | frames-cleaned | body height 141% of idle; body width 147% of idle; baseline shifted 64px from idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 47 | 40% | 141 | 220% | 553% | 220% | 220% | 64 | frames-cleaned | body height 40% of idle; body width 220% of idle; width/height ratio 553% of idle; torso/core width 220% of idle; feet/leg span 220% of idle; baseline shifted 64px from idle |
+| 0002 | 78 | 66% | 121 | 189% | 286% | 189% | 189% | 64 | frames-cleaned | body height 66% of idle; body width 189% of idle; width/height ratio 286% of idle; torso/core width 189% of idle; feet/leg span 189% of idle; baseline shifted 64px from idle |
+| 0003 | 99 | 84% | 90 | 141% | 168% | 141% | 141% | 64 | frames-cleaned | body height 84% of idle; width/height ratio 168% of idle; torso/core width 141% of idle; baseline shifted 64px from idle |
+| 0004 | 118 | 100% | 86 | 134% | 134% | 134% | 134% | 64 | frames-cleaned | width/height ratio 134% of idle; torso/core width 134% of idle; baseline shifted 64px from idle |
+| 0005 | 156 | 132% | 84 | 131% | 99% | 131% | 131% | 64 | frames-cleaned | body height 132% of idle; torso/core width 131% of idle; baseline shifted 64px from idle |
+| 0006 | 166 | 141% | 94 | 147% | 104% | 147% | 147% | 64 | frames-cleaned | body height 141% of idle; body width 147% of idle; torso/core width 147% of idle; feet/leg span 147% of idle; baseline shifted 64px from idle |
 
 Flagged frame details:
 - ronin/stand_up/0001: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0001.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 - ronin/stand_up/0002: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0002.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 - ronin/stand_up/0003: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0003.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
-- ronin/stand_up/0004: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0004.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
+- ronin/stand_up/0004: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0004.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 - ronin/stand_up/0005: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0005.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 - ronin/stand_up/0006: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\stand_up\0006.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\stand_up\0006.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 
@@ -164,28 +216,34 @@ Flagged frame details:
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 64
+Idle width/height ratio: 0.5424
+Idle torso/core width estimate: 40.96
+Idle feet span estimate: 58.88
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 119 | 101% | 66 | 103% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 59 | 92% | 0 | frames-cleaned | ok |
-| 0003 | 117 | 99% | 69 | 108% | 0 | frames-cleaned | ok |
-| 0004 | 118 | 100% | 62 | 97% | 0 | frames-cleaned | ok |
-| 0005 | 118 | 100% | 60 | 94% | 0 | frames-cleaned | ok |
-| 0006 | 119 | 101% | 67 | 105% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 119 | 101% | 66 | 103% | 102% | 103% | 103% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 59 | 92% | 92% | 92% | 92% | 0 | frames-cleaned | ok |
+| 0003 | 117 | 99% | 69 | 108% | 109% | 108% | 108% | 0 | frames-cleaned | ok |
+| 0004 | 118 | 100% | 62 | 97% | 97% | 97% | 97% | 0 | frames-cleaned | ok |
+| 0005 | 118 | 100% | 60 | 94% | 94% | 94% | 94% | 0 | frames-cleaned | ok |
+| 0006 | 119 | 101% | 67 | 105% | 104% | 105% | 105% | 0 | frames-cleaned | ok |
 
 ## Character: Supreme Emperor / dash
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 141 | 119% | 91 | 186% | 16 | frames-cleaned | body height 119% of idle; baseline shifted 16px from idle |
-| 0002 | 101 | 86% | 86 | 176% | 16 | frames-cleaned | body height 86% of idle; baseline shifted 16px from idle |
-| 0003 | 118 | 100% | 119 | 243% | 16 | frames-cleaned | body width 243% of idle; baseline shifted 16px from idle |
-| 0004 | 116 | 98% | 122 | 249% | 16 | frames-cleaned | body width 249% of idle; baseline shifted 16px from idle |
-| 0005 | 135 | 114% | 106 | 216% | 16 | frames-cleaned | body height 114% of idle; baseline shifted 16px from idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 141 | 119% | 91 | 186% | 155% | 186% | 186% | 16 | frames-cleaned | body height 119% of idle; torso/core width 186% of idle; baseline shifted 16px from idle |
+| 0002 | 101 | 86% | 86 | 176% | 205% | 176% | 176% | 16 | frames-cleaned | body height 86% of idle; width/height ratio 205% of idle; torso/core width 176% of idle; baseline shifted 16px from idle |
+| 0003 | 118 | 100% | 119 | 243% | 243% | 243% | 243% | 16 | frames-cleaned | body width 243% of idle; width/height ratio 243% of idle; torso/core width 243% of idle; feet/leg span 243% of idle; baseline shifted 16px from idle |
+| 0004 | 116 | 98% | 122 | 249% | 253% | 249% | 249% | 16 | frames-cleaned | body width 249% of idle; width/height ratio 253% of idle; torso/core width 249% of idle; feet/leg span 249% of idle; baseline shifted 16px from idle |
+| 0005 | 135 | 114% | 106 | 216% | 189% | 216% | 216% | 16 | frames-cleaned | body height 114% of idle; torso/core width 216% of idle; feet/leg span 216% of idle; baseline shifted 16px from idle |
 
 Flagged frame details:
 - supreme-emperor/dash/0001: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\dash\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\dash\0001.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
@@ -198,103 +256,140 @@ Flagged frame details:
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 130 | 110% | 68 | 139% | 0 | frames-cleaned | body height 110% of idle |
-| 0002 | 111 | 94% | 67 | 137% | 0 | frames-cleaned | ok |
-| 0003 | 99 | 84% | 72 | 147% | 0 | frames-cleaned | body height 84% of idle; body width 147% of idle |
-| 0004 | 92 | 78% | 79 | 161% | 0 | frames-cleaned | body height 78% of idle; body width 161% of idle |
-| 0005 | 117 | 99% | 77 | 157% | 0 | frames-cleaned | body width 157% of idle |
-| 0006 | 121 | 103% | 79 | 161% | 0 | frames-cleaned | body width 161% of idle |
-| 0007 | 118 | 100% | 109 | 222% | 0 | frames-cleaned | body width 222% of idle |
-| 0008 | 129 | 109% | 68 | 139% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 130 | 110% | 68 | 139% | 126% | 139% | 139% | 0 | frames-cleaned | body height 110% of idle; width/height ratio 126% of idle; torso/core width 139% of idle |
+| 0002 | 111 | 94% | 67 | 137% | 145% | 137% | 137% | 0 | frames-cleaned | width/height ratio 145% of idle; torso/core width 137% of idle |
+| 0003 | 99 | 84% | 72 | 147% | 175% | 147% | 147% | 0 | frames-cleaned | body height 84% of idle; body width 147% of idle; width/height ratio 175% of idle; torso/core width 147% of idle; feet/leg span 147% of idle |
+| 0004 | 92 | 78% | 79 | 161% | 207% | 161% | 161% | 0 | frames-cleaned | body height 78% of idle; body width 161% of idle; width/height ratio 207% of idle; torso/core width 161% of idle; feet/leg span 161% of idle |
+| 0005 | 117 | 99% | 77 | 157% | 158% | 157% | 157% | 0 | frames-cleaned | body width 157% of idle; width/height ratio 158% of idle; torso/core width 157% of idle; feet/leg span 157% of idle |
+| 0006 | 121 | 103% | 79 | 161% | 157% | 161% | 161% | 0 | frames-cleaned | body width 161% of idle; width/height ratio 157% of idle; torso/core width 161% of idle; feet/leg span 161% of idle |
+| 0007 | 118 | 100% | 109 | 222% | 222% | 222% | 222% | 0 | frames-cleaned | body width 222% of idle; width/height ratio 222% of idle; torso/core width 222% of idle; feet/leg span 222% of idle |
+| 0008 | 129 | 109% | 68 | 139% | 127% | 139% | 139% | 0 | frames-cleaned | width/height ratio 127% of idle; torso/core width 139% of idle |
 
 Flagged frame details:
 - supreme-emperor/feint_rear_hook/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/feint_rear_hook/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/feint_rear_hook/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/feint_rear_hook/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/feint_rear_hook/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/feint_rear_hook/0006: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0006.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0006.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/feint_rear_hook/0007: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0007.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0007.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/feint_rear_hook/0008: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\feint_rear_hook\0008.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0008.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / hit_react
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 120 | 102% | 64 | 131% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 66 | 135% | 0 | frames-cleaned | ok |
-| 0003 | 116 | 98% | 63 | 129% | 0 | frames-cleaned | ok |
-| 0004 | 117 | 99% | 63 | 129% | 0 | frames-cleaned | ok |
-| 0005 | 120 | 102% | 62 | 127% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 120 | 102% | 64 | 131% | 128% | 131% | 131% | 0 | frames-cleaned | width/height ratio 128% of idle; torso/core width 131% of idle |
+| 0002 | 118 | 100% | 66 | 135% | 135% | 135% | 135% | 0 | frames-cleaned | width/height ratio 135% of idle; torso/core width 135% of idle |
+| 0003 | 116 | 98% | 63 | 129% | 131% | 129% | 129% | 0 | frames-cleaned | width/height ratio 131% of idle; torso/core width 129% of idle |
+| 0004 | 117 | 99% | 63 | 129% | 130% | 129% | 129% | 0 | frames-cleaned | width/height ratio 130% of idle; torso/core width 129% of idle |
+| 0005 | 120 | 102% | 62 | 127% | 124% | 127% | 127% | 0 | frames-cleaned | width/height ratio 124% of idle; torso/core width 127% of idle |
+
+Flagged frame details:
+- supreme-emperor/hit_react/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\hit_react\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/hit_react/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\hit_react\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/hit_react/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\hit_react\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/hit_react/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\hit_react\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/hit_react/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\hit_react\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\hit_react\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / idle
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 49 | 100% | 0 | frames-cleaned | ok |
-| 0002 | 120 | 102% | 49 | 100% | 0 | frames-cleaned | ok |
-| 0003 | 117 | 99% | 49 | 100% | 0 | frames-cleaned | ok |
-| 0004 | 116 | 98% | 59 | 120% | 0 | frames-cleaned | ok |
-| 0005 | 118 | 100% | 49 | 100% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 49 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0002 | 120 | 102% | 49 | 100% | 98% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0003 | 117 | 99% | 49 | 100% | 101% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0004 | 116 | 98% | 59 | 120% | 122% | 120% | 120% | 0 | frames-cleaned | width/height ratio 122% of idle; torso/core width 120% of idle |
+| 0005 | 118 | 100% | 49 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+
+Flagged frame details:
+- supreme-emperor/idle/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\idle\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\idle\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / instant_death
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 120 | 102% | 53 | 108% | 0 | frames-cleaned | ok |
-| 0002 | 119 | 101% | 57 | 116% | 0 | frames-cleaned | ok |
-| 0003 | 118 | 100% | 60 | 122% | 0 | frames-cleaned | ok |
-| 0004 | 117 | 99% | 71 | 145% | 0 | frames-cleaned | ok |
-| 0005 | 103 | 87% | 82 | 167% | 0 | frames-cleaned | body height 87% of idle; body width 167% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 120 | 102% | 53 | 108% | 106% | 108% | 108% | 0 | frames-cleaned | ok |
+| 0002 | 119 | 101% | 57 | 116% | 115% | 116% | 116% | 0 | frames-cleaned | width/height ratio 115% of idle; torso/core width 116% of idle |
+| 0003 | 118 | 100% | 60 | 122% | 122% | 122% | 122% | 0 | frames-cleaned | width/height ratio 122% of idle; torso/core width 122% of idle |
+| 0004 | 117 | 99% | 71 | 145% | 146% | 145% | 145% | 0 | frames-cleaned | width/height ratio 146% of idle; torso/core width 145% of idle |
+| 0005 | 103 | 87% | 82 | 167% | 192% | 167% | 167% | 0 | frames-cleaned | body height 87% of idle; body width 167% of idle; width/height ratio 192% of idle; torso/core width 167% of idle; feet/leg span 167% of idle |
 
 Flagged frame details:
+- supreme-emperor/instant_death/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\instant_death\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\instant_death\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/instant_death/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\instant_death\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\instant_death\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/instant_death/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\instant_death\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\instant_death\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/instant_death/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\instant_death\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\instant_death\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / jab_cross
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 120 | 102% | 69 | 141% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 75 | 153% | 0 | frames-cleaned | body width 153% of idle |
-| 0003 | 117 | 99% | 99 | 202% | 0 | frames-cleaned | body width 202% of idle |
-| 0004 | 118 | 100% | 105 | 214% | 0 | frames-cleaned | body width 214% of idle |
-| 0005 | 119 | 101% | 62 | 127% | 0 | frames-cleaned | ok |
-| 0006 | 117 | 99% | 69 | 141% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 120 | 102% | 69 | 141% | 138% | 141% | 141% | 0 | frames-cleaned | width/height ratio 138% of idle; torso/core width 141% of idle |
+| 0002 | 118 | 100% | 75 | 153% | 153% | 153% | 153% | 0 | frames-cleaned | body width 153% of idle; width/height ratio 153% of idle; torso/core width 153% of idle; feet/leg span 153% of idle |
+| 0003 | 117 | 99% | 99 | 202% | 204% | 202% | 202% | 0 | frames-cleaned | body width 202% of idle; width/height ratio 204% of idle; torso/core width 202% of idle; feet/leg span 202% of idle |
+| 0004 | 118 | 100% | 105 | 214% | 214% | 214% | 214% | 0 | frames-cleaned | body width 214% of idle; width/height ratio 214% of idle; torso/core width 214% of idle; feet/leg span 214% of idle |
+| 0005 | 119 | 101% | 62 | 127% | 125% | 127% | 127% | 0 | frames-cleaned | width/height ratio 125% of idle; torso/core width 127% of idle |
+| 0006 | 117 | 99% | 69 | 141% | 142% | 141% | 141% | 0 | frames-cleaned | width/height ratio 142% of idle; torso/core width 141% of idle |
 
 Flagged frame details:
+- supreme-emperor/jab_cross/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\jab_cross\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/jab_cross/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\jab_cross\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/jab_cross/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\jab_cross\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/jab_cross/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\jab_cross\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/jab_cross/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\jab_cross\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/jab_cross/0006: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\jab_cross\0006.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0006.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / recovery
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 75 | 64% | 67 | 137% | 0 | frames-cleaned | body height 64% of idle |
-| 0002 | 87 | 74% | 79 | 161% | 0 | frames-cleaned | body height 74% of idle; body width 161% of idle |
-| 0003 | 118 | 100% | 67 | 137% | 0 | frames-cleaned | ok |
-| 0004 | 131 | 111% | 64 | 131% | 0 | frames-cleaned | body height 111% of idle |
-| 0005 | 131 | 111% | 58 | 118% | 0 | frames-cleaned | body height 111% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 75 | 64% | 67 | 137% | 215% | 137% | 137% | 0 | frames-cleaned | body height 64% of idle; width/height ratio 215% of idle; torso/core width 137% of idle |
+| 0002 | 87 | 74% | 79 | 161% | 219% | 161% | 161% | 0 | frames-cleaned | body height 74% of idle; body width 161% of idle; width/height ratio 219% of idle; torso/core width 161% of idle; feet/leg span 161% of idle |
+| 0003 | 118 | 100% | 67 | 137% | 137% | 137% | 137% | 0 | frames-cleaned | width/height ratio 137% of idle; torso/core width 137% of idle |
+| 0004 | 131 | 111% | 64 | 131% | 118% | 131% | 131% | 0 | frames-cleaned | body height 111% of idle; width/height ratio 118% of idle; torso/core width 131% of idle |
+| 0005 | 131 | 111% | 58 | 118% | 107% | 118% | 118% | 0 | frames-cleaned | body height 111% of idle; torso/core width 118% of idle |
 
 Flagged frame details:
 - supreme-emperor/recovery/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\recovery\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/recovery/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\recovery\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/recovery/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\recovery\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/recovery/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\recovery\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/recovery/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\recovery\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\recovery\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
@@ -302,30 +397,41 @@ Flagged frame details:
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 121 | 103% | 55 | 112% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 62 | 127% | 0 | frames-cleaned | ok |
-| 0003 | 123 | 104% | 53 | 108% | 0 | frames-cleaned | ok |
-| 0004 | 118 | 100% | 68 | 139% | 0 | frames-cleaned | ok |
-| 0005 | 112 | 95% | 108 | 220% | 0 | frames-cleaned | ok |
-| 0006 | 117 | 99% | 43 | 88% | 0 | frames-cleaned | ok |
-| 0007 | 117 | 99% | 51 | 104% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 121 | 103% | 55 | 112% | 109% | 112% | 112% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 62 | 127% | 127% | 127% | 127% | 0 | frames-cleaned | torso/core width 127% of idle |
+| 0003 | 123 | 104% | 53 | 108% | 104% | 108% | 108% | 0 | frames-cleaned | ok |
+| 0004 | 118 | 100% | 68 | 139% | 139% | 139% | 139% | 0 | frames-cleaned | torso/core width 139% of idle |
+| 0005 | 112 | 95% | 108 | 220% | 232% | 220% | 220% | 0 | frames-cleaned | width/height ratio 232% of idle; torso/core width 220% of idle; feet/leg span 220% of idle |
+| 0006 | 117 | 99% | 43 | 88% | 88% | 88% | 88% | 0 | frames-cleaned | ok |
+| 0007 | 117 | 99% | 51 | 104% | 105% | 104% | 104% | 0 | frames-cleaned | ok |
+
+Flagged frame details:
+- supreme-emperor/roundhouse_kick/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\roundhouse_kick\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/roundhouse_kick/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\roundhouse_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/roundhouse_kick/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\roundhouse_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / stand_up
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 77 | 65% | 160 | 327% | 64 | frames-cleaned | body height 65% of idle; body width 327% of idle; baseline shifted 64px from idle |
-| 0002 | 101 | 86% | 90 | 184% | 64 | frames-cleaned | body height 86% of idle; body width 184% of idle; baseline shifted 64px from idle |
-| 0003 | 114 | 97% | 107 | 218% | 64 | frames-cleaned | body width 218% of idle; baseline shifted 64px from idle |
-| 0004 | 118 | 100% | 94 | 192% | 64 | frames-cleaned | body width 192% of idle; baseline shifted 64px from idle |
-| 0005 | 180 | 153% | 92 | 188% | 64 | frames-cleaned | body height 153% of idle; body width 188% of idle; baseline shifted 64px from idle |
-| 0006 | 194 | 164% | 87 | 178% | 64 | frames-cleaned | body height 164% of idle; body width 178% of idle; baseline shifted 64px from idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 77 | 65% | 160 | 327% | 500% | 327% | 327% | 64 | frames-cleaned | body height 65% of idle; body width 327% of idle; width/height ratio 500% of idle; torso/core width 327% of idle; feet/leg span 327% of idle; baseline shifted 64px from idle |
+| 0002 | 101 | 86% | 90 | 184% | 215% | 184% | 184% | 64 | frames-cleaned | body height 86% of idle; body width 184% of idle; width/height ratio 215% of idle; torso/core width 184% of idle; feet/leg span 184% of idle; baseline shifted 64px from idle |
+| 0003 | 114 | 97% | 107 | 218% | 226% | 218% | 218% | 64 | frames-cleaned | body width 218% of idle; width/height ratio 226% of idle; torso/core width 218% of idle; feet/leg span 218% of idle; baseline shifted 64px from idle |
+| 0004 | 118 | 100% | 94 | 192% | 192% | 192% | 192% | 64 | frames-cleaned | body width 192% of idle; width/height ratio 192% of idle; torso/core width 192% of idle; feet/leg span 192% of idle; baseline shifted 64px from idle |
+| 0005 | 180 | 153% | 92 | 188% | 123% | 188% | 188% | 64 | frames-cleaned | body height 153% of idle; body width 188% of idle; width/height ratio 123% of idle; torso/core width 188% of idle; feet/leg span 188% of idle; baseline shifted 64px from idle |
+| 0006 | 194 | 164% | 87 | 178% | 108% | 178% | 178% | 64 | frames-cleaned | body height 164% of idle; body width 178% of idle; torso/core width 178% of idle; feet/leg span 178% of idle; baseline shifted 64px from idle |
 
 Flagged frame details:
 - supreme-emperor/stand_up/0001: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\stand_up\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\stand_up\0001.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
@@ -339,59 +445,70 @@ Flagged frame details:
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 62 | 127% | 16 | frames-cleaned | baseline shifted 16px from idle |
-| 0002 | 117 | 99% | 68 | 139% | 16 | frames-cleaned | baseline shifted 16px from idle |
-| 0003 | 115 | 97% | 72 | 147% | 16 | frames-cleaned | baseline shifted 16px from idle |
-| 0004 | 116 | 98% | 44 | 90% | 16 | frames-cleaned | baseline shifted 16px from idle |
-| 0005 | 125 | 106% | 55 | 112% | 16 | frames-cleaned | baseline shifted 16px from idle |
-| 0006 | 120 | 102% | 52 | 106% | 16 | frames-cleaned | baseline shifted 16px from idle |
-| 0007 | 121 | 103% | 113 | 231% | 16 | frames-cleaned | body width 231% of idle; baseline shifted 16px from idle |
-| 0008 | 101 | 86% | 70 | 143% | 16 | frames-cleaned | body height 86% of idle; baseline shifted 16px from idle |
-| 0009 | 118 | 100% | 61 | 124% | 16 | frames-cleaned | baseline shifted 16px from idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 62 | 127% | 127% | 127% | 127% | 16 | frames-cleaned | torso/core width 127% of idle; baseline shifted 16px from idle |
+| 0002 | 117 | 99% | 68 | 139% | 140% | 139% | 139% | 16 | frames-cleaned | torso/core width 139% of idle; baseline shifted 16px from idle |
+| 0003 | 115 | 97% | 72 | 147% | 151% | 147% | 147% | 16 | frames-cleaned | torso/core width 147% of idle; baseline shifted 16px from idle |
+| 0004 | 116 | 98% | 44 | 90% | 91% | 90% | 90% | 16 | frames-cleaned | baseline shifted 16px from idle |
+| 0005 | 125 | 106% | 55 | 112% | 106% | 112% | 112% | 16 | frames-cleaned | baseline shifted 16px from idle |
+| 0006 | 120 | 102% | 52 | 106% | 104% | 106% | 106% | 16 | frames-cleaned | baseline shifted 16px from idle |
+| 0007 | 121 | 103% | 113 | 231% | 225% | 231% | 231% | 16 | frames-cleaned | body width 231% of idle; width/height ratio 225% of idle; torso/core width 231% of idle; feet/leg span 231% of idle; baseline shifted 16px from idle |
+| 0008 | 101 | 86% | 70 | 143% | 167% | 143% | 143% | 16 | frames-cleaned | body height 86% of idle; torso/core width 143% of idle; baseline shifted 16px from idle |
+| 0009 | 118 | 100% | 61 | 124% | 124% | 124% | 124% | 16 | frames-cleaned | torso/core width 124% of idle; baseline shifted 16px from idle |
 
 Flagged frame details:
-- supreme-emperor/tornado_kick/0001: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0001.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
-- supreme-emperor/tornado_kick/0002: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0002.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
-- supreme-emperor/tornado_kick/0003: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0003.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
+- supreme-emperor/tornado_kick/0001: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0001.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0001.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/tornado_kick/0002: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0002.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/tornado_kick/0003: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0003.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/tornado_kick/0004: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0004.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
 - supreme-emperor/tornado_kick/0005: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0005.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
 - supreme-emperor/tornado_kick/0006: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0006.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0006.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
 - supreme-emperor/tornado_kick/0007: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0007.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0007.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 - supreme-emperor/tornado_kick/0008: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0008.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0008.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
-- supreme-emperor/tornado_kick/0009: metadata/canvas issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0009.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0009.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority.
+- supreme-emperor/tornado_kick/0009: metadata/canvas issue, source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\tornado_kick\0009.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0009.png`. Recommended: check output canvas, anchor, baseline, and runtime source priority; manual override or source replacement preferred over deformation scaling.
 
 ## Character: Supreme Emperor / walk
 
 Idle reference body height: 118 (idle metadata/runtime PNG median)
 Idle reference body width: 49
+Idle width/height ratio: 0.4153
+Idle torso/core width estimate: 31.36
+Idle feet span estimate: 45.08
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 50 | 102% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 74 | 151% | 0 | frames-cleaned | body width 151% of idle |
-| 0003 | 118 | 100% | 64 | 131% | 0 | frames-cleaned | ok |
-| 0004 | 118 | 100% | 56 | 114% | 0 | frames-cleaned | ok |
-| 0005 | 118 | 100% | 64 | 131% | 0 | frames-cleaned | ok |
-| 0006 | 118 | 100% | 50 | 102% | 0 | frames-cleaned | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 118 | 100% | 50 | 102% | 102% | 102% | 102% | 0 | frames-cleaned | ok |
+| 0002 | 118 | 100% | 74 | 151% | 151% | 151% | 151% | 0 | frames-cleaned | body width 151% of idle; width/height ratio 151% of idle; torso/core width 151% of idle; feet/leg span 151% of idle |
+| 0003 | 118 | 100% | 64 | 131% | 131% | 131% | 131% | 0 | frames-cleaned | width/height ratio 131% of idle; torso/core width 131% of idle |
+| 0004 | 118 | 100% | 56 | 114% | 114% | 114% | 114% | 0 | frames-cleaned | ok |
+| 0005 | 118 | 100% | 64 | 131% | 131% | 131% | 131% | 0 | frames-cleaned | width/height ratio 131% of idle; torso/core width 131% of idle |
+| 0006 | 118 | 100% | 50 | 102% | 102% | 102% | 102% | 0 | frames-cleaned | ok |
 
 Flagged frame details:
 - supreme-emperor/walk/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\walk\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\walk\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/walk/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\walk\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\walk\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- supreme-emperor/walk/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\supreme-emperor\walk\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\walk\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Monkey Grunt / cross
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 87 | 99% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0005 | 87 | 99% | 41 | 43% | 0 | fallback/raw atlas | body width 43% of idle; head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 87 | 99% | 96 | 100% | 101% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0005 | 87 | 99% | 41 | 43% | 43% | 43% | 43% | 0 | fallback/raw atlas | body width 43% of idle; width/height ratio 43% of idle; torso/core width 43% of idle; head/body touch top crop edge |
 
 Flagged frame details:
 - monkey-grunt/cross/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row3-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\cross\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -404,16 +521,19 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 62 | 70% | 96 | 100% | 0 | fallback/raw atlas | body height 70% of idle |
-| 0002 | 56 | 64% | 96 | 100% | 0 | fallback/raw atlas | body height 64% of idle |
-| 0003 | 52 | 59% | 96 | 100% | 0 | fallback/raw atlas | body height 59% of idle |
-| 0004 | 58 | 66% | 96 | 100% | 0 | fallback/raw atlas | body height 66% of idle |
-| 0005 | 45 | 51% | 96 | 100% | 0 | fallback/raw atlas | body height 51% of idle |
-| 0006 | 51 | 58% | 96 | 100% | 0 | fallback/raw atlas | body height 58% of idle |
-| 0007 | 49 | 56% | 96 | 100% | 0 | fallback/raw atlas | body height 56% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 62 | 70% | 96 | 100% | 142% | 100% | 100% | 0 | fallback/raw atlas | body height 70% of idle; width/height ratio 142% of idle |
+| 0002 | 56 | 64% | 96 | 100% | 157% | 100% | 100% | 0 | fallback/raw atlas | body height 64% of idle; width/height ratio 157% of idle |
+| 0003 | 52 | 59% | 96 | 100% | 169% | 100% | 100% | 0 | fallback/raw atlas | body height 59% of idle; width/height ratio 169% of idle |
+| 0004 | 58 | 66% | 96 | 100% | 152% | 100% | 100% | 0 | fallback/raw atlas | body height 66% of idle; width/height ratio 152% of idle |
+| 0005 | 45 | 51% | 96 | 100% | 196% | 100% | 100% | 0 | fallback/raw atlas | body height 51% of idle; width/height ratio 196% of idle |
+| 0006 | 51 | 58% | 96 | 100% | 173% | 100% | 100% | 0 | fallback/raw atlas | body height 58% of idle; width/height ratio 173% of idle |
+| 0007 | 49 | 56% | 96 | 100% | 180% | 100% | 100% | 0 | fallback/raw atlas | body height 56% of idle; width/height ratio 180% of idle |
 
 Flagged frame details:
 - monkey-grunt/death/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row7-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\death\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -428,15 +548,18 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0005 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0006 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0005 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0006 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
 
 Flagged frame details:
 - monkey-grunt/grab/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row4-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\grab\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -450,12 +573,15 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 53 | 55% | 0 | fallback/raw atlas | body width 55% of idle; head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 53 | 55% | 55% | 55% | 55% | 0 | fallback/raw atlas | body width 55% of idle; width/height ratio 55% of idle; torso/core width 55% of idle; head/body touch top crop edge |
 
 Flagged frame details:
 - monkey-grunt/hit_react/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row5-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\hit_react\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -466,13 +592,16 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 87 | 99% | 24 | 25% | 0 | fallback/raw atlas | body width 25% of idle; head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 87 | 99% | 24 | 25% | 25% | 25% | 25% | 0 | fallback/raw atlas | body width 25% of idle; width/height ratio 25% of idle; torso/core width 25% of idle; head/body touch top crop edge |
 
 Flagged frame details:
 - monkey-grunt/idle/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row0-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\idle\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -484,14 +613,17 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 87 | 99% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0005 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 87 | 99% | 96 | 100% | 101% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0005 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
 
 Flagged frame details:
 - monkey-grunt/jab/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row2-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\jab\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -504,14 +636,17 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 68 | 77% | 96 | 100% | 0 | fallback/raw atlas | body height 77% of idle |
-| 0003 | 53 | 60% | 96 | 100% | 0 | fallback/raw atlas | body height 60% of idle |
-| 0004 | 70 | 80% | 96 | 100% | 0 | fallback/raw atlas | body height 80% of idle |
-| 0005 | 60 | 68% | 96 | 100% | 0 | fallback/raw atlas | body height 68% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 68 | 77% | 96 | 100% | 129% | 100% | 100% | 0 | fallback/raw atlas | body height 77% of idle; width/height ratio 129% of idle |
+| 0003 | 53 | 60% | 96 | 100% | 166% | 100% | 100% | 0 | fallback/raw atlas | body height 60% of idle; width/height ratio 166% of idle |
+| 0004 | 70 | 80% | 96 | 100% | 126% | 100% | 100% | 0 | fallback/raw atlas | body height 80% of idle; width/height ratio 126% of idle |
+| 0005 | 60 | 68% | 96 | 100% | 147% | 100% | 100% | 0 | fallback/raw atlas | body height 68% of idle; width/height ratio 147% of idle |
 
 Flagged frame details:
 - monkey-grunt/knockdown/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row6-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\knockdown\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -524,15 +659,18 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0005 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0006 | 88 | 100% | 84 | 88% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0005 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0006 | 88 | 100% | 84 | 88% | 88% | 88% | 88% | 0 | fallback/raw atlas | head/body touch top crop edge |
 
 Flagged frame details:
 - monkey-grunt/run/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\monkey-grunt\atlas.png#row1-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\monkey-grunt\run\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -546,13 +684,16 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 88 | 100% | 54 | 56% | 0 | fallback/raw atlas | body width 56% of idle; head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 88 | 100% | 54 | 56% | 56% | 56% | 56% | 0 | fallback/raw atlas | body width 56% of idle; width/height ratio 56% of idle; torso/core width 56% of idle; head/body touch top crop edge |
 
 Flagged frame details:
 - striker-monkey/cross/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row3-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\cross\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -564,14 +705,17 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 46 | 52% | 96 | 100% | 0 | fallback/raw atlas | body height 52% of idle |
-| 0002 | 51 | 58% | 96 | 100% | 0 | fallback/raw atlas | body height 58% of idle |
-| 0003 | 47 | 53% | 96 | 100% | 0 | fallback/raw atlas | body height 53% of idle |
-| 0004 | 46 | 52% | 96 | 100% | 0 | fallback/raw atlas | body height 52% of idle |
-| 0005 | 47 | 53% | 96 | 100% | 0 | fallback/raw atlas | body height 53% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 46 | 52% | 96 | 100% | 191% | 100% | 100% | 0 | fallback/raw atlas | body height 52% of idle; width/height ratio 191% of idle |
+| 0002 | 51 | 58% | 96 | 100% | 173% | 100% | 100% | 0 | fallback/raw atlas | body height 58% of idle; width/height ratio 173% of idle |
+| 0003 | 47 | 53% | 96 | 100% | 187% | 100% | 100% | 0 | fallback/raw atlas | body height 53% of idle; width/height ratio 187% of idle |
+| 0004 | 46 | 52% | 96 | 100% | 191% | 100% | 100% | 0 | fallback/raw atlas | body height 52% of idle; width/height ratio 191% of idle |
+| 0005 | 47 | 53% | 96 | 100% | 187% | 100% | 100% | 0 | fallback/raw atlas | body height 53% of idle; width/height ratio 187% of idle |
 
 Flagged frame details:
 - striker-monkey/death/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row8-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\death\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -584,13 +728,16 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 78 | 89% | 43 | 45% | 0 | fallback/raw atlas | body height 89% of idle; body width 45% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 78 | 89% | 43 | 45% | 51% | 45% | 45% | 0 | fallback/raw atlas | body height 89% of idle; body width 45% of idle; width/height ratio 51% of idle; torso/core width 45% of idle |
 
 Flagged frame details:
 - striker-monkey/hit_react/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row6-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\hit_react\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -602,13 +749,16 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 76 | 79% | 0 | fallback/raw atlas | body width 79% of idle; head/body touch top crop edge |
-| 0004 | n/a | n/a | n/a | n/a | 0 | fallback/raw atlas | ok |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 76 | 79% | 79% | 79% | 79% | 0 | fallback/raw atlas | body width 79% of idle; width/height ratio 79% of idle; torso/core width 79% of idle; head/body touch top crop edge |
+| 0004 | n/a | n/a | n/a | n/a | n/a | n/a | n/a | 0 | fallback/raw atlas | ok |
 
 Flagged frame details:
 - striker-monkey/hook/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row4-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\hook\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -619,13 +769,16 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0004 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0004 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
 
 Flagged frame details:
 - striker-monkey/idle/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row0-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\idle\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -637,12 +790,15 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
 
 Flagged frame details:
 - striker-monkey/jab/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row2-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\jab\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -653,14 +809,17 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 85 | 97% | 96 | 100% | 0 | fallback/raw atlas | ok |
-| 0003 | 84 | 95% | 96 | 100% | 0 | fallback/raw atlas | ok |
-| 0004 | 69 | 78% | 96 | 100% | 0 | fallback/raw atlas | body height 78% of idle |
-| 0005 | 44 | 50% | 96 | 100% | 0 | fallback/raw atlas | body height 50% of idle |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 85 | 97% | 96 | 100% | 104% | 100% | 100% | 0 | fallback/raw atlas | ok |
+| 0003 | 84 | 95% | 96 | 100% | 105% | 100% | 100% | 0 | fallback/raw atlas | ok |
+| 0004 | 69 | 78% | 96 | 100% | 128% | 100% | 100% | 0 | fallback/raw atlas | body height 78% of idle; width/height ratio 128% of idle |
+| 0005 | 44 | 50% | 96 | 100% | 200% | 100% | 100% | 0 | fallback/raw atlas | body height 50% of idle; width/height ratio 200% of idle |
 
 Flagged frame details:
 - striker-monkey/knockdown/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row7-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\knockdown\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -671,13 +830,16 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 83 | 94% | 96 | 100% | 0 | fallback/raw atlas | ok |
-| 0004 | 88 | 100% | 75 | 78% | 0 | fallback/raw atlas | body width 78% of idle; head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 83 | 94% | 96 | 100% | 106% | 100% | 100% | 0 | fallback/raw atlas | ok |
+| 0004 | 88 | 100% | 75 | 78% | 78% | 78% | 78% | 0 | fallback/raw atlas | body width 78% of idle; width/height ratio 78% of idle; torso/core width 78% of idle; head/body touch top crop edge |
 
 Flagged frame details:
 - striker-monkey/round_kick/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row5-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\round_kick\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.
@@ -688,14 +850,17 @@ Flagged frame details:
 
 Idle reference body height: 88 (idle atlas crop median)
 Idle reference body width: 96
+Idle width/height ratio: 1.0909
+Idle torso/core width estimate: 61.44
+Idle feet span estimate: 88.32
 
-| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |
-| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |
-| 0001 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0002 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0003 | 85 | 97% | 96 | 100% | 0 | fallback/raw atlas | ok |
-| 0004 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
-| 0005 | 88 | 100% | 96 | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
+| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
+| 0001 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0002 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0003 | 85 | 97% | 96 | 100% | 104% | 100% | 100% | 0 | fallback/raw atlas | ok |
+| 0004 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
+| 0005 | 88 | 100% | 96 | 100% | 100% | 100% | 100% | 0 | fallback/raw atlas | head/body touch top crop edge |
 
 Flagged frame details:
 - striker-monkey/run/0001: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\assets\fightcore\sprites\striker-monkey\atlas.png#row1-frame1`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\striker-monkey\run\0001.png`. Recommended: manual override or source replacement preferred over deformation scaling.

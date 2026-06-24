@@ -24,6 +24,8 @@ Use manual overrides for permanent hand edits. Generated folders may be overwrit
 - Frame durations: `0001:90ms`, `0002:120ms`, `0003:155ms`, `0004:125ms`, `0005:90ms`
 - Visual active frames: `0003`
 - Impact frame: `0003`
+- Chained visual frames: `0003:54ms` -> `0004:92ms` -> `0005:54ms`
+- Chained visual note: Chained jab skips startup and anchors on the contact extension.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\jab\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -55,6 +57,8 @@ Runtime frames:
 - Frame durations: `0001:80ms`, `0002:85ms`, `0003:70ms`, `0004:230ms`, `0005:95ms`
 - Visual active frames: `0004`
 - Impact frame: `0004`
+- Chained visual frames: `0003:46ms` -> `0004:126ms` -> `0005:58ms`
+- Chained visual note: Old held visual was the pre-impact `0003`; chained cross now holds true impact `0004`.
 - Timing note: Corrected this pass: old held frame was `0003` pre-impact; new held/impact frame is `0004` full extension.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\cross\0001.png`
@@ -85,6 +89,8 @@ Runtime frames:
 - Frame durations: runtime default
 - Visual active frames: combat profile/default
 - Impact frame: not marked
+- Chained visual frames: `0003:54ms` -> `0004:104ms` -> `0005:62ms`
+- Chained visual note: Chained calf kick uses chamber, impact extension, recovery.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -114,6 +120,8 @@ Runtime frames:
 - Frame durations: runtime default
 - Visual active frames: combat profile/default
 - Impact frame: not marked
+- Chained visual frames: `0002:54ms` -> `0003:116ms` -> `0004:68ms`
+- Chained visual note: Chained knee enters close, shows impact, then exits quickly.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -262,6 +270,8 @@ Runtime frames:
 - Frame durations: `0001:80ms`, `0002:70ms`, `0003:170ms`, `0004:260ms`, `0005:90ms`, `0006:120ms`
 - Visual active frames: `0003`, `0004`
 - Impact frame: `0004`
+- Chained visual frames: `0003:78ms` -> `0004:142ms` -> `0005:60ms`
+- Chained visual note: Chained one-two holds jab/cross impact frames instead of full windup.
 - Timing note: Corrected this pass: old holds were `0002`/`0005`; new held impact frames are `0003` jab and `0004` cross.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`
@@ -295,6 +305,8 @@ Runtime frames:
 - Frame durations: `0001:80ms`, `0002:70ms`, `0003:170ms`, `0004:260ms`, `0005:90ms`, `0006:120ms`
 - Visual active frames: `0003`, `0004`
 - Impact frame: `0004`
+- Chained visual frames: `0003:78ms` -> `0004:142ms` -> `0005:60ms`
+- Chained visual note: Chained one-two holds jab/cross impact frames instead of full windup.
 - Timing note: Second hit now resolves on `0004`, the full cross/spark contact pose.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\jab_cross\0001.png`
@@ -326,6 +338,8 @@ Runtime frames:
 - Frame durations: runtime default
 - Visual active frames: combat profile/default
 - Impact frame: not marked
+- Chained visual frames: `0005:62ms` -> `0006:130ms` -> `0007:68ms`
+- Chained visual note: Chained hook skips feint setup and centers on hook contact.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\feint_rear_hook\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -360,6 +374,8 @@ Runtime frames:
 - Frame durations: `0001:70ms`, `0002:70ms`, `0003:70ms`, `0004:80ms`, `0005:120ms`, `0006:100ms`, `0007:360ms`, `0008:80ms`, `0009:70ms`
 - Visual active frames: `0007`
 - Impact frame: `0007`
+- Chained visual frames: `0006:72ms` -> `0007:170ms` -> `0008:66ms`
+- Chained visual note: Chained tornado keeps the true `0007` impact anchor.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\tornado_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -393,6 +409,8 @@ Runtime frames:
 - Frame durations: runtime default
 - Visual active frames: combat profile/default
 - Impact frame: not marked
+- Chained visual frames: `0004:68ms` -> `0005:140ms` -> `0006:72ms`
+- Chained visual note: Chained roundhouse uses chamber, kick impact, recovery.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\supreme-emperor\roundhouse_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes

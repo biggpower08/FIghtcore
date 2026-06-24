@@ -7,7 +7,7 @@ export class Hud {
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.textBaseline = 'top';
 
-    this.drawWaveBanner(ctx, player, wave);
+    this.drawWaveBanner(ctx, wave);
 
     const ability = player.ability;
     const abilityReady = ability ? player.abilityCooldownMs <= 0 && player.abilityActiveMs <= 0 && player.criticalOverloadArmedMs <= 0 : false;
@@ -61,16 +61,14 @@ export class Hud {
     ctx.fillRect(x, y, width, 4);
   }
 
-  private drawWaveBanner(ctx: CanvasRenderingContext2D, player: Player, wave: number): void {
-    const width = 220;
+  private drawWaveBanner(ctx: CanvasRenderingContext2D, wave: number): void {
+    const width = 118;
     const x = ctx.canvas.width / 2 - width / 2;
     const y = 14;
     this.panel(ctx, x, y, width, 40);
     ctx.font = '15px monospace';
     ctx.fillStyle = '#fff0c2';
     ctx.fillText(`Wave ${wave}`, x + 12, y + 10);
-    ctx.fillStyle = player.getActivityTier() === 'flow' ? '#ffe769' : '#9fdde2';
-    ctx.fillText(player.getActivityTier() === 'flow' ? 'Flow active' : 'Build Activity', x + 88, y + 10);
   }
 
   private bar(

@@ -114,6 +114,9 @@ function referenceFromMeasurements(measurements, source) {
   return {
     bodyHeight: median(measurements.map((measurement) => measurement.visibleBodyHeight).filter(Number.isFinite)),
     bodyWidth: median(measurements.map((measurement) => measurement.visibleBodyWidth).filter(Number.isFinite)),
+    widthToHeightRatio: median(measurements.map((measurement) => measurement.widthToHeightRatio).filter(Number.isFinite)),
+    torsoCoreWidth: median(measurements.map((measurement) => measurement.torsoCore?.w).filter(Number.isFinite)),
+    feetSpanWidth: median(measurements.map((measurement) => measurement.feetSpan?.w).filter(Number.isFinite)),
     baselineY: median(measurements.map((measurement) => measurement.baselineY).filter(Number.isFinite)),
     source,
   };
@@ -190,17 +193,22 @@ function measurementFromBounds(bounds, canvas, baselineY, source, metadataFrame)
   const width = bounds?.width ?? metadataFrame?.bodyBounds?.w;
   const height = bounds?.height ?? metadataFrame?.bodyBounds?.h;
   const bottom = bounds ? bounds.maxY : top !== undefined && height !== undefined ? top + height - 1 : undefined;
+  const widthToHeightRatio = Number.isFinite(width) && Number.isFinite(height) && height > 0 ? round(width / height, 4) : undefined;
   return {
     ...source,
     visibleBodyHeight: height,
     visibleBodyWidth: width,
+    widthToHeightRatio,
     topY: top,
     bottomY: bottom,
     baselineY,
     centerX: left !== undefined && width !== undefined ? round(left + width / 2) : undefined,
     centerY: top !== undefined && height !== undefined ? round(top + height / 2) : undefined,
     torsoCore: bounds ? zone(bounds, 0.18, 0.22, 0.64, 0.34) : undefined,
+    chestUpperBody: bounds ? zone(bounds, 0.16, 0.18, 0.68, 0.22) : undefined,
+    waistHip: bounds ? zone(bounds, 0.22, 0.44, 0.56, 0.18) : undefined,
     lowerBodyLegZone: bounds ? zone(bounds, 0.12, 0.56, 0.76, 0.42) : undefined,
+    feetSpan: bounds ? zone(bounds, 0.04, 0.84, 0.92, 0.16) : undefined,
     armReachBounds: bounds ? zone(bounds, 0, 0.18, 1, 0.38) : undefined,
     outputCanvas: canvas,
     touchesHeadEdge: top !== undefined && top <= 1,
@@ -211,14 +219,22 @@ function measurementFromBounds(bounds, canvas, baselineY, source, metadataFrame)
 function classifyFrame(entityId, animationId, index, measurement, idleReference, profile, metadataFrame, metadata) {
   const heightVsIdle = ratio(measurement.visibleBodyHeight, idleReference.bodyHeight);
   const widthVsIdle = ratio(measurement.visibleBodyWidth, idleReference.bodyWidth);
+  const ratioVsIdle = ratio(measurement.widthToHeightRatio, idleReference.widthToHeightRatio);
+  const torsoCoreWidthVsIdle = ratio(measurement.torsoCore?.w, idleReference.torsoCoreWidth);
+  const feetSpanVsIdle = ratio(measurement.feetSpan?.w, idleReference.feetSpanWidth);
   const baselineShift = Number.isFinite(measurement.baselineY) && Number.isFinite(idleReference.baselineY) ? measurement.baselineY - idleReference.baselineY : undefined;
   const runtimeDrawScale = runtimeScale(measurement, profile, metadataFrame);
   const finalRenderedBodyHeight = Number.isFinite(measurement.visibleBodyHeight) ? round(measurement.visibleBodyHeight * runtimeDrawScale) : undefined;
+  const finalRenderedBodyWidth = Number.isFinite(measurement.visibleBodyWidth) ? round(measurement.visibleBodyWidth * runtimeDrawScale) : undefined;
   const warnings = [];
   const likelyCauses = [];
   const recommendedAction = [];
+  const widePose = isWidePose(animationId);
   if (heightVsIdle !== undefined && (heightVsIdle < 0.9 || heightVsIdle > 1.1)) warnings.push(`body height ${Math.round(heightVsIdle * 100)}% of idle`);
   if (widthVsIdle !== undefined && (widthVsIdle < 0.8 || widthVsIdle > widthLimit(animationId))) warnings.push(`body width ${Math.round(widthVsIdle * 100)}% of idle`);
+  if (ratioVsIdle !== undefined && (ratioVsIdle < 0.85 || ratioVsIdle > (widePose ? 1.9 : 1.15))) warnings.push(`width/height ratio ${Math.round(ratioVsIdle * 100)}% of idle`);
+  if (torsoCoreWidthVsIdle !== undefined && (torsoCoreWidthVsIdle < 0.85 || torsoCoreWidthVsIdle > 1.15)) warnings.push(`torso/core width ${Math.round(torsoCoreWidthVsIdle * 100)}% of idle`);
+  if (feetSpanVsIdle !== undefined && feetSpanVsIdle > (widePose ? 2.1 : 1.45)) warnings.push(`feet/leg span ${Math.round(feetSpanVsIdle * 100)}% of idle`);
   if (baselineShift !== undefined && Math.abs(baselineShift) > 6) warnings.push(`baseline shifted ${baselineShift}px from idle`);
   if (measurement.touchesFeetEdge) warnings.push('feet/body touch bottom crop edge');
   if (measurement.touchesHeadEdge) warnings.push('head/body touch top crop edge');
@@ -228,7 +244,7 @@ function classifyFrame(entityId, animationId, index, measurement, idleReference,
   if (!measurement.sourceExists) warnings.push('runtime source PNG could not be read');
 
   if (warnings.some((warning) => warning.includes('baseline') || warning.includes('canvas'))) likelyCauses.push('metadata/canvas issue');
-  if (warnings.some((warning) => warning.includes('body height') || warning.includes('body width') || warning.includes('crop edge'))) likelyCauses.push('source art issue');
+  if (warnings.some((warning) => warning.includes('body height') || warning.includes('body width') || warning.includes('ratio') || warning.includes('torso') || warning.includes('feet') || warning.includes('crop edge'))) likelyCauses.push('source art issue');
   if (measurement.sourcePriority === 'frames-cleaned' && warnings.some((warning) => warning.includes('crop edge'))) likelyCauses.push('cleanup issue');
   if (likelyCauses.length === 0) likelyCauses.push('within measured tolerance');
 
@@ -244,10 +260,15 @@ function classifyFrame(entityId, animationId, index, measurement, idleReference,
     outputCanvas: measurement.outputCanvas,
     runtimeDrawScale,
     finalRenderedBodyHeight,
+    finalRenderedBodyWidth,
     visibleBodyHeight: measurement.visibleBodyHeight,
     visibleBodyWidth: measurement.visibleBodyWidth,
+    widthToHeightRatio: measurement.widthToHeightRatio,
     heightVsIdle,
     widthVsIdle,
+    ratioVsIdle,
+    torsoCoreWidthVsIdle,
+    feetSpanVsIdle,
     topY: measurement.topY,
     bottomFeetY: measurement.bottomY,
     baselineY: measurement.baselineY,
@@ -256,7 +277,11 @@ function classifyFrame(entityId, animationId, index, measurement, idleReference,
     centerY: measurement.centerY,
     torsoCoreHeightEstimate: measurement.torsoCore?.h,
     torsoCoreWidthEstimate: measurement.torsoCore?.w,
+    chestUpperBodyWidthEstimate: measurement.chestUpperBody?.w,
+    waistHipWidthEstimate: measurement.waistHip?.w,
     lowerBodyLegZoneHeightEstimate: measurement.lowerBodyLegZone?.h,
+    legSpreadWidthEstimate: measurement.lowerBodyLegZone?.w,
+    feetSpanWidthEstimate: measurement.feetSpan?.w,
     armReachExtensionBounds: measurement.armReachBounds,
     warnings,
     likelyCauses,
@@ -336,12 +361,15 @@ function markdownReport(reports) {
     lines.push('');
     lines.push(`Idle reference body height: ${format(report.idleReference.bodyHeight)} (${report.idleReference.source})`);
     lines.push(`Idle reference body width: ${format(report.idleReference.bodyWidth)}`);
+    lines.push(`Idle width/height ratio: ${format(report.idleReference.widthToHeightRatio)}`);
+    lines.push(`Idle torso/core width estimate: ${format(report.idleReference.torsoCoreWidth)}`);
+    lines.push(`Idle feet span estimate: ${format(report.idleReference.feetSpanWidth)}`);
     lines.push('');
-    lines.push('| Frame | Body Height | vs Idle | Body Width | vs Idle | Baseline Shift | Source | Warning |');
-    lines.push('| ----: | ----------: | ------: | ---------: | ------: | -------------: | ------ | ------- |');
+    lines.push('| Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |');
+    lines.push('| ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |');
     for (const frame of report.frames) {
       lines.push(
-        `| ${frame.frame} | ${format(frame.visibleBodyHeight)} | ${percent(frame.heightVsIdle)} | ${format(frame.visibleBodyWidth)} | ${percent(frame.widthVsIdle)} | ${format(frame.baselineShift)} | ${frame.sourcePriority} | ${frame.warnings.join('; ') || 'ok'} |`,
+        `| ${frame.frame} | ${format(frame.visibleBodyHeight)} | ${percent(frame.heightVsIdle)} | ${format(frame.visibleBodyWidth)} | ${percent(frame.widthVsIdle)} | ${percent(frame.ratioVsIdle)} | ${percent(frame.torsoCoreWidthVsIdle)} | ${percent(frame.feetSpanVsIdle)} | ${format(frame.baselineShift)} | ${frame.sourcePriority} | ${frame.warnings.join('; ') || 'ok'} |`,
       );
     }
     const flagged = report.frames.filter((frame) => frame.warnings.length > 0);
@@ -358,7 +386,11 @@ function markdownReport(reports) {
 }
 
 function widthLimit(animationId) {
-  return animationId.includes('kick') || animationId.includes('dash') || animationId.includes('sweep') || animationId.includes('tornado') ? 2.25 : 1.45;
+  return isWidePose(animationId) ? 2.25 : 1.45;
+}
+
+function isWidePose(animationId) {
+  return animationId.includes('kick') || animationId.includes('dash') || animationId.includes('sweep') || animationId.includes('tornado');
 }
 
 function ratio(value, reference) {

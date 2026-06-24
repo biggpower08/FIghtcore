@@ -56,6 +56,7 @@ export class Player extends Fighter {
   activity = 18;
   maxActivity = 100;
   flowStateMs = 0;
+  activityGraceMs = 0;
   lastLandedMoveId = '';
   moveUpgradeLevels = new Map<string, number>();
   upgrades: PlayerUpgradeState = {
@@ -165,24 +166,27 @@ export class Player extends Fighter {
     return 1 + this.upgrades.knockbackLevel * 0.1;
   }
 
-  gainActivity(amount: number): void {
-    const gain = amount * (1 + this.upgrades.activityGainLevel * 0.08);
+  gainActivity(amount: number, graceMs = 900): void {
+    const gain = amount * (1 + this.upgrades.activityGainLevel * 0.1);
     const wasBelowFlow = this.activity < 100;
     this.activity = Math.min(this.maxActivity, this.activity + gain);
+    this.activityGraceMs = Math.max(this.activityGraceMs, graceMs);
     if (wasBelowFlow && this.activity >= 100) {
-      this.flowStateMs = 2400;
+      this.flowStateMs = 3000;
       this.heal(this.upgrades.killHealLevel > 0 ? this.upgrades.killHealLevel * 2 : 0);
     }
   }
 
-  spendActivity(amount: number): void {
-    this.activity = Math.max(0, this.activity - amount);
+  spendActivity(amount: number, cap = 14): void {
+    this.activity = Math.max(0, this.activity - Math.min(amount, cap));
   }
 
   updateActivity(deltaMs: number, activeMovement: boolean): void {
     this.flowStateMs = Math.max(0, this.flowStateMs - deltaMs);
-    if (activeMovement) this.gainActivity(2.4 * (deltaMs / 1000));
-    const decay = (this.activity >= 80 ? 8 : 5) * Math.max(0.35, 1 - this.upgrades.activityDecayLevel * 0.12);
+    this.activityGraceMs = Math.max(0, this.activityGraceMs - deltaMs);
+    if (activeMovement) this.gainActivity(3.4 * (deltaMs / 1000), 450);
+    const graceMultiplier = this.activityGraceMs > 0 ? 0.18 : 1;
+    const decay = (this.activity >= 80 ? 4.2 : 3.2) * Math.max(0.42, 1 - this.upgrades.activityDecayLevel * 0.14) * graceMultiplier;
     this.activity = Math.max(0, this.activity - decay * (deltaMs / 1000));
   }
 

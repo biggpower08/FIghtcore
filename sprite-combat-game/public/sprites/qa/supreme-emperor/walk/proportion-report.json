@@ -5,6 +5,9 @@
   "idleReference": {
     "bodyHeight": 118,
     "bodyWidth": 49,
+    "widthToHeightRatio": 0.4153,
+    "torsoCoreWidth": 31.36,
+    "feetSpanWidth": 45.08,
     "baselineY": 148,
     "source": "idle metadata/runtime PNG median"
   },
@@ -26,10 +29,15 @@
       },
       "runtimeDrawScale": 1.1525,
       "finalRenderedBodyHeight": 136,
+      "finalRenderedBodyWidth": 57.63,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 50,
+      "widthToHeightRatio": 0.4237,
       "heightVsIdle": 1,
       "widthVsIdle": 1.0204,
+      "ratioVsIdle": 1.0202,
+      "torsoCoreWidthVsIdle": 1.0204,
+      "feetSpanVsIdle": 1.0204,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -38,7 +46,11 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 32,
+      "chestUpperBodyWidthEstimate": 34,
+      "waistHipWidthEstimate": 28,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 38,
+      "feetSpanWidthEstimate": 46,
       "armReachExtensionBounds": {
         "x": 71,
         "y": 51.24,
@@ -62,10 +74,15 @@
       },
       "runtimeDrawScale": 1.1525,
       "finalRenderedBodyHeight": 136,
+      "finalRenderedBodyWidth": 85.29,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 74,
+      "widthToHeightRatio": 0.6271,
       "heightVsIdle": 1,
       "widthVsIdle": 1.5102,
+      "ratioVsIdle": 1.51,
+      "torsoCoreWidthVsIdle": 1.5102,
+      "feetSpanVsIdle": 1.5102,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -74,7 +91,11 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 47.36,
+      "chestUpperBodyWidthEstimate": 50.32,
+      "waistHipWidthEstimate": 41.44,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 56.24,
+      "feetSpanWidthEstimate": 68.08,
       "armReachExtensionBounds": {
         "x": 59,
         "y": 51.24,
@@ -82,7 +103,10 @@
         "h": 44.84
       },
       "warnings": [
-        "body width 151% of idle"
+        "body width 151% of idle",
+        "width/height ratio 151% of idle",
+        "torso/core width 151% of idle",
+        "feet/leg span 151% of idle"
       ],
       "likelyCauses": [
         "source art issue"
@@ -102,10 +126,15 @@
       },
       "runtimeDrawScale": 1.1525,
       "finalRenderedBodyHeight": 136,
+      "finalRenderedBodyWidth": 73.76,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 64,
+      "widthToHeightRatio": 0.5424,
       "heightVsIdle": 1,
       "widthVsIdle": 1.3061,
+      "ratioVsIdle": 1.306,
+      "torsoCoreWidthVsIdle": 1.3061,
+      "feetSpanVsIdle": 1.3061,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -114,18 +143,27 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 40.96,
+      "chestUpperBodyWidthEstimate": 43.52,
+      "waistHipWidthEstimate": 35.84,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 48.64,
+      "feetSpanWidthEstimate": 58.88,
       "armReachExtensionBounds": {
         "x": 64,
         "y": 51.24,
         "w": 64,
         "h": 44.84
       },
-      "warnings": [],
-      "likelyCauses": [
-        "within measured tolerance"
+      "warnings": [
+        "width/height ratio 131% of idle",
+        "torso/core width 131% of idle"
       ],
-      "recommendedAction": []
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0004",
@@ -138,10 +176,15 @@
       },
       "runtimeDrawScale": 1.1525,
       "finalRenderedBodyHeight": 136,
+      "finalRenderedBodyWidth": 64.54,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 56,
+      "widthToHeightRatio": 0.4746,
       "heightVsIdle": 1,
       "widthVsIdle": 1.1429,
+      "ratioVsIdle": 1.1428,
+      "torsoCoreWidthVsIdle": 1.1429,
+      "feetSpanVsIdle": 1.1429,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -150,7 +193,11 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 35.84,
+      "chestUpperBodyWidthEstimate": 38.08,
+      "waistHipWidthEstimate": 31.36,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 42.56,
+      "feetSpanWidthEstimate": 51.52,
       "armReachExtensionBounds": {
         "x": 68,
         "y": 51.24,
@@ -174,10 +221,15 @@
       },
       "runtimeDrawScale": 1.1525,
       "finalRenderedBodyHeight": 136,
+      "finalRenderedBodyWidth": 73.76,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 64,
+      "widthToHeightRatio": 0.5424,
       "heightVsIdle": 1,
       "widthVsIdle": 1.3061,
+      "ratioVsIdle": 1.306,
+      "torsoCoreWidthVsIdle": 1.3061,
+      "feetSpanVsIdle": 1.3061,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -186,18 +238,27 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 40.96,
+      "chestUpperBodyWidthEstimate": 43.52,
+      "waistHipWidthEstimate": 35.84,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 48.64,
+      "feetSpanWidthEstimate": 58.88,
       "armReachExtensionBounds": {
         "x": 64,
         "y": 51.24,
         "w": 64,
         "h": 44.84
       },
-      "warnings": [],
-      "likelyCauses": [
-        "within measured tolerance"
+      "warnings": [
+        "width/height ratio 131% of idle",
+        "torso/core width 131% of idle"
       ],
-      "recommendedAction": []
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
     },
     {
       "frame": "0006",
@@ -210,10 +271,15 @@
       },
       "runtimeDrawScale": 1.1525,
       "finalRenderedBodyHeight": 136,
+      "finalRenderedBodyWidth": 57.63,
       "visibleBodyHeight": 118,
       "visibleBodyWidth": 50,
+      "widthToHeightRatio": 0.4237,
       "heightVsIdle": 1,
       "widthVsIdle": 1.0204,
+      "ratioVsIdle": 1.0202,
+      "torsoCoreWidthVsIdle": 1.0204,
+      "feetSpanVsIdle": 1.0204,
       "topY": 30,
       "bottomFeetY": 147,
       "baselineY": 148,
@@ -222,7 +288,11 @@
       "centerY": 89,
       "torsoCoreHeightEstimate": 40.12,
       "torsoCoreWidthEstimate": 32,
+      "chestUpperBodyWidthEstimate": 34,
+      "waistHipWidthEstimate": 28,
       "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 38,
+      "feetSpanWidthEstimate": 46,
       "armReachExtensionBounds": {
         "x": 71,
         "y": 51.24,

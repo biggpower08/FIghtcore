@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-23T17:52:11.163Z",
+  "generatedAt": "2026-06-24T04:54:22.413Z",
   "finalScope": [
     "ronin",
     "supreme-emperor",
@@ -11,19 +11,89 @@
       "entityId": "ronin",
       "animationId": "calf_kick",
       "reportPath": "public/sprites/qa/ronin/calf_kick/proportion-report.json",
-      "suspiciousFrames": 0,
+      "suspiciousFrames": 4,
       "sourcePriorities": [
         "frames-cleaned"
       ],
       "likelyCauses": [
+        "source art issue",
         "within measured tolerance"
       ],
-      "worstWarnings": []
+      "worstWarnings": [
+        "0001: torso/core width 138% of idle",
+        "0003: torso/core width 127% of idle",
+        "0004: torso/core width 144% of idle",
+        "0005: torso/core width 131% of idle"
+      ]
     },
     {
       "entityId": "ronin",
       "animationId": "cross",
       "reportPath": "public/sprites/qa/ronin/cross/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0002: width/height ratio 117% of idle",
+        "0002: torso/core width 117% of idle",
+        "0003: width/height ratio 134% of idle",
+        "0003: torso/core width 131% of idle",
+        "0004: body width 159% of idle",
+        "0004: width/height ratio 161% of idle",
+        "0004: torso/core width 159% of idle",
+        "0004: feet/leg span 159% of idle"
+      ]
+    },
+    {
+      "entityId": "ronin",
+      "animationId": "dash",
+      "reportPath": "public/sprites/qa/ronin/dash/proportion-report.json",
+      "suspiciousFrames": 5,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: body height 119% of idle",
+        "0001: torso/core width 127% of idle",
+        "0002: torso/core width 145% of idle",
+        "0003: width/height ratio 207% of idle",
+        "0003: torso/core width 200% of idle",
+        "0004: width/height ratio 234% of idle",
+        "0004: torso/core width 213% of idle",
+        "0004: feet/leg span 213% of idle"
+      ]
+    },
+    {
+      "entityId": "ronin",
+      "animationId": "density",
+      "reportPath": "public/sprites/qa/ronin/density/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0002: width/height ratio 119% of idle",
+        "0002: torso/core width 119% of idle",
+        "0004: torso/core width 117% of idle",
+        "0005: torso/core width 117% of idle"
+      ]
+    },
+    {
+      "entityId": "ronin",
+      "animationId": "hit_react",
+      "reportPath": "public/sprites/qa/ronin/hit_react/proportion-report.json",
       "suspiciousFrames": 1,
       "sourcePriorities": [
         "frames-cleaned"
@@ -33,51 +103,9 @@
         "source art issue"
       ],
       "worstWarnings": [
-        "0004: body width 159% of idle"
+        "0004: width/height ratio 134% of idle",
+        "0004: torso/core width 130% of idle"
       ]
-    },
-    {
-      "entityId": "ronin",
-      "animationId": "dash",
-      "reportPath": "public/sprites/qa/ronin/dash/proportion-report.json",
-      "suspiciousFrames": 2,
-      "sourcePriorities": [
-        "frames-cleaned"
-      ],
-      "likelyCauses": [
-        "source art issue",
-        "within measured tolerance"
-      ],
-      "worstWarnings": [
-        "0001: body height 119% of idle",
-        "0005: body height 119% of idle"
-      ]
-    },
-    {
-      "entityId": "ronin",
-      "animationId": "density",
-      "reportPath": "public/sprites/qa/ronin/density/proportion-report.json",
-      "suspiciousFrames": 0,
-      "sourcePriorities": [
-        "frames-cleaned"
-      ],
-      "likelyCauses": [
-        "within measured tolerance"
-      ],
-      "worstWarnings": []
-    },
-    {
-      "entityId": "ronin",
-      "animationId": "hit_react",
-      "reportPath": "public/sprites/qa/ronin/hit_react/proportion-report.json",
-      "suspiciousFrames": 0,
-      "sourcePriorities": [
-        "frames-cleaned"
-      ],
-      "likelyCauses": [
-        "within measured tolerance"
-      ],
-      "worstWarnings": []
     },
     {
       "entityId": "ronin",
@@ -96,7 +124,7 @@
       "entityId": "ronin",
       "animationId": "jab",
       "reportPath": "public/sprites/qa/ronin/jab/proportion-report.json",
-      "suspiciousFrames": 1,
+      "suspiciousFrames": 3,
       "sourcePriorities": [
         "frames-cleaned"
       ],
@@ -105,14 +133,21 @@
         "source art issue"
       ],
       "worstWarnings": [
-        "0004: body width 152% of idle"
+        "0002: width/height ratio 117% of idle",
+        "0002: torso/core width 117% of idle",
+        "0003: width/height ratio 138% of idle",
+        "0003: torso/core width 136% of idle",
+        "0004: body width 152% of idle",
+        "0004: width/height ratio 153% of idle",
+        "0004: torso/core width 152% of idle",
+        "0004: feet/leg span 152% of idle"
       ]
     },
     {
       "entityId": "ronin",
       "animationId": "knee",
       "reportPath": "public/sprites/qa/ronin/knee/proportion-report.json",
-      "suspiciousFrames": 1,
+      "suspiciousFrames": 2,
       "sourcePriorities": [
         "frames-cleaned"
       ],
@@ -121,7 +156,11 @@
         "source art issue"
       ],
       "worstWarnings": [
-        "0004: body width 75% of idle"
+        "0003: width/height ratio 81% of idle",
+        "0003: torso/core width 81% of idle",
+        "0004: body width 75% of idle",
+        "0004: width/height ratio 75% of idle",
+        "0004: torso/core width 75% of idle"
       ]
     },
     {
@@ -138,7 +177,10 @@
       ],
       "worstWarnings": [
         "0001: body height 66% of idle",
-        "0002: body height 86% of idle"
+        "0001: width/height ratio 175% of idle",
+        "0001: torso/core width 116% of idle",
+        "0002: body height 86% of idle",
+        "0002: width/height ratio 117% of idle"
       ]
     },
     {
@@ -156,12 +198,12 @@
       "worstWarnings": [
         "0001: body height 40% of idle",
         "0001: body width 220% of idle",
+        "0001: width/height ratio 553% of idle",
+        "0001: torso/core width 220% of idle",
+        "0001: feet/leg span 220% of idle",
         "0001: baseline shifted 64px from idle",
         "0002: body height 66% of idle",
-        "0002: body width 189% of idle",
-        "0002: baseline shifted 64px from idle",
-        "0003: body height 84% of idle",
-        "0003: baseline shifted 64px from idle"
+        "0002: body width 189% of idle"
       ]
     },
     {
@@ -191,68 +233,63 @@
       ],
       "worstWarnings": [
         "0001: body height 119% of idle",
+        "0001: torso/core width 186% of idle",
         "0001: baseline shifted 16px from idle",
         "0002: body height 86% of idle",
+        "0002: width/height ratio 205% of idle",
+        "0002: torso/core width 176% of idle",
         "0002: baseline shifted 16px from idle",
-        "0003: body width 243% of idle",
-        "0003: baseline shifted 16px from idle",
-        "0004: body width 249% of idle",
-        "0004: baseline shifted 16px from idle"
+        "0003: body width 243% of idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "feint_rear_hook",
       "reportPath": "public/sprites/qa/supreme-emperor/feint_rear_hook/proportion-report.json",
-      "suspiciousFrames": 6,
+      "suspiciousFrames": 8,
       "sourcePriorities": [
         "frames-cleaned"
       ],
       "likelyCauses": [
-        "source art issue",
-        "within measured tolerance"
+        "source art issue"
       ],
       "worstWarnings": [
         "0001: body height 110% of idle",
+        "0001: width/height ratio 126% of idle",
+        "0001: torso/core width 139% of idle",
+        "0002: width/height ratio 145% of idle",
+        "0002: torso/core width 137% of idle",
         "0003: body height 84% of idle",
         "0003: body width 147% of idle",
-        "0004: body height 78% of idle",
-        "0004: body width 161% of idle",
-        "0005: body width 157% of idle",
-        "0006: body width 161% of idle",
-        "0007: body width 222% of idle"
+        "0003: width/height ratio 175% of idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "hit_react",
       "reportPath": "public/sprites/qa/supreme-emperor/hit_react/proportion-report.json",
-      "suspiciousFrames": 0,
+      "suspiciousFrames": 5,
       "sourcePriorities": [
         "frames-cleaned"
       ],
       "likelyCauses": [
-        "within measured tolerance"
+        "source art issue"
       ],
-      "worstWarnings": []
+      "worstWarnings": [
+        "0001: width/height ratio 128% of idle",
+        "0001: torso/core width 131% of idle",
+        "0002: width/height ratio 135% of idle",
+        "0002: torso/core width 135% of idle",
+        "0003: width/height ratio 131% of idle",
+        "0003: torso/core width 129% of idle",
+        "0004: width/height ratio 130% of idle",
+        "0004: torso/core width 129% of idle"
+      ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "idle",
       "reportPath": "public/sprites/qa/supreme-emperor/idle/proportion-report.json",
-      "suspiciousFrames": 0,
-      "sourcePriorities": [
-        "frames-cleaned"
-      ],
-      "likelyCauses": [
-        "within measured tolerance"
-      ],
-      "worstWarnings": []
-    },
-    {
-      "entityId": "supreme-emperor",
-      "animationId": "instant_death",
-      "reportPath": "public/sprites/qa/supreme-emperor/instant_death/proportion-report.json",
       "suspiciousFrames": 1,
       "sourcePriorities": [
         "frames-cleaned"
@@ -262,6 +299,29 @@
         "source art issue"
       ],
       "worstWarnings": [
+        "0004: width/height ratio 122% of idle",
+        "0004: torso/core width 120% of idle"
+      ]
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationId": "instant_death",
+      "reportPath": "public/sprites/qa/supreme-emperor/instant_death/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0002: width/height ratio 115% of idle",
+        "0002: torso/core width 116% of idle",
+        "0003: width/height ratio 122% of idle",
+        "0003: torso/core width 122% of idle",
+        "0004: width/height ratio 146% of idle",
+        "0004: torso/core width 145% of idle",
         "0005: body height 87% of idle",
         "0005: body width 167% of idle"
       ]
@@ -270,6 +330,50 @@
       "entityId": "supreme-emperor",
       "animationId": "jab_cross",
       "reportPath": "public/sprites/qa/supreme-emperor/jab_cross/proportion-report.json",
+      "suspiciousFrames": 6,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: width/height ratio 138% of idle",
+        "0001: torso/core width 141% of idle",
+        "0002: body width 153% of idle",
+        "0002: width/height ratio 153% of idle",
+        "0002: torso/core width 153% of idle",
+        "0002: feet/leg span 153% of idle",
+        "0003: body width 202% of idle",
+        "0003: width/height ratio 204% of idle"
+      ]
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationId": "recovery",
+      "reportPath": "public/sprites/qa/supreme-emperor/recovery/proportion-report.json",
+      "suspiciousFrames": 5,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0001: body height 64% of idle",
+        "0001: width/height ratio 215% of idle",
+        "0001: torso/core width 137% of idle",
+        "0002: body height 74% of idle",
+        "0002: body width 161% of idle",
+        "0002: width/height ratio 219% of idle",
+        "0002: torso/core width 161% of idle",
+        "0002: feet/leg span 161% of idle"
+      ]
+    },
+    {
+      "entityId": "supreme-emperor",
+      "animationId": "roundhouse_kick",
+      "reportPath": "public/sprites/qa/supreme-emperor/roundhouse_kick/proportion-report.json",
       "suspiciousFrames": 3,
       "sourcePriorities": [
         "frames-cleaned"
@@ -279,43 +383,12 @@
         "source art issue"
       ],
       "worstWarnings": [
-        "0002: body width 153% of idle",
-        "0003: body width 202% of idle",
-        "0004: body width 214% of idle"
+        "0002: torso/core width 127% of idle",
+        "0004: torso/core width 139% of idle",
+        "0005: width/height ratio 232% of idle",
+        "0005: torso/core width 220% of idle",
+        "0005: feet/leg span 220% of idle"
       ]
-    },
-    {
-      "entityId": "supreme-emperor",
-      "animationId": "recovery",
-      "reportPath": "public/sprites/qa/supreme-emperor/recovery/proportion-report.json",
-      "suspiciousFrames": 4,
-      "sourcePriorities": [
-        "frames-cleaned"
-      ],
-      "likelyCauses": [
-        "source art issue",
-        "within measured tolerance"
-      ],
-      "worstWarnings": [
-        "0001: body height 64% of idle",
-        "0002: body height 74% of idle",
-        "0002: body width 161% of idle",
-        "0004: body height 111% of idle",
-        "0005: body height 111% of idle"
-      ]
-    },
-    {
-      "entityId": "supreme-emperor",
-      "animationId": "roundhouse_kick",
-      "reportPath": "public/sprites/qa/supreme-emperor/roundhouse_kick/proportion-report.json",
-      "suspiciousFrames": 0,
-      "sourcePriorities": [
-        "frames-cleaned"
-      ],
-      "likelyCauses": [
-        "within measured tolerance"
-      ],
-      "worstWarnings": []
     },
     {
       "entityId": "supreme-emperor",
@@ -332,12 +405,12 @@
       "worstWarnings": [
         "0001: body height 65% of idle",
         "0001: body width 327% of idle",
+        "0001: width/height ratio 500% of idle",
+        "0001: torso/core width 327% of idle",
+        "0001: feet/leg span 327% of idle",
         "0001: baseline shifted 64px from idle",
         "0002: body height 86% of idle",
-        "0002: body width 184% of idle",
-        "0002: baseline shifted 64px from idle",
-        "0003: body width 218% of idle",
-        "0003: baseline shifted 64px from idle"
+        "0002: body width 184% of idle"
       ]
     },
     {
@@ -353,21 +426,21 @@
         "source art issue"
       ],
       "worstWarnings": [
+        "0001: torso/core width 127% of idle",
         "0001: baseline shifted 16px from idle",
+        "0002: torso/core width 139% of idle",
         "0002: baseline shifted 16px from idle",
+        "0003: torso/core width 147% of idle",
         "0003: baseline shifted 16px from idle",
         "0004: baseline shifted 16px from idle",
-        "0005: baseline shifted 16px from idle",
-        "0006: baseline shifted 16px from idle",
-        "0007: body width 231% of idle",
-        "0007: baseline shifted 16px from idle"
+        "0005: baseline shifted 16px from idle"
       ]
     },
     {
       "entityId": "supreme-emperor",
       "animationId": "walk",
       "reportPath": "public/sprites/qa/supreme-emperor/walk/proportion-report.json",
-      "suspiciousFrames": 1,
+      "suspiciousFrames": 3,
       "sourcePriorities": [
         "frames-cleaned"
       ],
@@ -376,7 +449,14 @@
         "source art issue"
       ],
       "worstWarnings": [
-        "0002: body width 151% of idle"
+        "0002: body width 151% of idle",
+        "0002: width/height ratio 151% of idle",
+        "0002: torso/core width 151% of idle",
+        "0002: feet/leg span 151% of idle",
+        "0003: width/height ratio 131% of idle",
+        "0003: torso/core width 131% of idle",
+        "0005: width/height ratio 131% of idle",
+        "0005: torso/core width 131% of idle"
       ]
     },
     {
@@ -396,6 +476,8 @@
         "0003: head/body touch top crop edge",
         "0004: head/body touch top crop edge",
         "0005: body width 43% of idle",
+        "0005: width/height ratio 43% of idle",
+        "0005: torso/core width 43% of idle",
         "0005: head/body touch top crop edge"
       ]
     },
@@ -412,12 +494,13 @@
       ],
       "worstWarnings": [
         "0001: body height 70% of idle",
+        "0001: width/height ratio 142% of idle",
         "0002: body height 64% of idle",
+        "0002: width/height ratio 157% of idle",
         "0003: body height 59% of idle",
+        "0003: width/height ratio 169% of idle",
         "0004: body height 66% of idle",
-        "0005: body height 51% of idle",
-        "0006: body height 58% of idle",
-        "0007: body height 56% of idle"
+        "0004: width/height ratio 152% of idle"
       ]
     },
     {
@@ -455,6 +538,8 @@
         "0001: head/body touch top crop edge",
         "0002: head/body touch top crop edge",
         "0003: body width 55% of idle",
+        "0003: width/height ratio 55% of idle",
+        "0003: torso/core width 55% of idle",
         "0003: head/body touch top crop edge"
       ]
     },
@@ -474,6 +559,8 @@
         "0002: head/body touch top crop edge",
         "0003: head/body touch top crop edge",
         "0004: body width 25% of idle",
+        "0004: width/height ratio 25% of idle",
+        "0004: torso/core width 25% of idle",
         "0004: head/body touch top crop edge"
       ]
     },
@@ -510,8 +597,11 @@
       "worstWarnings": [
         "0001: head/body touch top crop edge",
         "0002: body height 77% of idle",
+        "0002: width/height ratio 129% of idle",
         "0003: body height 60% of idle",
+        "0003: width/height ratio 166% of idle",
         "0004: body height 80% of idle",
+        "0004: width/height ratio 126% of idle",
         "0005: body height 68% of idle"
       ]
     },
@@ -551,6 +641,8 @@
         "0002: head/body touch top crop edge",
         "0003: head/body touch top crop edge",
         "0004: body width 56% of idle",
+        "0004: width/height ratio 56% of idle",
+        "0004: torso/core width 56% of idle",
         "0004: head/body touch top crop edge"
       ]
     },
@@ -567,10 +659,13 @@
       ],
       "worstWarnings": [
         "0001: body height 52% of idle",
+        "0001: width/height ratio 191% of idle",
         "0002: body height 58% of idle",
+        "0002: width/height ratio 173% of idle",
         "0003: body height 53% of idle",
+        "0003: width/height ratio 187% of idle",
         "0004: body height 52% of idle",
-        "0005: body height 53% of idle"
+        "0004: width/height ratio 191% of idle"
       ]
     },
     {
@@ -589,7 +684,9 @@
         "0002: head/body touch top crop edge",
         "0003: head/body touch top crop edge",
         "0004: body height 89% of idle",
-        "0004: body width 45% of idle"
+        "0004: body width 45% of idle",
+        "0004: width/height ratio 51% of idle",
+        "0004: torso/core width 45% of idle"
       ]
     },
     {
@@ -608,6 +705,8 @@
         "0001: head/body touch top crop edge",
         "0002: head/body touch top crop edge",
         "0003: body width 79% of idle",
+        "0003: width/height ratio 79% of idle",
+        "0003: torso/core width 79% of idle",
         "0003: head/body touch top crop edge"
       ]
     },
@@ -661,7 +760,9 @@
       "worstWarnings": [
         "0001: head/body touch top crop edge",
         "0004: body height 78% of idle",
-        "0005: body height 50% of idle"
+        "0004: width/height ratio 128% of idle",
+        "0005: body height 50% of idle",
+        "0005: width/height ratio 200% of idle"
       ]
     },
     {
@@ -680,6 +781,8 @@
         "0001: head/body touch top crop edge",
         "0002: head/body touch top crop edge",
         "0004: body width 78% of idle",
+        "0004: width/height ratio 78% of idle",
+        "0004: torso/core width 78% of idle",
         "0004: head/body touch top crop edge"
       ]
     },

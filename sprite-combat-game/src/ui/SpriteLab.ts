@@ -27,10 +27,15 @@ interface SpriteScaleDiagnostics {
   generatedPackBodyBounds?: string;
   baseline?: number;
   visibleBodyWidth?: number;
+  widthToHeightRatio?: number;
   widthVsIdlePercent?: number;
   heightVsIdlePercent?: number;
+  torsoCoreWidthEstimate?: number;
+  legSpreadWidthEstimate?: number;
+  feetSpanWidthEstimate?: number;
   approximateTorsoZone?: string;
   approximateLegZone?: string;
+  approximateFeetSpanZone?: string;
   approximateArmReachZone?: string;
   warningBadges?: string[];
   isDoubleScaled: boolean;
@@ -496,6 +501,8 @@ export class SpriteLab {
     ctx.strokeRect(left + bodyWidth * 0.18, top + bodyHeight * 0.22, bodyWidth * 0.64, bodyHeight * 0.34);
     ctx.strokeStyle = 'rgba(255, 176, 90, 0.72)';
     ctx.strokeRect(left + bodyWidth * 0.12, top + bodyHeight * 0.56, bodyWidth * 0.76, bodyHeight * 0.42);
+    ctx.strokeStyle = 'rgba(255, 92, 92, 0.78)';
+    ctx.strokeRect(left + bodyWidth * 0.04, top + bodyHeight * 0.84, bodyWidth * 0.92, bodyHeight * 0.16);
     ctx.restore();
   }
 
@@ -603,6 +610,10 @@ export class SpriteLab {
     const profile = this.animation ? getCharacterVisualProfile(this.animation.entityId) : undefined;
     const visibleBodyHeight = frame.bodyBounds?.height ?? alpha?.bounds?.height;
     const visibleBodyWidth = frame.bodyBounds?.width ?? alpha?.bounds?.width;
+    const widthToHeightRatio = visibleBodyHeight && visibleBodyWidth ? visibleBodyWidth / visibleBodyHeight : undefined;
+    const torsoCoreWidthEstimate = frame.bodyBounds ? Math.round(frame.bodyBounds.width * 0.64) : undefined;
+    const legSpreadWidthEstimate = frame.bodyBounds ? Math.round(frame.bodyBounds.width * 0.76) : undefined;
+    const feetSpanWidthEstimate = frame.bodyBounds ? Math.round(frame.bodyBounds.width * 0.92) : undefined;
     const normalizedPackBodyHeight = frame.generatedPackBodyBounds?.h ?? frame.generatedPackTargetBodyHeight;
     const runtimeScale =
       frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')
@@ -627,13 +638,20 @@ export class SpriteLab {
         : undefined,
       baseline: frame.feetY ?? frame.referenceBaselineY,
       visibleBodyWidth,
+      widthToHeightRatio,
       widthVsIdlePercent: visibleBodyWidth && profile ? Math.round((visibleBodyWidth / Math.max(1, profile.bodyBounds.w)) * 100) : undefined,
       heightVsIdlePercent: visibleBodyHeight && profile ? Math.round((visibleBodyHeight / Math.max(1, profile.canonicalBodyHeight)) * 100) : undefined,
+      torsoCoreWidthEstimate,
+      legSpreadWidthEstimate,
+      feetSpanWidthEstimate,
       approximateTorsoZone: frame.bodyBounds
         ? `${Math.round(frame.bodyBounds.minX + frame.bodyBounds.width * 0.18)},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.22)} ${Math.round(frame.bodyBounds.width * 0.64)}x${Math.round(frame.bodyBounds.height * 0.34)}`
         : undefined,
       approximateLegZone: frame.bodyBounds
         ? `${Math.round(frame.bodyBounds.minX + frame.bodyBounds.width * 0.12)},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.56)} ${Math.round(frame.bodyBounds.width * 0.76)}x${Math.round(frame.bodyBounds.height * 0.42)}`
+        : undefined,
+      approximateFeetSpanZone: frame.bodyBounds
+        ? `${Math.round(frame.bodyBounds.minX + frame.bodyBounds.width * 0.04)},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.84)} ${Math.round(frame.bodyBounds.width * 0.92)}x${Math.round(frame.bodyBounds.height * 0.16)}`
         : undefined,
       approximateArmReachZone: frame.bodyBounds
         ? `${frame.bodyBounds.minX},${Math.round(frame.bodyBounds.minY + frame.bodyBounds.height * 0.18)} ${frame.bodyBounds.width}x${Math.round(frame.bodyBounds.height * 0.38)}`
@@ -663,11 +681,22 @@ export class SpriteLab {
       const widthRatio = bodyWidth / Math.max(1, profile.bodyBounds.w);
       const widePose = this.animation ? /kick|sweep|dash|tornado/.test(this.animation.animationKey) : false;
       if (widthRatio < 0.8 || widthRatio > (widePose ? 2.25 : 1.45)) badges.push('width mismatch');
+      const ratio = bodyHeight ? bodyWidth / bodyHeight : undefined;
+      const idleRatio = profile.bodyBounds.w / Math.max(1, profile.canonicalBodyHeight);
+      if (ratio && idleRatio > 0) {
+        const ratioVsIdle = ratio / idleRatio;
+        if (ratioVsIdle < 0.85 || ratioVsIdle > (widePose ? 1.9 : 1.15)) badges.push('ratio mismatch');
+      }
+      const torsoRatio = bodyWidth * 0.64 / Math.max(1, profile.bodyBounds.w * 0.64);
+      if (torsoRatio < 0.85 || torsoRatio > 1.15) badges.push('torso mismatch');
+      const feetSpanRatio = bodyWidth * 0.92 / Math.max(1, profile.bodyBounds.w * 0.92);
+      if (feetSpanRatio > (widePose ? 2.1 : 1.45)) badges.push('leg spread warning');
     }
     if (baseline !== undefined && frame.height && Math.abs(baseline - frame.height * frame.anchorY) > 4) badges.push('baseline mismatch');
     if (alpha?.bounds && frame.height && (alpha.bounds.minY <= 1 || alpha.bounds.maxY >= frame.height - 2)) badges.push('crop risk');
     if (frame.placeholderFrame || this.animation?.status === 'fallback' || this.animation?.status === 'missing') badges.push('source priority mismatch');
     if (frame.usingCleanedAlphaFrame && (frameQuality?.hasAdjacentFrameBleed || frameQuality?.disconnectedNeighborBlob || frameQuality?.invalidHollowFrame)) badges.push('cleanup risk');
+    if (badges.some((badge) => ['width mismatch', 'ratio mismatch', 'torso mismatch', 'leg spread warning'].includes(badge))) badges.push('source-art likely issue');
     return [...new Set(badges)];
   }
 
