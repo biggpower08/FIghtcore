@@ -449,17 +449,20 @@ export class Game {
   }
 
   private applyTornadoKickSpacing(): void {
-    const sweetspot = 118;
+    const controlLevel = this.player.upgrades.emperorTornadoControlLevel;
+    const range = 96 + controlLevel * 18;
+    const sweetspot = 118 + controlLevel * 8;
+    const maxPush = 72 + controlLevel * 18;
     for (const target of this.livingEnemies()) {
       if (!target.alive || target.stunMs > 0 || target.y < this.player.y - 84 || target.y > this.player.y + 72) continue;
       const dx = target.x - this.player.x;
       const direction = Math.sign(dx || this.player.facing) || 1;
       const distance = Math.abs(dx);
-      if (distance > 96) continue;
+      if (distance > range) continue;
       const next = clampToPlayableArena(this.player.x + direction * sweetspot, target.y, target.radius);
-      const push = Math.min(72, Math.abs(next.x - target.x));
+      const push = Math.min(maxPush, Math.abs(next.x - target.x));
       target.x += direction * push;
-      target.vx = Math.max(Math.abs(target.vx), 170) * direction;
+      target.vx = Math.max(Math.abs(target.vx), 170 + controlLevel * 26) * direction;
       target.vy *= 0.55;
       this.dust.push({ x: target.x, y: target.y + 8, lifeMs: 220 });
     }
@@ -1068,7 +1071,8 @@ export class Game {
       this.player.recordMomentumHit();
       const killed = (impact.target instanceof Enemy || impact.target instanceof Boss) && !impact.target.alive;
       const heavyBonus = impact.heavy ? 5 + this.player.upgrades.emperorHeavyActivityLevel * 3 : 0;
-      this.player.gainActivity(10 + heavyBonus + (killed ? 18 : 0));
+      const finishBonus = killed ? 18 + this.player.upgrades.emperorKillHealLevel * 5 : 0;
+      this.player.gainActivity(10 + heavyBonus + finishBonus);
       this.player.lastLandedMoveId = impact.move.id;
       if (killed) {
         const heal = this.player.upgrades.emperorKillHealLevel * 3 + this.player.upgrades.killHealLevel * 2;

@@ -33,21 +33,22 @@ export class RewardScreen {
       button.className = 'reward-card';
       button.type = 'button';
       if (move.kind === 'upgrade') {
-        button.innerHTML = `
-          <span class="reward-icon">${upgradeIcon(move.upgrade)}</span>
-          <strong>${move.upgrade.name}</strong>
-          <span>${move.upgrade.category} Upgrade - level ${move.upgrade.currentLevel(player) + 1}/${move.upgrade.maxLevel}</span>
-          <span>${move.upgrade.valueText(player)}</span>
-          <span>${move.upgrade.description}</span>
-        `;
+        button.classList.add(`reward-card-${move.upgrade.rarity}`);
+        button.innerHTML = upgradeCardHtml(move.upgrade, player);
+        const icon = button.querySelector<HTMLImageElement>('.reward-icon img');
+        icon?.addEventListener('error', () => {
+          const root = icon.parentElement;
+          icon.remove();
+          if (root) root.textContent = upgradeIconFallback(move.upgrade);
+        });
       } else {
         button.innerHTML = `
           <span class="reward-icon">${moveIcon(move.move)}</span>
-          <strong>${move.move.name}</strong>
-          <span>${move.move.style} / ${move.move.rarity}</span>
+          <strong>${escapeHtml(move.move.name)}</strong>
+          <span>${escapeHtml(move.move.style)} / ${escapeHtml(move.move.rarity)}</span>
           <span>${move.move.damage} damage</span>
           <span>${player.getCooldownMs(move.move)}ms cooldown</span>
-          <span>Compatible with ${player.character.name}</span>
+          <span>Compatible with ${escapeHtml(player.character.name)}</span>
         `;
       }
       button.addEventListener('click', () => {
@@ -105,12 +106,36 @@ export class RewardScreen {
   }
 }
 
-function upgradeIcon(upgrade: UpgradeDefinition): string {
-  if (upgrade.characterId === 'supreme-emperor') return 'CR';
-  if (upgrade.characterId === 'ronin') return 'RN';
-  if (upgrade.category === 'Ability') return 'SP';
-  if (upgrade.id.includes('flow') || upgrade.id.includes('activity') || upgrade.name.includes('Flow')) return 'FL';
-  if (upgrade.id.includes('heal') || upgrade.id.includes('vital') || upgrade.id.includes('breath')) return 'HP';
+function upgradeCardHtml(upgrade: UpgradeDefinition, player: Player): string {
+  const nextLevel = upgrade.currentLevel(player) + 1;
+  const pathLabel = upgrade.characterScope === 'shared' ? 'Shared' : upgrade.characterScope === 'ronin' ? 'Ronin' : 'Supreme';
+  const stackText = upgrade.stackingMode === 'unique' || upgrade.stackingMode === 'transform' ? upgrade.stackingMode : `${nextLevel}/${upgrade.maxStacks}`;
+  const affectedMove = upgrade.affectedMove ? `<span class="reward-affected">Affects ${escapeHtml(upgrade.affectedMove)}</span>` : '';
+  const flavor = upgrade.flavor ? `<span class="reward-flavor">${escapeHtml(upgrade.flavor)}</span>` : '';
+
+  return `
+    <span class="reward-card-header">
+      <span class="reward-icon reward-image-icon"><img src="${escapeHtml(upgrade.icon)}" alt="" loading="lazy" /></span>
+      <span class="reward-badges">
+        <span class="reward-badge">${escapeHtml(pathLabel)}</span>
+        <span class="reward-badge reward-rarity-${upgrade.rarity}">${escapeHtml(upgrade.rarity)}</span>
+      </span>
+    </span>
+    <strong>${escapeHtml(upgrade.name)}</strong>
+    <span class="reward-level">${escapeHtml(upgrade.category)} - ${escapeHtml(stackText)}</span>
+    <span>${escapeHtml(upgrade.valueText(player))}</span>
+    <span>${escapeHtml(upgrade.effect)}</span>
+    ${affectedMove}
+    ${flavor}
+  `;
+}
+
+function upgradeIconFallback(upgrade: UpgradeDefinition): string {
+  if (upgrade.characterScope === 'supreme-emperor') return 'CR';
+  if (upgrade.characterScope === 'ronin') return 'RN';
+  if (upgrade.tags.includes('heal')) return 'HP';
+  if (upgrade.tags.includes('kick')) return 'FT';
+  if (upgrade.tags.includes('flow') || upgrade.tags.includes('activity')) return 'FL';
   return 'UP';
 }
 
@@ -119,4 +144,23 @@ function moveIcon(move: MoveDefinition): string {
   if (move.style === 'boxing' || move.id.includes('jab') || move.id.includes('cross') || move.id.includes('hook')) return 'FS';
   if (move.style === 'wrestling' || move.style === 'judo' || move.style === 'jiujitsu') return 'GR';
   return 'MV';
+}
+
+function escapeHtml(value: string): string {
+  return value.replace(/[&<>"']/g, (char) => {
+    switch (char) {
+      case '&':
+        return '&amp;';
+      case '<':
+        return '&lt;';
+      case '>':
+        return '&gt;';
+      case '"':
+        return '&quot;';
+      case "'":
+        return '&#39;';
+      default:
+        return char;
+    }
+  });
 }

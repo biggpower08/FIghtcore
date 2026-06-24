@@ -3,44 +3,50 @@ import type { SpecialAbilityId } from './specialAbilities';
 
 export type RewardKind = 'move' | 'upgrade';
 export type UpgradeCategory = 'Activity/Flow' | 'Survival' | 'Move Mastery' | 'Wave Momentum' | 'Ronin Path' | 'Supreme Path' | 'Ability';
+export type UpgradeCharacterScope = 'shared' | 'ronin' | 'supreme-emperor';
+export type UpgradeRarity = 'common' | 'uncommon' | 'rare';
+export type UpgradeStackingMode = 'stackable' | 'limited' | 'unique' | 'transform';
 export type UpgradeId =
-  | 'iron_momentum'
-  | 'breath_economy'
-  | 'rhythm_reset'
-  | 'vital_reserve'
-  | 'cellular_patch'
-  | 'footwork_drills'
-  | 'shorter_dash'
-  | 'deeper_gas_tank'
-  | 'guard_conditioning'
-  | 'second_wind'
-  | 'momentum_heal'
-  | 'clean_footwork'
-  | 'pressure_engine'
-  | 'relentless'
-  | 'sharp_entry'
-  | 'perfect_rhythm'
-  | 'density_control'
-  | 'counter_step'
-  | 'calf_breaker'
-  | 'flow_guard'
-  | 'clean_cross'
-  | 'pressure_chain'
-  | 'instant_death_focus'
-  | 'emperor_coolant'
+  | 'clean_entry'
+  | 'cross_discipline'
+  | 'measured_hands'
+  | 'low_line_tax'
+  | 'close_range_answer'
+  | 'density_breath'
+  | 'quiet_pressure'
+  | 'second_wind_stance'
+  | 'imperial_tempo'
   | 'royal_pressure'
-  | 'crown_crush'
-  | 'emperors_tempo'
+  | 'crowned_one_two'
   | 'golden_threat'
-  | 'execution_chance'
-  | 'dominance_armor'
-  | 'imperial_finish';
+  | 'crown_breaker'
+  | 'eye_of_the_crown'
+  | 'execution_window'
+  | 'throne_momentum'
+  | 'flow_state'
+  | 'pressure_engine'
+  | 'relentless_hands'
+  | 'no_back_step'
+  | 'heat_check'
+  | 'breath_between_rounds'
+  | 'clean_round'
+  | 'first_exchange';
 
 export interface UpgradeDefinition {
   id: UpgradeId;
   name: string;
+  icon: string;
+  characterScope: UpgradeCharacterScope;
   category: UpgradeCategory;
+  rarity: UpgradeRarity;
+  stackingMode: UpgradeStackingMode;
+  maxStacks: number;
+  waveMin: number;
+  effect: string;
   description: string;
+  flavor: string;
+  affectedMove?: string;
+  tags: string[];
   maxLevel: number;
   characterId?: string;
   moveId?: string;
@@ -51,149 +57,444 @@ export interface UpgradeDefinition {
   isAvailable?(player: Player): boolean;
 }
 
+type UpgradeInput = Omit<UpgradeDefinition, 'maxLevel' | 'description' | 'characterId' | 'apply' | 'currentLevel' | 'valueText'> & {
+  field: keyof Player['upgrades'];
+  valueLabel: string;
+  characterId?: string;
+  applyExtra?: (player: Player) => void;
+};
+
+const ICON_ROOT = '/ui/upgrade-icons/';
+
 export const upgrades: UpgradeDefinition[] = [
-  stat('iron_momentum', 'Heat Check', 'All attacks hit a little harder.', 4, 'damageLevel', 'Damage', 'Move Mastery'),
-  stat('breath_economy', 'Flow State', 'Build Activity faster so pressure turns into Flow more often.', 4, 'activityGainLevel', 'Activity gain', 'Activity/Flow'),
-  stat('rhythm_reset', 'Relentless Hands', 'Moves recover faster and chain more comfortably.', 4, 'cooldownLevel', 'Move recovery', 'Move Mastery'),
-  stat('cellular_patch', 'Damage Memory', 'Slowly regenerate more health when you have not been hit recently.', 3, 'healthRegenLevel', 'Health regen', 'Survival'),
-  stat('footwork_drills', 'No Back Step', 'Move 5% faster per level.', 3, 'speedLevel', 'Move speed', 'Move Mastery'),
-  stat('shorter_dash', 'Counter Step Reset', 'Dash cooldown drops by 90ms per level.', 3, 'dashLevel', 'Dash cooldown', 'Move Mastery'),
-  stat('second_wind', 'Breath Between Rounds', 'Wave-clear recovery gains a small extra buffer.', 3, 'waveHealLevel', 'Wave recovery', 'Wave Momentum'),
-  stat('momentum_heal', 'Flow Mending', 'Entering max Activity heals a small amount.', 3, 'killHealLevel', 'Flow heal', 'Activity/Flow'),
-  stat('clean_footwork', 'Angle Tax', 'Dashing near enemies grants more Activity.', 3, 'dashActivityLevel', 'Dash Activity', 'Activity/Flow'),
-  stat('pressure_engine', 'Pressure Engine', 'Activity decays more slowly.', 3, 'activityDecayLevel', 'Activity decay', 'Activity/Flow'),
-  stat('relentless', 'Redline Pressure', 'High Activity improves ability recharge and flow damage.', 3, 'flowDamageLevel', 'Flow pressure', 'Activity/Flow'),
-  stat('sharp_entry', 'Hard Entry', 'High Activity adds stronger control and knockback.', 3, 'knockbackLevel', 'Control', 'Move Mastery'),
-  stat('deeper_gas_tank', 'Bigger Aura', 'Increase maximum Activity and immediately fill the new space.', 3, 'maxStaminaLevel', 'Activity capacity', 'Activity/Flow', (player) => {
-    player.maxActivity += 12;
-    player.activity = player.maxActivity;
+  upgrade({
+    id: 'clean_entry',
+    name: 'Clean Entry',
+    icon: 'ronin-mask.png',
+    characterScope: 'ronin',
+    category: 'Ronin Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Ronin builds Activity faster from clean pressure.',
+    flavor: 'No wasted motion before the first cut.',
+    affectedMove: 'Jab',
+    tags: ['ronin', 'activity', 'jab'],
+    field: 'activityGainLevel',
+    valueLabel: 'Activity gain',
   }),
-  maxHealth('vital_reserve', 'Stay Standing', 'Increase maximum health and immediately heal the added amount.', 4),
+  upgrade({
+    id: 'cross_discipline',
+    name: 'Cross Discipline',
+    icon: 'fist-mark.png',
+    characterScope: 'ronin',
+    category: 'Ronin Path',
+    rarity: 'common',
+    stackingMode: 'limited',
+    maxStacks: 3,
+    waveMin: 1,
+    effect: 'Cross deals more damage after Jab lands.',
+    flavor: 'The second hand arrives on time.',
+    affectedMove: 'Cross',
+    tags: ['ronin', 'cross', 'combo'],
+    field: 'roninCrossLevel',
+    valueLabel: 'Jab to cross',
+  }),
+  upgrade({
+    id: 'measured_hands',
+    name: 'Measured Hands',
+    icon: 'fist-mark.png',
+    characterScope: 'ronin',
+    category: 'Ronin Path',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 4,
+    effect: 'Ronin chains recover faster when pressure stays clean.',
+    flavor: 'A calm hand is still a fast hand.',
+    affectedMove: 'Chain attacks',
+    tags: ['ronin', 'recovery', 'chain'],
+    field: 'roninChainLevel',
+    valueLabel: 'Chain rhythm',
+  }),
+  upgrade({
+    id: 'low_line_tax',
+    name: 'Low-Line Tax',
+    icon: 'foot-arc.png',
+    characterScope: 'ronin',
+    category: 'Ronin Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Calf Kick gains damage, control, and hitstun.',
+    flavor: 'Every step forward gets billed.',
+    affectedMove: 'Calf Kick',
+    tags: ['ronin', 'kick', 'control'],
+    field: 'roninCalfLevel',
+    valueLabel: 'Low line',
+  }),
+  upgrade({
+    id: 'close_range_answer',
+    name: 'Close Range Answer',
+    icon: 'impact-star.png',
+    characterScope: 'ronin',
+    category: 'Ronin Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 3,
+    waveMin: 1,
+    effect: 'Knee gains extra control and hitstun.',
+    flavor: 'Too close is still a range.',
+    affectedMove: 'Knee',
+    tags: ['ronin', 'knee', 'control'],
+    field: 'roninKneeLevel',
+    valueLabel: 'Knee control',
+  }),
+  upgrade({
+    id: 'density_breath',
+    name: 'Density Breath',
+    icon: 'heart-guard.png',
+    characterScope: 'ronin',
+    category: 'Ability',
+    rarity: 'uncommon',
+    stackingMode: 'limited',
+    maxStacks: 3,
+    waveMin: 4,
+    effect: 'Density lasts longer.',
+    flavor: 'Breathe once, become difficult to move.',
+    affectedMove: 'Density',
+    tags: ['ronin', 'ability', 'survival'],
+    field: 'abilityLevel',
+    valueLabel: 'Density',
+    abilityId: 'density',
+    isAvailable: (player) => player.ability?.id === 'density',
+  }),
+  upgrade({
+    id: 'quiet_pressure',
+    name: 'Quiet Pressure',
+    icon: 'flow-bolt.png',
+    characterScope: 'ronin',
+    category: 'Ronin Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Pressure improves recovery as Activity rises.',
+    flavor: 'The loudest thing in the room is the opening.',
+    affectedMove: 'All attacks',
+    tags: ['ronin', 'recovery', 'activity'],
+    field: 'flowRecoveryLevel',
+    valueLabel: 'Pressure recovery',
+  }),
+  upgrade({
+    id: 'second_wind_stance',
+    name: 'Second Wind Stance',
+    icon: 'heart-guard.png',
+    characterScope: 'ronin',
+    category: 'Survival',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 3,
+    waveMin: 4,
+    effect: 'High Activity reduces incoming damage.',
+    flavor: 'Stay standing long enough for the answer.',
+    affectedMove: 'High Activity',
+    tags: ['ronin', 'defense', 'activity'],
+    field: 'highActivityDefenseLevel',
+    valueLabel: 'Flow guard',
+  }),
 
-  characterField('perfect_rhythm', 'Clean Entry', 'ronin', 'Ronin chains recover faster when you keep attacking.', 3, 'roninChainLevel', 'Rhythm'),
-  ability('density_control', 'Density Breath', 'ronin', 'density', 'Density lasts longer and feeds the survivor path.', 3),
-  characterField('counter_step', 'Counter Step', 'ronin', 'Dashing close to enemies grants more Activity.', 3, 'dashActivityLevel', 'Counter Activity'),
-  characterField('calf_breaker', 'Low-Line Tax', 'ronin', 'Calf Kick gets stronger control and damage pressure.', 3, 'roninCalfLevel', 'Low line'),
-  characterField('flow_guard', 'Second Wind Stance', 'ronin', 'High Activity grants damage reduction.', 3, 'highActivityDefenseLevel', 'Flow guard'),
-  characterField('clean_cross', 'Cross Discipline', 'ronin', 'Cross deals bonus damage after Jab connects.', 3, 'roninCrossLevel', 'Jab to cross'),
-  characterField('pressure_chain', 'Quiet Pressure', 'ronin', 'Landed pressure improves recovery and Activity gain.', 3, 'flowRecoveryLevel', 'Pressure chain'),
+  upgrade({
+    id: 'imperial_tempo',
+    name: 'Imperial Tempo',
+    icon: 'crown-flame.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'High Activity improves attack recovery.',
+    flavor: 'The throne sets the pace.',
+    affectedMove: 'Jab-Cross',
+    tags: ['supreme', 'tempo', 'recovery'],
+    field: 'flowRecoveryLevel',
+    valueLabel: 'Imperial tempo',
+  }),
+  upgrade({
+    id: 'royal_pressure',
+    name: 'Royal Pressure',
+    icon: 'crown-flame.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Heavy hits generate extra Activity.',
+    flavor: 'Make them feel the room tilt.',
+    affectedMove: 'Heavy strikes',
+    tags: ['supreme', 'heavy', 'activity'],
+    field: 'emperorHeavyActivityLevel',
+    valueLabel: 'Royal pressure',
+  }),
+  upgrade({
+    id: 'crowned_one_two',
+    name: 'Crowned One-Two',
+    icon: 'fist-mark.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 3,
+    waveMin: 4,
+    effect: 'High Activity makes strikes hit harder.',
+    flavor: 'A ruler does not ask twice.',
+    affectedMove: 'Jab-Cross',
+    tags: ['supreme', 'damage', 'combo'],
+    field: 'emperorHighActivityDamageLevel',
+    valueLabel: 'Crowned damage',
+  }),
+  upgrade({
+    id: 'golden_threat',
+    name: 'Golden Threat',
+    icon: 'impact-star.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 3,
+    waveMin: 4,
+    effect: 'Strikes gain more control and knockback.',
+    flavor: 'Gold can still be heavy.',
+    affectedMove: 'Power strikes',
+    tags: ['supreme', 'control', 'knockback'],
+    field: 'knockbackLevel',
+    valueLabel: 'Threat control',
+  }),
+  upgrade({
+    id: 'crown_breaker',
+    name: 'Crown Breaker',
+    icon: 'impact-star.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'High Activity increases damage.',
+    flavor: 'Break the line, keep the crown.',
+    affectedMove: 'High Activity',
+    tags: ['supreme', 'damage', 'activity'],
+    field: 'emperorHighActivityDamageLevel',
+    valueLabel: 'Crown breaker',
+  }),
+  upgrade({
+    id: 'eye_of_the_crown',
+    name: 'Eye of the Crown',
+    icon: 'crown-flame.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'uncommon',
+    stackingMode: 'transform',
+    maxStacks: 1,
+    waveMin: 4,
+    effect: 'Tornado Kick creates stronger spacing control.',
+    flavor: 'One turn, and the crowd makes room.',
+    affectedMove: 'Tornado Kick',
+    tags: ['supreme', 'tornado', 'spacing'],
+    field: 'emperorTornadoControlLevel',
+    valueLabel: 'Tornado control',
+  }),
+  upgrade({
+    id: 'execution_window',
+    name: 'Execution Window',
+    icon: 'crown-flame.png',
+    characterScope: 'supreme-emperor',
+    category: 'Ability',
+    rarity: 'rare',
+    stackingMode: 'unique',
+    maxStacks: 1,
+    waveMin: 8,
+    effect: 'Instant Death chance rises near max Activity.',
+    flavor: 'There is a moment when the fight agrees with you.',
+    affectedMove: 'Instant Death',
+    tags: ['supreme', 'ability', 'execute'],
+    field: 'emperorExecutionLevel',
+    valueLabel: 'Execution',
+    abilityId: 'instant_death',
+    isAvailable: (player) => player.ability?.id === 'instant_death',
+  }),
+  upgrade({
+    id: 'throne_momentum',
+    name: 'Throne Momentum',
+    icon: 'crown-flame.png',
+    characterScope: 'supreme-emperor',
+    category: 'Supreme Path',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 4,
+    effect: 'Defeating enemies grants extra Activity and healing.',
+    flavor: 'The finish becomes fuel.',
+    affectedMove: 'Enemy defeats',
+    tags: ['supreme', 'finish', 'heal'],
+    field: 'emperorKillHealLevel',
+    valueLabel: 'Finish sustain',
+  }),
 
-  ability('instant_death_focus', "Emperor's Decree", 'supreme-emperor', 'instant_death', 'Instant Death lasts longer and procs more often.', 4),
-  abilityCooldown('emperor_coolant', 'Throne Momentum', 'supreme-emperor', 'instant_death', 'Instant Death comes back faster.'),
-  characterField('royal_pressure', 'Royal Pressure', 'supreme-emperor', 'Heavy hits generate extra Activity.', 3, 'emperorHeavyActivityLevel', 'Royal pressure'),
-  characterField('crown_crush', 'Crown Breaker', 'supreme-emperor', 'High Activity makes heavy hits hit harder.', 3, 'emperorHighActivityDamageLevel', 'Crown breaker'),
-  characterField('emperors_tempo', 'Imperial Tempo', 'supreme-emperor', 'Jab-Cross and heavy chains recover faster at high Activity.', 3, 'flowRecoveryLevel', 'Tempo'),
-  characterField('golden_threat', 'Golden Threat', 'supreme-emperor', 'Heavy strikes gain more damage and control.', 3, 'knockbackLevel', 'Threat'),
-  characterField('execution_chance', 'Execution Window', 'supreme-emperor', 'Instant Death chance rises only near max Activity.', 3, 'emperorExecutionLevel', 'Execution'),
-  characterField('dominance_armor', 'Dominance Armor', 'supreme-emperor', 'High Activity grants armor during attacks.', 3, 'emperorArmorLevel', 'Dominance armor'),
-  characterField('imperial_finish', 'Imperial Finish', 'supreme-emperor', 'Defeating enemies grants a small heal and helps sustain pressure.', 3, 'emperorKillHealLevel', 'Finish heal'),
+  upgrade({
+    id: 'flow_state',
+    name: 'Flow State',
+    icon: 'flow-bolt.png',
+    characterScope: 'shared',
+    category: 'Activity/Flow',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 4,
+    effect: 'High Activity improves recovery and Flow uptime.',
+    flavor: 'The fight starts answering back.',
+    affectedMove: 'All attacks',
+    tags: ['shared', 'flow', 'recovery'],
+    field: 'flowRecoveryLevel',
+    valueLabel: 'Flow recovery',
+  }),
+  upgrade({
+    id: 'pressure_engine',
+    name: 'Pressure Engine',
+    icon: 'flow-bolt.png',
+    characterScope: 'shared',
+    category: 'Activity/Flow',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 5,
+    waveMin: 1,
+    effect: 'Activity decays more slowly.',
+    flavor: 'Keep the motor warm.',
+    affectedMove: 'Activity',
+    tags: ['shared', 'activity', 'decay'],
+    field: 'activityDecayLevel',
+    valueLabel: 'Activity decay',
+  }),
+  upgrade({
+    id: 'relentless_hands',
+    name: 'Relentless Hands',
+    icon: 'fist-mark.png',
+    characterScope: 'shared',
+    category: 'Move Mastery',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Moves recover faster.',
+    flavor: 'Hands back, hands out.',
+    affectedMove: 'All attacks',
+    tags: ['shared', 'recovery', 'hands'],
+    field: 'cooldownLevel',
+    valueLabel: 'Move recovery',
+  }),
+  upgrade({
+    id: 'no_back_step',
+    name: 'No Back Step',
+    icon: 'step-arrow.png',
+    characterScope: 'shared',
+    category: 'Activity/Flow',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 3,
+    waveMin: 1,
+    effect: 'Dashing near enemies grants more Activity.',
+    flavor: 'Forward is a resource.',
+    affectedMove: 'Dash',
+    tags: ['shared', 'dash', 'activity'],
+    field: 'dashActivityLevel',
+    valueLabel: 'Dash Activity',
+  }),
+  upgrade({
+    id: 'heat_check',
+    name: 'Heat Check',
+    icon: 'impact-star.png',
+    characterScope: 'shared',
+    category: 'Move Mastery',
+    rarity: 'uncommon',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 4,
+    effect: 'Flow pressure increases damage.',
+    flavor: 'Ask once. Make them answer.',
+    affectedMove: 'Flow hits',
+    tags: ['shared', 'damage', 'flow'],
+    field: 'flowDamageLevel',
+    valueLabel: 'Flow pressure',
+  }),
+  upgrade({
+    id: 'breath_between_rounds',
+    name: 'Breath Between Rounds',
+    icon: 'heart-guard.png',
+    characterScope: 'shared',
+    category: 'Survival',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Wave-clear recovery restores more health.',
+    flavor: 'One breath before the next alarm.',
+    affectedMove: 'Wave clear',
+    tags: ['shared', 'heal', 'wave'],
+    field: 'waveHealLevel',
+    valueLabel: 'Wave recovery',
+  }),
+  upgrade({
+    id: 'clean_round',
+    name: 'Clean Round',
+    icon: 'heart-guard.png',
+    characterScope: 'shared',
+    category: 'Wave Momentum',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 3,
+    waveMin: 1,
+    effect: 'Flow entry and enemy defeats restore health.',
+    flavor: 'Win neatly, leave with something.',
+    affectedMove: 'Flow and defeats',
+    tags: ['shared', 'heal', 'momentum'],
+    field: 'killHealLevel',
+    valueLabel: 'Clean recovery',
+  }),
+  upgrade({
+    id: 'first_exchange',
+    name: 'First Exchange',
+    icon: 'fist-mark.png',
+    characterScope: 'shared',
+    category: 'Activity/Flow',
+    rarity: 'common',
+    stackingMode: 'stackable',
+    maxStacks: 4,
+    waveMin: 1,
+    effect: 'Clean exchanges build Activity faster.',
+    flavor: 'The first answer shapes the round.',
+    affectedMove: 'Opening pressure',
+    tags: ['shared', 'activity', 'pressure'],
+    field: 'activityGainLevel',
+    valueLabel: 'Exchange Activity',
+  }),
 ];
 
-function stat(
-  id: UpgradeId,
-  name: string,
-  description: string,
-  maxLevel: number,
-  field: keyof Player['upgrades'],
-  label: string,
-  category: UpgradeCategory,
-  extraApply?: (player: Player) => void,
-): UpgradeDefinition {
+function upgrade(input: UpgradeInput): UpgradeDefinition {
   return {
-    id,
-    name,
-    category,
-    description,
-    maxLevel,
+    ...input,
+    icon: `${ICON_ROOT}${input.icon}`,
+    maxLevel: input.maxStacks,
+    description: input.effect,
+    characterId: input.characterScope === 'shared' ? undefined : input.characterScope,
     apply: (player) => {
-      player.upgrades[field] += 1;
-      extraApply?.(player);
+      player.upgrades[input.field] += 1;
+      input.applyExtra?.(player);
     },
-    currentLevel: (player) => player.upgrades[field],
-    valueText: (player) => `${label} level ${player.upgrades[field] + 1}`,
-  };
-}
-
-function maxHealth(id: UpgradeId, name: string, description: string, maxLevel: number): UpgradeDefinition {
-  return {
-    id,
-    name,
-    category: 'Survival',
-    description,
-    maxLevel,
-    apply: (player) => {
-      player.maxHealth += 14;
-      player.heal(14);
-    },
-    currentLevel: (player) => Math.max(0, Math.round((player.maxHealth - player.loadout.stats.maxHealth) / 14)),
-    valueText: (player) => `Max health +${14 * (Math.max(0, Math.round((player.maxHealth - player.loadout.stats.maxHealth) / 14)) + 1)}`,
-  };
-}
-
-function ability(
-  id: UpgradeId,
-  name: string,
-  characterId: string,
-  abilityId: SpecialAbilityId,
-  description: string,
-  maxLevel: number,
-): UpgradeDefinition {
-  return {
-    id,
-    name,
-    category: characterId === 'ronin' ? 'Ronin Path' : characterId === 'supreme-emperor' ? 'Supreme Path' : 'Ability',
-    characterId,
-    abilityId,
-    description,
-    maxLevel,
-    apply: (player) => {
-      player.upgrades.abilityLevel += 1;
-    },
-    currentLevel: (player) => player.upgrades.abilityLevel,
-    valueText: (player) => `${player.ability?.name ?? name} level ${player.upgrades.abilityLevel + 1}`,
-    isAvailable: (player) => player.character.id === characterId && player.ability?.id === abilityId,
-  };
-}
-
-function abilityCooldown(id: UpgradeId, name: string, characterId: string, abilityId: SpecialAbilityId, description: string): UpgradeDefinition {
-  return {
-    id,
-    name,
-    category: characterId === 'supreme-emperor' ? 'Supreme Path' : 'Ability',
-    characterId,
-    abilityId,
-    description,
-    maxLevel: 3,
-    apply: (player) => {
-      player.upgrades.abilityCooldownLevel += 1;
-    },
-    currentLevel: (player) => player.upgrades.abilityCooldownLevel,
-    valueText: (player) => `Ability reset level ${player.upgrades.abilityCooldownLevel + 1}`,
-    isAvailable: (player) => player.character.id === characterId && player.ability?.id === abilityId,
-  };
-}
-
-function characterField(
-  id: UpgradeId,
-  name: string,
-  characterId: string,
-  description: string,
-  maxLevel: number,
-  field: keyof Player['upgrades'],
-  label: string,
-): UpgradeDefinition {
-  return {
-    id,
-    name,
-    category: characterId === 'ronin' ? 'Ronin Path' : characterId === 'supreme-emperor' ? 'Supreme Path' : 'Move Mastery',
-    characterId,
-    description,
-    maxLevel,
-    apply: (player) => {
-      player.upgrades[field] += 1;
-    },
-    currentLevel: (player) => player.upgrades[field],
-    valueText: (player) => `${label} level ${player.upgrades[field] + 1}`,
-    isAvailable: (player) => player.character.id === characterId,
+    currentLevel: (player) => player.upgrades[input.field],
+    valueText: (player) => `${input.valueLabel} ${player.upgrades[input.field] + 1}/${input.maxStacks}`,
   };
 }

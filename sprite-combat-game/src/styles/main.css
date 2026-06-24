@@ -428,7 +428,7 @@ body {
 }
 
 .reward-card {
-  min-height: 148px;
+  min-height: 190px;
   padding: 14px;
   color: #ffeec5;
   text-align: left;
@@ -436,6 +436,19 @@ body {
   border-radius: 8px;
   background: #322012;
   cursor: pointer;
+}
+
+.reward-card-common {
+  border-color: #8f6534;
+}
+
+.reward-card-uncommon {
+  border-color: #3f9a8b;
+}
+
+.reward-card-rare {
+  border-color: #d7b144;
+  box-shadow: 0 0 0 1px rgba(240, 195, 106, 0.25);
 }
 
 .reward-card:hover,
@@ -450,9 +463,17 @@ body {
   display: block;
 }
 
+.reward-card-header {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
 .reward-icon {
-  width: 34px;
-  height: 26px;
+  width: 36px;
+  height: 30px;
   margin-bottom: 10px;
   display: inline-grid;
   place-items: center;
@@ -465,6 +486,58 @@ body {
   box-shadow: 0 0 0 2px rgba(255, 238, 197, 0.18);
 }
 
+.reward-card-header .reward-icon {
+  flex: 0 0 auto;
+  margin-bottom: 0;
+}
+
+.reward-image-icon {
+  width: 44px;
+  height: 44px;
+  padding: 6px;
+  background: #fff4c7;
+}
+
+.reward-image-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.reward-badges {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 0 !important;
+}
+
+.reward-badge {
+  width: fit-content;
+  margin-top: 0 !important;
+  padding: 3px 6px;
+  color: #ffeec5 !important;
+  font-size: 10px !important;
+  font-weight: 800;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 238, 197, 0.28);
+  border-radius: 5px;
+  background: rgba(255, 238, 197, 0.08);
+}
+
+.reward-rarity-common {
+  color: #e6d1a1 !important;
+}
+
+.reward-rarity-uncommon {
+  color: #74f0d8 !important;
+}
+
+.reward-rarity-rare {
+  color: #ffd66f !important;
+}
+
 .reward-card strong {
   margin-bottom: 8px;
   font-size: 16px;
@@ -474,6 +547,16 @@ body {
   margin-top: 5px;
   color: #dfc18d;
   font-size: 12px;
+}
+
+.reward-level,
+.reward-affected {
+  color: #f0c36a !important;
+}
+
+.reward-flavor {
+  color: #9fc7bd !important;
+  font-style: italic;
 }
 
 @media (max-width: 760px) {

@@ -29,11 +29,13 @@ export interface PlayerUpgradeState {
   roninChainLevel: number;
   roninCrossLevel: number;
   roninCalfLevel: number;
+  roninKneeLevel: number;
   emperorHeavyActivityLevel: number;
   emperorHighActivityDamageLevel: number;
   emperorExecutionLevel: number;
   emperorArmorLevel: number;
   emperorKillHealLevel: number;
+  emperorTornadoControlLevel: number;
 }
 
 export class Player extends Fighter {
@@ -80,11 +82,13 @@ export class Player extends Fighter {
     roninChainLevel: 0,
     roninCrossLevel: 0,
     roninCalfLevel: 0,
+    roninKneeLevel: 0,
     emperorHeavyActivityLevel: 0,
     emperorHighActivityDamageLevel: 0,
     emperorExecutionLevel: 0,
     emperorArmorLevel: 0,
     emperorKillHealLevel: 0,
+    emperorTornadoControlLevel: 0,
   };
 
   constructor(character: CharacterDefinition, loadout: CharacterLoadout, moves: MoveDefinition[]) {
