@@ -9,8 +9,8 @@
   "moveMapping": {
     "H": "jab",
     "J": "cross",
-    "K": "calf_kick",
-    "L": "recovery"
+    "K": "roundhouse_kick",
+    "L": "side_kick"
   },
   "animations": {
     "idle": { "file": "../../sprites/semi-realistic-source/ronin_idle.png", "frames": 5, "loop": true, "fps": 6, "outputCanvas": { "w": 192, "h": 160 } },

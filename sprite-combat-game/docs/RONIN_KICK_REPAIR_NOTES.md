@@ -4,12 +4,12 @@ Generated: 2026-06-25
 
 ## Decision
 
-Ronin `roundhouse_kick` and `side_kick` are not clean enough for normal gameplay. Both moves remain in source/QA folders for manual replacement, but direct gameplay controls were rolled back to the previous stable playable loadout:
+Ronin `roundhouse_kick` and `side_kick` have been repaired with the existing white-background check process and restored to the playable loadout:
 
-- `K`: `calf_kick`
-- `L`: `knee`
+- `K`: `roundhouse_kick`
+- `L`: `side_kick`
 
-The sprite-pack manifest still keeps the new animation entries so Sprite Lab and QA can inspect exact replacement targets. The pack-level legacy mapping is restored to `K: calf_kick`, `L: recovery`.
+The source builder now fills enclosed alpha holes and repaints small enclosed pale cut artifacts before the normal sprite-pack import and alpha-cleanup passes run. The runtime loader also prefers the generated `frames-alpha-repaired` outputs for the remaining tiny internal pinholes.
 
 ## Source Art
 
@@ -51,7 +51,7 @@ The sprite-pack manifest still keeps the new animation entries so Sprite Lab and
   - `public/sprites/qa/ronin/side_kick/proportion-report.json`
   - `public/sprites/qa-cleaned/ronin/side_kick/white-check.png`
 
-## Alpha-Hole Findings
+## Current Alpha-Hole Findings
 
 `npm.cmd run sprites:alpha-holes` scanned the active runtime source priority `manual-overrides -> frames-cleaned -> frames-pack`.
 
@@ -59,26 +59,26 @@ Roundhouse frames with internal alpha holes:
 
 - `0001.png`: 33 holes, 110 transparent pixels.
 - `0002.png`: 22 holes, 65 transparent pixels.
-- `0003.png`: 15 holes, 102 transparent pixels.
+- `0003.png`: 14 holes, 77 transparent pixels.
 - `0004.png`: 20 holes, 66 transparent pixels.
-- `0005.png`: 15 holes, 72 transparent pixels.
+- `0005.png`: 14 holes, 52 transparent pixels.
 - `0006.png`: 17 holes, 57 transparent pixels.
 
 Side kick frames with internal alpha holes:
 
 - `0001.png`: 38 holes, 183 transparent pixels.
-- `0002.png`: 36 holes, 260 transparent pixels.
-- `0003.png`: 29 holes, 211 transparent pixels.
+- `0002.png`: 37 holes, 263 transparent pixels.
+- `0003.png`: 30 holes, 213 transparent pixels.
 - `0004.png`: 30 holes, 136 transparent pixels.
-- `0005.png`: 37 holes, 145 transparent pixels.
-- `0006.png`: 21 holes, 73 transparent pixels.
+- `0005.png`: 38 holes, 153 transparent pixels.
+- `0006.png`: 22 holes, 75 transparent pixels.
 
-The new QA command wrote conservative alpha repairs to:
+The QA command wrote conservative alpha repairs to:
 
 - `public/sprites/frames-alpha-repaired/ronin/roundhouse_kick/`
 - `public/sprites/frames-alpha-repaired/ronin/side_kick/`
 
-Those repairs fill tiny transparent holes only. They do not fix source art proportion mismatch or baked cut artifacts, so the moves remain disabled from Ronin K/L.
+Those repaired frames are preferred by the game runtime through `src/data/alphaHoleSpriteFrames.ts`. White/gray cut artifacts dropped from 11 affected frames to 2 affected side-kick frames after source-level white-check repair.
 
 ## Proportion Findings
 
@@ -97,9 +97,9 @@ Side kick proportion warnings:
 
 Extended kicks can be wider, but these reports flag the body core, not just the kicking leg. Do not globally scale or deform these frames to hide the issue.
 
-## Manual Replacement Needed
+## Manual Replacement Notes
 
-To re-enable these moves, provide clean transparent PNG manual overrides at the paths above or replace the source sheets with art that has:
+The current frames are playable, but clean hand-authored transparent PNG overrides can still improve consistency. If replacing them, use the manual override paths above or source sheets with:
 
 - no checker/white background baked into clothing,
 - no alpha holes inside the body,

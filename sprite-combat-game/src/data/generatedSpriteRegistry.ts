@@ -1487,7 +1487,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 101,
               "w": 277,
               "h": 487,
-              "pixels": 52163
+              "pixels": 52242
             },
             "bodyBounds": {
               "x": 111,
@@ -1521,7 +1521,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 101,
               "w": 232,
               "h": 487,
-              "pixels": 47066
+              "pixels": 47126
             },
             "bodyBounds": {
               "x": 116,
@@ -1555,7 +1555,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 101,
               "w": 183,
               "h": 487,
-              "pixels": 42332
+              "pixels": 42842
             },
             "bodyBounds": {
               "x": 122,
@@ -1589,7 +1589,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 101,
               "w": 354,
               "h": 487,
-              "pixels": 45683
+              "pixels": 45732
             },
             "bodyBounds": {
               "x": 101,
@@ -1623,7 +1623,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 101,
               "w": 375,
               "h": 486,
-              "pixels": 46447
+              "pixels": 46983
             },
             "bodyBounds": {
               "x": 99,
@@ -1657,7 +1657,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 101,
               "w": 265,
               "h": 487,
-              "pixels": 52657
+              "pixels": 52780
             },
             "bodyBounds": {
               "x": 112,
@@ -1715,7 +1715,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 105,
               "w": 258,
               "h": 462,
-              "pixels": 43537
+              "pixels": 43604
             },
             "bodyBounds": {
               "x": 111,
@@ -1749,7 +1749,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 105,
               "w": 300,
               "h": 462,
-              "pixels": 44177
+              "pixels": 44240
             },
             "bodyBounds": {
               "x": 106,
@@ -1783,7 +1783,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 105,
               "w": 211,
               "h": 462,
-              "pixels": 36917
+              "pixels": 36971
             },
             "bodyBounds": {
               "x": 117,
@@ -1817,7 +1817,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 105,
               "w": 386,
               "h": 462,
-              "pixels": 45298
+              "pixels": 45357
             },
             "bodyBounds": {
               "x": 95,
@@ -1851,7 +1851,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 105,
               "w": 369,
               "h": 462,
-              "pixels": 42867
+              "pixels": 43013
             },
             "bodyBounds": {
               "x": 97,
@@ -1885,7 +1885,7 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
               "y": 105,
               "w": 251,
               "h": 462,
-              "pixels": 47396
+              "pixels": 47502
             },
             "bodyBounds": {
               "x": 112,

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T04:06:22.905Z",
+  "generatedAt": "2026-06-25T04:22:02.660Z",
   "entityId": "ronin",
   "animationKey": "side_kick",
   "sourcePriority": [
@@ -125,7 +125,7 @@
             "w": 3,
             "h": 3
           },
-          "confidence": 0.88,
+          "confidence": 0.94,
           "touchesOutsideTransparency": false
         },
         {
@@ -450,8 +450,8 @@
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0002.png",
       "sourcePriority": "frames-cleaned",
-      "alphaHoleCount": 36,
-      "alphaHolePixels": 260,
+      "alphaHoleCount": 37,
+      "alphaHolePixels": 263,
       "largestAlphaHolePixels": 95,
       "holes": [
         {
@@ -485,6 +485,17 @@
             "h": 4
           },
           "confidence": 0.89,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 149,
+            "y": 44,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.67,
           "touchesOutsideTransparency": false
         },
         {
@@ -851,7 +862,7 @@
           "touchesOutsideTransparency": false
         }
       ],
-      "lightArtifactPixels": 6,
+      "lightArtifactPixels": 4,
       "lightArtifactBboxes": [
         {
           "x": 133,
@@ -866,13 +877,6 @@
           "w": 2,
           "h": 1,
           "area": 2
-        },
-        {
-          "x": 121,
-          "y": 144,
-          "w": 1,
-          "h": 2,
-          "area": 2
         }
       ],
       "edgeContact": false,
@@ -886,8 +890,8 @@
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0003.png",
       "sourcePriority": "frames-cleaned",
-      "alphaHoleCount": 29,
-      "alphaHolePixels": 211,
+      "alphaHoleCount": 30,
+      "alphaHolePixels": 213,
       "largestAlphaHolePixels": 101,
       "holes": [
         {
@@ -1201,6 +1205,17 @@
         {
           "area": 2,
           "bbox": {
+            "x": 138,
+            "y": 145,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
             "x": 141,
             "y": 146,
             "w": 2,
@@ -1210,16 +1225,8 @@
           "touchesOutsideTransparency": false
         }
       ],
-      "lightArtifactPixels": 2,
-      "lightArtifactBboxes": [
-        {
-          "x": 167,
-          "y": 81,
-          "w": 1,
-          "h": 2,
-          "area": 2
-        }
-      ],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
       "edgeContact": false,
       "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/side_kick/0003.png",
       "recommendation": "repair",
@@ -1265,7 +1272,7 @@
             "w": 2,
             "h": 2
           },
-          "confidence": 0.83,
+          "confidence": 0.92,
           "touchesOutsideTransparency": false
         },
         {
@@ -1566,16 +1573,8 @@
           "touchesOutsideTransparency": false
         }
       ],
-      "lightArtifactPixels": 2,
-      "lightArtifactBboxes": [
-        {
-          "x": 100,
-          "y": 41,
-          "w": 1,
-          "h": 2,
-          "area": 2
-        }
-      ],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
       "edgeContact": false,
       "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/side_kick/0004.png",
       "recommendation": "repair",
@@ -1587,9 +1586,9 @@
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0005.png",
       "sourcePriority": "frames-cleaned",
-      "alphaHoleCount": 37,
-      "alphaHolePixels": 145,
-      "largestAlphaHolePixels": 17,
+      "alphaHoleCount": 38,
+      "alphaHolePixels": 153,
+      "largestAlphaHolePixels": 14,
       "holes": [
         {
           "area": 2,
@@ -1654,7 +1653,7 @@
             "w": 2,
             "h": 1
           },
-          "confidence": 0.9,
+          "confidence": 1,
           "touchesOutsideTransparency": false
         },
         {
@@ -1666,6 +1665,17 @@
             "h": 2
           },
           "confidence": 0.79,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 11,
+          "bbox": {
+            "x": 105,
+            "y": 42,
+            "w": 4,
+            "h": 5
+          },
+          "confidence": 0.73,
           "touchesOutsideTransparency": false
         },
         {
@@ -1757,14 +1767,14 @@
           "touchesOutsideTransparency": false
         },
         {
-          "area": 17,
+          "area": 14,
           "bbox": {
-            "x": 137,
+            "x": 138,
             "y": 56,
-            "w": 7,
-            "h": 5
+            "w": 6,
+            "h": 4
           },
-          "confidence": 0.68,
+          "confidence": 0.71,
           "touchesOutsideTransparency": false
         },
         {
@@ -1830,7 +1840,7 @@
             "w": 3,
             "h": 2
           },
-          "confidence": 0.79,
+          "confidence": 0.86,
           "touchesOutsideTransparency": false
         },
         {
@@ -1999,20 +2009,13 @@
           "touchesOutsideTransparency": false
         }
       ],
-      "lightArtifactPixels": 4,
+      "lightArtifactPixels": 2,
       "lightArtifactBboxes": [
         {
           "x": 145,
           "y": 57,
           "w": 2,
           "h": 1,
-          "area": 2
-        },
-        {
-          "x": 116,
-          "y": 116,
-          "w": 1,
-          "h": 2,
           "area": 2
         }
       ],
@@ -2027,8 +2030,8 @@
       "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0006.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0006.png",
       "sourcePriority": "frames-cleaned",
-      "alphaHoleCount": 21,
-      "alphaHolePixels": 73,
+      "alphaHoleCount": 22,
+      "alphaHolePixels": 75,
       "largestAlphaHolePixels": 9,
       "holes": [
         {
@@ -2230,6 +2233,17 @@
           "touchesOutsideTransparency": false
         },
         {
+          "area": 2,
+          "bbox": {
+            "x": 165,
+            "y": 131,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 0.8,
+          "touchesOutsideTransparency": false
+        },
+        {
           "area": 3,
           "bbox": {
             "x": 119,
@@ -2263,16 +2277,8 @@
           "touchesOutsideTransparency": false
         }
       ],
-      "lightArtifactPixels": 2,
-      "lightArtifactBboxes": [
-        {
-          "x": 154,
-          "y": 38,
-          "w": 1,
-          "h": 2,
-          "area": 2
-        }
-      ],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
       "edgeContact": false,
       "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/side_kick/0006.png",
       "recommendation": "repair",

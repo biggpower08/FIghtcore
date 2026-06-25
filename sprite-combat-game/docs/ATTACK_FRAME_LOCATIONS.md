@@ -104,9 +104,7 @@ Runtime frames:
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0004.png`
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0005.png`
 
-## Ronin - Roundhouse Kick - disabled art audit
-
-**Problem animation to check first.**
+## Ronin - Roundhouse Kick
 
 - Character id: `ronin`
 - Animation id: `roundhouse_kick`
@@ -124,7 +122,7 @@ Runtime frames:
 - Impact frame: `0005`
 - Chained visual frames: `0004:68ms` -> `0005:144ms` -> `0006:72ms`
 - Chained visual note: Chained roundhouse uses kick setup, full extension, guard return.
-- Timing note: Disabled from Ronin K after alpha-hole/proportion audit. Keep for manual replacement only.
+- Timing note: Restored to Ronin K after white-check source repair; runtime prefers alpha-repaired frames.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -139,9 +137,7 @@ Runtime frames:
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\roundhouse_kick\0005.png`
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\roundhouse_kick\0006.png`
 
-## Ronin - Side Kick - disabled art audit
-
-**Problem animation to check first.**
+## Ronin - Side Kick
 
 - Character id: `ronin`
 - Animation id: `side_kick`
@@ -159,7 +155,7 @@ Runtime frames:
 - Impact frame: `0004`
 - Chained visual frames: `0003:58ms` -> `0004:132ms` -> `0006:64ms`
 - Chained visual note: Chained side kick uses chamber, impact extension, guard return.
-- Timing note: Disabled from Ronin L after alpha-hole/proportion audit. Keep for manual replacement only.
+- Timing note: Restored to Ronin L after white-check source repair; runtime prefers alpha-repaired frames.
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes

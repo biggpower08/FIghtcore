@@ -113,8 +113,8 @@ export class CombatSystem {
       const baseDamage = activeHit.damage ?? hitbox.move.damage;
       const activeMoveControlLevel = hitbox.owner instanceof Player
         ? hitbox.owner.getMoveUpgradeLevel(hitbox.move.id, 'control') +
-          (hitbox.owner.character.id === 'ronin' && hitbox.move.id === 'calf_kick' ? hitbox.owner.upgrades.roninCalfLevel : 0) +
-          (hitbox.owner.character.id === 'ronin' && hitbox.move.id === 'knee' ? hitbox.owner.upgrades.roninKneeLevel : 0)
+            (hitbox.owner.character.id === 'ronin' && hitbox.move.id === 'roundhouse_kick' ? hitbox.owner.upgrades.roninCalfLevel : 0) +
+            (hitbox.owner.character.id === 'ronin' && hitbox.move.id === 'side_kick' ? hitbox.owner.upgrades.roninKneeLevel : 0)
         : 0;
       const controlMultiplier = hitbox.owner instanceof Player ? hitbox.owner.getKnockbackMultiplier() + activeMoveControlLevel * 0.08 : 1;
       const knockback = activeHit.knockback ?? hitbox.profile.knockback;

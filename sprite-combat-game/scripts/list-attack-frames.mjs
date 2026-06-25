@@ -67,17 +67,15 @@ const activeAnimations = [
     timingNote: 'Corrected this pass: old held frame was `0003` pre-impact; new held/impact frame is `0004` full extension.',
   }),
   entry('ronin', 'Ronin', 'Calf Kick', 'calf_kick', { visualActiveFrames: [4], impactFrame: 4 }),
-  entry('ronin', 'Ronin', 'Roundhouse Kick - disabled art audit', 'roundhouse_kick', {
-    problem: true,
+  entry('ronin', 'Ronin', 'Roundhouse Kick', 'roundhouse_kick', {
     visualActiveFrames: [5],
     impactFrame: 5,
-    timingNote: 'Disabled from Ronin K after alpha-hole/proportion audit. Keep for manual replacement only.',
+    timingNote: 'Restored to Ronin K after white-check source repair; runtime prefers alpha-repaired frames.',
   }),
-  entry('ronin', 'Ronin', 'Side Kick - disabled art audit', 'side_kick', {
-    problem: true,
+  entry('ronin', 'Ronin', 'Side Kick', 'side_kick', {
     visualActiveFrames: [4],
     impactFrame: 4,
-    timingNote: 'Disabled from Ronin L after alpha-hole/proportion audit. Keep for manual replacement only.',
+    timingNote: 'Restored to Ronin L after white-check source repair; runtime prefers alpha-repaired frames.',
   }),
   entry('ronin', 'Ronin', 'Knee', 'knee'),
   entry('ronin', 'Ronin', 'Dash', 'dash'),

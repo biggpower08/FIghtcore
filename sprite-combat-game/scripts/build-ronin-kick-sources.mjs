@@ -170,7 +170,7 @@ function normalizeFrame(source, bounds, options) {
       output.data[dst + 3] = source.data[src + 3];
     }
   }
-  return output;
+  return repairWhiteCheckArtifacts(output);
 }
 
 function composeStrip(frames, frameWidth, frameHeight) {
@@ -257,6 +257,8 @@ function trimDetachedMatte(png) {
     png.data[offset + 2] = 0;
     png.data[offset + 3] = 0;
   }
+  const repaired = repairWhiteCheckArtifacts(png);
+  repaired.data.copy(png.data);
 }
 
 function findComponents(png) {
@@ -326,6 +328,217 @@ function detectBounds(png) {
   }
   if (maxX < minX || maxY < minY) return undefined;
   return { x: minX, y: minY, w: maxX - minX + 1, h: maxY - minY + 1, pixels };
+}
+
+function repairWhiteCheckArtifacts(source) {
+  const alphaFilled = fillAlphaGaps(source);
+  return repaintLightCuts(alphaFilled);
+}
+
+function fillAlphaGaps(source) {
+  const outside = markOutsideTransparency(source);
+  const visited = new Uint8Array(source.width * source.height);
+  const holes = [];
+
+  for (let y = 0; y < source.height; y += 1) {
+    for (let x = 0; x < source.width; x += 1) {
+      const pixel = y * source.width + x;
+      if (visited[pixel] || outside[pixel] || source.data[pixel * 4 + 3] > 8) continue;
+      const hole = floodTransparentComponent(source, x, y, visited, outside);
+      if (!hole || hole.area > 420 || hole.width > 42 || hole.height > 42) continue;
+      if (estimateBodyHoleConfidence(source, hole) < 0.42) continue;
+      holes.push(hole);
+    }
+  }
+
+  if (holes.length === 0) return source;
+  return paintPixelsFromNeighbors(source, holes.flatMap((hole) => hole.pixels));
+}
+
+function repaintLightCuts(source) {
+  const bounds = detectBounds(source);
+  if (!bounds) return source;
+  const visited = new Uint8Array(source.width * source.height);
+  const cutPixels = [];
+
+  for (let y = bounds.y + 2; y < bounds.y + bounds.h - 2; y += 1) {
+    for (let x = bounds.x + 2; x < bounds.x + bounds.w - 2; x += 1) {
+      const pixel = y * source.width + x;
+      if (visited[pixel] || !isLightCutPixel(source, x, y)) continue;
+      const cut = floodLightCutComponent(source, x, y, visited, bounds);
+      if (!cut || cut.area < 2 || cut.area > 520 || cut.width > 46 || cut.height > 46) continue;
+      if (estimateLightCutConfidence(source, cut) < 0.48) continue;
+      cutPixels.push(...cut.pixels);
+    }
+  }
+
+  if (cutPixels.length === 0) return source;
+  return paintPixelsFromNeighbors(source, cutPixels);
+}
+
+function markOutsideTransparency(png) {
+  const outside = new Uint8Array(png.width * png.height);
+  const queue = [];
+  for (let x = 0; x < png.width; x += 1) queue.push([x, 0], [x, png.height - 1]);
+  for (let y = 1; y < png.height - 1; y += 1) queue.push([0, y], [png.width - 1, y]);
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+    const pixel = y * png.width + x;
+    if (outside[pixel] || png.data[pixel * 4 + 3] > 8) continue;
+    outside[pixel] = 1;
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+
+  return outside;
+}
+
+function floodTransparentComponent(png, startX, startY, visited, outside) {
+  const queue = [[startX, startY]];
+  const pixels = [];
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+    const pixel = y * png.width + x;
+    if (visited[pixel] || outside[pixel] || png.data[pixel * 4 + 3] > 8) continue;
+    visited[pixel] = 1;
+    pixels.push(pixel);
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+
+  if (pixels.length === 0) return null;
+  return { pixels, area: pixels.length, minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+}
+
+function floodLightCutComponent(png, startX, startY, visited, bounds) {
+  const queue = [[startX, startY]];
+  const pixels = [];
+  let minX = startX;
+  let minY = startY;
+  let maxX = startX;
+  let maxY = startY;
+
+  while (queue.length > 0) {
+    const [x, y] = queue.pop();
+    if (x < bounds.x || y < bounds.y || x >= bounds.x + bounds.w || y >= bounds.y + bounds.h) continue;
+    const pixel = y * png.width + x;
+    if (visited[pixel] || !isLightCutPixel(png, x, y)) continue;
+    visited[pixel] = 1;
+    pixels.push(pixel);
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
+    maxX = Math.max(maxX, x);
+    maxY = Math.max(maxY, y);
+    queue.push([x + 1, y], [x - 1, y], [x, y + 1], [x, y - 1]);
+  }
+
+  if (pixels.length === 0) return null;
+  return { pixels, area: pixels.length, minX, minY, maxX, maxY, width: maxX - minX + 1, height: maxY - minY + 1 };
+}
+
+function estimateBodyHoleConfidence(png, hole) {
+  let opaqueNeighbors = 0;
+  let checkedNeighbors = 0;
+  for (let y = hole.minY - 1; y <= hole.maxY + 1; y += 1) {
+    for (let x = hole.minX - 1; x <= hole.maxX + 1; x += 1) {
+      if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+      if (x >= hole.minX && x <= hole.maxX && y >= hole.minY && y <= hole.maxY) continue;
+      checkedNeighbors += 1;
+      if (png.data[(y * png.width + x) * 4 + 3] > 8) opaqueNeighbors += 1;
+    }
+  }
+  return opaqueNeighbors / Math.max(1, checkedNeighbors);
+}
+
+function estimateLightCutConfidence(png, cut) {
+  let darkNeighbors = 0;
+  let checkedNeighbors = 0;
+  for (let y = cut.minY - 1; y <= cut.maxY + 1; y += 1) {
+    for (let x = cut.minX - 1; x <= cut.maxX + 1; x += 1) {
+      if (x < 0 || y < 0 || x >= png.width || y >= png.height) continue;
+      if (x >= cut.minX && x <= cut.maxX && y >= cut.minY && y <= cut.maxY) continue;
+      const offset = (y * png.width + x) * 4;
+      if (png.data[offset + 3] <= 8) continue;
+      checkedNeighbors += 1;
+      if (!isLightCutPixel(png, x, y)) darkNeighbors += 1;
+    }
+  }
+  return darkNeighbors / Math.max(1, checkedNeighbors);
+}
+
+function paintPixelsFromNeighbors(source, pixels) {
+  const output = clonePng(source);
+  const pending = new Set(pixels);
+
+  for (let pass = 0; pass < source.width + source.height && pending.size > 0; pass += 1) {
+    const changes = [];
+    for (const pixel of pending) {
+      const x = pixel % source.width;
+      const y = Math.floor(pixel / source.width);
+      const color = averageVisibleNeighborColor(output, x, y, pending);
+      if (color) changes.push([pixel, color]);
+    }
+    if (changes.length === 0) break;
+    for (const [pixel, color] of changes) {
+      const offset = pixel * 4;
+      output.data[offset] = color[0];
+      output.data[offset + 1] = color[1];
+      output.data[offset + 2] = color[2];
+      output.data[offset + 3] = 255;
+      pending.delete(pixel);
+    }
+  }
+
+  return output;
+}
+
+function averageVisibleNeighborColor(png, x, y, ignoredPixels) {
+  let red = 0;
+  let green = 0;
+  let blue = 0;
+  let count = 0;
+  for (let oy = -2; oy <= 2; oy += 1) {
+    for (let ox = -2; ox <= 2; ox += 1) {
+      if (ox === 0 && oy === 0) continue;
+      const nx = x + ox;
+      const ny = y + oy;
+      if (nx < 0 || ny < 0 || nx >= png.width || ny >= png.height) continue;
+      const pixel = ny * png.width + nx;
+      const offset = pixel * 4;
+      if (ignoredPixels.has(pixel) || png.data[offset + 3] <= 8 || isLightCutPixel(png, nx, ny)) continue;
+      red += png.data[offset];
+      green += png.data[offset + 1];
+      blue += png.data[offset + 2];
+      count += 1;
+    }
+  }
+  if (count === 0) return null;
+  return [Math.round(red / count), Math.round(green / count), Math.round(blue / count)];
+}
+
+function isLightCutPixel(png, x, y) {
+  const offset = (y * png.width + x) * 4;
+  if (png.data[offset + 3] <= 8) return false;
+  const r = png.data[offset];
+  const g = png.data[offset + 1];
+  const b = png.data[offset + 2];
+  return r >= 168 && g >= 168 && b >= 162 && Math.max(r, g, b) - Math.min(r, g, b) <= 34;
+}
+
+function clonePng(source) {
+  const output = new PNG({ width: source.width, height: source.height });
+  source.data.copy(output.data);
+  return output;
 }
 
 function isMatte(rgb) {

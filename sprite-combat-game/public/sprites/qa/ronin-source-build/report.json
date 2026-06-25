@@ -26,7 +26,7 @@
           "y": 101,
           "w": 277,
           "h": 487,
-          "pixels": 55860
+          "pixels": 55882
         },
         "guardReturnFrame": false
       },
@@ -44,7 +44,7 @@
           "y": 101,
           "w": 232,
           "h": 487,
-          "pixels": 49843
+          "pixels": 49859
         },
         "guardReturnFrame": false
       },
@@ -62,7 +62,7 @@
           "y": 101,
           "w": 183,
           "h": 487,
-          "pixels": 44848
+          "pixels": 45307
         },
         "guardReturnFrame": false
       },
@@ -80,7 +80,7 @@
           "y": 101,
           "w": 354,
           "h": 487,
-          "pixels": 48004
+          "pixels": 48016
         },
         "guardReturnFrame": false
       },
@@ -98,7 +98,7 @@
           "y": 101,
           "w": 376,
           "h": 487,
-          "pixels": 47984
+          "pixels": 48311
         },
         "guardReturnFrame": false
       },
@@ -109,14 +109,14 @@
           "y": 59,
           "w": 327,
           "h": 601,
-          "pixels": 83640
+          "pixels": 83714
         },
         "normalizedBounds": {
           "x": 228,
           "y": 101,
           "w": 265,
           "h": 487,
-          "pixels": 54951
+          "pixels": 55017
         },
         "guardReturnFrame": true
       }
@@ -148,7 +148,7 @@
           "y": 105,
           "w": 258,
           "h": 462,
-          "pixels": 52028
+          "pixels": 52042
         },
         "guardReturnFrame": false
       },
@@ -166,7 +166,7 @@
           "y": 105,
           "w": 300,
           "h": 462,
-          "pixels": 51371
+          "pixels": 51384
         },
         "guardReturnFrame": false
       },
@@ -184,7 +184,7 @@
           "y": 105,
           "w": 211,
           "h": 462,
-          "pixels": 42357
+          "pixels": 42376
         },
         "guardReturnFrame": false
       },
@@ -202,7 +202,7 @@
           "y": 105,
           "w": 386,
           "h": 462,
-          "pixels": 52030
+          "pixels": 52041
         },
         "guardReturnFrame": false
       },
@@ -220,7 +220,7 @@
           "y": 105,
           "w": 369,
           "h": 462,
-          "pixels": 49363
+          "pixels": 49453
         },
         "guardReturnFrame": false
       },
@@ -231,14 +231,14 @@
           "y": 59,
           "w": 327,
           "h": 601,
-          "pixels": 83640
+          "pixels": 83714
         },
         "normalizedBounds": {
           "x": 255,
           "y": 105,
           "w": 251,
           "h": 462,
-          "pixels": 49445
+          "pixels": 49498
         },
         "guardReturnFrame": true
       }
