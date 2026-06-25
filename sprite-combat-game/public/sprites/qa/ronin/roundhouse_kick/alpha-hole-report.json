@@ -1,0 +1,1559 @@
+{
+  "generatedAt": "2026-06-25T04:06:22.694Z",
+  "entityId": "ronin",
+  "animationKey": "roundhouse_kick",
+  "sourcePriority": [
+    "manual-overrides",
+    "frames-cleaned",
+    "frames-pack"
+  ],
+  "frames": [
+    {
+      "frame": "0001.png",
+      "frameIndex": 0,
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "alphaHoleCount": 33,
+      "alphaHolePixels": 110,
+      "largestAlphaHolePixels": 12,
+      "holes": [
+        {
+          "area": 4,
+          "bbox": {
+            "x": 144,
+            "y": 39,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 137,
+            "y": 44,
+            "w": 3,
+            "h": 2
+          },
+          "confidence": 0.93,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 9,
+          "bbox": {
+            "x": 147,
+            "y": 48,
+            "w": 3,
+            "h": 6
+          },
+          "confidence": 0.91,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 149,
+            "y": 49,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.8,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 139,
+            "y": 51,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 142,
+            "y": 51,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 157,
+            "y": 54,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 12,
+          "bbox": {
+            "x": 154,
+            "y": 56,
+            "w": 3,
+            "h": 7
+          },
+          "confidence": 0.96,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 135,
+            "y": 57,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 136,
+            "y": 59,
+            "w": 1,
+            "h": 3
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 158,
+            "y": 60,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 144,
+            "y": 64,
+            "w": 4,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 158,
+            "y": 64,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 142,
+            "y": 66,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 139,
+            "y": 70,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 130,
+            "y": 71,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 134,
+            "y": 72,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 6,
+          "bbox": {
+            "x": 137,
+            "y": 73,
+            "w": 3,
+            "h": 4
+          },
+          "confidence": 0.94,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 132,
+            "y": 78,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 135,
+            "y": 79,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 137,
+            "y": 83,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 147,
+            "y": 83,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 130,
+            "y": 86,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 7,
+          "bbox": {
+            "x": 144,
+            "y": 93,
+            "w": 4,
+            "h": 4
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 149,
+            "y": 93,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 165,
+            "y": 109,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 161,
+            "y": 110,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 159,
+            "y": 111,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 163,
+            "y": 125,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 5,
+          "bbox": {
+            "x": 165,
+            "y": 130,
+            "w": 2,
+            "h": 4
+          },
+          "confidence": 0.88,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 118,
+            "y": 139,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 169,
+            "y": 144,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 117,
+            "y": 146,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        }
+      ],
+      "lightArtifactPixels": 6,
+      "lightArtifactBboxes": [
+        {
+          "x": 137,
+          "y": 40,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        },
+        {
+          "x": 168,
+          "y": 52,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        },
+        {
+          "x": 127,
+          "y": 87,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0001.png",
+      "recommendation": "repair",
+      "acceptableForGameplay": true
+    },
+    {
+      "frame": "0002.png",
+      "frameIndex": 1,
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "alphaHoleCount": 22,
+      "alphaHolePixels": 65,
+      "largestAlphaHolePixels": 11,
+      "holes": [
+        {
+          "area": 5,
+          "bbox": {
+            "x": 143,
+            "y": 36,
+            "w": 3,
+            "h": 3
+          },
+          "confidence": 0.69,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 156,
+            "y": 36,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 145,
+            "y": 39,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 149,
+            "y": 39,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 157,
+            "y": 39,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 146,
+            "y": 49,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 151,
+            "y": 52,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.83,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 11,
+          "bbox": {
+            "x": 153,
+            "y": 57,
+            "w": 3,
+            "h": 5
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 5,
+          "bbox": {
+            "x": 140,
+            "y": 61,
+            "w": 3,
+            "h": 3
+          },
+          "confidence": 0.88,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 137,
+            "y": 68,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 139,
+            "y": 68,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 135,
+            "y": 74,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 145,
+            "y": 76,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 149,
+            "y": 76,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 162,
+            "y": 107,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 156,
+            "y": 109,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 158,
+            "y": 124,
+            "w": 4,
+            "h": 1
+          },
+          "confidence": 0.93,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 160,
+            "y": 126,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 130,
+            "y": 127,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 128,
+            "y": 138,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 164,
+            "y": 138,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 125,
+            "y": 145,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        }
+      ],
+      "lightArtifactPixels": 2,
+      "lightArtifactBboxes": [
+        {
+          "x": 131,
+          "y": 62,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0002.png",
+      "recommendation": "repair",
+      "acceptableForGameplay": true
+    },
+    {
+      "frame": "0003.png",
+      "frameIndex": 2,
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "alphaHoleCount": 15,
+      "alphaHolePixels": 102,
+      "largestAlphaHolePixels": 26,
+      "holes": [
+        {
+          "area": 2,
+          "bbox": {
+            "x": 150,
+            "y": 37,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 7,
+          "bbox": {
+            "x": 135,
+            "y": 38,
+            "w": 5,
+            "h": 3
+          },
+          "confidence": 0.95,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 142,
+            "y": 38,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 143,
+            "y": 47,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 26,
+          "bbox": {
+            "x": 133,
+            "y": 58,
+            "w": 10,
+            "h": 8
+          },
+          "confidence": 0.95,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 128,
+            "y": 65,
+            "w": 3,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 134,
+            "y": 67,
+            "w": 4,
+            "h": 1
+          },
+          "confidence": 0.93,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 127,
+            "y": 69,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 124,
+            "y": 71,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.83,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 149,
+            "y": 78,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 25,
+          "bbox": {
+            "x": 144,
+            "y": 81,
+            "w": 5,
+            "h": 9
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 12,
+          "bbox": {
+            "x": 135,
+            "y": 83,
+            "w": 8,
+            "h": 3
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 5,
+          "bbox": {
+            "x": 134,
+            "y": 128,
+            "w": 3,
+            "h": 3
+          },
+          "confidence": 0.75,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 135,
+            "y": 131,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.8,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 132,
+            "y": 144,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        }
+      ],
+      "lightArtifactPixels": 2,
+      "lightArtifactBboxes": [
+        {
+          "x": 160,
+          "y": 63,
+          "w": 2,
+          "h": 1,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0003.png",
+      "recommendation": "repair",
+      "acceptableForGameplay": true
+    },
+    {
+      "frame": "0004.png",
+      "frameIndex": 3,
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "alphaHoleCount": 20,
+      "alphaHolePixels": 66,
+      "largestAlphaHolePixels": 9,
+      "holes": [
+        {
+          "area": 2,
+          "bbox": {
+            "x": 109,
+            "y": 38,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.7,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 126,
+            "y": 38,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 111,
+            "y": 39,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 115,
+            "y": 40,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.83,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 110,
+            "y": 42,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 120,
+            "y": 43,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 125,
+            "y": 54,
+            "w": 3,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 9,
+          "bbox": {
+            "x": 128,
+            "y": 57,
+            "w": 5,
+            "h": 3
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 8,
+          "bbox": {
+            "x": 127,
+            "y": 61,
+            "w": 7,
+            "h": 2
+          },
+          "confidence": 0.91,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 7,
+          "bbox": {
+            "x": 117,
+            "y": 63,
+            "w": 7,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 134,
+            "y": 64,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 6,
+          "bbox": {
+            "x": 120,
+            "y": 66,
+            "w": 4,
+            "h": 3
+          },
+          "confidence": 0.94,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 128,
+            "y": 66,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 125,
+            "y": 67,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 115,
+            "y": 70,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 123,
+            "y": 70,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 155,
+            "y": 77,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 164,
+            "y": 81,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 168,
+            "y": 84,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 0.8,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 119,
+            "y": 126,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        }
+      ],
+      "lightArtifactPixels": 6,
+      "lightArtifactBboxes": [
+        {
+          "x": 143,
+          "y": 68,
+          "w": 4,
+          "h": 1,
+          "area": 4
+        },
+        {
+          "x": 138,
+          "y": 66,
+          "w": 2,
+          "h": 1,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0004.png",
+      "recommendation": "repair",
+      "acceptableForGameplay": true
+    },
+    {
+      "frame": "0005.png",
+      "frameIndex": 4,
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "alphaHoleCount": 15,
+      "alphaHolePixels": 72,
+      "largestAlphaHolePixels": 20,
+      "holes": [
+        {
+          "area": 4,
+          "bbox": {
+            "x": 107,
+            "y": 37,
+            "w": 3,
+            "h": 2
+          },
+          "confidence": 0.86,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 114,
+            "y": 51,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 105,
+            "y": 52,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 103,
+            "y": 54,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 6,
+          "bbox": {
+            "x": 115,
+            "y": 54,
+            "w": 4,
+            "h": 3
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 16,
+          "bbox": {
+            "x": 119,
+            "y": 57,
+            "w": 6,
+            "h": 4
+          },
+          "confidence": 0.96,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 20,
+          "bbox": {
+            "x": 126,
+            "y": 57,
+            "w": 9,
+            "h": 4
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 166,
+            "y": 57,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 170,
+            "y": 58,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 126,
+            "y": 61,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 110,
+            "y": 62,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 120,
+            "y": 64,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 109,
+            "y": 69,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 113,
+            "y": 73,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 121,
+            "y": 126,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        }
+      ],
+      "lightArtifactPixels": 9,
+      "lightArtifactBboxes": [
+        {
+          "x": 183,
+          "y": 58,
+          "w": 3,
+          "h": 1,
+          "area": 3
+        },
+        {
+          "x": 123,
+          "y": 38,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        },
+        {
+          "x": 139,
+          "y": 58,
+          "w": 2,
+          "h": 1,
+          "area": 2
+        },
+        {
+          "x": 115,
+          "y": 95,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0005.png",
+      "recommendation": "repair",
+      "acceptableForGameplay": true
+    },
+    {
+      "frame": "0006.png",
+      "frameIndex": 5,
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png",
+      "sourcePriority": "frames-cleaned",
+      "alphaHoleCount": 17,
+      "alphaHolePixels": 57,
+      "largestAlphaHolePixels": 9,
+      "holes": [
+        {
+          "area": 2,
+          "bbox": {
+            "x": 139,
+            "y": 41,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 5,
+          "bbox": {
+            "x": 145,
+            "y": 49,
+            "w": 3,
+            "h": 3
+          },
+          "confidence": 0.88,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 5,
+          "bbox": {
+            "x": 133,
+            "y": 58,
+            "w": 3,
+            "h": 3
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 153,
+            "y": 59,
+            "w": 1,
+            "h": 3
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 135,
+            "y": 63,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 9,
+          "bbox": {
+            "x": 151,
+            "y": 63,
+            "w": 4,
+            "h": 5
+          },
+          "confidence": 0.95,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 153,
+            "y": 69,
+            "w": 4,
+            "h": 1
+          },
+          "confidence": 0.93,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 133,
+            "y": 73,
+            "w": 3,
+            "h": 2
+          },
+          "confidence": 0.93,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 133,
+            "y": 80,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 137,
+            "y": 81,
+            "w": 3,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 4,
+          "bbox": {
+            "x": 143,
+            "y": 95,
+            "w": 3,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 164,
+            "y": 127,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 118,
+            "y": 128,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 119,
+            "y": 131,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 165,
+            "y": 131,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 0.9,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 3,
+          "bbox": {
+            "x": 119,
+            "y": 134,
+            "w": 2,
+            "h": 2
+          },
+          "confidence": 0.92,
+          "touchesOutsideTransparency": false
+        },
+        {
+          "area": 2,
+          "bbox": {
+            "x": 117,
+            "y": 146,
+            "w": 2,
+            "h": 1
+          },
+          "confidence": 1,
+          "touchesOutsideTransparency": false
+        }
+      ],
+      "lightArtifactPixels": 4,
+      "lightArtifactBboxes": [
+        {
+          "x": 154,
+          "y": 38,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        },
+        {
+          "x": 158,
+          "y": 133,
+          "w": 1,
+          "h": 2,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0006.png",
+      "recommendation": "repair",
+      "acceptableForGameplay": true
+    }
+  ]
+}

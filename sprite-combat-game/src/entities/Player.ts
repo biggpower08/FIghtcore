@@ -137,7 +137,7 @@ export class Player extends Fighter {
     multiplier *= 1 + activityDamage + this.upgrades.flowDamageLevel * 0.04;
     if (this.character.id === 'supreme-emperor' && this.activity >= 70) multiplier *= 1 + this.upgrades.emperorHighActivityDamageLevel * 0.07;
     if (this.character.id === 'ronin' && this.activeMove?.id === 'cross' && this.lastLandedMoveId === 'jab') multiplier *= 1 + this.upgrades.roninCrossLevel * 0.12;
-    if (this.character.id === 'ronin' && this.activeMove?.id === 'roundhouse_kick') multiplier *= 1 + this.upgrades.roninCalfLevel * 0.08;
+    if (this.character.id === 'ronin' && this.activeMove?.id === 'calf_kick') multiplier *= 1 + this.upgrades.roninCalfLevel * 0.08;
     if (this.criticalOverloadArmedMs > 0) multiplier *= 2.35 + this.upgrades.abilityLevel * 0.15;
     if (this.abilityActiveMs > 0 && this.ability?.id === 'momentum_flow') multiplier *= 1 + this.momentumStacks * 0.18;
     if (this.abilityActiveMs > 0 && this.ability?.id === 'thug_it_out') multiplier *= 1.28 + this.upgrades.abilityLevel * 0.08;

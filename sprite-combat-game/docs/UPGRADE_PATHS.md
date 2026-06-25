@@ -35,7 +35,7 @@ Runtime icon path: `public/ui/upgrade-icons/`. Reward cards resolve these throug
 - Clean Entry: Ronin builds Activity faster from clean pressure.
 - Cross Discipline: Cross deals more damage after Jab lands.
 - Measured Hands: Ronin chains recover faster.
-- Turning Tax: Roundhouse Kick gains damage, control, and hitstun.
+- Low-Line Tax: Calf Kick gains damage, control, and hitstun.
 - Close Range Answer: Knee gains extra control and hitstun.
 - Density Breath: Density lasts longer.
 - Quiet Pressure: pressure improves recovery as Activity rises.

@@ -299,6 +299,8 @@ export class SpriteLab {
         bleedFromNextFrame: Boolean(frameQuality?.bleedFromNextFrame),
         alphaHoleCount: frameQuality?.alphaHoleCount ?? 0,
         repairedAlphaHoles: frameQuality?.repairedAlphaHoles ?? 0,
+        lightArtifactPixels: frameQuality?.lightArtifactPixels ?? 0,
+        qaRecommendation: frameQuality?.recommendation,
         frameDimensions: {
           width: frame?.width ?? frame?.image?.width,
           height: frame?.height ?? frame?.image?.height,
@@ -589,6 +591,8 @@ export class SpriteLab {
       'disconnected neighbor blob': Boolean(frameQuality?.disconnectedNeighborBlob),
       'alphaHoleCount': frameQuality?.alphaHoleCount ?? 0,
       'repairedAlphaHoles': frameQuality?.repairedAlphaHoles ?? 0,
+      'light artifact pixels': frameQuality?.lightArtifactPixels ?? 0,
+      'QA recommendation': frameQuality?.recommendation,
       'using repaired alpha': Boolean(frame.usingRepairedAlpha || frameQuality?.usingRepairedAlpha),
       'frame source': frameQuality?.frameSource ?? frame.source,
       'source sheet': frameQuality?.sourceSheet,
@@ -696,6 +700,8 @@ export class SpriteLab {
     if (alpha?.bounds && frame.height && (alpha.bounds.minY <= 1 || alpha.bounds.maxY >= frame.height - 2)) badges.push('crop risk');
     if (frame.placeholderFrame || this.animation?.status === 'fallback' || this.animation?.status === 'missing') badges.push('source priority mismatch');
     if (frame.usingCleanedAlphaFrame && (frameQuality?.hasAdjacentFrameBleed || frameQuality?.disconnectedNeighborBlob || frameQuality?.invalidHollowFrame)) badges.push('cleanup risk');
+    if ((frameQuality?.alphaHoleCount ?? 0) > 0) badges.push('alpha-hole warning');
+    if ((frameQuality?.lightArtifactPixels ?? 0) > 0) badges.push('white-fringe warning');
     if (badges.some((badge) => ['width mismatch', 'ratio mismatch', 'torso mismatch', 'leg spread warning'].includes(badge))) badges.push('source-art likely issue');
     return [...new Set(badges)];
   }

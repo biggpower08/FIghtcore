@@ -17,6 +17,8 @@ export interface FrameQuality {
   alphaHoleCount: number;
   repairedAlphaHoles: number;
   usingRepairedAlpha: boolean;
+  lightArtifactPixels?: number;
+  recommendation?: string;
   widthOutlier: boolean;
   cleanedFrameAvailable: boolean;
   hasAdjacentFrameBleed: boolean;
@@ -57,6 +59,7 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       alphaHoleCount: 0,
       repairedAlphaHoles: 0,
       usingRepairedAlpha: false,
+      lightArtifactPixels: 0,
       widthOutlier: false,
       cleanedFrameAvailable: true,
       hasAdjacentFrameBleed: false,
@@ -84,6 +87,8 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
+      lightArtifactPixels: alphaHole?.lightArtifactPixels,
+      recommendation: alphaHole?.recommendation,
       widthOutlier: false,
       cleanedFrameAvailable: true,
       hasAdjacentFrameBleed: false,
@@ -109,6 +114,8 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
+      lightArtifactPixels: alphaHole?.lightArtifactPixels,
+      recommendation: alphaHole?.recommendation,
       widthOutlier,
       cleanedFrameAvailable: false,
       hasAdjacentFrameBleed: bodyCrop?.hasAdjacentFrameBleed ?? true,
@@ -131,6 +138,8 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       alphaHoleCount: alphaHole.alphaHoleCount,
       repairedAlphaHoles: alphaHole.repairedAlphaHoles,
       usingRepairedAlpha: false,
+      lightArtifactPixels: alphaHole.lightArtifactPixels,
+      recommendation: alphaHole.recommendation,
       widthOutlier,
       cleanedFrameAvailable: false,
       hasAdjacentFrameBleed: Boolean(bodyCrop?.hasAdjacentFrameBleed),
@@ -153,6 +162,8 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
+      lightArtifactPixels: alphaHole?.lightArtifactPixels,
+      recommendation: alphaHole?.recommendation,
       widthOutlier,
       cleanedFrameAvailable: false,
       hasAdjacentFrameBleed: Boolean(bodyCrop?.hasAdjacentFrameBleed),
@@ -175,6 +186,8 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
       alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
       repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
       usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
+      lightArtifactPixels: alphaHole?.lightArtifactPixels,
+      recommendation: alphaHole?.recommendation,
       widthOutlier,
       cleanedFrameAvailable: false,
       hasAdjacentFrameBleed: bodyCrop?.hasAdjacentFrameBleed ?? true,
@@ -196,6 +209,8 @@ export function getFrameQuality(entityId: string, animationKey: string, frameInd
     alphaHoleCount: alphaHole?.alphaHoleCount ?? 0,
     repairedAlphaHoles: alphaHole?.repairedAlphaHoles ?? 0,
     usingRepairedAlpha: Boolean(alphaHole?.repairedFramePath),
+    lightArtifactPixels: alphaHole?.lightArtifactPixels,
+    recommendation: alphaHole?.recommendation,
     widthOutlier,
     cleanedFrameAvailable: Boolean(bodyCrop?.cleanedFrameAvailable),
     hasAdjacentFrameBleed: Boolean(bodyCrop?.hasAdjacentFrameBleed),

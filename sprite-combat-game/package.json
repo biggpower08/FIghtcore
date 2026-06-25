@@ -21,6 +21,7 @@
     "sprites:proportions": "node scripts/report-sprite-proportions.mjs",
     "sprite-pack:proportions": "node scripts/report-sprite-proportions.mjs",
     "sprites:qa-cleaned": "node scripts/clean-sprite-alpha.mjs --qa-only",
+    "sprites:alpha-holes": "node scripts/report-alpha-holes.mjs",
     "sprite:qa": "node scripts/make-sprite-contact-sheets.mjs",
     "sprite-factory:generate": "python tools/sprite-factory/scripts/generate-sprites.py",
     "sprite-factory:qa": "python tools/sprite-factory/scripts/qa-sprites.py",

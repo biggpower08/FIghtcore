@@ -8,8 +8,6 @@ export const roninRequiredAnimations = [
   'jab',
   'cross',
   'calf_kick',
-  'roundhouse_kick',
-  'side_kick',
   'knee',
   'hit_react',
   'recovery',
