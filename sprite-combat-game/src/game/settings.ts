@@ -6,7 +6,7 @@ export interface GameSettings {
 const storageKey = 'fightcore-settings';
 const defaults: GameSettings = {
   screenShake: true,
-  cameraDistance: 'normal',
+  cameraDistance: 'close',
 };
 
 export function loadGameSettings(): GameSettings {

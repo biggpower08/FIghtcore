@@ -70,6 +70,7 @@ export const DESERT_ARENA_ASSET_PATHS = [
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 const DEBUG_RENDER_PARAM = 'debugRender';
+const DEBUG_CAMERA_PARAM = 'debugCamera';
 const COMBAT_MONK_REFERENCE_SCALE = 0.94;
 const blockedFrameWarnings = new Set<string>();
 const stageVariants = [
@@ -125,7 +126,8 @@ export class RenderSystem {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
     const shake = screenShakeMs > 0 ? Math.min(7, screenShakeMs / 28) : 0;
-    ctx.translate(-camera.x + (Math.random() - 0.5) * shake, -camera.y + (Math.random() - 0.5) * shake);
+    ctx.scale(camera.zoom, camera.zoom);
+    ctx.translate(-camera.x + ((Math.random() - 0.5) * shake) / camera.zoom, -camera.y + ((Math.random() - 0.5) * shake) / camera.zoom);
     this.bodyDrawCounts.clear();
     this.drawArena(ctx);
     for (const puff of dust) this.drawDust(ctx, puff);
@@ -144,6 +146,7 @@ export class RenderSystem {
     if (shouldDrawSpriteDebug()) {
       for (const hitbox of hitboxes) this.drawHitbox(ctx, hitbox);
     }
+    if (shouldDrawCameraDebug()) this.drawCameraDebug(ctx, camera, player);
     for (const impact of impacts) this.drawImpactSpark(ctx, impact);
     if (shouldDrawGrappleSuppressionDebug()) this.drawGrappleSuppressionDebug(ctx, grappleSuppressions, grappleDebug);
     ctx.restore();
@@ -512,6 +515,35 @@ export class RenderSystem {
     return true;
   }
 
+  private drawCameraDebug(ctx: CanvasRenderingContext2D, camera: Camera, player: Player): void {
+    const viewportW = ctx.canvas.width / camera.zoom;
+    const viewportH = ctx.canvas.height / camera.zoom;
+    ctx.save();
+    ctx.lineWidth = 2 / camera.zoom;
+    ctx.strokeStyle = '#23d5dd';
+    ctx.strokeRect(camera.x, camera.y, viewportW, viewportH);
+    ctx.strokeStyle = '#ffef78';
+    ctx.strokeRect(
+      camera.deadZone.left,
+      camera.deadZone.top,
+      camera.deadZone.right - camera.deadZone.left,
+      camera.deadZone.bottom - camera.deadZone.top,
+    );
+    this.drawDebugPoint(ctx, player.x, player.y, '#38a3ff', 'player');
+    this.drawDebugPoint(ctx, camera.stableTargetX, camera.stableTargetY, '#8cff7a', 'target');
+    this.drawDebugPoint(ctx, camera.targetX + viewportW / 2, camera.targetY + viewportH / 2, '#ff6b6b', 'camera');
+    ctx.restore();
+  }
+
+  private drawDebugPoint(ctx: CanvasRenderingContext2D, x: number, y: number, color: string, label: string): void {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.font = '12px sans-serif';
+    ctx.fillText(label, x + 8, y - 8);
+  }
+
   private referenceFrameScale(entity: Entity, frame: ResolvedSpriteFrame): number {
     const assetId = this.getAssetId(entity);
     if (assetId === 'combat-monk' && frame.usingReferenceExtracted) return COMBAT_MONK_REFERENCE_SCALE;
@@ -732,6 +764,10 @@ function shouldDrawSpriteDebug(): boolean {
 
 function shouldDrawGrappleSuppressionDebug(): boolean {
   return hasEnabledDebugParam(DEBUG_GRAPPLE_SUPPRESSION_PARAM);
+}
+
+function shouldDrawCameraDebug(): boolean {
+  return hasEnabledDebugParam(DEBUG_CAMERA_PARAM);
 }
 
 function hasEnabledDebugParam(param: string): boolean {

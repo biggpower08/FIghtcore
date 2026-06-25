@@ -164,7 +164,7 @@ export class Game {
     this.resize();
     window.addEventListener('resize', this.resize);
     this.camera.distance = this.settings.cameraDistance;
-    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
+    this.camera.snapTo(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
     void this.preloadBeginningSprites();
   }
@@ -220,7 +220,7 @@ export class Game {
       this.openReward();
     }
 
-    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
+    this.camera.follow(this.player, this.canvas.width, this.canvas.height, deltaMs);
   }
 
   private updatePlayer(deltaSeconds: number): void {
@@ -751,6 +751,7 @@ export class Game {
   private drawBossTelegraph(): void {
     if (!this.boss?.alive || this.boss.telegraphMs <= 0) return;
     this.ctx.save();
+    this.ctx.scale(this.camera.zoom, this.camera.zoom);
     this.ctx.translate(-this.camera.x, -this.camera.y);
     this.ctx.strokeStyle = '#ffef78';
     this.ctx.lineWidth = 5;
@@ -802,7 +803,7 @@ export class Game {
     this.spriteLab.hide();
     this.menuScreen.hide();
     this.spawnWave();
-    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
+    this.camera.snapTo(this.player, this.canvas.width, this.canvas.height);
   }
 
   private pauseGame(): void {
@@ -834,7 +835,7 @@ export class Game {
     this.settings = { ...this.settings, cameraDistance: distance };
     this.camera.distance = distance;
     saveGameSettings(this.settings);
-    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
+    this.camera.snapTo(this.player, this.canvas.width, this.canvas.height);
   }
 
   private openControls(): void {
@@ -920,7 +921,7 @@ export class Game {
     this.visualSuppressions.clear();
     this.pendingVisualStates.clear();
     this.activeGrapples = [];
-    this.camera.follow(this.player, this.canvas.width, this.canvas.height);
+    this.camera.snapTo(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
   }
 
