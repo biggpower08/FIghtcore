@@ -1,9 +1,11 @@
 {
-  "generatedAt": "2026-06-25T04:44:17.385Z",
+  "generatedAt": "2026-06-25T14:48:20.509Z",
   "entityId": "ronin",
   "animationKey": "side_kick",
+  "automatedPass": false,
   "pass": false,
   "verdict": "NOT_GAMEPLAY_READY",
+  "readinessBadge": "QA ONLY",
   "sourcePriority": [
     "manual-overrides",
     "frames-alpha-repaired",
@@ -23,9 +25,51 @@
     "/sprites/frames-alpha-repaired/ronin/side_kick/0006.png"
   ],
   "framesScanned": 6,
-  "failedFrames": [
+  "automatedFailedFrames": [
     "0002.png",
     "0005.png"
+  ],
+  "failedFrames": [
+    "0001.png",
+    "0002.png",
+    "0003.png",
+    "0004.png",
+    "0005.png"
+  ],
+  "unusableFrames": [
+    "0001.png"
+  ],
+  "frameStatuses": [
+    {
+      "frame": "0001.png",
+      "status": "UNUSABLE_SOURCE_FRAME",
+      "reason": "Large pale/white torso cut is visible on the active runtime frame."
+    },
+    {
+      "frame": "0002.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "Wide stance has rough silhouette and torso-width drift; automated scan also finds pale cut pixels."
+    },
+    {
+      "frame": "0003.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "Chamber pose has awkward lower-leg/boot read and proportion drift."
+    },
+    {
+      "frame": "0004.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "Extension pose has rough leg silhouette and does not read as fully clean Ronin art."
+    },
+    {
+      "frame": "0005.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "Full extension has rough foot/leg silhouette and automated pale cut pixels."
+    },
+    {
+      "frame": "0006.png",
+      "status": "PASS",
+      "reason": "Guard return reads consistently with Ronin idle."
+    }
   ],
   "manualOverridePaths": [
     "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0001.png",

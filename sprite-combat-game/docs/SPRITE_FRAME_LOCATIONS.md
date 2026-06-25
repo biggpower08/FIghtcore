@@ -2915,6 +2915,8 @@ Runtime frames:
 
 ## Ronin - Roundhouse Kick
 
+**Problem animation to check first.**
+
 - Character id: `ronin`
 - Animation id: `roundhouse_kick`
 - Runtime source: `frames-alpha-repaired`
@@ -2931,7 +2933,11 @@ Runtime frames:
 - Impact frame: `0005`
 - Chained visual frames: `0004:68ms` -> `0005:144ms` -> `0006:72ms`
 - Chained visual note: Chained roundhouse uses kick setup, full extension, guard return.
-- Timing note: Restored to Ronin K after white-check source repair; runtime prefers alpha-repaired frames.
+- Timing note: Preserved for Sprite Lab/QA only. Human visual audit failed frames 0003, 0004, and 0005, so Ronin K was rolled back to Calf Kick.
+- Visual QA badge: `NEEDS MANUAL REPAIR`
+- Gameplay ready: no
+- Failed frames: `0003.png`, `0004.png`, `0005.png`
+- Unusable source frames: none
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2946,7 +2952,18 @@ Runtime frames:
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0005.png`
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0006.png`
 
+Frame-by-frame visual QA:
+
+- `0001.png`: `PASS` - Guard frame reads as Ronin; no obvious runtime-visible cuts. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
+- `0002.png`: `PASS` - Transition frame is compact but usable in motion. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0002.png`
+- `0003.png`: `NEEDS_MANUAL_REPAIR` - Chamber pose has body-width/proportion drift and rough silhouette around the raised leg. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`
+- `0004.png`: `NEEDS_MANUAL_REPAIR` - Kick setup has torso and pant silhouette roughness; not clean enough for full gameplay-ready status. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`
+- `0005.png`: `NEEDS_MANUAL_REPAIR` - Full extension is usable as a pose but has rough leg/boot edge read and proportion drift. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`
+- `0006.png`: `PASS` - Guard return reads consistently with Ronin idle. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0006.png`
+
 ## Ronin - Side Kick
+
+**Problem animation to check first.**
 
 - Character id: `ronin`
 - Animation id: `side_kick`
@@ -2964,7 +2981,11 @@ Runtime frames:
 - Impact frame: `0004`
 - Chained visual frames: `0003:58ms` -> `0004:132ms` -> `0006:64ms`
 - Chained visual note: Chained side kick uses chamber, impact extension, guard return.
-- Timing note: Preserved for Sprite Lab only. Active-runtime QA failed frames 0002 and 0005, so Ronin L was rolled back to Knee.
+- Timing note: Preserved for Sprite Lab/QA only. Human visual audit failed frames 0001 through 0005, so Ronin L remains Knee.
+- Visual QA badge: `QA ONLY`
+- Gameplay ready: no
+- Failed frames: `0001.png`, `0002.png`, `0003.png`, `0004.png`, `0005.png`
+- Unusable source frames: `0001.png`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0001.png`
 - Rerunning import/clean can overwrite active folder: yes
@@ -2978,6 +2999,15 @@ Runtime frames:
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0004.png`
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0005.png`
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0006.png`
+
+Frame-by-frame visual QA:
+
+- `0001.png`: `UNUSABLE_SOURCE_FRAME` - Large pale/white torso cut is visible on the active runtime frame. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0001.png`
+- `0002.png`: `NEEDS_MANUAL_REPAIR` - Wide stance has rough silhouette and torso-width drift; automated scan also finds pale cut pixels. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0002.png`
+- `0003.png`: `NEEDS_MANUAL_REPAIR` - Chamber pose has awkward lower-leg/boot read and proportion drift. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0003.png`
+- `0004.png`: `NEEDS_MANUAL_REPAIR` - Extension pose has rough leg silhouette and does not read as fully clean Ronin art. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0004.png`
+- `0005.png`: `NEEDS_MANUAL_REPAIR` - Full extension has rough foot/leg silhouette and automated pale cut pixels. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0005.png`
+- `0006.png`: `PASS` - Guard return reads consistently with Ronin idle. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0006.png`
 
 ## Ronin - Knee
 

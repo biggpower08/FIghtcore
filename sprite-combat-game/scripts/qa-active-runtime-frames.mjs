@@ -11,6 +11,34 @@ const targets = [
   { entityId: 'ronin', animationKey: 'roundhouse_kick' },
   { entityId: 'ronin', animationKey: 'side_kick' },
 ];
+const manualVisualAudits = new Map([
+  ['ronin:roundhouse_kick', {
+    readinessBadge: 'NEEDS MANUAL REPAIR',
+    failedFrames: ['0003.png', '0004.png', '0005.png'],
+    unusableFrames: [],
+    frames: [
+      ['0001.png', 'PASS', 'Guard frame reads as Ronin; no obvious runtime-visible cuts.'],
+      ['0002.png', 'PASS', 'Transition frame is compact but usable in motion.'],
+      ['0003.png', 'NEEDS_MANUAL_REPAIR', 'Chamber pose has body-width/proportion drift and rough silhouette around the raised leg.'],
+      ['0004.png', 'NEEDS_MANUAL_REPAIR', 'Kick setup has torso and pant silhouette roughness; not clean enough for full gameplay-ready status.'],
+      ['0005.png', 'NEEDS_MANUAL_REPAIR', 'Full extension is usable as a pose but has rough leg/boot edge read and proportion drift.'],
+      ['0006.png', 'PASS', 'Guard return reads consistently with Ronin idle.'],
+    ],
+  }],
+  ['ronin:side_kick', {
+    readinessBadge: 'QA ONLY',
+    failedFrames: ['0001.png', '0002.png', '0003.png', '0004.png', '0005.png'],
+    unusableFrames: ['0001.png'],
+    frames: [
+      ['0001.png', 'UNUSABLE_SOURCE_FRAME', 'Large pale/white torso cut is visible on the active runtime frame.'],
+      ['0002.png', 'NEEDS_MANUAL_REPAIR', 'Wide stance has rough silhouette and torso-width drift; automated scan also finds pale cut pixels.'],
+      ['0003.png', 'NEEDS_MANUAL_REPAIR', 'Chamber pose has awkward lower-leg/boot read and proportion drift.'],
+      ['0004.png', 'NEEDS_MANUAL_REPAIR', 'Extension pose has rough leg silhouette and does not read as fully clean Ronin art.'],
+      ['0005.png', 'NEEDS_MANUAL_REPAIR', 'Full extension has rough foot/leg silhouette and automated pale cut pixels.'],
+      ['0006.png', 'PASS', 'Guard return reads consistently with Ronin idle.'],
+    ],
+  }],
+]);
 
 const alphaMetadata = await readAlphaMetadata();
 const summaries = [];
@@ -57,21 +85,29 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
     });
   }
 
-  const failedFrames = reports
+  const automatedFailedFrames = reports
     .filter((report) => report.alphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact)
     .map((report) => report.frame);
-  const pass = failedFrames.length === 0;
+  const visualAudit = manualVisualAudits.get(`${entityId}:${animationKey}`);
+  const failedFrames = visualAudit?.failedFrames ?? automatedFailedFrames;
+  const automatedPass = automatedFailedFrames.length === 0;
+  const pass = automatedPass && failedFrames.length === 0;
   const summary = {
     generatedAt: new Date().toISOString(),
     entityId,
     animationKey,
+    automatedPass,
     pass,
     verdict: pass ? 'ACTIVE_RUNTIME_READY' : 'NOT_GAMEPLAY_READY',
+    readinessBadge: visualAudit?.readinessBadge ?? (pass ? 'SAFE FOR GAMEPLAY' : 'NEEDS MANUAL REPAIR'),
     sourcePriority: ['manual-overrides', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
     activeRuntimeSources: [...new Set(reports.map((report) => report.sourcePriority))],
     activeRuntimeFramePaths: reports.map((report) => report.webPath),
     framesScanned: reports.length,
+    automatedFailedFrames,
     failedFrames,
+    unusableFrames: visualAudit?.unusableFrames ?? [],
+    frameStatuses: visualAudit?.frames.map(([frame, status, reason]) => ({ frame, status, reason })),
     manualOverridePaths: reports.map((report) => report.manualOverridePath),
     checks: {
       internalAlphaHoles: reports.reduce((total, report) => total + report.alphaHoleCount, 0),

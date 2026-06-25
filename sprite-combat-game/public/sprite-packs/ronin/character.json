@@ -9,7 +9,7 @@
   "moveMapping": {
     "H": "jab",
     "J": "cross",
-    "K": "roundhouse_kick",
+    "K": "calf_kick",
     "L": "knee"
   },
   "animations": {

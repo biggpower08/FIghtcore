@@ -64,6 +64,37 @@ const chainVisualMappings = new Map([
   ['supreme-emperor:tornado_kick', { frames: ['0006', '0007', '0008'], durations: [72, 170, 66], note: 'Chained tornado keeps the true `0007` impact anchor.' }],
 ]);
 
+const visualQaAudits = new Map([
+  ['ronin:roundhouse_kick', {
+    readinessBadge: 'NEEDS MANUAL REPAIR',
+    gameplayReady: false,
+    failedFrames: ['0003.png', '0004.png', '0005.png'],
+    unusableFrames: [],
+    frames: [
+      ['0001.png', 'PASS', 'Guard frame reads as Ronin; no obvious runtime-visible cuts.'],
+      ['0002.png', 'PASS', 'Transition frame is compact but usable in motion.'],
+      ['0003.png', 'NEEDS_MANUAL_REPAIR', 'Chamber pose has body-width/proportion drift and rough silhouette around the raised leg.'],
+      ['0004.png', 'NEEDS_MANUAL_REPAIR', 'Kick setup has torso and pant silhouette roughness; not clean enough for full gameplay-ready status.'],
+      ['0005.png', 'NEEDS_MANUAL_REPAIR', 'Full extension is usable as a pose but has rough leg/boot edge read and proportion drift.'],
+      ['0006.png', 'PASS', 'Guard return reads consistently with Ronin idle.'],
+    ],
+  }],
+  ['ronin:side_kick', {
+    readinessBadge: 'QA ONLY',
+    gameplayReady: false,
+    failedFrames: ['0001.png', '0002.png', '0003.png', '0004.png', '0005.png'],
+    unusableFrames: ['0001.png'],
+    frames: [
+      ['0001.png', 'UNUSABLE_SOURCE_FRAME', 'Large pale/white torso cut is visible on the active runtime frame.'],
+      ['0002.png', 'NEEDS_MANUAL_REPAIR', 'Wide stance has rough silhouette and torso-width drift; automated scan also finds pale cut pixels.'],
+      ['0003.png', 'NEEDS_MANUAL_REPAIR', 'Chamber pose has awkward lower-leg/boot read and proportion drift.'],
+      ['0004.png', 'NEEDS_MANUAL_REPAIR', 'Extension pose has rough leg silhouette and does not read as fully clean Ronin art.'],
+      ['0005.png', 'NEEDS_MANUAL_REPAIR', 'Full extension has rough foot/leg silhouette and automated pale cut pixels.'],
+      ['0006.png', 'PASS', 'Guard return reads consistently with Ronin idle.'],
+    ],
+  }],
+]);
+
 const activeAnimations = [
   entry('ronin', 'Ronin', 'Jab', 'jab', { problem: true, visualActiveFrames: [3], impactFrame: 3 }),
   entry('ronin', 'Ronin', 'Cross', 'cross', {
@@ -74,14 +105,16 @@ const activeAnimations = [
   }),
   entry('ronin', 'Ronin', 'Calf Kick', 'calf_kick', { visualActiveFrames: [4], impactFrame: 4 }),
   entry('ronin', 'Ronin', 'Roundhouse Kick', 'roundhouse_kick', {
+    problem: true,
     visualActiveFrames: [5],
     impactFrame: 5,
-    timingNote: 'Restored to Ronin K after white-check source repair; runtime prefers alpha-repaired frames.',
+    timingNote: 'Preserved for Sprite Lab/QA only. Human visual audit failed frames 0003, 0004, and 0005, so Ronin K was rolled back to Calf Kick.',
   }),
   entry('ronin', 'Ronin', 'Side Kick', 'side_kick', {
+    problem: true,
     visualActiveFrames: [4],
     impactFrame: 4,
-    timingNote: 'Preserved for Sprite Lab only. Active-runtime QA failed frames 0002 and 0005, so Ronin L was rolled back to Knee.',
+    timingNote: 'Preserved for Sprite Lab/QA only. Human visual audit failed frames 0001 through 0005, so Ronin L remains Knee.',
   }),
   entry('ronin', 'Ronin', 'Knee', 'knee'),
   entry('ronin', 'Ronin', 'Dash', 'dash'),
@@ -152,6 +185,7 @@ async function toReportRow(item) {
     cleanedContinuityPath: path.join(cleanedQaFolder, 'frame-continuity.json'),
     proportionPath: path.join(qaFolder, 'proportion-report.json'),
     chainVisual: chainVisualMappings.get(`${item.characterId}:${item.animationId}`),
+    visualQaAudit: visualQaAudits.get(`${item.characterId}:${item.animationId}`),
     manualOverrideFolder: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId),
     manualOverrideExample: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId, '0001.png'),
     framesPackFolder: path.resolve(cwd, 'public/sprites/frames-pack', item.characterId, item.animationId),
@@ -285,6 +319,12 @@ function renderMarkdown(items) {
       lines.push(`- Chained visual note: ${row.chainVisual.note}`);
     }
     if (row.timingNote) lines.push(`- Timing note: ${row.timingNote}`);
+    if (row.visualQaAudit) {
+      lines.push(`- Visual QA badge: \`${row.visualQaAudit.readinessBadge}\``);
+      lines.push(`- Gameplay ready: ${row.visualQaAudit.gameplayReady ? 'yes' : 'no'}`);
+      lines.push(`- Failed frames: ${row.visualQaAudit.failedFrames.length > 0 ? row.visualQaAudit.failedFrames.map((frame) => `\`${frame}\``).join(', ') : 'none'}`);
+      lines.push(`- Unusable source frames: ${row.visualQaAudit.unusableFrames.length > 0 ? row.visualQaAudit.unusableFrames.map((frame) => `\`${frame}\``).join(', ') : 'none'}`);
+    }
     lines.push(`- Manual override folder: \`${row.manualOverrideFolder}\``);
     lines.push(`- Manual override example: \`${row.manualOverrideExample}\``);
     lines.push(`- Rerunning import/clean can overwrite active folder: ${row.runtime.overwrittenByImport ? 'yes' : 'no'}`);
@@ -297,6 +337,14 @@ function renderMarkdown(items) {
       for (const file of row.runtime.files) lines.push(`- \`${file}\``);
     } else {
       lines.push('- No individual runtime PNG files are active for this animation; inspect the source strip/atlas path above or add numbered PNGs in the manual override folder.');
+    }
+    if (row.visualQaAudit) {
+      lines.push('');
+      lines.push('Frame-by-frame visual QA:');
+      lines.push('');
+      for (const [frame, status, reason] of row.visualQaAudit.frames) {
+        lines.push(`- \`${frame}\`: \`${status}\` - ${reason} Manual override: \`${path.join(row.manualOverrideFolder, frame)}\``);
+      }
     }
     lines.push('');
   }

@@ -266,6 +266,7 @@ export class SpriteLab {
         gameplayEnabled: Boolean(equippedSlot),
         gameplaySlot: equippedSlot?.key,
         activeRuntimeQaStatus: activeRuntimeQa?.verdict,
+        activeRuntimeReadinessBadge: activeRuntimeQa?.readinessBadge,
         notGameplayReady: activeRuntimeQa?.verdict === 'NOT_GAMEPLAY_READY',
         activeRuntimeQaFolder: activeRuntimeQa?.qaFolder,
         activeRuntimeQaChecks: activeRuntimeQa
@@ -280,6 +281,9 @@ export class SpriteLab {
             }
           : undefined,
         activeRuntimeFailedFrames: activeRuntimeQa?.failedFrames,
+        activeRuntimeUnusableFrames: activeRuntimeQa?.unusableFrames,
+        activeRuntimeFrameStatuses: activeRuntimeQa?.frameStatuses,
+        currentFrameVisualQa: activeRuntimeQa?.frameStatuses[framePosition],
         activeRuntimeSource: activeRuntimeQa?.activeRuntimeSources,
         activeRuntimeFramePath: activeRuntimeQa?.activeRuntimeFramePaths[framePosition],
         frameHoldCount: frame?.generatedPackHoldCount ?? estimateHoldCount(this.animation.frames, framePosition),
