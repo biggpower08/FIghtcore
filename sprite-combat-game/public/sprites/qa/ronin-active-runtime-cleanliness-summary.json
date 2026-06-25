@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-06-25T04:44:17.569Z",
+  "sourcePriority": [
+    "manual-overrides",
+    "frames-alpha-repaired",
+    "frames-cleaned",
+    "frames-pack",
+    "raw frames"
+  ],
+  "targets": [
+    {
+      "generatedAt": "2026-06-25T04:44:17.059Z",
+      "entityId": "ronin",
+      "animationKey": "roundhouse_kick",
+      "pass": true,
+      "verdict": "ACTIVE_RUNTIME_READY",
+      "sourcePriority": [
+        "manual-overrides",
+        "frames-alpha-repaired",
+        "frames-cleaned",
+        "frames-pack",
+        "raw frames"
+      ],
+      "activeRuntimeSources": [
+        "frames-alpha-repaired"
+      ],
+      "activeRuntimeFramePaths": [
+        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0001.png",
+        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0002.png",
+        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0003.png",
+        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0004.png",
+        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0005.png",
+        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0006.png"
+      ],
+      "framesScanned": 6,
+      "failedFrames": [],
+      "manualOverridePaths": [
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png"
+      ],
+      "checks": {
+        "internalAlphaHoles": 0,
+        "paleCutPixels": 0,
+        "canvasEdgeContactFrames": [],
+        "silhouetteDamage": "manual visual review still required",
+        "missingParts": "manual visual review still required"
+      }
+    },
+    {
+      "generatedAt": "2026-06-25T04:44:17.385Z",
+      "entityId": "ronin",
+      "animationKey": "side_kick",
+      "pass": false,
+      "verdict": "NOT_GAMEPLAY_READY",
+      "sourcePriority": [
+        "manual-overrides",
+        "frames-alpha-repaired",
+        "frames-cleaned",
+        "frames-pack",
+        "raw frames"
+      ],
+      "activeRuntimeSources": [
+        "frames-alpha-repaired"
+      ],
+      "activeRuntimeFramePaths": [
+        "/sprites/frames-alpha-repaired/ronin/side_kick/0001.png",
+        "/sprites/frames-alpha-repaired/ronin/side_kick/0002.png",
+        "/sprites/frames-alpha-repaired/ronin/side_kick/0003.png",
+        "/sprites/frames-alpha-repaired/ronin/side_kick/0004.png",
+        "/sprites/frames-alpha-repaired/ronin/side_kick/0005.png",
+        "/sprites/frames-alpha-repaired/ronin/side_kick/0006.png"
+      ],
+      "framesScanned": 6,
+      "failedFrames": [
+        "0002.png",
+        "0005.png"
+      ],
+      "manualOverridePaths": [
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0001.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0002.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0003.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0004.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0005.png",
+        "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0006.png"
+      ],
+      "checks": {
+        "internalAlphaHoles": 0,
+        "paleCutPixels": 6,
+        "canvasEdgeContactFrames": [],
+        "silhouetteDamage": "manual visual review still required",
+        "missingParts": "manual visual review still required"
+      }
+    }
+  ]
+}

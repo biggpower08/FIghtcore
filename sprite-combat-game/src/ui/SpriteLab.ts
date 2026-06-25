@@ -1,5 +1,7 @@
 import { getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { getAnimationEligibility } from '../data/animationEligibility';
+import { getActiveRuntimeSpriteQa } from '../data/activeRuntimeSpriteQa';
+import { characterLoadoutById } from '../data/characterLoadouts';
 import { getFrameQuality } from '../data/frameQuality';
 import { getCharacterVisualProfile } from '../data/characterVisualProfiles';
 import { getCombatMoveProfileByAnimation } from '../data/combatMoveProfiles';
@@ -248,6 +250,8 @@ export class SpriteLab {
     const warningBadges = frame ? this.getProportionWarningBadges(frame, scaleDiagnostics, alpha, framePosition) : [];
     const combatProfile = getCombatMoveProfileByAnimation(this.animation.animationKey);
     const manualOverridePath = `C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\${this.animation.entityId}\\${this.animation.animationKey}\\${String(framePosition + 1).padStart(4, '0')}.png`;
+    const activeRuntimeQa = getActiveRuntimeSpriteQa(this.animation.entityId, this.animation.animationKey);
+    const equippedSlot = characterLoadoutById.get(this.animation.entityId)?.slots.find((slot) => slot.moveId === this.animation?.animationKey);
 
     info.textContent = JSON.stringify(
       {
@@ -259,6 +263,25 @@ export class SpriteLab {
         actualRuntimeFrameCount: this.animation.frames.length,
         frameIndex: framePosition,
         frameDurationMs: frame?.durationMs,
+        gameplayEnabled: Boolean(equippedSlot),
+        gameplaySlot: equippedSlot?.key,
+        activeRuntimeQaStatus: activeRuntimeQa?.verdict,
+        notGameplayReady: activeRuntimeQa?.verdict === 'NOT_GAMEPLAY_READY',
+        activeRuntimeQaFolder: activeRuntimeQa?.qaFolder,
+        activeRuntimeQaChecks: activeRuntimeQa
+          ? {
+              transparentStrip: `${activeRuntimeQa.qaFolder}/active-runtime-transparent-strip.png`,
+              whiteCheck: `${activeRuntimeQa.qaFolder}/active-runtime-white-check.png`,
+              darkCheck: `${activeRuntimeQa.qaFolder}/active-runtime-dark-check.png`,
+              tealCheck: `${activeRuntimeQa.qaFolder}/active-runtime-teal-check.png`,
+              redCheck: `${activeRuntimeQa.qaFolder}/active-runtime-red-check.png`,
+              report: `${activeRuntimeQa.qaFolder}/active-runtime-alpha-hole-report.json`,
+              summary: `${activeRuntimeQa.qaFolder}/active-runtime-cleanliness-summary.json`,
+            }
+          : undefined,
+        activeRuntimeFailedFrames: activeRuntimeQa?.failedFrames,
+        activeRuntimeSource: activeRuntimeQa?.activeRuntimeSources,
+        activeRuntimeFramePath: activeRuntimeQa?.activeRuntimeFramePaths[framePosition],
         frameHoldCount: frame?.generatedPackHoldCount ?? estimateHoldCount(this.animation.frames, framePosition),
         activeHitboxFrames60fps: combatProfile?.activeFrames,
         visualActiveFrames: combatProfile?.visualActiveFrames,
@@ -279,6 +302,7 @@ export class SpriteLab {
         sourceSheet: frame?.sheetPath,
         framePath: frame?.framePath,
         manualOverridePath,
+        currentFrameManualOverridePath: activeRuntimeQa?.manualOverridePaths[framePosition] ?? manualOverridePath,
         currentSourcePriorityLabel: scaleDiagnostics?.sourcePriority,
         proportionWarningBadges: warningBadges,
         sourceKind: frame?.source,
@@ -719,6 +743,7 @@ export class SpriteLab {
   private describeFrameSource(frame?: ResolvedSpriteFrame): string {
     if (!frame) return 'missing frame';
     if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return 'manual override PNG frame';
+    if (frame.usingRepairedAlpha || frame.framePath?.startsWith('/sprites/frames-alpha-repaired/')) return 'repaired alpha-hole PNG frame';
     if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return 'alpha-cleaned PNG frame';
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return 'normalized sprite-pack PNG frame';
     if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return 'reference-extracted PNG frame';
@@ -761,6 +786,7 @@ export class SpriteLab {
     const height = frame.height ?? frame.image?.height ?? 0;
     if (width <= 0 || height <= 0) return true;
     if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return false;
+    if (frame.usingRepairedAlpha || frame.framePath?.startsWith('/sprites/frames-alpha-repaired/')) return false;
     if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return false;
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
     if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return false;

@@ -37,6 +37,8 @@ export interface ResolvedSpriteFrame {
   usingCleanedAlphaFrame?: boolean;
   cleanedAlphaFramePath?: string;
   cleanedAlphaSourceFramePath?: string;
+  repairedAlphaFramePath?: string;
+  repairedAlphaSourceFramePath?: string;
   referenceFrameAvailable?: boolean;
   usingReferenceExtracted?: boolean;
   referenceSourceSheet?: string;
@@ -101,6 +103,7 @@ interface LoadedOptionalFrameSlot {
   sourceFramePath: string;
   usingManualOverride: boolean;
   usingCleanedAlpha: boolean;
+  usingRepairedAlpha: boolean;
   placeholder: boolean;
   missingFramePath?: string;
   placeholderReason?: string;
@@ -232,6 +235,23 @@ export class AssetLoader {
           sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
           usingManualOverride: true,
           usingCleanedAlpha: false,
+          usingRepairedAlpha: false,
+          placeholder: false,
+        });
+        continue;
+      }
+      const repairedPath = this.repairedAlphaFramePathFor(assetId, animation, frame - 1);
+      const repairedImage = repairedPath ? await this.loadOptionalImage(repairedPath) : null;
+      if (repairedPath && repairedImage) {
+        slots.push({
+          image: repairedImage,
+          requestedFrameIndex: frame - 1,
+          loadedFrameIndex: frame - 1,
+          framePath: repairedPath,
+          sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
+          usingManualOverride: false,
+          usingCleanedAlpha: false,
+          usingRepairedAlpha: true,
           placeholder: false,
         });
         continue;
@@ -247,6 +267,7 @@ export class AssetLoader {
           sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
           usingManualOverride: false,
           usingCleanedAlpha: true,
+          usingRepairedAlpha: false,
           placeholder: false,
         });
         continue;
@@ -273,6 +294,7 @@ export class AssetLoader {
               sourceFramePath: path,
               usingManualOverride: false,
               usingCleanedAlpha: false,
+              usingRepairedAlpha: false,
               placeholder: false,
             }
           : null,
@@ -308,14 +330,16 @@ export class AssetLoader {
     const generatedPack = getGeneratedSpritePackFrame(assetId, animation, frameIndex);
     const reference = getReferenceSpriteFrame(assetId, animation, frameIndex);
     const semiRealistic = getSemiRealisticSpriteFrame(assetId, animation, frameIndex);
-    const alphaHole = getAlphaHoleSpriteFrame(assetId, animation, frameIndex);
     return (
       generatedPack?.framePath ??
       reference?.framePath ??
       semiRealistic?.framePath ??
-      alphaHole?.repairedFramePath ??
       `/sprites/frames/${assetId}/${animation}/${frameNumber}.png`
     );
+  }
+
+  private repairedAlphaFramePathFor(assetId: string, animation: string, frameIndex: number): string | undefined {
+    return getAlphaHoleSpriteFrame(assetId, animation, frameIndex)?.repairedFramePath;
   }
 
   getFrames(assetId: string, animation: string): HTMLImageElement[] {
@@ -481,6 +505,8 @@ export class AssetLoader {
         const generatedPackFrame = generatedPack?.frames[index];
         const usingManualOverride = slot.usingManualOverride;
         const usingCleanedAlpha = slot.usingCleanedAlpha;
+        const usingRepairedAlpha = slot.usingRepairedAlpha;
+        const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
         const sourceFramePath =
           generatedPackFrame?.framePath ??
           referenceFrame?.framePath ??
@@ -500,7 +526,7 @@ export class AssetLoader {
             definition?.frames[index]?.durationMs ??
             timingForAnimation(animationKey, index, slots.length),
           image: slot.image,
-          framePath: slot.placeholder ? slot.framePath : usingManualOverride || usingCleanedAlpha ? slot.framePath : sourceFramePath,
+          framePath: slot.placeholder ? slot.framePath : usingManualOverride || usingRepairedAlpha || usingCleanedAlpha ? slot.framePath : sourceFramePath,
           width: generatedPackFrame?.frameSize.w ?? referenceFrame?.frameSize.width ?? semiRealisticFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
           height: generatedPackFrame?.frameSize.h ?? referenceFrame?.frameSize.height ?? semiRealisticFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
           anchorX: generatedPackFrame?.anchorX ?? referenceFrame?.anchorX ?? semiRealisticFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
@@ -516,6 +542,10 @@ export class AssetLoader {
           usingCleanedAlphaFrame: usingCleanedAlpha,
           cleanedAlphaFramePath: usingCleanedAlpha ? slot.framePath : undefined,
           cleanedAlphaSourceFramePath: usingCleanedAlpha ? sourceFramePath : undefined,
+          repairedFrameAvailable: Boolean(alphaHole?.repairedFramePath),
+          usingRepairedAlpha,
+          repairedAlphaFramePath: usingRepairedAlpha ? slot.framePath : undefined,
+          repairedAlphaSourceFramePath: usingRepairedAlpha ? sourceFramePath : undefined,
           referenceFrameAvailable: Boolean(referenceFrame),
           usingReferenceExtracted: Boolean(referenceFrame),
           referenceSourceSheet: referenceFrame?.sourceSheet,
@@ -532,6 +562,8 @@ export class AssetLoader {
           semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
           notes: usingManualOverride
             ? `Using manual override PNG frame over ${sourceFramePath}.`
+            : usingRepairedAlpha
+            ? `Using repaired alpha-hole PNG frame over ${sourceFramePath}.`
             : usingCleanedAlpha
             ? `Using alpha-cleaned PNG frame over ${sourceFramePath}.`
             : slot.placeholder
@@ -553,18 +585,15 @@ export class AssetLoader {
       },
     );
     for (const [index, frame] of frames.entries()) {
-      if (frame.usingManualOverrideFrame || frame.usingCleanedAlphaFrame || frame.usingGeneratedPackFrame || frame.usingReferenceExtracted) continue;
       const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
       if (!alphaHole) continue;
-      frame.framePath = alphaHole.repairedFramePath ?? frame.framePath;
       frame.repairedFrameAvailable = Boolean(alphaHole.repairedFramePath);
-      frame.usingRepairedAlpha = Boolean(alphaHole.repairedFramePath);
       frame.invalidHollowFrame = alphaHole.invalidHollowFrame;
       frame.alphaHoleCount = alphaHole.alphaHoleCount;
       frame.repairedAlphaHoles = alphaHole.repairedAlphaHoles;
-      frame.notes = alphaHole.repairedFramePath
-        ? appendNote(frame.notes, 'Using repaired alpha-hole PNG frame.')
-        : appendNote(frame.notes, alphaHole.reason);
+      if (!frame.usingManualOverrideFrame && !frame.usingRepairedAlpha && !frame.usingCleanedAlphaFrame && !frame.usingGeneratedPackFrame && !frame.usingReferenceExtracted) {
+        frame.notes = appendNote(frame.notes, alphaHole.reason);
+      }
     }
 
     return {

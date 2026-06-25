@@ -31,19 +31,21 @@ Ronin's old `calf_kick` art was previously inspected on the cleaned white-check 
 
 `public/sprites/qa-cleaned/ronin/calf_kick/white-check.png`
 
-That old art read as a low or mid-line forward kick, not a true roundhouse. Ronin now uses the newly provided kick sheets instead:
+That old art read as a low or mid-line forward kick, not a true roundhouse. Ronin now uses the newly provided roundhouse sheet for K:
 
-- K was temporarily tested as `roundhouse_kick`.
-- L was temporarily tested as `side_kick`.
+- K: `roundhouse_kick`
 
-Follow-up audit on 2026-06-25 found that both new kick sheets have internal alpha holes, visible cut artifacts, and Ronin body-core proportion mismatches. The new animations remain in source/QA folders for manual replacement, but they are disabled from normal Ronin controls.
+Follow-up active-runtime audit on 2026-06-25 found:
 
-Restored stable playable Ronin controls:
+- `roundhouse_kick` passes the active-runtime check when loaded from `frames-alpha-repaired`.
+- `side_kick` still fails active-runtime QA on `0002.png` and `0005.png` because pale cut pixels remain visible.
 
-- K: `calf_kick`
+Current playable Ronin controls:
+
+- K: `roundhouse_kick`
 - L: `knee`
 
-See `docs/RONIN_KICK_REPAIR_NOTES.md` for exact bad frames, alpha-hole reports, manual override paths, and the rollback decision.
+See `docs/RONIN_KICK_REPAIR_NOTES.md` for exact active runtime sources, active-runtime reports, manual override paths, and the split keep/rollback decision.
 
 Both new strips append Ronin idle frame `0001` as the final guard-return frame because the uploaded sheets did not include an idle ending pose.
 

@@ -1,0 +1,188 @@
+{
+  "generatedAt": "2026-06-25T04:44:17.059Z",
+  "entityId": "ronin",
+  "animationKey": "roundhouse_kick",
+  "pass": true,
+  "verdict": "ACTIVE_RUNTIME_READY",
+  "sourcePriority": [
+    "manual-overrides",
+    "frames-alpha-repaired",
+    "frames-cleaned",
+    "frames-pack",
+    "raw frames"
+  ],
+  "activeRuntimeSources": [
+    "frames-alpha-repaired"
+  ],
+  "activeRuntimeFramePaths": [
+    "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0001.png",
+    "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0002.png",
+    "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0003.png",
+    "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0004.png",
+    "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0005.png",
+    "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0006.png"
+  ],
+  "framesScanned": 6,
+  "failedFrames": [],
+  "manualOverridePaths": [
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png"
+  ],
+  "checks": {
+    "internalAlphaHoles": 0,
+    "paleCutPixels": 0,
+    "canvasEdgeContactFrames": [],
+    "silhouetteDamage": "manual visual review still required",
+    "missingParts": "manual visual review still required"
+  },
+  "frames": [
+    {
+      "frame": "0001.png",
+      "frameIndex": 0,
+      "sourcePriority": "frames-alpha-repaired",
+      "webPath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0001.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\roundhouse_kick\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 111,
+        "y": 30,
+        "w": 67,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "width": 288,
+      "height": 160
+    },
+    {
+      "frame": "0002.png",
+      "frameIndex": 1,
+      "sourcePriority": "frames-alpha-repaired",
+      "webPath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0002.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\roundhouse_kick\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 116,
+        "y": 30,
+        "w": 56,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "width": 288,
+      "height": 160
+    },
+    {
+      "frame": "0003.png",
+      "frameIndex": 2,
+      "sourcePriority": "frames-alpha-repaired",
+      "webPath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0003.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\roundhouse_kick\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 122,
+        "y": 30,
+        "w": 44,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "width": 288,
+      "height": 160
+    },
+    {
+      "frame": "0004.png",
+      "frameIndex": 3,
+      "sourcePriority": "frames-alpha-repaired",
+      "webPath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0004.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\roundhouse_kick\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 101,
+        "y": 30,
+        "w": 86,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "width": 288,
+      "height": 160
+    },
+    {
+      "frame": "0005.png",
+      "frameIndex": 4,
+      "sourcePriority": "frames-alpha-repaired",
+      "webPath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0005.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\roundhouse_kick\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 99,
+        "y": 30,
+        "w": 91,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "width": 288,
+      "height": 160
+    },
+    {
+      "frame": "0006.png",
+      "frameIndex": 5,
+      "sourcePriority": "frames-alpha-repaired",
+      "webPath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0006.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\roundhouse_kick\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 112,
+        "y": 30,
+        "w": 64,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "width": 288,
+      "height": 160
+    }
+  ]
+}
