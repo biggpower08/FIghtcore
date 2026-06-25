@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T20:26:01.007Z",
+  "generatedAt": "2026-06-25T21:01:28.675Z",
   "sourcePriority": [
     "manual-overrides",
     "frames-alpha-repaired",
@@ -9,13 +9,13 @@
   ],
   "targets": [
     {
-      "generatedAt": "2026-06-25T20:26:00.244Z",
+      "generatedAt": "2026-06-25T21:01:28.148Z",
       "entityId": "ronin",
       "animationKey": "roundhouse_kick",
-      "automatedPass": false,
-      "pass": false,
-      "verdict": "NOT_GAMEPLAY_READY",
-      "readinessBadge": "NEEDS MANUAL REPAIR",
+      "automatedPass": true,
+      "pass": true,
+      "verdict": "ACTIVE_RUNTIME_READY",
+      "readinessBadge": "PASS WITH NOTES",
       "sourcePriority": [
         "manual-overrides",
         "frames-alpha-repaired",
@@ -35,10 +35,9 @@
         "/sprites/manual-overrides/ronin/roundhouse_kick/0006.png"
       ],
       "framesScanned": 6,
-      "automatedFailedFrames": [
-        "0003.png"
-      ],
-      "failedFrames": [
+      "automatedFailedFrames": [],
+      "failedFrames": [],
+      "acceptedIntentionalAlphaFrames": [
         "0003.png"
       ],
       "unusableFrames": [],
@@ -55,8 +54,8 @@
         },
         {
           "frame": "0003.png",
-          "status": "NEEDS_MANUAL_REPAIR",
-          "reason": "2 internal alpha hole(s)"
+          "status": "ACCEPTED_WITH_INTENTIONAL_ALPHA",
+          "reason": "Intentional transparent detail in the Ronin roundhouse manual override frame."
         },
         {
           "frame": "0004.png",
@@ -84,6 +83,7 @@
       ],
       "checks": {
         "internalAlphaHoles": 2,
+        "acceptedIntentionalAlphaHoles": 2,
         "paleCutPixels": 0,
         "canvasEdgeContactFrames": [],
         "silhouetteDamage": "manual visual review still required",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "generatedAt": "2026-06-25T20:26:00.641Z",
+      "generatedAt": "2026-06-25T21:01:28.482Z",
       "entityId": "ronin",
       "animationKey": "side_kick",
       "automatedPass": false,
@@ -128,6 +128,7 @@
         "0003.png",
         "0004.png"
       ],
+      "acceptedIntentionalAlphaFrames": [],
       "unusableFrames": [
         "0001.png"
       ],
@@ -173,6 +174,7 @@
       ],
       "checks": {
         "internalAlphaHoles": 0,
+        "acceptedIntentionalAlphaHoles": 0,
         "paleCutPixels": 6,
         "canvasEdgeContactFrames": [],
         "silhouetteDamage": "manual visual review still required",

@@ -108,7 +108,7 @@ const activeAnimations = [
     problem: true,
     visualActiveFrames: [5],
     impactFrame: 5,
-    timingNote: 'Promoted to Ronin K by owner request. Active-runtime QA still flags manual override frame 0003 for internal alpha holes.',
+    timingNote: 'Promoted to Ronin K by owner request. Active-runtime QA accepts frame 0003 with intentional alpha detail.',
   }),
   entry('ronin', 'Ronin', 'Side Kick', 'side_kick', {
     problem: true,

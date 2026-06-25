@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T20:26:09.376Z",
+  "generatedAt": "2026-06-25T21:01:49.595Z",
   "entityId": "ronin",
   "animationKey": "roundhouse_kick",
   "sourcePriority": [
@@ -22,6 +22,7 @@
       "lightArtifactBboxes": [],
       "edgeContact": false,
       "recommendation": "ok",
+      "intentionalAlphaAccepted": false,
       "acceptableForGameplay": true
     },
     {
@@ -38,6 +39,7 @@
       "lightArtifactBboxes": [],
       "edgeContact": false,
       "recommendation": "ok",
+      "intentionalAlphaAccepted": false,
       "acceptableForGameplay": true
     },
     {
@@ -76,8 +78,37 @@
       "lightArtifactPixels": 0,
       "lightArtifactBboxes": [],
       "edgeContact": false,
-      "repairedFramePath": "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0003.png",
-      "recommendation": "repair",
+      "recommendation": "accepted intentional alpha",
+      "intentionalAlphaAllowance": {
+        "entityId": "ronin",
+        "animationKey": "roundhouse_kick",
+        "frame": "0003.png",
+        "frameIndex": 2,
+        "sourcePriority": "manual-overrides",
+        "allowedInternalAlphaHoles": 2,
+        "reason": "Intentional transparent detail in the Ronin roundhouse manual override frame.",
+        "holes": [
+          {
+            "area": 6,
+            "bbox": {
+              "x": 145,
+              "y": 52,
+              "w": 4,
+              "h": 2
+            }
+          },
+          {
+            "area": 34,
+            "bbox": {
+              "x": 146,
+              "y": 67,
+              "w": 5,
+              "h": 11
+            }
+          }
+        ]
+      },
+      "intentionalAlphaAccepted": true,
       "acceptableForGameplay": true
     },
     {
@@ -94,6 +125,7 @@
       "lightArtifactBboxes": [],
       "edgeContact": false,
       "recommendation": "ok",
+      "intentionalAlphaAccepted": false,
       "acceptableForGameplay": true
     },
     {
@@ -110,6 +142,7 @@
       "lightArtifactBboxes": [],
       "edgeContact": false,
       "recommendation": "ok",
+      "intentionalAlphaAccepted": false,
       "acceptableForGameplay": true
     },
     {
@@ -126,6 +159,7 @@
       "lightArtifactBboxes": [],
       "edgeContact": false,
       "recommendation": "ok",
+      "intentionalAlphaAccepted": false,
       "acceptableForGameplay": true
     }
   ]

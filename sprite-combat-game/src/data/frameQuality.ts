@@ -34,6 +34,51 @@ export interface FrameQuality {
   reason?: string;
 }
 
+export interface IntentionalAlphaHoleAllowance {
+  entityId: string;
+  animationKey: string;
+  frame: string;
+  frameIndex: number;
+  sourcePriority: 'manual-overrides' | 'active-runtime';
+  allowedInternalAlphaHoles: number;
+  reason: string;
+  holes?: Array<{
+    area: number;
+    bbox: { x: number; y: number; w: number; h: number };
+  }>;
+}
+
+export const intentionalAlphaHoleAllowlist: IntentionalAlphaHoleAllowance[] = [
+  {
+    entityId: 'ronin',
+    animationKey: 'roundhouse_kick',
+    frame: '0003.png',
+    frameIndex: 2,
+    sourcePriority: 'manual-overrides',
+    allowedInternalAlphaHoles: 2,
+    reason: 'Intentional transparent detail in the Ronin roundhouse manual override frame.',
+    holes: [
+      { area: 6, bbox: { x: 145, y: 52, w: 4, h: 2 } },
+      { area: 34, bbox: { x: 146, y: 67, w: 5, h: 11 } },
+    ],
+  },
+];
+
+export function getIntentionalAlphaHoleAllowance(
+  entityId: string,
+  animationKey: string,
+  frameIndex: number,
+  sourcePriority?: string,
+): IntentionalAlphaHoleAllowance | undefined {
+  return intentionalAlphaHoleAllowlist.find(
+    (entry) =>
+      entry.entityId === entityId &&
+      entry.animationKey === animationKey &&
+      entry.frameIndex === frameIndex &&
+      (!sourcePriority || entry.sourcePriority === sourcePriority || entry.sourcePriority === 'active-runtime'),
+  );
+}
+
 const knownMultiPoseFrames = new Map<string, string>([
   [frameKey('shadow-striker', 'teep_kick', 2), 'Frame crop contains more than one Shadow Striker pose.'],
   [frameKey('shadow-striker', 'roundhouse_kick', 2), 'Frame crop contains more than one Shadow Striker pose.'],

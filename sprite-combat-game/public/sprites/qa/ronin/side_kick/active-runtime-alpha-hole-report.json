@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T14:48:20.509Z",
+  "generatedAt": "2026-06-25T21:01:28.482Z",
   "entityId": "ronin",
   "animationKey": "side_kick",
   "automatedPass": false,
@@ -14,15 +14,15 @@
     "raw frames"
   ],
   "activeRuntimeSources": [
-    "frames-alpha-repaired"
+    "manual-overrides"
   ],
   "activeRuntimeFramePaths": [
-    "/sprites/frames-alpha-repaired/ronin/side_kick/0001.png",
-    "/sprites/frames-alpha-repaired/ronin/side_kick/0002.png",
-    "/sprites/frames-alpha-repaired/ronin/side_kick/0003.png",
-    "/sprites/frames-alpha-repaired/ronin/side_kick/0004.png",
-    "/sprites/frames-alpha-repaired/ronin/side_kick/0005.png",
-    "/sprites/frames-alpha-repaired/ronin/side_kick/0006.png"
+    "/sprites/manual-overrides/ronin/side_kick/0001.png",
+    "/sprites/manual-overrides/ronin/side_kick/0002.png",
+    "/sprites/manual-overrides/ronin/side_kick/0003.png",
+    "/sprites/manual-overrides/ronin/side_kick/0004.png",
+    "/sprites/manual-overrides/ronin/side_kick/0005.png",
+    "/sprites/manual-overrides/ronin/side_kick/0006.png"
   ],
   "framesScanned": 6,
   "automatedFailedFrames": [
@@ -30,12 +30,13 @@
     "0005.png"
   ],
   "failedFrames": [
-    "0001.png",
     "0002.png",
+    "0005.png",
+    "0001.png",
     "0003.png",
-    "0004.png",
-    "0005.png"
+    "0004.png"
   ],
+  "acceptedIntentionalAlphaFrames": [],
   "unusableFrames": [
     "0001.png"
   ],
@@ -81,6 +82,7 @@
   ],
   "checks": {
     "internalAlphaHoles": 0,
+    "acceptedIntentionalAlphaHoles": 0,
     "paleCutPixels": 6,
     "canvasEdgeContactFrames": [],
     "silhouetteDamage": "manual visual review still required",
@@ -90,9 +92,9 @@
     {
       "frame": "0001.png",
       "frameIndex": 0,
-      "sourcePriority": "frames-alpha-repaired",
-      "webPath": "/sprites/frames-alpha-repaired/ronin/side_kick/0001.png",
-      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\side_kick\\0001.png",
+      "sourcePriority": "manual-overrides",
+      "webPath": "/sprites/manual-overrides/ronin/side_kick/0001.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0001.png",
       "alphaHoleCount": 0,
       "alphaHolePixels": 0,
@@ -108,15 +110,17 @@
         "h": 117
       },
       "acceptableForGameplay": true,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
       "width": 288,
       "height": 160
     },
     {
       "frame": "0002.png",
       "frameIndex": 1,
-      "sourcePriority": "frames-alpha-repaired",
-      "webPath": "/sprites/frames-alpha-repaired/ronin/side_kick/0002.png",
-      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\side_kick\\0002.png",
+      "sourcePriority": "manual-overrides",
+      "webPath": "/sprites/manual-overrides/ronin/side_kick/0002.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0002.png",
       "alphaHoleCount": 0,
       "alphaHolePixels": 0,
@@ -147,15 +151,17 @@
         "h": 118
       },
       "acceptableForGameplay": false,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
       "width": 288,
       "height": 160
     },
     {
       "frame": "0003.png",
       "frameIndex": 2,
-      "sourcePriority": "frames-alpha-repaired",
-      "webPath": "/sprites/frames-alpha-repaired/ronin/side_kick/0003.png",
-      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\side_kick\\0003.png",
+      "sourcePriority": "manual-overrides",
+      "webPath": "/sprites/manual-overrides/ronin/side_kick/0003.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0003.png",
       "alphaHoleCount": 0,
       "alphaHolePixels": 0,
@@ -171,15 +177,17 @@
         "h": 118
       },
       "acceptableForGameplay": true,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
       "width": 288,
       "height": 160
     },
     {
       "frame": "0004.png",
       "frameIndex": 3,
-      "sourcePriority": "frames-alpha-repaired",
-      "webPath": "/sprites/frames-alpha-repaired/ronin/side_kick/0004.png",
-      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\side_kick\\0004.png",
+      "sourcePriority": "manual-overrides",
+      "webPath": "/sprites/manual-overrides/ronin/side_kick/0004.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0004.png",
       "alphaHoleCount": 0,
       "alphaHolePixels": 0,
@@ -195,15 +203,17 @@
         "h": 118
       },
       "acceptableForGameplay": true,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
       "width": 288,
       "height": 160
     },
     {
       "frame": "0005.png",
       "frameIndex": 4,
-      "sourcePriority": "frames-alpha-repaired",
-      "webPath": "/sprites/frames-alpha-repaired/ronin/side_kick/0005.png",
-      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\side_kick\\0005.png",
+      "sourcePriority": "manual-overrides",
+      "webPath": "/sprites/manual-overrides/ronin/side_kick/0005.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0005.png",
       "alphaHoleCount": 0,
       "alphaHolePixels": 0,
@@ -227,15 +237,17 @@
         "h": 118
       },
       "acceptableForGameplay": false,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
       "width": 288,
       "height": 160
     },
     {
       "frame": "0006.png",
       "frameIndex": 5,
-      "sourcePriority": "frames-alpha-repaired",
-      "webPath": "/sprites/frames-alpha-repaired/ronin/side_kick/0006.png",
-      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-alpha-repaired\\ronin\\side_kick\\0006.png",
+      "sourcePriority": "manual-overrides",
+      "webPath": "/sprites/manual-overrides/ronin/side_kick/0006.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0006.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0006.png",
       "alphaHoleCount": 0,
       "alphaHolePixels": 0,
@@ -251,6 +263,8 @@
         "h": 118
       },
       "acceptableForGameplay": true,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
       "width": 288,
       "height": 160
     }

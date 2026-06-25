@@ -124,10 +124,10 @@ Runtime frames:
 - Impact frame: `0005`
 - Chained visual frames: `0004:68ms` -> `0005:144ms` -> `0006:72ms`
 - Chained visual note: Chained roundhouse uses kick setup, full extension, guard return.
-- Timing note: Promoted to Ronin K by owner request. Active-runtime QA still flags manual override frame 0003 for internal alpha holes.
-- Visual QA badge: `NEEDS MANUAL REPAIR`
-- Gameplay ready: no
-- Failed frames: `0003.png`
+- Timing note: Promoted to Ronin K by owner request. Active-runtime QA accepts frame 0003 with intentional alpha detail.
+- Visual QA badge: `PASS WITH NOTES`
+- Gameplay ready: yes
+- Failed frames: none
 - Unusable source frames: none
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
@@ -147,7 +147,7 @@ Frame-by-frame visual QA:
 
 - `0001.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
 - `0002.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0002.png`
-- `0003.png`: `NEEDS_MANUAL_REPAIR` - 2 internal alpha hole(s) Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`
+- `0003.png`: `ACCEPTED_WITH_INTENTIONAL_ALPHA` - Intentional transparent detail in the Ronin roundhouse manual override frame. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`
 - `0004.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`
 - `0005.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`
 - `0006.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0006.png`

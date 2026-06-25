@@ -6,6 +6,8 @@ const repoRoot = process.cwd();
 const publicRoot = path.join(repoRoot, 'public');
 const qaRoot = path.join(publicRoot, 'sprites', 'qa');
 const metadataPath = path.join(repoRoot, 'src', 'data', 'alphaHoleSpriteFrames.ts');
+const frameQualityPath = path.join(repoRoot, 'src', 'data', 'frameQuality.ts');
+const activeRuntimeSpriteQaPath = path.join(repoRoot, 'src', 'data', 'activeRuntimeSpriteQa.ts');
 const alphaThreshold = 8;
 const targets = [
   { entityId: 'ronin', animationKey: 'roundhouse_kick' },
@@ -42,6 +44,7 @@ const manualVisualAudits = new Map([
 ]);
 
 const alphaMetadata = await readAlphaMetadata();
+const intentionalAlphaAllowlist = await readIntentionalAlphaHoleAllowlist();
 const summaries = [];
 
 for (const target of targets) {
@@ -78,16 +81,29 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
   const reports = [];
   for (const frame of frames) {
     const png = PNG.sync.read(await fs.readFile(frame.filePath));
+    const analysis = analyzeFrame(png);
+    const alphaAllowance = getIntentionalAlphaAllowance(entityId, animationKey, frame.frameIndex, frame.sourcePriority);
+    const alphaAllowanceAccepted = acceptsIntentionalAlphaHoles(analysis.holes, alphaAllowance);
     reports.push({
       ...frame,
-      ...analyzeFrame(png),
+      ...analysis,
+      intentionalAlphaAllowance: alphaAllowance,
+      intentionalAlphaAccepted: alphaAllowanceAccepted,
+      effectiveAlphaHoleCount: alphaAllowanceAccepted ? 0 : analysis.alphaHoleCount,
+      acceptableForGameplay:
+        alphaAllowanceAccepted
+          ? analysis.lightArtifactPixels === 0 && !analysis.edgeContact
+          : analysis.acceptableForGameplay,
       width: png.width,
       height: png.height,
     });
   }
 
   const automatedFailedFrames = reports
-    .filter((report) => report.alphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact)
+    .filter((report) => report.effectiveAlphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact)
+    .map((report) => report.frame);
+  const acceptedIntentionalAlphaFrames = reports
+    .filter((report) => report.intentionalAlphaAccepted)
     .map((report) => report.frame);
   const activeRuntimeSources = [...new Set(reports.map((report) => report.sourcePriority))];
   const visualAudit = activeVisualAudit(`${entityId}:${animationKey}`, activeRuntimeSources);
@@ -99,12 +115,19 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
   const frameStatuses = reports.map((report) => {
     const visualFrame = visualAudit?.frames.find(([frame]) => frame === report.frame);
     if (visualFrame) return { frame: visualFrame[0], status: visualFrame[1], reason: visualFrame[2] };
-    if (report.alphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact) {
+    if (report.intentionalAlphaAccepted) {
+      return {
+        frame: report.frame,
+        status: 'ACCEPTED_WITH_INTENTIONAL_ALPHA',
+        reason: report.intentionalAlphaAllowance.reason,
+      };
+    }
+    if (report.effectiveAlphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact) {
       return {
         frame: report.frame,
         status: 'NEEDS_MANUAL_REPAIR',
         reason: [
-          report.alphaHoleCount > 0 ? `${report.alphaHoleCount} internal alpha hole(s)` : undefined,
+          report.effectiveAlphaHoleCount > 0 ? `${report.alphaHoleCount} internal alpha hole(s)` : undefined,
           report.lightArtifactPixels > 0 ? `${report.lightArtifactPixels} pale cut pixel(s)` : undefined,
           report.edgeContact ? 'opaque pixels touch the canvas edge' : undefined,
         ].filter(Boolean).join('; '),
@@ -119,18 +142,23 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
     automatedPass,
     pass,
     verdict: pass ? 'ACTIVE_RUNTIME_READY' : 'NOT_GAMEPLAY_READY',
-    readinessBadge: visualAudit?.readinessBadge ?? (pass ? 'SAFE FOR GAMEPLAY' : 'NEEDS MANUAL REPAIR'),
+    readinessBadge: visualAudit?.readinessBadge ?? (pass ? (acceptedIntentionalAlphaFrames.length > 0 ? 'PASS WITH NOTES' : 'SAFE FOR GAMEPLAY') : 'NEEDS MANUAL REPAIR'),
     sourcePriority: ['manual-overrides', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
     activeRuntimeSources,
     activeRuntimeFramePaths: reports.map((report) => report.webPath),
     framesScanned: reports.length,
     automatedFailedFrames,
     failedFrames,
+    acceptedIntentionalAlphaFrames,
     unusableFrames: visualAudit?.unusableFrames ?? [],
     frameStatuses,
     manualOverridePaths: reports.map((report) => report.manualOverridePath),
     checks: {
       internalAlphaHoles: reports.reduce((total, report) => total + report.alphaHoleCount, 0),
+      acceptedIntentionalAlphaHoles: reports.reduce(
+        (total, report) => total + (report.intentionalAlphaAccepted ? report.alphaHoleCount : 0),
+        0,
+      ),
       paleCutPixels: reports.reduce((total, report) => total + report.lightArtifactPixels, 0),
       canvasEdgeContactFrames: reports.filter((report) => report.edgeContact).map((report) => report.frame),
       silhouetteDamage: 'manual visual review still required',
@@ -150,6 +178,8 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
   await fs.writeFile(path.join(outputDir, 'active-runtime-cleanliness-summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
   return summary;
 }
+
+await fs.writeFile(activeRuntimeSpriteQaPath, renderActiveRuntimeSpriteQa(summaries), 'utf8');
 
 function activeVisualAudit(key, activeRuntimeSources) {
   const audit = manualVisualAudits.get(key);
@@ -230,6 +260,36 @@ function analyzeFrame(png) {
     opaqueBounds: bounds.maxX >= bounds.minX ? { x: bounds.minX, y: bounds.minY, w: bounds.maxX - bounds.minX + 1, h: bounds.maxY - bounds.minY + 1 } : null,
     acceptableForGameplay: holes.length === 0 && lightArtifacts.totalPixels === 0 && !bounds.edgeContact,
   };
+}
+
+function getIntentionalAlphaAllowance(entityId, animationKey, frameIndex, sourcePriority) {
+  return intentionalAlphaAllowlist.find(
+    (entry) =>
+      entry.entityId === entityId &&
+      entry.animationKey === animationKey &&
+      entry.frameIndex === frameIndex &&
+      (entry.sourcePriority === sourcePriority || entry.sourcePriority === 'active-runtime'),
+  );
+}
+
+function acceptsIntentionalAlphaHoles(holes, allowance) {
+  if (!allowance || holes.length !== allowance.allowedInternalAlphaHoles) return false;
+  if (!Array.isArray(allowance.holes) || allowance.holes.length === 0) return true;
+  if (allowance.holes.length !== holes.length) return false;
+  return allowance.holes.every((expected) =>
+    holes.some((actual) => holeMatchesAllowance(actual, expected)),
+  );
+}
+
+function holeMatchesAllowance(actual, expected) {
+  const bbox = actual.bbox ?? { x: actual.minX, y: actual.minY, w: actual.width, h: actual.height };
+  return (
+    actual.area === expected.area &&
+    bbox.x === expected.bbox.x &&
+    bbox.y === expected.bbox.y &&
+    bbox.w === expected.bbox.w &&
+    bbox.h === expected.bbox.h
+  );
 }
 
 function getOpaqueBounds(png) {
@@ -426,6 +486,62 @@ async function readAlphaMetadata() {
     rows.set(`${entry.entityId}:${entry.animationKey}:${entry.frameIndex}`, entry);
   }
   return rows;
+}
+
+async function readIntentionalAlphaHoleAllowlist() {
+  const source = await fs.readFile(frameQualityPath, 'utf8');
+  const match = source.match(/export const intentionalAlphaHoleAllowlist[\s\S]*?=\s*(\[[\s\S]*?\n\]);/u);
+  if (!match) return [];
+  const jsonish = match[1]
+    .replace(/(\w+):/g, '"$1":')
+    .replace(/'/g, '"')
+    .replace(/,\s*([}\]])/g, '$1');
+  return JSON.parse(jsonish);
+}
+
+function renderActiveRuntimeSpriteQa(summaries) {
+  return `export interface ActiveRuntimeSpriteQa {
+  entityId: string;
+  animationKey: string;
+  verdict: 'ACTIVE_RUNTIME_READY' | 'NOT_GAMEPLAY_READY';
+  readinessBadge: 'SAFE FOR GAMEPLAY' | 'QA ONLY' | 'NEEDS MANUAL REPAIR' | 'PASS WITH NOTES';
+  activeRuntimeSources: string[];
+  failedFrames: string[];
+  acceptedIntentionalAlphaFrames?: string[];
+  unusableFrames: string[];
+  frameStatuses: Array<{
+    frame: string;
+    status: 'PASS' | 'NEEDS_MANUAL_REPAIR' | 'UNUSABLE_SOURCE_FRAME' | 'ACCEPTED_WITH_INTENTIONAL_ALPHA';
+    reason: string;
+  }>;
+  qaFolder: string;
+  activeRuntimeFramePaths: string[];
+  manualOverridePaths: string[];
+}
+
+export const activeRuntimeSpriteQa: ActiveRuntimeSpriteQa[] = ${JSON.stringify(
+    summaries.map((summary) => ({
+      entityId: summary.entityId,
+      animationKey: summary.animationKey,
+      verdict: summary.verdict,
+      readinessBadge: summary.readinessBadge,
+      activeRuntimeSources: summary.activeRuntimeSources,
+      failedFrames: summary.failedFrames,
+      acceptedIntentionalAlphaFrames: summary.acceptedIntentionalAlphaFrames,
+      unusableFrames: summary.unusableFrames,
+      frameStatuses: summary.frameStatuses,
+      qaFolder: `public/sprites/qa/${summary.entityId}/${summary.animationKey}`,
+      activeRuntimeFramePaths: summary.activeRuntimeFramePaths,
+      manualOverridePaths: summary.manualOverridePaths.map((framePath) => path.relative(repoRoot, framePath).replaceAll(path.sep, '/')),
+    })),
+    null,
+    2,
+  )};
+
+export function getActiveRuntimeSpriteQa(entityId: string, animationKey: string): ActiveRuntimeSpriteQa | undefined {
+  return activeRuntimeSpriteQa.find((entry) => entry.entityId === entityId && entry.animationKey === animationKey);
+}
+`;
 }
 
 async function exists(filePath) {

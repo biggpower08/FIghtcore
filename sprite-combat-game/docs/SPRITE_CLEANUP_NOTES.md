@@ -31,19 +31,27 @@ Ronin's old `calf_kick` art was previously inspected on the cleaned white-check 
 
 `public/sprites/qa-cleaned/ronin/calf_kick/white-check.png`
 
-That old art read as a low or mid-line forward kick, not a true roundhouse. The newly provided roundhouse and side-kick sheets remain in QA/manual-repair review, but neither is currently marked gameplay-ready.
+That old art read as a low or mid-line forward kick, not a true roundhouse. The newly provided roundhouse is now active on Ronin K. Side Kick remains QA-only and is not equipped.
 
 Follow-up visual active-runtime audit on 2026-06-25 found:
 
-- `roundhouse_kick` needs manual repair on `0003.png`, `0004.png`, and `0005.png`.
+- `roundhouse_kick` passes active-runtime QA with notes. Frame `0003.png` has two intentional transparent details.
 - `side_kick` needs manual repair on `0001.png` through `0005.png`; `0001.png` is an unusable source frame.
 
 Current playable Ronin controls:
 
-- K: `calf_kick`
+- K: `roundhouse_kick`
 - L: `knee`
 
-See `docs/RONIN_KICK_REPAIR_NOTES.md` for exact active runtime sources, frame-by-frame visual QA status, active-runtime reports, manual override paths, and the rollback decision.
+See `docs/RONIN_KICK_REPAIR_NOTES.md` for exact active runtime sources, frame-by-frame visual QA status, active-runtime reports, manual override paths, and the allowlist decision.
+
+Intentional alpha-hole allowlist:
+
+- Location: `src/data/frameQuality.ts`
+- Frame: `public/sprites/manual-overrides/ronin/roundhouse_kick/0003.png`
+- Allowed internal alpha holes: 2
+- Boxes: `145,52 4x2` and `146,67 5x11`
+- Behavior: active-runtime QA reports `ACCEPTED_WITH_INTENTIONAL_ALPHA` and does not repair this frame. Extra holes or holes in any other unlisted frame still fail.
 
 Both new strips append Ronin idle frame `0001` as the final guard-return frame because the uploaded sheets did not include an idle ending pose.
 

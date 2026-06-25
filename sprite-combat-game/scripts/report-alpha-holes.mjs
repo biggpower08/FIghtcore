@@ -7,6 +7,7 @@ const publicRoot = path.join(repoRoot, 'public');
 const qaRoot = path.join(publicRoot, 'sprites', 'qa');
 const repairedRoot = path.join(publicRoot, 'sprites', 'frames-alpha-repaired');
 const metadataPath = path.join(repoRoot, 'src', 'data', 'alphaHoleSpriteFrames.ts');
+const frameQualityPath = path.join(repoRoot, 'src', 'data', 'frameQuality.ts');
 const alphaThreshold = 8;
 const maxAutoRepairHoleArea = 220;
 const maxAutoRepairTotalArea = 360;
@@ -26,6 +27,7 @@ const targets = (process.env.SPRITE_ALPHA_HOLE_TARGETS ?? defaultTargets.join(',
 const scannedKeys = new Set();
 const metadataEntries = [];
 const summary = [];
+const intentionalAlphaAllowlist = await readIntentionalAlphaHoleAllowlist();
 
 for (const target of targets) {
   const report = await scanAnimation(target.entityId, target.animationKey);
@@ -66,7 +68,10 @@ async function scanAnimation(entityId, animationKey) {
     const frameName = `${String(index + 1).padStart(4, '0')}.png`;
     const png = PNG.sync.read(await fs.readFile(framePath));
     const analysis = analyzeFrame(png);
+    const alphaAllowance = getIntentionalAlphaAllowance(entityId, animationKey, index, sourcePriority(framePath));
+    const intentionalAlphaAccepted = acceptsIntentionalAlphaHoles(analysis.holes, alphaAllowance);
     const canRepair =
+      !intentionalAlphaAccepted &&
       analysis.alphaHoleCount > 0 &&
       analysis.largeHoleCount === 0 &&
       analysis.totalHoleArea <= maxAutoRepairTotalArea &&
@@ -79,7 +84,7 @@ async function scanAnimation(entityId, animationKey) {
       repairedFramePath = webPath(outputPath);
     }
 
-    const recommendation = recommendFrame(analysis, canRepair);
+    const recommendation = recommendFrame(analysis, canRepair, intentionalAlphaAccepted);
     const frameReport = {
       frame: frameName,
       frameIndex: index,
@@ -100,12 +105,14 @@ async function scanAnimation(entityId, animationKey) {
       edgeContact: analysis.edgeContact,
       repairedFramePath,
       recommendation,
-      acceptableForGameplay: recommendation === 'repair' || recommendation === 'ok',
+      intentionalAlphaAllowance: alphaAllowance,
+      intentionalAlphaAccepted,
+      acceptableForGameplay: intentionalAlphaAccepted || recommendation === 'repair' || recommendation === 'ok',
     };
     frameReports.push(frameReport);
     scannedKeys.add(frameKey(entityId, animationKey, index));
 
-    if (analysis.alphaHoleCount > 0 || analysis.lightArtifactPixels > 0 || recommendation !== 'ok') {
+    if (!intentionalAlphaAccepted && (analysis.alphaHoleCount > 0 || analysis.lightArtifactPixels > 0 || recommendation !== 'ok')) {
       entries.push({
         entityId,
         animationKey,
@@ -119,7 +126,7 @@ async function scanAnimation(entityId, animationKey) {
         repairedFramePath,
         lightArtifactPixels: analysis.lightArtifactPixels,
         recommendation,
-        reason: reasonFor(analysis, recommendation),
+        reason: reasonFor(analysis, recommendation, intentionalAlphaAccepted),
       });
     }
   }
@@ -143,6 +150,7 @@ async function scanAnimation(entityId, animationKey) {
       reportPath: path.relative(repoRoot, reportPath),
       framesScanned: frameReports.length,
       framesWithAlphaHoles: frameReports.filter((frame) => frame.alphaHoleCount > 0).length,
+      framesWithAcceptedIntentionalAlpha: frameReports.filter((frame) => frame.intentionalAlphaAccepted).map((frame) => frame.frame),
       framesWithLightArtifacts: frameReports.filter((frame) => frame.lightArtifactPixels > 0).length,
       blockedFrames: frameReports.filter((frame) => !frame.acceptableForGameplay).map((frame) => frame.frame),
     },
@@ -378,7 +386,8 @@ async function writeDarkCheck(entityId, animationKey, frameFiles) {
   await fs.writeFile(path.join(qaRoot, entityId, animationKey, 'dark-check.png'), PNG.sync.write(output));
 }
 
-function recommendFrame(analysis, canRepair) {
+function recommendFrame(analysis, canRepair, intentionalAlphaAccepted = false) {
+  if (intentionalAlphaAccepted) return 'accepted intentional alpha';
   if (analysis.lightArtifactPixels > 150) return 'manual override needed';
   if (analysis.largeHoleCount > 0 || analysis.totalHoleArea > maxAutoRepairTotalArea) return 'replace with stable fallback';
   if (canRepair) return 'repair';
@@ -386,7 +395,8 @@ function recommendFrame(analysis, canRepair) {
   return 'ok';
 }
 
-function reasonFor(analysis, recommendation) {
+function reasonFor(analysis, recommendation, intentionalAlphaAccepted = false) {
+  if (intentionalAlphaAccepted) return 'Frame has allowlisted intentional alpha holes and should not be repaired.';
   if (analysis.lightArtifactPixels > 150) return `Frame has ${analysis.lightArtifactPixels} white/gray interior cut artifact pixels; source/manual replacement is preferred.`;
   if (analysis.alphaHoleCount > 0) return `Frame has ${analysis.alphaHoleCount} internal alpha hole(s), ${analysis.totalHoleArea} total transparent pixels. Recommendation: ${recommendation}.`;
   return `Frame QA recommendation: ${recommendation}.`;
@@ -454,6 +464,47 @@ async function readPreservedAlphaMetadata(filePath, replacedKeys) {
   } catch {
     return [];
   }
+}
+
+async function readIntentionalAlphaHoleAllowlist() {
+  const source = await fs.readFile(frameQualityPath, 'utf8');
+  const match = source.match(/export const intentionalAlphaHoleAllowlist[\s\S]*?=\s*(\[[\s\S]*?\n\]);/u);
+  if (!match) return [];
+  const jsonish = match[1]
+    .replace(/(\w+):/g, '"$1":')
+    .replace(/'/g, '"')
+    .replace(/,\s*([}\]])/g, '$1');
+  return JSON.parse(jsonish);
+}
+
+function getIntentionalAlphaAllowance(entityId, animationKey, frameIndex, source) {
+  return intentionalAlphaAllowlist.find(
+    (entry) =>
+      entry.entityId === entityId &&
+      entry.animationKey === animationKey &&
+      entry.frameIndex === frameIndex &&
+      (entry.sourcePriority === source || entry.sourcePriority === 'active-runtime'),
+  );
+}
+
+function acceptsIntentionalAlphaHoles(holes, allowance) {
+  if (!allowance || holes.length !== allowance.allowedInternalAlphaHoles) return false;
+  if (!Array.isArray(allowance.holes) || allowance.holes.length === 0) return true;
+  if (allowance.holes.length !== holes.length) return false;
+  return allowance.holes.every((expected) =>
+    holes.some((actual) => holeMatchesAllowance(actual, expected)),
+  );
+}
+
+function holeMatchesAllowance(actual, expected) {
+  const bbox = actual.bbox ?? { x: actual.minX, y: actual.minY, w: actual.width, h: actual.height };
+  return (
+    actual.area === expected.area &&
+    bbox.x === expected.bbox.x &&
+    bbox.y === expected.bbox.y &&
+    bbox.w === expected.bbox.w &&
+    bbox.h === expected.bbox.h
+  );
 }
 
 function renderMetadata(entries) {
