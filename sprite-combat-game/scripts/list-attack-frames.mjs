@@ -108,7 +108,7 @@ const activeAnimations = [
     problem: true,
     visualActiveFrames: [5],
     impactFrame: 5,
-    timingNote: 'Preserved for Sprite Lab/QA only. Human visual audit failed frames 0003, 0004, and 0005, so Ronin K was rolled back to Calf Kick.',
+    timingNote: 'Promoted to Ronin K by owner request. Active-runtime QA still flags manual override frame 0003 for internal alpha holes.',
   }),
   entry('ronin', 'Ronin', 'Side Kick', 'side_kick', {
     problem: true,
@@ -154,6 +154,7 @@ const activeAnimations = [
 
 const spritePackManifests = await loadSpritePackManifests();
 const fightcoreMetadata = await loadFightcoreMetadata();
+const activeRuntimeQa = await loadActiveRuntimeQa();
 const rows = await Promise.all(activeAnimations.map(toReportRow));
 const markdown = renderMarkdown(rows);
 
@@ -185,7 +186,7 @@ async function toReportRow(item) {
     cleanedContinuityPath: path.join(cleanedQaFolder, 'frame-continuity.json'),
     proportionPath: path.join(qaFolder, 'proportion-report.json'),
     chainVisual: chainVisualMappings.get(`${item.characterId}:${item.animationId}`),
-    visualQaAudit: visualQaAudits.get(`${item.characterId}:${item.animationId}`),
+    visualQaAudit: activeRuntimeQa.get(`${item.characterId}:${item.animationId}`) ?? visualQaAudits.get(`${item.characterId}:${item.animationId}`),
     manualOverrideFolder: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId),
     manualOverrideExample: path.resolve(cwd, 'public/sprites/manual-overrides', item.characterId, item.animationId, '0001.png'),
     framesPackFolder: path.resolve(cwd, 'public/sprites/frames-pack', item.characterId, item.animationId),
@@ -196,6 +197,27 @@ async function toReportRow(item) {
     problem: Boolean(item.problem),
     metadata,
   };
+}
+
+async function loadActiveRuntimeQa() {
+  const result = new Map();
+  const summaryPath = path.resolve(cwd, 'public/sprites/qa/ronin-active-runtime-cleanliness-summary.json');
+  if (!existsSync(summaryPath)) return result;
+  const summary = JSON.parse(await readFile(summaryPath, 'utf8'));
+  for (const target of summary.targets ?? []) {
+    result.set(`${target.entityId}:${target.animationKey}`, {
+      readinessBadge: target.readinessBadge,
+      gameplayReady: target.verdict === 'ACTIVE_RUNTIME_READY',
+      failedFrames: target.failedFrames ?? [],
+      unusableFrames: target.unusableFrames ?? [],
+      frames: (target.frameStatuses ?? []).map((frameStatus) => [
+        frameStatus.frame,
+        frameStatus.status,
+        frameStatus.reason,
+      ]),
+    });
+  }
+  return result;
 }
 
 async function findRuntimeSource(characterId, animationId) {

@@ -197,17 +197,17 @@ Idle feet span estimate: 58.88
 
 | Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
 | ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 67 | 105% | 105% | 105% | 105% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 56 | 88% | 88% | 88% | 88% | 0 | frames-cleaned | ok |
-| 0003 | 118 | 100% | 44 | 69% | 69% | 69% | 69% | 0 | frames-cleaned | body width 69% of idle; width/height ratio 69% of idle; torso/core width 69% of idle |
-| 0004 | 118 | 100% | 86 | 134% | 134% | 134% | 134% | 0 | frames-cleaned | torso/core width 134% of idle |
-| 0005 | 118 | 100% | 91 | 142% | 142% | 142% | 142% | 0 | frames-cleaned | torso/core width 142% of idle |
-| 0006 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0001 | 118 | 100% | 67 | 105% | 105% | 105% | 105% | 0 | manual-overrides | ok |
+| 0002 | 118 | 100% | 56 | 88% | 88% | 88% | 88% | 0 | manual-overrides | ok |
+| 0003 | 118 | 100% | 44 | 69% | 69% | 69% | 69% | 0 | manual-overrides | body width 69% of idle; width/height ratio 69% of idle; torso/core width 69% of idle |
+| 0004 | 118 | 100% | 86 | 134% | 134% | 134% | 134% | 0 | manual-overrides | torso/core width 134% of idle |
+| 0005 | 118 | 100% | 91 | 142% | 142% | 142% | 142% | 0 | manual-overrides | torso/core width 142% of idle |
+| 0006 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | manual-overrides | ok |
 
 Flagged frame details:
-- ronin/roundhouse_kick/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\roundhouse_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
-- ronin/roundhouse_kick/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\roundhouse_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
-- ronin/roundhouse_kick/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\roundhouse_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/roundhouse_kick/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/roundhouse_kick/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/roundhouse_kick/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / side_kick
 
@@ -219,18 +219,18 @@ Idle feet span estimate: 58.88
 
 | Frame | Body H | vs Idle | Body W | vs Idle | W/H vs Idle | Torso vs Idle | Feet vs Idle | Baseline Shift | Source | Warning |
 | ----: | -----: | ------: | -----: | ------: | ----------: | ------------: | -----------: | -------------: | ------ | ------- |
-| 0001 | 118 | 100% | 66 | 103% | 103% | 103% | 103% | 0 | frames-cleaned | ok |
-| 0002 | 118 | 100% | 77 | 120% | 120% | 120% | 120% | 0 | frames-cleaned | torso/core width 120% of idle |
-| 0003 | 118 | 100% | 54 | 84% | 84% | 84% | 84% | 0 | frames-cleaned | width/height ratio 84% of idle; torso/core width 84% of idle |
-| 0004 | 118 | 100% | 99 | 155% | 155% | 155% | 155% | 0 | frames-cleaned | torso/core width 155% of idle |
-| 0005 | 118 | 100% | 94 | 147% | 147% | 147% | 147% | 0 | frames-cleaned | torso/core width 147% of idle |
-| 0006 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | frames-cleaned | ok |
+| 0001 | 118 | 100% | 66 | 103% | 103% | 103% | 103% | 0 | manual-overrides | ok |
+| 0002 | 118 | 100% | 77 | 120% | 120% | 120% | 120% | 0 | manual-overrides | torso/core width 120% of idle |
+| 0003 | 118 | 100% | 54 | 84% | 84% | 84% | 84% | 0 | manual-overrides | width/height ratio 84% of idle; torso/core width 84% of idle |
+| 0004 | 118 | 100% | 99 | 155% | 155% | 155% | 155% | 0 | manual-overrides | torso/core width 155% of idle |
+| 0005 | 118 | 100% | 94 | 147% | 147% | 147% | 147% | 0 | manual-overrides | torso/core width 147% of idle |
+| 0006 | 118 | 100% | 64 | 100% | 100% | 100% | 100% | 0 | manual-overrides | ok |
 
 Flagged frame details:
-- ronin/side_kick/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\side_kick\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
-- ronin/side_kick/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\side_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
-- ronin/side_kick/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\side_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
-- ronin/side_kick/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\side_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/side_kick/0002: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0002.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0002.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/side_kick/0003: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0003.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0003.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/side_kick/0004: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0004.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0004.png`. Recommended: manual override or source replacement preferred over deformation scaling.
+- ronin/side_kick/0005: source art issue. Runtime: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0005.png`. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0005.png`. Recommended: manual override or source replacement preferred over deformation scaling.
 
 ## Character: Ronin / stand_up
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T14:46:39.312Z",
+  "generatedAt": "2026-06-25T20:26:12.804Z",
   "finalScope": [
     "ronin",
     "supreme-emperor",
@@ -189,7 +189,7 @@
       "reportPath": "public/sprites/qa/ronin/roundhouse_kick/proportion-report.json",
       "suspiciousFrames": 3,
       "sourcePriorities": [
-        "frames-cleaned"
+        "manual-overrides"
       ],
       "likelyCauses": [
         "within measured tolerance",
@@ -209,7 +209,7 @@
       "reportPath": "public/sprites/qa/ronin/side_kick/proportion-report.json",
       "suspiciousFrames": 4,
       "sourcePriorities": [
-        "frames-cleaned"
+        "manual-overrides"
       ],
       "likelyCauses": [
         "within measured tolerance",

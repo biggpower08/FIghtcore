@@ -88,7 +88,7 @@ const loadouts: CharacterLoadout[] = [
   },
   {
     characterId: 'ronin',
-    slots: [slot('H', 'jab'), slot('J', 'cross'), slot('K', 'calf_kick'), slot('L', 'knee')],
+    slots: [slot('H', 'jab'), slot('J', 'cross'), slot('K', 'roundhouse_kick'), slot('L', 'knee')],
     stats: { maxHealth: 146, speed: 286, stamina: 124, damageMultiplier: 1.05 },
     ability: {
       id: 'density',

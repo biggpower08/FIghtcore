@@ -13,6 +13,7 @@ const targets = [
 ];
 const manualVisualAudits = new Map([
   ['ronin:roundhouse_kick', {
+    appliesWhenSourcesExclude: ['manual-overrides'],
     readinessBadge: 'NEEDS MANUAL REPAIR',
     failedFrames: ['0003.png', '0004.png', '0005.png'],
     unusableFrames: [],
@@ -88,10 +89,29 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
   const automatedFailedFrames = reports
     .filter((report) => report.alphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact)
     .map((report) => report.frame);
-  const visualAudit = manualVisualAudits.get(`${entityId}:${animationKey}`);
-  const failedFrames = visualAudit?.failedFrames ?? automatedFailedFrames;
+  const activeRuntimeSources = [...new Set(reports.map((report) => report.sourcePriority))];
+  const visualAudit = activeVisualAudit(`${entityId}:${animationKey}`, activeRuntimeSources);
+  const failedFrames = visualAudit
+    ? uniqueFrames([...automatedFailedFrames, ...visualAudit.failedFrames])
+    : automatedFailedFrames;
   const automatedPass = automatedFailedFrames.length === 0;
   const pass = automatedPass && failedFrames.length === 0;
+  const frameStatuses = reports.map((report) => {
+    const visualFrame = visualAudit?.frames.find(([frame]) => frame === report.frame);
+    if (visualFrame) return { frame: visualFrame[0], status: visualFrame[1], reason: visualFrame[2] };
+    if (report.alphaHoleCount > 0 || report.lightArtifactPixels > 0 || report.edgeContact) {
+      return {
+        frame: report.frame,
+        status: 'NEEDS_MANUAL_REPAIR',
+        reason: [
+          report.alphaHoleCount > 0 ? `${report.alphaHoleCount} internal alpha hole(s)` : undefined,
+          report.lightArtifactPixels > 0 ? `${report.lightArtifactPixels} pale cut pixel(s)` : undefined,
+          report.edgeContact ? 'opaque pixels touch the canvas edge' : undefined,
+        ].filter(Boolean).join('; '),
+      };
+    }
+    return { frame: report.frame, status: 'PASS', reason: 'Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks.' };
+  });
   const summary = {
     generatedAt: new Date().toISOString(),
     entityId,
@@ -101,13 +121,13 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
     verdict: pass ? 'ACTIVE_RUNTIME_READY' : 'NOT_GAMEPLAY_READY',
     readinessBadge: visualAudit?.readinessBadge ?? (pass ? 'SAFE FOR GAMEPLAY' : 'NEEDS MANUAL REPAIR'),
     sourcePriority: ['manual-overrides', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
-    activeRuntimeSources: [...new Set(reports.map((report) => report.sourcePriority))],
+    activeRuntimeSources,
     activeRuntimeFramePaths: reports.map((report) => report.webPath),
     framesScanned: reports.length,
     automatedFailedFrames,
     failedFrames,
     unusableFrames: visualAudit?.unusableFrames ?? [],
-    frameStatuses: visualAudit?.frames.map(([frame, status, reason]) => ({ frame, status, reason })),
+    frameStatuses,
     manualOverridePaths: reports.map((report) => report.manualOverridePath),
     checks: {
       internalAlphaHoles: reports.reduce((total, report) => total + report.alphaHoleCount, 0),
@@ -129,6 +149,17 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
   );
   await fs.writeFile(path.join(outputDir, 'active-runtime-cleanliness-summary.json'), `${JSON.stringify(summary, null, 2)}\n`);
   return summary;
+}
+
+function activeVisualAudit(key, activeRuntimeSources) {
+  const audit = manualVisualAudits.get(key);
+  if (!audit) return undefined;
+  if (audit.appliesWhenSourcesExclude?.some((source) => activeRuntimeSources.includes(source))) return undefined;
+  return audit;
+}
+
+function uniqueFrames(frames) {
+  return [...new Set(frames)];
 }
 
 async function resolveActiveFrame(entityId, animationKey, frameIndex) {

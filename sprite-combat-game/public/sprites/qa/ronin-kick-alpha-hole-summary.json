@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T14:46:01.772Z",
+  "generatedAt": "2026-06-25T20:26:09.558Z",
   "sourcePriority": [
     "manual-overrides",
     "frames-cleaned",
@@ -15,7 +15,7 @@
       "animationKey": "roundhouse_kick",
       "reportPath": "public\\sprites\\qa\\ronin\\roundhouse_kick\\alpha-hole-report.json",
       "framesScanned": 6,
-      "framesWithAlphaHoles": 6,
+      "framesWithAlphaHoles": 1,
       "framesWithLightArtifacts": 0,
       "blockedFrames": []
     },
@@ -24,7 +24,7 @@
       "animationKey": "side_kick",
       "reportPath": "public\\sprites\\qa\\ronin\\side_kick\\alpha-hole-report.json",
       "framesScanned": 6,
-      "framesWithAlphaHoles": 6,
+      "framesWithAlphaHoles": 0,
       "framesWithLightArtifacts": 2,
       "blockedFrames": []
     }

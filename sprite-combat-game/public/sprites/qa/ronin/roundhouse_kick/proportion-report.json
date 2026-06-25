@@ -20,9 +20,9 @@
   "frames": [
     {
       "frame": "0001",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0001.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
-      "sourcePriority": "frames-cleaned",
+      "sourcePriority": "manual-overrides",
       "outputCanvas": {
         "w": 288,
         "h": 160
@@ -65,9 +65,9 @@
     },
     {
       "frame": "0002",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0002.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
-      "sourcePriority": "frames-cleaned",
+      "sourcePriority": "manual-overrides",
       "outputCanvas": {
         "w": 288,
         "h": 160
@@ -110,9 +110,9 @@
     },
     {
       "frame": "0003",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0003.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
-      "sourcePriority": "frames-cleaned",
+      "sourcePriority": "manual-overrides",
       "outputCanvas": {
         "w": 288,
         "h": 160
@@ -161,9 +161,9 @@
     },
     {
       "frame": "0004",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0004.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
-      "sourcePriority": "frames-cleaned",
+      "sourcePriority": "manual-overrides",
       "outputCanvas": {
         "w": 288,
         "h": 160
@@ -210,9 +210,9 @@
     },
     {
       "frame": "0005",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0005.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
-      "sourcePriority": "frames-cleaned",
+      "sourcePriority": "manual-overrides",
       "outputCanvas": {
         "w": 288,
         "h": 160
@@ -259,9 +259,9 @@
     },
     {
       "frame": "0006",
-      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0006.png",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png",
       "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png",
-      "sourcePriority": "frames-cleaned",
+      "sourcePriority": "manual-overrides",
       "outputCanvas": {
         "w": 288,
         "h": 160

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-25T14:48:20.868Z",
+  "generatedAt": "2026-06-25T20:26:01.007Z",
   "sourcePriority": [
     "manual-overrides",
     "frames-alpha-repaired",
@@ -9,10 +9,10 @@
   ],
   "targets": [
     {
-      "generatedAt": "2026-06-25T14:48:20.001Z",
+      "generatedAt": "2026-06-25T20:26:00.244Z",
       "entityId": "ronin",
       "animationKey": "roundhouse_kick",
-      "automatedPass": true,
+      "automatedPass": false,
       "pass": false,
       "verdict": "NOT_GAMEPLAY_READY",
       "readinessBadge": "NEEDS MANUAL REPAIR",
@@ -24,54 +24,54 @@
         "raw frames"
       ],
       "activeRuntimeSources": [
-        "frames-alpha-repaired"
+        "manual-overrides"
       ],
       "activeRuntimeFramePaths": [
-        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0001.png",
-        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0002.png",
-        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0003.png",
-        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0004.png",
-        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0005.png",
-        "/sprites/frames-alpha-repaired/ronin/roundhouse_kick/0006.png"
+        "/sprites/manual-overrides/ronin/roundhouse_kick/0001.png",
+        "/sprites/manual-overrides/ronin/roundhouse_kick/0002.png",
+        "/sprites/manual-overrides/ronin/roundhouse_kick/0003.png",
+        "/sprites/manual-overrides/ronin/roundhouse_kick/0004.png",
+        "/sprites/manual-overrides/ronin/roundhouse_kick/0005.png",
+        "/sprites/manual-overrides/ronin/roundhouse_kick/0006.png"
       ],
       "framesScanned": 6,
-      "automatedFailedFrames": [],
+      "automatedFailedFrames": [
+        "0003.png"
+      ],
       "failedFrames": [
-        "0003.png",
-        "0004.png",
-        "0005.png"
+        "0003.png"
       ],
       "unusableFrames": [],
       "frameStatuses": [
         {
           "frame": "0001.png",
           "status": "PASS",
-          "reason": "Guard frame reads as Ronin; no obvious runtime-visible cuts."
+          "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
         },
         {
           "frame": "0002.png",
           "status": "PASS",
-          "reason": "Transition frame is compact but usable in motion."
+          "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
         },
         {
           "frame": "0003.png",
           "status": "NEEDS_MANUAL_REPAIR",
-          "reason": "Chamber pose has body-width/proportion drift and rough silhouette around the raised leg."
+          "reason": "2 internal alpha hole(s)"
         },
         {
           "frame": "0004.png",
-          "status": "NEEDS_MANUAL_REPAIR",
-          "reason": "Kick setup has torso and pant silhouette roughness; not clean enough for full gameplay-ready status."
+          "status": "PASS",
+          "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
         },
         {
           "frame": "0005.png",
-          "status": "NEEDS_MANUAL_REPAIR",
-          "reason": "Full extension is usable as a pose but has rough leg/boot edge read and proportion drift."
+          "status": "PASS",
+          "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
         },
         {
           "frame": "0006.png",
           "status": "PASS",
-          "reason": "Guard return reads consistently with Ronin idle."
+          "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
         }
       ],
       "manualOverridePaths": [
@@ -83,7 +83,7 @@
         "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png"
       ],
       "checks": {
-        "internalAlphaHoles": 0,
+        "internalAlphaHoles": 2,
         "paleCutPixels": 0,
         "canvasEdgeContactFrames": [],
         "silhouetteDamage": "manual visual review still required",
@@ -91,7 +91,7 @@
       }
     },
     {
-      "generatedAt": "2026-06-25T14:48:20.509Z",
+      "generatedAt": "2026-06-25T20:26:00.641Z",
       "entityId": "ronin",
       "animationKey": "side_kick",
       "automatedPass": false,
@@ -106,15 +106,15 @@
         "raw frames"
       ],
       "activeRuntimeSources": [
-        "frames-alpha-repaired"
+        "manual-overrides"
       ],
       "activeRuntimeFramePaths": [
-        "/sprites/frames-alpha-repaired/ronin/side_kick/0001.png",
-        "/sprites/frames-alpha-repaired/ronin/side_kick/0002.png",
-        "/sprites/frames-alpha-repaired/ronin/side_kick/0003.png",
-        "/sprites/frames-alpha-repaired/ronin/side_kick/0004.png",
-        "/sprites/frames-alpha-repaired/ronin/side_kick/0005.png",
-        "/sprites/frames-alpha-repaired/ronin/side_kick/0006.png"
+        "/sprites/manual-overrides/ronin/side_kick/0001.png",
+        "/sprites/manual-overrides/ronin/side_kick/0002.png",
+        "/sprites/manual-overrides/ronin/side_kick/0003.png",
+        "/sprites/manual-overrides/ronin/side_kick/0004.png",
+        "/sprites/manual-overrides/ronin/side_kick/0005.png",
+        "/sprites/manual-overrides/ronin/side_kick/0006.png"
       ],
       "framesScanned": 6,
       "automatedFailedFrames": [
@@ -122,11 +122,11 @@
         "0005.png"
       ],
       "failedFrames": [
-        "0001.png",
         "0002.png",
+        "0005.png",
+        "0001.png",
         "0003.png",
-        "0004.png",
-        "0005.png"
+        "0004.png"
       ],
       "unusableFrames": [
         "0001.png"

@@ -110,8 +110,8 @@ Runtime frames:
 
 - Character id: `ronin`
 - Animation id: `roundhouse_kick`
-- Runtime source: `frames-alpha-repaired`
-- Active runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick`
+- Runtime source: `manual-overrides`
+- Active runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick`
 - Source sheet/strip: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\semi-realistic-source\ronin_roundhouse_kick.png`
 - QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\roundhouse_kick`
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\roundhouse_kick`
@@ -124,33 +124,33 @@ Runtime frames:
 - Impact frame: `0005`
 - Chained visual frames: `0004:68ms` -> `0005:144ms` -> `0006:72ms`
 - Chained visual note: Chained roundhouse uses kick setup, full extension, guard return.
-- Timing note: Preserved for Sprite Lab/QA only. Human visual audit failed frames 0003, 0004, and 0005, so Ronin K was rolled back to Calf Kick.
+- Timing note: Promoted to Ronin K by owner request. Active-runtime QA still flags manual override frame 0003 for internal alpha holes.
 - Visual QA badge: `NEEDS MANUAL REPAIR`
 - Gameplay ready: no
-- Failed frames: `0003.png`, `0004.png`, `0005.png`
+- Failed frames: `0003.png`
 - Unusable source frames: none
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
-- Rerunning import/clean can overwrite active folder: yes
-- Warning: Generated alpha-hole repaired PNGs. Runtime checks this before cleaned frames when metadata points to a repair.
+- Rerunning import/clean can overwrite active folder: no
+- Warning: Safe hand-edited override folder. Runtime checks this first per frame.
 
 Runtime frames:
 
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0001.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0002.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0003.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0004.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0005.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\roundhouse_kick\0006.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0002.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0006.png`
 
 Frame-by-frame visual QA:
 
-- `0001.png`: `PASS` - Guard frame reads as Ronin; no obvious runtime-visible cuts. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
-- `0002.png`: `PASS` - Transition frame is compact but usable in motion. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0002.png`
-- `0003.png`: `NEEDS_MANUAL_REPAIR` - Chamber pose has body-width/proportion drift and rough silhouette around the raised leg. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`
-- `0004.png`: `NEEDS_MANUAL_REPAIR` - Kick setup has torso and pant silhouette roughness; not clean enough for full gameplay-ready status. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`
-- `0005.png`: `NEEDS_MANUAL_REPAIR` - Full extension is usable as a pose but has rough leg/boot edge read and proportion drift. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`
-- `0006.png`: `PASS` - Guard return reads consistently with Ronin idle. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0006.png`
+- `0001.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0001.png`
+- `0002.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0002.png`
+- `0003.png`: `NEEDS_MANUAL_REPAIR` - 2 internal alpha hole(s) Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0003.png`
+- `0004.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0004.png`
+- `0005.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0005.png`
+- `0006.png`: `PASS` - Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\roundhouse_kick\0006.png`
 
 ## Ronin - Side Kick
 
@@ -158,8 +158,8 @@ Frame-by-frame visual QA:
 
 - Character id: `ronin`
 - Animation id: `side_kick`
-- Runtime source: `frames-alpha-repaired`
-- Active runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick`
+- Runtime source: `manual-overrides`
+- Active runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick`
 - Source sheet/strip: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\semi-realistic-source\ronin_side_kick.png`
 - QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\side_kick`
 - Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\side_kick`
@@ -175,21 +175,21 @@ Frame-by-frame visual QA:
 - Timing note: Preserved for Sprite Lab/QA only. Human visual audit failed frames 0001 through 0005, so Ronin L remains Knee.
 - Visual QA badge: `QA ONLY`
 - Gameplay ready: no
-- Failed frames: `0001.png`, `0002.png`, `0003.png`, `0004.png`, `0005.png`
+- Failed frames: `0002.png`, `0005.png`, `0001.png`, `0003.png`, `0004.png`
 - Unusable source frames: `0001.png`
 - Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick`
 - Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0001.png`
-- Rerunning import/clean can overwrite active folder: yes
-- Warning: Generated alpha-hole repaired PNGs. Runtime checks this before cleaned frames when metadata points to a repair.
+- Rerunning import/clean can overwrite active folder: no
+- Warning: Safe hand-edited override folder. Runtime checks this first per frame.
 
 Runtime frames:
 
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0001.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0002.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0003.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0004.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0005.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-alpha-repaired\ronin\side_kick\0006.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0001.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0002.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0003.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0004.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0005.png`
+- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0006.png`
 
 Frame-by-frame visual QA:
 
