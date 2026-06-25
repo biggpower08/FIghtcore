@@ -52,10 +52,11 @@ const chainVisuals: Record<string, { frames: number[]; durations: number[]; skip
   jab: { frames: [2, 3, 4], durations: [54, 92, 54], skipMs: 54, note: '0003 pre-impact, 0004 impact, 0005 recovery' },
   cross: { frames: [2, 3, 4], durations: [46, 126, 58], skipMs: 76, note: '0003 pre-impact, 0004 held impact, 0005 recovery' },
   calf_kick: { frames: [2, 3, 4], durations: [54, 104, 62], skipMs: 72, note: '0003 chamber, 0004 impact extension, 0005 recovery' },
+  side_kick: { frames: [2, 3, 5], durations: [58, 132, 64], skipMs: 88, note: '0003 chamber, 0004 impact extension, 0006 guard return' },
   knee: { frames: [1, 2, 3], durations: [54, 116, 68], skipMs: 70, note: '0002 entry, 0003 knee impact, 0004 recovery' },
   jab_cross: { frames: [2, 3, 4], durations: [78, 142, 60], skipMs: 92, note: '0003 jab impact, 0004 cross impact, 0005 recovery' },
   feint_rear_hook: { frames: [4, 5, 6], durations: [62, 130, 68], skipMs: 110, note: '0005 pre-hook, 0006 hook impact, 0007 recovery' },
-  roundhouse_kick: { frames: [3, 4, 5], durations: [68, 140, 72], skipMs: 118, note: '0004 chamber, 0005 kick impact, 0006 recovery' },
+  roundhouse_kick: { frames: [3, 4, 5], durations: [68, 144, 72], skipMs: 112, note: '0004 kick setup, 0005 full extension, 0006 guard return' },
   tornado_kick: { frames: [5, 6, 7], durations: [72, 170, 66], skipMs: 150, note: '0006 pre-impact, 0007 held impact, 0008 recovery' },
 };
 const PLAYER_ATTACK_QUEUE_TIMEOUT_MS = 360;

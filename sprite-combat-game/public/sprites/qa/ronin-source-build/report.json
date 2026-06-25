@@ -1,0 +1,247 @@
+[
+  {
+    "id": "roundhouse_kick",
+    "output": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_roundhouse_kick.png",
+    "sourceFiles": [
+      "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\source-uploads\\ronin-kicks\\Ronin_Roundhouse_0001-0004.png",
+      "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\source-uploads\\ronin-kicks\\Ronin-Roundhouse-0005.png"
+    ],
+    "attackFrameCount": 5,
+    "finalFrameCount": 6,
+    "appendedGuardSource": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_idle.png frame 1",
+    "targetBodyHeight": 487,
+    "targetBaselineY": 588,
+    "frameBounds": [
+      {
+        "frame": "0001",
+        "sourceBounds": {
+          "x": 16,
+          "y": 96,
+          "w": 280,
+          "h": 492,
+          "pixels": 56977
+        },
+        "normalizedBounds": {
+          "x": 222,
+          "y": 101,
+          "w": 277,
+          "h": 487,
+          "pixels": 55860
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0002",
+        "sourceBounds": {
+          "x": 16,
+          "y": 109,
+          "w": 230,
+          "h": 483,
+          "pixels": 49091
+        },
+        "normalizedBounds": {
+          "x": 244,
+          "y": 101,
+          "w": 232,
+          "h": 487,
+          "pixels": 49843
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0003",
+        "sourceBounds": {
+          "x": 16,
+          "y": 96,
+          "w": 185,
+          "h": 491,
+          "pixels": 45392
+        },
+        "normalizedBounds": {
+          "x": 269,
+          "y": 101,
+          "w": 183,
+          "h": 487,
+          "pixels": 44848
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0004",
+        "sourceBounds": {
+          "x": 16,
+          "y": 101,
+          "w": 354,
+          "h": 487,
+          "pixels": 48004
+        },
+        "normalizedBounds": {
+          "x": 183,
+          "y": 101,
+          "w": 354,
+          "h": 487,
+          "pixels": 48004
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0005",
+        "sourceBounds": {
+          "x": 16,
+          "y": 21,
+          "w": 224,
+          "h": 290,
+          "pixels": 17010
+        },
+        "normalizedBounds": {
+          "x": 172,
+          "y": 101,
+          "w": 376,
+          "h": 487,
+          "pixels": 47984
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0006",
+        "sourceBounds": {
+          "x": 16,
+          "y": 59,
+          "w": 327,
+          "h": 601,
+          "pixels": 83640
+        },
+        "normalizedBounds": {
+          "x": 228,
+          "y": 101,
+          "w": 265,
+          "h": 487,
+          "pixels": 54951
+        },
+        "guardReturnFrame": true
+      }
+    ]
+  },
+  {
+    "id": "side_kick",
+    "output": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_side_kick.png",
+    "sourceFiles": [
+      "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\source-uploads\\ronin-kicks\\Ronin-Sidekick.png"
+    ],
+    "attackFrameCount": 5,
+    "finalFrameCount": 6,
+    "appendedGuardSource": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\semi-realistic-source\\ronin_idle.png frame 1",
+    "targetBodyHeight": 462,
+    "targetBaselineY": 567,
+    "frameBounds": [
+      {
+        "frame": "0001",
+        "sourceBounds": {
+          "x": 15,
+          "y": 109,
+          "w": 262,
+          "h": 469,
+          "pixels": 53633
+        },
+        "normalizedBounds": {
+          "x": 251,
+          "y": 105,
+          "w": 258,
+          "h": 462,
+          "pixels": 52028
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0002",
+        "sourceBounds": {
+          "x": 15,
+          "y": 101,
+          "w": 302,
+          "h": 465,
+          "pixels": 51920
+        },
+        "normalizedBounds": {
+          "x": 230,
+          "y": 105,
+          "w": 300,
+          "h": 462,
+          "pixels": 51371
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0003",
+        "sourceBounds": {
+          "x": 15,
+          "y": 105,
+          "w": 211,
+          "h": 462,
+          "pixels": 42357
+        },
+        "normalizedBounds": {
+          "x": 275,
+          "y": 105,
+          "w": 211,
+          "h": 462,
+          "pixels": 42357
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0004",
+        "sourceBounds": {
+          "x": 16,
+          "y": 123,
+          "w": 372,
+          "h": 445,
+          "pixels": 48365
+        },
+        "normalizedBounds": {
+          "x": 187,
+          "y": 105,
+          "w": 386,
+          "h": 462,
+          "pixels": 52030
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0005",
+        "sourceBounds": {
+          "x": 16,
+          "y": 124,
+          "w": 354,
+          "h": 443,
+          "pixels": 45469
+        },
+        "normalizedBounds": {
+          "x": 196,
+          "y": 105,
+          "w": 369,
+          "h": 462,
+          "pixels": 49363
+        },
+        "guardReturnFrame": false
+      },
+      {
+        "frame": "0006",
+        "sourceBounds": {
+          "x": 16,
+          "y": 59,
+          "w": 327,
+          "h": 601,
+          "pixels": 83640
+        },
+        "normalizedBounds": {
+          "x": 255,
+          "y": 105,
+          "w": 251,
+          "h": 462,
+          "pixels": 49445
+        },
+        "guardReturnFrame": true
+      }
+    ]
+  }
+]

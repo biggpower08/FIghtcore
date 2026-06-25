@@ -1446,6 +1446,462 @@ export const generatedSpriteRegistry: GeneratedSpritePackCharacter[] = [
         ]
       },
       {
+        "id": "roundhouse_kick",
+        "frameCount": 6,
+        "fps": 10,
+        "loop": false,
+        "outputCanvas": {
+          "w": 288,
+          "h": 160
+        },
+        "frameDurations": [
+          80,
+          90,
+          95,
+          110,
+          155,
+          105
+        ],
+        "holdFrames": {
+          "0005": 2
+        },
+        "warnings": [],
+        "frames": [
+          {
+            "frameIndex": 0,
+            "framePath": "/sprites/frames-pack/ronin/roundhouse_kick/0001.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 198,
+              "y": 0,
+              "w": 325,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 101,
+              "w": 277,
+              "h": 487,
+              "pixels": 52163
+            },
+            "bodyBounds": {
+              "x": 111,
+              "y": 30,
+              "w": 67,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 80,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 1,
+            "framePath": "/sprites/frames-pack/ronin/roundhouse_kick/0002.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 972,
+              "y": 0,
+              "w": 280,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 101,
+              "w": 232,
+              "h": 487,
+              "pixels": 47066
+            },
+            "bodyBounds": {
+              "x": 116,
+              "y": 30,
+              "w": 56,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 90,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 2,
+            "framePath": "/sprites/frames-pack/ronin/roundhouse_kick/0003.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 1749,
+              "y": 0,
+              "w": 231,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 101,
+              "w": 183,
+              "h": 487,
+              "pixels": 42332
+            },
+            "bodyBounds": {
+              "x": 122,
+              "y": 30,
+              "w": 44,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 95,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 3,
+            "framePath": "/sprites/frames-pack/ronin/roundhouse_kick/0004.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 2415,
+              "y": 0,
+              "w": 402,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 101,
+              "w": 354,
+              "h": 487,
+              "pixels": 45683
+            },
+            "bodyBounds": {
+              "x": 101,
+              "y": 30,
+              "w": 86,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 110,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 4,
+            "framePath": "/sprites/frames-pack/ronin/roundhouse_kick/0005.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 3156,
+              "y": 0,
+              "w": 423,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 101,
+              "w": 375,
+              "h": 486,
+              "pixels": 46447
+            },
+            "bodyBounds": {
+              "x": 99,
+              "y": 30,
+              "w": 91,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 155,
+            "holdCount": 2,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 5,
+            "framePath": "/sprites/frames-pack/ronin/roundhouse_kick/0006.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 3964,
+              "y": 0,
+              "w": 313,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 101,
+              "w": 265,
+              "h": 487,
+              "pixels": 52657
+            },
+            "bodyBounds": {
+              "x": 112,
+              "y": 30,
+              "w": 64,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 105,
+            "holdCount": 1,
+            "cutoff": false
+          }
+        ]
+      },
+      {
+        "id": "side_kick",
+        "frameCount": 6,
+        "fps": 10,
+        "loop": false,
+        "outputCanvas": {
+          "w": 288,
+          "h": 160
+        },
+        "frameDurations": [
+          80,
+          90,
+          100,
+          150,
+          115,
+          105
+        ],
+        "holdFrames": {
+          "0004": 2
+        },
+        "warnings": [],
+        "frames": [
+          {
+            "frameIndex": 0,
+            "framePath": "/sprites/frames-pack/ronin/side_kick/0001.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 227,
+              "y": 0,
+              "w": 306,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 105,
+              "w": 258,
+              "h": 462,
+              "pixels": 43537
+            },
+            "bodyBounds": {
+              "x": 111,
+              "y": 30,
+              "w": 66,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 80,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 1,
+            "framePath": "/sprites/frames-pack/ronin/side_kick/0002.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 998,
+              "y": 0,
+              "w": 348,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 105,
+              "w": 300,
+              "h": 462,
+              "pixels": 44177
+            },
+            "bodyBounds": {
+              "x": 106,
+              "y": 30,
+              "w": 77,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 90,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 2,
+            "framePath": "/sprites/frames-pack/ronin/side_kick/0003.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 1835,
+              "y": 0,
+              "w": 259,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 105,
+              "w": 211,
+              "h": 462,
+              "pixels": 36917
+            },
+            "bodyBounds": {
+              "x": 117,
+              "y": 30,
+              "w": 54,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 100,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 3,
+            "framePath": "/sprites/frames-pack/ronin/side_kick/0004.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 2539,
+              "y": 0,
+              "w": 434,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 105,
+              "w": 386,
+              "h": 462,
+              "pixels": 45298
+            },
+            "bodyBounds": {
+              "x": 95,
+              "y": 30,
+              "w": 99,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 150,
+            "holdCount": 2,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 4,
+            "framePath": "/sprites/frames-pack/ronin/side_kick/0005.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 3340,
+              "y": 0,
+              "w": 417,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 105,
+              "w": 369,
+              "h": 462,
+              "pixels": 42867
+            },
+            "bodyBounds": {
+              "x": 97,
+              "y": 30,
+              "w": 94,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 115,
+            "holdCount": 1,
+            "cutoff": false
+          },
+          {
+            "frameIndex": 5,
+            "framePath": "/sprites/frames-pack/ronin/side_kick/0006.png",
+            "frameSize": {
+              "w": 288,
+              "h": 160
+            },
+            "targetBodyHeight": 118,
+            "visualScale": 0.72,
+            "sourceSlice": {
+              "x": 4191,
+              "y": 0,
+              "w": 299,
+              "h": 724
+            },
+            "sourceBounds": {
+              "x": 24,
+              "y": 105,
+              "w": 251,
+              "h": 462,
+              "pixels": 47396
+            },
+            "bodyBounds": {
+              "x": 112,
+              "y": 30,
+              "w": 64,
+              "h": 118
+            },
+            "anchorX": 0.5,
+            "anchorY": 0.925,
+            "durationMs": 105,
+            "holdCount": 1,
+            "cutoff": false
+          }
+        ]
+      },
+      {
         "id": "knee",
         "frameCount": 5,
         "fps": 8,

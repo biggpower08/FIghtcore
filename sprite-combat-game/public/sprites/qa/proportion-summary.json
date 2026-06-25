@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-24T18:06:09.435Z",
+  "generatedAt": "2026-06-25T03:17:32.928Z",
   "finalScope": [
     "ronin",
     "supreme-emperor",
@@ -181,6 +181,46 @@
         "0001: torso/core width 116% of idle",
         "0002: body height 86% of idle",
         "0002: width/height ratio 117% of idle"
+      ]
+    },
+    {
+      "entityId": "ronin",
+      "animationId": "roundhouse_kick",
+      "reportPath": "public/sprites/qa/ronin/roundhouse_kick/proportion-report.json",
+      "suspiciousFrames": 3,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0003: body width 69% of idle",
+        "0003: width/height ratio 69% of idle",
+        "0003: torso/core width 69% of idle",
+        "0004: torso/core width 134% of idle",
+        "0005: torso/core width 142% of idle"
+      ]
+    },
+    {
+      "entityId": "ronin",
+      "animationId": "side_kick",
+      "reportPath": "public/sprites/qa/ronin/side_kick/proportion-report.json",
+      "suspiciousFrames": 4,
+      "sourcePriorities": [
+        "frames-cleaned"
+      ],
+      "likelyCauses": [
+        "within measured tolerance",
+        "source art issue"
+      ],
+      "worstWarnings": [
+        "0002: torso/core width 120% of idle",
+        "0003: width/height ratio 84% of idle",
+        "0003: torso/core width 84% of idle",
+        "0004: torso/core width 155% of idle",
+        "0005: torso/core width 147% of idle"
       ]
     },
     {

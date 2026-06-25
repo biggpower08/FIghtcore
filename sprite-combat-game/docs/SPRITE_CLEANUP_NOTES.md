@@ -25,24 +25,26 @@ $env:SPRITE_WHITE_SPECK_MAX_AREA="12"
 npm.cmd run sprites:clean-alpha
 ```
 
-## Ronin Calf Kick Decision
+## Ronin Kick Replacement
 
-Ronin's current `calf_kick` art was inspected on the cleaned white-check sheet:
+Ronin's old `calf_kick` art was previously inspected on the cleaned white-check sheet:
 
 `public/sprites/qa-cleaned/ronin/calf_kick/white-check.png`
 
-It still reads as a low or mid-line forward kick, not a true roundhouse. This pass keeps the move as Calf Kick so labels, upgrades, chain timing, and hitboxes stay honest.
+That old art read as a low or mid-line forward kick, not a true roundhouse. Ronin now uses the newly provided kick sheets instead:
 
-To convert it later, provide or generate a Ronin-specific roundhouse strip with:
+- K: `roundhouse_kick`
+- L: `side_kick`
 
-- guard/chamber frame
-- hip-turn chamber frame
-- circular kick drive frame
-- clear high or body-line extension frame
-- recovery frame
-- transparent background
-- stable baseline
+Both new strips append Ronin idle frame `0001` as the final guard-return frame because the uploaded sheets did not include an idle ending pose.
 
-Recommended manual override target if replacing only the runtime frames:
+Source and QA paths:
 
-`public/sprites/manual-overrides/ronin/calf_kick/0001.png` through `0005.png`
+- `public/sprites/source-uploads/ronin-kicks/Ronin_Roundhouse_0001-0004.png`
+- `public/sprites/source-uploads/ronin-kicks/Ronin-Roundhouse-0005.png`
+- `public/sprites/source-uploads/ronin-kicks/Ronin-Sidekick.png`
+- `public/sprites/semi-realistic-source/ronin_roundhouse_kick.png`
+- `public/sprites/semi-realistic-source/ronin_side_kick.png`
+- `public/sprites/qa/ronin-source-build/`
+- `public/sprites/qa-cleaned/ronin/roundhouse_kick/`
+- `public/sprites/qa-cleaned/ronin/side_kick/`

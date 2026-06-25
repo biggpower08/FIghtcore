@@ -9,8 +9,8 @@
   "moveMapping": {
     "H": "jab",
     "J": "cross",
-    "K": "calf_kick",
-    "L": "recovery"
+    "K": "roundhouse_kick",
+    "L": "side_kick"
   },
   "animations": {
     "idle": { "file": "../../sprites/semi-realistic-source/ronin_idle.png", "frames": 5, "loop": true, "fps": 6, "outputCanvas": { "w": 192, "h": 160 } },
@@ -20,6 +20,8 @@
     "jab": { "file": "../../sprites/semi-realistic-source/ronin_jab.png", "frames": 5, "loop": false, "fps": 11, "outputCanvas": { "w": 224, "h": 160 }, "frameDurations": [90, 120, 155, 125, 90], "holdFrames": { "0003": 2 } },
     "cross": { "file": "../../sprites/semi-realistic-source/ronin_cross.png", "frames": 5, "loop": false, "fps": 10, "outputCanvas": { "w": 224, "h": 160 }, "frameDurations": [80, 85, 70, 230, 95], "holdFrames": { "0004": 3 } },
     "calf_kick": { "file": "../../sprites/semi-realistic-source/ronin_calf_kick.png", "frames": 5, "loop": false, "fps": 9, "outputCanvas": { "w": 256, "h": 160 } },
+    "roundhouse_kick": { "file": "../../sprites/semi-realistic-source/ronin_roundhouse_kick.png", "frames": 6, "loop": false, "fps": 10, "outputCanvas": { "w": 288, "h": 160 }, "frameDurations": [80, 90, 95, 110, 155, 105], "holdFrames": { "0005": 2 } },
+    "side_kick": { "file": "../../sprites/semi-realistic-source/ronin_side_kick.png", "frames": 6, "loop": false, "fps": 10, "outputCanvas": { "w": 288, "h": 160 }, "frameDurations": [80, 90, 100, 150, 115, 105], "holdFrames": { "0004": 2 } },
     "knee": { "file": "../../sprites/semi-realistic-source/ronin_knee.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 224, "h": 160 } },
     "hit_react": { "file": "../../sprites/semi-realistic-source/ronin_hit_react.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 192, "h": 160 } },
     "recovery": { "file": "../../sprites/semi-realistic-source/ronin_recovery.png", "frames": 5, "loop": false, "fps": 8, "outputCanvas": { "w": 224, "h": 160 } },

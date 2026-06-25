@@ -730,6 +730,7 @@ function timingForAnimation(animationKey: string, index: number, frameCount: num
     cross: [115, 135, 155, 175],
     low_kick: [115, 135, 150, 155, 170],
     roundhouse_kick: [135, 155, 175, 190, 175, 200],
+    side_kick: [120, 140, 155, 185, 150, 170],
     short_elbow: [115, 135, 150, 165, 175],
     shadow_counter: [130, 150, 170, 170, 185, 200],
     palm_strike: [115, 140, 155, 175, 185],

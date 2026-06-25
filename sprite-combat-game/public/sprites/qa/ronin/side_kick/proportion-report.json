@@ -1,0 +1,309 @@
+{
+  "entityId": "ronin",
+  "animationId": "side_kick",
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "widthToHeightRatio": 0.5424,
+    "torsoCoreWidth": 40.96,
+    "feetSpanWidth": 58.88,
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
+  },
+  "outputCanvas": {
+    "w": 288,
+    "h": 160
+  },
+  "normalizedScale": 0.2554112554112554,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 66,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 66,
+      "widthToHeightRatio": 0.5593,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.0313,
+      "ratioVsIdle": 1.0312,
+      "torsoCoreWidthVsIdle": 1.0313,
+      "feetSpanVsIdle": 1.0313,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 42.24,
+      "chestUpperBodyWidthEstimate": 44.88,
+      "waistHipWidthEstimate": 36.96,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 50.16,
+      "feetSpanWidthEstimate": 60.72,
+      "armReachExtensionBounds": {
+        "x": 111,
+        "y": 51.24,
+        "w": 66,
+        "h": 44.84
+      },
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 77,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 77,
+      "widthToHeightRatio": 0.6525,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.2031,
+      "ratioVsIdle": 1.203,
+      "torsoCoreWidthVsIdle": 1.2031,
+      "feetSpanVsIdle": 1.2031,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 49.28,
+      "chestUpperBodyWidthEstimate": 52.36,
+      "waistHipWidthEstimate": 43.12,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 58.52,
+      "feetSpanWidthEstimate": 70.84,
+      "armReachExtensionBounds": {
+        "x": 106,
+        "y": 51.24,
+        "w": 77,
+        "h": 44.84
+      },
+      "warnings": [
+        "torso/core width 120% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 54,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 54,
+      "widthToHeightRatio": 0.4576,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.8438,
+      "ratioVsIdle": 0.8437,
+      "torsoCoreWidthVsIdle": 0.8438,
+      "feetSpanVsIdle": 0.8438,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 34.56,
+      "chestUpperBodyWidthEstimate": 36.72,
+      "waistHipWidthEstimate": 30.24,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 41.04,
+      "feetSpanWidthEstimate": 49.68,
+      "armReachExtensionBounds": {
+        "x": 117,
+        "y": 51.24,
+        "w": 54,
+        "h": 44.84
+      },
+      "warnings": [
+        "width/height ratio 84% of idle",
+        "torso/core width 84% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 99,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 99,
+      "widthToHeightRatio": 0.839,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.5469,
+      "ratioVsIdle": 1.5468,
+      "torsoCoreWidthVsIdle": 1.5469,
+      "feetSpanVsIdle": 1.5469,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 63.36,
+      "chestUpperBodyWidthEstimate": 67.32,
+      "waistHipWidthEstimate": 55.44,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 75.24,
+      "feetSpanWidthEstimate": 91.08,
+      "armReachExtensionBounds": {
+        "x": 95,
+        "y": 51.24,
+        "w": 99,
+        "h": 44.84
+      },
+      "warnings": [
+        "torso/core width 155% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 94,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 94,
+      "widthToHeightRatio": 0.7966,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.4688,
+      "ratioVsIdle": 1.4687,
+      "torsoCoreWidthVsIdle": 1.4687,
+      "feetSpanVsIdle": 1.4688,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 60.16,
+      "chestUpperBodyWidthEstimate": 63.92,
+      "waistHipWidthEstimate": 52.64,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 71.44,
+      "feetSpanWidthEstimate": 86.48,
+      "armReachExtensionBounds": {
+        "x": 97,
+        "y": 51.24,
+        "w": 94,
+        "h": 44.84
+      },
+      "warnings": [
+        "torso/core width 147% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\side_kick\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\side_kick\\0006.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 64,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "widthToHeightRatio": 0.5424,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "ratioVsIdle": 1,
+      "torsoCoreWidthVsIdle": 1,
+      "feetSpanVsIdle": 1,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 40.96,
+      "chestUpperBodyWidthEstimate": 43.52,
+      "waistHipWidthEstimate": 35.84,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 48.64,
+      "feetSpanWidthEstimate": 58.88,
+      "armReachExtensionBounds": {
+        "x": 112,
+        "y": 51.24,
+        "w": 64,
+        "h": 44.84
+      },
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
+    }
+  ]
+}

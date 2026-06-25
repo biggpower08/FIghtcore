@@ -1,0 +1,306 @@
+{
+  "entityId": "ronin",
+  "animationId": "roundhouse_kick",
+  "note": "Measured from runtime-preferred PNG path when present, with metadata/canvas included for comparison.",
+  "idleReference": {
+    "bodyHeight": 118,
+    "bodyWidth": 64,
+    "widthToHeightRatio": 0.5424,
+    "torsoCoreWidth": 40.96,
+    "feetSpanWidth": 58.88,
+    "baselineY": 148,
+    "source": "idle metadata/runtime PNG median"
+  },
+  "outputCanvas": {
+    "w": 288,
+    "h": 160
+  },
+  "normalizedScale": 0.24229979466119098,
+  "targetBodyHeight": 118,
+  "frames": [
+    {
+      "frame": "0001",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0001.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 67,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 67,
+      "widthToHeightRatio": 0.5678,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.0469,
+      "ratioVsIdle": 1.0468,
+      "torsoCoreWidthVsIdle": 1.0469,
+      "feetSpanVsIdle": 1.0469,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 42.88,
+      "chestUpperBodyWidthEstimate": 45.56,
+      "waistHipWidthEstimate": 37.52,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 50.92,
+      "feetSpanWidthEstimate": 61.64,
+      "armReachExtensionBounds": {
+        "x": 111,
+        "y": 51.24,
+        "w": 67,
+        "h": 44.84
+      },
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
+    },
+    {
+      "frame": "0002",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0002.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 56,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 56,
+      "widthToHeightRatio": 0.4746,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.875,
+      "ratioVsIdle": 0.875,
+      "torsoCoreWidthVsIdle": 0.875,
+      "feetSpanVsIdle": 0.875,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 35.84,
+      "chestUpperBodyWidthEstimate": 38.08,
+      "waistHipWidthEstimate": 31.36,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 42.56,
+      "feetSpanWidthEstimate": 51.52,
+      "armReachExtensionBounds": {
+        "x": 116,
+        "y": 51.24,
+        "w": 56,
+        "h": 44.84
+      },
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
+    },
+    {
+      "frame": "0003",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0003.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 44,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 44,
+      "widthToHeightRatio": 0.3729,
+      "heightVsIdle": 1,
+      "widthVsIdle": 0.6875,
+      "ratioVsIdle": 0.6875,
+      "torsoCoreWidthVsIdle": 0.6875,
+      "feetSpanVsIdle": 0.6875,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 28.16,
+      "chestUpperBodyWidthEstimate": 29.92,
+      "waistHipWidthEstimate": 24.64,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 33.44,
+      "feetSpanWidthEstimate": 40.48,
+      "armReachExtensionBounds": {
+        "x": 122,
+        "y": 51.24,
+        "w": 44,
+        "h": 44.84
+      },
+      "warnings": [
+        "body width 69% of idle",
+        "width/height ratio 69% of idle",
+        "torso/core width 69% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0004",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0004.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 86,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 86,
+      "widthToHeightRatio": 0.7288,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.3438,
+      "ratioVsIdle": 1.3437,
+      "torsoCoreWidthVsIdle": 1.3438,
+      "feetSpanVsIdle": 1.3438,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 55.04,
+      "chestUpperBodyWidthEstimate": 58.48,
+      "waistHipWidthEstimate": 48.16,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 65.36,
+      "feetSpanWidthEstimate": 79.12,
+      "armReachExtensionBounds": {
+        "x": 101,
+        "y": 51.24,
+        "w": 86,
+        "h": 44.84
+      },
+      "warnings": [
+        "torso/core width 134% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0005",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0005.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 91,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 91,
+      "widthToHeightRatio": 0.7712,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1.4219,
+      "ratioVsIdle": 1.4218,
+      "torsoCoreWidthVsIdle": 1.4219,
+      "feetSpanVsIdle": 1.4219,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144.5,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 58.24,
+      "chestUpperBodyWidthEstimate": 61.88,
+      "waistHipWidthEstimate": 50.96,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 69.16,
+      "feetSpanWidthEstimate": 83.72,
+      "armReachExtensionBounds": {
+        "x": 99,
+        "y": 51.24,
+        "w": 91,
+        "h": 44.84
+      },
+      "warnings": [
+        "torso/core width 142% of idle"
+      ],
+      "likelyCauses": [
+        "source art issue"
+      ],
+      "recommendedAction": [
+        "manual override or source replacement preferred over deformation scaling"
+      ]
+    },
+    {
+      "frame": "0006",
+      "runtimeFramePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\roundhouse_kick\\0006.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\roundhouse_kick\\0006.png",
+      "sourcePriority": "frames-cleaned",
+      "outputCanvas": {
+        "w": 288,
+        "h": 160
+      },
+      "runtimeDrawScale": 1,
+      "finalRenderedBodyHeight": 118,
+      "finalRenderedBodyWidth": 64,
+      "visibleBodyHeight": 118,
+      "visibleBodyWidth": 64,
+      "widthToHeightRatio": 0.5424,
+      "heightVsIdle": 1,
+      "widthVsIdle": 1,
+      "ratioVsIdle": 1,
+      "torsoCoreWidthVsIdle": 1,
+      "feetSpanVsIdle": 1,
+      "topY": 30,
+      "bottomFeetY": 147,
+      "baselineY": 148,
+      "baselineShift": 0,
+      "centerX": 144,
+      "centerY": 89,
+      "torsoCoreHeightEstimate": 40.12,
+      "torsoCoreWidthEstimate": 40.96,
+      "chestUpperBodyWidthEstimate": 43.52,
+      "waistHipWidthEstimate": 35.84,
+      "lowerBodyLegZoneHeightEstimate": 49.56,
+      "legSpreadWidthEstimate": 48.64,
+      "feetSpanWidthEstimate": 58.88,
+      "armReachExtensionBounds": {
+        "x": 112,
+        "y": 51.24,
+        "w": 64,
+        "h": 44.84
+      },
+      "warnings": [],
+      "likelyCauses": [
+        "within measured tolerance"
+      ],
+      "recommendedAction": []
+    }
+  ]
+}

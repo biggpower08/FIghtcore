@@ -1,3 +1,5 @@
+import { getGeneratedSpritePackAnimation } from './generatedSpriteRegistry';
+
 export interface SemiRealisticSpriteFrameMetadata {
   entityId: string;
   animationKey: string;
@@ -154,5 +156,7 @@ export function getSemiRealisticSpriteFrame(
 }
 
 export function hasSemiRealisticCharacterAssets(entityId: string, requiredAnimations: string[]): boolean {
-  return requiredAnimations.every((animationKey) => getSemiRealisticSpriteAnimation(entityId, animationKey).length > 0);
+  return requiredAnimations.every(
+    (animationKey) => getSemiRealisticSpriteAnimation(entityId, animationKey).length > 0 || Boolean(getGeneratedSpritePackAnimation(entityId, animationKey)),
+  );
 }
