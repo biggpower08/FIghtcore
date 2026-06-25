@@ -7,7 +7,6 @@ const cameraProfiles: Record<
   CameraDistance,
   {
     zoom: number;
-    lookAhead: number;
     verticalLift: number;
     deadZoneX: number;
     deadZoneY: number;
@@ -15,9 +14,9 @@ const cameraProfiles: Record<
     hitReactSmoothing: number;
   }
 > = {
-  close: { zoom: 1.18, lookAhead: 24, verticalLift: 8, deadZoneX: 120, deadZoneY: 56, smoothing: 10, hitReactSmoothing: 4.6 },
-  normal: { zoom: 1.1, lookAhead: 44, verticalLift: 16, deadZoneX: 140, deadZoneY: 64, smoothing: 9, hitReactSmoothing: 4.2 },
-  far: { zoom: 1, lookAhead: 82, verticalLift: 28, deadZoneX: 170, deadZoneY: 72, smoothing: 8, hitReactSmoothing: 3.8 },
+  close: { zoom: 1.28, verticalLift: 8, deadZoneX: 156, deadZoneY: 76, smoothing: 8.5, hitReactSmoothing: 8.5 },
+  normal: { zoom: 1.1, verticalLift: 16, deadZoneX: 140, deadZoneY: 64, smoothing: 9, hitReactSmoothing: 4.2 },
+  far: { zoom: 1, verticalLift: 28, deadZoneX: 170, deadZoneY: 72, smoothing: 8, hitReactSmoothing: 3.8 },
 };
 
 export class Camera {
@@ -53,8 +52,7 @@ export class Camera {
     const profile = cameraProfiles[this.distance];
     const worldViewWidth = viewWidth / this.zoom;
     const worldViewHeight = viewHeight / this.zoom;
-    const movingUnderControl = target.stunMs <= 0 && Math.abs(target.vx) > 24;
-    const stableX = target.x + (movingUnderControl ? Math.sign(target.vx) * profile.lookAhead : 0);
+    const stableX = target.x;
     const stableY = target.y - profile.verticalLift;
     this.stableTargetX = stableX;
     this.stableTargetY = stableY;
