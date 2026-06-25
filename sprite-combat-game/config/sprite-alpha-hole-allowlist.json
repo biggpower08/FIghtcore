@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": "public/sprites/manual-overrides/ronin/roundhouse_kick/0003.png",
+      "reason": "Intentional transparent detail in the Ronin roundhouse manual override frame.",
+      "holes": [
+        { "area": 6, "bbox": { "x": 145, "y": 52, "w": 4, "h": 2 } },
+        { "area": 34, "bbox": { "x": 146, "y": 67, "w": 5, "h": 11 } }
+      ]
+    }
+  ]
+}
