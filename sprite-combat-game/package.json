@@ -20,6 +20,7 @@
     "sprites:clean-alpha": "node scripts/clean-sprite-alpha.mjs",
     "sprites:auto-repair": "node scripts/auto-repair-sprite-pixels.mjs",
     "sprites:repair-runtime": "node scripts/repair-runtime-sprites-sharp.mjs",
+    "sprites:silhouette-fallback": "node scripts/silhouette-fallback-sprites.mjs",
     "sprites:find-alpha-holes": "node scripts/find-alpha-holes.mjs",
     "sprites:proportions": "node scripts/report-sprite-proportions.mjs",
     "sprite-pack:proportions": "node scripts/report-sprite-proportions.mjs",

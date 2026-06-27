@@ -747,6 +747,7 @@ export class SpriteLab {
   private describeFrameSource(frame?: ResolvedSpriteFrame): string {
     if (!frame) return 'missing frame';
     if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return 'manual override PNG frame';
+    if (frame.usingSilhouetteFallbackFrame || frame.framePath?.startsWith('/sprites/frames-silhouette-fallback/')) return 'dark silhouette fallback PNG frame';
     if (frame.usingRepairedAlpha || frame.framePath?.startsWith('/sprites/frames-alpha-repaired/')) return 'repaired alpha-hole PNG frame';
     if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return 'alpha-cleaned PNG frame';
     if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return 'normalized sprite-pack PNG frame';

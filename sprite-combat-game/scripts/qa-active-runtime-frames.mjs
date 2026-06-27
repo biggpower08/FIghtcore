@@ -57,7 +57,7 @@ await fs.writeFile(
   `${JSON.stringify(
     {
       generatedAt: new Date().toISOString(),
-      sourcePriority: ['manual-overrides', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
+      sourcePriority: ['manual-overrides', 'frames-silhouette-fallback', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
       targets: summaries,
     },
     null,
@@ -144,7 +144,7 @@ async function writeActiveRuntimeQa({ entityId, animationKey }) {
     pass,
     verdict: pass ? 'ACTIVE_RUNTIME_READY' : 'NOT_GAMEPLAY_READY',
     readinessBadge: visualAudit?.readinessBadge ?? (pass ? (acceptedIntentionalAlphaFrames.length > 0 ? 'PASS WITH NOTES' : 'SAFE FOR GAMEPLAY') : 'NEEDS MANUAL REPAIR'),
-    sourcePriority: ['manual-overrides', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
+    sourcePriority: ['manual-overrides', 'frames-silhouette-fallback', 'frames-alpha-repaired', 'frames-cleaned', 'frames-pack', 'raw frames'],
     activeRuntimeSources,
     activeRuntimeFramePaths: reports.map((report) => report.webPath),
     framesScanned: reports.length,
@@ -199,6 +199,10 @@ async function resolveActiveFrame(entityId, animationKey, frameIndex) {
     {
       sourcePriority: 'manual-overrides',
       webPath: `/sprites/manual-overrides/${entityId}/${animationKey}/${frameName}`,
+    },
+    {
+      sourcePriority: 'frames-silhouette-fallback',
+      webPath: `/sprites/frames-silhouette-fallback/${entityId}/${animationKey}/${frameName}`,
     },
     {
       sourcePriority: 'frames-alpha-repaired',

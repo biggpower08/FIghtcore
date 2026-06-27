@@ -29,10 +29,14 @@ export interface ResolvedSpriteFrame {
   rawCropAvailable?: boolean;
   cleanedFrameAvailable?: boolean;
   repairedFrameAvailable?: boolean;
+  silhouetteFallbackFrameAvailable?: boolean;
   manualOverrideFrameAvailable?: boolean;
   usingManualOverrideFrame?: boolean;
   manualOverrideFramePath?: string;
   manualOverrideSourceFramePath?: string;
+  usingSilhouetteFallbackFrame?: boolean;
+  silhouetteFallbackFramePath?: string;
+  silhouetteFallbackSourceFramePath?: string;
   cleanedAlphaFrameAvailable?: boolean;
   usingCleanedAlphaFrame?: boolean;
   cleanedAlphaFramePath?: string;
@@ -102,6 +106,7 @@ interface LoadedOptionalFrameSlot {
   framePath: string;
   sourceFramePath: string;
   usingManualOverride: boolean;
+  usingSilhouetteFallback: boolean;
   usingCleanedAlpha: boolean;
   usingRepairedAlpha: boolean;
   placeholder: boolean;
@@ -234,6 +239,24 @@ export class AssetLoader {
           framePath: overridePath,
           sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
           usingManualOverride: true,
+          usingSilhouetteFallback: false,
+          usingCleanedAlpha: false,
+          usingRepairedAlpha: false,
+          placeholder: false,
+        });
+        continue;
+      }
+      const silhouettePath = silhouetteFallbackFramePath(assetId, animation, frame - 1);
+      const silhouetteImage = await this.loadOptionalImage(silhouettePath);
+      if (silhouetteImage) {
+        slots.push({
+          image: silhouetteImage,
+          requestedFrameIndex: frame - 1,
+          loadedFrameIndex: frame - 1,
+          framePath: silhouettePath,
+          sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
+          usingManualOverride: false,
+          usingSilhouetteFallback: true,
           usingCleanedAlpha: false,
           usingRepairedAlpha: false,
           placeholder: false,
@@ -250,6 +273,7 @@ export class AssetLoader {
           framePath: repairedPath,
           sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
           usingManualOverride: false,
+          usingSilhouetteFallback: false,
           usingCleanedAlpha: false,
           usingRepairedAlpha: true,
           placeholder: false,
@@ -266,6 +290,7 @@ export class AssetLoader {
           framePath: cleanedPath,
           sourceFramePath: this.sourceFramePathFor(assetId, animation, frame - 1),
           usingManualOverride: false,
+          usingSilhouetteFallback: false,
           usingCleanedAlpha: true,
           usingRepairedAlpha: false,
           placeholder: false,
@@ -293,6 +318,7 @@ export class AssetLoader {
               framePath: path,
               sourceFramePath: path,
               usingManualOverride: false,
+              usingSilhouetteFallback: false,
               usingCleanedAlpha: false,
               usingRepairedAlpha: false,
               placeholder: false,
@@ -504,6 +530,7 @@ export class AssetLoader {
         const semiRealisticFrame = semiRealistic[index];
         const generatedPackFrame = generatedPack?.frames[index];
         const usingManualOverride = slot.usingManualOverride;
+        const usingSilhouetteFallback = slot.usingSilhouetteFallback;
         const usingCleanedAlpha = slot.usingCleanedAlpha;
         const usingRepairedAlpha = slot.usingRepairedAlpha;
         const alphaHole = getAlphaHoleSpriteFrame(entityId, animationKey, index);
@@ -526,7 +553,7 @@ export class AssetLoader {
             definition?.frames[index]?.durationMs ??
             timingForAnimation(animationKey, index, slots.length),
           image: slot.image,
-          framePath: slot.placeholder ? slot.framePath : usingManualOverride || usingRepairedAlpha || usingCleanedAlpha ? slot.framePath : sourceFramePath,
+          framePath: slot.placeholder ? slot.framePath : usingManualOverride || usingSilhouetteFallback || usingRepairedAlpha || usingCleanedAlpha ? slot.framePath : sourceFramePath,
           width: generatedPackFrame?.frameSize.w ?? referenceFrame?.frameSize.width ?? semiRealisticFrame?.frameSize.width ?? cleaned?.frames[index]?.width,
           height: generatedPackFrame?.frameSize.h ?? referenceFrame?.frameSize.height ?? semiRealisticFrame?.frameSize.height ?? cleaned?.frames[index]?.height,
           anchorX: generatedPackFrame?.anchorX ?? referenceFrame?.anchorX ?? semiRealisticFrame?.anchorX ?? cleaned?.frames[index]?.anchorX ?? renderProfile?.anchorX ?? definition?.frames[index]?.anchorX ?? 0.5,
@@ -538,6 +565,10 @@ export class AssetLoader {
           usingManualOverrideFrame: usingManualOverride,
           manualOverrideFramePath: usingManualOverride ? slot.framePath : undefined,
           manualOverrideSourceFramePath: usingManualOverride ? sourceFramePath : undefined,
+          silhouetteFallbackFrameAvailable: usingSilhouetteFallback,
+          usingSilhouetteFallbackFrame: usingSilhouetteFallback,
+          silhouetteFallbackFramePath: usingSilhouetteFallback ? slot.framePath : undefined,
+          silhouetteFallbackSourceFramePath: usingSilhouetteFallback ? sourceFramePath : undefined,
           cleanedAlphaFrameAvailable: usingCleanedAlpha,
           usingCleanedAlphaFrame: usingCleanedAlpha,
           cleanedAlphaFramePath: usingCleanedAlpha ? slot.framePath : undefined,
@@ -562,6 +593,8 @@ export class AssetLoader {
           semiRealisticSourceSheet: semiRealisticFrame?.sourceSheet,
           notes: usingManualOverride
             ? `Using manual override PNG frame over ${sourceFramePath}.`
+            : usingSilhouetteFallback
+            ? `Using dark silhouette fallback PNG frame over ${sourceFramePath}.`
             : usingRepairedAlpha
             ? `Using repaired alpha-hole PNG frame over ${sourceFramePath}.`
             : usingCleanedAlpha
@@ -591,7 +624,7 @@ export class AssetLoader {
       frame.invalidHollowFrame = alphaHole.invalidHollowFrame;
       frame.alphaHoleCount = alphaHole.alphaHoleCount;
       frame.repairedAlphaHoles = alphaHole.repairedAlphaHoles;
-      if (!frame.usingManualOverrideFrame && !frame.usingRepairedAlpha && !frame.usingCleanedAlphaFrame && !frame.usingGeneratedPackFrame && !frame.usingReferenceExtracted) {
+      if (!frame.usingManualOverrideFrame && !frame.usingSilhouetteFallbackFrame && !frame.usingRepairedAlpha && !frame.usingCleanedAlphaFrame && !frame.usingGeneratedPackFrame && !frame.usingReferenceExtracted) {
         frame.notes = appendNote(frame.notes, alphaHole.reason);
       }
     }
@@ -989,6 +1022,10 @@ function manualOverrideFramePath(entityId: string, animationKey: string, frameIn
   return `/sprites/manual-overrides/${entityId}/${animationKey}/${String(frameIndex + 1).padStart(4, '0')}.png`;
 }
 
+function silhouetteFallbackFramePath(entityId: string, animationKey: string, frameIndex: number): string {
+  return `/sprites/frames-silhouette-fallback/${entityId}/${animationKey}/${String(frameIndex + 1).padStart(4, '0')}.png`;
+}
+
 function cleanedAlphaFramePath(entityId: string, animationKey: string, frameIndex: number): string {
   return `/sprites/frames-cleaned/${entityId}/${animationKey}/${String(frameIndex + 1).padStart(4, '0')}.png`;
 }
@@ -1001,6 +1038,7 @@ const knownBrokenFrames = new Set([
 
 function shouldHealthCheckImage(context: AssetLoadContext, path: string): boolean {
   if (path.startsWith('/sprites/manual-overrides/')) return false;
+  if (path.startsWith('/sprites/frames-silhouette-fallback/')) return false;
   if (path.startsWith('/sprites/frames-cleaned/')) return false;
   if (path.startsWith('/sprites/frames-pack/')) return false;
   if (path.startsWith('/sprites/frames-reference/')) return false;
