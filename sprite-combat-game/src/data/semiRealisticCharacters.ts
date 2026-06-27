@@ -1,20 +1,7 @@
 import { hasSemiRealisticCharacterAssets } from './semiRealisticSpriteFrames';
+import { roninRuntimeAnimationKeys } from './roninMoveScope';
 
-export const roninRequiredAnimations = [
-  'idle',
-  'walk',
-  'dash',
-  'density',
-  'jab',
-  'cross',
-  'calf_kick',
-  'roundhouse_kick',
-  'side_kick',
-  'knee',
-  'hit_react',
-  'recovery',
-  'stand_up',
-] as const;
+export const roninRequiredAnimations = [...roninRuntimeAnimationKeys] as const;
 
 export const supremeEmperorRequiredAnimations = [
   'idle',

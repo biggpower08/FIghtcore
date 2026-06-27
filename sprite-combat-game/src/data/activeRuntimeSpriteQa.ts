@@ -149,6 +149,64 @@ export const activeRuntimeSpriteQa: ActiveRuntimeSpriteQa[] = [
       "public/sprites/manual-overrides/ronin/side_kick/0005.png",
       "public/sprites/manual-overrides/ronin/side_kick/0006.png"
     ]
+  },
+  {
+    "entityId": "ronin",
+    "animationKey": "density",
+    "verdict": "NOT_GAMEPLAY_READY",
+    "readinessBadge": "NEEDS MANUAL REPAIR",
+    "activeRuntimeSources": [
+      "frames-cleaned"
+    ],
+    "failedFrames": [
+      "0002.png",
+      "0004.png",
+      "0005.png"
+    ],
+    "acceptedIntentionalAlphaFrames": [],
+    "unusableFrames": [],
+    "frameStatuses": [
+      {
+        "frame": "0001.png",
+        "status": "PASS",
+        "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
+      },
+      {
+        "frame": "0002.png",
+        "status": "NEEDS_MANUAL_REPAIR",
+        "reason": "2 pale cut pixel(s)"
+      },
+      {
+        "frame": "0003.png",
+        "status": "PASS",
+        "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
+      },
+      {
+        "frame": "0004.png",
+        "status": "NEEDS_MANUAL_REPAIR",
+        "reason": "1 internal alpha hole(s); 149 pale cut pixel(s)"
+      },
+      {
+        "frame": "0005.png",
+        "status": "NEEDS_MANUAL_REPAIR",
+        "reason": "451 pale cut pixel(s)"
+      }
+    ],
+    "qaFolder": "public/sprites/qa/ronin/density",
+    "activeRuntimeFramePaths": [
+      "/sprites/frames-cleaned/ronin/density/0001.png",
+      "/sprites/frames-cleaned/ronin/density/0002.png",
+      "/sprites/frames-cleaned/ronin/density/0003.png",
+      "/sprites/frames-cleaned/ronin/density/0004.png",
+      "/sprites/frames-cleaned/ronin/density/0005.png"
+    ],
+    "manualOverridePaths": [
+      "public/sprites/manual-overrides/ronin/density/0001.png",
+      "public/sprites/manual-overrides/ronin/density/0002.png",
+      "public/sprites/manual-overrides/ronin/density/0003.png",
+      "public/sprites/manual-overrides/ronin/density/0004.png",
+      "public/sprites/manual-overrides/ronin/density/0005.png"
+    ]
   }
 ];
 

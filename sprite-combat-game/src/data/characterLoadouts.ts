@@ -1,5 +1,6 @@
 import { isGameplayReadyAnimation } from './animationEligibility';
 import { moveById, type MoveDefinition } from './moves';
+import { isRoninIntendedMoveAnimation } from './roninMoveScope';
 
 export type MoveSlotKey = 'H' | 'J' | 'K' | 'L';
 
@@ -88,12 +89,12 @@ const loadouts: CharacterLoadout[] = [
   },
   {
     characterId: 'ronin',
-    slots: [slot('H', 'jab'), slot('J', 'cross'), slot('K', 'roundhouse_kick'), slot('L', 'knee')],
+    slots: [slot('H', 'jab'), slot('J', 'cross'), slot('K', 'roundhouse_kick'), slot('L', 'side_kick')],
     stats: { maxHealth: 146, speed: 286, stamina: 124, damageMultiplier: 1.05 },
     ability: {
       id: 'density',
       name: 'Density',
-      description: 'Become immune to damage for a few seconds, but attacks are locked during the state.',
+      description: 'Become immune to incoming damage, but attacks are locked while the state is active.',
     },
   },
   {
@@ -131,7 +132,13 @@ export function getLoadoutMoves(characterId: string): MoveDefinition[] {
 }
 
 export function isMoveEligibleForCharacter(characterId: string, move: MoveDefinition): boolean {
+  if (characterId === 'ronin' && !isRoninIntendedMoveAnimation(move.animationKey)) return false;
   return isGameplayReadyAnimation(characterId, move.animationKey);
+}
+
+export function isMoveInIntendedCharacterScope(characterId: string, move: MoveDefinition): boolean {
+  if (characterId === 'ronin') return isRoninIntendedMoveAnimation(move.animationKey);
+  return true;
 }
 
 function slot(key: MoveSlotKey, moveId: string): EquippedMoveSlot {
@@ -150,7 +157,7 @@ function validateLoadout(loadout: CharacterLoadout): CharacterLoadout {
 
   const cleanSlots = loadout.slots.filter((entry) => {
     const move = moveById.get(entry.moveId);
-    return Boolean(move && isMoveEligibleForCharacter(loadout.characterId, move));
+    return Boolean(move && isMoveInIntendedCharacterScope(loadout.characterId, move));
   });
   if (cleanSlots.length !== 4) {
     throw new Error(`Loadout contains unavailable animations: ${loadout.characterId}`);

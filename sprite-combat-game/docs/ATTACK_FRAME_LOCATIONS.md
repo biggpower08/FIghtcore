@@ -73,37 +73,6 @@ Runtime frames:
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\cross\0004.png`
 - `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\cross\0005.png`
 
-## Ronin - Calf Kick
-
-- Character id: `ronin`
-- Animation id: `calf_kick`
-- Runtime source: `frames-cleaned`
-- Active runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick`
-- Source sheet/strip: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\semi-realistic-source\ronin_calf_kick.png`
-- QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\calf_kick`
-- Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\calf_kick`
-- Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\calf_kick\frame-continuity.json`
-- Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\calf_kick\frame-continuity.json`
-- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\calf_kick\proportion-report.json`
-- Held impact frames: none
-- Frame durations: runtime default
-- Visual active frames: `0004`
-- Impact frame: `0004`
-- Chained visual frames: `0003:54ms` -> `0004:104ms` -> `0005:62ms`
-- Chained visual note: Chained calf kick uses chamber, impact extension, recovery.
-- Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick`
-- Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\calf_kick\0001.png`
-- Rerunning import/clean can overwrite active folder: yes
-- Warning: Generated alpha-cleaned runtime PNGs. Rerun clean-alpha may overwrite this.
-
-Runtime frames:
-
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0001.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0002.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0003.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0004.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\calf_kick\0005.png`
-
 ## Ronin - Roundhouse Kick
 
 **Problem animation to check first.**
@@ -172,7 +141,7 @@ Frame-by-frame visual QA:
 - Impact frame: `0004`
 - Chained visual frames: `0003:58ms` -> `0004:132ms` -> `0006:64ms`
 - Chained visual note: Chained side kick uses chamber, impact extension, guard return.
-- Timing note: Preserved for Sprite Lab/QA only. Human visual audit failed frames 0001 through 0005, so Ronin L remains Knee.
+- Timing note: Intended Ronin L move, but gated from gameplay until active-runtime QA passes.
 - Visual QA badge: `QA ONLY`
 - Gameplay ready: no
 - Failed frames: `0002.png`, `0005.png`, `0001.png`, `0003.png`, `0004.png`
@@ -199,37 +168,6 @@ Frame-by-frame visual QA:
 - `0004.png`: `NEEDS_MANUAL_REPAIR` - Extension pose has rough leg silhouette and does not read as fully clean Ronin art. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0004.png`
 - `0005.png`: `NEEDS_MANUAL_REPAIR` - Full extension has rough foot/leg silhouette and automated pale cut pixels. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0005.png`
 - `0006.png`: `PASS` - Guard return reads consistently with Ronin idle. Manual override: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\side_kick\0006.png`
-
-## Ronin - Knee
-
-- Character id: `ronin`
-- Animation id: `knee`
-- Runtime source: `frames-cleaned`
-- Active runtime frame folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee`
-- Source sheet/strip: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\semi-realistic-source\ronin_knee.png`
-- QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\knee`
-- Cleaned QA folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\knee`
-- Frame continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\knee\frame-continuity.json`
-- Cleaned continuity report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa-cleaned\ronin\knee\frame-continuity.json`
-- Proportion report: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\qa\ronin\knee\proportion-report.json`
-- Held impact frames: none
-- Frame durations: runtime default
-- Visual active frames: combat profile/default
-- Impact frame: not marked
-- Chained visual frames: `0002:54ms` -> `0003:116ms` -> `0004:68ms`
-- Chained visual note: Chained knee enters close, shows impact, then exits quickly.
-- Manual override folder: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee`
-- Manual override example: `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\manual-overrides\ronin\knee\0001.png`
-- Rerunning import/clean can overwrite active folder: yes
-- Warning: Generated alpha-cleaned runtime PNGs. Rerun clean-alpha may overwrite this.
-
-Runtime frames:
-
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0001.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0002.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0003.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0004.png`
-- `C:\dev\FIghtcore-codex-work\sprite-combat-game\public\sprites\frames-cleaned\ronin\knee\0005.png`
 
 ## Ronin - Dash
 

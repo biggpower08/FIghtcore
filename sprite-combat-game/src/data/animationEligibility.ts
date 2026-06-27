@@ -3,6 +3,8 @@ import { getSpriteAnimation, getKnownAnimationKeys } from './spriteAnimations';
 import { hasInvalidBodyFrames } from './frameQuality';
 import { getSemiRealisticSpriteAnimation } from './semiRealisticSpriteFrames';
 import { getGeneratedSpritePackAnimation } from './generatedSpriteRegistry';
+import { getActiveRuntimeSpriteQa } from './activeRuntimeSpriteQa';
+import { isRoninRuntimeAnimation } from './roninMoveScope';
 
 export type AnimationHealth = 'ready' | 'blocked' | 'missing';
 
@@ -14,6 +16,10 @@ export interface AnimationEligibility {
 }
 
 export function getAnimationEligibility(characterId: string, animationKey: string): AnimationEligibility {
+  if (characterId === 'ronin' && !isRoninRuntimeAnimation(animationKey)) {
+    return { characterId, animationKey, health: 'blocked', reason: 'Animation is outside the current Ronin runtime move/state scope.' };
+  }
+
   const definition = getSpriteAnimation(characterId, animationKey);
   const atlas = getSpriteAtlasAnimation(characterId, animationKey);
   const semiRealistic = getSemiRealisticSpriteAnimation(characterId, animationKey);
@@ -30,6 +36,11 @@ export function getAnimationEligibility(characterId: string, animationKey: strin
 
   if (hasInvalidBodyFrames(characterId, animationKey)) {
     return { characterId, animationKey, health: 'blocked', reason: 'Animation has a multi-pose body crop and is not gameplay-ready.' };
+  }
+
+  const runtimeQa = getActiveRuntimeSpriteQa(characterId, animationKey);
+  if (runtimeQa?.verdict === 'NOT_GAMEPLAY_READY') {
+    return { characterId, animationKey, health: 'blocked', reason: `Active-runtime QA verdict is ${runtimeQa.readinessBadge}.` };
   }
 
   return { characterId, animationKey, health: 'ready', reason: 'Animation has a registered frame folder, atlas crop, semi-realistic frame set, or normalized sprite-pack frame set.' };

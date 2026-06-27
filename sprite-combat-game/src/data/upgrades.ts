@@ -11,7 +11,6 @@ export type UpgradeId =
   | 'cross_discipline'
   | 'measured_hands'
   | 'low_line_tax'
-  | 'close_range_answer'
   | 'density_breath'
   | 'quiet_pressure'
   | 'second_wind_stance'
@@ -134,23 +133,6 @@ export const upgrades: UpgradeDefinition[] = [
     tags: ['ronin', 'kick', 'control'],
     field: 'roninCalfLevel',
     valueLabel: 'Roundhouse',
-  }),
-  upgrade({
-    id: 'close_range_answer',
-    name: 'Close Range Answer',
-    icon: 'impact-star.png',
-    characterScope: 'ronin',
-    category: 'Ronin Path',
-    rarity: 'common',
-    stackingMode: 'stackable',
-    maxStacks: 3,
-    waveMin: 1,
-    effect: 'Knee gains extra control and hitstun.',
-    flavor: 'Too close is still a range.',
-    affectedMove: 'Knee',
-    tags: ['ronin', 'knee', 'control'],
-    field: 'roninKneeLevel',
-    valueLabel: 'Knee',
   }),
   upgrade({
     id: 'density_breath',

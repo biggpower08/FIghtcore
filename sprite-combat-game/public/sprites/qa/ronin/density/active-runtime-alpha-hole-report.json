@@ -1,0 +1,402 @@
+{
+  "generatedAt": "2026-06-27T05:03:22.763Z",
+  "entityId": "ronin",
+  "animationKey": "density",
+  "automatedPass": false,
+  "pass": false,
+  "verdict": "NOT_GAMEPLAY_READY",
+  "readinessBadge": "NEEDS MANUAL REPAIR",
+  "sourcePriority": [
+    "manual-overrides",
+    "frames-alpha-repaired",
+    "frames-cleaned",
+    "frames-pack",
+    "raw frames"
+  ],
+  "activeRuntimeSources": [
+    "frames-cleaned"
+  ],
+  "activeRuntimeFramePaths": [
+    "/sprites/frames-cleaned/ronin/density/0001.png",
+    "/sprites/frames-cleaned/ronin/density/0002.png",
+    "/sprites/frames-cleaned/ronin/density/0003.png",
+    "/sprites/frames-cleaned/ronin/density/0004.png",
+    "/sprites/frames-cleaned/ronin/density/0005.png"
+  ],
+  "framesScanned": 5,
+  "automatedFailedFrames": [
+    "0002.png",
+    "0004.png",
+    "0005.png"
+  ],
+  "failedFrames": [
+    "0002.png",
+    "0004.png",
+    "0005.png"
+  ],
+  "acceptedIntentionalAlphaFrames": [],
+  "unusableFrames": [],
+  "frameStatuses": [
+    {
+      "frame": "0001.png",
+      "status": "PASS",
+      "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
+    },
+    {
+      "frame": "0002.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "2 pale cut pixel(s)"
+    },
+    {
+      "frame": "0003.png",
+      "status": "PASS",
+      "reason": "Active runtime frame passed automated alpha-hole, pale-cut, and edge-contact checks."
+    },
+    {
+      "frame": "0004.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "1 internal alpha hole(s); 149 pale cut pixel(s)"
+    },
+    {
+      "frame": "0005.png",
+      "status": "NEEDS_MANUAL_REPAIR",
+      "reason": "451 pale cut pixel(s)"
+    }
+  ],
+  "manualOverridePaths": [
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0001.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0002.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0003.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0004.png",
+    "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0005.png"
+  ],
+  "checks": {
+    "internalAlphaHoles": 1,
+    "acceptedIntentionalAlphaHoles": 0,
+    "paleCutPixels": 602,
+    "canvasEdgeContactFrames": [],
+    "silhouetteDamage": "manual visual review still required",
+    "missingParts": "manual visual review still required"
+  },
+  "frames": [
+    {
+      "frame": "0001.png",
+      "frameIndex": 0,
+      "sourcePriority": "frames-cleaned",
+      "webPath": "/sprites/frames-cleaned/ronin/density/0001.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\density\\0001.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0001.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 81,
+        "y": 30,
+        "w": 62,
+        "h": 118
+      },
+      "acceptableForGameplay": true,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
+      "width": 224,
+      "height": 160
+    },
+    {
+      "frame": "0002.png",
+      "frameIndex": 1,
+      "sourcePriority": "frames-cleaned",
+      "webPath": "/sprites/frames-cleaned/ronin/density/0002.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\density\\0002.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0002.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 2,
+      "lightArtifactBboxes": [
+        {
+          "x": 106,
+          "y": 39,
+          "w": 2,
+          "h": 1,
+          "area": 2
+        }
+      ],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 74,
+        "y": 30,
+        "w": 76,
+        "h": 118
+      },
+      "acceptableForGameplay": false,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
+      "width": 224,
+      "height": 160
+    },
+    {
+      "frame": "0003.png",
+      "frameIndex": 2,
+      "sourcePriority": "frames-cleaned",
+      "webPath": "/sprites/frames-cleaned/ronin/density/0003.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\density\\0003.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0003.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 0,
+      "lightArtifactBboxes": [],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 77,
+        "y": 31,
+        "w": 71,
+        "h": 117
+      },
+      "acceptableForGameplay": true,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
+      "width": 224,
+      "height": 160
+    },
+    {
+      "frame": "0004.png",
+      "frameIndex": 3,
+      "sourcePriority": "frames-cleaned",
+      "webPath": "/sprites/frames-cleaned/ronin/density/0004.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\density\\0004.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0004.png",
+      "alphaHoleCount": 1,
+      "alphaHolePixels": 2,
+      "largestAlphaHolePixels": 2,
+      "holes": [
+        {
+          "area": 2,
+          "bbox": {
+            "x": 103,
+            "y": 112,
+            "w": 1,
+            "h": 2
+          },
+          "confidence": 1
+        }
+      ],
+      "lightArtifactPixels": 149,
+      "lightArtifactBboxes": [
+        {
+          "x": 143,
+          "y": 135,
+          "w": 4,
+          "h": 5,
+          "area": 10
+        },
+        {
+          "x": 93,
+          "y": 72,
+          "w": 3,
+          "h": 4,
+          "area": 8
+        },
+        {
+          "x": 99,
+          "y": 117,
+          "w": 4,
+          "h": 3,
+          "area": 6
+        },
+        {
+          "x": 139,
+          "y": 132,
+          "w": 2,
+          "h": 5,
+          "area": 6
+        },
+        {
+          "x": 104,
+          "y": 39,
+          "w": 3,
+          "h": 3,
+          "area": 5
+        },
+        {
+          "x": 88,
+          "y": 96,
+          "w": 2,
+          "h": 3,
+          "area": 5
+        },
+        {
+          "x": 120,
+          "y": 106,
+          "w": 2,
+          "h": 4,
+          "area": 5
+        },
+        {
+          "x": 80,
+          "y": 119,
+          "w": 2,
+          "h": 4,
+          "area": 5
+        },
+        {
+          "x": 111,
+          "y": 30,
+          "w": 4,
+          "h": 1,
+          "area": 4
+        },
+        {
+          "x": 132,
+          "y": 50,
+          "w": 2,
+          "h": 3,
+          "area": 4
+        },
+        {
+          "x": 135,
+          "y": 68,
+          "w": 2,
+          "h": 3,
+          "area": 4
+        },
+        {
+          "x": 88,
+          "y": 99,
+          "w": 1,
+          "h": 4,
+          "area": 4
+        }
+      ],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 77,
+        "y": 28,
+        "w": 72,
+        "h": 120
+      },
+      "acceptableForGameplay": false,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 1,
+      "width": 224,
+      "height": 160
+    },
+    {
+      "frame": "0005.png",
+      "frameIndex": 4,
+      "sourcePriority": "frames-cleaned",
+      "webPath": "/sprites/frames-cleaned/ronin/density/0005.png",
+      "filePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\frames-cleaned\\ronin\\density\\0005.png",
+      "manualOverridePath": "C:\\dev\\FIghtcore-codex-work\\sprite-combat-game\\public\\sprites\\manual-overrides\\ronin\\density\\0005.png",
+      "alphaHoleCount": 0,
+      "alphaHolePixels": 0,
+      "largestAlphaHolePixels": 0,
+      "holes": [],
+      "lightArtifactPixels": 451,
+      "lightArtifactBboxes": [
+        {
+          "x": 139,
+          "y": 123,
+          "w": 8,
+          "h": 17,
+          "area": 59
+        },
+        {
+          "x": 123,
+          "y": 36,
+          "w": 10,
+          "h": 19,
+          "area": 55
+        },
+        {
+          "x": 121,
+          "y": 71,
+          "w": 10,
+          "h": 11,
+          "area": 46
+        },
+        {
+          "x": 124,
+          "y": 125,
+          "w": 4,
+          "h": 16,
+          "area": 31
+        },
+        {
+          "x": 92,
+          "y": 123,
+          "w": 8,
+          "h": 12,
+          "area": 26
+        },
+        {
+          "x": 86,
+          "y": 94,
+          "w": 3,
+          "h": 15,
+          "area": 20
+        },
+        {
+          "x": 112,
+          "y": 27,
+          "w": 8,
+          "h": 3,
+          "area": 14
+        },
+        {
+          "x": 136,
+          "y": 93,
+          "w": 4,
+          "h": 6,
+          "area": 11
+        },
+        {
+          "x": 109,
+          "y": 100,
+          "w": 6,
+          "h": 4,
+          "area": 11
+        },
+        {
+          "x": 141,
+          "y": 109,
+          "w": 2,
+          "h": 9,
+          "area": 10
+        },
+        {
+          "x": 124,
+          "y": 110,
+          "w": 2,
+          "h": 6,
+          "area": 8
+        },
+        {
+          "x": 92,
+          "y": 73,
+          "w": 2,
+          "h": 6,
+          "area": 7
+        }
+      ],
+      "edgeContact": false,
+      "opaqueBounds": {
+        "x": 77,
+        "y": 27,
+        "w": 72,
+        "h": 121
+      },
+      "acceptableForGameplay": false,
+      "intentionalAlphaAccepted": false,
+      "effectiveAlphaHoleCount": 0,
+      "width": 224,
+      "height": 160
+    }
+  ]
+}

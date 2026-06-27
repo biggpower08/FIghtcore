@@ -1,5 +1,6 @@
 import { Fighter } from './Fighter';
 import { PLAYER_RADIUS } from '../game/constants';
+import { isMoveEligibleForCharacter } from '../data/characterLoadouts';
 import type { CharacterDefinition } from '../data/characters';
 import type { CharacterLoadout } from '../data/characterLoadouts';
 import type { MoveDefinition } from '../data/moves';
@@ -115,6 +116,7 @@ export class Player extends Fighter {
   }
 
   override canUseMove(move: MoveDefinition): boolean {
+    if (!isMoveEligibleForCharacter(this.character.id, move)) return false;
     if (this.ability?.id === 'density' && this.abilityActiveMs > 0) return false;
     return (this.moveCooldowns.get(move.id) ?? 0) <= 0 && this.attackLockMs <= 0;
   }

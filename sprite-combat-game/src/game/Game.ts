@@ -15,9 +15,10 @@ import type { Fighter } from '../entities/Fighter';
 import { Obstacle } from '../entities/Obstacle';
 import { Player } from '../entities/Player';
 import { characters, getCharacterMoves } from '../data/characters';
-import { getCharacterLoadout, type MoveSlotKey } from '../data/characterLoadouts';
+import { getCharacterLoadout, isMoveEligibleForCharacter, type MoveSlotKey } from '../data/characterLoadouts';
 import { getGrappleVisualSuppression, shouldHideGrappleTargetSprite } from '../data/grappleVisualSuppression';
 import type { MoveDefinition } from '../data/moves';
+import { roninRuntimeAnimationKeys } from '../data/roninMoveScope';
 import { enemyAttackAnimationByMove, getKnownAnimationKeys, printSpriteCoverageReport } from '../data/spriteAnimations';
 import { spriteRegistry } from '../data/spriteRegistry';
 import { AnimationSystem } from '../systems/AnimationSystem';
@@ -51,9 +52,7 @@ const PASSIVE_HEALTH_REGEN_PER_SECOND = 1.4;
 const chainVisuals: Record<string, { frames: number[]; durations: number[]; skipMs: number; note: string }> = {
   jab: { frames: [2, 3, 4], durations: [54, 92, 54], skipMs: 54, note: '0003 pre-impact, 0004 impact, 0005 recovery' },
   cross: { frames: [2, 3, 4], durations: [46, 126, 58], skipMs: 76, note: '0003 pre-impact, 0004 held impact, 0005 recovery' },
-  calf_kick: { frames: [2, 3, 4], durations: [54, 104, 62], skipMs: 72, note: '0003 chamber, 0004 impact extension, 0005 recovery' },
   side_kick: { frames: [2, 3, 5], durations: [58, 132, 64], skipMs: 88, note: '0003 chamber, 0004 impact extension, 0006 guard return' },
-  knee: { frames: [1, 2, 3], durations: [54, 116, 68], skipMs: 70, note: '0002 entry, 0003 knee impact, 0004 recovery' },
   jab_cross: { frames: [2, 3, 4], durations: [78, 142, 60], skipMs: 92, note: '0003 jab impact, 0004 cross impact, 0005 recovery' },
   feint_rear_hook: { frames: [4, 5, 6], durations: [62, 130, 68], skipMs: 110, note: '0005 pre-hook, 0006 hook impact, 0007 recovery' },
   roundhouse_kick: { frames: [3, 4, 5], durations: [68, 144, 72], skipMs: 112, note: '0004 kick setup, 0005 full extension, 0006 guard return' },
@@ -417,11 +416,13 @@ export class Game {
   }
 
   private canQueuePlayerMove(move: MoveDefinition): boolean {
+    if (!isMoveEligibleForCharacter(this.player.character.id, move)) return false;
     if (this.player.stunMs > 0 || (this.player.abilityActiveMs > 0 && this.player.ability?.id === 'density')) return false;
     return this.player.attackLockMs > 0 && this.player.attackLockMs < Math.max(220, this.player.getAttackLockMs(move) * 0.72);
   }
 
   private canReleaseQueuedMove(move: MoveDefinition): boolean {
+    if (!isMoveEligibleForCharacter(this.player.character.id, move)) return false;
     if (this.player.stunMs > 0) return false;
     const cancelPoint = this.player.lastLandedMoveId ? 0.54 : 0.38;
     return this.player.attackLockMs <= Math.max(95, this.player.getAttackLockMs(move) * cancelPoint);
@@ -899,7 +900,7 @@ export class Game {
     await Promise.all([
       ...DESERT_ARENA_ASSET_PATHS.map((path) => this.assets.loadImage(path, { kind: 'background' })),
       ...spriteRegistry.filter((sprite) => FINAL_SCOPE_ENTITY_IDS.includes(sprite.id as (typeof FINAL_SCOPE_ENTITY_IDS)[number])).flatMap((sprite) =>
-        getKnownAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation)),
+        this.preloadAnimationKeys(sprite.id).map((animation) => this.assets.resolveAnimation(sprite.id, animation)),
       ),
     ]);
     if (new URLSearchParams(window.location.search).has('debugSprites')) {
@@ -923,6 +924,11 @@ export class Game {
     this.activeGrapples = [];
     this.camera.snapTo(this.player, this.canvas.width, this.canvas.height);
     this.menuScreen.showHome(this.selectedCharacterId);
+  }
+
+  private preloadAnimationKeys(entityId: string): string[] {
+    if (entityId === 'ronin') return [...roninRuntimeAnimationKeys];
+    return getKnownAnimationKeys(entityId);
   }
 
   private toggleFullscreen(): void {

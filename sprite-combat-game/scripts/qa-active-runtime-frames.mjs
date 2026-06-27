@@ -12,6 +12,7 @@ const alphaThreshold = 8;
 const targets = [
   { entityId: 'ronin', animationKey: 'roundhouse_kick' },
   { entityId: 'ronin', animationKey: 'side_kick' },
+  { entityId: 'ronin', animationKey: 'density' },
 ];
 const manualVisualAudits = new Map([
   ['ronin:roundhouse_kick', {
