@@ -90,11 +90,11 @@ export const activeRuntimeSpriteQa: ActiveRuntimeSpriteQa[] = [
       "manual-overrides"
     ],
     "failedFrames": [
-      "0002.png",
-      "0005.png",
       "0001.png",
+      "0002.png",
       "0003.png",
-      "0004.png"
+      "0004.png",
+      "0005.png"
     ],
     "acceptedIntentionalAlphaFrames": [],
     "unusableFrames": [
