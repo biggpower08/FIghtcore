@@ -35,6 +35,10 @@ cd sprite-combat-game
 npm run build
 ```
 
+## Codex MCP Workflow
+
+Codex MCP usage for this repo is documented in `docs/MCP_WORKFLOW.md`. Use it as the guide for browser QA, current library documentation lookup, structured planning, web research, and crawl/document extraction. MCPs are helpers only; keep the game browser-only and preserve the existing Vite + TypeScript architecture.
+
 ## Known Issues
 
 - Sprite art is still being polished, especially attack readability and anchor consistency.

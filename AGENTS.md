@@ -60,6 +60,7 @@ No new dependency unless explicitly justified.
 - Build must pass before final answer.
 - Prefer deterministic canvas logic over complicated framework changes.
 - Keep owner-facing summaries plain-English.
+- For MCP-assisted work, follow `docs/MCP_WORKFLOW.md`: inspect local files first, use MCPs only where they clearly help, and keep changes small.
 
 ## Sprite and Animation Rules
 
