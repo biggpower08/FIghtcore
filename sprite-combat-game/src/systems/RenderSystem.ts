@@ -68,6 +68,7 @@ export const DESERT_ARENA_ASSET_PATHS = [
 ] as const;
 
 const DEBUG_SPRITE_BOXES_PARAM = 'debugSpriteBoxes';
+const DEBUG_SPRITE_RESOLUTION_PARAM = 'debugSpriteResolution';
 const DEBUG_GRAPPLE_SUPPRESSION_PARAM = 'debugGrappleSuppression';
 const DEBUG_RENDER_PARAM = 'debugRender';
 const DEBUG_CAMERA_PARAM = 'debugCamera';
@@ -456,7 +457,20 @@ export class RenderSystem {
     }
 
     this.warnSkippedMissingSprite(entity, assetId, animationKey, spriteResult);
-    if (!shouldDrawSpriteDebug()) return;
+    if (shouldDrawSpriteDebug()) {
+      this.drawSpriteFallbackDebug(ctx, entity, color, pose, assetId, animationKey);
+    }
+    this.drawHealthBar(ctx, entity);
+  }
+
+  private drawSpriteFallbackDebug(
+    ctx: CanvasRenderingContext2D,
+    entity: Entity,
+    color: string,
+    pose: string,
+    assetId: string,
+    animationKey: string,
+  ): void {
     ctx.fillStyle = color;
     ctx.fillRect(entity.x - entity.radius * 0.55, entity.y - entity.radius * 1.1, entity.radius * 1.1, entity.radius * 1.6);
     ctx.fillStyle = '#17120c';
@@ -470,8 +484,17 @@ export class RenderSystem {
       ctx.lineWidth = 3;
       ctx.strokeRect(entity.x - entity.radius * 0.65, entity.y - entity.radius * 1.24, entity.radius * 1.3, entity.radius * 1.78);
     }
+    this.drawFallbackDebugLabel(ctx, entity, assetId, animationKey);
+  }
 
-    this.drawHealthBar(ctx, entity);
+  private drawFallbackDebugLabel(ctx: CanvasRenderingContext2D, entity: Entity, assetId: string, animationKey: string): void {
+    ctx.save();
+    ctx.fillStyle = 'rgba(16, 24, 32, 0.82)';
+    ctx.fillRect(entity.x - 78, entity.y - entity.radius * 1.9, 156, 28);
+    ctx.fillStyle = '#f7f2d5';
+    ctx.font = '10px monospace';
+    ctx.fillText(`fallback ${assetId}:${animationKey}`, entity.x - 74, entity.y - entity.radius * 1.9 + 18);
+    ctx.restore();
   }
 
   private drawBestSpriteFrame(
@@ -778,8 +801,12 @@ export class RenderSystem {
 }
 
 function shouldDrawSpriteDebug(): boolean {
-  if (!import.meta.env.DEV) return false;
-  return hasEnabledDebugParam(DEBUG_SPRITE_BOXES_PARAM) || hasEnabledDebugParam(DEBUG_RENDER_PARAM);
+  return (
+    import.meta.env.DEV &&
+    (hasEnabledDebugParam(DEBUG_SPRITE_BOXES_PARAM) ||
+      hasEnabledDebugParam(DEBUG_SPRITE_RESOLUTION_PARAM) ||
+      hasEnabledDebugParam(DEBUG_RENDER_PARAM))
+  );
 }
 
 function shouldLogSpriteFallbackWarning(): boolean {

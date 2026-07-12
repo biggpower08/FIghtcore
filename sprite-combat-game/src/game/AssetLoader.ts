@@ -297,6 +297,10 @@ export class AssetLoader {
         });
         continue;
       }
+      if (this.shouldUseAtlasInsteadOfDefaultFrameFolder(assetId, animation, frame - 1)) {
+        slots.push(null);
+        continue;
+      }
       const path = this.sourceFramePathFor(assetId, animation, frame - 1);
       if (isKnownBrokenFrame(path)) {
         this.warnBrokenFrame(path, 'Known hollow or low-coverage frame is blocked from normal gameplay.');
@@ -349,6 +353,16 @@ export class AssetLoader {
     this.frameSlotCache.set(key, resolvedSlots);
     this.frameCache.set(`${assetId}:${animation}`, resolvedSlots.map((slot) => slot.image));
     return resolvedSlots;
+  }
+
+  private shouldUseAtlasInsteadOfDefaultFrameFolder(assetId: string, animation: string, frameIndex: number): boolean {
+    if (!getSpriteAtlasAnimation(assetId, animation)) return false;
+    if (getGeneratedSpritePackFrame(assetId, animation, frameIndex)) return false;
+    if (getReferenceSpriteFrame(assetId, animation, frameIndex)) return false;
+    if (getSemiRealisticSpriteFrame(assetId, animation, frameIndex)) return false;
+    if (getCleanedSpriteAnimation(assetId, animation)?.frames[frameIndex]) return false;
+    if (getAlphaHoleSpriteFrame(assetId, animation, frameIndex)?.repairedFramePath) return false;
+    return true;
   }
 
   private sourceFramePathFor(assetId: string, animation: string, frameIndex: number): string {
