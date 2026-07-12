@@ -73,6 +73,7 @@ const DEBUG_RENDER_PARAM = 'debugRender';
 const DEBUG_CAMERA_PARAM = 'debugCamera';
 const COMBAT_MONK_REFERENCE_SCALE = 0.94;
 const blockedFrameWarnings = new Set<string>();
+const skippedSpriteWarnings = new Set<string>();
 const stageVariants = [
   { name: 'morning', path: '/assets/fightcore/backgrounds/desert-arena/morning.png', sand: '#ba7d3a', ridge: '#8b5431', tint: 'rgba(255, 204, 137, 0.08)' },
   { name: 'daytime', path: '/assets/fightcore/backgrounds/desert-arena/daytime.png', sand: '#b87935', ridge: '#8a5228', tint: 'rgba(255, 221, 151, 0.03)' },
@@ -97,6 +98,13 @@ interface StageBlend {
   amount: number;
   sand: string;
   ridge: string;
+}
+
+interface SpriteFallbackResult {
+  drew: boolean;
+  requestedFrameIndex: number;
+  fallbackChosen: string;
+  status: string;
 }
 
 export class RenderSystem {
@@ -433,7 +441,7 @@ export class RenderSystem {
     const pose = entity instanceof Fighter ? this.animation.getPose(entity) : 'idle';
     const assetId = this.getAssetId(entity);
     const animationKey = this.animation.getCurrentAnimationKey(entity);
-    const resolvedAnimation = this.assets.getResolvedAnimation(assetId, animationKey) ?? this.assets.getResolvedAnimation(assetId, 'idle');
+    const resolvedAnimation = this.assets.getResolvedAnimation(assetId, animationKey);
     const profile = spriteRegistryById.get(assetId)?.render;
     const visualProfile = getCharacterVisualProfile(assetId);
     ctx.fillStyle = 'rgba(42, 23, 13, 0.34)';
@@ -441,14 +449,13 @@ export class RenderSystem {
     ctx.ellipse(entity.x, entity.y + (profile?.shadowOffsetY ?? 8), visualProfile.collisionSize.w * 0.62, entity.radius * 0.34, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    if (resolvedAnimation && ['frame-png', 'atlas-crop', 'sheet-crop'].includes(resolvedAnimation.status)) {
-      if (this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation)) {
-        this.drawHealthBar(ctx, entity);
-        return;
-      }
+    const spriteResult = this.drawBestSpriteFrame(ctx, entity, assetId, animationKey, resolvedAnimation);
+    if (spriteResult.drew) {
+      this.drawHealthBar(ctx, entity);
+      return;
     }
 
-    this.warnSkippedMissingSprite(entity, assetId, animationKey, resolvedAnimation?.status ?? 'missing');
+    this.warnSkippedMissingSprite(entity, assetId, animationKey, spriteResult);
     if (!shouldDrawSpriteDebug()) return;
     ctx.fillStyle = color;
     ctx.fillRect(entity.x - entity.radius * 0.55, entity.y - entity.radius * 1.1, entity.radius * 1.1, entity.radius * 1.6);
@@ -467,6 +474,49 @@ export class RenderSystem {
     this.drawHealthBar(ctx, entity);
   }
 
+  private drawBestSpriteFrame(
+    ctx: CanvasRenderingContext2D,
+    entity: Entity,
+    assetId: string,
+    animationKey: string,
+    resolvedAnimation: ResolvedSpriteAnimation | undefined,
+  ): SpriteFallbackResult {
+    if (isRenderableSpriteAnimation(resolvedAnimation)) {
+      const requestedFrameIndex = this.animation.getFrameIndex(
+        entity,
+        resolvedAnimation.frames.map((frame) => frame.durationMs),
+      );
+      if (this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation, requestedFrameIndex)) {
+        return { drew: true, requestedFrameIndex, fallbackChosen: 'requested-frame', status: resolvedAnimation.status };
+      }
+      if (requestedFrameIndex !== 0 && this.drawResolvedSpriteFrame(ctx, entity, resolvedAnimation, 0)) {
+        return { drew: true, requestedFrameIndex, fallbackChosen: 'same-animation-frame-0', status: resolvedAnimation.status };
+      }
+    }
+
+    const fallbackKeys = ['idle', 'walk', 'run', 'hit_react', 'death', 'knockdown'];
+    for (const fallbackKey of fallbackKeys) {
+      if (fallbackKey === animationKey) continue;
+      const fallbackAnimation = this.assets.getResolvedAnimation(assetId, fallbackKey);
+      if (!isRenderableSpriteAnimation(fallbackAnimation)) continue;
+      if (this.drawResolvedSpriteFrame(ctx, entity, fallbackAnimation, 0)) {
+        return {
+          drew: true,
+          requestedFrameIndex: 0,
+          fallbackChosen: `${fallbackKey}-frame-0`,
+          status: fallbackAnimation.status,
+        };
+      }
+    }
+
+    return {
+      drew: false,
+      requestedFrameIndex: 0,
+      fallbackChosen: 'skip-drawing',
+      status: resolvedAnimation?.status ?? 'missing',
+    };
+  }
+
   private drawHealthBar(ctx: CanvasRenderingContext2D, entity: Entity): void {
     ctx.fillStyle = '#1b130d';
     ctx.fillRect(entity.x - entity.radius, entity.y - entity.radius * 1.55, entity.radius * 2, 5);
@@ -474,11 +524,13 @@ export class RenderSystem {
     ctx.fillRect(entity.x - entity.radius, entity.y - entity.radius * 1.55, entity.radius * 2 * (entity.health / entity.maxHealth), 5);
   }
 
-  private drawResolvedSpriteFrame(ctx: CanvasRenderingContext2D, entity: Entity, animation: ResolvedSpriteAnimation): boolean {
-    const index = this.animation.getFrameIndex(
-      entity,
-      animation.frames.map((frame) => frame.durationMs),
-    );
+  private drawResolvedSpriteFrame(ctx: CanvasRenderingContext2D, entity: Entity, animation: ResolvedSpriteAnimation, forcedFrameIndex?: number): boolean {
+    const index =
+      forcedFrameIndex ??
+      this.animation.getFrameIndex(
+        entity,
+        animation.frames.map((frame) => frame.durationMs),
+      );
     const frame = animation.frames[index] ?? animation.frames[0];
     if (!frame || isInvalidResolvedFrame(frame)) return false;
 
@@ -641,14 +693,20 @@ export class RenderSystem {
     return entity.id;
   }
 
-  private warnSkippedMissingSprite(entity: Entity, assetId: string, animationKey: string, status: string): void {
-    if (!shouldDrawSpriteDebug()) return;
-    console.warn('Skipped missing runtime sprite in debug mode', {
+  private warnSkippedMissingSprite(entity: Entity, assetId: string, animationKey: string, result: SpriteFallbackResult): void {
+    if (!shouldLogSpriteFallbackWarning()) return;
+    const key = `${entity.id}:${assetId}:${animationKey}:${result.status}:${result.fallbackChosen}`;
+    if (skippedSpriteWarnings.has(key)) return;
+    skippedSpriteWarnings.add(key);
+    console.warn('Skipped missing runtime sprite; production debug drawing is suppressed', {
       entityId: entity.id,
+      entityType: entity.constructor.name,
       assetId,
       animationKey,
-      status,
-      fallback: 'idle-or-skip',
+      requestedFrame: result.requestedFrameIndex + 1,
+      status: result.status,
+      fallback: result.fallbackChosen,
+      debugDrawingSuppressed: !shouldDrawSpriteDebug(),
     });
   }
 
@@ -720,7 +778,12 @@ export class RenderSystem {
 }
 
 function shouldDrawSpriteDebug(): boolean {
+  if (!import.meta.env.DEV) return false;
   return hasEnabledDebugParam(DEBUG_SPRITE_BOXES_PARAM) || hasEnabledDebugParam(DEBUG_RENDER_PARAM);
+}
+
+function shouldLogSpriteFallbackWarning(): boolean {
+  return import.meta.env.DEV;
 }
 
 function shouldDrawGrappleSuppressionDebug(): boolean {
@@ -795,6 +858,10 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const sourceWidth = frame.sheetImage?.width ?? frame.image?.width ?? width;
   const sourceStripDraw = Boolean(frame.sheetPath?.endsWith('-strip.png') && width >= sourceWidth && sourceWidth > 180);
   return sourceStripDraw || width > 300 || (width > 220 && width / height > 2.65);
+}
+
+function isRenderableSpriteAnimation(animation: ResolvedSpriteAnimation | undefined): animation is ResolvedSpriteAnimation {
+  return Boolean(animation && ['frame-png', 'atlas-crop', 'sheet-crop'].includes(animation.status) && animation.frames.length > 0);
 }
 
 function runtimeSpriteScale(assetId: string, frame: ResolvedSpriteFrame, profile: CharacterVisualProfile): number {
