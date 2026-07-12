@@ -47,7 +47,7 @@ export class ProgressionSystem {
   }
 
   replaceMove(player: Player, move: MoveDefinition, slotIndex: number): void {
-    if (slotIndex < 0 || slotIndex > 3) return;
+    if (slotIndex < 0 || slotIndex >= player.equippedMoves.length) return;
     if (!isMoveEligibleForCharacter(player.character.id, move)) return;
 
     if (!player.learnedMoves.some((learned) => learned.id === move.id)) {
@@ -75,6 +75,7 @@ function rotate<T>(items: T[], amount: number): T[] {
 
 function isUpgradeAvailableForPlayer(upgrade: UpgradeDefinition, player: Player, wave: number): boolean {
   if (upgrade.waveMin > wave) return false;
+  if (upgrade.category === 'Ability' || upgrade.abilityId || upgrade.tags.includes('ability')) return false;
   if (upgrade.characterScope !== 'shared' && upgrade.characterScope !== player.character.id) return false;
   if (!(upgrade.isAvailable?.(player) ?? true)) return false;
   return canStackUpgrade(upgrade, player);

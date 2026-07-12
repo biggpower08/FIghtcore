@@ -48,7 +48,6 @@ export class MenuScreen {
                     <strong>${character.name}</strong>
                     <span class="path-role">${details.role}</span>
                     <p>${details.style}</p>
-                    <p><b>Ability:</b> ${details.ability}</p>
                   </div>
                   <button data-action="start-character" data-character-id="${character.id}" type="button">Start ${character.name} Run</button>
                 </article>
@@ -90,8 +89,8 @@ export class MenuScreen {
     this.show(`
       <section class="menu-panel settings-panel">
         <h2>Controls</h2>
-        <p class="menu-copy">WASD moves. Space dashes. H/J/K/L attack with the four equipped moves. U uses the path ability. Esc pauses.</p>
-        <p class="menu-copy">Survive a wave, choose an upgrade, heal up, and keep climbing.</p>
+        <p class="menu-copy">WASD moves. Space dashes. H/J/K attack with the three equipped moves. Esc pauses.</p>
+        <p class="menu-copy">Survive waves of Cyber Monkey and Cyber Striker enemies, choose an upgrade, heal up, and keep climbing.</p>
         <button data-action="back">Back</button>
       </section>
     `);
@@ -193,17 +192,15 @@ function characterIconPath(character: { id: string; iconPath?: string }): string
   return character.iconPath ?? `/sprites/frames/${character.id}/idle/0001.png`;
 }
 
-function pathDetails(characterId: string): { role: string; style: string; ability: string } {
+function pathDetails(characterId: string): { role: string; style: string } {
   if (characterId === 'supreme-emperor') {
     return {
       role: 'Power striker / high-impact path',
       style: 'Explosive pressure, huge damage, and heavier recovery windows.',
-      ability: 'Instant Death - a short proc window that can erase normal enemies.',
     };
   }
   return {
     role: 'Balanced path / technical survivor',
     style: 'Grounded, technical, reliable. Best path for learning a full run.',
-    ability: 'Density - brief damage immunity while you reset the fight.',
   };
 }

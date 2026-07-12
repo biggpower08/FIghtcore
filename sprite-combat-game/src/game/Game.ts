@@ -250,7 +250,6 @@ export class Game {
     if (moving && this.player.meditationMs > 0) {
       this.player.interruptMeditation('Meditation canceled');
     }
-    this.handleAbilityInput();
     this.handleAttackInput();
     this.movement.update(this.player, deltaSeconds);
     this.collision.resolveObstacleCollision(this.player, this.obstacles);
@@ -493,7 +492,7 @@ export class Game {
   }
 
   private slotMovePressed(): { slot: MoveSlotKey; move: MoveDefinition } | undefined {
-    const slotKeys: MoveSlotKey[] = ['H', 'J', 'K', 'L'];
+    const slotKeys: MoveSlotKey[] = ['H', 'J', 'K'];
     for (let index = 0; index < slotKeys.length; index += 1) {
       const slot = slotKeys[index];
       if (this.input.wasPressed(slot.toLowerCase())) {
@@ -616,33 +615,6 @@ export class Game {
         this.grappleDebug = this.createGrappleDebug(enemy.definition.id, animationKey, [this.player], this.player, [], true, false);
       }
     }
-  }
-
-  private handleAbilityInput(): void {
-    if (!this.input.wasPressed('u')) return;
-    if (!this.player.ability) return;
-    if (!this.player.activateAbility()) {
-      this.impacts.push({
-        x: this.player.x,
-        y: this.player.y - this.player.radius * 1.8,
-        lifeMs: 360,
-        color: '#ffef78',
-        label: `${this.player.ability.name} on cooldown`,
-      });
-      return;
-    }
-    const animationKey = this.player.ability.id;
-    this.animation.play(this.player, animationKey, {
-      lockForMs: this.player.ability.id === 'meditation' ? this.player.ability.durationMs : 760,
-      fallback: 'idle',
-    });
-    this.impacts.push({
-      x: this.player.x,
-      y: this.player.y - this.player.radius * 1.8,
-      lifeMs: 560,
-      color: '#23d5dd',
-      label: this.player.ability.name,
-    });
   }
 
   private shouldTelegraphEnemyAttack(enemy: Enemy): boolean {

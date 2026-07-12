@@ -20,7 +20,7 @@ export class RewardScreen {
     panel.className = 'reward-panel';
     panel.innerHTML = `
       <h2>Wave Cleared</h2>
-      <p>Choose a compatible move, then pick which H/J/K/L slot it replaces.</p>
+      <p>Choose a compatible move, then pick which H/J/K slot it replaces.</p>
       <p class="menu-copy">${cyberWarning}</p>
       <div class="reward-options"></div>
     `;
@@ -74,7 +74,7 @@ export class RewardScreen {
   }
 
   private showReplacementChoices(move: MoveDefinition, player: Player, onChoose: (move: MoveDefinition, slotIndex: number) => void): void {
-    const slotKeys = ['H', 'J', 'K', 'L'];
+    const slotKeys = ['H', 'J', 'K'];
     this.root.innerHTML = '';
 
     const panel = document.createElement('section');

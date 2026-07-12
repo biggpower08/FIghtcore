@@ -4,7 +4,7 @@ import { isMoveEligibleForCharacter } from '../data/characterLoadouts';
 import type { CharacterDefinition } from '../data/characters';
 import type { CharacterLoadout } from '../data/characterLoadouts';
 import type { MoveDefinition } from '../data/moves';
-import { specialAbilityByCharacterId, type SpecialAbilityDefinition } from '../data/specialAbilities';
+import type { SpecialAbilityDefinition } from '../data/specialAbilities';
 
 export interface PlayerUpgradeState {
   damageLevel: number;
@@ -97,7 +97,7 @@ export class Player extends Fighter {
     super(character.id, 520, 720, PLAYER_RADIUS, loadout.stats.maxHealth, loadout.stats.stamina, loadout.stats.speed, moves);
     this.character = character;
     this.loadout = loadout;
-    this.ability = specialAbilityByCharacterId.get(character.id);
+    this.ability = undefined;
   }
 
   override getStaminaCost(move: MoveDefinition): number {

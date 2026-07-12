@@ -9,15 +9,7 @@ export class Hud {
 
     this.drawWaveBanner(ctx, wave);
 
-    const ability = player.ability;
-    const abilityReady = ability ? player.abilityCooldownMs <= 0 && player.abilityActiveMs <= 0 && player.criticalOverloadArmedMs <= 0 : false;
-    const abilityStatus = ability
-      ? abilityReady
-        ? `${ability.name} ready`
-        : player.abilityStatus || `${ability.name} on cooldown ${Math.ceil(player.abilityCooldownMs / 1000)}s`
-      : 'Ability unavailable';
-
-    const slotKeys = ['H', 'J', 'K', 'L'];
+    const slotKeys = ['H', 'J', 'K'];
     const moveText = player.equippedMoves.map((move, index) => `${slotKeys[index]} ${move.name}`).join('  ');
 
     const rightWidth = 272;
@@ -30,7 +22,7 @@ export class Hud {
     ctx.fillStyle = '#fff0c2';
     ctx.fillText(player.character.name, leftX + 10, leftY + 9);
     ctx.fillStyle = '#9fdde2';
-    ctx.fillText(`${abilityStatus}  |  ${moveText}`, leftX + 10, leftY + 30);
+    ctx.fillText(moveText, leftX + 10, leftY + 30);
 
     const rightHeight = 78;
     const rightX = ctx.canvas.width - rightWidth - 14;

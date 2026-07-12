@@ -448,12 +448,8 @@ export class RenderSystem {
       }
     }
 
-    if (assetId.startsWith('cyber-monkey')) {
-      this.drawCyberMonkeyPlaceholder(ctx, entity, color, pose);
-      this.drawHealthBar(ctx, entity);
-      return;
-    }
-
+    this.warnSkippedMissingSprite(entity, assetId, animationKey, resolvedAnimation?.status ?? 'missing');
+    if (!shouldDrawSpriteDebug()) return;
     ctx.fillStyle = color;
     ctx.fillRect(entity.x - entity.radius * 0.55, entity.y - entity.radius * 1.1, entity.radius * 1.1, entity.radius * 1.6);
     ctx.fillStyle = '#17120c';
@@ -639,56 +635,21 @@ export class RenderSystem {
     return false;
   }
 
-  private drawCyberMonkeyPlaceholder(ctx: CanvasRenderingContext2D, entity: Entity, color: string, pose: string): void {
-    const isBoss = entity instanceof Boss;
-    const isScrapper = entity instanceof Enemy && entity.definition.id.includes('scrapper');
-    const bodyWidth = entity.radius * (isBoss ? 2.55 : isScrapper ? 2.05 : 1.72);
-    const bodyHeight = entity.radius * (isBoss ? 1.68 : isScrapper ? 1.26 : 1.02);
-    const lean = pose === 'move' ? entity.facing * (isBoss ? 4 : 9) : 0;
-    const armor = isBoss ? '#5a4a65' : isScrapper ? '#5b3b31' : '#273035';
-
-    ctx.fillStyle = armor;
-    ctx.fillRect(entity.x - bodyWidth / 2 + lean, entity.y - bodyHeight * 0.74, bodyWidth, bodyHeight);
-    ctx.fillStyle = color;
-    ctx.fillRect(entity.x - bodyWidth * 0.32 + lean, entity.y - bodyHeight * 0.96, bodyWidth * 0.64, bodyHeight * 0.46);
-    ctx.fillStyle = '#17120c';
-    ctx.fillRect(entity.x - entity.facing * entity.radius * 0.15, entity.y - bodyHeight * 0.95, entity.facing * entity.radius * 0.72, 5);
-    ctx.strokeStyle = '#2debd3';
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.arc(entity.x + entity.facing * entity.radius * 0.42, entity.y - bodyHeight * 0.81, 3, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.strokeStyle = '#24282b';
-    ctx.lineWidth = 5;
-    ctx.beginPath();
-    ctx.moveTo(entity.x - entity.facing * bodyWidth * 0.44, entity.y - bodyHeight * 0.18);
-    ctx.quadraticCurveTo(entity.x - entity.facing * bodyWidth * 0.95, entity.y - bodyHeight * 0.88, entity.x - entity.facing * bodyWidth * 1.18, entity.y);
-    ctx.stroke();
-
-    ctx.strokeStyle = '#14171a';
-    ctx.lineWidth = isBoss ? 8 : 5;
-    for (const side of [-1, 1]) {
-      ctx.beginPath();
-      ctx.moveTo(entity.x + side * bodyWidth * 0.24, entity.y - bodyHeight * 0.1);
-      ctx.lineTo(entity.x + side * bodyWidth * 0.52, entity.y + bodyHeight * 0.42);
-      ctx.stroke();
-    }
-
-    ctx.fillStyle = isBoss ? '#ff8a2a' : '#f0c36a';
-    if (pose === 'attack') {
-      ctx.fillRect(entity.x + entity.facing * entity.radius * 0.2, entity.y - bodyHeight * 0.55, entity.facing * entity.radius * (isBoss ? 1.55 : 1.12), 8);
-      ctx.strokeStyle = '#ffef78';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.arc(entity.x + entity.facing * entity.radius * 0.7, entity.y - bodyHeight * 0.42, entity.radius * 0.9, -0.7, 0.7);
-      ctx.stroke();
-    }
-  }
-
   private getAssetId(entity: Entity): string {
     if (entity instanceof Player) return entity.character.id;
     if (entity instanceof Enemy || entity instanceof Boss) return entity.definition.id;
     return entity.id;
+  }
+
+  private warnSkippedMissingSprite(entity: Entity, assetId: string, animationKey: string, status: string): void {
+    if (!shouldDrawSpriteDebug()) return;
+    console.warn('Skipped missing runtime sprite in debug mode', {
+      entityId: entity.id,
+      assetId,
+      animationKey,
+      status,
+      fallback: 'idle-or-skip',
+    });
   }
 
   private countBodyDraw(entity: Entity): void {
@@ -826,7 +787,7 @@ function isInvalidResolvedFrame(frame: ResolvedSpriteFrame): boolean {
   const height = frame.height ?? frame.image?.height ?? 0;
   if (width <= 0 || height <= 0) return true;
   if (frame.usingManualOverrideFrame || frame.framePath?.startsWith('/sprites/manual-overrides/')) return false;
-  if (frame.usingSilhouetteFallbackFrame || frame.framePath?.startsWith('/sprites/frames-silhouette-fallback/')) return false;
+  if (frame.framePath?.startsWith('/sprites/frames-silhouette-fallback/')) return false;
   if (frame.usingCleanedAlphaFrame || frame.framePath?.startsWith('/sprites/frames-cleaned/')) return false;
   if (frame.usingGeneratedPackFrame || frame.framePath?.startsWith('/sprites/frames-pack/')) return false;
   if (frame.usingReferenceExtracted || frame.framePath?.startsWith('/sprites/frames-reference/')) return false;

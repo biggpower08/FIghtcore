@@ -11,7 +11,7 @@ export interface EnemyDefinition {
 export const enemyDefinitions: EnemyDefinition[] = [
   {
     id: 'monkey-grunt',
-    name: 'Monkey Grunt',
+    name: 'Cyber Monkey',
     maxHealth: 48,
     speed: 158,
     attackRange: 48,
@@ -20,7 +20,7 @@ export const enemyDefinitions: EnemyDefinition[] = [
   },
   {
     id: 'striker-monkey',
-    name: 'Monkey Striker',
+    name: 'Cyber Striker',
     maxHealth: 78,
     speed: 148,
     attackRange: 64,

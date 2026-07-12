@@ -27,28 +27,26 @@ The static build is written to `dist/` for GitHub Pages.
 
 - Move: `WASD`
 - Dash: `Space`
-- Equipped move slots: `H`, `J`, `K`, `L`
+- Equipped move slots: `H`, `J`, `K`
 - Pause / resume: `Esc`
-- Reward screen: choose a compatible move, then choose which H/J/K/L slot it replaces
+- Reward screen: choose an upgrade or a compatible move, then choose which H/J/K slot it replaces
 
-The HUD always shows the current move name for each H/J/K/L slot.
+The HUD always shows the current move name for each H/J/K slot.
 
 ## Current Fighter Move Slots
 
-- Cyber Ninja: `H` Jab, `J` Slice, `K` Side Kick, `L` High Kick
-- Shadow Striker: `H` Roundhouse Kick, `J` Teep Kick, `K` Cross, `L` Jab
-- Puppetmaster: `H` Double Leg Shot, `J` O Goshi, `K` Armbar, `L` Duck Under Mat Return Slam
-- Combat Monk: `H` Palm Strike, `J` High Kick, `K` Spinning Sweep, `L` Standing Shoulder Lock
+- Ronin: `H` Jab, `J` Cross, `K` Roundhouse Kick
+- Supreme Emperor: `H` Jab-Cross, `J` Feint-Rear Hook, `K` Tornado Kick
 
 ## Current MVP Features
 
 - Generated desert arena background with procedural fallback
-- Selectable fighters: Cyber Ninja, Shadow Striker, Puppetmaster, and Combat Monk
-- Cyber Monkey enemies, including Scrapper and Grappler variants
-- H/J/K/L equipped moves with cooldowns and stamina costs
+- Selectable fighters: Ronin and Supreme Emperor
+- Cyber Monkey and Cyber Striker enemies
+- H/J/K equipped moves with cooldowns
 - Grapples that require nearby targets and preserve embedded-target sprite suppression
 - Rewards between waves that replace one equipped slot
-- Sprite Lab for inspecting entities, animations, moves, frame sources, and fallback status
+- Sprite Lab as a developer tool for inspecting entities, animations, moves, frame sources, and fallback status
 - GitHub Pages deployment
 
 Boss waves are disabled during the MVP polish pass so normal wave readability can be stabilized first.
@@ -68,7 +66,7 @@ Runtime animation resolution order:
 2. prepared FIghtcore strip crops
 3. registered source-sheet crop rectangles
 4. idle fallback
-5. procedural fallback
+5. skip drawing for that frame in normal gameplay
 
 Sprite Lab should not treat a whole strip/contact sheet as a gameplay frame. Missing or invalid frame data should show clear fallback/debug information instead of crashing.
 
