@@ -1,5 +1,7 @@
 node_modules/
 dist/
+sprite-combat-game/dist-itch/
+sprite-combat-game/fightcore-itch-build.zip
 .env
 .env.*
 *.log

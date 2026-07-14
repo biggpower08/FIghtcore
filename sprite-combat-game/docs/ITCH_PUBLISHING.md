@@ -5,16 +5,33 @@
 Run from the game folder:
 
 ```powershell
-cd C:\dev\FIghtcore-codex-work\sprite-combat-game
+cd C:\Users\trish\OneDrive\Documents\FIGHTCORE\sprite-combat-game
 npm.cmd install
-npm.cmd run build
+npm.cmd run build:itch
 ```
 
-The playable static build is written to `dist`.
+The normal Vite build is written to `dist`. The itch-ready build is written to `dist-itch`, and the upload zip is written to `fightcore-itch-build.zip`.
 
 ## Package For Itch.io
 
-Zip the contents of `sprite-combat-game\dist`, not the `dist` folder wrapper, so `index.html` is at the root of the zip.
+Use `npm.cmd run build:itch`; do not manually zip the full `dist` folder. Vite copies every public asset into `dist`, including source sheets, QA reports, backup frame folders, Sprite Lab outputs, and legacy characters. That full build can exceed itch.io's 1,000-file zip limit.
+
+The lean itch packager copies only the current MVP runtime assets:
+
+- built JS/CSS chunks
+- `index.html`
+- Ronin and Supreme Emperor runtime frame-pack PNGs
+- Cyber Monkey and Cyber Striker atlas assets
+- desert arena background/prop assets
+- upgrade UI icons
+
+The packager excludes source/generated sheets, QA/contact sheets, backup frame folders, Sprite Lab bulk outputs, non-MVP character folders, docs, tools, and repair scripts. It verifies that `index.html` is at the zip root and fails if the zip has 1,000 or more entries.
+
+To rebuild only the lean package from an existing `dist`:
+
+```powershell
+npm.cmd run check:itch
+```
 
 Upload the zip as an HTML/browser game on itch.io. Enable iframe play, then test both embedded and fullscreen modes.
 

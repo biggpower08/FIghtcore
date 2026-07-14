@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:itch": "node scripts/build-itch.mjs",
+    "check:itch": "node scripts/package-itch-build.mjs",
     "preview": "vite preview",
     "assets:prepare": "python scripts/prepare-fightcore-assets.py",
     "sprite:clean": "node scripts/clean-sprite-frames.mjs",
